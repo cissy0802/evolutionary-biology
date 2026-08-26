@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>进化生物学 Day 1：自然选择的逻辑</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -36,24 +37,19 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192}
 @media(max-width:600px){header h1{font-size:1.42rem}.card{padding:20px 18px}.container{padding:16px 14px 40px}}
 </style></head><body>
 <div class="container">
-
 <header>
 <div class="kicker">Evolutionary Biology · Day 1</div>
-<h1>自然选择的逻辑</h1>
+<h1 data-tts="35453327a0aee4ef">自然选择的逻辑</h1>
 <div class="meta">2026 年 8 月 26 日<span class="tag">核心逻辑</span><span class="tag">Phase A</span></div>
 </header>
-
 <div class="intro">
 <p>达尔文之前，"物种会变"已有人说过。他真正贡献的是一套<strong>不需要设计者、不需要预见、不需要目标</strong>的机制：一个带随机扰动的复制循环，加一条由结果反馈的保留规则。它被误读一百六十多年，不是因为难，而是因为太像口号。</p>
 </div>
-
-<div class="card">
+<div class="card" data-tts="b9a5365cb1fcd253">
 <h2>选择的三个必要条件<span class="en">The Three Conditions for Natural Selection</span></h2>
-
 <div class="field"><span class="label">【一句话直觉】</span>
 <p>一段<strong>与底物无关的循环</strong>：只要"个体有差异 / 差异可复制 / 差异影响复制成功率"三条同时为真，群体组成就必然逐代偏移。它不挑硬件——碳基细胞、语言里的词、代码库里的 fork 都能跑。</p>
 </div>
-
 <div class="field core"><span class="label">【选择逻辑 + 机制】</span>
 <p>Lewontin（1970）把《物种起源》的长篇论证压成三条：<strong>表型变异</strong>、<strong>差异适合度</strong>、<strong>适合度可遗传</strong>。逐条问"缺了会怎样"：</p>
 <ul>
@@ -63,169 +59,136 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192}
 </ul>
 <p>"可遗传"在分子层究竟是什么？Van't Hof 等（2016, <em>Nature</em>）在桦尺蠖（<em>Biston betularia</em>）身上定位到黑化型的致因变异：cortex 基因<strong>第一内含子</strong>里一段约 21.9 kb 的转座子插入，抬高早期翅芽发育中 cortex 转录本的丰度，产出黑色的 carbonaria 表型。依重组单倍型回推，转座约发生在 <strong>1819 年</strong>，与 1848 年首次记录到黑化个体吻合——一个可数的分子事件 → 一个表型 → 一个可测的存活差。</p>
 </div>
-
 <div class="field"><span class="label">【关键证据】</span>
 <p>Majerus 用六年、4864 只活蛾做了针对性最强的野外实验（他早逝后由 Cook、Grant、Saccheri、Mallet 于 2012 年在 <em>Biology Letters</em> 发表）：在煤烟已消退的树皮上，黑化型每日被鸟捕食的相对劣势 <code>s ≈ 0.1</code>，足以解释 1970 年后英国黑化型的快速回落。它的分量在于回应了对 Kettlewell 1950 年代实验的方法学批评——按更严格的设计重做，结论方向不变。</p>
 </div>
-
 <div class="field"><span class="label">【常见误读】</span>
 <p>跳过第二条的<strong>因果方向</strong>。"变异与繁殖成功率相关"不等于"变异<strong>导致</strong>了这个差别"：健康的鸟往往羽色更亮也活得更久，但羽色本身可能一点选择压都不承受。要分清得靠实验操纵或路径分析。</p>
 </div>
-
 <div class="field"><span class="label">【跨学科联想】</span>
 <p>这三条就是遗传算法的全部骨架，但有一处<strong>机制级断裂</strong>：GA 的适应度函数外生给定、静态不变；自然界的"适应度函数"由其他正在演化的个体和正被消耗的环境共同构成，内生且随时改变。这正是 GA 会收敛、生物演化不收敛的原因。</p>
 </div>
-
 <div class="essence"><strong>一句话精华：</strong>自然选择不是一条待验证的生物学事实，而是<strong>逻辑上必然</strong>的推论——三条件为真，频率就必须变。
 <span class="q">思考题：你手上有没有一个系统同时满足这三条，而你从未把它当成"正在演化"？</span></div>
 </div>
-
-<div class="card">
+<div class="card" data-tts="f5bd96b301f322d0">
 <h2>适合度：为什么不是"最强者生存"<span class="en">Fitness · What "Survival of the Fittest" Gets Wrong</span></h2>
-
 <div class="field"><span class="label">【一句话直觉】</span>
 <p>fitness 不是体能条上的分数，是<strong>期望后代数</strong>。更贴切的类比是复利里的<strong>增长率</strong>：它是速率，不是等级。</p>
 </div>
-
 <div class="field core"><span class="label">【选择逻辑 + 机制】</span>
 <p>"survival of the fittest" 是 Spencer 1864 年造的词，达尔文 1869 年第五版才应 Wallace 建议采纳。它埋了两个坑：fittest 在日常英语里滑向"最强"，技术含义却是"在<strong>当下这个环境里</strong>留下后代的期望最高"；survival 则只是手段，活得久却不繁殖，适合度是零。写实定义就不容易滑坡：<code>W = 存活率 × 平均后代数</code>，相对适合度 <code>w = W / W_max</code>，选择系数 <code>s = 1 − w</code>。"选择压"不是抽象的"环境严酷"，而是这个能量出来的 s。</p>
 <p>还有一层要命的细节：环境波动时被最大化的不是算术平均适合度，而是<strong>几何平均</strong>。一个策略哪怕平均每年产 10 个后代，只要某些年份归零，长期几何平均就是零。这直接推出赌注对冲（bet-hedging）：种子分年休眠、卵分批孵化，都是主动压低算术均值来换取几何均值。</p>
 </div>
-
 <div class="field"><span class="label">【关键证据】</span>
 <p>野外的选择究竟多强？Kingsolver 等（2001, <em>American Naturalist</em>）汇总 1984–1997 年间 63 项研究、62 个物种、2500 多个选择梯度估计：标准化线性梯度 |β| 近似指数分布，<strong>中位数约 0.16</strong>——强定向选择是少数派。局限也要标出来：这批数据存在发表偏倚（弱效应难发表，小样本会系统性高估效应量），真实中位数很可能更低。</p>
 </div>
-
 <div class="field"><span class="label">【常见误读】</span>
 <p>"适者生存是同义反复：谁活下来谁就是适者。"不成立，因为适合度可以<strong>独立于结果被测量</strong>：从喙的力学性能能预测它咬得开哪一档硬度的种子，从翅面反射率能预测被鸟发现的概率——先预测，再观察存活，地雀与桦尺蠖都是这么做的。同义反复的批评只对"事后给赢家贴标签"的懒惰用法成立。</p>
 </div>
-
 <div class="field"><span class="label">【跨学科联想】</span>
 <p>几何平均适合度最大化，与投资里的 Kelly 准则是<strong>同一个数学问题</strong>：下注重复进行、收益乘性累积、破产不可逆时，最优策略最大化的是对数收益的期望而非收益的期望。约束同样来自"归零一次就出局"的乘性结构。</p>
 </div>
-
 <div class="essence"><strong>一句话精华：</strong>适合度是速率不是等级；不指定环境与时间尺度就谈适合度，等于不给参照系就谈"快"。
 <span class="q">思考题：你身上哪些看着"低效"的习惯，其实是在用算术均值换几何均值？</span></div>
 </div>
-
-<div class="card">
+<div class="card" data-tts="0b0f6a533c72649d">
 <h2>群体思维：选择改变的是分布<span class="en">Population Thinking</span></h2>
-
 <div class="field"><span class="label">【一句话直觉】</span>
 <p>选择不修改任何一个个体，它只改变<strong>分布</strong>。个体是不可变的样本，被改的是抽样权重——像流量分流改的是配比，不是任何一个具体请求。</p>
 </div>
-
 <div class="field core"><span class="label">【选择逻辑 + 机制】</span>
 <p>Mayr 指出，达尔文最难被消化的不是"演化"，而是这个视角转换。类型思维把物种看成理想模板、个体差异是围绕模板的噪声；群体思维反过来——<strong>差异才是唯一真实的东西，"平均个体"是统计幻象</strong>。</p>
 <p>这个转换让演化变得可算。单倍体近似下有利等位基因满足 <code>p′ = p(1+s)/(1+sp)</code>；换成对数几率 <code>ln(p/q)</code>，每代近似增加 s。于是从 1% 涨到 99% 所需代数约 <code>2·ln(99)/s</code>：s = 0.01 时约 900 代，s = 0.1 时约 90 代。自然选择常被说成"缓慢"却时常快得惊人，就因为它是<strong>指数</strong>过程。</p>
 <p>反方向的力是漂变：有效群体大小 Ne 越小，每代抽样噪声越大，粗略判据是 <code>Ne·s ≈ 1</code>。低于这个门槛，选择推不过噪声，等位基因命运基本由运气决定。同一个 s，在大群体里近乎"必然"，在小群体里只是"也许"。</p>
 </div>
-
 <div class="fig">
-<svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="选择前后喙深分布移动的示意图">
-<line x1="60" y1="200" x2="565" y2="200" stroke="#52c98a" stroke-width="1.5"/>
-<line x1="60" y1="200" x2="60" y2="42" stroke="#52c98a" stroke-width="1.5"/>
-<path d="M 96 200 C 190 200 215 96 268 96 C 321 96 346 200 440 200" fill="#3d5647" fill-opacity="0.75" stroke="#4f6357" stroke-width="1.6"/>
-<path d="M 156 200 C 250 200 275 108 328 108 C 381 108 406 200 500 200" fill="#52c98a" fill-opacity="0.28" stroke="#52c98a" stroke-width="2"/>
-<line x1="268" y1="200" x2="268" y2="96" stroke="#4f6357" stroke-width="1.2" stroke-dasharray="4 3"/>
-<line x1="328" y1="200" x2="328" y2="108" stroke="#52c98a" stroke-width="1.2" stroke-dasharray="4 3"/>
-<path d="M 272 74 L 324 74" stroke="#d2a24c" stroke-width="1.8"/>
-<path d="M 324 74 l -7 -4 l 0 8 z" fill="#d2a24c"/>
-<text x="298" y="66" font-size="12" fill="#d2a24c" text-anchor="middle" font-family="Georgia,serif">均值上移约 4%</text>
-<text x="176" y="152" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">干旱前群体</text>
-<text x="458" y="140" font-size="12" fill="#52c98a" text-anchor="middle" font-family="Georgia,serif">幸存者的后代</text>
-<text x="313" y="222" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">喙 深 →</text>
-<text x="62" y="32" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">个体数</text>
-<text x="112" y="182" font-size="11.5" fill="#d2a24c" font-family="Georgia,serif">死亡集中在这一侧</text>
+<svg aria-label="选择前后喙深分布移动的示意图" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#52c98a" stroke-width="1.5" x1="60" x2="565" y1="200" y2="200"></line>
+<line stroke="#52c98a" stroke-width="1.5" x1="60" x2="60" y1="200" y2="42"></line>
+<path d="M 96 200 C 190 200 215 96 268 96 C 321 96 346 200 440 200" fill="#3d5647" fill-opacity="0.75" stroke="#4f6357" stroke-width="1.6"></path>
+<path d="M 156 200 C 250 200 275 108 328 108 C 381 108 406 200 500 200" fill="#52c98a" fill-opacity="0.28" stroke="#52c98a" stroke-width="2"></path>
+<line stroke="#4f6357" stroke-dasharray="4 3" stroke-width="1.2" x1="268" x2="268" y1="200" y2="96"></line>
+<line stroke="#52c98a" stroke-dasharray="4 3" stroke-width="1.2" x1="328" x2="328" y1="200" y2="108"></line>
+<path d="M 272 74 L 324 74" stroke="#d2a24c" stroke-width="1.8"></path>
+<path d="M 324 74 l -7 -4 l 0 8 z" fill="#d2a24c"></path>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="298" y="66">均值上移约 4%</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="176" y="152">干旱前群体</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="458" y="140">幸存者的后代</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="313" y="222">喙 深 →</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="62" y="32">个体数</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" x="112" y="182">死亡集中在这一侧</text>
 </svg>
 <div class="cap">干旱杀掉的不是"随机的鸟"，而是分布左侧咬不开硬种子的那一段，于是整条曲线右移。<strong>没有任何一只鸟的喙变深过。</strong>（示意图，非原始数据；方向与量级依 Boag &amp; Grant, 1981。）</div>
 </div>
-
 <div class="field"><span class="label">【关键证据】</span>
 <p>加拉帕戈斯 Daphne Major 岛的中地雀（<em>Geospiza fortis</em>）：1977 年大旱，小而软的种子先被吃光，只剩大而硬的蒺藜果实；群体从约 1400 只崩到几百只（约 85% 饿死）。幸存者体型更大、喙更深——因为咬得开硬种子。Boag &amp; Grant（1981, <em>Science</em>）报告的选择强度，是当时脊椎动物野外记录中最高的。</p>
 <p>更要紧的是后续：2003–2005 年又一次干旱，但岛上已有 1982 年定居的大地雀（<em>G. magnirostris</em>）在争夺大种子，<em>G. fortis</em> 的喙<strong>反而变小</strong>（Grant &amp; Grant, 2006, <em>Science</em>），是三十余年记录中最强的一次演化响应。同一物种、同一性状、相反方向——选择跟着环境走，本身没有"进步"的方向。</p>
 </div>
-
 <div class="field"><span class="label">【常见误读】</span>
 <p>把选择想成一把筛子：不合格的被筛掉，剩下的原样通过。筛子模型解释不了两件事——性状大多连续（不是"过/不过"两档），以及<strong>变异会被不断补充</strong>（突变、重组、迁入）。选择是持续的重新加权，不是一次性过滤。</p>
 </div>
-
 <div class="field"><span class="label">【跨学科联想】</span>
 <p><code>Ne·s ≈ 1</code> 与随机梯度下降的信噪比条件同构：批量越小，梯度估计的采样噪声越大，幅值低于噪声尺度的真实分量就被淹没；Ne 对应批量大小，s 对应梯度幅值。同构到此为止——SGD 的噪声是有用手段，而对选择来说漂变纯属干扰。</p>
 </div>
-
 <div class="essence"><strong>一句话精华：</strong>"这个物种在演化"是省略说法；真正在变的永远是群体里各类型的比例。
 <span class="q">思考题：你评估一个团队或一个市场时，脑子里装的是"典型个体"，还是一条分布？</span></div>
 </div>
-
-<div class="card">
+<div class="card" data-tts="b65e2687ecfe3ac3">
 <h2>累积选择：随机的是提案，非随机的是保留<span class="en">Cumulative Selection</span></h2>
-
 <div class="field"><span class="label">【一句话直觉】</span>
 <p>一次抽中复杂结构的概率确实近似为零——但演化从不做一次性抽奖。它把每次微小改进<strong>锁存</strong>下来，当作下一次抽样的起点。</p>
 </div>
-
 <div class="field core"><span class="label">【选择逻辑 + 机制】</span>
 <p>"眼睛不可能碰巧出现"这个直觉，混淆了两种搜索：<strong>单步选择</strong>（每代从零重抽）与<strong>累积选择</strong>（在已保留的成果上继续），二者差着一个指数。Nilsson &amp; Pelger（1994, <em>Proc. R. Soc. B</em>）建了一个光学模型：从一片平坦的感光皮肤出发，每代形状只允许改变 1%，演到有晶状体、能成像的鱼眼，约需 1829 个步骤、<strong>约 36.4 万代</strong>；对世代一年的动物就是不到 40 万年。每个假设都刻意往"高估耗时"取，论文标题干脆叫《一个悲观估计》。</p>
 <p>证据性质要标清楚：这是<strong>模型计算</strong>，不是化石或基因组测量；它证明的是"地质时间绰绰有余"，不是"眼睛就是这么来的"。但中间形态不必想象——眼点、杯眼、针孔眼、有晶状体的眼，在现生软体动物里各级都还活着，每一级在各自生态位里都够用。累积的前提是<strong>保存</strong>：改进必须被高保真复制传下去——这也是复制精度本身会被选择的原因。</p>
 </div>
-
 <div class="fig">
-<svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="累积选择与单步选择的对比示意图">
-<line x1="58" y1="205" x2="565" y2="205" stroke="#52c98a" stroke-width="1.5"/>
-<line x1="58" y1="205" x2="58" y2="38" stroke="#52c98a" stroke-width="1.5"/>
-<polyline points="58,196 100,196 100,178 150,178 150,168 190,168 190,144 240,144 240,137 292,137 292,114 340,114 340,107 400,107 400,84 450,84 450,77 500,77 500,64 548,64" fill="none" stroke="#52c98a" stroke-width="2.4"/>
-<polyline points="58,190 96,182 130,193 164,184 196,191 230,179 264,192 300,185 334,190 370,182 404,191 440,186 476,180 510,191 546,185" fill="none" stroke="#8f7b3e" stroke-width="2" stroke-dasharray="5 4"/>
-<text x="466" y="52" font-size="12" fill="#52c98a" font-family="Georgia,serif">累积选择</text>
-<text x="380" y="172" font-size="12" fill="#d2a24c" font-family="Georgia,serif">单步选择（每代从零重抽）</text>
-<line x1="292" y1="137" x2="340" y2="137" stroke="#d2a24c" stroke-width="1.4" stroke-dasharray="3 3"/>
-<text x="316" y="130" font-size="11" fill="#d2a24c" text-anchor="middle" font-family="Georgia,serif">停滞段 = 局部最优</text>
-<text x="310" y="228" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">代 数 →</text>
-<text x="60" y="28" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">适合度</text>
+<svg aria-label="累积选择与单步选择的对比示意图" role="img" viewbox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#52c98a" stroke-width="1.5" x1="58" x2="565" y1="205" y2="205"></line>
+<line stroke="#52c98a" stroke-width="1.5" x1="58" x2="58" y1="205" y2="38"></line>
+<polyline fill="none" points="58,196 100,196 100,178 150,178 150,168 190,168 190,144 240,144 240,137 292,137 292,114 340,114 340,107 400,107 400,84 450,84 450,77 500,77 500,64 548,64" stroke="#52c98a" stroke-width="2.4"></polyline>
+<polyline fill="none" points="58,190 96,182 130,193 164,184 196,191 230,179 264,192 300,185 334,190 370,182 404,191 440,186 476,180 510,191 546,185" stroke="#8f7b3e" stroke-dasharray="5 4" stroke-width="2"></polyline>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="466" y="52">累积选择</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="380" y="172">单步选择（每代从零重抽）</text>
+<line stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1.4" x1="292" x2="340" y1="137" y2="137"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="316" y="130">停滞段 = 局部最优</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="310" y="228">代 数 →</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="60" y="28">适合度</text>
 </svg>
 <div class="cap">同一个随机变异源，差别只在"上一代的成果留不留"。每一级台阶都是被锁存的改进；水平段是局部最优——把群体推下山谷的往往不是选择，而是漂变。</div>
 </div>
-
 <div class="field"><span class="label">【关键证据】</span>
 <p>累积过程能在实验室里直接看。Lenski 的长期演化实验（LTEE）自 1988 年 2 月起，12 个大肠杆菌群体每天转接，已跑过 7.5 万代以上。到第 5 万代适合度较祖先提高约 70%，而且<strong>没有停在平台上</strong>——Wiser、Ribeck 与 Lenski（2013, <em>Science</em>）发现轨迹更符合幂律而非趋于饱和的双曲线。Ara-3 群体在约第 31,500 代获得了有氧利用柠檬酸的能力（Blount、Borland &amp; Lenski, 2008, <em>PNAS</em>）；从冻存样本"重放"显示这依赖此前积累的特定突变——<strong>路径依赖可测</strong>。</p>
 </div>
-
 <div class="field"><span class="label">【常见误读】</span>
 <p><strong>误读一："演化就是爬山法。"</strong>只对一半。爬山法用<strong>梯度</strong>，需要知道往哪个方向走会变好；演化只有<strong>零阶信息</strong>：选择只回传"这个后代活下来没有"这一个标量，方向全靠群体层面的采样统计涌现。<strong>误读二：</strong>把 36.4 万代当成已证实的事实——它是上界估算。<strong>误读三：</strong>以为累积必然爬向全局最优——锁存同时锁住了历史包袱，早期被选中的方案会关掉后期的大量选项。</p>
 </div>
-
 <div class="field"><span class="label">【跨学科联想】</span>
 <p>"随机提案 + 非随机保留"是所有零阶优化的骨架：演化策略、模拟退火、遗传算法共享这个结构，也共享它的病理——陷进局部最优后，只有靠噪声（突变率、温度）或群体结构（互相隔离的子群）才跳得出来。生物界的对应物正是小群体与漂变：在这个位置上，漂变不再是干扰，而是唯一能把群体推下山谷的力。</p>
 </div>
-
 <div class="essence"><strong>一句话精华：</strong>关键词不是"随机"，而是"锁存"——演化的全部力量来自把已经变好的结果保存下来，作为下一轮的起点。
 <span class="q">思考题：你的学习或工程流程里，"锁存"机制具体是什么？失效时你靠什么发现？</span></div>
 </div>
-
 <div class="deep">
-<h2>深入思考</h2>
-
+<h2 data-tts="bc20959bda543e10">深入思考</h2>
 <details><summary>如果适合度只能相对于特定环境定义，"这个性状是适应"要满足什么条件才可证伪？</summary>
 <div>最低要求是三样同时可得：一个独立于结果的性能测量（比如咬合力对应种子硬度）、一个明确指定的选择环境、一个可检验的定量预测。缺第一样就退化成事后贴标签；缺第二样，任何反例都能用"环境变了"挡回去。Gould 与 Lewontin 对适应主义的批评，核心不是"性状不是适应"，而是很多适应叙事从未把这三样摆上桌。桦尺蠖之所以是教科书案例，正因三样齐备。</div>
 </details>
-
 <details><summary>三条件对文化和技术同样成立，为什么演化生物学家仍然对"模因"保持警惕？</summary>
 <div>警惕点集中在第三条。基因传递有清晰的复制单位、离散边界和高保真拷贝；文化传递中"单位"往往由观察者事后划定，而且传播时被重构而非复制——同一个故事经十个人转述会被改写十次。于是变异不只随机产生，还被系统性地朝某个方向重塑，选择之外多了一股定向力。这不否定文化演化研究，但它警告：套用三条件的形式，不等于继承了那套模型的数学后果。</div>
 </details>
-
 <details><summary>漂变对选择既是干扰、又是逃出局部最优的唯一动力，这个张力有最优解吗？</summary>
 <div>没有普适最优，但权衡结构可分析。核心参数是 Ne·s：Ne 大则选择精确、开发强，代价是群体被锁在当前山峰；Ne 小则探索强，代价是有害突变也会固定（"漂变负荷"）。Wright 的移动平衡理论想用"许多小的半隔离子群 + 少量迁移"两头兼得，至今仍有争议——争的不是机制存不存在，而是它在自然界有多重要。</div>
 </details>
-
 <details><summary>选择作用于表型，但只有基因型被传下去。文化传递填补这个断裂之后，"遗传力"还剩多少解释力？</summary>
 <div>遗传力 h² 从来不是"某性状由基因决定的比例"，而是<strong>特定群体、特定环境下</strong>表型方差中可由加性遗传方差解释的份额——它是关于方差的统计量，不是关于因果的结论。把所有人的营养拉平，身高遗传力会上升，不是因为基因变重要了，而是环境方差被压掉了。文化传递更棘手：它沿家族传播、与基因共变，于是被算进遗传力估计——这正是全基因组关联研究必须严控"群体分层"的原因。它只能回答"这个群体里方差从哪来"，回答不了"这个人为什么是这样"。</div>
 </details>
 </div>
-
 <footer>BigCat Learning Hub · Evolutionary Biology</footer>
 </div>
-<script src="https://hub.cissychen.com/comments.js" defer></script>
-<script src="https://hub.cissychen.com/search.js" defer></script>
-<script src="https://hub.cissychen.com/index-button.js" defer></script>
-<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
 </body></html>
