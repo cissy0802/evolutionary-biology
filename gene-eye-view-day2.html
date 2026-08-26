@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>进化生物学 Day 2：基因视角</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:#0c120e;color:#d8e4da;line-height:1.85}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:48px 0 32px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.82rem;color:#d2a24c;letter-spacing:3px;text-transform:uppercase}
+header h1{font-size:1.9rem;font-weight:800;color:#52c98a;letter-spacing:1px;margin-top:10px}
+header .meta{margin-top:10px;font-size:0.88rem;color:#8aa192}
+.tag{display:inline-block;background:#1c2a21;color:#52c98a;font-size:0.75rem;padding:2px 10px;border-radius:10px;margin-left:6px;letter-spacing:1px}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.card{background:#141c16;border-radius:8px;box-shadow:0 1px 8px rgba(0,0,0,0.35);border-left:3px solid #52c98a;padding:26px 26px 22px;margin-top:30px}
+.card h2{font-size:1.25rem;color:#52c98a;font-weight:700;line-height:1.4}
+.card h2 .en{display:block;font-size:0.85rem;color:#d2a24c;font-weight:400;font-style:italic;letter-spacing:0.5px;margin-top:2px}
+.field{margin-top:16px}
+.field .label{font-weight:700;color:#d2a24c;font-size:0.93rem}
+.field p{margin-top:2px}
+.field p+p{margin-top:9px}
+.field ul{margin:8px 0 0 20px}
+.field li{margin-bottom:5px}
+.core{border-top:1px dashed #2b3d31;border-bottom:1px dashed #2b3d31;padding:14px 10px;background:#101812;margin-left:-10px;margin-right:-10px}
+.essence{margin-top:18px;padding:13px 16px;background:#18231b;border-radius:5px;font-size:0.96rem}
+.essence .q{display:block;margin-top:7px;color:#8aa192;font-style:italic}
+.fig{margin:22px 0 8px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.8rem;color:#8aa192;margin-top:6px;text-align:left;line-height:1.6}
+.deep{margin-top:44px;padding-top:26px;border-top:2px solid #52c98a}
+.deep h2{font-size:1.3rem;color:#52c98a}
+details{background:#141c16;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.3);margin-top:13px;padding:14px 18px}
+summary{cursor:pointer;font-weight:600;color:#52c98a;font-size:0.99rem}
+details div{margin-top:10px;font-size:0.95rem;color:#c2d2c6}
+code{background:#1f2b22;padding:1px 5px;border-radius:3px;font-size:0.9em;font-family:Menlo,Consolas,monospace}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192}
+@media(max-width:600px){header h1{font-size:1.42rem}.card{padding:20px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+
+<header>
+<div class="kicker">Evolutionary Biology · Day 2</div>
+<h1>基因视角</h1>
+<div class="meta">2026 年 8 月 26 日<span class="tag">核心逻辑</span><span class="tag">Phase A</span></div>
+</header>
+
+<div class="intro">
+<p>「自私的基因」大概是被误读得最狠的科学书名。它听起来像一句关于人性的断言，实际是一个<strong>记账口径的变换</strong>：把「这对谁有好处」里的「谁」，从身体换成被复制的信息。换口径不改变事实，却让一批本来算不平的账立刻平了，也让另一批看不见的现象浮出来。</p>
+</div>
+
+<div class="card">
+<h2>复制子与载具<span class="en">Replicator and Vehicle</span></h2>
+
+<div class="field"><span class="label">【一句话直觉】</span>
+<p>代码仓库与正在跑的进程。进程有状态、会崩、终将退出；被 fork 到别处继续跑的是仓库里那段代码。身体是基因临时的运行实例，跨代传下去的只有信息。</p>
+</div>
+
+<div class="field core"><span class="label">【选择逻辑 + 机制】</span>
+<p>累积选择要成立，被选中的东西必须<strong>跨代保真</strong>。而有性生殖里最不保真的恰恰是「个体」：减数分裂每代把两套基因组重组洗牌，你的完整基因组作为一个组合只存在一代，从不会被复制第二次。被反复拷贝的是染色体上的<strong>片段</strong>。</p>
+<p>Williams（1966）的基因定义正是从这里推出来的——不是分子生物学的转录单位，而是「任何一段遗传信息，其承受的选择偏倚在数量级上大于它自身被重组打断的速率」。这是一个<strong>由重组率划定边界</strong>的单位：人类每条染色体每次减数分裂平均一到两次交换（全基因组约 1 cM/Mb），几十 kb 的片段能几乎完整地传上百代，整条染色体几代就碎了。</p>
+<p>Hull（1980）的拆分更干净：<strong>复制子</strong>（被拷贝的结构）与<strong>互动子</strong>（与环境互动、造成拷贝差异的实体）。这不贬低身体——身体正是选择「看得见」的界面，只是它不是被继承的那个东西。</p>
+</div>
+
+<div class="fig">
+<svg role="img" aria-label="染色体片段跨代传递与重组打断的示意图" viewbox="0 0 600 235" xmlns="http://www.w3.org/2000/svg">
+<rect x="120" y="34" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
+<rect x="120" y="80" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
+<rect x="120" y="126" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
+<rect x="120" y="172" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
+<rect x="286" y="34" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
+<rect x="286" y="80" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
+<rect x="286" y="126" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
+<rect x="286" y="172" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
+<line x1="212" x2="212" y1="76" y2="99" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="424" x2="424" y1="76" y2="99" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="168" x2="168" y1="122" y2="145" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="212" x2="212" y1="122" y2="145" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="392" x2="392" y1="122" y2="145" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="168" x2="168" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="248" x2="248" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="392" x2="392" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
+<line x1="470" x2="470" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
+<text x="108" y="46" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">第 0 代</text>
+<text x="108" y="92" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">第 1 代</text>
+<text x="108" y="138" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">第 2 代</text>
+<text x="108" y="184" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">第 3 代</text>
+<line x1="315" x2="315" y1="196" y2="210" stroke="#52c98a" stroke-dasharray="3 3" stroke-width="1.2"></line>
+<text x="315" y="224" fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle">这一段一直没被切开</text>
+<text x="470" y="24" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">竖线 = 重组断点</text>
+</svg>
+<div class="cap">同一条染色体在四代里被重组切得越来越碎，唯独绿色这一小段每代完整传下去。<strong>「基因」的边界不是分子生物学画的，是重组率画的</strong>——够短才够长寿。（示意图，断点位置为随机示例。）</div>
+</div>
+
+<div class="field"><span class="label">【关键证据】</span>
+<p>「单位有多长」可以直接测：连锁不平衡随距离的衰减，量的正是片段被切开的速度。反例更漂亮——Bersaglieri 等（2004, <em>Am J Hum Genet</em>）在欧洲人群的乳糖酶基因 <em>LCT</em> 周围测到一段异常长且一致的单倍型，尺度达 Mb 级。只有一个解释：有利变异被强选择快速推高频率，<strong>快到重组来不及切碎它</strong>。单倍型长度于是成了选择新近发生的钟。</p>
+</div>
+
+<div class="field"><span class="label">【常见误读】</span>
+<p>「既然基因是选择的单位，个体就不重要了。」这混淆了两个问题：选择<strong>作用在谁身上</strong>（互动子，通常是个体），与<strong>什么在跨代累积</strong>（复制子，基因）。Mayr 说选择作用于个体、Dawkins 说基因是最终受益者，两句可以同时为真。</p>
+</div>
+
+<div class="field"><span class="label">【跨学科联想】</span>
+<p>与「什么算一个可复用模块」同构：单位的边界不由设计者的意图定义，而由<strong>被一起拷贝走的频率</strong>定义。</p>
+</div>
+
+<div class="essence"><strong>一句话精华：</strong>长寿的不是身体也不是基因组，是短到能躲过重组剪刀的那段信息。
+<span class="q">思考题：你手上被反复复制的知识单位，实际长度是多少——一句话，还是一整套方法论？</span></div>
+</div>
+
+<div class="card">
+<h2>「自私」是核算口径，不是道德判断<span class="en">The Gene's-Eye View as Accounting</span></h2>
+
+<div class="field"><span class="label">【一句话直觉】</span>
+<p>把「这个行为对这个个体划不划算」，换成「携带这个等位基因的拷贝总数在增加还是减少」。同一笔账换个科目算，很多原本算出负数的行为立刻变正。</p>
+</div>
+
+<div class="field core"><span class="label">【选择逻辑 + 机制】</span>
+<p>为什么值得换口径？因为个体视角在一整类现象上会算出「不可能」：工蜂终生不繁殖、地松鼠冒被捕食的风险发出警报——按个体繁殖成功率记账全是净亏损。换成拷贝口径就通了：一个等位基因的拷贝不止在它所处的身体里，还以亲缘系数 <code>r</code> 坐在亲属体内，于是「牺牲自己救三个兄弟」账面转正。Hamilton（1964）的 <code>rb &gt; c</code> 就是这个换算的形式化（细节留给「亲缘选择与利他」那期）。</p>
+<p>「自私」的技术含义必须钉死：这是一句关于<strong>频率动力学</strong>的陈述——凡能提高自身拷贝频率的等位基因就会增加，不管它让载体做什么。不含心理内容，也推不出「人应当自私」；同一条逻辑推出的往往正是合作。</p>
+<p>那它有没有做出个体视角做不出的<strong>新预测</strong>？有，就在两者分叉处。小鼠的 <em>t</em> 单倍型是 17 号染色体上一段抑制重组的区域，杂合公鼠可以把它传给高达 99% 的后代（正常 50%）。机制查得相当细：<em>t</em> 上多个「扭曲者」基因（Tcd）扰乱 Rho/RAC 信号通路、普遍损伤精子运动能力，只有带 <em>t</em> 的「响应者」（Tcr）能把自己那批精子救回来（Lyon, 1984, <em>Cell</em>），代价是纯合个体不育或致死。一个明确伤害载体、也不利于群体的等位基因照样扩散——个体视角对此束手无策。</p>
+</div>
+
+<div class="field"><span class="label">【关键证据】</span>
+<p>「绿胡子」曾是 Dawkins 的纯思想实验：一个等位基因同时造出可见标记、识别标记的能力、以及偏袒带标记者的行为。Keller 与 Ross（1998, <em>Nature</em>）在红火蚁（<em>Solenopsis invicta</em>）里报告了真实候选：多蜂后型群体中产卵蜂后全是 <em>Gp-9</em> 的 Bb 杂合子，开始产卵的 BB 蜂后会被工蚁处决，动手的主要是 Bb 工蚁。后续修订同样要紧：Wang 等（2013, <em>Nature</em>）证明起作用的不是单个基因，而是一段约 13.8 Mb、被倒位锁住而不重组的<strong>超基因</strong>（「社会染色体」）。效应是真的，载体却是一整块区段——这反过来印证了 Williams：重组一旦关掉，单位就能大到 13.8 Mb。</p>
+</div>
+
+<div class="field"><span class="label">【常见误读】</span>
+<p>其一，「自私的基因 = 人性本自私」：从「某等位基因频率会上升」推不出关于动机的结论，更推不出规范结论——那是把「是」当「应当」。其二，以为它否认个体或群体层面发生的事；它主张的是<strong>记账口径</strong>的取舍。</p>
+</div>
+
+<div class="field"><span class="label">【跨学科联想】</span>
+<p>减数分裂是一套「公平抽签协议」：每个等位基因 50% 的传递概率，正是这份公平让基因组内部利益对齐。<em>t</em> 单倍型是协议里的作弊节点。它没能攻陷系统的原因很有分布式味道：<strong>作弊者互相碰面就出局</strong>，频率一高惩罚自动加重——内建的频率依赖自限，不靠外部执法。</p>
+</div>
+
+<div class="essence"><strong>一句话精华：</strong>「自私」描述的是拷贝数的动力学，不是心理也不是伦理；它的力量全在于能算出个体视角算不出的账。
+<span class="q">思考题：你所在的组织里，哪个「局部指标」正扮演着 <em>t</em> 单倍型——抬高自己的传递率、代价由整体承担？</span></div>
+</div>
+
+<div class="card">
+<h2>延伸的表型<span class="en">The Extended Phenotype</span></h2>
+
+<div class="field"><span class="label">【一句话直觉】</span>
+<p>表型不是「皮肤以内」这个物理概念，而是「基因的因果影响所及」这个功能概念。一个库的输出不止于自己的内存空间——只要调用方的行为可复现地随库版本改变，那也算它的输出。</p>
+</div>
+
+<div class="field core"><span class="label">【选择逻辑 + 机制】</span>
+<p>为什么边界不该画在皮肤上？因为选择只认一件事：这段 DNA 上的变异是否<strong>可复现地</strong>改变了它自己被复制的概率。靠改造自己的身体，还是靠改造别人的身体，数学上没有区别。Dawkins（1982）把这写成中心定理：动物的行为倾向于最大化「影响该行为的基因」的存续，<strong>而不管这些基因是否在执行该行为的那具身体里</strong>。</p>
+<p>影响半径大致三层：建筑物（海狸的坝）、对他者的操纵（寄生物改写宿主行为）、远距离作用（杜鹃雏鸟的乞食叫声改写义亲的喂食）。最硬的证据来自操纵。<em>Ophiocordyceps unilateralis</em> 感染弓背蚁后，让它离巢、爬到特定高度、咬住叶脉不放（「死亡之咬」）后死去，而那个位置的温湿度恰好适合真菌结实、把孢子撒向下方蚁道。机制细节更有说服力：Fredericksen 等（2017, <em>PNAS</em>）用连续切面电镜加深度学习分割重建三维结构，发现真菌细胞在蚂蚁全身包裹并侵入肌纤维、连成网络，<strong>却始终没有进入脑</strong>。操纵不是「占领中枢」，更可能靠分泌活性化合物加直接控制肌肉——分子中介仍在研究中。</p>
+</div>
+
+<div class="fig">
+<svg role="img" aria-label="基因影响半径从体内延伸到他者与环境的示意图" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<circle cx="180" cy="128" r="112" fill="none" stroke="#2b3d31" stroke-width="1.4" stroke-dasharray="4 4"></circle>
+<circle cx="180" cy="128" r="76" fill="none" stroke="#3d5647" stroke-width="1.4"></circle>
+<circle cx="180" cy="128" r="42" fill="#141c16" stroke="#52c98a" stroke-width="1.8"></circle>
+<circle cx="180" cy="128" r="12" fill="#52c98a"></circle>
+<text x="180" y="132" fill="#0c120e" font-family="Georgia,serif" font-size="11" text-anchor="middle">DNA</text>
+<text x="180" y="88" fill="#52c98a" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">蛋白 · 细胞</text>
+<text x="180" y="66" fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">自身形态与行为</text>
+<text x="180" y="34" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">他者的身体与行为</text>
+<line x1="292" x2="366" y1="128" y2="128" stroke="#d2a24c" stroke-width="1.8"></line>
+<path d="M 366 128 l -8 -4.5 l 0 9 z" fill="#d2a24c"></path>
+<rect x="372" y="86" width="176" height="84" rx="5" fill="#101812" stroke="#3d5647" stroke-width="1.2"></rect>
+<text x="460" y="110" fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle">真菌的基因</text>
+<text x="460" y="132" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle">蚂蚁的肌肉与行为</text>
+<text x="460" y="154" fill="#d2a24c" font-family="Georgia,serif" font-size="12" text-anchor="middle">叶背上的死亡之咬</text>
+<text x="460" y="196" fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">收益回到真菌的拷贝数</text>
+<path d="M 372 178 C 300 214 220 214 180 174" fill="none" stroke="#52c98a" stroke-width="1.4" stroke-dasharray="5 4"></path>
+<path d="M 180 174 l 5 8.5 l 6 -7 z" fill="#52c98a"></path>
+</svg>
+<div class="cap">同心圆是<strong>因果影响的半径</strong>，不是解剖边界。只要虚线那条回路闭合——影响落在别人身上，收益回到自己的拷贝数——选择就能作用于它，无论这段影响穿过几具身体。</div>
+</div>
+
+<div class="field"><span class="label">【关键证据】</span>
+<p>操纵的精度可量化：野外定位统计显示咬合的高度、朝向与时刻都高度非随机——集中在离地数十厘米的叶背，时间聚在正午前后（Andersen 等, 2009；Hughes 等, 2011）。精确匹配传播需求，正是「适应性操纵」区别于「生病副作用」的判据。</p>
+<p>反面例子同样要给。弓形虫（<em>Toxoplasma gondii</em>）让啮齿类不再回避猫尿气味，曾是「致命吸引」的教科书案例（Berdoy 等, 2000）。但 Boillat 等（2020, <em>Cell Reports</em>）发现感染小鼠是<strong>普遍性</strong>焦虑下降——对狐狸、豚鼠气味的回避也一并减弱，更像神经炎症的副产品。<strong>框架很稳，个案是操纵还是病理得一例一例判。</strong></p>
+</div>
+
+<div class="field"><span class="label">【常见误读】</span>
+<p>把它当成某种「远程遥控」的神秘主张。它没引入新的因果力，只是重新划定统计单位：「基因型 → 他者行为」这条关联稳定可遗传，选择就能作用于它。另一个误读是把寄生引起的行为改变一律算成适应性操纵——生病本身就会改变行为。</p>
+</div>
+
+<div class="field"><span class="label">【跨学科联想】</span>
+<p>与工程里「接口边界不等于因果边界」是同一件事：模块真正的输出要看它改变了哪些可观测量，而非它的地址空间。生物学内部的对应物是生态位构建——生物改造环境，被改造的环境又成为后代的选择压。</p>
+</div>
+
+<div class="essence"><strong>一句话精华：</strong>表型止于因果影响消失的地方，不止于基因所在的那具身体。
+<span class="q">思考题：你做的东西，最重要的输出发生在你的「边界」之内还是之外？</span></div>
+</div>
+
+<div class="card">
+<h2>视角之争：分解不唯一<span class="en">Levels of Selection · Why the Decomposition Is Not Unique</span></h2>
+
+<div class="field"><span class="label">【一句话直觉】</span>
+<p>同一笔总账可以按不同科目拆。Price 方程就是那个拆分算子：把群体性状的总变化精确分成「群体间」与「群体内」两项——换个拆法，总和一分不差。</p>
+</div>
+
+<div class="field core"><span class="label">【选择逻辑 + 机制】</span>
+<p>Price（1970）的方程写作 <code>w̄·Δz̄ = Cov(w, z) + E(w·Δz)</code>：第一项是选择项（性状与适合度的协方差），第二项是传递项。威力在于可<strong>递归展开</strong>：把个体嵌进群体，选择项就分成「群体间协方差 + 群体内平均协方差」——这正是多层次选择的形式化。由此得出一个两边都常误用的结论：内含适应度与<strong>设定正确的</strong>多层次选择，是同一分解的两种写法（Hamilton 1975 做过这个转换，Okasha 2006 把它系统化）。所以「哪个层次才是真的」这个问法本身就有毛病——等价的写法之间不存在事实分歧。</p>
+<p>那还剩什么真争议？剩下经验与建模策略问题：具体系统里群体间方差有多大（可测），哪种记账更不容易出错。2010 年 Nowak、Tarnita 与 Wilson 在 <em>Nature</em> 撰文称内含适应度只是适用有限的近似，次年 137 位作者联名在同刊反驳（Abbot 等, 2011），至今未收敛。</p>
+<p>关键分辨：现代多层次选择<strong>不等于</strong>天真群选择。「为了物种的利益」之所以错，不是因为群体层面的选择在数学上不可能，而是它要求群体间方差压过群体内方差、且群体的分化与灭绝快过内部搭便车者扩散——这些条件很少同时满足（Williams 1966）。</p>
+</div>
+
+<div class="field"><span class="label">【关键证据】</span>
+<p>群体层面的选择在条件满足时确实起效：Wade（1977）用赤拟谷盗做人工群体选择实验，对整群成虫数施加选择，得到明显响应；但实验室凑齐的条件——群体小、频繁重建、迁移极低——野外很少同时出现。争论因此从「可不可能」变成「有多常见」。</p>
+<p>另一侧，基因视角给出过被验证的定量预测：Trivers 与 Hare（1976, <em>Science</em>）从工蚁与姐妹、与兄弟的亲缘系数不对称，推出单蜂后单次交配的蚁群应把育幼投资偏向雌性、接近 3:1，并在多物种数据中看到偏斜。后续更大样本显示实际比例随蜂后交配次数系统性变化：<strong>方向与理论一致，3:1 只在特定条件下成立</strong>。</p>
+</div>
+
+<div class="field"><span class="label">【常见误读】</span>
+<p>「基因视角赢了、群选择被证伪了。」被证伪的是天真群选择的特定版本——性状为群体好处而演化、不需要任何方差条件。反向误读同样常见：「既然数学等价，怎么写都行。」等价不等于同样好用；错误的分解会把因果讲反，比如把搭便车者扩散造成的群体衰减误读成群体在「牺牲自己」。</p>
+</div>
+
+<div class="field"><span class="label">【跨学科联想】</span>
+<p>与强化学习的信用分配同构：一条轨迹的总回报可按时间步拆、按子策略拆，总和恒等而学习效率天差地别——分解不唯一是数学事实，选哪种分解是工程判断。层次之争，很大一部分是判断之争被误当成了事实之争。</p>
+</div>
+
+<div class="essence"><strong>一句话精华：</strong>问「选择作用在哪个层次」，答案取决于你选的分解；能做实证判决的，只有「哪一层的方差在驱动变化」。
+<span class="q">思考题：你归因一次失败时用的那套拆分，是唯一的拆法，还是恰好是你最熟的那个？</span></div>
+</div>
+
+<div class="deep">
+<h2>深入思考</h2>
+
+<details><summary>如果「基因」的边界由重组率划定，那在不重组的地方，基因视角还剩什么？</summary>
+<div>无性生殖生物、线粒体基因组、Y 染色体、被倒位锁住的超基因，都是重组被关掉的地方。整块区段成为单一复制子，基因视角与个体视角<strong>坍缩成同一件事</strong>——可见它的解释力来自重组，而非「基因」这个词的分子含义。代价随之出现：不重组的区段没法把有害与有利突变分开，只能整块累积（Muller 棘轮），Y 染色体的退化正是长期结果。</div>
+</details>
+
+<details><summary>延伸表型的边界在哪里停？人造物和文化算不算？</summary>
+<div>判据两条，缺一不可：影响与遗传变异之间存在稳定关联，且收益回到该变异的拷贝数。海狸坝符合——坝的结构随基因变异而变，回报落在造坝者的繁殖上。人类的城市不符合：变异沿文化而非基因传递，得换成文化演化的模型（基因-文化协同演化那期会讲透）。模因争议正源于此：借用形式不等于继承那套数学后果。</div>
+</details>
+
+<details><summary>基因视角能预测个体视角预测不了的现象，这算它「更真」吗？</summary>
+<div>算它在那些位置更好用，不算它处处更真。分叉点（减数分裂驱动、基因组印记、绿胡子）是它的主场。反向的位置也有——表型可塑性、发育的整体调控，用「等位基因拷贝数」讲会非常别扭。把视角当工具而非本体，就不必站队。</div>
+</details>
+
+</div>
+
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+</body></html>
