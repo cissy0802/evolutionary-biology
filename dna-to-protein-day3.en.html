@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 3: How Inheritance Works at the Molecular Level</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 3 · PHASE A CORE LOGIC</div>
+<h1>How Inheritance Works at the Molecular Level</h1>
+<h2>There is no blueprint inside a cell — only a very long tape, and a whole set of rules about which stretches get read</h2>
+<div class="meta">2026-08-27 · BigCat</div>
+<div class="pitch">The cell in your fingertip and the cell in your pancreas that makes insulin hold the same text, word for word. The difference is entirely in the reading.</div>
+</header>
+<div class="intro">
+<p>The last two topics treated "the thing that gets passed on" as a box we never opened: it mutates, it gets copied, it shapes the body.</p>
+<p>Now open it. Inside there is no drawing of the kind you might expect — no scale picture of a person, no line reading "build an eye." Just a very long tape carrying only four kinds of letter, over and over.</p>
+<p>And a whole set of <strong>rules about which stretches get read, and when</strong>. Same tape, different reading, different animal — and what evolution changes most often is not the tape but the rules.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Four letters, read three at a time, and what comes out does the work</h2>
+<p>DNA is often called "the blueprint of life." Convenient, but it walks you into a ditch: a blueprint is a scaled drawing of the finished thing, and you can point at it and say "that is a window." Nowhere on DNA can you point and say "that is an eye."</p>
+<p>What it actually is: a long chain strung with four kinds of small part, conventionally written A, T, C and G. The cell reads it <strong>three letters at a time</strong>, and each triplet stands for one amino acid. Amino acids link into a long chain, and the chain folds itself into a lump with a shape — that lump is a <strong>protein</strong>. Proteins are what actually do things: digesting milk, hauling oxygen around, making muscle contract. All proteins.</p>
+<p>There is one step in between. The cell does not carry the original into the workshop; it first copies out a working duplicate (called RNA — much like DNA, but single-stranded and short-lived), sends the copy out to be used, and lets it rot afterwards. The step looks redundant and is in fact a control point: how many copies get made, and how long each survives, both change output while the original is untouched.</p>
+<div class="fig">
+<svg aria-label="Diagram of the path from DNA to an RNA copy to a folded protein" role="img" viewbox="0 0 600 268" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="a1" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3.2"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#8aa192"></path></marker>
+</defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" x="60" y="26">DNA · the original, four kinds of letter</text>
+<rect fill="#2b3d31" height="26" stroke="#4f6357" stroke-width="1" width="480" x="60" y="34"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="76" y="52">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="108" y="52">T</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="140" y="52">G</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="172" y="52">C</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="204" y="52">C</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="236" y="52">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="268" y="52">T</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="300" y="52">G</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="332" y="52">G</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="364" y="52">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="396" y="52">C</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="428" y="52">T</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="460" y="52">T</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="492" y="52">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="524" y="52">A</text>
+<line marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.5" x1="300" x2="300" y1="66" y2="92"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" x="312" y="86">copy out a working duplicate; it rots after use</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="60" y="112">RNA · the copy, read in groups of three</text>
+<rect fill="#233229" height="26" stroke="#52c98a" stroke-width="1" width="480" x="60" y="120"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="76" y="138">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="108" y="138">U</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="140" y="138">G</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="172" y="138">C</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="204" y="138">C</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="236" y="138">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="268" y="138">U</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="300" y="138">G</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="332" y="138">G</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="364" y="138">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="396" y="138">C</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="428" y="138">U</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="460" y="138">U</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="492" y="138">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle" x="524" y="138">A</text>
+<line stroke="#d2a24c" stroke-width="1.4" x1="156" x2="156" y1="120" y2="146"></line>
+<line stroke="#d2a24c" stroke-width="1.4" x1="252" x2="252" y1="120" y2="146"></line>
+<line stroke="#d2a24c" stroke-width="1.4" x1="348" x2="348" y1="120" y2="146"></line>
+<line stroke="#d2a24c" stroke-width="1.4" x1="444" x2="444" y1="120" y2="146"></line>
+<line marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.5" x1="300" x2="300" y1="152" y2="178"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" x="312" y="172">each group becomes one amino acid</text>
+<line stroke="#3d5647" stroke-width="2" x1="108" x2="348" y1="212" y2="212"></line>
+<circle cx="108" cy="212" fill="#52c98a" r="15"></circle>
+<circle cx="168" cy="212" fill="#52c98a" r="15"></circle>
+<circle cx="228" cy="212" fill="#52c98a" r="15"></circle>
+<circle cx="288" cy="212" fill="#52c98a" r="15"></circle>
+<circle cx="348" cy="212" fill="#52c98a" r="15"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="228" y="248">strung into a chain of amino acids</text>
+<line marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.5" x1="374" x2="418" y1="212" y2="212"></line>
+<path d="M 470 186 C 512 190 526 214 508 232 C 492 248 456 244 448 226 C 442 212 452 194 470 186 Z" fill="#141c16" stroke="#d2a24c" stroke-width="1.8"></path>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="484" y="216">protein</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="484" y="262">only works once folded</text>
+</svg>
+<div class="cap">The whole path is two steps: copy out a duplicate, then read it three letters at a time. <strong>The tape itself does nothing; the work is done by the lumps that fold up after it is read.</strong> (Letter sequence is illustrative.)</div>
+</div>
+<p>That table of "which triplet means which amino acid" was read out by brute force. In 1961 Nirenberg and Matthaei synthesised a stretch of RNA made of one letter repeated, dropped it into a pot of still-working juice squeezed out of bacteria, and got back protein chains built entirely from a single amino acid. That was the first line of the table. The rest was read out over the next few years, and the work took a Nobel Prize in 1968.</p>
+<p>More important still: the table is nearly identical in bacteria, yeast, maize and you. Which is why, in 1978, people could put the human insulin gene into a gut bacterium and have the bacterium build human insulin; it reached the market in 1982. A bacterium can read a sentence written by a human — and only one explanation holds up: the table was already fixed in the common ancestor.</p>
+<p>Nor is the table arranged at random. Similar triplets tend to stand for chemically similar amino acids, so a single miscopied letter often either changes no amino acid at all or swaps in one of much the same temperament. That is a layer of shock absorption. People have generated millions of random fake tables by computer for comparison, and the real one ranks very high for error tolerance.</p>
+<p>But do not turn that into "evolution designed it to absorb errors" — <strong>nobody is designing</strong>. An error-tolerant table wastes fewer products, so lineages carrying it left more descendants; that is all. And a second explanation is on the table alongside. Crick suggested it may be a <em>frozen accident</em>: a table settled early and arbitrarily, which became unchangeable once every protein was built on top of it, because altering one letter would wreck all of them at once. Neither explanation has been ruled out, and most people think both are partly right.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Same text, and every cell reads only its own few passages</h2>
+<p>You have tens of trillions of cells, and with few exceptions every one of them holds the same DNA. The cell at the root of a hair and the cell in your pancreas that makes insulin hold the same text, word for word, yet they differ in shape, in lifespan, in what they do. <strong>The difference cannot be hiding in the text.</strong></p>
+<p>So where is it? Next to each gene — sometimes quite far away — sit short stretches that code for no protein at all, serving as docking points for another class of protein. When those proteins dock, they raise or lower how fast the neighbouring gene is copied out. Call these short stretches <strong>switches</strong>.</p>
+<p>So a mutation has two routes to changing a body: alter the protein itself, or alter when, where, and how many copies get made. The second route is far cheaper — altering a protein means altering a tool that is in use everywhere, with consequences all over; altering a switch touches one part only.</p>
+<p>Sticklebacks show this most clearly. Marine three-spined sticklebacks carry a pair of hard pelvic spines under the belly, like two small daggers, which lodge in a predator's mouth. When the glaciers retreated over ten thousand years ago, populations were stranded in newly formed inland lakes; the lakes held no such predators, but were short on calcium — and spines are expensive. Tens to hundreds of generations later, in many of those lakes, the spines are gone.</p>
+<p>What matters is <em>how</em> they went. The Pitx1 gene itself is entirely intact, not a letter changed. What was lost is the neighbouring switch that works only in the pelvic region. Delete it, and Pitx1 stops being copied out there, so no spines grow; the same gene keeps working normally in the head and face. Researchers put the switch back, and the spines came back (Chan and colleagues, 2010). Better still, fish in different lakes lost it independently — and lost the same stretch.</p>
+<div class="fig">
+<svg aria-label="Diagram showing that deleting a pelvis-specific switch removes stickleback spines while the head is unaffected" role="img" viewbox="0 0 600 246" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="a2" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3.2"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#8aa192"></path></marker>
+</defs>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="26" y="26">marine stickleback</text>
+<rect fill="#233229" height="26" rx="4" stroke="#52c98a" stroke-width="1.4" width="96" x="26" y="36"></rect>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="74" y="54">pelvic switch</text>
+<line stroke="#3d5647" stroke-dasharray="4 3" stroke-width="1.4" x1="122" x2="138" y1="49" y2="49"></line>
+<rect fill="#233229" height="26" rx="4" stroke="#3d5647" stroke-width="1.4" width="88" x="138" y="36"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="182" y="54">head switch</text>
+<line stroke="#3d5647" stroke-dasharray="4 3" stroke-width="1.4" x1="226" x2="242" y1="49" y2="49"></line>
+<rect fill="#2b3d31" height="26" rx="4" stroke="#4f6357" stroke-width="1.4" width="96" x="242" y="36"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="290" y="54">Pitx1 gene</text>
+<line marker-end="url(#a2)" stroke="#8aa192" stroke-width="1.5" x1="346" x2="392" y1="49" y2="49"></line>
+<path d="M 410 52 C 442 26 502 26 536 52 C 502 78 442 78 410 52 Z" fill="#141c16" stroke="#52c98a" stroke-width="1.6"></path>
+<circle cx="510" cy="45" fill="#52c98a" r="3"></circle>
+<line stroke="#d2a24c" stroke-width="2.4" x1="452" x2="446" y1="70" y2="88"></line>
+<line stroke="#d2a24c" stroke-width="2.4" x1="470" x2="464" y1="72" y2="90"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="473" y="106">a pair of hard pelvic spines</text>
+<line stroke="#24382c" stroke-width="1" x1="26" x2="574" y1="128" y2="128"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" x="26" y="154">lake stickleback</text>
+<rect fill="#141a16" height="26" rx="4" stroke="#6b4a3a" stroke-dasharray="4 3" stroke-width="1.4" width="96" x="26" y="164"></rect>
+<line stroke="#a2604a" stroke-width="1.8" x1="34" x2="114" y1="171" y2="183"></line>
+<line stroke="#a2604a" stroke-width="1.8" x1="114" x2="34" y1="171" y2="183"></line>
+<text fill="#a2604a" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="74" y="204">this stretch is deleted</text>
+<line stroke="#3d5647" stroke-dasharray="4 3" stroke-width="1.4" x1="122" x2="138" y1="177" y2="177"></line>
+<rect fill="#233229" height="26" rx="4" stroke="#3d5647" stroke-width="1.4" width="88" x="138" y="164"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="182" y="182">head switch</text>
+<line stroke="#3d5647" stroke-dasharray="4 3" stroke-width="1.4" x1="226" x2="242" y1="177" y2="177"></line>
+<rect fill="#2b3d31" height="26" rx="4" stroke="#4f6357" stroke-width="1.4" width="96" x="242" y="164"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="290" y="182">Pitx1 gene</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="290" y="204">not a letter changed</text>
+<line marker-end="url(#a2)" stroke="#8aa192" stroke-width="1.5" x1="346" x2="392" y1="177" y2="177"></line>
+<path d="M 410 180 C 442 154 502 154 536 180 C 502 206 442 206 410 180 Z" fill="#141c16" stroke="#52c98a" stroke-width="1.6"></path>
+<circle cx="510" cy="173" fill="#52c98a" r="3"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="473" y="228">spines gone, head unaffected</text>
+</svg>
+<div class="cap">One gene, two switches each governing one region. Delete the pelvic one and the pelvis shuts down while the head carries on. <strong>That is exactly where changing the reading is cheaper than changing the text</strong> — a change to the text is a whole-body affair, a change to a switch is a one-region affair.</div>
+</div>
+<p>The contrast makes it sharper: knock out the Pitx1 gene itself and, in lab animals, that is lethal. So changing a switch is not some secondary route — often it is <strong>the only route that goes anywhere</strong>.</p>
+<p>Humans point the same way. Two decades of genome-wide association studies (scanning hundreds of thousands of genomes side by side against some trait or disease to see which positions vary along with it) have found that over ninety percent of associated positions sit outside protein-coding sequence. One honest caveat: association is not causation, and landing in non-coding sequence does not automatically make a position "the switch" — going from an associated position to an actual mechanism often takes years. But the direction is clear: the common differences between people mostly touch the reading, not the text.</p>
+<p>Cells also remember who they are: a liver cell divides into liver cells, carrying that "which passages to read" state along with it. Whether such marks can cross the sperm and egg into the next generation is a separate question, and most are wiped and reset around fertilisation.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>The central dogma says you cannot go back, not that you cannot go around</h2>
+<p>Nearly everyone has heard it: the central dogma is DNA to RNA to protein, a one-way street. Then they hear that retroviruses copy RNA back into DNA, and conclude that "the central dogma has been overturned."</p>
+<p>That is not what Crick wrote in 1958. He said: <strong>once sequence information has passed into a protein, it cannot get out again</strong> — no mechanism reads a protein and works backwards to write out a stretch of nucleic acid. Nothing has touched that claim to this day. What was overturned was the slogan version.</p>
+<p>The detours are real enough. <strong>Reverse transcription</strong>: in 1970 Temin and Baltimore independently found the enzyme that copies RNA into DNA, the one HIV depends on. Traces of that are in you — roughly 8% of the human genome is the wreckage of ancient viral sequence, and close to half is piled up from stretches that copy themselves and insert elsewhere. Information is still moving between nucleic acids, so Crick's actual claim is untouched; the popular version collapsed.</p>
+<p><strong>RNA is not only a middleman</strong>: the machine that strings amino acids together is called the ribosome, and the core that does the real chemistry is RNA, not protein (structures solved around 2000, Nobel Prize in Chemistry in 2009).</p>
+<p><strong>One gene, one protein?</strong> Also wrong: one copy can have different passages cut out and be spliced back together into several different proteins. Before sequencing, the common guess was a hundred thousand human genes; the count came back at roughly twenty thousand protein-coding genes, not far off a roundworm. Much of the extra complexity lives in the splicing and the reading.</p>
+<p><strong>Prions</strong> are the closest thing to protein carrying information: a misfolded protein forces its fellows into the same wrong fold, on and on. But what travels is a shape, not a sequence, so on Crick's exact words it still does not violate anything — how best to phrase that point is not fully settled.</p>
+<p>Why do all these "exceptions" persist? Because selection does not audit rules for tidiness, only copy number. Reverse transcription is useful to a virus, so it stayed. The self-copying stretches occupying nearly half the genome need not benefit the host at all; they spread because they copy themselves fast, which is a different ledger entirely from "is this good for the animal" (the gene's-eye-view topic is about exactly how those two ledgers are kept apart). That clean arrow in the textbook was drawn to make teaching easier. Inside the cell there was never any such line.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Practice · BigCat</h3>
+<ul>
+<li><b>① Investing and position sizing</b>—the same set of rules, written long ago, gets read one way after three months of gains and another way in a twenty-percent drawdown; not a word of the text changed, yet two different strategies come out. As "Same text, and every cell reads only its own few passages" puts it, behaviour is not set by the text but by which clauses are active at the time. The change is concrete: <b>fix in advance when re-reading the rules is allowed</b>—rules change only at scheduled reviews, never intraday, and each change gets one line recording where the market stood when you made it. Three months of that log, and you will see the timing of your edits is anything but random.</li>
+<li><b>② Health and energy</b>—same amount of sleep, yet some mornings you are in it ten minutes after sitting down and others you need half an hour of phone first. Putting that down to "an off day" leaves you nothing you can change. By the same mechanism, what to look for is <b>the few cues that read the state out</b>: whether you stopped last night mid-sentence, whether the file is still open, whether the first thing you see on sitting down is the editor or the inbox. The changeable action is at the end of the previous session, not the next morning.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing Over · Links to Other Fields</h3>
+<ul>
+<li><b>Engineering and systems design · the frozen interface</b>: the genetic code table has gone billions of years without major revision, not because it is optimal but because every protein is built on top of it, so changing one letter would wreck all of them — Crick called this a frozen accident. Software lives the same story daily: a field format, an encoding, an interface convention settled casually and early becomes less movable the longer it stands. Which yields a conclusion you would not otherwise see: <b>how long a technical choice survives has almost nothing to do with how good it was, and everything to do with how much later got stacked on it</b> — so "we can refactor later" is priced not by code quality but by how many layers you have since piled onto that interface. <b>Where it breaks down</b>: software can add a translation layer, dual-write, migrate in batches, and walk the dependencies off; a cell cannot — translation happens every second in every cell, with no maintenance window and no legacy-code compatibility mode. Biology's freeze is hard. When engineers say something cannot be changed, they usually mean they would rather not pay for the migration.</li>
+<li><b>Philosophy of science · the slogan outlives the original</b>: the central dogma's actual claim forbids one thing, that information leaves a protein; the slogan version forbids any backflow at all. Reverse transcription flattened the slogan and never touched the original, yet "the central dogma was overturned" circulates to this day. The mechanism in "you cannot go back, not that you cannot go around" applies here too: <b>the slogan spreads precisely because it is stronger and more memorable — and a stronger claim presents a wider surface for counterexamples to hit.</b> Which gives you an action you can use immediately: when you hear that some theory has been overturned, the first step is not to hunt for counterexamples but to check whether what fell was the original claim or its slogan, because the odds of the same evidence hitting each are entirely different. <b>Where it breaks down</b>: not every "overturned" is that kind of friendly fire — "one gene, one protein" was the actual claim being overturned, not a slogan. So this is a check you must run first, not a blanket immunity.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>If most changes act on switches, why are textbook examples so often changes to proteins?</summary>
+<div>Because those are easy to find. A protein-altering mutation sits in coding sequence: clearly located, direct in effect, straightforward to verify. Switches are scattered across the genome, possibly hundreds of thousands of letters from the gene they govern, and active only in particular tissues at particular moments — you have to look in the right cell at the right developmental stage to see anything at all. So the distribution of early evidence reflects what the technology of the day could see, not the real proportions in nature. This streetlight bias shows up in any field that picks its questions by what is observable.</div>
+</details>
+<details><summary>If the code table is frozen and unchangeable, why do some organisms use a different one?</summary>
+<div>Some really do. Certain ciliates, and the small set of genes carried inside mitochondria, differ from the standard table in a few places. The shared feature is obvious: they answer for very few genes and very few proteins, so the blast radius is small and a change breaks less. That actually supports the freezing explanation — it is not that chemistry forbids the change, it is that too much depends on it. Where little depends on it, it can still move.</div>
+</details>
+<details><summary>If RNA can both store information and do chemistry, why the present split into DNA for storage and protein for work?</summary>
+<div>Each has its strength. DNA is double-stranded and chemically more stable, and a damaged strand can be repaired against its partner — good for long-term archiving. Proteins fold into far more shapes than RNA and handle far more chemistry. The catalytic core of the ribosome is still RNA, which is often read as a leftover from an earlier state. But that is circumstantial, not proof: an ancient molecule may survive simply because it is embedded too deeply to swap out — the same reason as the freeze above.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Central_dogma_of_molecular_biology" rel="noopener" target="_blank">Central dogma of molecular biology</a> · <a href="https://en.wikipedia.org/wiki/Genetic_code" rel="noopener" target="_blank">The genetic code</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Nirenberg_and_Matthaei_experiment" rel="noopener" target="_blank">The experiment that read out the first line of the code table</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1182213" rel="noopener" target="_blank">Recurrent deletion of a stickleback pelvic switch (Chan et al., 2010, Science)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/22955828/" rel="noopener" target="_blank">Disease-associated variation concentrates in regulatory DNA (Maurano et al., 2012)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Alternative_splicing" rel="noopener" target="_blank">Alternative splicing</a> · <a href="https://en.wikipedia.org/wiki/Reverse_transcriptase" rel="noopener" target="_blank">Reverse transcriptase</a> · <a href="https://en.wikipedia.org/wiki/Prion" rel="noopener" target="_blank">Prions</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>

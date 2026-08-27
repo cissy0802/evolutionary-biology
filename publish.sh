@@ -77,9 +77,15 @@ for F in $NEW_FILES; do
     grep -q "$F" index.html || { echo "ERROR: index.html does not reference $F"; exit 1; }
   fi
 
-  # Forbidden hardcoded scripts (auto-injected by GitHub Action)
+  # Shared scripts: pages must carry each hub script exactly once.
+  # CLAUDE.md requires writing the 4 <script> lines into every new page so the
+  # inject-comments Action has nothing to append; a SECOND copy is the real bug.
   for s in comments.js search.js index-button.js i18n-tts.js; do
-    grep -q "$s" "$F" && { echo "ERROR: $F hardcodes $s (auto-injected, will duplicate)"; exit 1; }
+    SC=$(grep -c "hub.cissychen.com/$s" "$F" || true)
+    if [ "$SC" -gt 1 ]; then
+      echo "ERROR: $F includes $s $SC times (duplicated shared script)"
+      exit 1
+    fi
   done
   grep -q "← Hub" "$F" && echo "WARN: $F hardcodes ← Hub button (will be deduped, consider removing)"
 
