@@ -1,237 +1,191 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evolutionary Biology Day 2: The Gene's-Eye View</title>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 2: The Gene&#39;s-Eye View</title>
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:#0c120e;color:#d8e4da;line-height:1.8}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
 .container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
-header{text-align:center;padding:48px 0 32px;border-bottom:1px solid #24382c}
-header .kicker{font-size:0.82rem;color:#d2a24c;letter-spacing:3px;text-transform:uppercase}
-header h1{font-size:1.9rem;font-weight:800;color:#52c98a;letter-spacing:1px;margin-top:10px}
-header .meta{margin-top:10px;font-size:0.88rem;color:#8aa192}
-.tag{display:inline-block;background:#1c2a21;color:#52c98a;font-size:0.75rem;padding:2px 10px;border-radius:10px;margin-left:6px;letter-spacing:1px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
-.card{background:#141c16;border-radius:8px;box-shadow:0 1px 8px rgba(0,0,0,0.35);border-left:3px solid #52c98a;padding:26px 26px 22px;margin-top:30px}
-.card h2{font-size:1.25rem;color:#52c98a;font-weight:700;line-height:1.4}
-.card h2 .en{display:block;font-size:0.85rem;color:#d2a24c;font-weight:400;font-style:italic;letter-spacing:0.5px;margin-top:2px}
-.field{margin-top:16px}
-.field .label{font-weight:700;color:#d2a24c;font-size:0.93rem}
-.field p{margin-top:2px}
-.field p+p{margin-top:9px}
-.field ul{margin:8px 0 0 20px}
-.field li{margin-bottom:5px}
-.core{border-top:1px dashed #2b3d31;border-bottom:1px dashed #2b3d31;padding:14px 10px;background:#101812;margin-left:-10px;margin-right:-10px}
-.essence{margin-top:18px;padding:13px 16px;background:#18231b;border-radius:5px;font-size:0.96rem}
-.essence .q{display:block;margin-top:7px;color:#8aa192;font-style:italic}
-.fig{margin:22px 0 8px;text-align:center}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.fig{margin:24px 0 10px;text-align:center}
 .fig svg{max-width:100%;height:auto}
-.fig .cap{font-size:0.8rem;color:#8aa192;margin-top:6px;text-align:left;line-height:1.6}
-.deep{margin-top:44px;padding-top:26px;border-top:2px solid #52c98a}
-.deep h2{font-size:1.3rem;color:#52c98a}
-details{background:#141c16;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.3);margin-top:13px;padding:14px 18px}
-summary{cursor:pointer;font-weight:600;color:#52c98a;font-size:0.99rem}
-details div{margin-top:10px;font-size:0.95rem;color:#c2d2c6}
-code{background:#1f2b22;padding:1px 5px;border-radius:3px;font-size:0.9em;font-family:Menlo,Consolas,monospace}
-footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192}
-@media(max-width:600px){header h1{font-size:1.42rem}.card{padding:20px 18px}.container{padding:16px 14px 40px}}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
 </style></head><body>
 <div class="container">
 
 <header>
-<div class="kicker">Evolutionary Biology · Day 2</div>
-<h1>The Gene's-Eye View</h1>
-<div class="meta">26 August 2026<span class="tag">Core Logic</span><span class="tag">Phase A</span></div>
+<div class="kicker">DAY 2 · PHASE A CORE LOGIC</div>
+<h1>The Gene&#39;s-Eye View</h1>
+<h2>Change who the "who" is in "who does this benefit", and ledgers that would not balance suddenly do</h2>
+<div class="meta">2026-08-26 · BigCat</div>
+<div class="pitch">"The selfish gene" sounds like a verdict on human nature. It is a change of accounting method.</div>
 </header>
 
 <div class="intro">
-<p><em>The Selfish Gene</em> may be the most badly misread title in science. It sounds like a claim about human nature; it is in fact a <strong>change of accounting units</strong>: replacing the "who" in "who does this benefit" with the information being copied rather than the body doing the copying. Changing units changes no facts, yet a whole class of ledgers that never balanced suddenly balances — and another class of phenomena, previously invisible, comes into view.</p>
+<p><em>The Selfish Gene</em> may be the most thoroughly misread title in science.</p>
+<p>It sounds like a claim that people are selfish by nature. It contains no claim about psychology at all. What it changes is the <strong>unit of account</strong> — the "who" in "who does this benefit" moves from a body to the stretch of information being copied.</p>
+<p>Changing the unit changes no facts. But a batch of ledgers that would not balance suddenly do, and a batch of phenomena that were invisible come into view.</p>
 </div>
 
-<div class="card">
-<h2>Replicator and Vehicle<span class="en">What actually persists across generations</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>A code repository versus a running process. The process holds state, can crash, and eventually exits; what gets forked elsewhere and keeps running is the stretch of code in the repo. The body is a gene's temporary runtime instance — only information is passed down.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>For cumulative selection to work, whatever is selected must be <strong>faithful across generations</strong>. In sexual reproduction the least faithful thing is precisely the "individual": meiosis reshuffles and recombines two genomes every generation, so your complete genome, as a combination, exists for exactly one generation and is never copied a second time. What does get copied repeatedly is a <strong>stretch</strong> of chromosome.</p>
-<p>Williams's (1966) definition of a gene follows from this — not the transcription unit of molecular biology, but "any hereditary information for which there is a favourable or unfavourable selection bias equal to several or many times its rate of endogenous change." It is a unit whose <strong>boundaries are drawn by the recombination rate</strong>: with one to two crossovers per chromosome per human meiosis (roughly 1 cM/Mb genome-wide), a stretch of tens of kilobases can pass down nearly intact for hundreds of generations, while a whole chromosome shatters within a few.</p>
-<p>Hull (1980) drew the distinction more cleanly still: <strong>replicator</strong> (the structure that gets copied) versus <strong>interactor</strong> (the entity that engages the environment and thereby causes differences in copying). This does not demote the body — the body is exactly the interface selection can see. It is simply not the thing that is inherited.</p>
-</div>
-
+<div class="section">
+<span class="num">// 01</span>
+<h2>What gets passed on is not you, but the segments that pass through you</h2>
+<p>After you are gone, what remains? The intuitive answer is "my genes". It does not survive one follow-up question: <strong>your genome, as a particular combination, exists for exactly one generation and is never copied a second time.</strong></p>
+<p>The problem is sex. When sperm and eggs are made, the two sets you got from your parents are shuffled again — cut, swapped, reassembled. So the set you hand a child is neither your father&#39;s nor your mother&#39;s but a freshly dealt hand. Your child passes it on and it is shuffled again.</p>
+<p>What is copied over and over is therefore never "you" but <strong>segments</strong> of chromosome.</p>
+<p>How long is a segment? The scissors decide. Each shuffle makes roughly one or two cuts per chromosome. Short stretches that escape the cut can travel almost intact for hundreds of generations, while a whole chromosome is in pieces within a few. Which gives an odd but crucial conclusion: <strong>the boundary of "a gene" is drawn not by chemistry but by how often the shuffling cuts — short enough to be long-lived.</strong></p>
 <div class="fig">
-<svg role="img" aria-label="Diagram of a chromosome segment persisting across generations while recombination breaks up the rest" viewbox="0 0 600 235" xmlns="http://www.w3.org/2000/svg">
-<rect x="120" y="34" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
-<rect x="120" y="80" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
-<rect x="120" y="126" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
-<rect x="120" y="172" width="420" height="15" fill="#2b3d31" stroke="#4f6357" stroke-width="1"></rect>
-<rect x="286" y="34" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
-<rect x="286" y="80" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
-<rect x="286" y="126" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
-<rect x="286" y="172" width="58" height="15" fill="#52c98a" fill-opacity="0.85"></rect>
-<line x1="212" x2="212" y1="76" y2="99" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="424" x2="424" y1="76" y2="99" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="168" x2="168" y1="122" y2="145" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="212" x2="212" y1="122" y2="145" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="392" x2="392" y1="122" y2="145" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="168" x2="168" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="248" x2="248" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="392" x2="392" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
-<line x1="470" x2="470" y1="168" y2="191" stroke="#d2a24c" stroke-width="1.6"></line>
-<text x="108" y="46" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">Gen 0</text>
-<text x="108" y="92" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">Gen 1</text>
-<text x="108" y="138" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">Gen 2</text>
-<text x="108" y="184" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end">Gen 3</text>
-<line x1="315" x2="315" y1="196" y2="210" stroke="#52c98a" stroke-dasharray="3 3" stroke-width="1.2"></line>
-<text x="315" y="224" fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle">this stretch is never cut</text>
-<text x="470" y="24" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">vertical lines = crossovers</text>
+<svg aria-label="Diagram of chromosome segments passed down and broken up by recombination" role="img" viewbox="0 0 600 235" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#2b3d31" height="15" stroke="#4f6357" stroke-width="1" width="420" x="120" y="34"></rect>
+<rect fill="#2b3d31" height="15" stroke="#4f6357" stroke-width="1" width="420" x="120" y="80"></rect>
+<rect fill="#2b3d31" height="15" stroke="#4f6357" stroke-width="1" width="420" x="120" y="126"></rect>
+<rect fill="#2b3d31" height="15" stroke="#4f6357" stroke-width="1" width="420" x="120" y="172"></rect>
+<rect fill="#52c98a" fill-opacity="0.85" height="15" width="58" x="286" y="34"></rect>
+<rect fill="#52c98a" fill-opacity="0.85" height="15" width="58" x="286" y="80"></rect>
+<rect fill="#52c98a" fill-opacity="0.85" height="15" width="58" x="286" y="126"></rect>
+<rect fill="#52c98a" fill-opacity="0.85" height="15" width="58" x="286" y="172"></rect>
+<line stroke="#d2a24c" stroke-width="1.6" x1="212" x2="212" y1="76" y2="99"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="424" x2="424" y1="76" y2="99"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="168" x2="168" y1="122" y2="145"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="212" x2="212" y1="122" y2="145"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="392" x2="392" y1="122" y2="145"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="168" x2="168" y1="168" y2="191"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="248" x2="248" y1="168" y2="191"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="392" x2="392" y1="168" y2="191"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="470" x2="470" y1="168" y2="191"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end" x="108" y="46">generation 0</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end" x="108" y="92">generation 1</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end" x="108" y="138">generation 2</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="end" x="108" y="184">generation 3</text>
+<line stroke="#52c98a" stroke-dasharray="3 3" stroke-width="1.2" x1="315" x2="315" y1="196" y2="210"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="315" y="224">this short stretch was never cut</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="470" y="24">vertical line = where the shuffle cut</text>
 </svg>
-<div class="cap">Across four generations recombination chops the same chromosome into ever smaller pieces — except the green stretch, which passes down whole each time. <strong>The boundary of a "gene" is drawn by the recombination rate, not by molecular biology</strong>: short enough is what makes it long-lived. (Schematic; breakpoints are arbitrary.)</div>
+<div class="cap">Across four generations the same chromosome is cut into ever smaller pieces — except the green stretch, which is passed on whole every time. <strong>The boundary of a "gene" is drawn by the scissors, not by chemistry</strong>: short enough to be long-lived. (Schematic; cut positions are illustrative.)</div>
+</div>
+<p>Williams defined the gene along exactly these lines back in 1966: any stretch of heritable information is a unit so long as it is favoured faster than it is cut apart. There is no molecular biology in that definition — just two rates being compared.</p>
+<p>Segment length can be measured directly. In European populations, the variant that lets adults keep digesting milk sits inside an unusually long and unusually uniform stretch of DNA. Only one explanation fits: it was strongly favoured and spread fast, faster than the scissors could chop it up. So "how much of the surrounding stretch is left" becomes a clock, reading off how recently this happened.</p>
+<p>None of this makes the body unimportant. The body is precisely the interface selection can <strong>see</strong> — a bird looks at the moth&#39;s colour, not at a piece of DNA. The body simply is not the thing being inherited. Biology calls the first a <strong>vehicle</strong> and the second a <strong>replicator</strong>: one takes the hits, the other gets passed on.</p>
 </div>
 
-<div class="field"><span class="label">Key evidence</span>
-<p>"How long is the unit" is directly measurable: the decay of linkage disequilibrium with distance measures exactly how fast stretches get cut. The converse case is prettier — Bersaglieri et al. (2004, <em>Am J Hum Genet</em>) found an unusually long and unusually uniform haplotype around the lactase gene <em>LCT</em> in European populations, on the megabase scale. There is only one explanation: a favourable variant was driven up in frequency by strong selection <strong>faster than recombination could cut it apart</strong>. Haplotype length thereby becomes a clock for how recently selection acted.</p>
+<div class="section">
+<span class="num">// 02</span>
+<h2>"Selfish" is a method of accounting, not a statement about human nature</h2>
+<p>Why is the change of unit worth making? Because on the "is this a good deal for this animal" ledger, a whole class of phenomena comes out impossible.</p>
+<p>A worker bee never breeds and spends its life raising someone else&#39;s young. On its own reproductive ledger that is a total loss and should never have been selected. A ground squirrel that spots a hawk stands up and screams, drawing the predator&#39;s attention onto itself — the same losing trade.</p>
+<p>On the copy ledger it resolves. Copies of a variant do not sit only in the body carrying it; they also sit in relatives. A sibling has a one-in-two chance of carrying the same one. So "sacrifice yourself to save three brothers" comes out positive. (How that sum actually works is for the piece on kin selection.)</p>
+<p>The technical meaning of "selfish" has to be nailed down: <strong>it is a statement about quantities</strong> — any variant that raises its own copy number will become more common, regardless of what it makes the body do. It carries no psychological content, and it implies nothing about how people ought to behave. In fact the same logic often predicts cooperation.</p>
+<p>Does the new ledger predict anything the old one cannot? It does, right where the two diverge.</p>
+<p>On mouse chromosome 17 there is a stretch of DNA that males carrying it pass to as many as <strong>99%</strong> of their offspring, where half would be normal. The trick is nasty: genes in that region damage sperm motility across the board, and only the sperm carrying the stretch have the antidote to rescue themselves. The price is that mice inheriting two copies are sterile or die outright.</p>
+<p>Something that demonstrably harms its own carrier and does the mouse population no good whatsoever spreads anyway. On the "is this good for this mouse" ledger the event is unintelligible; on the "is this stretch of DNA becoming more or less common" ledger there is no mystery at all.</p>
 </div>
 
-<div class="field"><span class="label">Common misreading</span>
-<p>"If the gene is the unit of selection, then the individual doesn't matter." This conflates two questions: <strong>what selection acts on</strong> (the interactor, usually the individual) and <strong>what accumulates across generations</strong> (the replicator, the gene). Mayr saying selection acts on individuals and Dawkins saying genes are the ultimate beneficiaries can both be true at once.</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p>Isomorphic to "what counts as a reusable module": the boundary of a unit is defined not by the designer's intent but by <strong>how often things get copied together</strong>.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> What is long-lived is neither the body nor the genome, but the stretch of information short enough to dodge the recombination scissors.
-<span class="q">Question: the units of knowledge you copy over and over — how long are they really? A sentence, or a whole methodology?</span></div>
-</div>
-
-<div class="card">
-<h2>"Selfish" Is a Unit of Account, Not a Moral Verdict<span class="en">The gene's-eye view as bookkeeping</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>Replace "does this behaviour pay for this individual" with "is the total number of copies of this allele going up or down". Same ledger, different account — and a lot of behaviours that came out negative flip positive.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>Why bother changing units? Because on a whole class of phenomena the individual-level view computes "impossible": worker bees that never reproduce, ground squirrels giving alarm calls at the risk of being eaten. Scored as individual reproductive success, these are net losses. In copy-units the ledger balances: copies of an allele sit not only in the body carrying it but also, with probability <code>r</code>, in relatives. "Die to save three brothers" now comes out positive. Hamilton's (1964) <code>rb &gt; c</code> is the formalisation of that conversion (the mechanism belongs to the kin selection and altruism issue).</p>
-<p>The technical sense of "selfish" has to be nailed down: it is a statement about <strong>frequency dynamics</strong> — any allele that raises the frequency of its own copies will increase, whatever it makes its vehicle do. It carries no psychological content, and it implies nothing about how people ought to behave; the very same logic more often yields cooperation.</p>
-<p>Does the change of units yield <strong>predictions the individual-level view cannot make</strong>? Yes — precisely where the two diverge. The mouse <em>t</em> haplotype is a recombination-suppressed region on chromosome 17 that heterozygous males transmit to as much as 99% of their offspring (versus the normal 50%). The mechanism is worked out in some detail: several "distorter" genes (Tcd) on <em>t</em> deregulate Rho/RAC signalling and impair sperm motility across the board, while only the <em>t</em> form of the "responder" (Tcr) rescues its own sperm (Lyon, 1984, <em>Cell</em>). The price is that homozygotes are sterile or die. An allele that plainly harms its vehicle, and its population, spreads anyway — the individual-level view has nothing to say about it.</p>
-</div>
-
-<div class="field"><span class="label">Key evidence</span>
-<p>The "green beard" was a pure thought experiment of Dawkins's: one allele producing a visible marker, the ability to recognise it, and preferential treatment of those who bear it. Keller and Ross (1998, <em>Nature</em>) reported a real candidate in the fire ant <em>Solenopsis invicta</em>: in multiple-queen colonies the egg-laying queens are all Bb heterozygotes at <em>Gp-9</em>, BB queens that begin to reproduce are executed by workers, and the executioners are mainly Bb workers. The later revision matters just as much: Wang et al. (2013, <em>Nature</em>) showed that what is at work is not a single gene but a roughly 13.8 Mb non-recombining <strong>supergene</strong> locked up by inversions (the "social chromosome"). The effect is real, but its carrier is an entire chromosomal block — which vindicates Williams in reverse: switch recombination off and the unit can grow to 13.8 Mb.</p>
-</div>
-
-<div class="field"><span class="label">Common misreading</span>
-<p>First, "selfish gene = human nature is selfish": from "this allele will rise in frequency" nothing follows about motives, and still less about what anyone ought to do — that is treating an <em>is</em> as an <em>ought</em>. Second, taking the view to deny that anything happens at the individual or group level; what it argues for is a choice of <strong>accounting units</strong>.</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p>Meiosis is a fair-lottery protocol: a 50% transmission chance for every allele, and it is that fairness which keeps interests inside a genome aligned. The <em>t</em> haplotype is the cheating node in the protocol. Why it never took over the system has a distributed-systems flavour: <strong>cheaters that meet each other are eliminated</strong>, so the penalty scales up automatically as the frequency rises — frequency-dependent self-limitation built in, with no external enforcement.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> "Selfish" describes the dynamics of copy number, not psychology and not ethics; its whole power is that it can balance ledgers the individual-level view cannot.
-<span class="q">Question: in your organisation, which local metric is playing the <em>t</em> haplotype — raising its own transmission rate while the whole bears the cost?</span></div>
-</div>
-
-<div class="card">
-<h2>The Extended Phenotype<span class="en">Where a gene's phenotype actually ends</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>Phenotype is not the physical notion "inside the skin" but the functional notion "as far as the gene's causal influence reaches". A library's output is not confined to its own memory space — if the caller's behaviour changes reproducibly with the library version, that too is its output.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>Why shouldn't the boundary be drawn at the skin? Because selection tracks exactly one thing: whether a variant in this stretch of DNA <strong>reproducibly</strong> changes the probability that it is itself copied. Whether it does so by rebuilding its own body or somebody else's makes no mathematical difference. Dawkins (1982) put it as a central theorem: an animal's behaviour tends to maximise the survival of the genes "for" that behaviour, <strong>whether or not those genes happen to be in the body performing it</strong>.</p>
-<p>The radius of influence comes in roughly three layers: artefacts (the beaver's dam), manipulation of others (parasites rewriting host behaviour), and action at a distance (a cuckoo chick's begging call rewriting the foster parents' feeding decisions). The hardest evidence comes from manipulation. <em>Ophiocordyceps unilateralis</em> infects carpenter ants, drives them out of the nest, up to a particular height, and into a "death grip" on a leaf vein where they die — at a spot whose temperature and humidity happen to suit fungal fruiting and drop spores onto the trails below. The mechanical detail is more persuasive still: Fredericksen et al. (2017, <em>PNAS</em>) reconstructed the three-dimensional structure using serial block-face electron microscopy with deep-learning segmentation, and found fungal cells wrapping and invading muscle fibres throughout the ant's body in a connected network — <strong>while never entering the brain</strong>. Manipulation is not "seizing the central controller"; it more likely runs on secreted bioactive compounds plus direct control of muscle. The molecular intermediates are still under investigation.</p>
-</div>
-
+<div class="section">
+<span class="num">// 03</span>
+<h2>A gene&#39;s influence can grow on somebody else</h2>
+<p>Is a beaver&#39;s dam part of the beaver?</p>
+<p>Intuition says no — it is outside the body, made of wood and mud. But selection recognises one thing only: <strong>whether variation in this stretch of DNA reproducibly changes the odds of its own copying.</strong> Whether that is achieved by remodelling your own body or by remodelling something outside it makes no difference at all. Dam-building ability varies with genetic variation, and how good the dam is directly decides how many offspring that beaver leaves — so the dam, like the incisors, is a product of those genes.</p>
+<p>The reach comes in roughly three layers: <strong>things built</strong> (the beaver&#39;s dam), <strong>others manipulated</strong> (a parasite rewriting its host&#39;s behaviour), and <strong>action at a distance</strong> (a cuckoo chick&#39;s call driving foster parents to feed it frantically).</p>
 <div class="fig">
-<svg role="img" aria-label="Diagram of a gene's radius of causal influence extending from its own cells out to another organism and the environment" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
-<circle cx="180" cy="128" r="112" fill="none" stroke="#2b3d31" stroke-width="1.4" stroke-dasharray="4 4"></circle>
-<circle cx="180" cy="128" r="76" fill="none" stroke="#3d5647" stroke-width="1.4"></circle>
-<circle cx="180" cy="128" r="42" fill="#141c16" stroke="#52c98a" stroke-width="1.8"></circle>
-<circle cx="180" cy="128" r="12" fill="#52c98a"></circle>
-<text x="180" y="132" fill="#0c120e" font-family="Georgia,serif" font-size="11" text-anchor="middle">DNA</text>
-<text x="180" y="88" fill="#52c98a" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">protein · cell</text>
-<text x="180" y="66" fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">own form and behaviour</text>
-<text x="180" y="34" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">another body's behaviour</text>
-<line x1="292" x2="366" y1="128" y2="128" stroke="#d2a24c" stroke-width="1.8"></line>
+<svg aria-label="Diagram of a gene’s reach extending beyond its own body" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<circle cx="180" cy="128" fill="none" r="112" stroke="#2b3d31" stroke-dasharray="4 4" stroke-width="1.4"></circle>
+<circle cx="180" cy="128" fill="none" r="76" stroke="#3d5647" stroke-width="1.4"></circle>
+<circle cx="180" cy="128" fill="#141c16" r="42" stroke="#52c98a" stroke-width="1.8"></circle>
+<circle cx="180" cy="128" fill="#52c98a" r="12"></circle>
+<text fill="#0c120e" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="180" y="132">DNA</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="180" y="88">proteins · cells</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="180" y="66">its own body and behaviour</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="180" y="34">another creature's body and behaviour</text>
+<line stroke="#d2a24c" stroke-width="1.8" x1="292" x2="366" y1="128" y2="128"></line>
 <path d="M 366 128 l -8 -4.5 l 0 9 z" fill="#d2a24c"></path>
-<rect x="372" y="86" width="176" height="84" rx="5" fill="#101812" stroke="#3d5647" stroke-width="1.2"></rect>
-<text x="460" y="110" fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle">fungal genes</text>
-<text x="460" y="132" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle">ant muscle and behaviour</text>
-<text x="460" y="154" fill="#d2a24c" font-family="Georgia,serif" font-size="12" text-anchor="middle">death grip on a leaf</text>
-<text x="460" y="196" fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">payoff returns to fungal copies</text>
-<path d="M 372 178 C 300 214 220 214 180 174" fill="none" stroke="#52c98a" stroke-width="1.4" stroke-dasharray="5 4"></path>
+<rect fill="#101812" height="84" rx="5" stroke="#3d5647" stroke-width="1.2" width="176" x="372" y="86"></rect>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="460" y="110">the fungus's genes</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="460" y="132">the ant's muscles and behaviour</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="460" y="154">the death grip under a leaf</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="460" y="196">the benefit returns to the fungus</text>
+<path d="M 372 178 C 300 214 220 214 180 174" fill="none" stroke="#52c98a" stroke-dasharray="5 4" stroke-width="1.4"></path>
 <path d="M 180 174 l 5 8.5 l 6 -7 z" fill="#52c98a"></path>
 </svg>
-<div class="cap">The rings are a <strong>radius of causal influence</strong>, not an anatomical boundary. As long as the dashed loop closes — the effect lands on someone else, the payoff returns to your own copy number — selection can act on it, however many bodies the effect passes through.</div>
+<div class="cap">The rings show <strong>how far the influence reaches</strong>, not where the body ends. As long as the dashed loop closes — the effect lands on someone else, the benefit comes back to you — selection can act on it, however many bodies the influence passes through.</div>
+</div>
+<p>Manipulation is the most convincing case. A fungus that infects carpenter ants makes one leave the nest, climb to a height of a few tens of centimetres, clamp onto the vein of a leaf and die there. The temperature and humidity at that spot happen to be ideal for the fungus to fruit and rain spores onto the ant trails below.</p>
+<p>How do we know this is manipulation rather than an ant too sick to know what it is doing? Because the precision can be measured. Field surveys show the height, the orientation and even the time of day of the bite are all far from random — clustered around midday, on the underside of leaves a few tens of centimetres up. <strong>Precisely matching what transmission requires is exactly the line between adaptive manipulation and a side effect of being ill.</strong></p>
+<p>The counterexample matters too. <em>Toxoplasma</em> making rodents stop avoiding the smell of cat urine was long the field&#39;s favourite case. Later work found infected mice were <strong>generally</strong> less anxious — they also stopped avoiding fox and guinea-pig odours — which looks more like a by-product of neural inflammation than precision steering. The framework holds; individual cases have to be judged one at a time.</p>
 </div>
 
-<div class="field"><span class="label">Key evidence</span>
-<p>The precision of the manipulation can be quantified: field surveys of death-grip positions find height, orientation and timing all strongly non-random — clustered on the undersides of leaves a few tens of centimetres above the ground, with biting concentrated around solar noon (Andersen et al., 2009; Hughes et al., 2011). Matching the transmission requirements that precisely is exactly what distinguishes "adaptive manipulation" from "side effect of being ill".</p>
-<p>The counterexample has to be given too. <em>Toxoplasma gondii</em> abolishing rodents' aversion to cat odour was the textbook case of "fatal attraction" (Berdoy et al., 2000). But Boillat et al. (2020, <em>Cell Reports</em>) found that infected mice show a <strong>general</strong> drop in anxiety — aversion to fox and guinea-pig odours weakens as well — which looks more like a by-product of neuroinflammation. <strong>The framework is solid; whether a given case is manipulation or pathology has to be judged one case at a time.</strong></p>
+<div class="crossx">
+<h3>🌀 Crossing over</h3>
+<ul>
+<li><b>Buddhism · non-self</b>: the wish to "carry oneself forward" finds almost nowhere to stand against the mechanism in the first section — <b>your genome as a combination exists for one generation and is never copied again</b>, and what actually passes through you is a set of segments that belonged to nobody before you and will belong to nobody after. Which yields a harder conclusion than "life is short": <b>"continuing yourself" fails literally, not for lack of time</b>, but because that self was never the unit being transmitted — it is a one-off combination, the vehicle rather than the cargo. <b>But here it breaks down</b>: Buddhist non-self is said in order to dismantle attachment, and it will not even grant that the segments have continuity; evolution insists on precisely that, since its whole account rests on something being copied with high fidelity. You can borrow the blade, not the final stroke.</li>
+<li><b>Parenting · the tug-of-war between mother and fetus</b>: pregnancy is usually imagined as a case of perfectly aligned interests. On the second section&#39;s accounting it does not balance that way — <b>each variant in the fetus has a one-in-two chance of not being in the mother</b>, so "extract a little more from her" is positive for the fetus and negative for her. Some of the physiological pulling seen in blood sugar and blood pressure during pregnancy is the residue of that mismatch: the placenta secretes hormones that raise maternal blood glucose, and the mother answers with more insulin. Hence a counterintuitive conclusion: <b>part of what gets called "pregnancy discomfort" is not a body malfunctioning but two ledgers being kept separately inside one body</b>. <b>But here it breaks down</b>: this explains a physiological mechanism and implies nothing whatever about how a child should be raised or treated — the jump from "is" to "ought" is especially dangerous on this subject.</li>
+<li><b>Institutions · a fair rule for dividing beats a shared goal</b>: the thousands of stretches of DNA in a genome hold their interests in line and rarely feud, not because they share an objective but because one rule cannot be altered by any of them — when sperm and eggs are made, every stretch gets exactly a one-in-two chance of going along. That enforced fairness makes "help the whole" and "help myself" coincide. The mouse DNA in the second section is exploiting a loophole in that rule, raising its own share to 99%, which is why it spreads while demonstrably harming its carriers. From which follows a conclusion you would not otherwise reach: <b>to align interests inside an organisation, checking the allocation rule for holes that let someone unilaterally raise their own share beats hoping everyone endorses the same goal</b> — where the hole is, behaviour that damages the whole grows by itself, no malice required. <b>But here it breaks down</b>: the mouse cheat has its own brake, since two copies mean sterility or death and rising frequency runs it into a wall; human institutions have no built-in brake, so someone has to notice and enforce — and noticing is usually slower than cheating.</li>
+</ul>
 </div>
 
-<div class="field"><span class="label">Common misreading</span>
-<p>Treating it as a mystical claim about "remote control". It introduces no new causal force; it only redraws the statistical unit — if the association "genotype → another organism's behaviour" is stable and heritable, selection can act on it. The other misreading is to score every parasite-induced behavioural change as adaptive manipulation: being ill changes behaviour all by itself.</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p>The same point as "the interface boundary is not the causal boundary" in engineering: a module's real output is whatever observables it changes, not what lives in its address space. The counterpart inside biology is niche construction — organisms remodel their environment, and the remodelled environment becomes the selective pressure their descendants face.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> A phenotype ends where the causal influence ends, not where the body carrying the gene ends.
-<span class="q">Question: for the thing you build, does the most important output happen inside your "boundary" or outside it?</span></div>
-</div>
-
-<div class="card">
-<h2>Levels of Selection: The Decomposition Is Not Unique<span class="en">Price's equation and what the argument is really about</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>The same total can be broken out into different accounts. Price's equation is that decomposition operator: it splits the total change in a population trait exactly into a "between-group" and a "within-group" term — change the split and the total is unchanged to the last decimal.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>Price's (1970) equation reads <code>w̄·Δz̄ = Cov(w, z) + E(w·Δz)</code>: the first term is selection (the covariance of the trait with fitness), the second is transmission. Its power lies in being <strong>recursively expandable</strong>: nest individuals inside groups and the selection term splits into "between-group covariance + average within-group covariance" — which is precisely the formalisation of multilevel selection. From this follows a conclusion both camps routinely abuse: inclusive fitness and <strong>correctly specified</strong> multilevel selection are two ways of writing the same decomposition (Hamilton did the conversion himself in 1975; Okasha systematised it in 2006). So "which level is the real one" is a defective question — equivalent notations cannot disagree about facts.</p>
-<p>What genuine disagreement remains? Empirical and modelling-strategy questions: how large between-group variance actually is in a given system (measurable), and which style of bookkeeping is less error-prone. In 2010 Nowak, Tarnita and Wilson argued in <em>Nature</em> that inclusive fitness is only a limited-scope approximation; the following year 137 authors published a joint rebuttal in the same journal (Abbot et al., 2011). It has not converged.</p>
-<p>A distinction worth holding onto: modern multilevel selection is <strong>not</strong> naive group selection. "For the good of the species" is wrong not because group-level selection is mathematically impossible, but because it requires between-group variance to exceed within-group variance and group turnover to outrun the spread of free-riders inside groups — conditions rarely satisfied together (Williams, 1966).</p>
-</div>
-
-<div class="field"><span class="label">Key evidence</span>
-<p>Group-level selection does work when the conditions hold: Wade (1977) ran artificial group-selection experiments on flour beetles (<em>Tribolium</em>), selecting on whole-group adult counts, and got a clear response — but the conditions assembled in the lab (small groups, frequent re-founding, minimal migration) rarely co-occur in the wild. The argument thereby shifts from "is it possible" to "how common is it".</p>
-<p>On the other side, the gene's-eye view has made quantitative predictions that were then tested: Trivers and Hare (1976, <em>Science</em>) derived from the asymmetry between a worker's relatedness to sisters versus brothers that colonies with a singly mated queen should bias investment in brood towards females, close to 3:1, and saw the skew in multi-species data. Larger later samples show the actual ratio varying systematically with queen mating frequency: <strong>the direction matches theory, but 3:1 holds only under specific conditions</strong>.</p>
-</div>
-
-<div class="field"><span class="label">Common misreading</span>
-<p>"The gene's-eye view won and group selection was refuted." What was refuted is a particular version of naive group selection — traits evolving for the good of the group with no variance condition required. The reverse misreading is just as common: "if the maths is equivalent, write it however you like." Equivalent is not equally usable; a bad decomposition inverts the causal story — reading a group's decline under spreading free-riders, say, as the group "sacrificing itself".</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p>Isomorphic to credit assignment in reinforcement learning: a trajectory's total return can be split by timestep or by sub-policy, with the total identical and learning efficiency wildly different — non-uniqueness of the decomposition is a mathematical fact, choosing one is an engineering judgement. Much of the levels-of-selection argument is a judgement dispute mistaken for a factual one.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> Asking which level selection acts on has an answer only relative to the decomposition you chose; what can be settled empirically is which level's variance is driving the change.
-<span class="q">Question: when you attribute a failure, is your breakdown the only possible one — or just the one you know best?</span></div>
-</div>
-
-<div class="deep">
-<h2>Going Deeper</h2>
-
-<details><summary>If the boundary of a "gene" is drawn by recombination, what is left of the gene's-eye view where there is no recombination?</summary>
-<div>Asexual organisms, mitochondrial genomes, the Y chromosome, supergenes locked by inversions — all places where recombination is switched off. The whole block becomes a single replicator and the gene's-eye and individual-level views <strong>collapse into the same thing</strong>, which shows that the view's explanatory power comes from recombination rather than from the molecular sense of the word "gene". The price shows up too: a non-recombining block cannot separate harmful from beneficial mutations and accumulates them together (Muller's ratchet), of which the degeneration of the Y chromosome is the long-run result.</div>
+<div class="thinking">
+<h3>One layer deeper</h3>
+<details><summary>If the boundary of "a gene" is drawn by how often shuffling cuts, what is left of this view where there is no shuffling?</summary>
+<div>Asexual organisms, the small set of genes inside mitochondria, and the Y chromosome are all places where shuffling has been switched off. The whole block becomes one indivisible unit, and the gene&#39;s-eye view collapses into the individual&#39;s-eye view — which shows its explanatory power came from recombination, not from the word "gene". The price shows up too: a block that never shuffles cannot separate the harmful from the helpful and has to carry both together, which is how the Y chromosome came to degenerate over time.</div>
 </details>
-
-<details><summary>Where does the extended phenotype stop? Do artefacts and culture count?</summary>
-<div>Two criteria, both required: a stable association between the effect and heritable variation, and a payoff that returns to the copy number of that variation. A beaver dam qualifies — dam structure varies with genetic variation and the return lands on the builder's reproduction. Human cities do not: the variation travels culturally rather than genetically, so you need the models of cultural evolution instead (the gene-culture coevolution issue works those through). The controversy over memes starts exactly here: borrowing the form does not inherit the mathematical consequences.</div>
+<details><summary>Where should extended influence stop? Do artefacts and culture count?</summary>
+<div>Two criteria, both required: there is a stable association between the influence and some heritable variant, and the benefit returns to that variant&#39;s copy number. A beaver dam meets both. A human city meets neither — city-building is transmitted culturally rather than genetically, and the benefit does not flow back to any stretch of DNA, so it needs a different model. The framework is not a licence to include everything; it comes with a fairly strict threshold.</div>
 </details>
-
-<details><summary>The gene's-eye view predicts things the individual-level view cannot. Does that make it "more true"?</summary>
-<div>It makes it more useful in those places, not truer everywhere. The divergence points — meiotic drive, genomic imprinting, green beards — are its home ground. There are places where it runs the other way: phenotypic plasticity, the integrated regulation of development, where phrasing things in terms of "copy number of an allele" gets extremely awkward. Treat the view as a tool rather than an ontology and there is no need to take sides.</div>
+<details><summary>If the body is only a vehicle, why has evolution not made it more durable?</summary>
+<div>Because durability is not on the ledger. What counts is how many offspring you leave, not how long you last. Once the reproductive period is over, selection pressure on you falls away fast, and problems that only appear then are barely filtered at all. Worse, variants that help early and charge their cost late get selected anyway, because the account was settled at the early end. Ageing is not a design failure; it is a mismatch of payment terms.</div>
 </details>
+</div>
 
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/The_Selfish_Gene" target="_blank" rel="noopener">The Selfish Gene</a> · <a href="https://en.wikipedia.org/wiki/The_Extended_Phenotype" target="_blank" rel="noopener">The Extended Phenotype</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Genetic_recombination" target="_blank" rel="noopener">Genetic recombination</a> — the scissors from the first section</li>
+<li><a href="https://en.wikipedia.org/wiki/Lactase_persistence" target="_blank" rel="noopener">Lactase persistence</a> — the variant that spread faster than it could be cut up</li>
+<li><a href="https://en.wikipedia.org/wiki/Ophiocordyceps_unilateralis" target="_blank" rel="noopener"><em>Ophiocordyceps unilateralis</em></a> — the fungus that steers ants</li>
+<li><a href="https://en.wikipedia.org/wiki/Parent%E2%80%93offspring_conflict" target="_blank" rel="noopener">Parent–offspring conflict</a> — the mother-and-fetus item in the crossing-over box</li>
+</ul>
 </div>
 
 <footer>BigCat Learning Hub · Evolutionary Biology</footer>
