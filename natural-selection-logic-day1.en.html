@@ -1,226 +1,164 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Evolutionary Biology Day 1: The Logic of Natural Selection</title>
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:#0c120e;color:#d8e4da;line-height:1.8}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
 .container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
-header{text-align:center;padding:48px 0 32px;border-bottom:1px solid #24382c}
-header .kicker{font-size:0.82rem;color:#d2a24c;letter-spacing:3px;text-transform:uppercase}
-header h1{font-size:1.9rem;font-weight:800;color:#52c98a;letter-spacing:1px;margin-top:10px}
-header .meta{margin-top:10px;font-size:0.88rem;color:#8aa192}
-.tag{display:inline-block;background:#1c2a21;color:#52c98a;font-size:0.75rem;padding:2px 10px;border-radius:10px;margin-left:6px;letter-spacing:1px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
-.card{background:#141c16;border-radius:8px;box-shadow:0 1px 8px rgba(0,0,0,0.35);border-left:3px solid #52c98a;padding:26px 26px 22px;margin-top:30px}
-.card h2{font-size:1.25rem;color:#52c98a;font-weight:700;line-height:1.4}
-.card h2 .en{display:block;font-size:0.85rem;color:#d2a24c;font-weight:400;font-style:italic;letter-spacing:0.5px;margin-top:2px}
-.field{margin-top:16px}
-.field .label{font-weight:700;color:#d2a24c;font-size:0.93rem}
-.field p{margin-top:2px}
-.field p+p{margin-top:9px}
-.field ul{margin:8px 0 0 20px}
-.field li{margin-bottom:5px}
-.core{border-top:1px dashed #2b3d31;border-bottom:1px dashed #2b3d31;padding:14px 10px;background:#101812;margin-left:-10px;margin-right:-10px}
-.essence{margin-top:18px;padding:13px 16px;background:#18231b;border-radius:5px;font-size:0.96rem}
-.essence .q{display:block;margin-top:7px;color:#8aa192;font-style:italic}
-.fig{margin:22px 0 8px;text-align:center}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.fig{margin:24px 0 10px;text-align:center}
 .fig svg{max-width:100%;height:auto}
-.fig .cap{font-size:0.8rem;color:#8aa192;margin-top:6px;text-align:left;line-height:1.6}
-.deep{margin-top:44px;padding-top:26px;border-top:2px solid #52c98a}
-.deep h2{font-size:1.3rem;color:#52c98a}
-details{background:#141c16;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,0.3);margin-top:13px;padding:14px 18px}
-summary{cursor:pointer;font-weight:600;color:#52c98a;font-size:0.99rem}
-details div{margin-top:10px;font-size:0.95rem;color:#c2d2c6}
-code{background:#1f2b22;padding:1px 5px;border-radius:3px;font-size:0.9em;font-family:Menlo,Consolas,monospace}
-footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192}
-@media(max-width:600px){header h1{font-size:1.42rem}.card{padding:20px 18px}.container{padding:16px 14px 40px}}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
 </style></head><body>
 <div class="container">
 
 <header>
-<div class="kicker">Evolutionary Biology · Day 1</div>
+<div class="kicker">DAY 1 · PHASE A CORE LOGIC</div>
 <h1>The Logic of Natural Selection</h1>
-<div class="meta">26 August 2026<span class="tag">Core Logic</span><span class="tag">Phase A</span></div>
+<h2>No designer, no goal — and yet it keeps heading somewhere</h2>
+<div class="meta">2026-08-26 · BigCat</div>
+<div class="pitch">Nobody is doing the choosing, and yet choosing happens — once three things are true at the same time, the outcome is already settled.</div>
 </header>
 
 <div class="intro">
-<p>Before Darwin, others had already said that species change. What he actually contributed was a mechanism that needs <strong>no designer, no foresight, and no goal</strong>: a replication loop with random perturbation, plus one retention rule driven by outcomes. It has been misread for a hundred and sixty years — not because it is hard, but because it sounds too much like a slogan.</p>
+<p>Before Darwin, others had already said that species change. What he actually gave us was a mechanism that needs <strong>no designer, no foresight and no goal</strong>.</p>
+<p>It is simple enough to sound like a slogan — which is exactly why it has been misread for a hundred and sixty years. Some read it as "the strongest survive", some as "life is getting better", and some conclude that "an eye is far too precise to have come about by accident". All three are wrong, and each is wrong in its own way.</p>
+<p>What follows is about one thing only: why, under certain conditions, change is not something that <em>might</em> happen but something you <strong>cannot avoid</strong>.</p>
 </div>
 
-<div class="card">
-<h2>The Three Necessary Conditions<span class="en">Variation · Differential fitness · Heritability</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>A <strong>substrate-independent loop</strong>: whenever "individuals differ / the differences are copyable / the differences affect copying success" are all true at once, the composition of the population must shift generation by generation. It is not fussy about hardware — carbon-based cells, words in a language, forks of a code repository all run it.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>Lewontin (1970) compressed the long argument of <em>On the Origin of Species</em> into three lines: <strong>phenotypic variation</strong>, <strong>differential fitness</strong>, <strong>heritability of fitness</strong>. The right way to understand it is to ask, condition by condition, what happens when it is missing:</p>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Once these three things hold together, change is unavoidable</h2>
+<p>Here is the conclusion up front. Take any group of things. If all three of the following hold at once, the make-up of that group must drift over time, and nothing can stop it:</p>
 <ul>
-<li><strong>No variation</strong>: nothing to select among; the loop spins idle.</li>
-<li><strong>No heredity</strong>: selection drags the distribution over each generation, and reproduction drags it back to the start. Body-size differences caused by nutrition are still "seen" by predators, but the next generation resets. Selection acts on the <strong>phenotype</strong>, yet accumulation happens only in the fraction of phenotype that correlates with genotype — that fraction is narrow-sense heritability h².</li>
-<li><strong>No differential fitness</strong>: frequencies take a random walk. That is drift, not selection.</li>
+<li>the things in it <strong>differ from one another</strong>;</li>
+<li>those differences <strong>get passed on</strong>;</li>
+<li>those differences <strong>affect how many offspring you leave</strong>.</li>
 </ul>
-<p>What is "heritable" at the molecular level? The peppered moth (<em>Biston betularia</em>) is one of the few cases you can count all the way from a molecule to a survival rate. Van't Hof et al. (2016, <em>Nature</em>) pinned down the causal variant for melanism: a roughly 21.9 kb <strong>transposable element</strong> — a stretch of DNA that copies itself and jumps to new positions in the genome — inserted into the <strong>first intron</strong> of the gene <em>cortex</em>. An intron is spliced out after transcription and never reaches the protein, so this insertion <strong>does not change a single amino acid of the Cortex protein</strong>. What it changes is how much is made and when: while the larva's wing discs — the pouches of tissue that will become wings — are growing fast, <em>cortex</em> transcript abundance is raised, and the moth that emerges is the black <em>carbonaria</em> form. (<em>Cortex</em> is a cell-cycle regulator; the usual conjecture is that it shifts the developmental timing of scale cells and so shifts colour — that step is still inference, not a demonstrated pathway.)</p>
-<p>What matters more is that the event can be <strong>dated</strong>. When the element first landed, it was bound together with the surrounding stretch of chromosome as a single haplotype; every generation of recombination since has chewed a little off, so how much linked sequence survives converts into how many generations have passed. The estimate lands around <strong>1819</strong> (the interval is not narrow — this kind of inference gives an order of magnitude, not an exact year), while the first black individual on record in Britain was caught in Manchester in 1848. Those two-odd decades are just what it takes for a new mutation to spread from the only copy in the world to a frequency a human eye would notice. Every link in the chain is countable: <strong>one molecular event → one phenotype → one measurable survival difference</strong> (the <code>s ≈ 0.1</code> of the next paragraph).</p>
+<p>That is all. Notice that not one word of it mentions biology — so it is indifferent to the material. Cells can run it. So can words in a language, and jokes going round the internet.</p>
+<p>The quickest way to feel why none of them is optional is to remove them one at a time.</p>
+<p><em>Remove the differences.</em> A room full of identical things: pick any of them, it makes no odds. The loop spins on empty.</p>
+<p><em>Remove inheritance.</em> A well-fed deer grows strong and outruns the wolf — but its fawns are not born strong because of it. Whatever advantage this generation was painstakingly sifted for is wiped at the next. Wasted sifting.</p>
+<p><em>Remove the effect on offspring number.</em> Who lives and who dies is pure chance. That is luck, not selection — and the difference between the two comes up again later.</p>
+<p>So what does "the differences get passed on" look like when you get right down to it? There is a British moth that demonstrates it almost countably.</p>
+<p>The peppered moth used to be pale and speckled, near-invisible on lichen-covered bark. Once soot from nineteenth-century industry blackened that bark, entirely black individuals started appearing. Where did the black come from? Someone traced it all the way to something very concrete: <strong>a piece of DNA that hops around on its own</strong> — some stretches of DNA do not sit still, but now and then copy themselves and insert somewhere else — and this one landed in the middle of a gene that controls when cells divide. It did not break the gene. It just made it work a little harder while the caterpillar was growing its wings, and the wings came out black.</p>
+<p>Better still, that hop can be <strong>dated</strong>. Landing leaves a mark on the DNA around it, and the mark gets worn away generation after generation — how much survives tells you how long it has been. The estimate comes out at around <strong>1819</strong>, while the first black moth anyone caught was in Manchester in 1848. Those two-odd decades are just what it takes to go from the only one in the world to common enough for a person to stumble across.</p>
+<p>And what is "a bit blacker" actually worth? Someone spent six years releasing 4,864 live moths in the field, watching one by one which ones the birds took. Once the soot had cleared and the lichen grown back, a black moth&#39;s daily chance of being eaten ran about <strong>a tenth higher</strong> than a pale one&#39;s. That tenth alone accounts for how fast black moths disappeared from Britain after 1970.</p>
+<p>So all three conditions are met: moths come darker and paler (differences), the shade is set by that transplanted piece of DNA and passed on (inheritance), and colour decides whether a bird takes you today (offspring number). The rest requires nobody&#39;s intervention.</p>
 </div>
 
-<div class="field"><span class="label">Key evidence</span>
-<p>Majerus ran the most targeted field experiment on this, over six years with 4,864 live moths (he died before publishing; Cook, Grant, Saccheri and Mallet wrote it up in <em>Biology Letters</em> in 2012). On bark from which the soot has receded, the daily relative disadvantage of melanics under bird predation is <code>s ≈ 0.1</code> — large enough to explain the rapid collapse of melanism in Britain after 1970. Its weight lies in answering the methodological criticisms of Kettlewell's 1950s experiments: redone to a stricter design, the conclusion points the same way.</p>
+<div class="section">
+<span class="num">// 02</span>
+<h2>"Survival of the fittest" has misled a great many people</h2>
+<p>Spencer coined the phrase in 1864; Darwin only took it up in the fifth edition, in 1869. It sounds like "the strongest survive", and that reading is thoroughly wrong — each of the two words hides a trap.</p>
+<p>Take "fittest" first. It does not mean strong. It means <strong>how many offspring you leave on average, in this particular environment</strong>. A peacock&#39;s train is large and conspicuous, it cannot run and it cannot hide, so as strength it makes no sense at all — yet peacocks dragging one do leave more offspring. Change the environment and the same trait flips from asset to liability: bright colours are a courtship advertisement in the rainforest and a set of coordinates for predators on snow.</p>
+<p>Now "survival". Staying alive is only the means: live as long as you like, and if you do not reproduce the books read zero. Salmon die right after spawning — a complete failure by longevity, quite a success by offspring left.</p>
+<p>And there is a further detail, more lethal than either, that most people never consider: <strong>environments fluctuate, and what fluctuation rewards is not high average output but never hitting zero.</strong></p>
+<p>Suppose a strategy averages ten offspring a year. Sounds fine. But if every few years brings a total failure, then over the long run it is worth <strong>zero</strong> — these numbers multiply year on year, and a single zero anywhere wipes out everything accumulated before it. Which is why you see so many arrangements that look inefficient: one batch of seeds germinating across several years, insect eggs hatching in instalments, never everything at once. All of them deliberately lower the average to buy "not being wiped out".</p>
+<p>One more objection worth heading off: "isn&#39;t survival of the fittest a tautology — whoever survives is by definition the fittest?" It is not, because fitness <strong>can be measured before the outcome is in</strong>: the mechanics of a beak tell you which seed hardness it can crack, the reflectance of a wing tells you the chance a bird spots it. Predict first, then watch who survives — which is exactly what was done with the Galápagos finches the Grants measured for forty years. In the 1977 drought the small soft seeds went first, 85% of the birds starved, and the survivors had visibly thicker beaks. <strong>Yet not one bird&#39;s beak ever got thicker</strong>; what changed was the proportion of thick-beaked birds. That is the hardest part of the whole idea to turn round in your head: <strong>selection never modifies an individual. It only changes proportions.</strong></p>
 </div>
 
-<div class="field"><span class="label">Common misreading</span>
-<p>Skipping the <strong>causal direction</strong> in condition two. "Variation correlates with reproductive success" is not "variation <strong>causes</strong> that difference": healthier birds often have brighter plumage and also live longer, while the plumage itself may bear no selection pressure at all. Telling the two apart takes experimental manipulation or path analysis.</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p>These three lines are the entire skeleton of a genetic algorithm, but there is one <strong>mechanism-level break</strong>: a GA's fitness function is supplied from outside and stays fixed, whereas nature's "fitness function" is constituted by the other individuals that are themselves evolving and by an environment being consumed — endogenous, and changing as it goes. That is exactly why GAs converge and biological evolution does not.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> natural selection is not a biological fact awaiting verification; it is a <strong>logically necessary</strong> consequence — if the three conditions hold, frequencies must change.
-<span class="q">Question: is there a system on your desk that satisfies all three, which you have never thought of as evolving?</span></div>
-</div>
-
-<div class="card">
-<h2>Fitness: Why It Is Not "Survival of the Strongest"<span class="en">Fitness as a rate, not a rank</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>Fitness is not a score on a strength bar; it is <strong>expected number of offspring</strong>. The closer analogy is a <strong>growth rate</strong> under compounding: a rate, not a rank.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>"Survival of the fittest" was coined by Spencer in 1864; Darwin only adopted it in the fifth edition of 1869, at Wallace's suggestion. It buries two traps. First, <em>fittest</em> in everyday English slides toward "strongest", while the technical meaning is "highest expectation of leaving offspring <strong>in this particular environment</strong>". Second, survival is only a means — living long without reproducing gives a fitness of zero. Written out concretely it stops sliding: <code>W = survival rate × mean offspring</code>, relative fitness <code>w = W / W_max</code>, selection coefficient <code>s = 1 − w</code>. "Selection pressure" is not an abstract "harsh environment"; it is that measurable s.</p>
-<p>One more detail, technical and lethal: when the environment fluctuates, what gets maximised is not arithmetic mean fitness but the <strong>geometric mean</strong>. A strategy averaging ten offspring a year still has a long-run geometric mean of zero if some years return zero. This yields bet-hedging directly: staggered seed dormancy and split egg batches deliberately depress the arithmetic mean to buy the geometric one.</p>
-</div>
-
-<div class="field"><span class="label">Key evidence</span>
-<p>How strong is selection in the wild? Kingsolver et al. (2001, <em>American Naturalist</em>) pooled 63 studies of 62 species published between 1984 and 1997, with over 2,500 selection-gradient estimates: standardised linear gradients |β| were approximately exponentially distributed with a <strong>median near 0.16</strong> — strong directional selection is the minority case. The limits deserve stating too: these data carry publication bias (weak effects are harder to publish, and small samples systematically overestimate effect size), so the true median is probably lower still.</p>
-</div>
-
-<div class="field"><span class="label">Common misreading</span>
-<p>"Survival of the fittest is a tautology: whoever survives is by definition the fittest." It does not hold, because fitness can be <strong>measured independently of the outcome</strong>: the mechanical performance of a beak predicts which hardness class of seed it can crack, and wing reflectance predicts the probability of being spotted by a bird — predict first, then observe survival, which is what both the finch and the moth work did. The tautology charge lands only against the lazy usage that labels winners after the fact.</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p>Maximising geometric-mean fitness and the Kelly criterion in investing are <strong>the same mathematical problem</strong>: when bets repeat, returns compound multiplicatively, and ruin is irreversible, the optimal strategy maximises the expectation of log return rather than the expectation of return. The constraint comes, in both cases, from the multiplicative structure in which hitting zero once ends the game.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> fitness is a rate, not a rank; talking about fitness without specifying environment and timescale is like talking about "fast" without a reference frame.
-<span class="q">Question: which of your apparently inefficient habits are actually trading arithmetic mean for geometric mean?</span></div>
-</div>
-
-<div class="card">
-<h2>Population Thinking: Selection Changes the Distribution<span class="en">Individuals are immutable samples; the weights move</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>Selection modifies no individual. It changes only the <strong>distribution</strong>. Individuals are immutable samples; what changes is the sampling weight — the way traffic splitting changes the ratio, not any particular request.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>Mayr pointed out that the hardest thing to digest in Darwin was not "evolution" but this shift of viewpoint. Typological thinking treats a species as an ideal template with individual differences as noise around it; population thinking inverts that — <strong>the differences are the only real things, and the "average individual" is a statistical illusion</strong>.</p>
-<p>The shift is what makes evolution computable. Under a haploid approximation a favourable allele follows <code>p′ = p(1+s)/(1+sp)</code>; in log-odds <code>ln(p/q)</code>, each generation adds roughly s. So going from 1% to 99% takes about <code>2·ln(99)/s</code> generations: about 900 at s = 0.01, about 90 at s = 0.1. Natural selection is routinely called "slow" yet is often startlingly fast, precisely because it is an <strong>exponential</strong> process.</p>
-<p>The opposing force is drift: the smaller the effective population size Ne, the larger the per-generation sampling noise, with a rough criterion of <code>Ne·s ≈ 1</code>. Below that threshold selection cannot push through the noise and an allele's fate is largely luck. The same s is near-certainty in a large population and merely a maybe in a small one.</p>
-</div>
-
+<div class="section">
+<span class="num">// 03</span>
+<h2>The eye was not stumbled upon by luck</h2>
+<p>"An eye is so precise — how could it possibly have appeared by chance?" is probably the commonest objection there is, and its intuition is completely correct: <strong>the odds of drawing a working eye in a single go really are close to zero.</strong></p>
+<p>The trouble is the word "single". Evolution never runs a one-shot lottery: it <strong>saves</strong> each tiny improvement and draws again from the save. The gap between those two searches is astronomical.</p>
+<p>In 1994 two researchers did the arithmetic properly. Start from a flat patch of skin that can do nothing but sense light, allow the shape to change by one percent per generation — a deliberately conservative rate — and run it all the way to a lensed, image-forming fish eye: about <strong>360,000 generations</strong>. For an animal that breeds once a year, under four hundred thousand years. They pushed every assumption toward overestimating the time; the paper is simply titled "a pessimistic estimate".</p>
+<p>Be clear what kind of number that is: it was <strong>calculated, not excavated</strong> — it shows geological time is more than sufficient, not that this is how eyes actually happened. The intermediate forms need no imagining though: eyespots, cup eyes, pinhole eyes and lensed eyes are all still in service among molluscs alive today, each good enough for the life its owner leads. To "what use is half an eye", the answer is: telling light from dark beats being blind.</p>
 <div class="fig">
-<svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of a trait distribution shifting after selection">
-<line x1="60" y1="200" x2="565" y2="200" stroke="#52c98a" stroke-width="1.5"/>
-<line x1="60" y1="200" x2="60" y2="42" stroke="#52c98a" stroke-width="1.5"/>
-<path d="M 96 200 C 190 200 215 96 268 96 C 321 96 346 200 440 200" fill="#3d5647" fill-opacity="0.75" stroke="#4f6357" stroke-width="1.6"/>
-<path d="M 156 200 C 250 200 275 108 328 108 C 381 108 406 200 500 200" fill="#52c98a" fill-opacity="0.28" stroke="#52c98a" stroke-width="2"/>
-<line x1="268" y1="200" x2="268" y2="96" stroke="#4f6357" stroke-width="1.2" stroke-dasharray="4 3"/>
-<line x1="328" y1="200" x2="328" y2="108" stroke="#52c98a" stroke-width="1.2" stroke-dasharray="4 3"/>
-<path d="M 272 74 L 324 74" stroke="#d2a24c" stroke-width="1.8"/>
-<path d="M 324 74 l -7 -4 l 0 8 z" fill="#d2a24c"/>
-<text x="298" y="66" font-size="12" fill="#d2a24c" text-anchor="middle" font-family="Georgia,serif">mean up ~4%</text>
-<text x="172" y="152" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">before the drought</text>
-<text x="462" y="140" font-size="12" fill="#52c98a" text-anchor="middle" font-family="Georgia,serif">survivors' offspring</text>
-<text x="313" y="222" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">beak depth →</text>
-<text x="66" y="32" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">count</text>
-<text x="100" y="182" font-size="11.5" fill="#d2a24c" font-family="Georgia,serif">deaths concentrate here</text>
+<svg aria-label="Diagram comparing saved accumulation with restarting from scratch" role="img" viewbox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#52c98a" stroke-width="1.5" x1="58" x2="565" y1="205" y2="205"></line>
+<line stroke="#52c98a" stroke-width="1.5" x1="58" x2="58" y1="205" y2="38"></line>
+<polyline fill="none" points="58,196 100,196 100,178 150,178 150,168 190,168 190,144 240,144 240,137 292,137 292,114 340,114 340,107 400,107 400,84 450,84 450,77 500,77 500,64 548,64" stroke="#52c98a" stroke-width="2.4"></polyline>
+<polyline fill="none" points="58,190 96,182 130,193 164,184 196,191 230,179 264,192 300,185 334,190 370,182 404,191 440,186 476,180 510,191 546,185" stroke="#8f7b3e" stroke-dasharray="5 4" stroke-width="2"></polyline>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="430" y="52">saved, then built on</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="378" y="172">restarted every time</text>
+<line stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1.4" x1="292" x2="340" y1="137" y2="137"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="316" y="130">stuck here</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="310" y="228">time →</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="82" y="28">how well it lives</text>
 </svg>
-<div class="cap">The drought did not kill "random birds"; it killed the left tail that could not crack hard seeds, so the whole curve moved right. <strong>No bird's beak ever grew deeper.</strong> (Schematic, not raw data; direction and order of magnitude after Boag &amp; Grant, 1981.)</div>
+<div class="cap">Same source of random variation; the only difference is whether the previous generation&#39;s result is kept. Every step up is a saved improvement, and the flat stretches are where it got stuck — what pushes a population off a small summit is usually not selection but luck.</div>
+</div>
+<p>Accumulation can also be watched directly in a lab. In February 1988 Lenski put a batch of <em>E. coli</em> into each of twelve flasks and has transferred them daily ever since — past seventy-five thousand generations. By generation fifty thousand they were leaving about <strong>70% more offspring</strong> than their ancestor, and they <strong>had not stopped</strong>; the curve shows no sign of flattening.</p>
+<p>One of those flasks, at around generation thirty thousand, learned something <em>E. coli</em> normally cannot do: eat citrate. Thawing the frozen samples and re-running from different points showed that the trick only became available once a few specific earlier mutations had accumulated. In other words, <strong>"you have to walk the path step by step" is measurable</strong> — not a metaphor.</p>
+<p>Saving has a price, though: while it preserves the gains it also locks in the baggage — options taken early close off large numbers of later ones. <strong>Evolution climbs the highest point reachable from here, not the highest point on the map.</strong></p>
 </div>
 
-<div class="field"><span class="label">Key evidence</span>
-<p>The medium ground finch (<em>Geospiza fortis</em>) on Daphne Major in the Galápagos: in the 1977 drought the small soft seeds ran out first, leaving the large hard fruits of <em>Tribulus</em>; the population crashed from about 1,400 birds to a few hundred, with roughly 85% starving. Survivors were larger-bodied and deeper-beaked, because they could crack hard seeds. The selection intensity Boag &amp; Grant (1981, <em>Science</em>) reported was the highest then on record for a vertebrate in the wild.</p>
-<p>The sequel matters more. Another drought hit in 2003–2005, but by then the large ground finch (<em>G. magnirostris</em>), established on the island since 1982, was competing for the big seeds — and the beak of <em>G. fortis</em> got <strong>smaller instead</strong> (Grant &amp; Grant, 2006, <em>Science</em>), the strongest evolutionary response in more than thirty years of records. Same species, same trait, opposite direction: selection follows the environment and has no built-in direction of "progress".</p>
+<div class="crossx">
+<h3>🌀 Crossing over</h3>
+<ul>
+<li><b>AI · self-play</b>: train two models by having them play each other, keeping whoever wins more, and there is no state called "finished training" — only cycling, forgetting and being overtaken. Running underneath is the mechanism from the first section: <b>the score comes from your opponent, and your opponent is changing too</b>. With a fixed scoring rule a model converges on it; with the score set by an opponent, the hill you are climbing deforms as you climb. Which yields a conclusion you would not otherwise reach: <b>"evolution progresses toward perfection" is not wrong by degree, it is a category error</b> — perfection requires a standard that holds still, and there isn&#39;t one. Anyone speaking of an "optimal species" or an "endpoint of evolution" is quietly assuming an external judge. <b>But here it breaks down</b>: in self-play both sides share one rule set and one criterion for winning, whereas in nature even what counts as winning gets rewritten by the environment — a winning strategy in the desert can be a losing one in the rainforest. It matches the "the standard moves" half only.</li>
+<li><b>Investing · the Kelly criterion</b>: the optimal stake this betting rule computes is always far smaller than the one that maximises expected return, which looks absurdly conservative the first time you see it. It runs the mechanism from the second section: <b>results multiply year on year, and one zero anywhere clears the lot</b>. Hence a counterintuitive conclusion: in a multiplicative world "how much do I make on average per year" is close to meaningless, and what deserves attention is whether the worst year goes to zero. Seeds germinating across several years are the same solution — not caution, but the optimum given that structure. <b>But here it breaks down</b>: Kelly requires you to know the odds and the win probability, and a plant knows neither; its hedging was sifted out, not calculated. What transfers is the constraint, not the formula.</li>
+<li><b>Organisations · technical debt</b>: what hurts in a company is usually not how bad the original design was, but that it still works well enough while blocking every road out. This runs the mechanism from the third section: <b>saving preserves the gains and locks in the baggage</b> — options taken early close off large numbers of later ones. From which follows a conclusion that runs against instinct: <b>the difficulty of a rewrite depends not on how bad the code is, but on how many paths the original decision closed</b>; so the question worth asking in review is not "is this design good" but "what will it stop us doing later". <b>But here it breaks down</b>: a company can start over — pay, take downtime, migrate — and however large, the cost is finite. An organism has no such option: if no intermediate form along the way can survive, that route is sealed permanently. Being locked in is a matter of <b>cost</b> in organisations and of <b>reachability</b> in evolution.</li>
+</ul>
 </div>
 
-<div class="field"><span class="label">Common misreading</span>
-<p>Picturing selection as a sieve: the unfit are screened out and the rest pass through unchanged. The sieve model cannot account for two things — most traits are continuous rather than pass/fail, and <strong>variation is continually replenished</strong> (mutation, recombination, immigration). Selection is continuous reweighting, not a one-off filter.</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p><code>Ne·s ≈ 1</code> is isomorphic to the signal-to-noise condition in stochastic gradient descent: the smaller the batch, the larger the sampling noise in the gradient estimate, and true components below the noise scale are drowned out; Ne maps to batch size, s to gradient magnitude. The isomorphism stops there — noise in SGD is a useful device, whereas for selection drift is pure interference.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> "this species is evolving" is shorthand; what actually changes is always the proportions of the types within a population.
-<span class="q">Question: when you size up a team or a market, are you holding a "typical individual" in mind, or a distribution?</span></div>
-</div>
-
-<div class="card">
-<h2>Cumulative Selection: Random Proposals, Non-Random Retention<span class="en">The power is in the ratchet, not the randomness</span></h2>
-
-<div class="field"><span class="label">One-line intuition</span>
-<p>The probability of hitting a complex structure in one draw really is near zero — but evolution never runs a one-shot lottery. It <strong>latches</strong> each small improvement and uses it as the starting point for the next draw.</p>
-</div>
-
-<div class="field core"><span class="label">Selective logic + mechanism</span>
-<p>The intuition that "an eye cannot appear by chance" conflates two searches: <strong>single-step selection</strong> (redrawing from scratch each generation) and <strong>cumulative selection</strong> (continuing from what has been kept). They differ by an exponential. Nilsson &amp; Pelger (1994, <em>Proc. R. Soc. B</em>) built an optical model for this: starting from a flat patch of light-sensitive skin, allowing shape to change by only 1% per generation, reaching a lensed, image-forming fish eye takes about 1,829 steps and <strong>roughly 364,000 generations</strong> — under 400,000 years for an animal with one generation a year. Every assumption was deliberately chosen to overestimate the time; the paper is titled "a pessimistic estimate".</p>
-<p>The nature of this evidence should be flagged: it is a <strong>model calculation</strong>, not a fossil or genomic measurement. It establishes that geological time is more than sufficient, not that this is how the eye actually arose. But the intermediate forms need no imagining — eyespots, cup eyes, pinhole eyes and lensed eyes are all still alive in extant molluscs, each grade good enough in its own niche. Accumulation presupposes <strong>retention</strong>: improvements must be copied down with high fidelity — which is why copying fidelity is itself under selection.</p>
-</div>
-
-<div class="fig">
-<svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic comparing cumulative and single-step selection">
-<line x1="58" y1="205" x2="565" y2="205" stroke="#52c98a" stroke-width="1.5"/>
-<line x1="58" y1="205" x2="58" y2="38" stroke="#52c98a" stroke-width="1.5"/>
-<polyline points="58,196 100,196 100,178 150,178 150,168 190,168 190,144 240,144 240,137 292,137 292,114 340,114 340,107 400,107 400,84 450,84 450,77 500,77 500,64 548,64" fill="none" stroke="#52c98a" stroke-width="2.4"/>
-<polyline points="58,190 96,182 130,193 164,184 196,191 230,179 264,192 300,185 334,190 370,182 404,191 440,186 476,180 510,191 546,185" fill="none" stroke="#8f7b3e" stroke-width="2" stroke-dasharray="5 4"/>
-<text x="452" y="52" font-size="12" fill="#52c98a" font-family="Georgia,serif">cumulative</text>
-<text x="330" y="172" font-size="12" fill="#d2a24c" font-family="Georgia,serif">single-step (redrawn from scratch)</text>
-<line x1="292" y1="137" x2="340" y2="137" stroke="#d2a24c" stroke-width="1.4" stroke-dasharray="3 3"/>
-<text x="316" y="130" font-size="11" fill="#d2a24c" text-anchor="middle" font-family="Georgia,serif">plateau = local optimum</text>
-<text x="310" y="228" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">generations →</text>
-<text x="72" y="28" font-size="12" fill="#8aa192" text-anchor="middle" font-family="Georgia,serif">fitness</text>
-</svg>
-<div class="cap">Same source of random variation; the only difference is whether the previous generation's gain is kept. Every step of the staircase is a latched improvement; the flat stretches are local optima — and what pushes a population down off a peak is usually not selection but drift.</div>
-</div>
-
-<div class="field"><span class="label">Key evidence</span>
-<p>The accumulation can be watched directly in the lab. Lenski's Long-Term Evolution Experiment has propagated twelve <em>E. coli</em> populations by daily transfer since February 1988, now past 75,000 generations. By generation 50,000 fitness relative to the ancestor had risen by about 70%, and it <strong>has not levelled off</strong> — Wiser, Ribeck and Lenski (2013, <em>Science</em>) found the trajectory fits a power law better than a saturating hyperbola. The Ara-3 population acquired the ability to use citrate aerobically around generation 31,500 (Blount, Borland &amp; Lenski, 2008, <em>PNAS</em>); replaying from frozen samples showed the capacity depended on specific mutations accumulated earlier — <strong>path dependence is measurable</strong>.</p>
-</div>
-
-<div class="field"><span class="label">Common misreading</span>
-<p><strong>One: "evolution is hill climbing."</strong> Half right. Hill climbing uses a <strong>gradient</strong> — it needs to know which direction improves things; evolution has only <strong>zeroth-order information</strong>: selection returns the single scalar "did this offspring survive", and direction emerges entirely from sampling statistics at the population level. <strong>Two:</strong> treating 364,000 generations as an established fact — it is an upper-bound estimate. <strong>Three:</strong> assuming accumulation must climb to a global optimum — latching also locks in historical baggage, and options chosen early close off many options later.</p>
-</div>
-
-<div class="field"><span class="label">Cross-disciplinary echo</span>
-<p>"Random proposal + non-random retention" is the skeleton of every zeroth-order optimiser: evolution strategies, simulated annealing and genetic algorithms share the structure, and share its pathology — once stuck in a local optimum, only noise (mutation rate, temperature) or population structure (mutually isolated subpopulations) gets you out. The biological counterpart is exactly small populations and drift: in this role drift is no longer interference but the only force that can push a population down off its peak.</p>
-</div>
-
-<div class="essence"><strong>Essence:</strong> the key word is not "random" but "latched" — all of evolution's power comes from keeping what has already improved and starting the next round from there.
-<span class="q">Question: what is the latching mechanism in your own learning or engineering loop, and how would you notice it failing?</span></div>
-</div>
-
-<div class="deep">
-<h2>Going Deeper</h2>
-
-<details><summary>If fitness is definable only relative to a specific environment, what does "this trait is an adaptation" need in order to be falsifiable?</summary>
-<div>The minimum is three things available at once: a performance measure independent of the outcome (bite force against seed hardness, say), an explicitly specified selective environment, and a testable quantitative prediction. Without the first it degrades into labelling winners after the fact; without the second, any counter-example can be deflected with "the environment changed". Gould and Lewontin's critique of adaptationism was not at heart that traits are not adaptations, but that many adaptive stories never put these three on the table. The peppered moth is the textbook case precisely because all three are present.</div>
+<div class="thinking">
+<h3>One layer deeper</h3>
+<details><summary>If "adapted" only means anything relative to an environment, what would it take to falsify "this trait is an adaptation"?</summary>
+<div>At minimum, three things at once: a performance measurement that does not look at the outcome (bite force against seed hardness, say), an environment you have actually specified, and a concrete prediction that can be checked. Without the first it degenerates into labelling winners after the fact; without the second, any counterexample can be waved away with "the environment changed". The best-known critique of explaining everything as adaptation was aimed exactly at this — so many adaptation stories never put those three things on the table.</div>
 </details>
-
-<details><summary>The three conditions hold for culture and technology too, so why do evolutionary biologists stay wary of "memes"?</summary>
-<div>The wariness concentrates on the third condition. Genetic transmission has a clear unit of replication, discrete boundaries, and high-fidelity copying; in cultural transmission the "unit" is usually drawn by the observer after the fact, and transmission reconstructs rather than copies — a story retold by ten people is rewritten ten times. Variation is therefore not merely generated at random but systematically reshaped in a direction, adding a directional force alongside selection. This does not dismiss cultural evolution research, but it warns that borrowing the form of the three conditions does not inherit the mathematical consequences of the genetic model.</div>
+<details><summary>The three conditions apply just as well to ideas, so why do biologists stay wary of "ideas evolve too"?</summary>
+<div>The trouble is with the second condition. Genes are passed on with a clear unit, clear boundaries and high fidelity; with ideas, "one idea" is usually a boundary an observer drew after the fact, and transmission is retelling rather than copying — the same story is rewritten ten times by ten people. So variation is not merely generated at random but systematically reshaped in some direction, adding a directional force alongside selection. Borrowing the form of the three conditions does not inherit their consequences.</div>
 </details>
-
-<details><summary>Drift is both interference with selection and the only way out of a local optimum. Does that tension have an optimum of its own?</summary>
-<div>No universal optimum, but the trade-off structure is analysable. The core parameter is Ne·s: large Ne means precise selection and strong exploitation, at the cost of the population being pinned to its current peak; small Ne means stronger exploration, at the cost of deleterious mutations fixing too ("drift load"). Wright's shifting balance theory tried to have both with "many small semi-isolated subpopulations plus a trickle of migration", and remains contested — the dispute is not whether the mechanism exists but how much it matters in nature.</div>
+<details><summary>If evolution only climbs the highest point reachable from here, living things should be full of badly designed parts. Are they?</summary>
+<div>They are, and it is some of the best evidence there is. In the human retina the nerve fibres run <strong>in front of</strong> the light-sensing cells: light has to pass through a layer of wiring to reach them, and the wiring then has to punch through the retina all together to get out — that hole is your blind spot. An octopus eye has no such problem; its wiring runs behind. Both see perfectly well, but our side cannot go back — no intermediate form that moves the wiring behind would survive the transition. Imperfection was never a counterexample; it is the fingerprint the path left behind.</div>
 </details>
+</div>
 
-<details><summary>Selection acts on phenotypes, but only genotypes are transmitted. Once cultural transmission fills that gap in humans, how much explanatory power does "heritability" retain?</summary>
-<div>Heritability h² has never been "the proportion of a trait determined by genes". It is the share of phenotypic variance attributable to additive genetic variance <strong>in a particular population, in a particular environment</strong> — a statistic about variance, not a conclusion about causation. Equalise everyone's nutrition and the heritability of height rises, not because genes became more important but because environmental variance was squeezed out. Culture makes it thornier: it runs along family lines and covaries with genes, so it gets counted into heritability estimates — which is exactly why genome-wide association studies must control population stratification so carefully. It can answer "where does the variance in this population come from"; it cannot answer "why is this person the way they are".</div>
-</details>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Natural_selection" target="_blank" rel="noopener">Natural selection</a> · <a href="https://en.wikipedia.org/wiki/On_the_Origin_of_Species" target="_blank" rel="noopener">On the Origin of Species</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Peppered_moth_evolution" target="_blank" rel="noopener">Peppered moth evolution</a> — the moth from the first section</li>
+<li><a href="https://en.wikipedia.org/wiki/Darwin%27s_finches" target="_blank" rel="noopener">Darwin&#39;s finches</a> — forty years on Daphne Major</li>
+<li><a href="https://en.wikipedia.org/wiki/E._coli_long-term_evolution_experiment" target="_blank" rel="noopener">The <em>E. coli</em> long-term evolution experiment</a> — running since 1988</li>
+<li><a href="https://en.wikipedia.org/wiki/Kelly_criterion" target="_blank" rel="noopener">Kelly criterion</a> — the betting rule in the crossing-over box</li>
+</ul>
 </div>
 
 <footer>BigCat Learning Hub · Evolutionary Biology</footer>
