@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 4：变异从哪来</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 4 · PHASE A 核心逻辑</div>
+<h1>变异从哪来</h1>
+<h2>选择只能在已经摆出来的东西里挑。那些东西是怎么摆出来的，是另外一台机器的事</h2>
+<div class="meta">2026-08-28 · BigCat</div>
+<div class="pitch">抗生素不制造耐药菌。你下药之前，那几个耐药的就已经在那里了——只是当时看不出谁是谁。</div>
+</header>
+<div class="intro">
+<p>选择本身很好懂：谁留下的后代多，谁的东西就传下去。但它有个前提常被跳过——得先有不一样的东西可挑。全场一模一样，再狠的筛选也筛不出任何变化。</p>
+<p>所以真正决定一个物种能走多远的，往往不是选择有多严，是<strong>桌上摆了多少种东西</strong>。这些东西从三个地方来，速度差着好几个数量级；而其中最大的一股，压根不经过选择的手。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>变异先出现，然后才轮到筛选</h2>
+<p>想象你手抄一本很厚的书。抄上十万字总会抄错几处。错落在哪儿跟内容好不好没关系——你不会因为哪一段写得差，就恰好在那儿抄错。</p>
+<p>细胞复制那条长带子时是一样的处境。冰岛有项研究读了 78 组"父亲、母亲、孩子"的基因组：平均每个孩子身上有 60 多处父母双方都没有的新改动，<strong>绝大部分来自父亲那边，且父亲每老一岁大约多两处。</strong></p>
+<p>原因很实在：卵子在女性出生前基本就备好了；精子是一路不停造出来的，每分裂一次就得把整本书重抄一遍。抄得多，错得多。</p>
+<p>关键的一句在这儿。说突变是<em>随机的</em>，不是说每个位置出错概率都一样——确实不一样。它只有一条意思：<strong>一个变异出现的概率，跟它对携带者有没有好处无关。</strong>缺水的年份不会因此多冒出耐旱的变异。</p>
+<p>这听起来像个哲学立场，其实是被实验分辨出来的。1943 年，Luria 和 Delbrück 想知道：细菌遇到能杀死它们的病毒时，活下来的抗性细菌是<strong>被病毒激发出来的</strong>，还是<strong>本来就在里面</strong>？两种说法对"平均能活几个"预测差不多，光看平均数分不开。</p>
+<p>但对<em>波动</em>的预测正好相反，而波动是能数的。</p>
+<div class="fig">
+<svg aria-label="两种假设对培养皿之间波动的不同预测" role="img" viewbox="0 0 600 262" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="m1" markerHeight="9" markerWidth="9" orient="auto" refX="7" refY="3.2"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#8aa192"></path></marker>
+</defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" x="20" y="22">如果是下药之后才冒出来</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="10" y2="252"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="320" y="22">如果下药之前就在管里冒了</text>
+<circle cx="46" cy="66" fill="#141c16" r="24" stroke="#4f6357" stroke-width="1.4"></circle>
+<circle cx="40" cy="60" fill="#8aa192" r="2.6"></circle><circle cx="52" cy="70" fill="#8aa192" r="2.6"></circle><circle cx="44" cy="74" fill="#8aa192" r="2.6"></circle>
+<circle cx="110" cy="66" fill="#141c16" r="24" stroke="#4f6357" stroke-width="1.4"></circle>
+<circle cx="104" cy="62" fill="#8aa192" r="2.6"></circle><circle cx="116" cy="72" fill="#8aa192" r="2.6"></circle>
+<circle cx="174" cy="66" fill="#141c16" r="24" stroke="#4f6357" stroke-width="1.4"></circle>
+<circle cx="168" cy="60" fill="#8aa192" r="2.6"></circle><circle cx="180" cy="68" fill="#8aa192" r="2.6"></circle><circle cx="172" cy="76" fill="#8aa192" r="2.6"></circle>
+<circle cx="238" cy="66" fill="#141c16" r="24" stroke="#4f6357" stroke-width="1.4"></circle>
+<circle cx="232" cy="64" fill="#8aa192" r="2.6"></circle><circle cx="244" cy="72" fill="#8aa192" r="2.6"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" x="20" y="112">每皿都差不多：2、3、2、3</text>
+<circle cx="346" cy="66" fill="#141c16" r="24" stroke="#4f6357" stroke-width="1.4"></circle>
+<circle cx="410" cy="66" fill="#141c16" r="24" stroke="#4f6357" stroke-width="1.4"></circle>
+<circle cx="406" cy="66" fill="#52c98a" r="2.6"></circle>
+<circle cx="474" cy="66" fill="#141c16" r="24" stroke="#52c98a" stroke-width="1.8"></circle>
+<circle cx="466" cy="56" fill="#52c98a" r="2.6"></circle><circle cx="478" cy="56" fill="#52c98a" r="2.6"></circle><circle cx="460" cy="64" fill="#52c98a" r="2.6"></circle>
+<circle cx="472" cy="64" fill="#52c98a" r="2.6"></circle><circle cx="484" cy="64" fill="#52c98a" r="2.6"></circle><circle cx="464" cy="72" fill="#52c98a" r="2.6"></circle>
+<circle cx="476" cy="72" fill="#52c98a" r="2.6"></circle><circle cx="488" cy="72" fill="#52c98a" r="2.6"></circle><circle cx="470" cy="80" fill="#52c98a" r="2.6"></circle>
+<circle cx="482" cy="80" fill="#52c98a" r="2.6"></circle><circle cx="458" cy="76" fill="#52c98a" r="2.6"></circle><circle cx="490" cy="58" fill="#52c98a" r="2.6"></circle>
+<circle cx="538" cy="66" fill="#141c16" r="24" stroke="#4f6357" stroke-width="1.4"></circle>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="11.5" x="320" y="112">差得离谱：0、1、几百、0</text>
+<line stroke="#24382c" stroke-width="1" x1="20" x2="580" y1="130" y2="130"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="12" x="20" y="158">为什么会差这么多：变异冒出来的时刻不一样</text>
+<line stroke="#3d5647" stroke-width="1.5" x1="60" x2="60" y1="176" y2="236"></line>
+<line stroke="#3d5647" stroke-width="1.5" x1="60" x2="140" y1="176" y2="176"></line>
+<line stroke="#52c98a" stroke-width="2" x1="140" x2="260" y1="176" y2="176"></line>
+<circle cx="140" cy="176" fill="#d2a24c" r="4"></circle>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" x="96" y="168">冒得早</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="11" x="266" y="180">→ 已经繁殖了很多代，几百个</text>
+<line stroke="#3d5647" stroke-width="1.5" x1="60" x2="228" y1="230" y2="230"></line>
+<line stroke="#52c98a" stroke-width="2" x1="228" x2="260" y1="230" y2="230"></line>
+<circle cx="228" cy="230" fill="#d2a24c" r="4"></circle>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" x="184" y="222">冒得晚</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="11" x="266" y="234">→ 只来得及分裂一两次</text>
+<line marker-end="url(#m1)" stroke="#8aa192" stroke-width="1.5" x1="60" x2="60" y1="244" y2="252"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="72" y="254">时间往右走，右端才是下药那一刻</text>
+</svg>
+<div class="cap">若抗性是下药之后才产生的，每皿各自碰运气，数目该差不多；若变异是在下药前的管里某一刻冒出来的，就要看冒得早晚——早的已经繁殖了很多代，倒出来几百个。<strong>分辨两者靠的不是平均数，是皿与皿之间差多少。</strong></div>
+</div>
+<p>他们数了，是后者。这套用波动而不是平均值分辨的思路后来拿了 1969 年的诺贝尔奖，今天抗生素耐药的整套逻辑就建在它上面：抗生素不制造耐药菌，它<strong>只是把本来就在那儿的少数几个挑出来，顺手清空它们的竞争对手</strong>。原本占不到万分之一的东西，几天之内可以占满。</p>
+<p class="en-brief"><b>EN</b> A child carries roughly sixty changes neither parent had, most of them from the father and rising with his age — sperm are made by ongoing division, eggs are not. "Random" here means one narrow thing: the chance a mutation appears is unrelated to whether it would help. Luria and Delbrück settled this in 1943 not by averages but by variance: if resistance arose only on contact with the virus, every plate would show similar small counts; if it arose earlier in the tube, counts would jackpot wildly. They found the latter. Antibiotics do not create resistance; they clear the field for the few already there.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>洗牌比印新牌快，外来的一整手牌更快</h2>
+<p>每人 60 处新改动听着不少，摊到三十亿个字母的文本上其实极慢，靠它一点点攒，一个物种等不起。好在第二条路快得多，而且它不生产任何新东西——只是把已有的重新配。</p>
+<p>你产生精子或卵子时，来自父亲的那套染色体和来自母亲的那套先并排靠在一起，互相剪断、整段交换，再各自分开，人这边一次大概交换几十处。再算上 23 对染色体每对都随机挑一条，光这一步就有八百多万种组合——叠上交换，你产生的每个生殖细胞几乎都是史无前例的。</p>
+<p>所以分工很清楚：<strong>突变往池子里加新东西，慢；重组把已有的重新配，快。</strong>一个群体此刻能立刻拿出来被筛的差异，绝大部分是后者的产物。</p>
+<p>重组还干了一件不直观、后果却很大的事。不重组的谱系里——比如细菌那种一分为二的复制——两个好变异若分别落在不同个体身上，就<strong>永远凑不到同一个后代身上</strong>，只能互相竞争掉一个。重组一开，两边的好东西可以合并。这也是"性有什么用"的一个主流答案：它是一台把散落在不同个体身上的变异重新装配的机器。</p>
+<p>第三条路最快：直接从别的群体搬进来一整批已经成型的变异，这叫基因流。</p>
+<p>加拉帕戈斯有个叫 Daphne Major 的小岛，Grant 夫妇在上面盯了四十年，每只雀鸟都编了号。1981 年一只外来的雄鸟落在岛上——个头比岛上所有鸟都大，唱的歌从没听过。后来测 DNA 才知道，它从一百多公里外另一个岛飞来，属于另一个种。</p>
+<p>它跟本地一只雌鸟配了对。到<strong>第三代</strong>，这一支的喙和歌已经跟岛上其他鸟对不上，找不到别的对象，只能在自己内部配。通常要几百代才建立的生殖隔离，这里三代就有了。研究者管这一支叫"大鸟"。</p>
+<p>这算不算新物种，取决于用哪个物种定义，那是物种形成那个主题里的老账。但有一件事不含糊：<strong>这个岛上突然多出来的那批变异，一处也不是本地长出来的。</strong></p>
+<p class="en-brief"><b>EN</b> Sixty changes per person is glacial against a three-billion-letter text. Recombination is the fast route: chromosomes pair, swap whole segments, and with twenty-three pairs sorting independently, essentially every gamete is unprecedented. It also does something less obvious — in a lineage that never recombines, two good mutations in different individuals can never be combined; they can only compete. Gene flow is faster still. In 1981 an immigrant finch from an island a hundred kilometres away landed on Daphne Major; by the third generation its descendants were breeding only among themselves. None of that new variation arose locally.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>频率变了，不等于有人在挑</h2>
+<p>2003 年前后一场大旱，"大鸟"这一支几乎死光，只剩一只雄的、一只雌的，是兄妹。雨来了它们配了对，此后岛上所有的"大鸟"都是这一对的后代。一个刚成型的谱系，全部家当被压缩成两只鸟身上带的那点东西——而干旱杀掉的鸟里，没有哪一只是因为"不够好"才死的。这不是筛选，是抽样。</p>
+<p>换个日常画面：一个几十户的村子，过几代总有几个姓消失——不是那些姓的人更能干，是谁家碰巧留下了后代。<strong>每一代都是从上一代里抽样，而抽样自带噪声。</strong>这个东西叫遗传漂变。</p>
+<p>骨架是一条量的关系：<strong>群体越小，抽样噪声越大。</strong>大群体里，一个只带一点点好处的变异能稳稳往上爬；小群体里，它很可能还没爬起来就被抽没了。所以"选择说了算还是运气说了算"，不取决于变异多好，取决于群体多大。</p>
+<div class="fig">
+<svg aria-label="同一个变异在小群体和大群体里的频率变化对比" role="img" viewbox="0 0 600 232" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="m2" markerHeight="9" markerWidth="9" orient="auto" refX="7" refY="3.2"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#8aa192"></path></marker>
+</defs>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="20" y="20">小群体：噪声压过一切</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="52" x2="52" y1="30" y2="180"></line>
+<line marker-end="url(#m2)" stroke="#3d5647" stroke-width="1.2" x1="52" x2="272" y1="180" y2="180"></line>
+<line stroke="#24382c" stroke-dasharray="3 4" stroke-width="1" x1="52" x2="266" y1="30" y2="30"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="end" x="46" y="34">全都有</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="end" x="46" y="184">全没了</text>
+<polyline fill="none" points="52,120 82,96 112,110 142,66 172,44 202,30 262,30" stroke="#52c98a" stroke-width="2"></polyline>
+<polyline fill="none" points="52,120 82,142 112,120 142,156 172,180 262,180" stroke="#a2604a" stroke-width="2"></polyline>
+<polyline fill="none" points="52,120 82,104 112,134 142,150 172,168 202,180 262,180" stroke="#a2604a" stroke-width="2"></polyline>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="52" y="200">几代之内就撞到顶或者归零</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="320" y="20">大群体：噪声被摊平</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="352" x2="352" y1="30" y2="180"></line>
+<line marker-end="url(#m2)" stroke="#3d5647" stroke-width="1.2" x1="352" x2="572" y1="180" y2="180"></line>
+<line stroke="#24382c" stroke-dasharray="3 4" stroke-width="1" x1="352" x2="566" y1="30" y2="30"></line>
+<polyline fill="none" points="352,120 382,114 412,122 442,112 472,118 502,109 562,114" stroke="#8aa192" stroke-width="2"></polyline>
+<polyline fill="none" points="352,120 382,126 412,116 442,124 472,113 502,121 562,110" stroke="#8aa192" stroke-width="2"></polyline>
+<polyline fill="none" points="352,120 382,112 412,105 442,98 472,88 502,80 562,68" stroke="#52c98a" stroke-width="2.4"></polyline>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="440" y="62">带一点好处的那个，稳稳往上爬</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="352" y="200">中性的那些只在原地小幅抖动</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="20" y="224">横轴：一代一代往后　　纵轴：这个变异在群体里占的比例</text>
+</svg>
+<div class="cap">同一个变异，放进两个大小不同的群体，命运完全不同。<strong>左边那条爬到顶的绿线跟它有没有用无关，只是运气好。</strong></div>
+</div>
+<p>而漂变管得着的地盘大得惊人。大部分变异改完之后什么也没改变：细胞读那条带子是三个字母一组、每组对应一种氨基酸，第三个字母常常换掉还是同一种；何况还有大段根本不被读出来的区段。这些变化对携带者的生死繁殖没有可测量的影响，<strong>命运几乎完全由抽样噪声决定</strong>。木村资生 1968 年把这一点推到极处：分子层面绝大多数被固定的改动是中性的。当时算异端，今天大致是共识。</p>
+<p>于是有了那个反直觉的推论：<strong>看到一个变异在群体里铺开了，不能倒推它有用。</strong>想说它是被选择推上去的，得另外拿证据——比如爬升速度比漂变能解释的快，或者几个互不相干的群体各自独立地把同一个变异推了上去。</p>
+<p>抽样造成的损失还特别难还。猎豹全世界的遗传差异少得离奇——1980 年代在互不相关的猎豹之间做皮肤移植，居然不被排斥，换成别的猫科动物早排掉了。北象海豹十九世纪末被猎到只剩几十只，如今二十来万头，检测的位置上却几乎找不到差异：<strong>数量回来了，变异没回来。</strong></p>
+<p>人这边也有清楚的例子：宾夕法尼亚一个阿米什社群里，一种伴随多指和身材矮小的遗传病发病率远高于别处，追下去追到 1744 年迁来的一对夫妇。这不说明这个群体"更差"，说明的是当初进来的人少。<strong>人群之间的遗传差异，很大一部分是迁徙和抽样留下的历史痕迹，不是优劣的记分牌</strong>——把它读成后者，是十九世纪就被反复驳倒过的错误。</p>
+<p class="en-brief"><b>EN</b> A drought around 2003 cut the Big Bird lineage to one brother and one sister; every Big Bird since descends from that pair. No bird died for being unfit — that is sampling, not selection, and sampling noise is what drift means. The governing quantity is population size: in a large population a slightly beneficial variant climbs steadily, in a small one it is often sampled away before it starts. So a variant spreading is not evidence that it helps. Cheetahs accept skin grafts from unrelated cheetahs; northern elephant seals recovered in numbers but not in variation. Differences between human populations are largely the residue of migration and sampling, not a scoreboard of merit.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 工程与系统设计</b>——线上一个偶发报错，复现不了，查两天写成"疑似偶发"，下个月又来一次。卡住的不是排查能力，是整场讨论都在争"它像不像有原因"。按「频率变了，不等于有人在挑」那节，能不能分辨出信号取决于样本量定下的噪声底噪，不是波动看着有多大。<b>可改的动作</b>：在报警规则里写死样本量下限，低于它只记录不报警；再统计"疑似偶发"之后同一个错多久复发——比你估的快，它就从来不是噪声。</li>
+<li><b>② 写作与这个学习站本身</b>——写每期越界框时，常常在脑子里边想边否决：想到一条不够硬，扔掉；半小时过去纸上一条没有。这是把产生和筛选压进了同一个动作。「变异先出现，然后才轮到筛选」那节说的正是两者在机制上分开：出错率和筛选强度是各自能调的旋钮。<b>可改的动作</b>：先限时十分钟只列候选，明显不行的也照写，不许评价；再单独一轮按"能不能说出它跑哪条机制"来砍。记下候选数——低于八条，问题在产出端。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>历史与文献学 · 古书的抄本家谱</b>：古代典籍靠一代代手抄流传，抄错的地方会被下一个抄手照抄下去。校勘学家正是靠这些<em>共同的错误</em>给现存抄本排家谱：两个本子错在同一处，多半来自同一个祖本。这里跑的是本期两条机制的合体——抄错跟内容对不对无关（「变异先出现，然后才轮到筛选」那节的随机性），而哪一支流传到今天，常取决于哪座修道院没被烧掉（漂变）。由此推出一个看不出的结论：<b>一个异文流传得广，不能当作它更接近原文的证据——流传量测的是抄本的存活史，不是文本的质量。</b>校勘学有句老话正是这个意思：抄本要称重，不要点数。<b>但这里不成立</b>：抄手看得懂内容，会主动把看着不通的地方"改回来"，也会照另一个本子改——这等于文本之间存在横向流动，方向还明确朝着"读起来通顺"。DNA 复制没有这么个读得懂内容的校对员，所以文献那边的变异不是纯随机的，家谱也常常不是一棵干净的树。</li>
+<li><b>组织与制度 · 招人带来的到底是什么</b>：一个团队几年不进人，方案会越来越像；不是成员变笨了，是可组合的素材集合封闭了。「洗牌比印新牌快」那节给了两条机制：重组能产生的组合数远超新变异冒出来的速度；而不重组的谱系里，两个好东西分别长在两个人身上，永远合不到一起。由此推出的结论跟直觉不太一样：<b>招一个人带来的收益，该按他带进多少此前不在这个组合池里的素材算，不按他个人能力算。</b>一个经历跟现有成员高度重叠的资深的人，对可组合空间的贡献接近零，哪怕他本人更强。这也顺带解释了内部轮岗为什么常常比招聘划算——它做的是重组，不是引入。<b>但这里不成立</b>：生物那边重组每一代自动发生，不需要谁同意；组织里每次重新组合都要重建信任、重分权责。所以生物的重组率是长期调出来的均衡值，组织的通常远低于那个值，卡在"没人有权限打乱现有分工"上——这是权限问题，不是认知问题。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>既然突变大多是有害的，为什么突变率没有被压到零？</summary>
+<div>往下压有代价：更多的校对机器、更慢的复制，这些资源本来能用在别处；压到某个点之后，再压一点带来的好处抵不上代价。还有第二道限制：一个把突变率再降千分之一的变异，好处若小于漂变的噪声，压根传不下去。所以观察到的突变率是这两条卡出来的位置。别倒过来说成"生物需要变异所以留了一点"——没有谁在为未来备货。</div>
+</details>
+<details><summary>怎么分辨一个变异铺开是因为有用，还是因为运气？</summary>
+<div>没有铁证，但有几个能把可能性压小的办法。一是看速度，爬得比漂变能解释的快就可疑。二是看它周围：被强选择快速推上去的变异会把挨着它的一整段邻居一起带上去，留下一段异常单调的区域，这段"单调"可以测。三是看不同群体有没有各自独立地推上同一个变异。那笔账在适应与约束那个主题里还要细算。</div>
+</details>
+<details><summary>基因流会不会把好不容易攒起来的本地适应冲掉？</summary>
+<div>会。外来个体带进新变异，同时也带进在本地并不合用的组合；外来比例足够高时，本地刚被筛出来的那套会被不断稀释。结果取决于选择压多大、迁入率多高。所以同一件事在一个尺度上是变异的最快来源，在另一个尺度上是本地适应的最大干扰。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/突變" rel="noopener" target="_blank">突变</a> · <a href="https://zh.wikipedia.org/wiki/遺傳漂變" rel="noopener" target="_blank">遗传漂变</a> · <a href="https://zh.wikipedia.org/wiki/奠基者效應" rel="noopener" target="_blank">奠基者效应</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Luria%E2%80%93Delbr%C3%BCck_experiment" rel="noopener" target="_blank">用波动分辨变异何时出现的那个实验（1943）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/nature11396" rel="noopener" target="_blank">每代新增多少突变、父亲年龄的影响（Kong 等，2012，Nature）</a>（英文）</li>
+<li><a href="https://www.science.org/doi/10.1126/science.aao4593" rel="noopener" target="_blank">达尔文雀里三代建立起的生殖隔离（Lamichhaney 等，2018，Science）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/s41586-023-06314-y" rel="noopener" target="_blank">对"突变率并非处处均等"那项拟南芥研究的再评估（2023，Nature）</a>（英文）</li>
+<li><a href="https://zh.wikipedia.org/wiki/中性演化理論" rel="noopener" target="_blank">中性演化理论</a> · <a href="https://en.wikipedia.org/wiki/Population_bottleneck" rel="noopener" target="_blank">种群瓶颈</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
