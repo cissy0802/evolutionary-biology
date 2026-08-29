@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 5: Adaptation and Constraint</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 5 · PHASE A CORE LOGIC</div>
+<h1>Adaptation and Constraint</h1>
+<h2>A thing shaped this way may have been selected for — or it may just be what was left over from something else</h2>
+<div class="meta">2026-08-29 · BigCat</div>
+<div class="pitch">Four curved triangles under a cathedral dome, each filled with an evangelist, the figure fitted to the shape as if made for it. Those surfaces were never set aside for painting. They are what a round dome on a square frame cannot help leaving behind.</div>
+</header>
+<div class="intro">
+<p>You find a flower in the hills whose throat grips a particular bee exactly, so that the bee walks in once and comes out dusted on the back. You think immediately: this shape is for that bee. You are probably right.</p>
+<p>The trouble is you apply the same thought to everything — the human chin, why blood is red, why you had that dream last night. The longest methodological argument in evolutionary biology is not about whether selection exists; nobody has fought over that in a long time. It is about this: <strong>on what grounds do you say this particular trait was selected for?</strong></p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Not everything was picked out</h2>
+<p>Set a round dome on a square frame made of four arches and four curved triangular surfaces are left over at the corners. They have to be. It is geometry: build it this way and those four are there.</p>
+<p>In St Mark's in Venice, the craftsmen painted an evangelist into each of those four surfaces, the figures fitted to the shape beautifully. Standing underneath and looking up, it is very easy to conclude that the surfaces were set aside so those four could be painted.</p>
+<p>The order runs the other way. <strong>The surface was there first; the painting was filled in afterwards.</strong></p>
+<div class="fig">
+<svg aria-label="A round dome on a square frame leaves four corner surfaces, later filled with paintings" role="img" viewbox="0 0 600 232" xmlns="http://www.w3.org/2000/svg">
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" x="80" y="20">Geometry first</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="320" y="20">Paintings later</text>
+<path d="M100,30 L180,30 A80,80 0 0,0 100,110 Z" fill="#1d2b22" stroke="#3d5647" stroke-width="1.2"></path>
+<path d="M260,30 L180,30 A80,80 0 0,1 260,110 Z" fill="#1d2b22" stroke="#3d5647" stroke-width="1.2"></path>
+<path d="M100,190 L180,190 A80,80 0 0,1 100,110 Z" fill="#1d2b22" stroke="#3d5647" stroke-width="1.2"></path>
+<path d="M260,190 L260,110 A80,80 0 0,1 180,190 Z" fill="#1d2b22" stroke="#3d5647" stroke-width="1.2"></path>
+<circle cx="180" cy="110" fill="#141c16" r="80" stroke="#52c98a" stroke-width="1.8"></circle>
+<rect fill="none" height="160" stroke="#3d5647" stroke-width="1.2" width="160" x="100" y="30"></rect>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="180" y="114">round dome</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="62" y="208">what the corners leave</text>
+<path d="M340,30 L420,30 A80,80 0 0,0 340,110 Z" fill="#2a2417" stroke="#8a6f38" stroke-width="1.2"></path>
+<path d="M500,30 L420,30 A80,80 0 0,1 500,110 Z" fill="#2a2417" stroke="#8a6f38" stroke-width="1.2"></path>
+<path d="M340,190 L420,190 A80,80 0 0,1 340,110 Z" fill="#2a2417" stroke="#8a6f38" stroke-width="1.2"></path>
+<path d="M500,190 L500,110 A80,80 0 0,1 420,190 Z" fill="#2a2417" stroke="#8a6f38" stroke-width="1.2"></path>
+<circle cx="420" cy="110" fill="#141c16" r="80" stroke="#52c98a" stroke-width="1.8"></circle>
+<rect fill="none" height="160" stroke="#8a6f38" stroke-width="1.2" width="160" x="340" y="30"></rect>
+<circle cx="366" cy="52" fill="#d2a24c" r="4"></circle><path d="M360,70 L366,58 L372,70 Z" fill="#d2a24c"></path>
+<circle cx="474" cy="52" fill="#d2a24c" r="4"></circle><path d="M468,70 L474,58 L480,70 Z" fill="#d2a24c"></path>
+<circle cx="366" cy="152" fill="#d2a24c" r="4"></circle><path d="M360,170 L366,158 L372,170 Z" fill="#d2a24c"></path>
+<circle cx="474" cy="152" fill="#d2a24c" r="4"></circle><path d="M468,170 L474,158 L480,170 Z" fill="#d2a24c"></path>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" x="308" y="208">and they fit perfectly</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="70" y="226">Same surface. Change the order you see it in and the conclusion flips.</text>
+</svg>
+<div class="cap">On the left, an unavoidable result of how the building goes up. On the right, content added later. <strong>See only the right and you conclude the surface was prepared for the picture.</strong></div>
+</div>
+<p>In 1979 Gould and Lewontin wrote a paper and used this for the title. Their point was plain: a trait existing, and looking apt, is not by itself evidence that natural selection picked it out. It may be the unavoidable companion of something else.</p>
+<p>The cleanest example is blood. Yours is red not because red did your ancestors any good, but because the molecule that carries oxygen has an iron atom in it, and iron bound to oxygen absorbs part of the spectrum; what is left reaches your eye as red. What selection acted on was whether oxygen gets delivered. Red came along for the ride.</p>
+<p>Here is one still being argued over: the chin. Humans are the only animal with a chin that juts forward — Neanderthals had none, chimpanzees have none. Decades of explanations have piled up: it braces the jaw, it helps speech, it is a mating signal. Another camp thinks it was never picked out on its own — the whole face and tooth row of our species shrank, the upper part pulling back harder than the lower, and the small piece left below sticks out. One study comparing skull shapes across humans and apes found clear directional change in things like a smaller face and a larger braincase, while most measurements around the chin showed no sign of being selected on their own. <em>This is not settled</em> — and the unsettledness is the point: looking useful does not close the case.</p>
+<p>Why this happens mechanically: selection scores whole individuals — do they survive, do they leave offspring — not traits one at a time. A single change usually alters several things at once, and as long as the tag-alongs are not a drag, they ride along too. <strong>Nobody issues permits to by-products.</strong></p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Calling a trait an adaptation runs up a debt you have to pay</h2>
+<p>What Gould and Lewontin were actually aiming at was not the concept of adaptation but a habit of writing: assume every trait has a use, then reason backwards to a story that hangs together; when one story is knocked down, swap in another, and never require any of them to be tested.</p>
+<p>The flaw is not that the stories are wrong. It is that this way of working <strong>always wins</strong> — and an explanation that always wins is risking nothing.</p>
+<p>So how do you pay the debt? There are a few routes you can actually walk.</p>
+<p>The hardest is to go and measure. In 1980 Endler dug ten ponds in a greenhouse, laid out to resemble stretches of Trinidadian hill stream, and split one batch of guppies among them. Into four he put a single cichlid — a fish that hunts adult guppies in earnest. Into four others he put several killifish, which take only fry. The last two got no predator at all, as controls.</p>
+<p>Male guppies carry coloured spots. The showier they are, the more they attract females — and the more they catch a predator's eye. So the prediction was unambiguous: in the cichlid ponds spots should get fewer and duller; in the ponds with the fry-eater, adult males could afford to be gaudier.</p>
+<p>He counted spots a few months in, and again twenty months in. The pattern went the way the prediction said. Why that counts: <strong>the prediction was written down before the result was seen, and there were controls.</strong> A story told afterwards cannot do that.</p>
+<p>The second route is comparison: does the same trait keep turning up alongside the same living conditions in lineages that have nothing to do with each other? Once could be coincidence. Seven or eight independent times is harder to shrug off. The third route is to look for marks left on the genetic strand itself — a variant driven up fast by strong selection drags a whole stretch of its neighbours up with it, leaving a suspiciously uniform region, and that uniformity can be measured.</p>
+<p>One thing gets read backwards a lot, so: this critique did not kill adaptationism. Most evolutionary biologists still hold that many traits are adaptations, and still go and study what they do. What changed is the bar — <strong>"it looks apt" was demoted from conclusion to hypothesis</strong>, and you still owe the evidence above.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>What can change today was fixed hundreds of millions of years ago</h2>
+<p>There is a nerve that leaves your brain, travels down into the chest, loops under a great vessel above the heart, then turns around and climbs back to your throat. The thing it controls sits about a hand's width from where it started. It travels roughly a metre.</p>
+<p>In a giraffe the same nerve takes the same route: down into the chest, around the vessel, then back up that long neck. Several metres out and back, in order to cover the last few centimetres.</p>
+<div class="fig">
+<svg aria-label="The same nerve route in a fish and in a giraffe" role="img" viewbox="0 0 600 268" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="n1" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3.2"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#52c98a"></path></marker>
+</defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="12" x="20" y="20">Fish: the route was short to begin with</text>
+<path d="M60,150 C110,110 200,110 250,150 C200,190 110,190 60,150 Z" fill="#141c16" stroke="#3d5647" stroke-width="1.4"></path>
+<path d="M250,150 L280,128 L280,172 Z" fill="#141c16" stroke="#3d5647" stroke-width="1.4"></path>
+<circle cx="92" cy="146" fill="#1d2b22" r="11" stroke="#8aa192" stroke-width="1.2"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="92" y="128">brain</text>
+<circle cx="140" cy="164" fill="#2a2417" r="9" stroke="#d2a24c" stroke-width="1.2"></circle>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="152" y="182">great vessel</text>
+<path d="M96,155 C112,176 134,182 146,170 C152,162 140,152 122,152" fill="none" marker-end="url(#n1)" stroke="#52c98a" stroke-width="2.2"></path>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="20" y="212">a small loop and it arrives — the detour barely shows</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="10" y2="258"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="320" y="20">Giraffe: same route, stretched metres long</text>
+<circle cx="400" cy="52" fill="#1d2b22" r="14" stroke="#8aa192" stroke-width="1.2"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="400" y="34">brain</text>
+<line stroke="#3d5647" stroke-width="1.4" x1="386" x2="386" y1="66" y2="196"></line>
+<line stroke="#3d5647" stroke-width="1.4" x1="414" x2="414" y1="66" y2="196"></line>
+<path d="M360,196 C360,240 480,240 480,196 Z" fill="#141c16" stroke="#3d5647" stroke-width="1.4"></path>
+<line stroke="#3d5647" stroke-width="1.4" x1="360" x2="480" y1="196" y2="196"></line>
+<circle cx="432" cy="212" fill="#2a2417" r="10" stroke="#d2a24c" stroke-width="1.2"></circle>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="446" y="230">great vessel</text>
+<circle cx="400" cy="84" fill="#141c16" r="6" stroke="#8aa192" stroke-width="1.2"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="end" x="374" y="88">throat (destination)</text>
+<path d="M396,66 L396,206 C396,222 424,226 432,212 C438,200 420,194 410,200 L410,90" fill="none" marker-end="url(#n1)" stroke="#52c98a" stroke-width="2.2"></path>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="320" y="252">three centimetres apart; metres actually travelled</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="20" y="252">green line = the path the nerve really takes</text>
+</svg>
+<div class="cap">The route never changed; the body did. As the heart moved back and down and the neck lengthened joint by joint, a nerve pinned behind the vessel could only be drawn out with it. <strong>Straightening it would mean cutting and rejoining, and the generation that tried would not survive.</strong></div>
+</div>
+<p>This is not a design flaw, because there was no design step. In a fish the nerve runs straight: brain, gills and heart sit close together, the vessel is right there, one small loop and it arrives — too short for the detour to show. Then land animals grew necks joint by joint, the heart shifted back and down, and this nerve, pinned behind the vessel, was simply drawn out along with everything else.</p>
+<p><strong>Every step in evolution has to be alive. If an unlivable state sits in between, the gap does not get crossed, however good the far side looks.</strong></p>
+<p>The eye is the prettier case. Your retina is installed backwards: the light-sensing layer faces the back of your skull, nerve fibres and blood vessels lie across the path the light has to travel, and they have to gather into a bundle and pass out through the eyeball at one spot. That hole is your blind spot, patched over by two eyes and a brain, which is why you never notice it.</p>
+<p>The octopus eye evolved separately, looks broadly similar, and is installed the right way round: the sensing layer faces the light, the wiring runs out the back, no blind spot.</p>
+<p>Both work. The difference is not which is better but <strong>where each was continuing from</strong>. The vertebrate retina develops as an outpouching of part of the embryonic brain, and the moment it bulges out the orientation is set. Hundreds of millions of years later there is still no chance to flip it, because the intermediate stage is blind.</p>
+<p>Jacob put it in 1977 in a phrase still in use: evolution is not an engineer, it is a tinkerer. An engineer can start over and draw plans first. A tinkerer has only the parts left from the last version, and has to keep the thing working while altering it.</p>
+<p>So "why wasn't it built more sensibly" is the wrong question from the start. No version was drawn toward an endpoint. Each is only <strong>the next version reachable from the last one</strong>. The earlier something was fixed, the more got stacked on top of it, and the less it can move — that is the mechanical content of the phrase "historical baggage".</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In context · BigCat</h3>
+<ul>
+<li><b>① Leading a team</b>—a new hire asks why the release process has these five steps. You can account for two. Nobody knows who added the other three or what they were guarding against. Every new hire replays the scene. Per <em>What can change today was fixed hundreds of millions of years ago</em>: a step survives not usually because it is useful now, but because nobody is confident that deleting it is safe — the cost of keeping is invisible and the risk of removing is visible. <b>What to change</b>: replace "what does this step do" with "who gets hurt if it goes", and go ask that person. If no such person can be found, put it behind a switch, turn it off for two weeks and see who knocks. Nobody knocks, delete it and stop discussing it.</li>
+<li><b>② Practice and temperament</b>—you sit down to follow the breath, and five minutes in you notice you have been planning next week; then you get annoyed at having drifted, and then you drift again. Per <em>Not everything was picked out</em>: drifting is probably not a broken part. It is what comes attached to the capacity to leave the present moment and think about things that have not happened. Tear it out properly and the other half goes with it. <b>What to change</b>: stop counting how many times you drifted and start noting how long it took to notice. The first is an attempt to delete something undeletable. The second can get shorter week by week.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections</h3>
+<ul>
+<li><b>Parenting and education · "Why is this child always like this"</b>: some trait recurs — needing several days to settle into a new place, ducking behind an adult when strangers appear — and adults will almost always go looking for what it is <em>for</em>. Insecurity? Inherited from whom? Once a plausible account is found, the matter feels closed. That is exactly the habit named in <em>Calling a trait an adaptation runs up a debt you have to pay</em>: an explanation that only has to hang together, never to be tested, can always be found. And <em>Not everything was picked out</em> offers the other possibility — the trait may not be a separate thing at all, but the edge left over by something else. That yields a conclusion you would not otherwise reach: <b>a trait being stubborn does not mean a deep cause is sitting behind it waiting to be found; it may mean the trait shares parts with something else and cannot be pulled out alone.</b> Telling those apart depends not on how smoothly you can explain it, but on whether you can say what you would see if you were wrong. <b>But here it breaks down</b>: a child is not a species. Most of a child's behaviour is learned, and shifts over days and weeks, not tens of generations of inherited constraint. In biology, constraint is a measurable quantity — which intermediate states cannot live. Carried into education it usually means only "we have not tried another route yet", and calling that the former turns "hasn't shifted yet" into "born that way".</li>
+<li><b>Engineering and systems design · the migration nobody can decide on</b>: two options on the table, the new one clearly better, six months of discussion and no migration, with the argument always about how much better the new one is. The constraint in <em>What can change today was fixed hundreds of millions of years ago</em> is not about the distance between endpoints; it is whether there exists a path whose every step is still alive. The nerve cannot be straightened because the cut-and-rejoin step is not survivable, not because straight would be worse. The conclusion runs at right angles to what the meeting keeps arguing about: <b>whether you can migrate is decided by drawing the intermediate states, not by comparing the endpoints.</b> With no path where each step can ship, the better design will not happen; with such a path, the weaker design wins. So "should we rewrite" becomes "after step one ships alone, does the system still run?" <b>But here it breaks down</b>: software can take downtime, run old and new side by side, shift traffic a percent at a time — you can build an intermediate state no organism can, one that dies briefly and then comes back. Engineering gaps are crossable, at a price in money and downtime; the biological ones are absolute. Incremental change is a choice in software and the only available fate in biology.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>If a leftover surface later turns out to be useful, is that an adaptation?</summary>
+<div>It is a different thing, and it has its own name: exaptation. A structure gets recruited for a job unrelated to why it first appeared. Feathers may have started out with insulation or display, with flight a later use; the small bones in your ear were reworked from a jaw joint in reptilian ancestors. So "what does it do now" and "why did it first appear" are two questions whose answers often do not match — ask only the first and you end up with a false history.</div>
+</details>
+<details><summary>Doesn't this risk the opposite extreme, calling everything a by-product?</summary>
+<div>It does, and the by-product claim is equally a hypothesis carrying equal debt. One asymmetry helps: the more complex a structure is, the more its parts depend on each other, and the more it looks fitted to one specific job — an eye, say — the harder it is to explain by luck or by tag-along. Complex functional machinery remains strong evidence of adaptation, and Gould did not deny that. The genuinely hard calls are the simple, single traits.</div>
+</details>
+<details><summary>Does constraint mean evolution is stuck there for good?</summary>
+<div>No. Constraint is more like a road network: what you can reach from where you stand is limited, but the reachable set itself shifts. Variants that are neither good nor bad accumulate, an intermediate state that used to be unlivable becomes livable, and a route opens. So the same uncrossable gap need not stay uncrossable on a different genetic background. That is also why experimenters ask whether replaying the same history would land in the same place.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Spandrel_(biology)" rel="noopener" target="_blank">Spandrel (biology)</a> · <a href="https://en.wikipedia.org/wiki/Exaptation" rel="noopener" target="_blank">Exaptation</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.1979.0086" rel="noopener" target="_blank">Gould &amp; Lewontin, The Spandrels of San Marco and the Panglossian Paradigm (1979)</a></li>
+<li><a href="https://doi.org/10.1111/j.1558-5646.1980.tb04790.x" rel="noopener" target="_blank">Endler, Natural Selection on Color Patterns in Poecilia reticulata (1980, Evolution)</a></li>
+<li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0340278" rel="noopener" target="_blank">Is the human chin a spandrel? An evolutionary analysis of ape craniomandibular form</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.860134" rel="noopener" target="_blank">Jacob, Evolution and Tinkering (1977, Science)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Recurrent_laryngeal_nerve" rel="noopener" target="_blank">Recurrent laryngeal nerve</a> · <a href="https://en.wikipedia.org/wiki/Evolution_of_the_eye" rel="noopener" target="_blank">Evolution of the eye</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
