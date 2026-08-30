@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 6: Sexual Selection</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 6 · PHASE A CORE LOGIC</div>
+<h1>Sexual Selection</h1>
+<h2>It cannot run, cannot hide, and costs a fortune to grow — so how did a tail like that survive?</h2>
+<div class="meta">2026-08-30 · BigCat</div>
+<div class="pitch">Darwin, writing to a friend in 1860: "The sight of a feather in a peacock's tail, whenever I gaze at it, makes me sick!" He did not find it ugly. He found that by the logic he had just published, it had no business existing.</div>
+</header>
+<div class="intro">
+<p>You have seen a peacock fan out its train at a zoo. The fan can be more than a metre across, carrying a hundred-odd eyespots, shimmering. The first thought is that it looks good. The second is usually: dragging that around, how does it run?</p>
+<p>This is exactly what made Darwin uncomfortable. His logic was blunt: whoever is likelier to live long enough to leave offspring is whose form gets kept. A train that is heavy, conspicuous, and expensive in nutrients should have been weeded out long ago. It was not, and things like it are everywhere — antlers, frogs calling all night, stags locking horns until a neck breaks. To settle that whole class of accounts, the words "stay alive" have to be replaced first.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Living longer does not count; leaving more offspring does</h2>
+<p>One thing first: what evolution scores is never lifespan, it is how many offspring you leave that go on to breed. A variant that costs you two years but doubles your descendants spreads generation by generation — even while it makes life harder every single day. So "it cannot run fast" is not a counterexample by itself: if what is lost there is earned back elsewhere, the account balances.</p>
+<p>The long-tailed widowbird — a black bird of the African grasslands — lays that account out very plainly. A male's tail feathers can be half a metre long, and flight is a laboured bobbing affair; the female's tail is as short as a sparrow's.</p>
+<p>In 1982 Andersson caught thirty-odd males that already held territories and split them at random into four groups. One group had its tail feathers cut short. One had those cut feathers glued onto their own tails, making them longer. The remaining two were controls — one cut and reglued back to its original length (to rule out the cutting and gluing itself), one merely caught and released. He put them back, and some time later counted how many nests in each male's territory held eggs or chicks. The lengthened group had roughly twice as many as the controls, the shortened group about half, and the two controls came out much the same.</p>
+<div class="fig">
+<svg aria-label="Nests per male in the four widowbird groups" role="img" viewbox="0 0 600 232" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#3d5647" stroke-width="1.2" x1="70" x2="560" y1="176" y2="176"></line>
+<line stroke="#3d5647" stroke-width="1.2" x1="70" x2="70" y1="26" y2="176"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="20" y="20">Nests with eggs or chicks in his territory (relative)</text>
+<rect fill="#2a2417" height="38" stroke="#8a6f38" stroke-width="1.2" width="70" x="110" y="138"></rect>
+<rect fill="#1d2b22" height="76" stroke="#3d5647" stroke-width="1.2" width="70" x="230" y="100"></rect>
+<rect fill="#1d2b22" height="80" stroke="#3d5647" stroke-width="1.2" width="70" x="350" y="96"></rect>
+<rect fill="#1c3a2a" height="150" stroke="#52c98a" stroke-width="1.6" width="70" x="470" y="26"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="145" y="196">tail cut short</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="265" y="196">control</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="265" y="212">cut and reglued</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="385" y="196">control</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="385" y="212">caught, released</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="505" y="196">tail lengthened</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="20" y="228">Males were assigned at random and tails altered by hand — so the difference can only come from the tail</text>
+</svg>
+<div class="cap">The same birds; the only thing touched was tail length. <strong>The lengthened group ended up with twice as many nests.</strong></div>
+</div>
+<p>One detail matters more than the result itself: males with altered tails held their territories exactly as before — the ones who used to win still won, the ones who used to lose still lost. What changed was whose ground the females settled on.</p>
+<p>Here a very easy mistake needs blocking: it is not that a long tail evolved "in order to attract females". Nobody remodels themselves towards a goal. What actually happens is this — in every generation males differ in tail length, the slightly longer ones leave more offspring on average, and so the average tail of the next generation shifts up a fraction. Repeat for a few hundred thousand generations.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Who does the choosing is not a fixed role — it follows who invests more</h2>
+<p>In that experiment the females did the choosing. Why is it usually that way round? The difference starts at the level of cells: eggs are large, expensive, and few; sperm are small, cheap, and produced by the tens of millions. The investment that follows is usually lopsided the same way — one side carries the eggs or the young, and the same side often does the incubating and feeding.</p>
+<p>The consequence is concrete: the side that invests more loses a whole breeding season by choosing badly, so it is choosy; the side that invests less is short not of mates but of opportunities, so it competes. The two kits you see in nature — the showy one (trains, calls) and the fighting one (horns, canines, sheer size) — fall broadly on either side of that line.</p>
+<p>The point is that this is not an innate script for the sexes. It tracks investment. In seahorses the male takes the eggs into a pouch and carries them; in jacanas and phalaropes the females are the brighter ones, holding territory and mating with several males while the males incubate and raise the chicks. <strong>Whichever side invests more becomes the choosy one.</strong> Flip the cost and the whole set of roles flips with it.</p>
+<p>A word about how strong the evidence is. The founding experiment for this framework was Bateman's 1948 work on fruit flies; when it was repeated in 2012, his way of counting offspring turned out to carry a systematic bias, and done his way the original conclusion does not come out. Redone with a corrected method, selection still read as stronger on the male side. <em>This one is still going back and forth.</em> The asymmetry itself rests on a great deal of independent evidence — but using "males are all promiscuous, females all choosy" as a universal law is simply wrong.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Why ornaments get absurdly expensive: two explanations, still not separated</h2>
+<p>Females choosing explains why the tail gets longer. It does not explain why it gets ridiculous. There are two quite different mechanisms, and each can push it that far on its own.</p>
+<p>The first is called runaway. Its crux is that <strong>the preference is heritable too.</strong> Suppose a female's tendency to settle more often near long-tailed males has a genetic component, and so does male tail length — then a female who picks a long-tailed male has sons with longer tails and daughters carrying the same preference. The two things are tied together in the same brood, and each generation pushes both at once. The loop accelerates itself, and can drive an ornament far past anything useful, until the cost of staying alive pins it down. In the 1980s the route was worked through mathematically: in the models it really does run, and at no point does the long tail need to be any good for survival.</p>
+<p>The second is costly signalling, and its crux is usually stated backwards: <strong>a signal is credible not because it is expensive, but because it is more expensive for poor-quality individuals.</strong> A weak male would also like to hang out a big tail; the trouble is that the same inch of feather takes far more out of him. Something everyone can afford carries no information; it is precisely because some cannot afford it that affording it says anything. In 1990 that intuition was turned into a rigorous model: only when the cost rises as individual quality falls does this self-injuring form of advertising stay stable.</p>
+<div class="fig">
+<svg aria-label="The runaway loop compared with differential cost" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="a1" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3.2"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#52c98a"></path></marker>
+</defs>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="20" y="20">Explanation 1: a loop that accelerates itself</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#3d5647" stroke-width="1.2" width="190" x="45" y="40"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="140" y="61">females more often pick long tails</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#3d5647" stroke-width="1.2" width="190" x="45" y="118"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="140" y="139">long-tailed males leave more young</text>
+<rect fill="#141c16" height="48" rx="6" stroke="#3d5647" stroke-width="1.2" width="200" x="40" y="188"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="140" y="207">sons have longer tails,</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="140" y="224">daughters share the preference</text>
+<path d="M140,76 L140,112" fill="none" marker-end="url(#a1)" stroke="#52c98a" stroke-width="2"></path>
+<path d="M140,154 L140,182" fill="none" marker-end="url(#a1)" stroke="#52c98a" stroke-width="2"></path>
+<path d="M40,212 C14,212 14,57 41,57" fill="none" marker-end="url(#a1)" stroke="#52c98a" stroke-width="2"></path>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="10" y2="240"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="316" y="20">Explanation 2: the same inch costs a poor male more</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="345" x2="345" y1="40" y2="200"></line>
+<line stroke="#3d5647" stroke-width="1.2" x1="345" x2="580" y1="200" y2="200"></line>
+<line stroke="#d2a24c" stroke-width="2.2" x1="345" x2="530" y1="198" y2="48"></line>
+<line stroke="#52c98a" stroke-width="2.2" x1="345" x2="565" y1="198" y2="146"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="440" y="70">male in poor condition</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="462" y="140">male in good condition</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="368" y="222">bigger tail →</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" transform="rotate(-90 336 176)" x="336" y="176">cost he must pay →</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="316" y="240">the wider the two lines diverge, the more tail length can be believed</text>
+</svg>
+<div class="cap">The loop on the left needs the tail to be good for nothing at all in order to turn; the scheme on the right requires ornament and condition to stay tied together. <strong>They predict opposite things about the same feather.</strong></div>
+</div>
+<p>The trouble is that in the field the two are hard to pull apart — and the most famous case, the peafowl, argues with itself. In 1994 Petrie assigned peahens to peacocks at random (bypassing the females' own choosing), reared the offspring under identical conditions, and found that fathers with more eyespots had offspring that grew faster and survived better. Yet in 2008 another group watched a feral peafowl population in Japan for seven straight years and found peahens showing no preference at all for males with more eyespots.</p>
+<p><em>This is not settled.</em> Most people's view now is that the two mechanisms are not either-or; they often run at the same time.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>In one mating, the two sides have different optimal outcomes</h2>
+<p>An assumption should be dismantled here: so far this reads as if the sexes were working together on one job, one choosing and one being chosen. Often they are not.</p>
+<p>Along with sperm, male fruit-fly seminal fluid carries a set of proteins. Inside the female they speed up her egg-laying, stop her accepting other males for a while, and disable sperm left by a previous male. For that male, each of those converts directly into his own offspring.</p>
+<p>A set of experiments in 1995 isolated the effect of those secretions: males that were genetically unable to make sperm but still secreted the proteins were used for mating, and exposure to the secretions alone was enough to make females die younger — the more exposure, the sooner.</p>
+<p>Do not read this as the male "wanting" to harm his mate. He wants nothing; the shortened life is most likely a side effect. But as long as those proteins win his sperm the competition, they get passed on, even with the whole cost landing on the other party. <strong>Selection counts descendants; it does not count who got hurt.</strong></p>
+<p>The other side is being pushed at the same time: females more tolerant of those secretions leave more offspring, so both sides escalate round after round. Water striders turn this tug-of-war into something you can see — males grow grasping hooks on their forelegs, females grow matching spines and shields on the abdomen, and comparing across species shows that the more extreme one structure is, the more extreme the other. <strong>The net result is often that nobody gains, and both sides have paid.</strong></p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BigCat</h3>
+<ul>
+<li><b>① Investing and position sizing</b> — you listen to a team present what they intend to build; it is complete, the answers are smooth, and your confidence climbs. Three months later you find they had nothing of their own riding on it from beginning to end. By the costly-signalling half of "Why ornaments get absurdly expensive": whether a signal carries information depends on how much the same act costs a serious person versus an unserious one — and a polished pitch is cheap for both. <b>What to change</b>: replace the diligence question with "if this fails, what do you personally lose", and count only the irreversible part: money already in, an opportunity already turned down, a timeline already locked in publicly. If there is none, treat it as no signal at all.</li>
+<li><b>② Parenting and education</b> — two adults at home are deciding something that will run for half a year: change schools, sign up for this class, how weekends get arranged. The argument stays on "should we", round and round, and neither convinces the other. By "Who does the choosing is not a fixed role — it follows who invests more": choosiness tracks investment — the one who will actually have to find those three hours a week for the driving, the practice and the fallout carries the cost of a bad choice directly, so their preference is already the harder one in practice. <b>What to change</b>: reverse the order. First write down "over the next half year, exactly who supplies which hours each week", then decide whether to do it.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · CONNECTIONS ACROSS FIELDS</h3>
+<ul>
+<li><b>Organisations and institutions · the approval form thickens every year</b>: two departments share one form. Risk adds a field, the business side adds a line explaining how to route around it, risk adds another field to close that. A year later the form is twice as thick and the share of things actually stopped is about what it was. Nobody here is being unprofessional; what is running is the mechanism from "In one mating, the two sides have different optimal outcomes": the two sides' payoffs genuinely differ, and every move acts on the same interface, so each round of improvement is cancelled by the other side's next round while the cost accumulates for real. That yields a conclusion you could not otherwise see: <b>the thickness of a process does not measure the level of risk; it measures how many rounds have been fought over that interface.</b> So "simplify the process" by deleting clauses does nothing — what is deleted grows back in another form; the only way to stop is to move where the cost lands: split one form into two unrelated ones, or make one person carry both sets of numbers. <b>Where this breaks down</b>: fruit flies have no shared superior and cannot sit down to talk; two departments report to the same boss, and the payoffs can be rewritten in one stroke. In biology the tug-of-war stops only when one side goes extinct or the cost tops out; in an organisation it can be halted from above at any time — which means, read backwards, that a tug-of-war still running usually says the level above is not refereeing, not that the two below are stubborn.</li>
+<li><b>Literature and art · a genre gets more extreme with every year</b>: in some category of novel or short video, the same formula moves in one direction only — faster payoffs, harsher conflict, earlier twists — and work from a few years back now feels "too mild". By the runaway loop in "Why ornaments get absurdly expensive": as long as the measuring stick is itself shaped by what is already popular, and the next batch of work is made to that stick, preference and trait drift together in one direction — nobody has to get dumber, and nobody has to be orchestrating it. The conclusion that follows: <b>a genre going to extremes cannot be taken as evidence that audiences' taste has degraded; the same drift happens in a population whose taste has not changed at all.</b> The stick moved, not the people. <b>Where this breaks down</b>: in the peafowl case preference and ornament ride together in the genetics of the same brood, and once a direction is under way only the cost of dying pins it back; readers and writers share no such binding, and the stick can be swapped overnight from outside — a new platform, an influx of new readers, and the drift is cut. Runaway in the arts is reversible; in biology it is not.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>Does saying a female "chooses" smuggle aesthetics into a bird?</summary>
+<div>No aesthetics required, and no conscious judgement either. "Preference" here is only a measurable tendency: put two males in front of her, and which one does she settle near more often. That tendency can come from a bias in the senses themselves — an eye already more sensitive to a certain colour (left over from finding food, say) — with the ornament later happening to grow into a shape that exploits the bias. There are some supporting observations in fish such as guppies, but how this divides labour with the two mechanisms above is still being tested.</div>
+</details>
+<details><summary>Can sexual selection push a species to extinction?</summary>
+<div>Possibly, and it is an active research question: ornaments and fighting both consume resources that could have gone into staying alive, and when the environment shifts the account may not cover it. But there is an argument in the other direction — the individuals who can afford ornaments tend to be the ones carrying fewer harmful mutations, so sexual selection may help clear those out faster. There are models and experiments on both sides, and no verdict yet.</div>
+</details>
+<details><summary>Is there sexual selection in humans?</summary>
+<div>There are indirect clues: the size difference between human men and women is far smaller than in gorillas and somewhat larger than in gibbons, which suggests some degree of competition among males historically, though not an extreme one. The trouble is that sexual-selection accounts of any particular trait — the chin, body hair, fat distribution — mostly lack rigorous testing and slide easily into telling whatever story sounds plausible. Human mate choice is also shaped enormously by culture, varies widely between societies, and shifts within one society across a few decades. So any conclusion of the form "men are innately like this, women like that" reaches far beyond what the evidence can carry.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sexual_selection" rel="noopener" target="_blank">Sexual selection</a> · <a href="https://en.wikipedia.org/wiki/Fisherian_runaway" rel="noopener" target="_blank">Fisherian runaway</a> · <a href="https://en.wikipedia.org/wiki/Handicap_principle" rel="noopener" target="_blank">The handicap principle (costly signalling)</a></li>
+<li><a href="https://www.nature.com/articles/299818a0" rel="noopener" target="_blank">Andersson, Female choice selects for extreme tail length in a widowbird (1982, Nature)</a></li>
+<li><a href="https://www.nature.com/articles/371598a0" rel="noopener" target="_blank">Petrie, Improved growth and survival of offspring of peacocks with more elaborate trains (1994, Nature)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0003347207005301" rel="noopener" target="_blank">Takahashi et al., Peahens do not prefer peacocks with more elaborate trains (2008, Animal Behaviour)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1207851109" rel="noopener" target="_blank">Gowaty et al., A repetition of Bateman's classic Drosophila study (2012, PNAS)</a></li>
+<li><a href="https://www.nature.com/articles/373241a0" rel="noopener" target="_blank">Chapman et al., Cost of mating is mediated by male accessory gland products (1995, Nature)</a> · <a href="https://en.wikipedia.org/wiki/Sexual_conflict" rel="noopener" target="_blank">Sexual conflict</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

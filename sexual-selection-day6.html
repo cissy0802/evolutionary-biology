@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 6：性选择</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 6 · PHASE A 核心逻辑</div>
+<h1>性选择</h1>
+<h2>跑不快、藏不住、还得花大量养分去长——这样一把尾巴是怎么被留下来的</h2>
+<div class="meta">2026-08-30 · BigCat</div>
+<div class="pitch">1860 年达尔文给一位朋友写信：「每次看见孔雀尾巴上的一根羽毛，我就要犯恶心。」他不是嫌它丑——是这东西按他自己刚出版的那套逻辑，根本不该存在。</div>
+</header>
+<div class="intro">
+<p>你在动物园见过孔雀开屏。那把扇子能有一米多宽，上面上百个眼斑，一晃一晃。第一个念头是好看，第二个念头往往是：拖着这玩意儿，它怎么跑？</p>
+<p>这正是让达尔文难受的地方。他那套逻辑本来干脆得很：谁更容易活到留下后代，谁的样子就留下来。一把又重又显眼、还得花掉大量养分去长的尾羽，按说早该被淘汰干净。它没有，而且这类东西满世界都是——鹿角、整夜不停的蛙鸣、公鹿顶架顶到断脖子。要解释这一整类账，得先把「活下来」这三个字换掉。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>活得久不算数，留下的后代多才算数</h2>
+<p>先把一件事说明白：演化里衡量成败的从来不是寿命，是留下多少能接着繁殖的后代。一个让你少活两年、却让你多留一倍后代的变异，会一代代扩散开——哪怕它每天都在给你添麻烦。所以「跑不快」本身不构成反例：赔掉的那部分从别处赚回来，账就是平的。</p>
+<p>长尾寡妇鸟——非洲草原上一种黑色小鸟——把这笔账摆得特别直白。雄鸟的尾羽能有半米长，飞起来一颠一颠很吃力；雌鸟的尾巴短得像麻雀。</p>
+<p>1982 年 Andersson 抓来三十几只已经占住领地的雄鸟，随机分成四组：一组把尾羽剪掉一截；一组把剪下来的羽毛粘到别的鸟尾上，接得更长；剩下两组当对照——一组剪断再粘回原长（排除「被剪被粘」这件事本身的影响），一组只抓一下就放。放回去，过些日子数每只雄鸟的领地里有多少个窝出现了蛋或雏鸟。加长组大约是对照组的两倍，剪短组大约是一半，两组对照彼此差不多。</p>
+<div class="fig">
+<svg aria-label="长尾寡妇鸟四组雄鸟领地里的新窝数量对比" role="img" viewbox="0 0 600 232" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#3d5647" stroke-width="1.2" x1="70" x2="560" y1="176" y2="176"></line>
+<line stroke="#3d5647" stroke-width="1.2" x1="70" x2="70" y1="26" y2="176"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="20" y="20">领地里有蛋或雏鸟的窝数（相对高低）</text>
+<rect fill="#2a2417" height="38" stroke="#8a6f38" stroke-width="1.2" width="70" x="110" y="138"></rect>
+<rect fill="#1d2b22" height="76" stroke="#3d5647" stroke-width="1.2" width="70" x="230" y="100"></rect>
+<rect fill="#1d2b22" height="80" stroke="#3d5647" stroke-width="1.2" width="70" x="350" y="96"></rect>
+<rect fill="#1c3a2a" height="150" stroke="#52c98a" stroke-width="1.6" width="70" x="470" y="26"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="145" y="196">尾巴剪短</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="265" y="196">对照</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="265" y="212">剪断粘回原长</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="385" y="196">对照</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="385" y="212">只抓一下就放</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="505" y="196">尾巴接长</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="20" y="228">四组雄鸟是随机分的，尾巴是人手改的——所以差别只能来自尾巴</text>
+</svg>
+<div class="cap">同一批鸟，唯一被动过的是尾巴长度。<strong>加长的那一组，领地里的窝多出一倍。</strong></div>
+</div>
+<p>有个细节比结果本身更要紧：改过尾巴的雄鸟，守地盘的本事没变——该赢的还赢，该输的还输。变的只是雌鸟落在谁的地盘上。</p>
+<p>这里要防一句很顺口的错话：不是「为了招雌鸟而进化出长尾」——没有谁冲着目标改造自己。实际发生的是：每一代雄鸟的尾巴长短本来就有差别，稍长的那些平均留下了更多后代，于是下一代的平均尾长往上挪了一点点，如此几十万代。</p>
+<p class="en-brief"><b>EN</b> Evolution does not score lifespan; it scores surviving offspring. A variant that costs you two years but doubles your descendants spreads anyway. Andersson caught thirty-odd territorial male long-tailed widowbirds in 1982 and split them at random into four groups: tails cut short, tails lengthened with the cut feathers, cut-and-reglued controls, and untouched controls. Elongated males ended up with roughly twice as many nests holding eggs or chicks as controls; shortened males about half. Territory fights were unaffected — what changed was where females settled.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>谁挑谁，不是天生的角色，是谁投得多</h2>
+<p>上面那个实验里是雌鸟在挑。为什么常常是这个方向？差别从细胞那层就开始了：卵大、贵、一次只有几个；精子小、便宜、一次几千万。后面的投入通常更不对称——怀着或抱着蛋的是一方，孵和喂的往往还是同一方。</p>
+<p>后果很实在：投入多的那一方，一次选错赔进去整个繁殖季，所以它挑；投入少的那一方，稀缺的不是配偶而是机会，所以它争。自然界那两套装备——用来炫的尾羽鸣叫，和用来打的角、犬齿、体型——大体落在这条线的两边。</p>
+<p>关键在于这不是什么天生的性别剧本，它跟着投入走。海马是雄性把卵接进育儿袋里带大的；彩鹬、瓣蹼鹬这类水鸟里，雌鸟羽色更艳、抢地盘、跟多个雄鸟交配，孵蛋带雏的是雄鸟。<strong>哪一方投得多，哪一方就变成挑剔的那个。</strong>成本翻过来，整套角色跟着翻。</p>
+<p>证据强度得交代一句：这套框架的奠基实验是 1948 年 Bateman 用果蝇做的，2012 年有人重做，发现他数后代的办法有系统性偏差，照原样得不出原结论；换了方法再做，又仍读到雄性那边的选择更强些。<em>这个还在来回。</em>投入不对称本身有大量独立证据撑着，但把「雄的都花心、雌的都挑剔」当普适定律用，是错的。</p>
+<p class="en-brief"><b>EN</b> Eggs are few and expensive, sperm are many and cheap, and the later investment is usually lopsided the same way. The side that invests more loses a whole breeding season by choosing badly, so it is choosy; the side that invests less is short of opportunities, so it competes. This tracks investment, not sex: male seahorses carry the brood, and in jacanas and phalaropes the females are the brighter, territory-holding, competing sex. Bateman's founding 1948 fly experiment turned out to have a systematic counting flaw when repeated in 2012; the asymmetry itself rests on much other evidence, but the textbook law does not.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>装饰为什么会贵到离谱：两个解释，至今没分干净</h2>
+<p>雌性在挑，只解释了尾巴会变长，没解释它为什么长到荒唐的地步。这里有两条互不相同的机制，各自都能把它推到那儿。</p>
+<p>第一条叫失控。它的要害是：<strong>偏好本身也能遗传。</strong>假设雌鸟「更常往长尾雄鸟那边落」这个倾向有遗传成分，雄鸟的尾长也有——那么挑了长尾雄鸟的雌鸟，生下的儿子尾巴偏长，女儿也带着这份偏好。两样东西在同一批后代身上绑到了一起，每一代同时被往前推一次。这个圈自己给自己加速，能把装饰推到远远超过「有用」的地方，直到活命的代价把它按住。1980 年代有人用数学把这条路走通了：在模型里它确实跑得起来，全程不需要长尾对生存有任何好处。</p>
+<p>第二条叫代价信号，它的要害常被说反：<strong>信号可信不是因为它贵，是因为它对差的个体更贵。</strong>差的雄鸟当然也想挂一把大尾巴，问题是同样一寸羽毛，从它身上抠走的养分多得多。谁都装得起的东西不含信息；正因为有人装不起，装得起才说明了点什么。1990 年有人把这个直觉做成了严格的模型：只有当成本随个体质量下降而上升时，这种自残式的广告才稳得住。</p>
+<div class="fig">
+<svg aria-label="失控回路与差别成本两种解释的对比图" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="a1" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3.2"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#52c98a"></path></marker>
+</defs>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="20" y="20">解释一：自己给自己加速的圈</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#3d5647" stroke-width="1.2" width="180" x="45" y="40"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="135" y="61">雌鸟更常挑长尾的</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#3d5647" stroke-width="1.2" width="180" x="45" y="118"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="135" y="139">长尾雄鸟后代更多</text>
+<rect fill="#141c16" height="48" rx="6" stroke="#3d5647" stroke-width="1.2" width="200" x="35" y="188"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="135" y="207">儿子尾巴更长</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="135" y="224">女儿也更爱长尾</text>
+<path d="M135,76 L135,112" fill="none" marker-end="url(#a1)" stroke="#52c98a" stroke-width="2"></path>
+<path d="M135,154 L135,182" fill="none" marker-end="url(#a1)" stroke="#52c98a" stroke-width="2"></path>
+<path d="M35,212 C10,212 10,57 39,57" fill="none" marker-end="url(#a1)" stroke="#52c98a" stroke-width="2"></path>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="10" y2="240"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="322" y="20">解释二：同样一寸，差的个体付得更多</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="345" x2="345" y1="40" y2="200"></line>
+<line stroke="#3d5647" stroke-width="1.2" x1="345" x2="580" y1="200" y2="200"></line>
+<line stroke="#d2a24c" stroke-width="2.2" x1="345" x2="530" y1="198" y2="48"></line>
+<line stroke="#52c98a" stroke-width="2.2" x1="345" x2="565" y1="198" y2="146"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="452" y="70">底子差的雄鸟</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="480" y="140">底子好的雄鸟</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="368" y="222">尾巴做得越大 →</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" transform="rotate(-90 336 170)" x="336" y="170">要付出的代价 →</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="322" y="240">两条线岔得越开，尾巴长度这个信号越可信</text>
+</svg>
+<div class="cap">左边这个圈不需要长尾有任何用处就能转起来；右边这套要求装饰和底子绑在一起。<strong>它们对同一根羽毛给出的预测正好相反。</strong></div>
+</div>
+<p>麻烦在于野外很难把这两条分开——孔雀这个最有名的例子自己就在打架。1994 年 Petrie 把雌孔雀随机配给雄孔雀（绕开雌鸟自己挑这一步），后代在相同条件下养大，眼斑更多的父亲，后代长得更快、活得也更好；可是 2008 年另一组人在日本一个野化孔雀群里连着看了七年，发现雌孔雀根本没表现出对眼斑更多的雄鸟的偏好。</p>
+<p><em>这个至今没有定论。</em>多数人现在的看法是：两条机制不是二选一，常常同时在跑。</p>
+<p class="en-brief"><b>EN</b> Two mechanisms can push an ornament past all usefulness. Runaway turns on preference being heritable too: a female who picks long tails has sons with long tails and daughters with the same preference, so both are pushed together each generation — models from the 1980s show this runs with no survival benefit at all. Costly signalling turns on a point often stated backwards: a signal is credible not because it is expensive but because it is more expensive for poor-quality individuals. Peafowl, the famous case, argues with itself: Petrie's 1994 breeding experiment found better offspring from showier fathers; a seven-year Japanese study in 2008 found peahens showing no such preference.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>同一场交配，两边的最优解不一样</h2>
+<p>到这儿有个默认前提该拆掉：前面读起来像是雌雄双方在合力完成同一件事，一方挑，一方被挑。经常不是这样。</p>
+<p>雄果蝇的精液里除了精子，还有一批蛋白。它们进入雌蝇体内之后会让它产卵变快、一段时间内不再接受别的雄蝇、还会削弱前一个雄蝇留下的精子。对这只雄蝇来说，这几件事都直接换成了自己的后代数。</p>
+<p>1995 年的一组实验把这批分泌物单独拆了出来：让一批遗传上不产精子、但照常分泌这些蛋白的雄蝇去交配，结果光是接触这些分泌物就足以让雌蝇死得更早，接触得越多越早。</p>
+<p>别读成雄蝇「想」害配偶——它没有想，缩短寿命多半只是顺带的副作用。但只要这批蛋白能让它的精子在竞争里赢，它就传下去了，哪怕代价整个落在另一方身上。<strong>选择数的是后代，不数谁吃亏。</strong></p>
+<p>另一头同时也在被推：对这些分泌物更耐受的雌蝇留下的后代更多，于是双方一轮轮加码。水黾把这场拉锯变成了看得见的形状——雄虫前足长出用来抓握的钩，雌虫腹部长出对应的棘刺和挡板；横着比较不同的种会发现，一边的结构越夸张，另一边的也越夸张。<strong>净结果常常是谁也没占到便宜，而成本双方都付了。</strong></p>
+<p class="en-brief"><b>EN</b> The first three sections read as if the sexes were doing one job together. Often they are not. Male fruit-fly seminal fluid contains proteins that speed the female's egg-laying, suppress her remating, and disable a previous male's sperm — all of which convert into his offspring. A 1995 experiment used males that made no sperm but still secreted these proteins and found exposure alone shortened female lifespan. Nothing here is intended: the shortening is a side effect that rides along because the proteins win sperm competition. Females evolve resistance, males escalate, and in water striders you can see the result — grasping hooks on males, matching spines and shields on females, each more extreme where the other is.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 投资与仓位</b>——听一个项目讲他们要做的事，讲得完整、答问也顺，你的信心跟着往上走；三个月后才发现对方从头到尾没有任何东西押在这上面。按「装饰为什么会贵到离谱」那节里代价信号的那一半：信号含不含信息，看的是认真的人和不认真的人做同一件事成本差多少——而路演讲得漂亮，对这两种人都不贵。<b>可改的动作</b>：把尽调问题换成「这件事黄了，你个人具体损失什么」，只认不可撤回的部分：投进去的钱、推掉的机会、对外锁死的时间表。没有，就按「没有信号」处理。</li>
+<li><b>② 育儿与教育</b>——家里两个大人商量一件要持续做半年的事：换不换学校、报不报这门课、周末怎么排。争的一直是「该不该」，谁也说服不了谁。按「谁挑谁，不是天生的角色，是谁投得多」那节：挑剔程度跟着投入走——每周真要挪出那三小时接送、盯练习、收拾情绪的那一方，选错的代价直接落在它身上，偏好在结果里本来就更硬。<b>可改的动作</b>：把顺序倒过来，先写下「接下来半年，每周这几个小时具体谁出」，再决定做不做。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>组织与制度 · 审批表一年比一年厚</b>：两个部门共用一张表，风控加了一栏，业务加了一条绕过去的说明，风控再加一栏堵它。一年下来表格厚了一倍，真正被拦下来的比例跟一年前差不多。这不是谁不专业，跑的是「同一场交配，两边的最优解不一样」那节的机制：双方的得失算法本来就不一致，而所有动作都作用在同一个界面上，于是每一轮改进都被对面的下一轮抵掉，成本却实打实累加。由此能推出一个原本看不出的结论：<b>流程的厚度不度量风险水平，它度量的是这个界面上已经拉锯了多少轮。</b>所以「精简流程」靠删条款没用——删掉的会以别的形式长回来；要停下来只能改成本的落点：把一张表拆成互不相干的两张，或者让同一个人同时背两边的指标。<b>但这里不成立</b>：果蝇没有共同的上级，也不能坐下来谈；两个部门头上有同一个老板，得失算法可以被一次性重写。生物那边的拉锯只能靠一方灭绝或代价见顶才停，组织里随时能被上一层叫停——反过来说，它还在继续，通常说明上一层没在裁，而不是下面两方太犟。</li>
+<li><b>文学艺术 · 一个类型越写越极端</b>：某一类小说或短视频，几年下来同一个套路只往一个方向走：爽点更快、冲突更狠、反转更早，回头看几年前的作品会觉得「太淡了」。按「装饰为什么会贵到离谱」那节里的失控回路：只要评判的尺子本身是被已经流行的作品塑造的，而下一批作品又照着这把尺子做，偏好和特征就绑在一起同向漂移——不需要任何人变蠢，也不需要有谁在背后策划。由此推出的结论是：<b>一个类型走向极端，不能当作读者品味变差的证据；同样的漂移，在一群品味完全没变的人身上照样会发生。</b>变的是尺子，不是人。<b>但这里不成立</b>：孔雀那边，偏好和装饰搭在同一批后代的遗传里，方向一旦起来只能靠死亡的代价按住；读者和作者之间没有这层绑定，尺子可以被外面的东西一夜换掉——换个平台、进来一批新读者，漂移就断了。所以文艺里的失控可逆，生物那边不可逆。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>说雌鸟「挑」，是不是把审美安到了鸟身上？</summary>
+<div>不需要审美，也不需要任何有意识的判断。这里的「偏好」只是一个能测的倾向：把两只雄鸟摆在那儿，它更常往哪一只那边落。这种倾向可以来自感官本身的偏置——眼睛对某个颜色本来就更敏感（比如觅食留下的），装饰后来碰巧长成了利用这份偏置的样子。这条思路在孔雀鱼这类鱼上有一些支持性观察，但它跟前面两条机制怎么分工仍在检验中。</div>
+</details>
+<details><summary>性选择会不会把一个物种推到灭绝？</summary>
+<div>有可能，而且是个活跃的研究问题：装饰和打斗都在消耗本可以用来活命的资源，环境一变账就兜不住。但也有反方向的论证——承担得起装饰的往往是有害突变较少的个体，性选择反而可能帮着更快清掉它们。两边都有模型和实验，目前没有定论。</div>
+</details>
+<details><summary>人类身上有性选择吗？</summary>
+<div>有一些间接线索：人类男女的体型差距比大猩猩小得多、比长臂猿大一点，提示历史上存在过一定程度的雄性间竞争，但不极端。麻烦在于具体到某个特征——下巴、体毛、脂肪分布——的性选择解释大多缺乏严格检验，很容易滑成随口编个说得通的故事。而且人类择偶极大地受文化左右，不同社会差异很大，同一社会几十年内也会变。所以任何「男人天生如何、女人天生如何」的结论，都远超证据能支撑的范围。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sexual_selection" rel="noopener" target="_blank">性选择</a>（英文） · <a href="https://en.wikipedia.org/wiki/Fisherian_runaway" rel="noopener" target="_blank">失控式性选择</a>（英文） · <a href="https://en.wikipedia.org/wiki/Handicap_principle" rel="noopener" target="_blank">代价信号（累赘原理）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/299818a0" rel="noopener" target="_blank">Andersson，雌鸟选择推高了寡妇鸟的尾长（1982，Nature）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/371598a0" rel="noopener" target="_blank">Petrie，眼斑更多的孔雀，后代长得更好（1994，Nature）</a>（英文）</li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0003347207005301" rel="noopener" target="_blank">Takahashi 等，雌孔雀并不偏好眼斑更多的雄孔雀（2008，Animal Behaviour）</a>（英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1207851109" rel="noopener" target="_blank">Gowaty 等，重做 Bateman 的经典果蝇实验（2012，PNAS）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/373241a0" rel="noopener" target="_blank">Chapman 等，交配的代价来自雄蝇的分泌物（1995，Nature）</a>（英文） · <a href="https://en.wikipedia.org/wiki/Sexual_conflict" rel="noopener" target="_blank">性冲突</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
