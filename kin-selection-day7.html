@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>进化生物学 Day 7：亲缘选择与利他</title>
 <style>
@@ -63,8 +64,8 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <div class="container">
 <header>
 <div class="kicker">DAY 7 · PHASE A 核心逻辑</div>
-<h1>亲缘选择与利他</h1>
-<h2>一只工蜂一辈子不产卵，还会为了蜇你把自己搭进去——这样的性状怎么可能被传下来</h2>
+<h1 data-tts="aeab57bf169d9d0c">亲缘选择与利他</h1>
+<h2 data-tts="39bf46c3f5aead37">一只工蜂一辈子不产卵，还会为了蜇你把自己搭进去——这样的性状怎么可能被传下来</h2>
 <div class="meta">2026-08-31 · BigCat</div>
 <div class="pitch">达尔文自己写过，不育的工蜂是「一个特别的难点，起初在我看来是不可克服的，而且对我的整个理论是致命的」。这个难点悬了整整一百年。</div>
 </header>
@@ -74,14 +75,14 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </div>
 <div class="section">
 <span class="num">// 01</span>
-<h2>一只不生孩子的工蜂，后代不是零——只是记在别人名下</h2>
+<h2 data-tts="6c2be923c9e1d2b1">一只不生孩子的工蜂，后代不是零——只是记在别人名下</h2>
 <p>先把一句最顺口的错话堵掉：工蜂不是「为了蜂群的利益」牺牲自己。这句话什么都没解释——如果好处是按群体算的，那么一个偷偷自己产卵、别的什么都不干的变异，在这样的群体里应该迅速铺开才对。</p>
 <p>换个算法就通了。你身上任何一段遗传物质，在亲兄弟身上有一半的概率能找到同一份拷贝（同一个祖先传下来的那一份）。这个数叫<em>亲缘系数</em>：亲子之间也是一半，侄子外甥四分之一，表亲堂亲八分之一。</p>
 <p>于是账可以这么记：你做一件事，自己少留下一些后代，却让某个亲戚多留下一些。只要「亲戚多出来的后代」乘上「你跟他的亲缘系数」超过「你自己少掉的」，这个做法就会一代代扩散开。1964 年 Hamilton 把它写成一行：</p>
 <div class="rule">r × b &gt; c</div>
 <p>r 是亲缘系数，b 是对方多出来的后代，c 是你自己少掉的。<strong>这是本站唯一会写出来的式子</strong>——因为它就是这一整套解释的主角。把「自己直接生的」和「通过亲戚间接传下去的」两笔加在一起算的这个总账，叫<em>内含适应度</em>。</p>
 <div class="fig">
-<svg aria-label="亲缘系数阶梯与 Hamilton 不等式示意" role="img" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<svg aria-label="亲缘系数阶梯与 Hamilton 不等式示意" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
 <text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="18">同一份拷贝在对方身上出现的概率</text>
 <text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="46">亲兄弟姐妹</text>
 <rect fill="#1c3a2a" height="16" stroke="#52c98a" stroke-width="1.4" width="150" x="130" y="34"></rect>
@@ -112,7 +113,7 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </div>
 <div class="section">
 <span class="num">// 02</span>
-<h2>起作用的不是血缘本身，是一个能被骗过去的线索</h2>
+<h2 data-tts="c6c2e78d8b8ef7d6">起作用的不是血缘本身，是一个能被骗过去的线索</h2>
 <p>上面那条线要跑起来，得有个前提：被帮的那一方身上真的更可能带着同一份拷贝。问题是动物查不了族谱。</p>
 <p>一种办法是根本不用查。很多物种的后代不走远，长大就在出生地附近安家——「隔壁那只」自动就有较高概率是亲戚。光靠不搬家，那条不等式里的亲缘系数就已经大于零了，不需要任何识别能力。</p>
 <p>另一种办法是学一个线索。长尾山雀是欧洲一种小鸟，自己那窝失败了的成鸟会转去喂别人窝里的雏鸟，而且明显偏向亲戚的窝。靠什么认？2005 年一组人给出的答案是一种叫 churr 的接触叫声：同一窝出来的鸟，这个声音彼此相像。真正关键的是下一步——把蛋换到别的窝里孵，长大之后，雏鸟的叫声像的是养父母，不是亲生父母。<strong>这个线索是在窝里跟着喂它的成鸟学来的，不是天生带的。</strong></p>
@@ -122,11 +123,11 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </div>
 <div class="section">
 <span class="num">// 03</span>
-<h2>蚂蚁蜜蜂为什么反复走到这一步：一个漂亮的答案，被自己领域的证据削掉了一半</h2>
+<h2 data-tts="ebc6af008185e0b1">蚂蚁蜜蜂为什么反复走到这一步：一个漂亮的答案，被自己领域的证据削掉了一半</h2>
 <p>回到不生孩子的工蜂。蜂、蚁、胡蜂决定性别的方式很特别：受精卵长成雌性，没受精的卵直接长成雄性——雄性只有一套染色体，能传给女儿的也只有这一套。</p>
 <p>Hamilton 注意到一个后果。假如蜂后一生只跟一只雄蜂交配，那么她的女儿们从父亲那边拿到的是完全相同的一整套，从母亲那边拿到的一半相同，加起来姐妹之间的亲缘系数是<strong>四分之三</strong>——比母女之间的一半还高。于是「留在家里帮妈妈多生妹妹」比「自己出去生女儿」更划算。这个推论太漂亮，进了几十年的教科书。</p>
 <div class="fig">
-<svg aria-label="蜂后单次交配与多次交配下姐妹间亲缘系数的对比" role="img" viewBox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<svg aria-label="蜂后单次交配与多次交配下姐妹间亲缘系数的对比" role="img" viewbox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
 <text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="18">蜂后一生只交配一次</text>
 <line stroke="#3d5647" stroke-width="1.2" x1="16" x2="270" y1="150" y2="150"></line>
 <rect fill="#1c3a2a" height="90" stroke="#52c98a" stroke-width="1.6" width="52" x="34" y="60"></rect>
@@ -163,21 +164,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <p class="en-brief"><b>EN</b> In bees, ants and wasps, unfertilised eggs become males, so a male passes his single set to every daughter. Hamilton saw the consequence: if the queen mates once, full sisters share three quarters — more than a mother shares with her own daughter — so helping raise sisters beats breeding. The field then cut that argument down. Termites are ordinary diploids and evolved sterile workers anyway; many queens mate many times, which collapses sisterly relatedness; and workers are related to brothers by only a quarter, cancelling most of the edge. The version now favoured is plainer: strict monogamy makes siblings and offspring equally related, so a small efficiency gain from helping suffices. A 2008 comparison of 267 species found single mating ancestral in all eight independent origins — a comparative correlation, not an experiment, and still contested.</p>
 </div>
 <div class="bigcat">
-<h3>🎒 场景 · BigCat</h3>
+<h3 data-tts="e46372cffc1af74a">🎒 场景 · BigCat</h3>
 <ul>
 <li><b>① 工程与系统设计</b>——那个所有人都在用、却没人愿意修的内部组件。每次出问题群里都飘一句「这个是不是该定个 owner」，然后没有下文，过两个月再飘一次。按「一只不生孩子的工蜂，后代不是零」那节的记账方式：投入会不会发生，看的是付出去的东西有多少落回付出者自己账上，不看谁更有责任心；<b>轮值维护恰好把这个数按到最低。</b><b>可改的动作</b>：拉这个组件近三个月的调用来源分布，把维护固定给调用量最大那条线上的人，并把它的故障时间计进那条线自己的可用性指标。</li>
 <li><b>② 投资与仓位</b>——你手上六七个标的，觉得已经分散了；真跌的时候有四个一起跌，理由还是同一个。按同一节的记账逻辑：总账不按载体个数数，要按「共享的那份东西」跨载体加总——生物那边加的是同一份拷贝，你这边加的是同一个前提假设。<b>可改的动作</b>：按「要靠哪句话成立才赚钱」把持仓重排，那句话得写出来（不是「看好新能源」，是「补贴两年内不退坡」），然后数假设，不数标的。</li>
 </ul>
 </div>
 <div class="crossx">
-<h3>🌀 越界 · 跨学科的联想</h3>
+<h3 data-tts="f56cbe67adde06a5">🌀 越界 · 跨学科的联想</h3>
 <ul>
 <li><b>历史与军事 · 分封制自带一个倒计时</b>：汉初大封同姓诸侯王，本意是让血亲替中央守住地方；几十年后爆发七国之乱，带头造反的正是这些同姓王。汉武帝改用推恩令：诸侯王的封地要分给所有儿子，而不是整块传给嫡长子——不用打，几代下来大国自己碎成一堆小侯国。跑的是「一只不生孩子的工蜂，后代不是零」那节的记账：合作的倾向跟着亲缘系数走，而旁系之间这个系数每隔一代对折一次；开国时是兄弟叔侄，到七国之乱已经隔了好几道。由此能推出一个原本看不出的结论：<b>「靠血亲维系」的失效不是某一代出了野心家，它从签下去那天起就在按固定节奏往下掉——粘性按代数指数衰减，封地和兵力却不跟着衰减。</b>推恩令高明在它没去逆这条曲线，而是顺着已经在跌的方向推了一把。<b>但这里不成立</b>：诸侯反不反，主要由封地、兵力和朝廷压力决定，不由亲缘系数决定；而且人类的「亲」可以人造——联姻、收养、结拜都能把政治上的亲疏重新接一遍，生物那边的亲缘系数不能协商。所以血缘递减最多给出一个漂移方向，给不出具体哪一年会反。</li>
 <li><b>东方思想 · 「怨亲平等」难在哪一段</b>：佛教的慈心修习有个固定次第——先对自己，再对亲近的人，再对无关的人，最后对讨厌的人，终点是四类人一视同仁。它针对的正是「一只不生孩子的工蜂，后代不是零」那节里的曲线：帮忙的倾向随亲缘系数下降，而这个系数从至亲往外是断崖式掉的（一半 → 四分之一 → 八分之一），不是缓坡。所以这套训练不是在原有倾向上加码，是逆着一个内建的坡走。由此推出：<b>「把关怀推得更远」的难度并不均匀，最费力的一步不在最远处，而在坡最陡的那一段——「自家人 / 非自家人」那道分界；跨过去之后，从「不认识的人」再推到「讨厌的人」，坡已经很平了。</b><b>但这里不成立</b>：亲缘系数是关于遗传拷贝的统计量，不是关于心理感受的。人实际用来判断亲疏的，是「起作用的不是血缘本身」那节说的那类线索——一起长大、天天照面——长尾山雀被换了窝，就把养父母的叫声当成了亲人的标记。所以修行能改的是这些线索怎么被读，改不了那条不等式。</li>
 </ul>
 </div>
 <div class="thinking">
-<h3>深入思考</h3>
+<h3 data-tts="e881263df43834e1">深入思考</h3>
 <details><summary>亲缘选择和「为了族群好」是一回事吗？</summary>
 <div>不是。有一大类模型在数学上可以互相翻译，用「亲缘」记账和用「群体之间的差异」记账给出同样的预测，那一层的争论是记账方式之争。但日常说的「为了物种的延续」是另一回事：它要求群体之间的兴衰快过群体内部的兴衰，否则群体里那个只顾自己的变异会先把群体从内部吃掉。这个条件很苛刻。</div>
 </details>
@@ -189,7 +190,7 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </details>
 </div>
 <div class="refs">
-<h3>延伸阅读</h3>
+<h3 data-tts="3e41501db1cbde97">延伸阅读</h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Kin_selection" rel="noopener" target="_blank">亲缘选择</a>（英文） · <a href="https://en.wikipedia.org/wiki/Inclusive_fitness" rel="noopener" target="_blank">内含适应度</a>（英文） · <a href="https://en.wikipedia.org/wiki/Green-beard_effect" rel="noopener" target="_blank">绿胡子效应</a>（英文）</li>
 <li><a href="https://en.wikisource.org/wiki/On_the_Origin_of_Species_(1859)/Chapter_VII" rel="noopener" target="_blank">达尔文《物种起源》第七章，「一个特别的难点」原文</a>（英文）</li>
@@ -200,8 +201,8 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </div>
 <footer>BigCat Learning Hub · Evolutionary Biology</footer>
 </div>
-<script src="https://hub.cissychen.com/comments.js" defer></script>
-<script src="https://hub.cissychen.com/search.js" defer></script>
-<script src="https://hub.cissychen.com/index-button.js" defer></script>
-<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
 </body></html>
