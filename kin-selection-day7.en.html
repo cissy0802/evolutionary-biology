@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 7: Kin Selection and Altruism</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 7 · PHASE A CORE LOGIC</div>
+<h1>Kin Selection and Altruism</h1>
+<h2>A worker bee never lays an egg, and will gut herself to sting you — how could a trait like that ever be passed on</h2>
+<div class="meta">2026-08-31 · BigCat</div>
+<div class="pitch">Darwin himself called sterile workers "one special difficulty, which at first appeared to me insuperable, and actually fatal to my whole theory". The difficulty stood for a full century.</div>
+</header>
+<div class="intro">
+<p>A bee stings you in the garden one summer afternoon. The sting is barbed, so it will not pull back out of your skin; as the bee tears free she rips away part of her own gut, and dies soon after.</p>
+<p>The one that stung you is a worker. She never lays an egg and has no offspring of her own. By the most basic logic there is — whoever leaves more offspring that go on to breed is the one whose form sticks around — "does not breed" ought to vanish within a single generation. It did not. And it is not a quirk of honeybees: ants, termites, some wasps, and naked mole-rats under the African ground all arrived there separately. To make this whole class of accounts balance, you have to change what counts as an offspring.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>A worker who never breeds does not have zero descendants — they are booked under someone else's name</h2>
+<p>First, block the sentence that comes most easily: the worker is not sacrificing herself "for the good of the colony". That explains nothing — if the payoff were tallied at the level of the group, then a variant that quietly laid its own eggs and did nothing else should spread through such a group fast.</p>
+<p>Change the arithmetic and it works. Any stretch of genetic material in you has a one-in-two chance of sitting in your full brother as the same copy, inherited from the same ancestor. That number is called <em>relatedness</em>: one half between parent and child too, a quarter for a nephew or niece, an eighth for a cousin.</p>
+<p>So the books can be kept this way: you do something, you end up with fewer offspring, and some relative ends up with more. As long as "the offspring your relative gains" times "how related you are to them" beats "what you gave up", the behaviour spreads generation after generation. In 1964 Hamilton wrote it as a single line:</p>
+<div class="rule">r × b &gt; c</div>
+<p>r is relatedness, b is the offspring the other side gains, c is what you lose. <strong>This is the only formula this site will ever spell out</strong> — because it is the protagonist of the whole explanation. The combined tally, what you pass on directly plus what you pass on through relatives you helped, is called <em>inclusive fitness</em>.</p>
+<div class="fig">
+<svg aria-label="Ladder of relatedness values and Hamilton's inequality" role="img" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="18">Chance the same copy sits in the other individual</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="46">Full sibling</text>
+<rect fill="#1c3a2a" height="16" stroke="#52c98a" stroke-width="1.4" width="150" x="130" y="34"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="290" y="46">one half</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="76">Your own child</text>
+<rect fill="#1c3a2a" height="16" stroke="#52c98a" stroke-width="1.4" width="150" x="130" y="64"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="290" y="76">one half</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="106">Nephew · niece</text>
+<rect fill="#1c3a2a" height="16" stroke="#3d5647" stroke-width="1.4" width="75" x="130" y="94"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="290" y="106">one quarter</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="136">Cousin</text>
+<rect fill="#1c3a2a" height="16" stroke="#3d5647" stroke-width="1.4" width="37" x="130" y="124"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="290" y="136">one eighth</text>
+<line stroke="#24382c" stroke-width="1" x1="16" x2="580" y1="158" y2="158"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="16" y="180">Whether this act of helping spreads comes down to one multiplication</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#52c98a" stroke-width="1.3" width="250" x="16" y="192"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="141" y="213">relatedness × offspring they gain</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="17" x="286" y="215">&gt;</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#8a6f38" stroke-width="1.3" width="200" x="320" y="192"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="420" y="213">offspring you give up</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="243">Left side bigger, and this kind of helping grows; the other way round, it disappears</text>
+</svg>
+<div class="cap">The further away the recipient, the smaller the left side gets, so the right side has to be lower still to be worth it. <strong>Helping is not spread evenly over everyone. It has a shape.</strong></div>
+</div>
+<p>The best-travelled line here is Haldane's: "I would not lay down my life for one brother, but I would for two brothers or eight cousins" — each set exactly cancelling his own share. Take it with a pinch of salt: there is no written source for it, and it comes to us through Maynard Smith's later recollection. And block the teleology once more: nobody is doing this arithmetic. All that happens is that individuals carrying a "more likely to help" variant pass on more copies of it on average, so its share of the population drifts up.</p>
+<p>The cleanest field evidence comes from a ground squirrel in the California mountains. In 1977 Sherman published three summers and three thousand hours of observation: every animal in the population was individually marked, and maternal kinship was on record. When a coyote or a weasel shows up on the ground, some squirrels stand and scream. That scream is not free — the records show that the caller is more likely to be targeted. Who calls? Mostly females who happen to have mothers, sisters or daughters living nearby; females with no relatives around call noticeably less. Males leave home as adults, have no close kin nearby, and barely call at all.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>What does the work is not kinship itself, but a cue that can be fooled</h2>
+<p>For that line to run, something has to be true: the one being helped really is more likely to be carrying the same copy. The trouble is that animals cannot check a pedigree.</p>
+<p>One workaround is not needing to. In many species the young do not travel far and settle near where they were born — so "the one next door" is a relative with fairly high probability by default. Just by not moving, relatedness in that inequality is already above zero, with no recognition ability required at all.</p>
+<p>Another is to learn a cue. Long-tailed tits are a small European bird; adults whose own nest has failed go and feed chicks in someone else's nest, and clearly favour a relative's. How do they tell? In 2005 a group answered: by a contact call known as the churr, which sounds alike among birds from the same nest. The decisive step was what came next — swap eggs into another nest, and when the chicks grow up their calls resemble their foster parents', not their genetic ones. <strong>The cue is learned in the nest from whoever feeds you, not born with you.</strong></p>
+<p>These birds did not grow an organ for measuring kinship. What they have is a coarse, cheap rule of thumb: whatever you heard in the nest as a chick, treat as family later. It is good enough under normal conditions, because the nest really is family — but it can obviously be fooled, if something else is put in the nest.</p>
+<p>There is a stranger route as well. In 1998 a report came out of the red fire ant: workers carrying one variant at a particular locus execute queens who lack it — what gets recognised is not kinship but a specific marker. Such things are called <em>green beards</em>: one and the same thing both grows the green beard and favours those who wear one. Whether this counts as a clean green beard is disputed (the genetic structure in that region is far more complicated than a single gene), but it makes one thing plain: relatedness in the inequality is really "the probability of sharing the same copy", and common ancestry is just the most common way of raising that probability — not the only way.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Why ants and bees keep arriving here: a beautiful answer, cut in half by its own field's evidence</h2>
+<p>Back to the worker who does not breed. Bees, ants and wasps determine sex in an unusual way: fertilised eggs become females, unfertilised eggs become males directly — so a male has only one set of chromosomes, and only that one set to pass to a daughter.</p>
+<p>Hamilton noticed a consequence. If a queen mates with just one male in her life, her daughters get an identical full set from their father and half-matching material from their mother, which adds up to three quarters between sisters — higher than the one half between a mother and her own daughter. So "stay home and help mother make more sisters" beats "go out and make daughters". The inference was too beautiful not to enter textbooks for decades.</p>
+<div class="fig">
+<svg aria-label="Relatedness among sisters when the queen mates once versus many times" role="img" viewBox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="18">Queen mates once in her life</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="16" x2="270" y1="150" y2="150"></line>
+<rect fill="#1c3a2a" height="90" stroke="#52c98a" stroke-width="1.6" width="52" x="34" y="60"></rect>
+<rect fill="#1d2b22" height="60" stroke="#3d5647" stroke-width="1.3" width="52" x="114" y="90"></rect>
+<rect fill="#1d2b22" height="30" stroke="#3d5647" stroke-width="1.3" width="52" x="194" y="120"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="60" y="53">three quarters</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="140" y="83">one half</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="220" y="113">one quarter</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="60" y="168">to a sister</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="140" y="168">to her own daughter</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="220" y="168">to a brother</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="16" y="196">Sisters beat her own daughters, so</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="16" y="214">helping mother pays better</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="8" y2="218"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="322" y="18">Queen mates with many males</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="322" x2="576" y1="150" y2="150"></line>
+<rect fill="#2a2417" height="34" stroke="#8a6f38" stroke-width="1.6" width="52" x="340" y="116"></rect>
+<rect fill="#1d2b22" height="60" stroke="#3d5647" stroke-width="1.3" width="52" x="420" y="90"></rect>
+<rect fill="#1d2b22" height="30" stroke="#3d5647" stroke-width="1.3" width="52" x="500" y="120"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="366" y="109">falls to about a quarter</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="446" y="83">one half</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="526" y="113">one quarter</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="366" y="168">to a sister</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="446" y="168">to her own daughter</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="526" y="168">to a brother</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="322" y="196">Most of the nest becomes half-sisters,</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="322" y="214">and the advantage is gone</text>
+</svg>
+<div class="cap">Same sex-determination system; only the number of matings changed, and the conclusion flips. <strong>What mattered was never "three quarters" — it was the precondition that number rests on.</strong></div>
+</div>
+<p>Then its own field cut the argument down. Termites are ordinary diploids, have nothing to do with this sex-determination system, and evolved sterile workers anyway. Three quarters holds only when the queen mates once, and plenty of ant and bee queens mate with dozens of males; add in that a worker is related to a brother by only a quarter, and most of the remaining edge cancels out.</p>
+<p>The version more people now accept is plainer: what matters is not three quarters, it is the single mating itself. Under strict monogamy your younger siblings are related to you exactly as much as your own children would be — one half — so helping at home only has to be slightly more efficient than going it alone for the inequality to hold. In 2008 a group compared 267 eusocial bee, ant and wasp species and reconstructed their ancestral states: in all eight lineages that independently took this path, the ancestor was monogamous without exception, and multiple mating always appeared later.</p>
+<p>The strength of that evidence should be stated plainly: it is a correlation across species rather than an experiment, reconstructing ancestral states carries its own uncertainty, and a recent paper argues the case is "inconclusive"; in 2010 others proposed replacing the whole inclusive-fitness framework. <em>The argument has not fully settled</em>, though most researchers still work with Hamilton's line.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BigCat</h3>
+<ul>
+<li><b>① Engineering and systems design</b> — the internal component everyone uses and nobody wants to maintain. Every time it breaks, someone posts "shouldn't this have an owner?", nothing follows, and two months later the same message appears again. By the accounting in the section "a worker who never breeds does not have zero descendants": whether investment happens depends on how much of what you spend lands back in your own ledger, not on who has the stronger sense of duty; <b>a maintenance rota pushes that number to its minimum.</b> <b>What you can change</b>: pull the last three months of call traffic by source, assign maintenance permanently to whoever owns the heaviest caller, and count its downtime inside that team's own availability number.</li>
+<li><b>② Investing and position sizing</b> — you hold six or seven names and feel diversified; when it drops, four of them drop together, and for the same reason. Same accounting logic: the total is not counted by the number of vehicles, it is summed across vehicles by the thing they share — copies in biology, one underlying assumption in your case. <b>What you can change</b>: re-sort the book by "which single sentence has to be true for this to pay", and write that sentence out (not "bullish on clean energy" but "the subsidy does not taper within two years"); then count assumptions, not tickers.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · INTERDISCIPLINARY LINKS</h3>
+<ul>
+<li><b>History and warfare · enfeoffment comes with a built-in countdown</b>: early Han China handed out large fiefs to princes of the imperial surname, the idea being that blood kin would hold the provinces for the centre. Decades later came the Rebellion of the Seven States, led by exactly those same-surname kings. Emperor Wu switched to the "decree of grace": a prince's fief had to be divided among all his sons rather than passing whole to the eldest — no fighting required, and within a few generations the great fiefs crumbled into a scatter of small marquisates. The mechanism is the accounting from "a worker who never breeds does not have zero descendants": the pull toward cooperation tracks relatedness, and along collateral lines that number halves every generation; at the founding they were brothers and nephews, by the rebellion several removes had passed. That yields a conclusion you would not otherwise see: <b>the failure of "hold it together by blood" is not one generation throwing up an ambitious man — it has been sliding on a fixed schedule since the day it was signed, because cohesion decays exponentially with generations while fiefs and armies do not.</b> The decree of grace was clever precisely because it did not fight that curve; it pushed in the direction the curve was already falling. <b>Where this breaks down</b>: whether a prince rebelled turned mostly on his fief, his troops and the pressure from the court, not on a relatedness coefficient. More to the point, human "kinship" can be manufactured — marriage alliances, adoption, sworn brotherhood all rewire political closeness, while relatedness in biology is not negotiable. So the decay of blood ties gives you a drift direction at most, never the year of the revolt.</li>
+<li><b>Eastern thought · which stretch of "equal regard for friend and foe" is the hard one</b>: Buddhist loving-kindness practice has a fixed sequence — first yourself, then someone dear, then a neutral person, then someone you dislike, ending with all four held alike. What it targets is exactly the curve from "a worker who never breeds does not have zero descendants": the pull to help falls as relatedness falls, and that number drops off a cliff going outward from close kin (a half, a quarter, an eighth), not down a gentle slope. So the training is not adding to an existing tendency; it is walking up a built-in gradient. From which: <b>"widening your circle of care" is not uniformly hard — the most effortful step is not at the far end but on the steepest stretch, the line between our own and not our own; once past it, going from "a stranger" to "someone you dislike" is fairly flat ground.</b> <b>Where this breaks down</b>: relatedness is a statistic about inherited copies, not about felt closeness. What people actually judge kinship by is the kind of cue described in "what does the work is not kinship itself" — grown up together, seen daily — and long-tailed tits moved to another nest take their foster parents' call as the family marker. So what practice can change is how those cues get read, not the inequality itself.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>Is kin selection the same thing as "for the good of the species"?</summary>
+<div>No. A large class of models translates mathematically between the two: accounting by relatedness and accounting by differences between groups yield the same predictions, and the dispute at that level is about bookkeeping. But the everyday phrase "for the survival of the species" is another matter: it requires groups to rise and fall faster than individuals within them do, or the self-serving variant inside a group eats the group from within first. That condition is demanding.</div>
+</details>
+<details><summary>Do workers really never breed?</summary>
+<div>Not that they cannot. Workers have ovaries, and when the queen dies or weakens they start laying unfertilised eggs that hatch into males. That they normally do not is largely because other workers eat those eggs — a phenomenon called worker policing. It runs on the same inequality: when the queen has mated many times, a worker is less related to a sister's son than to the queen's own son.</div>
+</details>
+<details><summary>Does the inequality explain human altruism?</summary>
+<div>Only part of it. Bias toward close kin is measurable in many societies, but a great deal of human helping happens between people with no kinship at all — donating blood, giving a stranger directions, giving money to people you will never meet. Those mostly need repeated dealings, reputation and institutional constraint to explain. And one thing deserves special caution: this line describes what happens, not who ought to be favoured. Deriving "so you should put your own family first" from it is a jump from is to ought, and that jump has nothing to do with biology.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Kin_selection" rel="noopener" target="_blank">Kin selection</a> · <a href="https://en.wikipedia.org/wiki/Inclusive_fitness" rel="noopener" target="_blank">Inclusive fitness</a> · <a href="https://en.wikipedia.org/wiki/Green-beard_effect" rel="noopener" target="_blank">Green-beard effect</a></li>
+<li><a href="https://en.wikisource.org/wiki/On_the_Origin_of_Species_(1859)/Chapter_VII" rel="noopener" target="_blank">Darwin, On the Origin of Species, ch. VII — the "one special difficulty" passage</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.197.4310.1246" rel="noopener" target="_blank">Sherman, alarm calls in ground squirrels (1977, Science)</a> · <a href="https://www.nature.com/articles/nature03522" rel="noopener" target="_blank">Sharp et al., long-tailed tits recognise kin by a learned call (2005, Nature)</a></li>
+<li><a href="https://www.nature.com/articles/29064" rel="noopener" target="_blank">Keller &amp; Ross, a green beard in the red fire ant (1998, Nature)</a></li>
+<li><a href="https://www.science.org/doi/abs/10.1126/science.1156108" rel="noopener" target="_blank">Hughes et al., 267 species show ancestral monogamy is key (2008, Science)</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.2425329122" rel="noopener" target="_blank">A recent challenge to that evidence (PNAS)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

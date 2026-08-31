@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 7：亲缘选择与利他</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 7 · PHASE A 核心逻辑</div>
+<h1>亲缘选择与利他</h1>
+<h2>一只工蜂一辈子不产卵，还会为了蜇你把自己搭进去——这样的性状怎么可能被传下来</h2>
+<div class="meta">2026-08-31 · BigCat</div>
+<div class="pitch">达尔文自己写过，不育的工蜂是「一个特别的难点，起初在我看来是不可克服的，而且对我的整个理论是致命的」。这个难点悬了整整一百年。</div>
+</header>
+<div class="intro">
+<p>夏天你在院子里被蜜蜂蜇了一下。那根刺上带着倒钩，扎进皮肤就拔不出来，蜜蜂挣脱的时候会把自己的一段内脏一起扯下来，很快就死。</p>
+<p>蜇你的这只是工蜂，一辈子不产卵，没有自己的后代。按最基本的那条逻辑——谁留下更多能接着繁殖的后代，谁的样子就留下来——「不生」这件事应该在一代之内消失干净。它没有，而且不是蜜蜂独有的怪癖：蚂蚁、白蚁、某些胡蜂、非洲地下的裸鼹鼠，各自都走到了这一步。这一整类账要算平，得先动一动「后代」这个计数单位。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>一只不生孩子的工蜂，后代不是零——只是记在别人名下</h2>
+<p>先把一句最顺口的错话堵掉：工蜂不是「为了蜂群的利益」牺牲自己。这句话什么都没解释——如果好处是按群体算的，那么一个偷偷自己产卵、别的什么都不干的变异，在这样的群体里应该迅速铺开才对。</p>
+<p>换个算法就通了。你身上任何一段遗传物质，在亲兄弟身上有一半的概率能找到同一份拷贝（同一个祖先传下来的那一份）。这个数叫<em>亲缘系数</em>：亲子之间也是一半，侄子外甥四分之一，表亲堂亲八分之一。</p>
+<p>于是账可以这么记：你做一件事，自己少留下一些后代，却让某个亲戚多留下一些。只要「亲戚多出来的后代」乘上「你跟他的亲缘系数」超过「你自己少掉的」，这个做法就会一代代扩散开。1964 年 Hamilton 把它写成一行：</p>
+<div class="rule">r × b &gt; c</div>
+<p>r 是亲缘系数，b 是对方多出来的后代，c 是你自己少掉的。<strong>这是本站唯一会写出来的式子</strong>——因为它就是这一整套解释的主角。把「自己直接生的」和「通过亲戚间接传下去的」两笔加在一起算的这个总账，叫<em>内含适应度</em>。</p>
+<div class="fig">
+<svg aria-label="亲缘系数阶梯与 Hamilton 不等式示意" role="img" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="18">同一份拷贝在对方身上出现的概率</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="46">亲兄弟姐妹</text>
+<rect fill="#1c3a2a" height="16" stroke="#52c98a" stroke-width="1.4" width="150" x="130" y="34"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="290" y="46">一半</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="76">自己的孩子</text>
+<rect fill="#1c3a2a" height="16" stroke="#52c98a" stroke-width="1.4" width="150" x="130" y="64"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="290" y="76">一半</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="106">侄子 · 外甥</text>
+<rect fill="#1c3a2a" height="16" stroke="#3d5647" stroke-width="1.4" width="75" x="130" y="94"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="290" y="106">四分之一</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="136">表亲 · 堂亲</text>
+<rect fill="#1c3a2a" height="16" stroke="#3d5647" stroke-width="1.4" width="37" x="130" y="124"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="290" y="136">八分之一</text>
+<line stroke="#24382c" stroke-width="1" x1="16" x2="580" y1="158" y2="158"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="16" y="180">这个帮忙的动作会不会扩散开，看一次乘法</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#52c98a" stroke-width="1.3" width="250" x="16" y="192"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="141" y="213">亲缘系数 × 对方多出来的后代</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="17" x="286" y="215">&gt;</text>
+<rect fill="#141c16" height="34" rx="6" stroke="#8a6f38" stroke-width="1.3" width="200" x="320" y="192"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="420" y="213">自己少掉的后代</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="243">左边大于右边，这种帮忙就会越来越多；反过来就会消失</text>
+</svg>
+<div class="cap">对方越远，左边被压得越小，右边就得更低才划得来。<strong>所以帮忙不会平均摊给所有人，它有形状。</strong></div>
+</div>
+<p>流传最广的一句是 Haldane 的「我不会为一个兄弟去死，但会为两个兄弟、或者八个表亲」——正好各自抵掉自己那一份。这句得打折听，它没有书面出处，是 Maynard Smith 后来转述的。也再堵一次目的论：没有谁在算这笔账，发生的只是携带「更容易帮忙」这个变异的个体把它传下去的份数平均更多，于是它的比例往上挪。</p>
+<p>野外最干净的一批证据来自加州山里的一种地松鼠。1977 年 Sherman 发表了三个夏天、三千小时的观察：种群里每一只都做了标记，母系那边谁跟谁是亲戚查得到。地面上出现郊狼或者鼬的时候，有的松鼠会站起来尖叫，而叫这一声不免费——记录显示叫的那只更容易被盯上。谁在叫？主要是附近正好住着母亲、姐妹、女儿的那些雌性；亲戚不在身边的叫得明显少。雄性成年后会搬走，身边没有近亲，也基本不叫。</p>
+<p class="en-brief"><b>EN</b> A worker bee that never lays an egg does not have zero descendants — they are just booked under someone else's name. Any stretch of your genetic material has a one-in-two chance of sitting in a full sibling as the same inherited copy; one in four for a nephew, one in eight for a cousin. Hamilton wrote the accounting as one line in 1964: relatedness times the offspring your relative gains must exceed the offspring you give up. Sherman's 1977 study of Belding's ground squirrels — three summers, 3000 hours, individually marked animals with known maternal kin — found that alarm calls, which make the caller more likely to be attacked, come mainly from females with mothers, sisters or daughters nearby.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>起作用的不是血缘本身，是一个能被骗过去的线索</h2>
+<p>上面那条线要跑起来，得有个前提：被帮的那一方身上真的更可能带着同一份拷贝。问题是动物查不了族谱。</p>
+<p>一种办法是根本不用查。很多物种的后代不走远，长大就在出生地附近安家——「隔壁那只」自动就有较高概率是亲戚。光靠不搬家，那条不等式里的亲缘系数就已经大于零了，不需要任何识别能力。</p>
+<p>另一种办法是学一个线索。长尾山雀是欧洲一种小鸟，自己那窝失败了的成鸟会转去喂别人窝里的雏鸟，而且明显偏向亲戚的窝。靠什么认？2005 年一组人给出的答案是一种叫 churr 的接触叫声：同一窝出来的鸟，这个声音彼此相像。真正关键的是下一步——把蛋换到别的窝里孵，长大之后，雏鸟的叫声像的是养父母，不是亲生父母。<strong>这个线索是在窝里跟着喂它的成鸟学来的，不是天生带的。</strong></p>
+<p>这些鸟身上并没有长出一个「测血缘」的器官，有的只是一条又糙又便宜的经验规则：小时候在窝里听到的那个声音，长大以后就当亲戚待。正常情况下够用，因为窝里本来就是亲戚；但它显然可以被骗——只要有东西被放进那个窝。</p>
+<p>还有一条更奇特的路子。1998 年有人在红火蚁身上报告：某个位点上带 b 型的工蚁，会去处死不带 b 型的蚁后——被认出来的不是亲缘，是一个具体的标记。这类东西叫<em>绿胡子</em>：同一份东西同时管着「长出绿胡子」和「善待长绿胡子的人」。它算不算一个干净的绿胡子还有争论（那一带的遗传结构比单个基因复杂得多），但它挑明了一件事：不等式里的亲缘系数，本质是「共享同一份拷贝的概率」，血缘只是让它变高的最常见的一条路，不是唯一的一条。</p>
+<p class="en-brief"><b>EN</b> The rule needs the recipient to actually be more likely to carry the same copy, and animals cannot check pedigrees. One workaround is not needing to: where offspring do not disperse far, the neighbour is a relative by default. Another is learning a cue. Long-tailed tits whose own nest failed go and feed relatives' chicks, discriminating by a contact call — and cross-fostering shows nestlings learn the call from whoever provisions them, not from their genetic parents. It is a cheap, foolable rule of thumb, not a relatedness detector. A third route skips kinship: in red fire ants, workers carrying one variant at a locus execute queens lacking it — a candidate "green beard", still argued over, showing that what the rule really needs is shared copies, not shared ancestry.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>蚂蚁蜜蜂为什么反复走到这一步：一个漂亮的答案，被自己领域的证据削掉了一半</h2>
+<p>回到不生孩子的工蜂。蜂、蚁、胡蜂决定性别的方式很特别：受精卵长成雌性，没受精的卵直接长成雄性——雄性只有一套染色体，能传给女儿的也只有这一套。</p>
+<p>Hamilton 注意到一个后果。假如蜂后一生只跟一只雄蜂交配，那么她的女儿们从父亲那边拿到的是完全相同的一整套，从母亲那边拿到的一半相同，加起来姐妹之间的亲缘系数是<strong>四分之三</strong>——比母女之间的一半还高。于是「留在家里帮妈妈多生妹妹」比「自己出去生女儿」更划算。这个推论太漂亮，进了几十年的教科书。</p>
+<div class="fig">
+<svg aria-label="蜂后单次交配与多次交配下姐妹间亲缘系数的对比" role="img" viewBox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="18">蜂后一生只交配一次</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="16" x2="270" y1="150" y2="150"></line>
+<rect fill="#1c3a2a" height="90" stroke="#52c98a" stroke-width="1.6" width="52" x="34" y="60"></rect>
+<rect fill="#1d2b22" height="60" stroke="#3d5647" stroke-width="1.3" width="52" x="114" y="90"></rect>
+<rect fill="#1d2b22" height="30" stroke="#3d5647" stroke-width="1.3" width="52" x="194" y="120"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="60" y="53">四分之三</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="140" y="83">一半</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="220" y="113">四分之一</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="60" y="168">跟姐妹</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="140" y="168">跟自己女儿</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="220" y="168">跟兄弟</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="16" y="196">姐妹比自己的女儿还亲，</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="16" y="214">帮妈妈生妹妹更划算</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="8" y2="218"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="322" y="18">蜂后跟很多只雄蜂交配</text>
+<line stroke="#3d5647" stroke-width="1.2" x1="322" x2="576" y1="150" y2="150"></line>
+<rect fill="#2a2417" height="34" stroke="#8a6f38" stroke-width="1.6" width="52" x="340" y="116"></rect>
+<rect fill="#1d2b22" height="60" stroke="#3d5647" stroke-width="1.3" width="52" x="420" y="90"></rect>
+<rect fill="#1d2b22" height="30" stroke="#3d5647" stroke-width="1.3" width="52" x="500" y="120"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="366" y="109">掉到四分之一上下</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="446" y="83">一半</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="526" y="113">四分之一</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="366" y="168">跟姐妹</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="446" y="168">跟自己女儿</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="526" y="168">跟兄弟</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="322" y="196">大半个窝变成同母异父，</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="322" y="214">那点优势就没有了</text>
+</svg>
+<div class="cap">性别决定方式没变，只是蜂后交配了几次，结论就翻过去了。<strong>要紧的从来不是「四分之三」，是它成立的那个前提。</strong></div>
+</div>
+<p>然后它被自己领域里的证据削掉了一大半。白蚁是普通的二倍体，跟这套性别决定方式毫无关系，照样演化出了不育的工蚁。四分之三又只在「蜂后只交配一次」时成立，而很多蚂蚁和蜜蜂的蜂后会跟几十只雄性交配；再算上工蜂跟兄弟只有四分之一，剩下那点优势基本被抵消。</p>
+<p>现在被更多人接受的版本反而更朴素：要紧的不是四分之三，是「只交配一次」这件事本身。母亲严格单配的时候，你的弟妹跟你的亲缘系数和你自己的孩子一样，都是一半——这时只要留在家里帮忙的效率比单干高一点点，那条不等式就成立了。2008 年一组人比对了 267 种真社会性的蜂、蚁、胡蜂，重建祖先状态，发现八条各自独立走上这条路的谱系里，祖先无一例外都是单配；多次交配全是后来才出现的。</p>
+<p>证据强度得交代清楚：这是比较不同物种得出的相关性，不是实验，重建祖先状态本身也带着不确定性，最近还有人撰文说它「不足以定论」；2010 年更有人主张把内含适应度整套框架换掉。<em>争论至今没完全平息</em>，不过多数研究者仍在用 Hamilton 那条线。</p>
+<p class="en-brief"><b>EN</b> In bees, ants and wasps, unfertilised eggs become males, so a male passes his single set to every daughter. Hamilton saw the consequence: if the queen mates once, full sisters share three quarters — more than a mother shares with her own daughter — so helping raise sisters beats breeding. The field then cut that argument down. Termites are ordinary diploids and evolved sterile workers anyway; many queens mate many times, which collapses sisterly relatedness; and workers are related to brothers by only a quarter, cancelling most of the edge. The version now favoured is plainer: strict monogamy makes siblings and offspring equally related, so a small efficiency gain from helping suffices. A 2008 comparison of 267 species found single mating ancestral in all eight independent origins — a comparative correlation, not an experiment, and still contested.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 工程与系统设计</b>——那个所有人都在用、却没人愿意修的内部组件。每次出问题群里都飘一句「这个是不是该定个 owner」，然后没有下文，过两个月再飘一次。按「一只不生孩子的工蜂，后代不是零」那节的记账方式：投入会不会发生，看的是付出去的东西有多少落回付出者自己账上，不看谁更有责任心；<b>轮值维护恰好把这个数按到最低。</b><b>可改的动作</b>：拉这个组件近三个月的调用来源分布，把维护固定给调用量最大那条线上的人，并把它的故障时间计进那条线自己的可用性指标。</li>
+<li><b>② 投资与仓位</b>——你手上六七个标的，觉得已经分散了；真跌的时候有四个一起跌，理由还是同一个。按同一节的记账逻辑：总账不按载体个数数，要按「共享的那份东西」跨载体加总——生物那边加的是同一份拷贝，你这边加的是同一个前提假设。<b>可改的动作</b>：按「要靠哪句话成立才赚钱」把持仓重排，那句话得写出来（不是「看好新能源」，是「补贴两年内不退坡」），然后数假设，不数标的。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>历史与军事 · 分封制自带一个倒计时</b>：汉初大封同姓诸侯王，本意是让血亲替中央守住地方；几十年后爆发七国之乱，带头造反的正是这些同姓王。汉武帝改用推恩令：诸侯王的封地要分给所有儿子，而不是整块传给嫡长子——不用打，几代下来大国自己碎成一堆小侯国。跑的是「一只不生孩子的工蜂，后代不是零」那节的记账：合作的倾向跟着亲缘系数走，而旁系之间这个系数每隔一代对折一次；开国时是兄弟叔侄，到七国之乱已经隔了好几道。由此能推出一个原本看不出的结论：<b>「靠血亲维系」的失效不是某一代出了野心家，它从签下去那天起就在按固定节奏往下掉——粘性按代数指数衰减，封地和兵力却不跟着衰减。</b>推恩令高明在它没去逆这条曲线，而是顺着已经在跌的方向推了一把。<b>但这里不成立</b>：诸侯反不反，主要由封地、兵力和朝廷压力决定，不由亲缘系数决定；而且人类的「亲」可以人造——联姻、收养、结拜都能把政治上的亲疏重新接一遍，生物那边的亲缘系数不能协商。所以血缘递减最多给出一个漂移方向，给不出具体哪一年会反。</li>
+<li><b>东方思想 · 「怨亲平等」难在哪一段</b>：佛教的慈心修习有个固定次第——先对自己，再对亲近的人，再对无关的人，最后对讨厌的人，终点是四类人一视同仁。它针对的正是「一只不生孩子的工蜂，后代不是零」那节里的曲线：帮忙的倾向随亲缘系数下降，而这个系数从至亲往外是断崖式掉的（一半 → 四分之一 → 八分之一），不是缓坡。所以这套训练不是在原有倾向上加码，是逆着一个内建的坡走。由此推出：<b>「把关怀推得更远」的难度并不均匀，最费力的一步不在最远处，而在坡最陡的那一段——「自家人 / 非自家人」那道分界；跨过去之后，从「不认识的人」再推到「讨厌的人」，坡已经很平了。</b><b>但这里不成立</b>：亲缘系数是关于遗传拷贝的统计量，不是关于心理感受的。人实际用来判断亲疏的，是「起作用的不是血缘本身」那节说的那类线索——一起长大、天天照面——长尾山雀被换了窝，就把养父母的叫声当成了亲人的标记。所以修行能改的是这些线索怎么被读，改不了那条不等式。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>亲缘选择和「为了族群好」是一回事吗？</summary>
+<div>不是。有一大类模型在数学上可以互相翻译，用「亲缘」记账和用「群体之间的差异」记账给出同样的预测，那一层的争论是记账方式之争。但日常说的「为了物种的延续」是另一回事：它要求群体之间的兴衰快过群体内部的兴衰，否则群体里那个只顾自己的变异会先把群体从内部吃掉。这个条件很苛刻。</div>
+</details>
+<details><summary>工蜂真的完全不生吗？</summary>
+<div>不是完全不能。工蜂有卵巢，蜂后死掉或衰弱时会开始产没受精的卵，孵出雄蜂。平时不产，很大程度是因为别的工蜂会把这些卵吃掉，这叫工蜂监督。它用的还是同一条不等式：蜂后交配过很多次时，一只工蜂跟姐妹的儿子的亲缘系数反而低于跟蜂后亲生儿子的。</div>
+</details>
+<details><summary>人类的利他能用这条不等式解释吗？</summary>
+<div>只能解释一部分。对近亲的偏向在很多社会里都测得到，但人类大量的帮助发生在毫无亲缘的人之间——献血、给陌生人指路、捐钱给一辈子见不到的人，这些多半得靠反复打交道、声誉、制度约束来解释。还要特别警惕一点：这条线说的是「发生了什么」，不是「该偏袒谁」。从它推出「所以应该优先照顾自家人」，是在从「是」跳到「应当」，那一跳跟生物学没有关系。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Kin_selection" rel="noopener" target="_blank">亲缘选择</a>（英文） · <a href="https://en.wikipedia.org/wiki/Inclusive_fitness" rel="noopener" target="_blank">内含适应度</a>（英文） · <a href="https://en.wikipedia.org/wiki/Green-beard_effect" rel="noopener" target="_blank">绿胡子效应</a>（英文）</li>
+<li><a href="https://en.wikisource.org/wiki/On_the_Origin_of_Species_(1859)/Chapter_VII" rel="noopener" target="_blank">达尔文《物种起源》第七章，「一个特别的难点」原文</a>（英文）</li>
+<li><a href="https://www.science.org/doi/10.1126/science.197.4310.1246" rel="noopener" target="_blank">Sherman，地松鼠的报警叫声（1977，Science）</a>（英文） · <a href="https://www.nature.com/articles/nature03522" rel="noopener" target="_blank">Sharp 等，长尾山雀靠学来的叫声认亲（2005，Nature）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/29064" rel="noopener" target="_blank">Keller &amp; Ross，红火蚁身上的绿胡子（1998，Nature）</a>（英文）</li>
+<li><a href="https://www.science.org/doi/abs/10.1126/science.1156108" rel="noopener" target="_blank">Hughes 等，267 个物种显示祖先单配是关键（2008，Science）</a>（英文） · <a href="https://www.pnas.org/doi/10.1073/pnas.2425329122" rel="noopener" target="_blank">近年对这套证据的质疑（PNAS）</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
