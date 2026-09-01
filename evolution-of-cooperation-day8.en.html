@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 8: The Evolution of Cooperation</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 8 · PHASE A CORE LOGIC</div>
+<h1>The Evolution of Cooperation</h1>
+<h2>Helping someone you are not related to, at a real cost to yourself — how did that ever escape being weeded out</h2>
+<div class="meta">2026-09-01 · BigCat</div>
+<div class="pitch">The strategy that took first place in two open tournaments never won a single head-to-head match. Against any opponent, the best it could manage was a draw.</div>
+</header>
+<div class="intro">
+<p>A cluster of vampire bats hangs from the roof of a cave. One of them came back empty last night. That is not a small thing: these bats die if they go two or three nights without blood.</p>
+<p>Then a well-fed neighbour sidles over and regurgitates a mouthful for it. The two are often not related — the accounting from the kin selection topic (helping a relative passes your own share on through the extra offspring they get) does not apply here. And that mouthful is not free to the donor: if it comes back empty tomorrow night, its own buffer is thinner.</p>
+<p>By the laziest arithmetic, bats that take a meal and never give one back should get commoner and commoner in that cave, until nobody feeds anyone. They have not. To balance this account you first have to see when helping is genuinely a loss.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>As long as you will meet again, taking advantage this once turns into a loss</h2>
+<p>Squeeze it down to the simplest case: two individuals, each can help or not. If both help, each does better than if neither does. The trouble shows up when you look at either side alone — whatever the other does, giving a little less always leaves you a little more. So "don't help" pays better for both, and the two of them slide together into the corner that is worse for both. That shape is called the <em>prisoner's dilemma</em> (the name comes from an imagined pair of suspects, questioned separately, each better off confessing). The story does not matter; the shape does.</p>
+<p>But that arithmetic quietly assumes one thing: this is the last meeting. Drop it and the account changes at once. Bats in one cave live together for years, and the mouthful you save tonight may cost you a night with nobody to feed you. In 1971 Trivers set out the conditions: a high enough chance of meeting again, being able to tell who is who, remembering what they did last time.</p>
+<p>This is not "for the sake of the future" — no bat is calculating. It is simply that in a population where individuals meet repeatedly, those carrying a tendency along the lines of "how you treated me last time is how I treat you now" left more offspring on average.</p>
+<p>Around 1980 Axelrod did not try to guess which approach would win. He asked people from all walks of life to submit their strategy as a small program, played them against each other over repeated rounds, and totted up the scores. The first round had 14 programs, and the winner was the shortest one — four lines from Anatol Rapoport, called <em>tit for tat</em>: help the first time, then copy the other's last move. The second round drew 62 entrants who all knew who had won and were designing against it. It won again.</p>
+<p>One detail is worth pausing on: <strong>tit for tat never won a single match.</strong> It never moves first, so against any opponent the most it can do is draw. What it collected was the total take across all its games — "winning" here is not beating your opponent, it is high total output across a pile of relationships.</p>
+<div class="fig">
+<svg aria-label="A run of tit for tat, and the alternating retaliation that follows one mistake" role="img" viewBox="0 0 600 214" xmlns="http://www.w3.org/2000/svg">
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="16">Both copy the other's last move — helping all the way</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="46">A</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="76">B</text>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="62" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="110" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="158" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="206" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="254" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="302" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="350" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="398" y="28"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="62" y="58"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="110" y="58"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="158" y="58"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="206" y="58"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="254" y="58"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="302" y="58"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="350" y="58"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="398" y="58"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="83" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="131" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="179" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="227" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="275" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="323" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="371" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="419" y="44">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="83" y="74">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="131" y="74">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="179" y="74">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="227" y="74">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="275" y="74">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="323" y="74">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="371" y="74">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="419" y="74">help</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="452" y="60">and on it goes</text>
+<line stroke="#24382c" stroke-width="1" x1="16" x2="584" y1="104" y2="104"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="16" y="128">B slips once in round 4 — it meant to help</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="158">A</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="188">B</text>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="62" y="140"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="110" y="140"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="158" y="140"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="206" y="140"></rect>
+<rect fill="#2a2417" height="22" rx="3" stroke="#8a6f38" stroke-width="1.2" width="42" x="254" y="140"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="302" y="140"></rect>
+<rect fill="#2a2417" height="22" rx="3" stroke="#8a6f38" stroke-width="1.2" width="42" x="350" y="140"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="398" y="140"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="62" y="170"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="110" y="170"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="158" y="170"></rect>
+<rect fill="#2a2417" height="22" rx="3" stroke="#d2a24c" stroke-width="1.8" width="42" x="206" y="170"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="254" y="170"></rect>
+<rect fill="#2a2417" height="22" rx="3" stroke="#8a6f38" stroke-width="1.2" width="42" x="302" y="170"></rect>
+<rect fill="#1c3a2a" height="22" rx="3" stroke="#52c98a" stroke-width="1.2" width="42" x="350" y="170"></rect>
+<rect fill="#2a2417" height="22" rx="3" stroke="#8a6f38" stroke-width="1.2" width="42" x="398" y="170"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="83" y="156">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="131" y="156">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="179" y="156">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="227" y="156">help</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="275" y="156">no</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="323" y="156">help</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="371" y="156">no</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="419" y="156">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="83" y="186">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="131" y="186">help</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="179" y="186">help</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="227" y="186">slip</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="275" y="186">help</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="323" y="186">no</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="371" y="186">help</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="419" y="186">no</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" x="452" y="172">one each, no way out</text>
+</svg>
+<div class="cap">The rule is identical in both rows; the only difference is one accident in the middle, after which the two never get back to helping. <strong>Nothing in "copy the last move" can absorb a single mistake — so in a world that makes mistakes, a winning rule needs a way to climb down.</strong></div>
+</div>
+<p>The strength of that should be stated: it is a simulation, not an experiment in the wild. In 1993 Nowak and Sigmund ran simulations that allowed mistakes, and the winner shifted to a more forgiving version — one that still helps with some probability after the other has not.</p>
+<p>The real evidence goes back to the bats. In 1984 Wilkinson reported that blood sharing tracked both relatedness and "how much chance the two had to feed each other", and unrelated bats fed each other in captivity anyway. In 2013 Carter and Wilkinson tightened it: over two years they fasted 20 bats individually, producing 48 days of sharing, and "how much this one has fed me in the past" predicted who would feed it better than relatedness did. One further detail closes off another explanation — most of the time it was the fed bat that moved in, not the hungry one badgering it.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>You have never helped me, but someone saw you help another</h2>
+<p>Straight exchange has a hard requirement: it has to be the same two individuals meeting again and again. Yet think of the small unrewarded things you do in a day — pointing a lost person the right way, handing in a wallet you found. You will almost certainly never see them again.</p>
+<p>The second route loops the return around: I help A, B sees it, and later B helps me. The giving and the return do not close between the same pair; what carries it across is that a third party can see. For that to run, you need a record of how someone has behaved. In everyday speech we call it reputation.</p>
+<p>In 2000 Wedekind and Milinski ran a clean test. Participants played a giving game repeatedly under rules that made "you gave to me, so I give to you" impossible — straight exchange was blocked — while everyone's history of giving was public. The result was clear: people who had given were more likely to receive.</p>
+<p>More surprising is that this is not a human speciality. On coral reefs a small fish makes a living picking parasites off larger fish, which queue up for the service. But the small fish would rather eat a layer of mucus on the client, and a bite of that is the client being cheated. In 2006 Bshary and Grutter reported that when other fish are watching, cleaners bite less and do the job more honestly — and the queuing fish really are choosing, preferring a cleaner they have just seen working well.</p>
+<div class="fig">
+<svg aria-label="Straight exchange compared with a return that loops through a third party" role="img" viewBox="0 0 600 214" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3" viewBox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#52c98a"></path></marker><marker id="ard" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3" viewBox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker></defs>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="16" y="18">The return comes straight back</text>
+<circle cx="60" cy="80" fill="#141c16" r="24" stroke="#52c98a" stroke-width="1.4"></circle>
+<circle cx="210" cy="80" fill="#141c16" r="24" stroke="#52c98a" stroke-width="1.4"></circle>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="60" y="85">me</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="210" y="85">A</text>
+<path d="M84,68 Q135,44 186,68" fill="none" marker-end="url(#ar)" stroke="#52c98a" stroke-width="1.5"></path>
+<path d="M186,94 Q135,118 84,94" fill="none" marker-end="url(#ar)" stroke="#52c98a" stroke-width="1.5"></path>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="135" y="42">helps</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="135" y="134">helps back</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="170">Needs: the same two meeting</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="186">again, and remembering</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="8" y2="204"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="322" y="18">The return loops around</text>
+<circle cx="366" cy="80" fill="#141c16" r="24" stroke="#52c98a" stroke-width="1.4"></circle>
+<circle cx="516" cy="80" fill="#141c16" r="24" stroke="#52c98a" stroke-width="1.4"></circle>
+<circle cx="441" cy="152" fill="#141c16" r="24" stroke="#d2a24c" stroke-width="1.4"></circle>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="366" y="85">me</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="516" y="85">A</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="441" y="157">B</text>
+<path d="M390,80 L486,80" fill="none" marker-end="url(#ar)" stroke="#52c98a" stroke-width="1.5"></path>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="438" y="70">helps</text>
+<path d="M437,128 L433,96" fill="none" marker-end="url(#ard)" stroke="#8aa192" stroke-dasharray="4 3" stroke-width="1.3"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="450" y="116">sees it</text>
+<path d="M419,140 L385,100" fill="none" marker-end="url(#ar)" stroke="#52c98a" stroke-width="1.5"></path>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="end" x="394" y="134">helps me later</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="322" y="188">Needs: the act is seen, and the watcher</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="322" y="204">later has dealings with me</text>
+</svg>
+<div class="cap">The route on the right lets the return come from someone I never helped. <strong>The price is an extra leg of information — break either requirement and the whole route collapses.</strong></div>
+</div>
+<p>So reputation is not morality, it is an information channel. Language stretches that channel enormously: you can hear about someone you have never met. The price is that it also becomes forgeable — the question of how to tell a true report from a false one grows out of exactly this.</p>
+<p>The strength of the evidence, plainly: it is solid in humans and much weaker in other animals, and some argue the cleaner fish result has a simpler explanation (with other fish around, the risk of being bitten is different anyway).</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Punishment can hold cooperation up, but nobody picks up the bill for punishment</h2>
+<p>There is a third route: make not helping cost something on the spot.</p>
+<p>First, how these experiments work. A group of people each hold a private stake and may put any part of it into a common pot; the experimenter multiplies the pot and splits it equally among everyone, including those who put in nothing. All-in is best collectively, but each person alone does better by putting in a little less — the same shape again.</p>
+<p>In 2002 Fehr and Gächter reported that without sanctions, contributions fell round after round towards nothing. Add one rule — you may spend your own money to dock someone else's — and contributions jumped and held. The point is that the person paying to dock someone ends up net down: partners changed every round, so they will never meet the punished person again, and there is no future to recoup it from.</p>
+<p>It sounds solved. It has only been moved back one step. Punishing costs the punisher and the benefit is split among everyone — <strong>punishment is itself a new public good.</strong> So whoever enjoys the results of other people's punishing and never does any does better. That hole is called second-order free riding; most work in this area now goes into finding what makes punishment cheap.</p>
+<p>There is a harder empirical finding too. In 2008 Herrmann and colleagues ran the same design in sixteen locations and found that in some of them a strange behaviour was common: the people being docked were not the low contributors but the high ones, and there the option to punish did not improve cooperation at all. So "allow punishment and cooperation holds" is not true on its own; it comes with a condition — broad agreement about what deserves punishing. Without that, one more weapon is just one more way to hurt each other.</p>
+<p>Among animals, be more careful: most of what gets called punishment is retaliation by the injured party — a client fish bitten by a cleaner swims off, or turns and chases it a little way. Punishment by an uninvolved third party has little evidence outside humans.</p>
+<p>The three routes are doing one and the same thing: pushing down the payoff in the "don't help" column. Meeting again puts the cost in the future, reputation puts the cost in someone else's hands, punishment drops the cost on the spot. <em>Not one of them requires anybody to become kinder.</em></p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BigCat</h3>
+<ul>
+<li><b>① Leading a team and organisations</b> — every time quarterly goals get reshuffled, the cross-team favours built on "you helped me last time" stop making the priority list; the team that helped you last quarter comes to you this quarter and your targets have already been swapped out. By the conditions in the section "as long as you will meet again": whether cooperation holds depends on the chance that the same pair deal with each other again, and <b>reshuffling every partner each quarter pushes that number about as low as it goes</b> — nobody has become more calculating. <b>What you can change</b>: in the planning meeting add one question, "will we still be doing this with the same team next quarter?" If the answer is no, stop relying on goodwill and write it into both sides' targets on the spot.</li>
+<li><b>② Writing and this learning site itself</b> — you send three pages of detailed notes on someone's draft, they revise, publish, and you hear nothing back; after two or three rounds your notes shrink to "looks good". You have not gone cold; the loop in "as long as you will meet again" has broken at the information leg: <b>with no signal about which points were used, a relationship that ought to repeat degrades into a one-off.</b> <b>What you can change</b>: attach one line to the notes — "which ones did you use, which did you drop" — and where no answer comes back, compress the three pages into three points.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · INTERDISCIPLINARY LINKS</h3>
+<ul>
+<li><b>Engineering and systems design · cooperation among strangers turns out to be the sturdy kind</b>: on a public open-source project, hundreds of people who have never met and are not paid for it submit changes, and maintainers spend real time writing detailed notes on a stranger's submission. Intuitively this should be the hardest place to sustain cooperation: no contract, no boss, most participants never meeting again. What runs here is the mechanism from "you have never helped me, but someone saw you help another", and its two requirements happen to be met to an extreme by the tooling: every submission and every comment is attached permanently to a person (the act is seen), and the next person who deals with you can open your entire history (the information travels). That yields a conclusion you would not otherwise reach: <b>collaboration quality turns mostly not on how good the community culture is, but on two switches — whether the record accrues to an individual, and whether the next party can read it at zero cost.</b> Move the same people into an internal system where records are private, review is anonymous and credit lands on a team, and the detailed notes disappear; the channel has simply been cut. <b>Where this breaks down</b>: reputation in biology rides on individual memory and limited observation, so it distorts and decays, whereas a version-control record is a verifiable ledger anyone can replay. That makes the human version far steadier, and adds a failure the natural case does not have — a record that is exact and permanent starts getting gamed as a performance metric, and <b>a gamed score no longer indicates the behaviour.</b></li>
+<li><b>Economics and business · the restaurant by the station stays bad for decades</b>: the places outside a railway station or a tourist entrance are expensive and poor, and stay that way through changes of owner; the same person opening a shop in a residential block behaves completely differently. By the conditions in "as long as you will meet again": the cost of cheating once has to land on a future encounter, and here the chance of meeting again is near zero — the tourist eats and leaves. The conclusion is far more useful than "people in that trade have poor character": <b>to predict whether a place is good, whether its customers repeat tells you more than its fittings or its promises</b>; and the remedy changes accordingly — instead of trying to change people, hitch the one-off transaction to something that does repeat. That is what a chain brand does: one branch cheats a customer and every branch pays for it. <b>Where this breaks down</b>: in biology the chance of meeting again is fixed by lifespan, group size and range, and no individual can alter it, while people can manufacture repetition — deposits, contracts, guarantees, brands all bolt a one-off onto something long-lived. So "one-off" among humans is rarely truly one-off; usually nobody has bothered to build that bridge.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>Are cooperation and altruism the same thing?</summary>
+<div>No. In reciprocity both sides end up ahead; the receipts are just separated in time. Altruism in the biological sense means the giver is net down, and never recovers it over a lifetime. Many self-sacrificing-looking acts fall into the first category once you stretch the time window; the test is whether there is any path for a return to flow back, not who is out of pocket at that instant.</div>
+</details>
+<details><summary>Is tit for tat the best strategy?</summary>
+<div>No. It scored highest in a particular tournament under a particular setup. Allow mistakes, change the mix of opponents, or let players observe third parties, and a different rule wins. No strategy is optimal in every environment — one of the most robust conclusions in this area, and the first thing dropped when it gets turned into a life motto.</div>
+</details>
+<details><summary>Why do people help those they will never see again?</summary>
+<div>Several explanations coexist: our psychology took shape in small groups where familiar people met repeatedly, and still runs the old rules when it meets an anonymous stranger; reputation works perfectly well in modern life, and much of what feels anonymous is not; institutions and culture are themselves being filtered. All of it is still argued over. Worth flagging: this line describes the conditions under which cooperation appears, not who deserves help or punishment — deriving "so there is no need to be decent to strangers" from it is a jump from is to ought, and that jump has nothing to do with biology.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Reciprocal_altruism" rel="noopener" target="_blank">Reciprocal altruism</a> · <a href="https://en.wikipedia.org/wiki/Prisoner%27s_dilemma" rel="noopener" target="_blank">Prisoner's dilemma</a> · <a href="https://en.wikipedia.org/wiki/Indirect_reciprocity" rel="noopener" target="_blank">Indirect reciprocity</a></li>
+<li><a href="https://www.journals.uchicago.edu/doi/10.1086/406755" rel="noopener" target="_blank">Trivers, The Evolution of Reciprocal Altruism (1971)</a> · <a href="https://www.science.org/doi/10.1126/science.7466396" rel="noopener" target="_blank">Axelrod &amp; Hamilton, The Evolution of Cooperation (1981, Science)</a></li>
+<li><a href="https://www.nature.com/articles/308181a0" rel="noopener" target="_blank">Wilkinson, Reciprocal food sharing in the vampire bat (1984, Nature)</a> · <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rspb.2012.2573" rel="noopener" target="_blank">Carter &amp; Wilkinson, reciprocal help predicts donations better than relatedness (2013)</a></li>
+<li><a href="https://www.nature.com/articles/364056a0" rel="noopener" target="_blank">Nowak &amp; Sigmund, a rule that beats tit for tat when mistakes happen (1993, Nature)</a> · <a href="https://www.science.org/doi/abs/10.1126/science.288.5467.850" rel="noopener" target="_blank">Wedekind &amp; Milinski, reputation makes people give more (2000, Science)</a></li>
+<li><a href="https://www.nature.com/articles/nature04755" rel="noopener" target="_blank">Bshary &amp; Grutter, cleaner fish behave better when watched (2006, Nature)</a> · <a href="https://www.nature.com/articles/415137a" rel="noopener" target="_blank">Fehr &amp; Gächter, Altruistic punishment in humans (2002, Nature)</a> · <a href="https://www.science.org/doi/10.1126/science.1153808" rel="noopener" target="_blank">Herrmann et al., Antisocial punishment across societies (2008, Science)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
