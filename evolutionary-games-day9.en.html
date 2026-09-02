@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 9: Evolutionary Games and Stable Strategies</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 9 · PHASE A CORE LOGIC</div>
+<h1>Evolutionary Games and Stable Strategies</h1>
+<h2>The same move can be the best one going when almost nobody uses it and the worst when everybody does — good and bad are not written on the move itself</h2>
+<div class="meta">2026-09-02 · BigCat</div>
+<div class="pitch">Animals fighting over a patch of ground mostly stop short of wrecking each other. The old favourite explanation was "otherwise the species would have wiped itself out" — the smoothest-sounding answer here, and the most completely wrong.</div>
+</header>
+<div class="intro">
+<p>Two stags face off across a clearing in the autumn woods. First they roar, one and then the other, sometimes for several minutes. Then they walk in parallel, each sizing up the other's build. Only if that still settles nothing do they lower their heads and lock antlers. Most stand-offs end in the first two stages.</p>
+<p>One explanation had a long run: they know to hold back, or the species would have torn itself apart long ago. It has a fatal flaw. A stag that does not hold back, that charges everyone, would clean up in a wood full of restrained rivals and leave more offspring. Selection keeps one ledger — who left more descendants — and "this is good for the species" never gets entered in it.</p>
+<p>So the question has to change. Whether a move pays cannot be answered on its own. It depends on what the other stags in that wood are doing.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>The move that pays best depends on what everyone else is playing</h2>
+<p>Squeeze it down to a junction: two cars arrive at once, both want to go first. You can push in, or you can yield. Both push and there is a crash, and two repair bills. One pushes and one yields, and the pusher goes first while the other waits a moment. Both yield, and after a bit of after-you both lose a little time.</p>
+<p>In 1973 Maynard Smith and Price, writing in Nature, put animal conflict into exactly this shape. They did not try to guess which temperament was better. They let several rules play each other inside a computer: one that escalates to a real fight unless the other backs off first, one that only bluffs and leaves the moment the other stands firm, and some in between.</p>
+<p>Here is how it comes out. Suppose the wood holds nothing but yielders. Drop in one pusher and it wins every time without taking a single injury, so pushers spread. But once pushers are common they are mostly running into each other, and the cost of real fighting starts landing on them; now yielding, which always takes the small share, at least keeps you out of the infirmary. Pulled from both ends, the proportion settles somewhere in the middle.</p>
+<p><strong>Whoever is common does worse — this is what gets called <em>frequency-dependent selection</em>: how many offspring a behaviour brings depends on how many others in the population are using it.</strong> It is not a fixed number, and almost every intuition about what is "best" is quietly assuming that it is.</p>
+<div class="fig">
+<svg role="img" aria-label="Average payoff of two strategies against the proportion of pushers, with the lines crossing" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a1" markerWidth="8" markerHeight="8" orient="auto" refX="6" refY="3" viewBox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker></defs>
+<line x1="60" y1="30" x2="60" y2="196" stroke="#24382c" stroke-width="1.2"></line>
+<line x1="60" y1="196" x2="540" y2="196" stroke="#24382c" stroke-width="1.2"></line>
+<text x="16" y="26" fill="#8aa192" font-family="Georgia,serif" font-size="11">Average payoff</text>
+<text x="330" y="216" fill="#8aa192" font-family="Georgia,serif" font-size="11">Share of pushers in the population (few, left — many, right)</text>
+<line x1="60" y1="60" x2="520" y2="180" stroke="#d2a24c" stroke-width="2"></line>
+<line x1="60" y1="110" x2="520" y2="140" stroke="#52c98a" stroke-width="2"></line>
+<text x="76" y="54" fill="#d2a24c" font-family="Georgia,serif" font-size="12">Push</text>
+<text x="76" y="104" fill="#52c98a" font-family="Georgia,serif" font-size="12">Yield</text>
+<circle cx="316" cy="127" r="5" fill="#0c120e" stroke="#eaf3ec" stroke-width="1.6"></circle>
+<line x1="316" y1="132" x2="316" y2="196" stroke="#8aa192" stroke-dasharray="4 3" stroke-width="1"></line>
+<text x="330" y="122" fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5">Both pay the same</text>
+<text x="268" y="60" fill="#8aa192" font-family="Georgia,serif" font-size="11">Pushing pays more</text>
+<path d="M232,72 L296,72" fill="none" marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.2"></path>
+<text x="352" y="164" fill="#8aa192" font-family="Georgia,serif" font-size="11">Yielding pays more</text>
+<path d="M420,152 L356,152" fill="none" marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.2"></path>
+<text x="120" y="238" fill="#8aa192" font-family="Georgia,serif" font-size="11">pushers get commoner →</text>
+<text x="360" y="238" fill="#8aa192" font-family="Georgia,serif" font-size="11">← pushers get rarer</text>
+</svg>
+<div class="cap">Both lines slope down: the more pushers there are, the worse everyone does. What matters is that they cross. Left of the crossing pushing pays more, right of it yielding pays more, so the proportion is shoved back to the same point from either side. <strong>Stopping there has nothing to do with restraint, and it is not the best point for anybody: the all-yielding population has the highest average payoff, and that point cannot hold.</strong></div>
+</div>
+<p>Where it settles is pulled by two quantities: how much winning is worth, and how much a real fight costs. One prediction the model makes is that the costlier the fight, the less pushing a population can sustain. Testing that cleanly across species is hard, so do not treat it as settled. What it does show is that a stand-off ending at the roaring stage requires nobody to be thinking of the greater good.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Whether a move survives depends on whether it can hold off a rare newcomer</h2>
+<p>That replaces the question "which move is best". The only question left is this: if everyone in the population is using some move, can any rare alternative that turns up do better? If it cannot, that move holds. A move that holds is called an <em>evolutionarily stable strategy</em>.</p>
+<p>Notice the gap between that and "best". The all-yielding population has the most comfortable average, but it cannot hold — one pusher walks in and cleans up. The mixture that actually settles pays the population less on average. <strong>Stable means nothing new can get in; it does not mean good for anyone.</strong> That sentence is the one most often dropped from the retelling.</p>
+<p>The cleanest field example is a small lizard of the American west whose males come in three throat colours. In 1996 Sinervo and Lively reported the arrangement: orange throats are the most aggressive and hold big territories, too big to keep an eye on; blue throats hold small ones and guard them closely; yellow throats hold no territory at all, look like females, and slip in to mate on the quiet. Orange takes territory off blue, blue watches too closely for yellow to sneak in, and orange's sprawling territory is exactly what yellow exploits — rock, paper, scissors, closing a loop. Each type can get in while it is rare and is beaten by the next one once it is common, so the three frequencies cycle in the field on roughly a six-year turn.</p>
+<div class="fig">
+<svg role="img" aria-label="Three male throat colours beating each other in a closed loop" viewBox="0 0 600 258" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a2" markerWidth="8" markerHeight="8" orient="auto" refX="6" refY="3" viewBox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<circle cx="150" cy="62" r="34" fill="#141c16" stroke="#d2a24c" stroke-width="1.6"></circle>
+<circle cx="450" cy="62" r="34" fill="#141c16" stroke="#6fa8dc" stroke-width="1.6"></circle>
+<circle cx="300" cy="186" r="34" fill="#141c16" stroke="#e0d06a" stroke-width="1.6"></circle>
+<text x="150" y="67" fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle">Orange</text>
+<text x="450" y="67" fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle">Blue</text>
+<text x="300" y="191" fill="#d8e4da" font-family="Georgia,serif" font-size="13" text-anchor="middle">Yellow</text>
+<text x="16" y="24" fill="#8aa192" font-family="Georgia,serif" font-size="11">most aggressive</text>
+<text x="16" y="40" fill="#8aa192" font-family="Georgia,serif" font-size="11">territory too big to guard</text>
+<text x="496" y="24" fill="#8aa192" font-family="Georgia,serif" font-size="11">small territory</text>
+<text x="496" y="40" fill="#8aa192" font-family="Georgia,serif" font-size="11">closely guarded</text>
+<text x="300" y="242" fill="#8aa192" font-family="Georgia,serif" font-size="11" text-anchor="middle">no territory · looks like a female · slips in to mate</text>
+<path d="M186,56 L410,56" fill="none" marker-end="url(#a2)" stroke="#52c98a" stroke-width="1.5"></path>
+<text x="298" y="44" fill="#7be0ab" font-family="Georgia,serif" font-size="11" text-anchor="middle">takes its territory</text>
+<path d="M436,98 L342,160" fill="none" marker-end="url(#a2)" stroke="#52c98a" stroke-width="1.5"></path>
+<text x="424" y="146" fill="#7be0ab" font-family="Georgia,serif" font-size="11">guards it out</text>
+<path d="M262,164 L170,100" fill="none" marker-end="url(#a2)" stroke="#52c98a" stroke-width="1.5"></path>
+<text x="182" y="146" fill="#7be0ab" font-family="Georgia,serif" font-size="11" text-anchor="end">sneaks past it</text>
+</svg>
+<div class="cap">Arrows point at the type being beaten. The three moves close a loop, and none of them can hold off every rare newcomer, <strong>so this population has no resting point at all — only a cycle.</strong> Settling and going round in circles are both outcomes this arithmetic allows.</div>
+</div>
+<p>Another case sits in Lake Tanganyika: a fish that lives by biting scales off other fish, with a mouth twisted to one side — some individuals take scales from the prey's right flank, others from the left. In 1993 Hori reported that whichever side is commoner is the side prey watch more closely, so the rarer side strikes more successfully, and the two frequencies wobble around an even split. Be clear about strength: the frequency dependence holds up, but the claim that left and right are two sharply separated, simply inherited types has drawn plenty of doubt — in large samples the twist of the mouth looks more like a continuous spread. Do not take that half as settled.</p>
+<p>And on overall strength: these models are plentiful, clean field measurements are not. A model tells you what can hold under what conditions; it does not show that any particular animal is running it.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Sons and daughters come out half and half, not out of fairness, but because the rarer sex pays better</h2>
+<p>Any cattle breeder knows that a handful of bulls is plenty, and that more cows means more calves each year. Yet nearly every animal sits close to an even sex ratio, including species where one male mates with many females and most males never mate at all. Measured by how fast a population can grow, that is enormous waste.</p>
+<p>Fisher set the accounting out in 1930, and Düsing had written something similar back in 1884. Every offspring has one father and one mother, so all the sons together contribute exactly as many grandchildren as all the daughters together. If daughters are in surplus, then on average each son gets a bigger share of the grandchildren than each daughter does — parents who tilt towards sons leave more descendants, and the share of sons climbs. Tilt it the other way and the same argument runs in reverse. <em>Pushed from both sides, it stops at half.</em></p>
+<p>Notice that this resting point is a bad deal for the population and stays put regardless. The reason was already in the section on whether a move can hold off a rare newcomer: selection compares who gets the bigger share of descendants inside one population, not which population grows faster. This is the cleanest counter-example to talk of things happening "for the good of the species" — on that logic sex ratios should have tilted towards females long ago.</p>
+<p>The same logic also yields a prediction you can go and measure. In 1967 Hamilton set out this situation: if a mother's sons can only mate with their own sisters inside one closed arena, then extra sons are just sons competing over the same sisters, and she should make only as many as are needed. Parasitoid wasps live exactly that way — eggs go into a single host, and the offspring pair up in that one small place. In 1980 Werren measured it in one such wasp: a lone mother on a host produces around a tenth sons, and the more mothers lay in the same host, the closer the proportion of sons moves to half — adjusted on the spot by the same female under different circumstances.</p>
+<p>All three sections say one thing: <strong>payoff is not a constant; it moves with how many others are doing the same thing.</strong> So "optimal" is not a word that stands on its own here. The only question available is whether a move can hold off a rare newcomer — and the point that holds has nothing to do with what is good for everybody.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In situ · BigCat</h3>
+<ul>
+<li><b>① Engineering and systems design</b> — a backend slows down, and every caller adds its own retries. Taken one caller at a time, retrying really does get results faster, especially while the others are not retrying, so everyone adds it. The moment everyone has, the traffic hitting the backend is several times what it was: what was merely slow is now flat on its back. This is the shape from the section on the move that pays best depending on what everyone else is playing: <b>the same action's payoff flips sign as more people take it</b>. <b>What to change</b>: don't write "please be sparing with retries" in a standards document, put it in the client library — retry budgets that adapt to the observed failure rate, randomised jitter on the backoff, and a hard cut-out once failures cross a line. Make "my retry stops paying when everyone else is retrying" execute itself instead of relying on people to remember it.</li>
+<li><b>② Investing and position sizing</b> — you put money behind a public signal with a beautiful backtest, it works for a year or two, and then the returns quietly go away with not one rule changed. The backtest was run in a world where hardly anyone used that signal, and the return falls precisely as more money does the same thing. <b>What to change</b>: make "how much money is currently doing this" an input you have to estimate before sizing — the growth of comparable funds, how long the idea has been publicly discussed. If you can't estimate it, size down, rather than sizing off the backtested number.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>Organisations and institutions · the half-year after a reorg, when meetings turn into a document contest</b>: in the stretch after a reorganisation, while it is still unsettled who decides what, out come the costly displays — thirty-page proposal documents, speaking before anyone else can, new coinages for things that already had names — and remarkably few open confrontations. The mechanism is the one from the section on the move that pays best depending on what everyone else is playing: the costlier a real fight (and falling out with a colleague inside one company is genuinely costly), the more stand-offs stop at the bluffing stage rather than escalating. Display is not a substitute for a fight that should have happened; it is the road that is left once the fight is made expensive. That yields something you would not otherwise see: <b>the thickness of the documents and the length of the meetings is set not by the participants' temperaments but by the cost of open conflict multiplied by the absence of a referee</b> — which also predicts how it ends. Once there is a decision-maker everyone accepts, there is a mark that settles contests without a fight, and the displays shrink on their own; nobody has to become more modest. <b>Where it breaks down</b>: a stag's roar can serve as a verdict because it is hard to fake — chest size and body size limit it, and you cannot bluff your way past that. Displays inside an organisation — page counts, speaking time — are only weakly tied to real ability and can be manufactured with overtime, so they slide more easily from a cheap verdict into pure noise, and the tidy animal result, where one look at the display saves a real fight, is often not available here.</li>
+<li><b>Parenting and education · the whole class taking the same extra tutoring</b>: at first a few children take outside tutoring and their ranks really do climb; once the whole class does it, the ranks are back where they started and the money and hours are still going out; and anyone who unilaterally stops drops immediately. Two things from the section on whether a move survives depending on whether it can hold off a rare newcomer are running here: the payoff depends on how many others are doing the same thing, and the point that holds is not the point that is best on average — nobody tutoring is cheaper for the group as a whole, and it cannot hold, because the first person to tutor gains. What follows is this: <b>the situation is not caused by anyone being more anxious than anyone else, and it cannot be talked away; as long as the scoring rule is relative rank (fixed places, allocated by position), the point it settles at necessarily carries that waste</b>. What can change is the scoring rule itself, or the cost of tutoring; what cannot is the participants' state of mind. This says what happens, not what anyone ought to do. <b>Where it breaks down</b>: in biology proportions shift through reproductive differences across generations, dozens to hundreds of them. People copy what they can see others doing, so a whole class can switch inside one term, and a single regulation can move everyone at once. So human cases rarely settle at an intermediate mixture; far more often the whole group jumps to one end together, and then gets carried bodily to the other end by an outside rule.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Does "evolutionarily stable" just mean "best"?</summary>
+<div>No, and this is the most common misreading. It says only that once everyone is doing it, a rare alternative cannot get in. The point it stops at can be far worse than some other point that is out of reach — the all-yielding population is exactly that. There can also be more than one stable point: start somewhere else and you end somewhere else, so history carries weight here.</div>
+</details>
+<details><summary>Apart from testing who is stronger, how else do animals settle contests?</summary>
+<div>By an arbitrary mark both of them can see. In 1978 Davies reported that patches of sunlight on a woodland floor are the good spots for speckled wood butterflies, and that the male already sitting in one almost always wins: the arrival circles for a few seconds and leaves. When both were experimentally fooled into treating themselves as the resident, the contests ran markedly longer. The rule is "whoever got there first wins", not "whoever is stronger". It has since been qualified — the original holder can leave for a while and still take the spot back on returning — so "first arrival wins" is not the whole story.</div>
+</details>
+<details><summary>Is this the same thing as game theory for humans?</summary>
+<div>The shape is similar; the assumptions are not. Human game theory assumes players work things out and choose whatever is best for themselves. Nothing of the sort is assumed here: individuals do no calculating, and what happens is that individuals carrying some tendency leave more offspring on average, so that tendency becomes commoner. "Payoff" in this setting means number of descendants. Taking these models as a guide to handling people swaps out every component and keeps only the diagram.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evolutionary_game_theory" rel="noopener" target="_blank">Evolutionary game theory</a> · <a href="https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy" rel="noopener" target="_blank">Evolutionarily stable strategy</a> · <a href="https://en.wikipedia.org/wiki/Fisher%27s_principle" rel="noopener" target="_blank">Fisher's principle on sex ratios</a></li>
+<li><a href="https://www.nature.com/articles/246015a0" rel="noopener" target="_blank">Maynard Smith &amp; Price, The logic of animal conflict (1973, Nature)</a> · <a href="https://www.nature.com/articles/380240a0" rel="noopener" target="_blank">Sinervo &amp; Lively, Rock-paper-scissors in lizard morphs (1996, Nature)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.260.5105.216" rel="noopener" target="_blank">Hori, Frequency-dependent selection in scale-eating cichlids (1993, Science)</a> · <a href="https://www.sciencedirect.com/science/article/abs/pii/0003347278900131" rel="noopener" target="_blank">Davies, The resident always wins: speckled wood territories (1978)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.156.3774.477" rel="noopener" target="_blank">Hamilton, Extraordinary sex ratios (1967, Science)</a> · <a href="https://www.science.org/doi/10.1126/science.208.4448.1157" rel="noopener" target="_blank">Werren, Sex ratio adaptations to local mate competition (1980, Science)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
