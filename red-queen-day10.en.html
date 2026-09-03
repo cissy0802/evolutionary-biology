@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 10: The Red Queen</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 10 · PHASE A CORE LOGIC</div>
+<h1>The Red Queen</h1>
+<h2>Every improvement you make is cancelled by an improvement on the other side, so your position never moves and the bill still comes</h2>
+<div class="meta">2026-09-03 · BigCat</div>
+<div class="pitch">Making half your offspring sons is like cutting the next generation's breeding capacity in half. Almost every animal and plant does this losing deal anyway — and one likely reason is that the things living inside you are busy cutting keys for whichever lock is commonest in the population.</div>
+</header>
+<div class="intro">
+<p>The flu shot has to be repeated every autumn. It is not that last year's dose wore off — your body's memory of last year's viruses is holding up fine. What changed is the other side: the viruses circulating this year no longer present the same surface that the immune system uses to recognise a face.</p>
+<p>Why did it change? Because too many people knew last year's face. The more people recognise a version, the less easily it gets in; the ones that do get in are the versions nobody recognises yet. The stronger a population's immunity, the newer the faces that get passed on — the harder you try, the more the other side changes masks.</p>
+<p>This shape is much bigger than flu. Follow it and you arrive at something almost everyone takes for granted and that is in fact deeply strange: why there are males at all.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>You got better, but so did your opponent, so nothing moved</h2>
+<p>Someone in the front row of a cinema stands up and sees better. The row behind stands, then the row behind that. Once the whole hall is standing, everyone sees exactly what they saw sitting down, except now they are on their feet for two hours. <strong>Every single move works on its own; together they shift nobody's position, and the cost is paid for real.</strong></p>
+<p>In 1973 the palaeontologist Van Valen lined up how long large numbers of extinct groups had lasted, and found that a group's chance of going extinct next had almost nothing to do with how long it had already been around — surviving ten million years did not make you safer than a newcomer. Common sense says lasting a long time proves the body plan works, and what works should get steadily more secure.</p>
+<p>His account: the part of the environment that matters most is not climate or terrain, it is <em>other living things</em>, and living things answer back. If you run faster, whatever chases you finds it harder to eat, so that side changes too. Improvements do not accumulate into "safer and safer"; they just hold you where you were. He took the name from the Red Queen in <em>Through the Looking-Glass</em>: here, you have to run as fast as you can just to stay in the same place.</p>
+<p>Discount the "law" itself. It was doubted from the day it appeared, mainly because the fossil record is full of holes — when a group actually disappeared and which layer its last fossil sits in are two different things — and later reanalyses at the species level do not agree with each other. <strong>Do not treat "constant extinction probability" as an established fact. What survives is the name and the intuition behind it: fitness is relative, and a relative quantity does not rise just because you got stronger on your own.</strong> Absolute ability can climb all the while — "ability is rising" and "circumstances are improving" are two separate columns, and mixing them up is what makes the idea that evolution equals progress so hard to shake.</p>
+<div class="fig">
+<svg aria-label="Defence and breaching ability both rise while the realised infection rate stays flat" role="img" viewbox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker></defs>
+<line stroke="#24382c" stroke-width="1.2" x1="70" x2="70" y1="26" y2="196"></line>
+<line stroke="#24382c" stroke-width="1.2" x1="70" x2="540" y1="196" y2="196"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="14" y="22">Ability</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="424" y="216">Later in time →</text>
+<path d="M70,168 C190,150 300,104 520,44" fill="none" stroke="#52c98a" stroke-width="2"></path>
+<path d="M70,182 C190,166 300,120 520,60" fill="none" stroke="#d2a24c" stroke-width="2"></path>
+<line stroke="#eaf3ec" stroke-dasharray="5 4" stroke-width="1.8" x1="70" x2="520" y1="132" y2="132"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="372" y="34">How much the host blocks</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="372" y="80">How much the parasite opens</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="12" x="240" y="126">Share actually infected: barely moves</text>
+<path d="M150,110 L150,158" fill="none" marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.2"></path>
+<path d="M150,110 L150,66" fill="none" marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.2"></path>
+</svg>
+<div class="cap">Both ability lines climb, yet the gap between them hardly changes, so the share actually infected comes out flat. <strong>"Nothing is happening" and "both sides are running flat out" look identical in the results column.</strong></div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>A rock will not answer you back; a living opponent will</h2>
+<p>Split "environment" in two and this all becomes clear. A drought does not lower the water table a bit further because some plants grew deeper roots; rock, salinity and temperature never hit back. <strong>But the things that live off you do hit back, because how many offspring they leave depends directly on whether they can handle your current version.</strong></p>
+<p>Handling it is usually not a contest of strength but of matching. A host carries a set of molecular markers that the immune system uses to tell "this is not one of mine"; a parasite that wants to move in has to slip past exactly those markers. Think locks and keys rather than spears and shields — there is no master key, only a key that fits this particular lock.</p>
+<p>Once it is locks and keys, a negative feedback comes built in. Whichever lock is commonest in the population is the one worth cutting keys for, and parasites carrying that key leave the most offspring; once that key is everywhere, hosts fitted with that lock are the worst off, they leave fewer offspring, and the lock's share falls. <strong>The common get caught up with, the rare are safe for a while, and "rare" stops being rare precisely because it was safe.</strong> This is the frequency dependence from the evolutionary games issue, except there two strategies pulled against each other inside one species, and here it runs between two species.</p>
+<p>The hard part is showing it: you need the host and the parasite from several different years at once, and fossils do not give you that. In 2007 Decaestecker and colleagues got around it in a Belgian pond. When conditions worsen, water fleas (the little creatures people feed to aquarium fish) produce hard-shelled dormant eggs that sink into the mud; spores of a bacterial parasite that lives on them settle into the same layer. The mud stacks up year by year into an archive bound in chronological order — and the contents are still alive, so eggs and spores dug out of a layer can both be woken up.</p>
+<p>They paired water fleas from different years against parasites from different years. The result: <em>parasites from a given layer infected water fleas from their own layer most successfully, and did worse against both earlier and later years.</em> The tracking is fast enough to measure across just a few years.</p>
+<div class="fig">
+<svg aria-label="Pond sediment layers and the bar chart from the time-shift experiment" role="img" viewbox="0 0 600 252" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#141c16" height="34" stroke="#24382c" stroke-width="1" width="150" x="30" y="46"></rect>
+<rect fill="#1a241d" height="34" stroke="#52c98a" stroke-width="1.6" width="150" x="30" y="80"></rect>
+<rect fill="#141c16" height="34" stroke="#24382c" stroke-width="1" width="150" x="30" y="114"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="30" y="38">Pond mud, one layer per year</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="188" y="68">Later years</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="188" y="102">Parasites dug from this layer</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="188" y="136">Earlier years</text>
+<line stroke="#24382c" stroke-width="1.2" x1="352" x2="352" y1="40" y2="196"></line>
+<line stroke="#24382c" stroke-width="1.2" x1="352" x2="576" y1="196" y2="196"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="352" y="32">Share successfully infected</text>
+<rect fill="#3d6b52" height="52" width="46" x="376" y="144"></rect>
+<rect fill="#52c98a" height="96" width="46" x="446" y="100"></rect>
+<rect fill="#3d6b52" height="50" width="46" x="516" y="146"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="399" y="214">tested on</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="399" y="228">earlier hosts</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="469" y="214">tested on hosts</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="469" y="228">from same layer</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="539" y="214">tested on</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="539" y="228">later hosts</text>
+</svg>
+<div class="cap">High in the middle, lower on both sides: the parasite is cut to the locks of <strong>its own moment</strong>, not to a master key that keeps getting better. The same study carries a second figure worth chewing on — parasite virulence climbed across the record while the share successfully infected did not.</div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Half the offspring are male, so why has this losing deal not been weeded out</h2>
+<p>Now connect that feedback to the strange thing. Picture a pond: some females reproduce without any male, and their daughters are near copies of themselves; others reproduce with a male, and half the offspring are sons. Every offspring of the first kind goes on to reproduce; only half of the second kind does. So the male-free lineage doubles its share of the pond every generation. Maynard Smith called this the <em>twofold cost of males</em>.</p>
+<p>And yet almost every animal and plant goes on producing sons. This is one of the oldest and least settled questions in evolutionary biology, and several explanations on the table are probably all doing some work at once: harmful mutations can only pile up in a lineage that never recombines, with no way to clear them; when the environment shifts, varied offspring are likelier to include a few that fit; and the one this issue is about — parasites chase whichever combination is common, while every round of sexual reproduction takes both parents' locks apart and reassembles them into rare new combinations.</p>
+<p><strong>Here is the phrasing almost everyone slips into and should not.</strong> You cannot say organisms "evolved sex in order to fight parasites" — sexual reproduction is far older than any of these particular parasitic relationships. All you can say is this: an asexual lineage presents the same lock year after year, which makes it the easiest one to cut a key for, so it loses ground, and that is why the sexual lineage was not squeezed out by a rival doubling its share. It is about which lineage left more descendants, not about anyone thinking of anything.</p>
+<p>A New Zealand freshwater snail happens to carry both modes inside one species: in some waters the populations reproduce with females alone, in others there are both sexes; and a group of flukes that parasitise them leave an infected snail essentially unable to breed. Lively reported in 1987 that across lakes and streams, how many males a population contained matched the local rate of fluke infection, and did not match the type of habitat. In 2009 Jokela, Dybdahl and Lively added a decade of annual sampling from one lake: asexual clones that had once been abundant became heavily infected and then fell in frequency — <strong>the field version of "whoever gets caught up with is whoever was commonest at the time".</strong></p>
+<p>The most direct evidence comes from the lab. In 2011 Morran and colleagues ran an experiment on a nematode worm, most of whose individuals fertilise themselves but which can also occasionally mate with another individual. When the disease-causing bacterium they were raised with was allowed to evolve alongside them, the share of worms mating with others rose and held; when the bacterium was replaced each generation from the same fixed stock and not allowed to evolve, that share fell; and strains engineered so they could only self-fertilise were wiped out within tens of generations by the coevolving bacterium. The only difference was whether the other side got to change too.</p>
+<p>State the strength plainly: the snail work is a field correlation, not a randomised comparison, and the worm work is a clean experiment on exactly one species paired with one bacterium. The Red Queen is among the most directly supported explanations available, <em>not</em> the final answer to why sex exists.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BigCat</h3>
+<ul>
+<li><b>① Health and energy</b> — every autumn, deciding again whether to get the flu shot, the sentence in your head is usually "I had one last year, do I need another?" That treats a vaccine as a thing with fixed potency. By the mechanism in "a rock will not answer you back; a living opponent will", its effectiveness is not a property of the vaccine at all; it is a function of what this year's circulating viruses look like — and those are precisely the new faces that last year's population immunity selected for. <b>What to change</b>: swap the question for "which strains is this year's shot built against, and did they change from last year?" That question has a different answer every year. The first one does not.</li>
+<li><b>② Leading teams and organisations</b> — the annual performance calibration meeting: the group really is better than last year, incident hours halved, delivery cycle a third shorter, and yet ratings get forced into fixed proportions and the distribution comes out identical to last year's. This is the shape from "you got better, but so did your opponent, so nothing moved": <b>a quantity scored by relative rank structurally cannot hold overall improvement</b>. <b>What to change</b>: put the absolute numbers compared against your own last year (actual incident hours, actual delivery cycle) in their own column, and look only at that column when arguing "is this process worth it" or "should we hire".</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · Links to other fields</h3>
+<ul>
+<li><b>History and the military · nobody came out ahead in the dreadnought race</b>: in 1906 Britain launched a battleship called Dreadnought whose firepower and speed made every capital ship afloat look obsolete overnight — including Britain's own. Germany built in reply, Britain raised again, and for a decade both treasuries went into hulls; by the time war came, the two navies stood in roughly the same relation to each other as before the race began. The mechanism is the one from "you got better, but so did your opponent, so nothing moved": what counts is the relative quantity, absolute gains get eaten by the other side's matching gains, and the cost is absolute and payable on the spot. That yields a conclusion you would not otherwise see: <b>a race like this cannot be stopped by either party being reasonable, and has nothing to do with who is more warlike — as long as the loss from falling a step behind exceeds the gain from being a step ahead, stopping unilaterally is the worst available option, even when both sides can see the whole thing is net negative.</b> So what stops it is not somebody working it out, but an external constraint each side watches the other keep: the 1922 Washington Naval Treaty capped capital-ship tonnage for the major naval powers in fixed proportions, and that round of the race stopped for a decade. <b>Where it breaks down</b>: there is no biological counterpart to sitting down and signing. Variation appears one individual at a time, and any single rabbit that runs faster still leaves more offspring, so foxes and rabbits have neither a unit that could negotiate nor any way to enforce "everyone slow down".</li>
+<li><b>Engineering and systems design · a rule works best the day it ships and declines from there</b>: spam filters, payment fraud rules, bot blocking — all the same rhythm. A new rule goes live, catches almost everything for a few days, and weeks later the catch rate has fallen back and needs another version. The mechanism is the one from "a rock will not answer you back; a living opponent will": the other side adjusts to your specific move, so a rule's effectiveness is not a property of the rule, it is a quantity relative to how much the other side has worked out. That yields a conclusion you would not otherwise see: <b>the more organisations adopt the same defence, the faster it decays</b> — the payoff for working it out scales with how many targets that one move opens, so ubiquity is itself a multiplier on the decay rate. This is the same accounting as "the commonest lock is the first to get a key cut for it", which means an industry converging on one agreed best practice is not, in security, converging on the optimum; it is turning the whole industry into a single genotype. <b>Where it breaks down</b>: hosts cannot compare notes, so their resistance combinations can only be reshuffled by recombination over generations, whereas defenders share intelligence — one organisation gets breached and the rest have the signature within hours. That channel lets the human side be uniform without collapsing, at the cost of the sharing itself becoming a new way in.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>Are "arms race" and "Red Queen" the same thing?</summary>
+<div>They have different shapes. Cheetahs and antelopes racing on speed is one-directional escalation: generation after generation heading in the single direction of "faster", and the ground covered is not given back. The lock-and-key kind usually goes round in circles: this lock does well for a few years, then keys catch up and another lock takes over, and years later the old one comes back around because nobody has a key for it any more. What keeps sexual reproduction going is mainly the circling kind — what you need is "different from whatever is common right now", not "stronger than the last generation".</div>
+</details>
+<details><summary>Do organisms that never reproduce sexually always fail sooner or later?</summary>
+<div>That is putting it too strongly. Bdelloid rotifers are the famous counterexample: microscopic freshwater animals nobody has ever observed reproducing sexually, which have nonetheless diversified into hundreds of species. They have other routes — they can be dried out completely and revive, a process that leaves broken DNA to be stitched back together, and their genomes contain large stretches that look imported wholesale from other organisms. Traces that may indicate genetic exchange have since been found in them too, and that remains disputed. The safe formulation: the bill for not recombining is real, and there is more than one way to pay it.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Red_Queen_hypothesis" rel="noopener" target="_blank">Red Queen hypothesis</a> · <a href="https://en.wikipedia.org/wiki/Evolution_of_sexual_reproduction" rel="noopener" target="_blank">Evolution of sexual reproduction and the twofold cost of males</a> · <a href="https://en.wikipedia.org/wiki/Bdelloidea" rel="noopener" target="_blank">Bdelloid rotifers</a></li>
+<li><a href="https://link.springer.com/article/10.1007/s13752-021-00391-w" rel="noopener" target="_blank">Revisiting Van Valen's "A New Evolutionary Law" (1973): what it claimed and how it was challenged</a></li>
+<li><a href="https://www.nature.com/articles/nature06291" rel="noopener" target="_blank">Decaestecker et al., host–parasite coevolution archived in pond sediment (2007, Nature)</a></li>
+<li><a href="https://www.nature.com/articles/328519a0" rel="noopener" target="_blank">Lively, a New Zealand snail on parasitism and the maintenance of sex (1987, Nature)</a> · <a href="https://www.journals.uchicago.edu/doi/abs/10.1086/599080" rel="noopener" target="_blank">Jokela, Dybdahl &amp; Lively, a decade of clonal rise and fall in one lake (2009, American Naturalist)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1206360" rel="noopener" target="_blank">Morran et al., running with the Red Queen: coevolving pathogens select for outcrossing (2011, Science)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

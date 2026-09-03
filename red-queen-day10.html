@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 10：红皇后</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 10 · PHASE A 核心逻辑</div>
+<h1>红皇后</h1>
+<h2>你身上每一点改进都在被对手的改进抵消，于是位置没动，代价照付</h2>
+<div class="meta">2026-09-03 · BigCat</div>
+<div class="pitch">生一半儿子，等于把下一代的生育能力砍掉一半。这么亏的做法，却是绝大多数动植物在用的做法——一个可能的原因是：那些钻进你身体里过日子的东西，正追着人群里最常见的那把锁配钥匙。</div>
+</header>
+<div class="intro">
+<p>流感疫苗每年秋天要重打一次。不是上一针失效了——你身体里对去年那批病毒的记忆留得挺牢。变的是对面：今年在人群里流行的病毒，表面那层被免疫系统认脸用的东西，已经不是去年的样子。</p>
+<p>为什么偏偏变了？因为去年那个样子太多人认得。认得的人越多，那个版本越钻不进去；钻得进去的，是刚好没人认得的新版本。人群的免疫力越强，留下来接着传的病毒就越是新面孔——你越努力，对面就越换脸。</p>
+<p>这个形状比流感本身大得多。顺着它能推到一件几乎人人觉得天经地义、其实极其反常的事：为什么会有雄性。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>你变好了，可对手也变好了，于是位置没动</h2>
+<p>电影院里前排有人站起来，看得更清楚了。后面的跟着站，再后面的也站。等全场都站着，每个人看到的跟坐着时一模一样，只是都得站两个小时。<strong>每个动作单独看都有效，合起来一点位置没挪，代价却实打实付掉了。</strong></p>
+<p>1973 年，古生物学家 Van Valen 把大量已灭绝类群的存续时长排在一起，发现一个类群接下来灭绝的概率，跟它已经存在了多久基本没关系——熬过一千万年的，并不比刚出现的更安全。按常识，活得久说明这套身体设计好使，好使的东西该越来越稳才对。</p>
+<p>他的解释是：环境里最要紧的部分不是气候地形，是<em>别的活物</em>，而活物会回应。你跑得更快，追你的那一方就更难吃饱，于是那一方也在变。改进不累积成「越来越安全」，只是把你按在原来的位置上。他借《爱丽丝镜中奇遇记》里红皇后那句话起了名：在这里，你必须拼命跑，才能留在原地。</p>
+<p>这条「定律」本身要打个折：它从提出那天起就被质疑，主要是化石记录千疮百孔——一个类群什么时候真的消失，跟它最后一块化石埋在哪一层是两回事；后来在物种层面重做的分析结论也不一致。<strong>别把「灭绝概率恒定」当成已确立的事实。留下来的是那个名字和背后的直觉：适合度是相对的，而相对量不会因为你单方面变强就上涨。</strong>绝对能力照样可以一路涨——「能力在涨」和「处境在变好」是分开的两栏，把它们混起来，就是「演化 = 进步」这个念头最难缠的地方。</p>
+<div class="fig">
+<svg aria-label="防御能力和攻破能力同步上升，实际感染率保持水平" role="img" viewbox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker></defs>
+<line stroke="#24382c" stroke-width="1.2" x1="70" x2="70" y1="26" y2="196"></line>
+<line stroke="#24382c" stroke-width="1.2" x1="70" x2="540" y1="196" y2="196"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="16" y="22">能力高低</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="424" y="216">时间往后 →</text>
+<path d="M70,168 C190,150 300,104 520,44" fill="none" stroke="#52c98a" stroke-width="2"></path>
+<path d="M70,182 C190,166 300,120 520,60" fill="none" stroke="#d2a24c" stroke-width="2"></path>
+<line stroke="#eaf3ec" stroke-dasharray="5 4" stroke-width="1.8" x1="70" x2="520" y1="132" y2="132"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="12" x="404" y="34">宿主挡得住多少</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="12" x="404" y="80">寄生方攻得开多少</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="12" x="288" y="126">真被感染的比例：没怎么动</text>
+<path d="M150,110 L150,158" fill="none" marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.2"></path>
+<path d="M150,110 L150,66" fill="none" marker-end="url(#a1)" stroke="#8aa192" stroke-width="1.2"></path>
+</svg>
+<div class="cap">两条能力线一直往上走，它们之间的距离却几乎没变，于是真被感染的比例是平的。<strong>「什么都没发生」和「双方都在全速跑」，在结果这一栏里长得一样。</strong></div>
+</div>
+<p class="en-brief"><b>EN</b> When everyone in a cinema stands for a better view, nobody sees more and everyone pays the cost of standing. Van Valen (1973) found in the fossil record that a taxon's probability of going extinct looked roughly independent of how long it had already survived. His account: the part of the environment that matters most is other living things, which respond to your improvements, so gains do not accumulate into safety — they hold your position. He named it after the Red Queen, who must run to stay in the same place. Discount the "law" itself: it was contested from the start on methodological grounds, the fossil record is patchy, and later species-level reanalyses disagree. What survives is the underlying point — fitness is relative, and a relative quantity does not rise just because you improved.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>石头不会回应你，活的对手会</h2>
+<p>把「环境」拆成两半，这套东西就清楚了。旱季不会因为一批植物长出了更深的根，就把地下水位再降一点；岩石、盐度、气温都不还手。<strong>可寄生你的东西会还手，因为它下一代的多少，直接取决于它能不能对付你现在这一版。</strong></p>
+<p>怎么对付，一般不是比谁力气大，是比对得上对不上。宿主体内有一批分子标记，免疫系统靠它认「这不是我身上的」；寄生方要住进来，得刚好躲过这批标记。更像锁和钥匙，不像矛和盾——没有万能钥匙，只有配得上这把锁的。</p>
+<p>一旦是锁和钥匙，就自动带上一条负反馈：群体里哪一款锁最常见，配那款锁的钥匙就最吃香，带这种钥匙的寄生方留下最多后代；等它铺开，装那款锁的宿主成了最惨的一批，后代变少，这款锁的比例往下掉。<strong>常见的被追上，罕见的暂时安全，而「罕见」会因为安全而不再罕见。</strong>演化博弈那期讲的频率依赖就是这个东西，只不过那里是同一物种内部两种打法拉扯，这里换成了两个物种。</p>
+<p>难在怎么证：你得同时拿到宿主和寄生方好几个年份的样子，化石里没这种东西。2007 年 Decaestecker 和同事在比利时一个池塘里绕开了它。水蚤（鱼缸里常喂的那种小虫）环境变差时会产下带硬壳的休眠卵沉进塘底泥，它身上一种细菌性寄生方的孢子也沉在同一层。泥一年年往上叠，成了一本按年份装订、里面东西还活着的档案——挖出某一层，卵和孢子都能孵醒。</p>
+<p>他们把不同年份的水蚤和不同年份的寄生方两两配对。结果是：<em>每一层的寄生方，对同一层的水蚤感染成功率最高，对更早和更晚年份的都低一些。</em>而这个追踪快到几年之内就量得出来。</p>
+<div class="fig">
+<svg aria-label="池塘沉积层示意与时间错位实验结果柱状图" role="img" viewbox="0 0 600 252" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#141c16" height="34" stroke="#24382c" stroke-width="1" width="150" x="30" y="46"></rect>
+<rect fill="#1a241d" height="34" stroke="#52c98a" stroke-width="1.6" width="150" x="30" y="80"></rect>
+<rect fill="#141c16" height="34" stroke="#24382c" stroke-width="1" width="150" x="30" y="114"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="30" y="38">塘底的泥，一年叠一层</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="188" y="68">更晚的年份</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="188" y="102">挖出这一层的寄生方</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="188" y="136">更早的年份</text>
+<line stroke="#24382c" stroke-width="1.2" x1="352" x2="352" y1="40" y2="196"></line>
+<line stroke="#24382c" stroke-width="1.2" x1="352" x2="576" y1="196" y2="196"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="352" y="32">感染成功的比例</text>
+<rect fill="#3d6b52" height="52" width="46" x="376" y="144"></rect>
+<rect fill="#52c98a" height="96" width="46" x="446" y="100"></rect>
+<rect fill="#3d6b52" height="50" width="46" x="516" y="146"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="399" y="214">拿更早的</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="399" y="228">水蚤去试</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="469" y="214">拿同一层的</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="469" y="228">水蚤去试</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="539" y="214">拿更晚的</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="539" y="228">水蚤去试</text>
+</svg>
+<div class="cap">柱子中间高两边低：寄生方配的是<strong>当时</strong>那批锁，不是一把越磨越好的万能钥匙。同一项研究里还有一笔更耐琢磨的账——寄生方的致病力一路在涨，实际感染成功的比例却没跟着涨。</div>
+</div>
+<p class="en-brief"><b>EN</b> Split "environment" in two. Drought and rock do not respond to your adaptations; a parasite does, because its own reproduction depends on handling your current version. The interaction usually works like locks and keys rather than spears and shields: hosts carry molecular markers, and a parasite gets in by matching them, so there is no master key. That builds in negative feedback — whichever host genotype is common is the most profitable target, keys for it spread, that genotype suffers and declines, and rare genotypes are temporarily safe. It is frequency dependence again, now running between two species. Decaestecker et al. (2007, Nature) tested it in a Belgian pond, where dormant Daphnia eggs and spores of a bacterial parasite settle into datable sediment layers and can be revived. Parasites from a layer infected hosts from their own layer best, and hosts from earlier and later years less well, tracking fast enough to measure across a few years. Parasite virulence rose over the record while realised infection rates did not.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>一半的后代是雄的，这么亏的做法为什么没被淘汰</h2>
+<p>把这条负反馈接到那个反常现象上。设想一个池塘：有的雌性不需要雄性就能生，女儿跟自己基本一个模子；另一些一雌一雄地生，后代一半是儿子。前者每个后代都能接着生，后者只有一半能生，所以不需要雄性的那一支每过一代份额就翻一倍。Maynard Smith 把这笔账叫<em>雄性的两倍代价</em>。</p>
+<p>可绝大多数动物和植物照样在生儿子。这是演化生物学里最老也最没定论的问题之一，桌上的解释有好几个、很可能同时在起作用：有害突变在不重组的谱系里只能越积越多、清不掉；环境变化时多样的后代更可能有几个撞对；还有本期这一条——寄生方追着常见的组合打，而每一次有性繁殖都把父母双方的锁拆开重装，造出罕见的新组合。</p>
+<p><strong>这里要防一个人人都会顺手说错的说法。</strong>不能说生物「为了对抗寄生虫而演化出了性」——有性繁殖比这些具体的寄生关系古老得多。能说的只有：无性那一支的后代年年是同一把锁，最容易被配上，于是吃亏，有性的那一支才没被份额翻倍的对手挤掉。是「哪一支活下来的多」，不是「谁想到了什么」。</p>
+<p>新西兰有一种淡水小螺把两种繁殖方式装在了同一个物种里：有的水域的族群靠雌性单独生，有的有雌有雄；身上寄生的一类吸虫一旦感染，基本别想再生育。1987 年 Lively 报告，跨湖泊和溪流比下来，族群里雄性占多少跟当地吸虫感染率对得上，跟栖息地类型反而对不上。2009 年 Jokela、Dybdahl 和 Lively 又给了同一个湖十年的逐年取样：一度数量很多的无性克隆，感染率随后升上去，比例接着掉了下来——<strong>这正是「被追上的总是当时最常见的那一款」在野外的样子。</strong></p>
+<p>最直接的证据来自实验室。2011 年 Morran 和同事拿一种线虫做实验：它多数个体能自体受精，也可以偶尔跟别的个体交配。一起养的致病细菌被允许跟着演化时，线虫群体里异交的比例升上去并稳住；换成每代都用同一批、不许演化的细菌，异交比例掉了下来；被改造成只能自体受精的品系，在会跟着演化的细菌面前几十代内全灭。差别只在于对面会不会跟着变。</p>
+<p>强度说清楚：螺那边是野外的相关，不是随机分组的对照；线虫那边是干净的实验，却只有一个物种配一种细菌。红皇后是目前实验支持最直接的解释之一，<em>不是</em>「性为什么存在」的最终答案。</p>
+<p class="en-brief"><b>EN</b> An asexual female makes only daughters, all of whom reproduce; a sexual one makes half sons, so all else equal the asexual lineage doubles its share each generation — Maynard Smith's twofold cost of males. Yet almost all animals and plants make sons, and why is one of the field's oldest open problems, with several explanations probably operating together: deleterious mutations accumulate irreversibly without recombination; varied offspring hedge against environmental change; and parasites track whatever host genotype is common, while sex reshuffles parental markers into rare new combinations each generation. Note what this does not say: sex did not arise in order to fight parasites, and long predates these relationships. The claim is only that an asexual lineage presents the same lock year after year and pays for it. Lively (1987, Nature) found male frequency in a New Zealand snail tracked local trematode infection rather than habitat type; Jokela, Dybdahl and Lively (2009) followed one lake for a decade and saw common clones become heavily infected and then decline; Morran et al. (2011, Science) found nematodes maintained outcrossing against a coevolving bacterium, lost it against a non-evolving one, and went extinct when forced to self-fertilise. The field work is correlational and the experiment is one species pair; the Red Queen is among the best-supported explanations, not a settled answer.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 健康与精力</b>——每年秋天重新决定要不要打流感疫苗时，脑子里那句话多半是「我去年打过了，今年还用打吗」。它把疫苗当成了有固定效力的东西；按「石头不会回应你，活的对手会」那节的机制，有效性不是疫苗自己的属性，是「今年在流行的病毒长什么样」的函数，而那批正是被去年的人群免疫力筛出来的新面孔。<b>可改的动作</b>：把要问的换成「今年这一针针对哪几株、跟去年换了没有」——这个问题每年答案都不同，前一句不是。</li>
+<li><b>② 带团队与组织</b>——每年那场绩效校准会：整个组今年确实比去年强了，故障时长砍掉一半、交付周期短了三分之一，可评级按固定比例往下卡，分布跟去年一模一样。这是「你变好了，可对手也变好了，于是位置没动」那节的形状：<b>按相对位次记分的量，结构上就装不下整体的进步</b>。<b>可改的动作</b>：把跟去年的自己比的绝对数（故障时长、交付周期的实际值）单列一栏，讨论「这套流程值不值」「要不要加人」时只看那一栏。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>历史与军事 · 无畏舰竞赛里谁都没占到便宜</b>：1906 年英国下水了一艘叫无畏号的主力舰，让全世界现役的主力舰一夜之间显得过时——包括英国自己那些。德国跟着造，英国再加码，十来年里两国把国库大把砸进船壳；等到开战，双方的相对强弱跟竞赛开始前差不多。跑的是「你变好了，可对手也变好了，于是位置没动」那节的机制：有用的是相对量，绝对量的提升被对方同步的提升吃掉，代价却是绝对的、当场就要付。由此能推出一个原本看不出的结论：<b>这类竞赛停不下来跟双方理不理性无关，也跟谁更好战无关——只要「落后一步」的损失大于「领先一步」的收益，单方面停手就是所有选项里最差的一个，哪怕双方都清楚整件事在净亏。</b>所以停下来靠的不是谁想通了，是一个双方都盯着对方遵守的外部约束：1922 年华盛顿海军条约给几个海军大国的主力舰吨位按比例封了顶，那一轮竞赛就停了十来年。<b>但这里不成立</b>：能坐下来签字这件事，生物那边没有对应物——变异是一个个体一个个体冒出来的，任何一只跑得更快的兔子照样留下更多后代，狐狸和兔子既没有可以谈判的单位，「全体减速」也没有执行机制。</li>
+<li><b>工程与系统设计 · 规则上线那天最灵，之后一路掉</b>：垃圾邮件过滤、支付风控、反爬虫都是同一个节奏——一条新规则上线，头几天拦得很干净，几周后拦截率掉回去，得再改一版。跑的是「石头不会回应你，活的对手会」那节的机制：对面会针对你的具体做法调整，所以一条规则的有效性不是它自己的属性，是它相对于「对方摸清了多少」的一个量。由此能推出一个原本看不出的结论：<b>同一套防御被越多家采用，掉得越快</b>——摸清它的回报随着「能用这一招打开的目标数」上升，普及度本身就是衰减速度的乘数。这跟「最常见的那款锁最先被配上钥匙」是同一笔账，所以全行业统一到一个公认最佳方案上，在安全这件事上不是收敛到最优，是把整个行业变成同一个基因型。<b>但这里不成立</b>：生物那边的宿主没法互相通气，抗性组合只能靠一代代重组慢慢洗牌；防御方却可以共享情报，一家被打穿，别家几小时内就更新了自己。这让人类这边能既统一又不塌，代价是共享本身成了新的入口。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>「军备竞赛」和「红皇后」是一回事吗？</summary>
+<div>形状不一样。猎豹和羚羊比速度那种是单向升级：一代代往「更快」一个方向走，走过的路不退回来。配锁配钥匙那种常常是转圈：这几年这款锁吃香，等钥匙铺开就换另一款，过些年老的那款因为没人配得上又转回来。维持有性繁殖靠的主要是转圈那种——要的是「跟眼下常见的不一样」，不是「比上一代更强」。</div>
+</details>
+<details><summary>那些一直不搞有性繁殖的生物，是不是都撑不久？</summary>
+<div>话不能说这么满。蛭形轮虫是最有名的反例：一类显微镜下才看得见的淡水小动物，从来没人观察到它们有性繁殖，却分化出了几百个种。它们有别的门道——能被彻底晒干再复活，这个过程里断掉的 DNA 要重新接上；基因组里还有大量像是从别的生物整段搬进来的东西。后来也有人找到疑似基因交换的痕迹，仍在争论中。稳妥的说法是：不重组要付的账是真的，付账方式不止一种。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Red_Queen_hypothesis" rel="noopener" target="_blank">红皇后假说</a>（英文） · <a href="https://en.wikipedia.org/wiki/Evolution_of_sexual_reproduction" rel="noopener" target="_blank">有性繁殖的演化与雄性的两倍代价</a>（英文） · <a href="https://en.wikipedia.org/wiki/Bdelloidea" rel="noopener" target="_blank">蛭形轮虫</a>（英文）</li>
+<li><a href="https://link.springer.com/article/10.1007/s13752-021-00391-w" rel="noopener" target="_blank">重读 Van Valen 1973《一条新的演化定律》：它说了什么、后来被怎么质疑</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/nature06291" rel="noopener" target="_blank">Decaestecker 等，塘底沉积层里存档的宿主-寄生方共演化（2007，Nature）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/328519a0" rel="noopener" target="_blank">Lively，新西兰淡水螺：寄生与有性繁殖的维持（1987，Nature）</a>（英文） · <a href="https://www.journals.uchicago.edu/doi/abs/10.1086/599080" rel="noopener" target="_blank">Jokela、Dybdahl &amp; Lively，一个湖十年的克隆兴衰（2009，American Naturalist）</a>（英文）</li>
+<li><a href="https://www.science.org/doi/10.1126/science.1206360" rel="noopener" target="_blank">Morran 等，跟红皇后赛跑：共演化的病原体选择了异交（2011，Science）</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
