@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 11: The Origin of Life</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 11 · PHASE B HISTORY OF LIFE</div>
+<h1>The Origin of Life</h1>
+<h2>From a pot of chemistry to something that copies itself — and that step left no direct record at all</h2>
+<div class="meta">2026-09-04 · BigCat</div>
+<div class="pitch">Reading the instructions takes workers; building the workers takes the instructions. Every living cell is stuck inside that loop. The only way it can be turning is that the earliest version looked nothing like this — and by the loop's own logic, that version has necessarily been erased.</div>
+</header>
+<div class="intro">
+<p>Put sugar, salt, water and a few gases in a pot, heat it, run current through it, keep at it as long as you like: it will not come alive. Yet on Earth 4-odd billion years ago that is essentially what happened. A pile of completely lifeless chemicals, somewhere, turned into something that copies itself.</p>
+<p>The hard part is not "simple becomes complex". It is the deadlock inside every living cell today: the instructions sit in DNA, but reading them and making a copy takes a set of molecular machines called proteins — and how to build those machines is written only in the instructions. Each side presupposes the other. Put either one in the pot alone and nothing turns.</p>
+<p>So the real question is not which end to start from, but where the loop was first cut open. And the uncomfortable part: whatever cut it should, by that same logic, be long gone.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Let one molecule be both the instructions and the worker, and the loop breaks</h2>
+<p>In the 1960s several people hit on the same way out almost at once: if some molecule could both record information in the order of its parts and fold into a shape that does work, the loop need not be a loop — it could hold itself up.</p>
+<p>RNA is exactly that kind of molecule. It is a close relative of DNA, likewise a chain of small parts whose order is itself information; but it is usually single-stranded rather than wound taut around a partner, so it can fold up, and the folded shape can grip other molecules and speed some reaction up enormously. <strong>Storing information and doing work do not conflict in it.</strong></p>
+<p>That stayed a guess until someone caught an RNA actually doing work: in 1982 Cech found a stretch of RNA that cuts a segment out of itself and joins the ends back together with no protein involved, and he and Altman took the 1989 Nobel Prize in Chemistry for it. Such catalytic RNAs later got a name: ribozymes. Evidence closer to a fossil arrived in 2000. The ribosome is the machine that builds proteins in every living cell — bacteria, mushrooms and you all use it, which says it is extremely old — and when its structure was solved that year, people could see that the spot where two amino acids are actually joined is ringed entirely by RNA. <em>The core operation of the whole protein production line is done by RNA.</em> The name Gilbert gave this picture in 1986 has stuck: the RNA world.</p>
+<div class="fig">
+<svg aria-label="The circular dependency between instructions and workers, and one molecule playing both roles to cut the loop" role="img" viewbox="0 0 600 234" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="b1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker><marker id="b2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<rect fill="#141c16" height="42" rx="7" stroke="#d2a24c" stroke-width="1.5" width="140" x="20" y="42"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="90" y="68">Instructions (DNA)</text>
+<rect fill="#141c16" height="42" rx="7" stroke="#d2a24c" stroke-width="1.5" width="140" x="20" y="150"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="90" y="176">Workers (proteins)</text>
+<path d="M160,63 C216,63 216,150 166,163" fill="none" marker-end="url(#b1)" stroke="#8aa192" stroke-width="1.3"></path>
+<path d="M20,171 C-8,150 -8,80 14,66" fill="none" marker-end="url(#b1)" stroke="#8aa192" stroke-width="1.3"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="172" y="106">their blueprint</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="172" y="122">is in here</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="90" y="212">reading and copying it takes workers</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="90" y="26">each side needs the other first</text>
+<line stroke="#24382c" stroke-dasharray="4 5" stroke-width="1.2" x1="300" x2="300" y1="20" y2="214"></line>
+<rect fill="#141c16" height="52" rx="7" stroke="#52c98a" stroke-width="1.8" width="182" x="368" y="88"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="459" y="110">one molecule,</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="459" y="130">both roles (RNA)</text>
+<path d="M368,102 C332,92 332,136 364,128" fill="none" marker-end="url(#b2)" stroke="#52c98a" stroke-width="1.3"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="459" y="62">its order stores information</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="459" y="170">its folded shape does work</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="459" y="26">nothing has to come first</text>
+</svg>
+<div class="cap">The loop on the left has no entrance. The whole content of the way out on the right is this: <strong>press both roles back into one molecule and circular dependency becomes self-maintenance.</strong></div>
+</div>
+<p>This line is nowhere near finished, and two holes are wide open. First, the parts: how do RNA's small components accumulate in an environment with no life in it? In 2009 Sutherland's group published a route that goes around the textbook way of taking the problem apart and made two of them — which proves it <em>can</em> be done, not that this is how it happened on Earth. Second, replication: nobody has yet made a ribozyme that copies itself in full. The best result amplifies short templates more than ten-thousandfold, but stalls the moment it meets a complex folded structure — and it is itself exactly such a structure.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>The other camp says what turned over first was not copying but an engine with no instruction manual</h2>
+<p>The objection is blunt: RNA is far too intricate for step one — a long chain that stores information needs ready energy and parts concentrated enough to react, and in a dilute broth everything diffuses away. <strong>So the other camp holds that what turned over first was a set of chemical reactions feeding each other.</strong> The product of A is exactly the feedstock of B, and B's product feeds back into A; as long as supply keeps coming from outside, the contents of the cycle keep building up. It needs no instructions. The chemistry closes on itself.</p>
+<p>Where, then? The black smokers found in the deep sea in 1977 run at hundreds of degrees and are acidic — spectacular, but too fierce. What is genuinely useful to this camp is the Lost City field found on the Mid-Atlantic Ridge in 2000: far cooler, alkaline fluid, mineral towers like frozen foam, riddled inside with pores tens of micrometres across.</p>
+<p>Why that shape matters takes a detour through the present. Every living cell on Earth makes energy the same way: it pumps protons (what is left of a hydrogen atom after it loses its electron) to one side of a membrane, then lets them leak back through a narrow channel, and the leak drives a molecular turbine that turns out the currency the cell spends directly. (Mitchell proposed this in 1961; it later won a Nobel Prize in Chemistry.) And the wall of one of those pores has that same difference across it for free: alkaline fluid inside the pore, few protons; the acidic early ocean outside, many. <em>Across one thin wall sits a proton gradient that costs nothing and does not stop for tens of thousands of years.</em> Russell and Martin argue from this that cells did not invent that way of making energy — they borrowed it first, and only later learned to build a membrane of their own and carry it around.</p>
+<div class="fig">
+<svg aria-label="Cross-section of an alkaline vent pore wall with different proton concentrations on each side" role="img" viewbox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="c1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker></defs>
+<rect fill="#0f1712" height="150" width="230" x="40" y="40"></rect>
+<rect fill="#141c16" height="150" width="60" x="270" y="40"></rect>
+<rect fill="#101a14" height="150" width="230" x="330" y="40"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="155" y="30">inside the pore: alkaline vent fluid</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="445" y="30">outside: the acidic early ocean</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="30">wall</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="300" y="206">thin</text>
+<circle cx="90" cy="80" fill="#52c98a" r="3.4"></circle>
+<circle cx="180" cy="150" fill="#52c98a" r="3.4"></circle>
+<circle cx="130" cy="170" fill="#52c98a" r="3.4"></circle>
+<circle cx="230" cy="70" fill="#52c98a" r="3.4"></circle>
+<circle cx="360" cy="60" fill="#52c98a" r="3.4"></circle>
+<circle cx="392" cy="88" fill="#52c98a" r="3.4"></circle>
+<circle cx="424" cy="62" fill="#52c98a" r="3.4"></circle>
+<circle cx="456" cy="94" fill="#52c98a" r="3.4"></circle>
+<circle cx="488" cy="66" fill="#52c98a" r="3.4"></circle>
+<circle cx="520" cy="98" fill="#52c98a" r="3.4"></circle>
+<circle cx="376" cy="130" fill="#52c98a" r="3.4"></circle>
+<circle cx="410" cy="160" fill="#52c98a" r="3.4"></circle>
+<circle cx="444" cy="132" fill="#52c98a" r="3.4"></circle>
+<circle cx="478" cy="164" fill="#52c98a" r="3.4"></circle>
+<circle cx="512" cy="136" fill="#52c98a" r="3.4"></circle>
+<circle cx="542" cy="70" fill="#52c98a" r="3.4"></circle>
+<path d="M348,112 L262,112" fill="none" marker-end="url(#c1)" stroke="#7be0ab" stroke-width="1.8"></path>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="305" y="104">they leak this way</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" x="42" y="212">Green dots are protons. The difference between the two sides is energy you can draw on.</text>
+</svg>
+<div class="cap">Today every cell in your body builds its own membrane, pumps protons to one side and lets them leak back to generate power. <strong>The rock does no pumping — geology maintains the same difference for free.</strong></div>
+</div>
+<p>Metabolism-first has its own hardest obstacle elsewhere: <em>without heritable variation there is no selection.</em> However well a chemical cycle sustains itself, the fact that it happens to run a little better cannot be passed to the "next" cycle — of the three conditions set out in the issue on the logic of natural selection, it is missing the most crucial one. So the two camps are less opposed than they once were: the argument is about where the handover happens, not about who is entirely right. And a third line is filling in another piece — molecules like fatty acids wrap themselves into small bubbles in water, and <strong>once you enclose things, dilution stops being fatal.</strong></p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Showing it can be done is not showing it is what happened</h2>
+<p>In 1953 the graduate student Miller built a glass apparatus in his supervisor Urey's laboratory: water boiling below, a few simple gases above, two electrodes sparking across the gap to stand in for lightning. A week later he drew off the water and analysed it — there were amino acids in it, the parts proteins are made of. It was the first time anyone had made "the material of life" from scratch in a flask.</p>
+<p>But that classic experiment has to be read in reverse today: the atmosphere Miller assumed is now thought to be wrong, since early Earth's air is now mostly reckoned to have been carbon dioxide and nitrogen, under which the same apparatus yields far less. Then again, when Bada's group re-analysed samples Miller had sealed away and never published, the volcanic-plume version of the apparatus turned out to have given the richer set of products — an unsuitable atmosphere overall does not mean an unsuitable patch next to a volcano. The parts are genuinely not rare either: the Murchison meteorite that fell in Australia in 1969 was found to contain dozens of amino acids.</p>
+<p><strong>But the parts were never the hard part of this problem.</strong> What such experiments establish is that a route works, not that it is the route that was taken. And the gap cannot be closed, for two independent reasons. First, chemistry leaves no fossils — the earliest things had no bones, no shells, no shape at all; they do not press a print into rock the way a trilobite does. Second, and worse: in a system that holds itself up, the earliest version has no reason to persist once it has produced something better. <em>Its erasure is not an accident. It is the normal outcome.</em></p>
+<p>The time window keeps tightening. Earth is about 4.54 billion years old; the least contested traces of life are stromatolites in Western Australia from around 3.48 billion years ago — rock texture laid down layer by layer by microbial mats — and even those have been argued to be the work of non-biological processes. Meanwhile a molecular-clock estimate published in 2024 puts the common ancestor of all living things at roughly 4.2 billion years ago, and gives it a genome comparable to a modern bacterium's. That date will go on being tested, <strong>but if it holds, the time left for "chemistry to cell" is frighteningly narrow.</strong></p>
+<p>One last tempting question also has to be left hanging. All known life shares one genetic code, and uses only the left-handed version of its amino acids (the same molecule can come in two mirror-image versions, like left and right hands, and life uses only one of them). This reads equally well as "it only ever succeeded once" and as "it succeeded many times and only one lineage survived", and <em>the two readings cannot currently be told apart.</em> The most honest summary: we have several routes that each make sense, and not one of them yet runs from chemistry all the way to a cell.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenes · BigCat</h3>
+<ul>
+<li><b>① Investing and position sizing</b>—when you write up a trade after closing it, you can almost always produce a coherent explanation: "it was that earnings report", "rate expectations shifted". By the mechanism in "showing it can be done is not showing it is what happened", being able to construct a causal path that works and that path having actually run at the time are two different things. <b>What to change</b>: don't leave a single cause in the conclusion field. List which paths could all produce this outcome, then add one line on what observation would separate them; if you can't produce one, record it as "no conclusion".</li>
+<li><b>② Leading a team</b>—that cross-department improvement initiative: a weekly meeting, everyone squeezing time out of their own workload, every point raised is correct, and six months later nothing is left. By the mechanism in "the other camp says what turned over first was not copying but an engine with no instruction manual", what stops the reaction is often not a shortage of feedstock but the absence of a wall to hold the product in — output disperses back into each person's own pool and never accumulates. <b>What to change</b>: replace "who attends" with "which fixed place the output lands in"; if that place has not changed for two weeks running, stop the meeting rather than adding people.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>Engineering and systems design · the first compiler cannot have been written by a compiler</b>: a compiler is the program that translates code people write into instructions a machine can run. The awkward part is that a C compiler is itself usually written in C — so who translated the first one? What actually happens is that someone hand-builds a slow, ugly version supporting a fraction of the language in a more machine-facing and excruciating language, uses it to translate a slightly better one, uses that to translate a better one still, and after a few rounds the original is abandoned. This runs the mechanism from "let one molecule be both the instructions and the worker, and the loop breaks": circular dependency is not resolved by assembling both ends at once, but by an intermediate version that is bad at both jobs and yet self-supporting, closing the loop from inside. From which follows a conclusion you would not otherwise reach: <b>in a bootstrapping system the earliest version is necessarily discarded — not because it was poor, but because it loses its reason to exist the moment it produces a better replacement; so "no intermediate form has been found" is not a rebuttal in such systems, it is what you should expect.</b> <b>But this does not carry over</b>: on the compiler side people keep the source and write documentation, so a broken chain can be rebuilt; on Earth nothing was kept, and later cells ate the ready-made material in the ocean clean. So biology can only reason backwards from the quirks in living things that otherwise make no sense — such as why the ribosome's core is RNA.</li>
+<li><b>Western philosophy and philosophy of science · "the first living thing" is a faulty question</b>: philosophy has an old problem: one grain is not a heap, adding one more still isn't, and yet tens of thousands plainly are — so which grain starts the heap? You cannot find it, not because you counted too coarsely, but because "heap" carries no boundary to begin with. What this issue lays out is likewise continuous: a self-sustaining chemical cycle, a molecule that copies, a bit of it enclosed in a bubble — no step is labelled "counts as alive from here". From which follows a conclusion you would not otherwise reach: <b>"at what moment did life originate" yields no answer not for want of evidence but because the question presupposes a moment that does not exist; it is a completely different question from "when did the first cells capable of leaving a geological trace appear", which does have an answer and is being pushed back layer by layer.</b> <b>But this does not carry over</b>: a heap is a purely verbal problem, and one grain more or less changes nothing in the world. Here it is not — between a chemical cycle that merely responds to its surroundings and something that passes variation on and can therefore be reshaped by selection lies a real watershed that has nothing to do with wording (the moment the three conditions from the issue on the logic of natural selection are all met). A blurred boundary does not make the two ends the same.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Are the RNA world and metabolism-first still tearing each other down?</summary>
+<div>Much less than twenty years ago. The common picture now is layered: geology supplies energy and concentration first, a molecule that stores information and copies appears against that background, and bubbles then enclose them into units that can differ from one another. What is unsettled is where the handover sits.</div>
+</details>
+<details><summary>If the parts are so easy to make, why has no laboratory made something alive?</summary>
+<div>Several independent obstacles sit between parts and a system: getting parts concentrated enough to react in a dilute broth, keeping long chains from breaking, getting the copying error rate low enough that information does not rot generation by generation, and packing all of it into a sac that can grow and divide. Each obstacle has partial results; nobody has strung them into one chain. Besides, Earth had hundreds of millions of years and a whole planet to try on.</div>
+</details>
+<details><summary>If life arose independently on another world, how would we recognise it as alive?</summary>
+<div>The current approach sidesteps the definition and looks for disequilibrium: on a dead planet the distribution of chemicals should drift towards the least energetic state, whereas life keeps certain molecules at proportions they have no business being at — two gases coexisting in an atmosphere when they ought to have reacted away, say. This does not depend on the thing resembling Earth life, but it also cannot tell the difference when some other geological process happens to maintain the same disequilibrium.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Abiogenesis" rel="noopener" target="_blank">Abiogenesis: an overview</a> · <a href="https://en.wikipedia.org/wiki/RNA_world" rel="noopener" target="_blank">The RNA world</a> · <a href="https://en.wikipedia.org/wiki/Lost_City_Hydrothermal_Field" rel="noopener" target="_blank">The Lost City alkaline hydrothermal field</a> · <a href="https://en.wikipedia.org/wiki/Miller%E2%80%93Urey_experiment" rel="noopener" target="_blank">The Miller–Urey experiment</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1161527" rel="noopener" target="_blank">Bada's group re-analysing Miller's sealed volcanic-plume samples (2008, Science)</a> · <a href="https://www.nature.com/articles/nature08013" rel="noopener" target="_blank">Powner et al., a route around the textbook synthesis of RNA's parts (2009, Nature)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1610103113" rel="noopener" target="_blank">Horning &amp; Joyce, a ribozyme that amplifies RNA — and where it stalls (2016, PNAS)</a></li>
+<li><a href="https://www.nature.com/articles/nmicrobiol2016116" rel="noopener" target="_blank">Weiss et al., the physiology and habitat of the last common ancestor (2016, Nature Microbiology)</a> · <a href="https://www.nature.com/articles/s41559-024-02461-1" rel="noopener" target="_blank">Moody et al., placing that ancestor around 4.2 billion years ago (2024, Nature Ecology &amp; Evolution)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

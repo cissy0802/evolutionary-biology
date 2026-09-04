@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 11：生命的起源</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 11 · PHASE B 生命史</div>
+<h1>生命的起源</h1>
+<h2>从一锅化学到会复制自己的东西，中间那一步没有留下任何直接记录</h2>
+<div class="meta">2026-09-04 · BigCat</div>
+<div class="pitch">读说明书要靠工人，造工人要靠说明书——今天每个活细胞都卡在这个圈里转。它能转起来，只可能是因为最早那一版根本不长这样；而按这个圈自己的逻辑，那一版必然已经被抹掉了。</div>
+</header>
+<div class="intro">
+<p>把糖、盐、水和几种气体倒进一口锅，加热、通电、随便折腾多久，它也不会变活。可 40 多亿年前的地球上，发生的说到底就是这件事：一堆完全没有生命的化学物质，在某个地方转成了会自己复制的东西。</p>
+<p>难的不是「简单变复杂」，是今天每个活细胞里那个死结：说明书存在 DNA 里，要把它读出来、复制一份，全得靠一批叫蛋白质的分子机器；而这批机器怎么造，图纸又只写在说明书里。两边互为前提，哪一样单独放进锅里都不转。</p>
+<p>所以真正的问题不是从哪一头开始，是这个圈最早从哪儿剪开的。而最难受的是：剪开它的那一版东西，按逻辑早该不在了。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>让一个分子同时当说明书和工人，圈就断了</h2>
+<p>1960 年代，几个人几乎同时想到同一条出路：如果有一种分子，既能像说明书那样把信息按顺序记下来，又能像工人那样折成形状去干活，这个圈就不必是圈——它可以自己撑住自己。</p>
+<p>RNA 正好长这样。它跟 DNA 是近亲，同样由一串小零件接成，顺序本身就是信息；但它一般是单股的，不像 DNA 那样两股绞着绷得笔直，所以能自己折起来，折出的形状可以卡住别的分子、把某个反应加快很多倍。<strong>存信息和干活，在它身上不冲突。</strong></p>
+<p>这本来只是个猜想，直到有人真抓到了会干活的 RNA：1982 年 Cech 发现有一段 RNA 能把自己中间一截剪下来、再把两头接上，全程不用蛋白质帮忙，他和 Altman 为此拿了 1989 年的诺贝尔化学奖。更像化石的证据在 2000 年到手——核糖体是每个活细胞里造蛋白质的那台机器，细菌、蘑菇还是你用的都是它，说明它极其古老；那年它的结构被解出来，人们看清真正把两个氨基酸接在一起的位置周围一圈全是 RNA。<em>整条蛋白质生产线的核心工序，是 RNA 在做。</em>Gilbert 1986 年给这套图景起的名字沿用至今：RNA 世界。</p>
+<div class="fig">
+<svg aria-label="说明书与工人的循环依赖，以及一个分子兼任两角把圈剪开" role="img" viewbox="0 0 600 234" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="b1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker><marker id="b2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<rect fill="#141c16" height="42" rx="7" stroke="#d2a24c" stroke-width="1.5" width="128" x="26" y="42"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="90" y="68">说明书（DNA）</text>
+<rect fill="#141c16" height="42" rx="7" stroke="#d2a24c" stroke-width="1.5" width="128" x="26" y="150"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="90" y="176">工人（蛋白质）</text>
+<path d="M154,63 C214,63 214,150 160,163" fill="none" marker-end="url(#b1)" stroke="#8aa192" stroke-width="1.3"></path>
+<path d="M26,171 C-4,150 -4,80 20,66" fill="none" marker-end="url(#b1)" stroke="#8aa192" stroke-width="1.3"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="166" y="106">图纸在</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="166" y="122">这里面</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="90" y="212">读它、复制它，全靠工人</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="90" y="26">两边互为前提，谁也不能先有</text>
+<line stroke="#24382c" stroke-dasharray="4 5" stroke-width="1.2" x1="300" x2="300" y1="20" y2="214"></line>
+<rect fill="#141c16" height="52" rx="7" stroke="#52c98a" stroke-width="1.8" width="182" x="368" y="88"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="459" y="110">一个分子，两个角色</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="12.5" text-anchor="middle" x="459" y="130">（RNA）</text>
+<path d="M368,102 C332,92 332,136 364,128" fill="none" marker-end="url(#b2)" stroke="#52c98a" stroke-width="1.3"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="459" y="62">顺序存得下信息</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="459" y="170">折起来的形状能干活</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="459" y="26">不必先有谁，它自己撑住自己</text>
+</svg>
+<div class="cap">左边那个圈没有入口。右边这条出路的全部内容是：<strong>把两个角色压回同一个分子身上，循环依赖就变成自我维持。</strong></div>
+</div>
+<p>这条线远没走完，两个坑敞着。一是零件：RNA 的小零件在没有生命的环境里怎么攒出来？2009 年 Sutherland 组发表了一条绕开教科书拆法的路线，做出了其中两种——这证明<em>可以</em>做出来，不等于地球上就是这么来的。二是复制：至今没人做出能完整复制自己的核酶，最好的成绩是把短片段扩增一万倍以上，可它一碰到复杂的折叠结构就走不动——而它自己恰恰就是那样一个结构。</p>
+<p class="en-brief"><b>EN</b> In every living cell the instructions sit in DNA, but reading and copying them requires proteins, which are themselves built from those instructions. Around 1960 several researchers saw the way out: a molecule that both stores information in its sequence and folds into a working shape would close the loop from inside. RNA is such a molecule. The guess became evidence when Cech (1982) found an RNA that splices itself without protein help and Altman showed the same for another machine — a Nobel in 1989 — and again in 2000, when the ribosome's structure revealed that the site where amino acids are actually joined is surrounded entirely by RNA. Gilbert named the picture the RNA world in 1986. Two gaps stay open: how RNA's building blocks form without life (Sutherland's group published a plausible route to two of them in 2009, showing it is possible, not that it happened), and self-replication — the best ribozymes amplify short templates but stall on the folded structures they themselves are made of.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>另一派说：先转起来的不是复制，是一台还没有说明书的发动机</h2>
+<p>反对意见很直接：RNA 太精巧了，不像开局那一步——一根能存信息的长链要靠现成的能量和足够浓的零件才攒得出来，而一锅稀汤里什么都在往外扩散。<strong>所以另一派主张：先转起来的应该是一组互相喂料的化学反应。</strong>甲的产物正好是乙的原料，乙的产物又喂回甲；只要外面持续供料，圈里的东西就越转越多。它不需要说明书，化学自己就闭合了。</p>
+<p>那场地在哪？1977 年在深海发现的黑烟囱几百度、酸性，很壮观但太烈。对这一派真正有用的是 2000 年在大西洋中脊发现的「失落之城」：温度低得多，流体是碱性的，堆起来的矿物塔像凝固的泡沫，内部密密麻麻全是几十微米的小孔。</p>
+<p>为什么这个形状要紧，得先说一件今天的事。地球上每个活细胞产能的方式都一样：把质子（氢原子丢掉电子剩下的那个小东西）泵到膜的一边，再让它们从一个小通道漏回来，漏的过程顺手带动一台分子马达，转出细胞能直接花的能量货币（Mitchell 1961 年提出，后来拿了诺贝尔化学奖）。而那些小孔的孔壁两边天然就有这个落差：孔里是碱性流体，质子少；孔外是偏酸的海水，质子多。<em>一层薄壁两边，现成摆着一个免费的、几万年不断的质子梯度。</em>Russell 和 Martin 由此主张：细胞不是发明了这套产能方式，是先蹭着用，后来才学会自己造膜把它随身带走。</p>
+<div class="fig">
+<svg aria-label="碱性喷口矿物孔壁两侧的质子浓度差示意" role="img" viewbox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="c1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker></defs>
+<rect fill="#0f1712" height="150" width="230" x="40" y="40"></rect>
+<rect fill="#141c16" height="150" width="60" x="270" y="40"></rect>
+<rect fill="#101a14" height="150" width="230" x="330" y="40"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="155" y="30">孔里：碱性的喷口流体</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle" x="445" y="30">孔外：当时偏酸的海水</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="30">矿物壁</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="300" y="206">很薄</text>
+<circle cx="90" cy="80" fill="#52c98a" r="3.4"></circle>
+<circle cx="180" cy="150" fill="#52c98a" r="3.4"></circle>
+<circle cx="130" cy="170" fill="#52c98a" r="3.4"></circle>
+<circle cx="230" cy="70" fill="#52c98a" r="3.4"></circle>
+<circle cx="360" cy="60" fill="#52c98a" r="3.4"></circle>
+<circle cx="392" cy="88" fill="#52c98a" r="3.4"></circle>
+<circle cx="424" cy="62" fill="#52c98a" r="3.4"></circle>
+<circle cx="456" cy="94" fill="#52c98a" r="3.4"></circle>
+<circle cx="488" cy="66" fill="#52c98a" r="3.4"></circle>
+<circle cx="520" cy="98" fill="#52c98a" r="3.4"></circle>
+<circle cx="376" cy="130" fill="#52c98a" r="3.4"></circle>
+<circle cx="410" cy="160" fill="#52c98a" r="3.4"></circle>
+<circle cx="444" cy="132" fill="#52c98a" r="3.4"></circle>
+<circle cx="478" cy="164" fill="#52c98a" r="3.4"></circle>
+<circle cx="512" cy="136" fill="#52c98a" r="3.4"></circle>
+<circle cx="542" cy="70" fill="#52c98a" r="3.4"></circle>
+<path d="M348,112 L262,112" fill="none" marker-end="url(#c1)" stroke="#7be0ab" stroke-width="1.8"></path>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="305" y="104">往这边漏</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" x="42" y="212">绿点＝质子。两边多少不一样，落差就是可以取用的能量。</text>
+</svg>
+<div class="cap">今天你身上每个细胞都自己造膜、自己把质子泵到一边再让它漏回来发电。<strong>岩石那边不用泵——地质过程免费维持着同一个落差。</strong></div>
+</div>
+<p>代谢先行自己最硬的那道坎在别处：<em>没有可遗传的变异，就没有选择。</em>一个化学循环再能自持，它偶然转得好一点也传不给「下一个」循环——「自然选择的逻辑」那期讲的三个条件里，它缺了最要命的一条。所以两派现在没当年那么对立：争的是交接点在哪，不是谁全对。还有第三条线在补另一块——脂肪酸这类分子在水里会自己围成小泡，而<strong>把东西围起来，稀释就不再是绝症。</strong></p>
+<p class="en-brief"><b>EN</b> The competing view is that RNA is too intricate to be step one, and that what turned over first was a set of chemical reactions feeding each other — an autocatalytic cycle needing no instructions. Its favoured setting is not the scalding acidic black smokers found in 1977 but the alkaline field found in 2000 on the Mid-Atlantic Ridge: cooler, alkaline fluid, mineral towers riddled with pores tens of micrometres across. The point is the pore wall. Every living cell today makes energy by pumping protons across a membrane and letting them leak back through a molecular turbine — Mitchell's 1961 idea, a Nobel in 1978 — and a pore wall with alkaline fluid inside and acidic early ocean outside already carries that gradient for free. Russell and Martin argue cells first borrowed it and later learned to build their own membrane. Weiss et al. (2016) reconstructed a common ancestor that was anaerobic, thermophilic and hydrogen-dependent, though lateral gene transfer makes such reconstructions contested. The hard objection to metabolism-first is that a cycle without heritable variation cannot be improved by selection. The camps have converged: geochemistry supplies energy and concentration, an informational molecule joins later, and the argument is about the handover.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>能做出来，不等于当初就是这么来的</h2>
+<p>1953 年，研究生米勒在导师尤里的实验室搭了一套玻璃装置：底下烧水，上面灌进几种简单气体，两根电极隔着放电模拟闪电。放了一星期，他把水抽出来一化验，里面有氨基酸——蛋白质的零件。这是第一次有人在瓶子里造出「生命的材料」。</p>
+<p>但这个经典实验今天得反过来读：米勒假设的那种大气后来被认为不对，早期地球的空气现在多认为以二氧化碳和氮气为主，那种条件下产率低得多。不过 2008 年 Bada 组重测他当年封存没发表的样品，模拟火山羽流的那一组产物反而更丰富——整体大气不合适，不代表火山口那一小片不合适。零件本身确实不稀有，1969 年落在澳大利亚的 Murchison 陨石里就检出了几十种氨基酸。</p>
+<p><strong>但零件从来不是这道题的难处。</strong>这类实验能证明的是「这条路走得通」，不是「当初走的就是这条」。而这个差距填不上，有两个独立的原因。第一，化学不留化石——最早那些东西没有骨头没有壳，连形状都没有，不像三叶虫会在石头里压出一个印子。第二更狠：一个自己撑起自己的系统，最早那一版一旦生出更好的替代品就没理由继续存在。<em>它被抹掉不是意外，是常规结局。</em></p>
+<p>时间窗还在收紧。地球大约 45.4 亿岁；争议最小的生命痕迹是西澳大利亚约 34.8 亿年前的叠层石（一层层微生物垫压出来的岩石纹理），连它也有人主张可能是非生物过程做的。而 2024 年一项分子钟推算把所有现存生命的共同祖先放到了约 42 亿年前，还给它配了一个跟今天细菌相当的基因组。这个年代还会被继续检验，<strong>但如果它扛得住，留给「从化学到细胞」的时间就窄得吓人。</strong></p>
+<p>最后一个诱人的问题也得留在半空。所有已知生命共用同一套遗传密码，用的氨基酸清一色是左手那一版（同一种分子可以有互为镜像的两个版本，像左右手，生命只用其中一只）。这可以读成「只成功过一次」，也可以读成「成功过好多次，只有一支留了下来」，<em>两种读法目前分不开。</em>最诚实的总结是：我们有好几条各自说得通的路线，还没有一条能从化学一路接到细胞。</p>
+<p class="en-brief"><b>EN</b> In 1953 Miller, in Urey's lab, ran a spark through a flask of simple gases above warm water and found amino acids a week later — the first time life's raw material had been made from scratch. Read it in reverse today: the reducing atmosphere he assumed is now thought wrong, though Bada's group re-analysed Miller's sealed unpublished samples in 2008 and found the volcanic-plume apparatus gave a richer yield, so local vent gases may still qualify. Building blocks are not rare anyway — dozens of amino acids turned up in the Murchison meteorite of 1969. But the blocks were never the hard part. Such experiments establish that a route is possible, never that it was taken, for two independent reasons: chemistry leaves no fossils, and in any self-bootstrapping system the earliest version loses its reason to exist once it produces something better. The window is tightening: Earth is about 4.54 billion years old, the least contested traces of life are roughly 3.48-billion-year-old Australian stromatolites, and a 2024 molecular-clock study puts the common ancestor of all living things near 4.2 billion years ago with a genome the size of a modern bacterium's. All known life shares one genetic code and one handedness of amino acids, which reads equally well as one success or as many successes with a single survivor. Those readings cannot yet be told apart.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 投资与仓位</b>——一笔仓位平掉之后写复盘，你几乎总能写出一条自洽的解释：「因为那份财报」「因为利率预期变了」。按「能做出来，不等于当初就是这么来的」那节的机制，能构造出一条走得通的因果路径，和这条路径当时真的跑过，是两件事。<b>可改的动作</b>：结论栏别留单一原因，改成列「哪几条路都能产生这个结果」，再补一句「什么观察能把它们分开」；补不出来的记成「没结论」。</li>
+<li><b>② 带团队与组织</b>——那种跨部门的改进倡议：每周一次会，来的人都从各自的日常里挤时间，聊的每条都对，半年后什么也没留下。按「另一派说：先转起来的不是复制，是一台还没有说明书的发动机」那节里的机制，跑不起来常常不是原料不够，是缺一层把产物拦住的壁——产出都散回各人自己的池子，浓度攒不起来。<b>可改的动作</b>：把「谁来开会」换成「产出落在哪个固定位置」；连着两周那个位置没变化，就停掉这个会，而不是加人。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>工程与系统设计 · 第一个编译器不可能是编译器写出来的</b>：编译器是把人写的代码翻译成机器能跑的指令的那个程序。麻烦在于，C 语言的编译器本身通常也是用 C 语言写的——那第一个是谁翻译的？真实的做法是先用一种更贴近机器、写起来极其笨拙的语言手工搓一个又慢又丑、只支持一小部分语法的版本，用它翻译出稍好的，再用那个翻译出更好的，几轮之后最初那版就废弃了。跑的是「让一个分子同时当说明书和工人，圈就断了」那节的机制：循环依赖不是靠同时凑齐两端解决的，是靠一个两头都很烂、但能自己撑住的中间版本从内部把圈接上。由此能推出一个原本看不出的结论：<b>在自举系统里，最早那一版必然被淘汰——不是因为它糟，是因为它一生出更好的替代品就失去了继续存在的理由；所以「找不到中间形态」在这类系统里不构成反驳，是预期之内的。</b><b>但这里不成立</b>：编译器那边有人存源码写文档，链条断了还能重建；地球这边什么也没留下，后来的细胞还把海里的现成材料吃干净了。所以生物这边只能靠现存生命身上那些说不通的怪癖倒推，比如核糖体核心为什么是 RNA。</li>
+<li><b>西方哲学与科学哲学 · 「第一个活的东西」这个问法本身有毛病</b>：哲学里有个老问题：一粒沙不叫沙堆，加一粒还不是，可几万粒明明是——到底第几粒开始算？找不到那一粒，不是你数得不够细，是「沙堆」这个词本来就不带边界。本期摆出来的东西也是连着的：能自持的化学循环、会复制的分子、被小泡围起来的一小团，没有哪一格写着「从这里开始算活的」。由此能推出一个原本看不出的结论：<b>「生命起源于哪一刻」问不出答案，不是证据不够，是这个问法预设了一个不存在的时刻；它跟「什么时候出现了第一批能留下地质痕迹的细胞」是两个完全不同的问题，后者有答案而且正在被一层层往前推，前者没有。</b><b>但这里不成立</b>：沙堆纯粹是语言问题，多一粒少一粒在世界里什么也没变；这边不是——一个只会被动跟着环境反应的化学循环，和一个能把变异传下去、因此能被选择改造的东西之间，隔着一个跟用词无关的真实分水岭（「自然选择的逻辑」那期讲的三个条件在哪一刻凑齐）。边界模糊，不等于两端一样。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>RNA 世界和代谢先行，现在还在互相拆台吗？</summary>
+<div>比二十年前缓和很多。常见的图景现在是分层的：地质环境先把能量和浓度备好，能存信息、能复制的分子在这个背景里出现，小泡再把它们围成彼此不同的单位。没定的是交接点在哪。</div>
+</details>
+<details><summary>既然零件那么容易造，为什么实验室至今没造出一个活的？</summary>
+<div>零件到系统之间隔着好几道各自独立的难关：怎么让零件在稀汤里浓到能反应，怎么让长链不断掉，怎么让复制的错误率低到信息不会一代代烂掉，怎么把这一套关进能长大能分裂的小袋子。每一关都有局部成果，没人串成一条链。何况地球有几亿年和一整颗行星去试。</div>
+</details>
+<details><summary>如果别的星球上有独立起源的生命，我们凭什么认出它是活的？</summary>
+<div>目前的做法是绕开定义去找不平衡：死星球上的化学分布应该趋向最省能量的状态，而生命会持续把某些分子维持在极其不该有的比例上，比如大气里同时存在两种本该互相反应掉的气体。这个思路不依赖对方长得像不像地球生命，但也认不出「刚好有别的地质过程在维持同一个不平衡」。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Abiogenesis" rel="noopener" target="_blank">生命起源总览</a>（英文） · <a href="https://en.wikipedia.org/wiki/RNA_world" rel="noopener" target="_blank">RNA 世界</a>（英文） · <a href="https://en.wikipedia.org/wiki/Lost_City_Hydrothermal_Field" rel="noopener" target="_blank">失落之城碱性热液区</a>（英文） · <a href="https://en.wikipedia.org/wiki/Miller%E2%80%93Urey_experiment" rel="noopener" target="_blank">米勒-尤里实验</a>（英文）</li>
+<li><a href="https://www.science.org/doi/10.1126/science.1161527" rel="noopener" target="_blank">Bada 组重测米勒封存的火山羽流样品（2008，Science）</a>（英文） · <a href="https://www.nature.com/articles/nature08013" rel="noopener" target="_blank">Powner 等，合成 RNA 零件的绕道路线（2009，Nature）</a>（英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1610103113" rel="noopener" target="_blank">Horning &amp; Joyce，能扩增 RNA 的核酶，以及它走不动的地方（2016，PNAS）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/nmicrobiol2016116" rel="noopener" target="_blank">Weiss 等，共同祖先的生理与栖息地（2016，Nature Microbiology）</a>（英文） · <a href="https://www.nature.com/articles/s41559-024-02461-1" rel="noopener" target="_blank">Moody 等，把共同祖先推到约 42 亿年前（2024，Nature Ecology &amp; Evolution）</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
