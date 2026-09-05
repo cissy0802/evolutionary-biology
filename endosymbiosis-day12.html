@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 12：内共生与真核革命</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 12 · PHASE B 生命史</div>
+<h1>内共生与真核革命</h1>
+<h2>你体内供能的那些小颗粒，自带一份和你不一样的说明书</h2>
+<div class="meta">2026-09-05 · BigCat</div>
+<div class="pitch">生命史上最大的一次跳级，不是靠一点点改良攒出来的，是两个原本各过各的东西并成了一个。而且被并进来的那位，交出说明书之后就再也走不掉了。</div>
+</header>
+<div class="intro">
+<p>你读这行字用掉的能量，来自细胞里一堆米粒形状的小颗粒。奇怪的地方在于：它们里面有一份自己的 DNA，是环状的，跟你染色体上那种长条的不一样，反倒跟细菌的那份长得像。</p>
+<p>更奇怪的是，有几类专门对付细菌的抗生素，会连带干扰这些小颗粒。那类药盯的是细菌造蛋白质的机器，而这些小颗粒里那台机器，也是细菌那一版——所以药分不清。</p>
+<p>如果它只是你身体自己长出来的一个零件，这些痕迹一条都不该有。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>它不是你长出来的零件，是被吞进去、没被消化掉的那位</h2>
+<p>一百多年前就有人在显微镜下注意到，植物细胞里那些绿色颗粒会像细菌一样自己一分为二，而不是被细胞从零件堆里现造出来。当时这只是个古怪的观察。真正让它变成一条能查的线索的，是后来陆续凑齐的几个痕迹。</p>
+<p>第一是膜。你细胞里那些供能的小颗粒（线粒体）外面裹着<em>两层</em>膜，不是一层。一只细菌被另一个细胞整个包进去、又没被消化掉，剩下的正好是这个结构：里面那层是它自己的皮，外面那层是包它的那只手。第二是那份环状 DNA，前面说过了。第三是造蛋白质的机器——每个细胞里都有一批叫核糖体的小装置负责把氨基酸串成蛋白质，而这些小颗粒里那批核糖体不跟细胞其余部分同款，跟细菌的更近。第四，它不能从零件现造，只能由已有的一个分裂成两个。</p>
+<p>最后一条是决定性的：等到能读序列了，人们把这份环状 DNA 拿去跟各种细菌一条条比对，<strong>线粒体稳稳落在一类叫 α-变形菌的细菌里面，植物的绿色颗粒（叶绿体）落在蓝细菌里面。</strong>它们不是「像」细菌，它们就在细菌的族谱上，各自有确定的位置。</p>
+<div class="fig">
+<svg aria-label="一只细菌被整个包进另一个细胞，留下双层膜、自带环状 DNA、自带核糖体、只能分裂增殖四条痕迹" role="img" viewbox="0 0 600 216" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<ellipse cx="118" cy="112" fill="#101a14" rx="92" ry="66" stroke="#8aa192" stroke-width="1.4"></ellipse>
+<ellipse cx="140" cy="118" fill="#141c16" rx="34" ry="24" stroke="#52c98a" stroke-width="1.6"></ellipse>
+<circle cx="140" cy="118" fill="none" r="9" stroke="#7be0ab" stroke-width="1.2"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="118" y="30">一个古菌细胞</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="140" y="164">吞进来一只细菌，没消化掉</text>
+<path d="M228,112 L288,112" fill="none" marker-end="url(#a1)" stroke="#d2a24c" stroke-width="1.5"></path>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="258" y="102">十几亿年</text>
+<ellipse cx="420" cy="112" fill="#141c16" rx="56" ry="38" stroke="#52c98a" stroke-width="1.8"></ellipse>
+<ellipse cx="420" cy="112" fill="none" rx="48" ry="31" stroke="#8aa192" stroke-width="1.2"></ellipse>
+<circle cx="404" cy="112" fill="none" r="8" stroke="#7be0ab" stroke-width="1.2"></circle>
+<circle cx="438" cy="104" fill="#7be0ab" r="2.4"></circle>
+<circle cx="444" cy="118" fill="#7be0ab" r="2.4"></circle>
+<circle cx="430" cy="124" fill="#7be0ab" r="2.4"></circle>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="420" y="30">今天你身上供能的那个小颗粒</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="80">两层膜</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="100">环状说明书</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="120">细菌那版核糖体</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="140">只能一分为二</text>
+<line stroke="#24382c" stroke-width="1" x1="478" x2="482" y1="76" y2="76"></line>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="204">这四条，自己长出来的零件一条也不该有</text>
+</svg>
+<div class="cap">外面那层膜是包它的那只手留下的，里面那层是它自己的皮。<strong>四条痕迹各自都能有别的解释，凑在一起就只剩一种。</strong></div>
+</div>
+<p>这里要小心一句话：不是谁「为了拿到能量」去吞了谁。碰巧吞进来、碰巧没消化掉、碰巧两边都还活着——这样的组合出现过无数次，绝大多数不了了之；只有极少数留下了更多后代，我们今天看到的就是那一支。<em>「自然选择的逻辑」那期讲的三个条件，一条也没有被绕开。</em>还有一点：你的线粒体几乎全部来自母亲，精子那边带的基本进不去或被清掉。这是一种把内部冲突摁下去的办法——两套来历不同的小颗粒混在一起，就会有专挑自己复制得快的变体冒出来。</p>
+<p class="en-brief"><b>EN</b> Over a century ago microscopists noticed that the green granules in plant cells divide in two rather than being built from parts. Four traces turned that oddity into a case. Mitochondria are wrapped in two membranes, not one — exactly what is left when one cell engulfs a bacterium whole: the inner skin is the bacterium's, the outer one belongs to the hand that grabbed it. They carry their own circular DNA. Their ribosomes — the devices that string amino acids into protein — resemble bacterial ones rather than the cell's own, which is why some antibacterial drugs disturb them. And they can only arise by division of an existing one. The decisive evidence came with sequencing: mitochondrial DNA sits inside the alphaproteobacteria and chloroplast DNA inside the cyanobacteria. They are not bacteria-like; they have addresses on the bacterial tree. Nothing here was done "in order to" gain energy: engulfment without digestion happened countless times, almost always to no consequence, and the lineages that left more descendants are the ones still here. Mitochondria come almost entirely from the mother, which suppresses a conflict — mixing two lineages of organelles invites variants that simply copy themselves faster.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>被退了十几次的稿子，翻案靠的不是更好的论证，是新的测量</h2>
+<p>1967 年，一位当时署名 Lynn Sagan、后来以 Lynn Margulis 之名为人所知的研究者，发表了一篇把这套说法系统摆出来的长文。据后来的记述，这份稿子在见刊之前被十几家期刊退过，有的连读都没读完。</p>
+<p>今天回看，退稿的人未必都在耍脾气。那个年代能拿出来的证据主要是形态：形状像细菌、分裂像细菌、膜有两层。<strong>而「像」永远可以有第二种解释</strong>——两层膜也可以是细胞自己的膜折进来包出来的。当时的手段判不了，双方吵的其实是同一堆图片。</p>
+<p>局面是被一种新测量翻过来的。能读 DNA 序列之后，问题第一次变成可判定的：把线粒体的基因和一大堆细菌的基因摆在一起，看它落在族谱的哪根枝上——这个答案不依赖你觉得它「像」什么。<em>一个悬了几十年的争论，不是靠哪一边把话说得更漂亮收尾的，是靠出现了一种能把两个说法分开的观察。</em></p>
+<p>还有一件同样值得记住的事：她那篇文章里提了三条，线粒体和叶绿体这两条进了教科书，第三条——细胞表面那些会摆动的鞭毛也来自另一种细菌——至今没有得到支持，一般被认为不成立。<strong>同一个人、同一篇文章，一部分站得住一部分站不住，这是常态，不是例外。</strong></p>
+<p>那被吞的一方查清了，吞它的那一方是谁？现在的主流答案是古菌——一大类外表像细菌、内部机制却和我们更近的单细胞生物。2015 年，有人从深海沉积物里拼出了一类古菌的基因组，发现它们身上带着一批原本以为只有复杂细胞才有的基因。2020 年日本一组研究者真的把其中一株养了出来：从取样到拿到稳定培养花了十几年，它长得极慢，数量翻一倍要两周上下，还得靠把代谢废料交给搭伙的伙伴才活得下去。于是今天的图景是：<em>复杂细胞不是和细菌、古菌并列的第三支，而是从古菌里面长出来的一支，外加一只细菌。</em>这条也还在被继续检验。</p>
+<p class="en-brief"><b>EN</b> In 1967 a researcher then publishing as Lynn Sagan — later known as Lynn Margulis — laid the case out in full. By later accounts the manuscript had been turned down by more than a dozen journals, some without a full reading. The rejections were not simply stubbornness: the available evidence was morphological, and looking like a bacterium always admits a second reading, since a cell's own infolded membranes could produce the same picture. The deadlock broke on a new measurement, not a better argument. Once DNA could be sequenced, the question became decidable — where the organelle's genes sit on the bacterial tree does not depend on what anything looks like. Worth remembering too: of the three claims in that paper, mitochondria and chloroplasts entered the textbooks, while her third — that the whip-like flagella also came from a bacterium — has found no support. As for the host, the current answer is the archaea, single-celled organisms that look bacterial but whose machinery is closer to ours. In 2015 genomes assembled from deep-sea sediment revealed archaea carrying genes thought exclusive to complex cells; in 2020 a Japanese group finally grew one, after more than a decade of work, on a doubling time of a couple of weeks and only in partnership with organisms that take its waste. Complex cells look less like a third branch than like a branch growing out of the archaea, plus one bacterium.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>并进来之后，被吞的那位交出了几乎整本说明书</h2>
+<p>你线粒体里那份环状说明书，只剩 37 个基因。而它祖先那类细菌，基因数量是好几千。中间那几千个去哪了？一部分是真的丢了——住在别人细胞里，很多本事用不上了，坏掉也没人罚。<strong>但更值得注意的是另一部分：它们搬进了细胞核。</strong>今天在线粒体里干活的蛋白质，有一千多种是细胞核里的基因先造好，再运送进去的。</p>
+<p>这个搬家不是推理出来的，有人直接量过。2003 年一组研究者在烟草上做了这件事：他们把一个只有落到细胞核里才起作用的抗性基因，塞进叶绿体的说明书里，然后大批种后代，看有多少株表现出「这个基因已经在核里了」。答案是每约一万六千粒花粉出现一次。<em>这个频率高得出乎当时的预料——搬家不是远古发生完就停了的事，它现在还在进行。</em></p>
+<div class="fig">
+<svg aria-label="祖先细菌的几千个基因分成三个去向：丢失、搬进细胞核、留在原地" role="img" viewbox="0 0 600 214" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="d1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker><marker id="d2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<rect fill="#141c16" height="46" rx="7" stroke="#d2a24c" stroke-width="1.5" width="150" x="22" y="86"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="97" y="105">祖先那只细菌</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="97" y="123">好几千个基因</text>
+<path d="M172,100 C226,80 246,48 292,42" fill="none" marker-end="url(#d1)" stroke="#8aa192" stroke-width="1.3"></path>
+<path d="M172,109 C226,109 246,109 292,109" fill="none" marker-end="url(#d2)" stroke="#52c98a" stroke-width="1.4"></path>
+<path d="M172,118 C226,138 246,170 292,176" fill="none" marker-end="url(#d2)" stroke="#52c98a" stroke-width="1.4"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" x="300" y="34">丢掉：住在别人家里用不上的本事</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" x="300" y="102">搬进细胞核：一千多种蛋白从那边造好送回来</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" x="300" y="169">留在原地：37 个</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="300" y="188">管的都是必须当场改的事</text>
+<line stroke="#24382c" stroke-dasharray="3 4" stroke-width="1" x1="300" x2="560" y1="112" y2="112"></line>
+</svg>
+<div class="cap">三条去向里，只有最下面那条需要解释。<strong>丢掉和搬走都好懂，「为什么偏偏这几十个不搬」才是问题。</strong></div>
+</div>
+<p>留下的那几十个，管的多半是同一件事：盯着膜上那条产能的电子流，随时按状态调整。Allen 提出的解释是，这类调整必须<strong>就地立刻做完</strong>——把信号送到细胞核、等指令回来，黄花菜都凉了；所以基因得待在离现场最近的地方。这个解释有支持也有反对，还没定论。</p>
+<p>更大的一场争论在能量上。Lane 和 Martin 2010 年提出：细菌产能靠的是自己那层外皮，可皮的面积跟不上体积的增长，于是它撑不大；复杂细胞把产能的膜挪进体内，配上成百上千个各自带着一小段说明书的小控制点，于是<em>平均每个基因能分到的能量大了几个数量级</em>（他们估的是二十万倍这个量级），大基因组这才养得起。2015 年 Lynch 和 Marinov 用另一套核算反驳说，这个差距根本不存在，真正卡住细菌的是群体和随机漂变，不是能量。两边至今没吵完。<strong>这条现在只能记成「未决」，不能当结论用。</strong></p>
+<p class="en-brief"><b>EN</b> The circular manual inside a human mitochondrion holds just 37 genes; its bacterial ancestors had several thousand. Some were simply lost — skills you no longer use inside someone else's cell. The more interesting fate is relocation into the cell nucleus: over a thousand proteins working inside mitochondria today are built from nuclear genes and shipped in. This was measured directly. In 2003 a group inserted into the tobacco chloroplast a resistance gene that only works once it lands in the nucleus, then screened the offspring: roughly one transfer per sixteen thousand pollen grains — far more often than expected, and still ongoing. Why do a few dozen genes stay put? Most of them govern the flow of electrons across the energy-producing membrane, and Allen's proposal is that such adjustments must be made on the spot: send the signal to the nucleus and wait, and it is too late. Supported by some evidence, disputed by other. A larger dispute is about energy. Lane and Martin argued in 2010 that a bacterium's surface cannot keep up with its volume, whereas a complex cell moves the energy membranes inside and adds hundreds of small control points each carrying a scrap of manual, so the energy available per gene rises by orders of magnitude — they put it around two hundred thousand fold — which is what makes a large genome affordable. In 2015 Lynch and Marinov ran a different accounting and concluded the gap does not exist, and that population size and drift, not energy, are what limit bacteria. No measurement both sides accept has yet separated them, so this one stays open rather than settled.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 写作与这个学习站本身</b>——写完一段解释，读起来很顺，你自己先信了。按「被退了十几次的稿子，翻案靠的不是更好的论证，是新的测量」那节的机制：一个说法从「看起来像」变成「站得住」，靠的不是把它说得更漂亮，是出现了一种能把它和竞争解释分开的观察。<b>可改的动作</b>：每条自己推出来的结论后面补一行「如果它是错的，我最先会看到什么」；写不出那一行的，标成待查，别当结论往下用。</li>
+<li><b>② 育儿与教育</b>——一学期同时报了四五项，每项每周一次，一年过去每项都还停在「有人盯着才动」。按「并进来之后，被吞的那位交出了几乎整本说明书」那节里的机制：一个部件还能不能自己撑住，看的是它手上有没有留着当场就能做完的决定；决定全在外面，它就只剩等着被驱动这一种状态。<b>可改的动作</b>：把看的指标从「报了几项」换成「哪一项在没人安排的时候他自己还会碰」；连着两个月一项都没有，就砍到两项，腾出来的时间留成空白，别拿新项目填上。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>组织与制度 · 收购完成三年了，那边还在用自己那套报销系统</b>：架构图上早就并成一家，可被收的那边总有几样东西下不掉——自己的报销、自己的排班、自己的值班表，年年说要统一，年年统一不了。跑的是「并进来之后，被吞的那位交出了几乎整本说明书」那节的机制：绝大多数功能会往中心搬（细胞里是往细胞核搬，而且这个速率高到能在烟草上直接量出来），<b>留在本地的是那些延迟不起的——信息跑一趟中心再回来就来不及的决定。</b>由此能推出一个原本看不出的结论：<b>判断一次合并完成到什么程度，看架构图没用，要看的是「还有哪些决定必须当场做完」这份清单；它不会因为你宣布下线而变短，因为它是由响应时间定的。硬把这类决定收上去，系统不是变整齐，是变慢，而且会在压力最大的时候先断。</b><b>但这里不成立</b>：细胞那边留下的那几十个基因是被筛出来的——搬过去的那份如果不好用，那一支就留不下后代，所以「它还留在原地」是条真信息。公司里没有这个筛子，本地系统留着常常只是没人推动，所以「它还留着」本身什么也不说明。要用这条，你得自己造那个筛：把某个本地环节停两周，看真正断掉的是哪几件。</li>
+<li><b>东方思想 · 「无我」常被读成「你不存在」，那是读窄了</b>：佛学讲无我，听上去像在否认你的存在。但本期给了它一个很具体的对照：你身上有一整套零件带着来历完全不同的另一份说明书，而「你是一个单位」这件事是被几样具体装置维持住的——线粒体只能由已有的分裂而来、只从母亲那边传下去、大部分说明书被搬进了中央。跑的是「它不是你长出来的零件，是被吞进去、没被消化掉的那位」那节的机制。由此能推出一个原本看不出的结论：<b>「个体」不是演化的起点，是一次合并之后才被固定下来的边界，它有确定的年代、有维持它的装置，也因此可以失效——你体内某个细胞系一旦挣脱这套约束，就会在你身体里被独立地选择，那不是比喻，那是肿瘤发生的机制之一。</b><b>但这里不成立</b>：佛学的无我说的是经验主体，靠内观得到，跟世代之间传不传得下去无关；而且它讲的是当下每一刻的和合聚散，本期讲的却是一次不可逆的历史事件——那位交出说明书之后再也回不去了。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>既然并进来这么有用，为什么复杂细胞看上去只出现过一次？</summary>
+<div>所有现存的复杂细胞都是同一个祖先的后代，而那个祖先已经有线粒体了。但「只留下一支」和「只发生过一次」分不开——这跟「生命的起源」那期遇到的是同一个逻辑难处。而且并非完全没有第二次：一种叫 Paulinella 的变形虫大约在一亿年前独立吞下并留住了一只蓝细菌，它那个小器官的说明书已经缩到一百万个碱基对上下、不到九百个基因。缩减这一步确实会重演。</div>
+</details>
+<details><summary>线粒体现在还算「活的」吗？</summary>
+<div>它离不开宿主，绝大多数零件靠细胞核那边供给。但它保留着自己的说明书、自己的核糖体，只能由已有的分裂而来，而且它的基因和核里的基因走两条不同的遗传路线——一条只跟着母亲。「算不算一个独立个体」在这里没有一刀切的答案，而这正是「个体」这个边界由机制维持、可强可弱的意思。</div>
+</details>
+<details><summary>能量那条争论，不做研究的人该怎么摆放它？</summary>
+<div>当成一个还没有裁判的问题放着，别拿它去推别的结论。两边算的口径不一样：一边算每个基因摊到多少能量，一边算群体大小和随机漂变（「变异从哪来」那期讲过漂变）。在出现一种双方都接受的测量之前，多读几轮论证不会让它收敛。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Symbiogenesis" rel="noopener" target="_blank">内共生学说总览</a>（英文） · <a href="https://en.wikipedia.org/wiki/Mitochondrion" rel="noopener" target="_blank">线粒体</a>（英文） · <a href="https://en.wikipedia.org/wiki/Asgard_(archaea)" rel="noopener" target="_blank">与复杂细胞最近的那类古菌</a>（英文） · <a href="https://en.wikipedia.org/wiki/Paulinella" rel="noopener" target="_blank">又独立吞了一次的那只变形虫</a>（英文）</li>
+<li><a href="https://doi.org/10.1016/0022-5193(67)90079-3" rel="noopener" target="_blank">Sagan（Margulis），复杂细胞的起源（1967，Journal of Theoretical Biology）</a>（英文） · <a href="https://www.molbiolcell.org/doi/10.1091/mbc.e16-07-0509" rel="noopener" target="_blank">五十年后回看这篇文章的接受史</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/nature01435" rel="noopener" target="_blank">Huang 等，直接测量叶绿体基因搬进细胞核的速率（2003，Nature）</a>（英文） · <a href="https://www.nature.com/articles/s41586-019-1916-6" rel="noopener" target="_blank">Imachi 等，培养出与复杂细胞最近的古菌（2020，Nature）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/nature09486" rel="noopener" target="_blank">Lane &amp; Martin，基因组复杂性的能量账（2010，Nature）</a>（英文） · <a href="https://www.pnas.org/doi/abs/10.1073/pnas.1514974112" rel="noopener" target="_blank">Lynch &amp; Marinov，一个基因的能量成本（2015，PNAS）</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

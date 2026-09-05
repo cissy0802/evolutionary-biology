@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 12: Endosymbiosis and the Complex Cell</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 12 · PHASE B HISTORY OF LIFE</div>
+<h1>Endosymbiosis and the Complex Cell</h1>
+<h2>The granules that power you carry a manual that is not yours</h2>
+<div class="meta">2026-09-05 · BigCat</div>
+<div class="pitch">The largest jump in the history of life was not assembled out of small improvements. Two things that had been living apart became one — and the one that got taken in, having handed over its manual, could never leave again.</div>
+</header>
+<div class="intro">
+<p>The energy you are spending on this line comes from a crowd of rice-shaped granules inside your cells. The odd thing is that each of them holds its own DNA, in a ring, unlike the long strands on your chromosomes and rather like the DNA of a bacterium.</p>
+<p>Odder still, a few classes of antibacterial drug disturb those granules as a side effect. Such drugs target the machine bacteria use to build protein — and the machine inside these granules is the bacterial version too, so the drug cannot tell them apart.</p>
+<p>If this were simply a part your body grew for itself, not one of those traces should be there.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>It is not a part you grew — it is the one that got swallowed and not digested</h2>
+<p>More than a century ago, microscopists noticed that the green granules inside plant cells split in two the way bacteria do, rather than being assembled from parts by the cell. At the time this was just a curiosity. What turned it into a checkable lead were the traces that accumulated afterwards.</p>
+<p>First, the membranes. The energy granules in your cells — mitochondria — are wrapped in <em>two</em> membranes, not one. When one cell engulfs a bacterium whole and fails to digest it, this is exactly what is left over: the inner layer is the bacterium's own skin, the outer one belongs to the hand that grabbed it. Second, that ring of DNA. Third, the protein-building machinery: every cell contains devices called ribosomes that string amino acids into proteins, and the ribosomes inside these granules are not the same model as the rest of the cell's — they are closer to the bacterial ones. Fourth, a granule cannot be built from scratch; a new one only ever comes from an existing one dividing.</p>
+<p>The last piece was decisive. Once sequences could be read, that ring of DNA was compared gene by gene against bacteria of every kind, and <strong>mitochondria landed squarely inside a group called the alphaproteobacteria, while the green granules of plants — chloroplasts — landed inside the cyanobacteria.</strong> They are not bacteria-<em>like</em>. They have addresses on the bacterial family tree.</p>
+<div class="fig">
+<svg aria-label="A bacterium engulfed whole by another cell, leaving four traces: two membranes, its own ring of DNA, bacterial ribosomes, and increase only by division" role="img" viewbox="0 0 600 216" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="a1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<ellipse cx="118" cy="112" fill="#101a14" rx="92" ry="66" stroke="#8aa192" stroke-width="1.4"></ellipse>
+<ellipse cx="140" cy="118" fill="#141c16" rx="34" ry="24" stroke="#52c98a" stroke-width="1.6"></ellipse>
+<circle cx="140" cy="118" fill="none" r="9" stroke="#7be0ab" stroke-width="1.2"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="118" y="30">an archaeal cell</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="140" y="164">swallows a bacterium, does not digest it</text>
+<path d="M228,112 L288,112" fill="none" marker-end="url(#a1)" stroke="#d2a24c" stroke-width="1.5"></path>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="258" y="102">~1.5 bn yrs</text>
+<ellipse cx="420" cy="112" fill="#141c16" rx="56" ry="38" stroke="#52c98a" stroke-width="1.8"></ellipse>
+<ellipse cx="420" cy="112" fill="none" rx="48" ry="31" stroke="#8aa192" stroke-width="1.2"></ellipse>
+<circle cx="404" cy="112" fill="none" r="8" stroke="#7be0ab" stroke-width="1.2"></circle>
+<circle cx="438" cy="104" fill="#7be0ab" r="2.4"></circle>
+<circle cx="444" cy="118" fill="#7be0ab" r="2.4"></circle>
+<circle cx="430" cy="124" fill="#7be0ab" r="2.4"></circle>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="420" y="30">the granule powering you today</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="80">two membranes</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="100">a ring-shaped manual</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="120">bacterial ribosomes</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="486" y="140">only ever divides in two</text>
+<line stroke="#24382c" stroke-width="1" x1="478" x2="482" y1="76" y2="76"></line>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="204">a part you grew yourself should show none of these four</text>
+</svg>
+<div class="cap">The outer membrane is what the grabbing hand left behind; the inner one is the bacterium's own skin. <strong>Each trace alone admits another reading. Together they leave only one.</strong></div>
+</div>
+<p>One sentence needs care here: nobody swallowed anybody "in order to" get energy. Swallowed by chance, undigested by chance, both parties still alive by chance — that combination must have occurred countless times and almost always came to nothing. A very few lineages left more descendants, and what we see today is that one. <em>The three conditions from the natural-selection issue are not bypassed anywhere in this story.</em> One more point: your mitochondria come almost entirely from your mother, since what the sperm carries is mostly kept out or destroyed. That is a way of holding down an internal conflict — mix two lineages of granules and you invite variants that simply copy themselves faster.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>A paper rejected a dozen times was overturned by a new measurement, not a better argument</h2>
+<p>In 1967 a researcher publishing as Lynn Sagan — later known as Lynn Margulis — set out the whole case in a long paper. By later accounts, the manuscript had been turned down by more than a dozen journals before it appeared, some of them without a full reading.</p>
+<p>Looking back, the rejections were not all bad temper. The evidence available then was mostly about form: it looks like a bacterium, it divides like a bacterium, its membrane is doubled. <strong>And looking like something always admits a second reading</strong> — a doubled membrane could be the cell's own membrane folded in around a pocket. The methods of the day could not decide it, and both sides were arguing over the same photographs.</p>
+<p>What broke the deadlock was a new kind of measurement. Once DNA could be sequenced, the question became decidable for the first time: put the organelle's genes beside a large sample of bacterial genes and read off which branch it falls on — an answer that does not depend on what anything reminds you of. <em>A dispute that had run for decades ended not because one side phrased it better, but because an observation appeared that could pull the two claims apart.</em></p>
+<p>Something else is worth remembering. That paper made three claims. Mitochondria and chloroplasts went into the textbooks. The third — that the whip-like flagella on cell surfaces also came from a different bacterium — has never found support and is generally regarded as wrong. <strong>Same person, same paper, part of it standing and part of it falling: that is the normal case, not the exception.</strong></p>
+<p>So the swallowed party is identified. Who did the swallowing? The current answer is the archaea, a large group of single-celled organisms that look bacterial from outside but whose inner machinery is closer to ours. In 2015, genomes assembled from deep-sea sediment revealed a group of archaea carrying genes previously thought to belong only to complex cells. In 2020 a Japanese team actually grew one: more than a decade from sampling to a stable culture, growing so slowly that its numbers take a couple of weeks to double, and surviving only by handing its metabolic waste to partner organisms. The resulting picture is that <em>complex cells are not a third branch standing beside bacteria and archaea, but a branch growing out of the archaea, plus one bacterium.</em> This too is still being tested.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>After the merger, the one taken in handed over almost the whole manual</h2>
+<p>The ring-shaped manual inside your mitochondria holds 37 genes. Its bacterial ancestors had several thousand. Where did the rest go? Some were genuinely lost — living inside somebody else's cell, many skills go unused, and nothing punishes them for breaking. <strong>But the more interesting fate is the other one: they moved into the cell nucleus.</strong> Of the proteins working inside your mitochondria today, more than a thousand kinds are built from genes in the nucleus and then shipped in.</p>
+<p>The move is not an inference; somebody measured it directly. In 2003 a group did it in tobacco: they inserted into the chloroplast's manual a resistance gene that only works once it has landed in the nucleus, then raised offspring in bulk and counted how many showed the gene had made the trip. The answer was roughly one in sixteen thousand pollen grains. <em>That is far more often than anyone expected — the migration is not an ancient event that finished long ago. It is still running.</em></p>
+<div class="fig">
+<svg aria-label="Several thousand ancestral bacterial genes split three ways: lost, moved to the nucleus, or kept in place" role="img" viewbox="0 0 600 214" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="d1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#8aa192"></path></marker><marker id="d2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<rect fill="#141c16" height="46" rx="7" stroke="#d2a24c" stroke-width="1.5" width="150" x="22" y="86"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="97" y="105">the ancestral bacterium</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="97" y="123">several thousand genes</text>
+<path d="M172,100 C226,80 246,48 292,42" fill="none" marker-end="url(#d1)" stroke="#8aa192" stroke-width="1.3"></path>
+<path d="M172,109 C226,109 246,109 292,109" fill="none" marker-end="url(#d2)" stroke="#52c98a" stroke-width="1.4"></path>
+<path d="M172,118 C226,138 246,170 292,176" fill="none" marker-end="url(#d2)" stroke="#52c98a" stroke-width="1.4"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11.5" x="300" y="34">lost: skills of no use indoors</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" x="300" y="102">moved to the nucleus: 1000+ proteins built there, shipped back</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" x="300" y="169">kept in place: 37</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="300" y="188">all of them govern decisions that cannot wait</text>
+<line stroke="#24382c" stroke-dasharray="3 4" stroke-width="1" x1="300" x2="560" y1="112" y2="112"></line>
+</svg>
+<div class="cap">Of the three fates, only the bottom one needs explaining. <strong>Losing and moving are easy; "why exactly these few dozen stayed" is the question.</strong></div>
+</div>
+<p>The genes that stayed mostly govern one thing: watching the flow of electrons across the energy-producing membrane and adjusting to its state moment by moment. Allen's proposal is that such adjustments have to be made <strong>on the spot</strong> — send a signal to the nucleus and wait for instructions to come back, and the moment has passed; so the genes have to sit as close to the action as possible. Some evidence supports this and some does not; it is not settled.</p>
+<p>A bigger dispute is about energy. Lane and Martin proposed in 2010 that a bacterium makes energy across its own outer skin, and skin area cannot keep pace with growing volume, so it cannot get large; a complex cell moves the energy membranes inside and adds hundreds of small control points, each carrying a scrap of manual, so that <em>the energy available per gene rises by orders of magnitude</em> (they put it around two hundred thousand fold), which is what makes a large genome affordable. In 2015 Lynch and Marinov ran a different accounting and objected that the gap does not exist at all, and that what really limits bacteria is population size and random drift, not energy. The argument is not over. <strong>For now this one goes down as unresolved and should not be used as a conclusion.</strong></p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BigCat</h3>
+<ul>
+<li><b>① Writing, and this learning site itself</b>—you finish an explanation, it reads smoothly, and you are the first to believe it. The mechanism from "a paper rejected a dozen times was overturned by a new measurement, not a better argument": what moves a claim from <i>looks right</i> to <i>holds up</i> is never better phrasing, it is an observation that separates it from its rivals. <b>What to change</b>: after every conclusion you derived yourself, add a line saying what you would see first if it were wrong. If you cannot write that line, mark the claim as pending and stop building on it.</li>
+<li><b>② Parenting and education</b>—four or five activities signed up for in one term, each once a week, and a year later every one of them still only moves when an adult is standing there. The mechanism from "after the merger, the one taken in handed over almost the whole manual": whether a part can hold itself up depends on whether it still owns decisions it can finish on the spot; with every decision made elsewhere, waiting to be driven is the only state left to it. <b>What to change</b>: swap the metric from "how many are signed up for" to "which one does the child still touch when nothing is scheduled". Two months with none, cut back to two activities, and leave the freed time blank instead of filling it with a new one.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · BORROWED FROM ELSEWHERE</h3>
+<ul>
+<li><b>Organisations and institutions · Three years after the acquisition, they are still on their own expense system</b>: on the org chart the two companies merged long ago, yet a few things on the acquired side never go away — their own expenses, their own shift rota, their own on-call list, slated for consolidation every year and never consolidated. The mechanism running here is the one from "after the merger, the one taken in handed over almost the whole manual": the overwhelming majority of functions migrate to the centre (in the cell, into the nucleus, at a rate high enough to be measured directly in tobacco), and <b>what stays local is whatever cannot afford the delay — the decisions that would be too late if the information had to travel to the centre and back.</b> That yields a conclusion you would not otherwise reach: <b>to judge how far a merger has actually gone, the org chart tells you nothing; the list of "decisions that must be completed on the spot" does. That list does not shrink because you announced a shutdown date, because response time sets it. Force those decisions upward and the system does not get tidier — it gets slower, and it fails first under the heaviest load.</b> <b>Where this breaks down</b>: in the cell, the few dozen genes that stayed were sieved — a lineage whose relocated copy worked badly left fewer descendants, so "it is still in place" carries real information. A company has no such sieve; the local system often survives because nobody pushed, so its survival tells you nothing by itself. To use this, build the sieve: switch off one local step for two weeks and see what actually breaks.</li>
+<li><b>Eastern thought · "No-self" is usually read as "you do not exist", which reads it too narrowly</b>: Buddhism's teaching of no-self sounds like a denial that you are there. This issue offers a very concrete counterpart: you contain a whole set of components carrying a manual of entirely different ancestry, and the fact that "you are one unit" is held in place by a few specific devices — mitochondria arise only by division of existing ones, they descend only through the mother, and most of their manual has been moved to the centre. The mechanism is the one from "it is not a part you grew — it is the one that got swallowed and not digested". From it follows a conclusion you would not otherwise reach: <b>the individual is not evolution's starting point but a boundary fixed in place after a merger; it has a date, it has machinery maintaining it, and it can therefore fail — once a cell lineage inside you escapes those constraints it is selected independently within your body, which is not a metaphor but one of the mechanisms of cancer.</b> <b>Where this breaks down</b>: Buddhist no-self is a claim about the experiencing subject, reached by introspection, with nothing to do with what does or does not get passed between generations; and it speaks of moment-by-moment assembly, whereas this issue describes one irreversible historical event — having handed over its manual, that party can never go back.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>If being taken in is so useful, why do complex cells appear to have arisen only once?</summary>
+<div>Every complex cell alive descends from one ancestor, and that ancestor already had mitochondria. But "only one lineage survived" cannot be told apart from "it only happened once" — the same logical difficulty the origin-of-life issue ran into. And it is not strictly unrepeated: an amoeba called Paulinella independently took in and kept a cyanobacterium roughly a hundred million years ago, and that organelle's manual has already shrunk to around a million letters and fewer than nine hundred genes. The shrinking step, at least, does repeat.</div>
+</details>
+<details><summary>Is a mitochondrion still alive?</summary>
+<div>It cannot leave its host, and the overwhelming majority of its parts are supplied by the nucleus. Yet it keeps its own manual and its own ribosomes, arises only by division of an existing one, and its genes travel a separate line of descent from the nuclear ones — a line that follows only the mother. Whether it counts as an individual has no clean answer here, which is exactly what it means to say that the boundary of an individual is maintained by machinery and can be stronger or weaker.</div>
+</details>
+<details><summary>How should a non-specialist hold the energy dispute?</summary>
+<div>Park it as a question without a referee, and do not use it to derive anything else. The two sides are counting different things: energy available per gene on one side, population size and random drift on the other (drift was covered in the issue on where variation comes from). Until a measurement both sides accept turns up, reading more rounds of argument will not make it converge.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Symbiogenesis" rel="noopener" target="_blank">Endosymbiotic theory, overview</a> · <a href="https://en.wikipedia.org/wiki/Mitochondrion" rel="noopener" target="_blank">Mitochondrion</a> · <a href="https://en.wikipedia.org/wiki/Asgard_(archaea)" rel="noopener" target="_blank">The archaea closest to complex cells</a> · <a href="https://en.wikipedia.org/wiki/Paulinella" rel="noopener" target="_blank">The amoeba that did it again, independently</a></li>
+<li><a href="https://doi.org/10.1016/0022-5193(67)90079-3" rel="noopener" target="_blank">Sagan (Margulis), on the origin of complex cells (1967, Journal of Theoretical Biology)</a> · <a href="https://www.molbiolcell.org/doi/10.1091/mbc.e16-07-0509" rel="noopener" target="_blank">The reception of that paper, fifty years on</a></li>
+<li><a href="https://www.nature.com/articles/nature01435" rel="noopener" target="_blank">Huang et al., direct measurement of chloroplast-to-nucleus gene transfer (2003, Nature)</a> · <a href="https://www.nature.com/articles/s41586-019-1916-6" rel="noopener" target="_blank">Imachi et al., culturing the archaeon closest to complex cells (2020, Nature)</a></li>
+<li><a href="https://www.nature.com/articles/nature09486" rel="noopener" target="_blank">Lane &amp; Martin, the energetics of genome complexity (2010, Nature)</a> · <a href="https://www.pnas.org/doi/abs/10.1073/pnas.1514974112" rel="noopener" target="_blank">Lynch &amp; Marinov, the bioenergetic costs of a gene (2015, PNAS)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
