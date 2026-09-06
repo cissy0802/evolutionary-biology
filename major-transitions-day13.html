@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 13：主要演化转变</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 13 · PHASE B 生命史</div>
+<h1>主要演化转变</h1>
+<h2>你身上的细胞，祖上每一个都是能自己过日子的</h2>
+<div class="meta">2026-09-06 · BigCat</div>
+<div class="pitch">同一个故事在几十亿年里讲了七八遍：本来各自能过的东西并成了一个，从此谁也走不掉。难的从来不是并起来，是并起来之后怎么不散。</div>
+</header>
+<div class="intro">
+<p>从你嘴里刮下来一点细胞，放进合适的培养液，它能活上一阵、还能分裂几次。但它再也长不成一个你，也生不出第二个人。它只是个零件，一个离了主体就走到头的零件。</p>
+<p>它祖上不是这样。几十亿年前那些单细胞，每一个都是一门完整的生意：自己吃、自己复制、自己把说明书传下去。</p>
+<p>中间发生了什么，让一个本来能自己过日子的东西变成了零件？而且这件事，不是只发生过一次。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>本来各自能过日子的，后来只能当零件</h2>
+<p>1995 年，两位研究者把生命史上一批看着八竿子打不着的事件摆在了同一张表上：能各自复制的分子串成了一条染色体；单细胞变成多细胞；本来自己产卵的昆虫变成蚁群里终身不生育的工蚁；一只细菌被吞进一个古菌、后来成了你身上供能的小颗粒（「内共生与真核革命」那期讲的就是这一次）。</p>
+<p>把它们放在一起的理由只有一条，而这一条很硬：<strong>转变之前，下层那些单位能自己复制；转变之后，它们只能作为一个更大的整体的一部分被复制。</strong>你的皮肤细胞不能自己另开一支；蚁群里的工蚁一辈子不产自己的后代；线粒体离开细胞什么也不是。独立复制的那条通道，被关掉了。</p>
+<p>关掉之后才谈得上分工。一个还得自己过活的东西不会把某项本事全丢掉——丢了它就活不成。只有当整体成了唯一的复制单位，「这件事我不做、别人做」才不至于让这一支断掉。分工是结果，不是原因。</p>
+<div class="fig">
+<svg role="img" aria-label="合并之前三个单位各自复制，合并之后只剩一条通道能生出下一个整体" viewbox="0 0 600 216" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="m1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker><marker id="m2" markerheight="9" markerwidth="9" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="20" y="26">合并之前：三个都能自己生下一个</text>
+<circle cx="42" cy="62" r="12" fill="#141c16" stroke="#7be0ab" stroke-width="1.5"></circle>
+<path d="M60,62 L92,62" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="112" cy="62" r="9" fill="none" stroke="#7be0ab" stroke-width="1"></circle>
+<circle cx="42" cy="112" r="12" fill="#141c16" stroke="#7be0ab" stroke-width="1.5"></circle>
+<path d="M60,112 L92,112" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="112" cy="112" r="9" fill="none" stroke="#7be0ab" stroke-width="1"></circle>
+<circle cx="42" cy="162" r="12" fill="#141c16" stroke="#7be0ab" stroke-width="1.5"></circle>
+<path d="M60,162 L92,162" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="112" cy="162" r="9" fill="none" stroke="#7be0ab" stroke-width="1"></circle>
+<path d="M148,112 L206,112" fill="none" marker-end="url(#m2)" stroke="#d2a24c" stroke-width="1.5"></path>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="177" y="102">一次转变</text>
+<ellipse cx="300" cy="112" rx="72" ry="52" fill="#141c16" stroke="#52c98a" stroke-width="1.8"></ellipse>
+<circle cx="272" cy="94" r="12" fill="#0f1511" stroke="#8aa192" stroke-width="1.2"></circle>
+<rect x="316" y="82" width="24" height="24" rx="5" fill="#0f1511" stroke="#8aa192" stroke-width="1.2"></rect>
+<circle cx="296" cy="138" r="12" fill="#0f1511" stroke="#7be0ab" stroke-width="1.6"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="300" y="42">合并之后：一个整体</text>
+<path d="M374,138 L424,138" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.4"></path>
+<ellipse cx="466" cy="138" rx="30" ry="22" fill="none" stroke="#52c98a" stroke-width="1.2"></ellipse>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="404" y="122">只剩这一条通道</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="404" y="72">另外两个再也</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="404" y="90">生不出下一个整体</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="204">判断标准不是「变大了」，是「独立复制的通道被关掉了」</text>
+</svg>
+<div class="cap">图里那三个形状不一样，是因为分工；但决定它们从此是一个东西的，不是形状，<strong>是右边那条只剩一根的箭头。</strong></div>
+</div>
+<p>要防着两种顺口的误读。一是把这张表读成阶梯，好像生命一路往复杂爬、爬到人这一级：<em>绝大多数支系一次转变也没经历过，今天照样活得好好的</em>，细菌在数量、分布和代谢花样上都不逊于谁。二是读成有人在推：不是谁「为了变复杂」并的，是碰巧粘在一起没散、碰巧留下更多后代——「自然选择的逻辑」那期的三个条件，这里一条也没被绕开。</p>
+<p>还得说清这张表的分量：它是整理问题的框架，不是被验证过的定律。哪些事件算一次转变、它们是不是同一类现象，学界一直在吵。2015 年 Szathmáry 自己修订过一版，把「起源」「维持」「后续演化」拆开算，清单短了两条。<strong>可以拿它当地图，别拿它当定理。</strong></p>
+<p class="en-brief"><b>EN</b> In 1995 two researchers put a set of seemingly unrelated events on one table: independently replicating molecules linked into a chromosome; single cells becoming multicellular; insects that once laid their own eggs becoming lifelong non-reproductive workers; a bacterium swallowed by an archaeon becoming the mitochondrion. One thing joins them. Before the transition, the lower-level units could replicate on their own; afterwards they can only be replicated as part of a larger whole. Your skin cells cannot start a lineage; a worker ant leaves no offspring of her own. Division of labour follows from that closure rather than causing it: only once the whole is the sole unit of replication can a part afford to drop a skill entirely. Two readings to avoid. This is not a ladder — most lineages went through no transition at all and are doing fine; bacteria are second to none in numbers, range, and metabolic variety. And nothing merged "in order to" become complex: sticking together, not falling apart, leaving more descendants. The list is also a framework for organising questions, not a verified law — which events count, and whether they are one kind of thing, remains disputed. Szathmáry revised it in 2015, separating origin, maintenance and subsequent evolution, and the revised list is two items shorter.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>个体不是天生就有的，是被几样装置捏出来的</h2>
+<p>先看麻烦在哪。一堆细胞待在一起干活，只要冒出一个复制得比邻居快的变体，它就会在这堆细胞里越占越多——哪怕整堆因此死掉。这不是谁品德不好，是选择在更低那一层照样在跑。所以「合成一个整体」不会自动生效，它得被几样具体装置摁住。</p>
+<p>第一样是每代收窄到一个细胞。你不是从上一代身上掰下来的一块，你是从一个细胞开始的。这一手很狠：整个身体几十万亿个细胞几乎共用同一份说明书，一个细胞去占邻居的便宜，占的是自己复制品的便宜，一分钱赚不到（「亲缘选择与利他」那期算的正是这笔账）。</p>
+<p>第二样是把负责传下去的那些细胞早早隔开，别的细胞再怎么折腾也进不了下一代。但这条得说老实话：<em>它不是普遍规律。</em>植物根本没有专设的生殖细胞系，花是临时从体细胞里分化出来的。所以它是其中一种解法，不是必需件。</p>
+<p>第三样是分家时的公平。做生殖细胞时，你每个基因的两个版本各有一半机会被带走。这个「一半」是被维持着的，不是自动成立：只要有版本能在这一步作弊，它就会扩散。小鼠身上一段叫 t 单倍型的染色体片段，会被携带它的公鼠传给九成上下的后代。代价明摆着——两份都拿到的胚胎多半活不下来，纯合的公鼠不育。<strong>它扩散不是因为它好，是因为它改了抽签这个动作本身。</strong></p>
+<p>这些不只是推理。2012 年一组研究者把面包酵母扔进一个只有一条规矩的环境：每天摇匀静置，只留沉得快的那部分接着养。六十轮之后，这种单细胞真菌长出了雪花状的簇。<em>关键不是簇出现了，是簇里的细胞全是同一个细胞分裂出来的，不是路人粘在一起。</em>「每代收窄到一个」是这种长法自带的，没人特意去装。同一个体系后来跑了六百轮、约三千代，簇大了约两万倍，肉眼直接看得见。</p>
+<div class="fig">
+<svg role="img" aria-label="每代收窄到一个细胞与不收窄的对比，收窄让整团说明书一致" viewbox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="n1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker><marker id="n2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="18" y="26">每代收窄到一个细胞</text>
+<circle cx="36" cy="66" r="9" fill="#7be0ab"></circle>
+<path d="M50,66 L82,66" fill="none" marker-end="url(#n1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="106" cy="54" r="8" fill="#7be0ab"></circle><circle cx="124" cy="64" r="8" fill="#7be0ab"></circle><circle cx="104" cy="76" r="8" fill="#7be0ab"></circle><circle cx="122" cy="86" r="8" fill="#7be0ab"></circle>
+<path d="M144,66 L176,66" fill="none" marker-end="url(#n1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="196" cy="66" r="9" fill="#7be0ab"></circle>
+<path d="M210,66 L242,66" fill="none" marker-end="url(#n1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="266" cy="54" r="8" fill="#7be0ab"></circle><circle cx="284" cy="64" r="8" fill="#7be0ab"></circle><circle cx="264" cy="76" r="8" fill="#7be0ab"></circle><circle cx="282" cy="86" r="8" fill="#7be0ab"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="316" y="60">整团几乎共用同一份说明书</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="316" y="80">占邻居的便宜 = 占自己复制品的便宜</text>
+<line stroke="#24382c" stroke-width="1" x1="18" x2="582" y1="112" y2="112"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" x="18" y="140">不收窄，整团直接掰两半</text>
+<circle cx="106" cy="168" r="8" fill="#7be0ab"></circle><circle cx="124" cy="178" r="8" fill="#d2a24c"></circle><circle cx="104" cy="190" r="8" fill="#7be0ab"></circle><circle cx="122" cy="200" r="8" fill="#7be0ab"></circle>
+<path d="M144,182 L176,182" fill="none" marker-end="url(#n2)" stroke="#d2a24c" stroke-width="1.2"></path>
+<circle cx="196" cy="168" r="8" fill="#d2a24c"></circle><circle cx="214" cy="178" r="8" fill="#7be0ab"></circle><circle cx="194" cy="190" r="8" fill="#d2a24c"></circle><circle cx="212" cy="200" r="8" fill="#d2a24c"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="252" y="176">团里混着两份不同的说明书</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="252" y="196">复制得快的那份（琥珀色）越占越多</text>
+</svg>
+<div class="cap">上下两行的差别只有一处：下一代是从一个细胞重新开始，还是从一团里掰一块。<strong>就这一处，决定了作弊有没有好处可拿。</strong></div>
+</div>
+<p class="en-brief"><b>EN</b> Start with the problem. In any clump of cells, a variant that copies itself faster than its neighbours will spread through the clump — even if the clump dies of it. That is not bad character; it is selection still running at the lower level. So a whole does not become one thing automatically; it has to be held together by specific devices. First: a single-cell bottleneck each generation. You began as one cell, so the tens of trillions of cells in your body share essentially one manual, and cheating a neighbour means cheating your own copy. Second: setting aside the cells that will be passed on. Honestly, though, this is no universal rule — plants have no dedicated germ line, differentiating flowers from ordinary body cells, and many animals segregate late. It is one solution, not a requirement. Third: fairness at the split. Each of your two versions of a gene has an even chance of entering a sex cell, and that evenness is maintained, not automatic: a stretch of mouse chromosome called the t-haplotype is passed on by carrier males to roughly nine offspring in ten, sometimes nearly all, at the cost of embryos that inherit two copies usually dying and homozygous males being sterile. It spreads not because it is good but because it rigged the draw. This is measurable. In 2012 a group put baker's yeast under one rule — keep only what settles fastest — and after sixty rounds got snowflake-shaped clusters. What matters is not that clusters appeared but that their cells were all descendants of one cell rather than strangers stuck together, so the bottleneck came free with that way of growing. As clusters grew, rates of programmed cell death rose, which is how clusters break in two and make offspring. Run on for 600 rounds, about 3,000 generations, the clusters became roughly 20,000 times larger and plainly visible, by lengthening cells and entangling branches.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>合并之后麻烦不会消失，只是搬进了内部</h2>
+<p>蜂群是看这件事的好地方。工蜂有卵巢，能产下不受精的卵，这种卵会变成雄蜂，按说每只工蜂都该抢着生自己的儿子。可实际上，一个正常蜂群里大约一千只雄蜂中才有一只是工蜂生的。</p>
+<p>拦住它们的不是纪律，是另一群工蜂。1989 年有人直接做了对照：把工蜂产的卵和蜂王产的卵一起放进巢里，工蜂会把前者挑出来吃掉，后者留着。为什么？蜂王跟十几只雄蜂交配过，一个巢里的工蜂彼此是同母异父。算下来，一只工蜂跟蜂王的儿子（相当于它弟弟）的血缘，比跟另一只工蜂的儿子（相当于外甥）还近一些。<em>于是「举报」比「纵容」划算，压制作弊的活儿是自己人干的。</em>反过来，蜂王若只跟一只雄蜂交配，外甥反而更近，这套互相监督就没有理由存在——正是「亲缘选择与利他」那期算的那笔账在起作用。</p>
+<p>那高血缘是先有的还是后来的？2008 年一项覆盖 267 种真社会性蜜蜂、蚂蚁和胡蜂的比较研究给了个答案：考察的八次独立起源里，祖先状态都是一只雌性只跟一只雄性交配；多配只出现在工蜂已经失去繁殖能力的支系里。<strong>顺序像是：先有高血缘才走得出这一步，等到走不回头了，多配才敢出现。</strong>这条至今仍有人认为证据不够硬，别当铁案。</p>
+<p>压制也从来不是一劳永逸。你身上每天都有细胞挣脱那套约束——那不是比喻，那就是一次在你体内跑起来的选择：一个细胞复制得更快、忽略停止信号，它的后代就更多。多细胞生物身上因此挂着一整套刹车：损伤严重就自杀、分裂次数有上限、免疫系统巡逻清除。</p>
+<p>有个反直觉的现象正好说明这套刹车是被选出来的：大象细胞数比人多约一百倍，活得也久，照理癌症该多得多。但一份 644 头大象的记录里，一生死于癌症的约 3%，人是 11% 到 25%；大象基因组里那个叫 TP53 的刹车基因有多达 20 份拷贝，人只有一份。<em>这两件事之间的因果链还在讨论，别当结案。</em></p>
+<p>所以一次转变「完成」，标志从来不是冲突消失，而是冲突被摁到某一层、以某个速率继续跑，而整体活得比散着强。</p>
+<p class="en-brief"><b>EN</b> A honeybee colony is the clearest place to watch this. Workers have ovaries and can lay unfertilised eggs that become males, yet in a normal colony only about one male in a thousand is worker-laid. What stops them is other workers. In 1989 a direct test showed that workers seek out and eat worker-laid eggs while leaving the queen's alone. The reason is arithmetic: the queen mates with a dozen or more males, so workers in one hive are half-sisters, and a worker is somewhat more closely related to the queen's sons (her brothers) than to another worker's sons (her nephews). Reporting beats tolerating, and the policing is done by peers. Under single mating the numbers reverse and there is no reason for such policing — the same ledger as in kin selection. Which came first, high relatedness or the workers? A 2008 comparison across 267 eusocial bees, ants and wasps found single mating to be the ancestral state in all eight independent origins examined, with multiple mating appearing only in lineages whose workers had already lost the ability to reproduce. Suggestive, and still contested. Suppression is never finished either: cells break loose daily, and that is literally selection running inside you, so multicellular bodies carry brakes — apoptosis, division limits, immune surveillance. Elephants have roughly a hundred times more cells than we do and live long, yet in records of 644 elephants about 3% died of cancer against 11–25% in humans, and their genome carries up to 20 copies of the brake gene TP53 where we have one. The causal chain there is still under discussion. A transition is "complete" not when conflict ends but when it has been pushed down to one level and runs at a rate the whole can carry.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 工程与系统设计</b>——某个下游服务慢了两百毫秒，上游几个服务各自的重试同时加倍打过去，把它彻底打死；复盘翻指标，每个服务的可用率都还在自己的线上。按「合并之后麻烦不会消失，只是搬进了内部」那节的机制：子单位各有独立计分，局部把自己的分刷满就会拖垮整体，账面还全是好看的。<b>可改的动作</b>：超时、重试、退避从各服务自己配改成一处下发；指标从「单服务可用率」换成「一次完整请求端到端成功率」。</li>
+<li><b>② 带团队与组织</b>——需要两个组一起改的那件事，挂了三个季度：每次规划都被提一次，每次都排在各组自己的目标后面，而两个组的季度完成率都很漂亮。同一条机制：计分单位在哪一层，力气就流向哪一层。<b>可改的动作</b>：写成两个组共同的一条，任一边没做完两边都不记分；给不了这个就指定一个人负责。跟踪指标换成「跨组事项挂了多少天」。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>经济·投资·商业 · 说好一起限产，年年有人偷偷多产</b>：几家供应商约好一起减产抬价（这种联盟叫卡特尔），签得漂漂亮亮，然后年年有成员超额生产，得靠不断开会、核查、互相威胁才勉强撑住。跑的是「本来各自能过日子的，后来只能当零件」那节的机制：一次合并能稳住，靠的是下层单位单独复制的通道被关掉——细胞不能自己开一支，工蚁不产后代。卡特尔一条也没关：成员的产量、收入、扩张全是自己的。由此能推出一个原本看不出的结论：<b>判断一个联盟能撑多久，别看罚则写得多重、开过多少次协调会，看的是「成员单干还能不能继续长大」；只要能，监督成本就必然一路往上，成员越多涨得越快。</b><b>但这里不成立</b>：细胞那边关通道靠的是物理事实——体细胞离开身体没有下一代，不需要任何人去监督。经济联盟里退出通道再窄也只是代价，代价能算、能扛。所以别指望「绑定条款写得够狠」能复制那个效果，能做的只是把监督成本当成持续开支来算。</li>
+<li><b>历史与军事 · 各邦自己发钞、自己对邻邦的货收关税的那几年</b>：北美十三个邦在 1780 年代那套邦联体制下，各邦自己发钞、自己设关税，中央要用钱得挨个去讨；几年后改成联邦，收上去的是几样很具体的权力——关税、铸币、常备军。跑的是「个体不是天生就有的，是被几样装置捏出来的」那节的机制：一个整体是不是一个整体，不由它宣称，由几样具体装置维持着。由此能推出一个原本看不出的结论：<b>看一次整合到了哪一步，章程和组织图没用，得看装置在不在：关键资源的分配权落在哪一层、下层还能不能自己拿到增长、分配是不是每次都照同一条规则走。这也解释了为什么「规则被绕过一次」比「某次分配吃亏」严重得多——小鼠那段作弊的染色体片段能扩散，不是因为它多抢了一次，是因为它动了抽签这个动作本身。</b><b>但这里不成立</b>：生物那次合并不可逆，细胞回不去单细胞状态。政治体没有这种不可逆，苏联和南斯拉夫都散过。所以「装置在不在」只能看当下整合到什么程度，不能用来断言它不会散。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>既然并成一体这么管用，为什么大多数生物从来没并过？</summary>
+<div>因为没有「管用」这回事，只有「留下更多后代」。多细胞在真核生物里独立出现过很多次（动物、植物、真菌、各类藻类各走各的），门槛显然不算高；但代价也实打实：长得慢、每代要从一个细胞重新开始、还得养一整套压制作弊的装置。细菌那边也有集体形式，只是没走到「下层再也不能单独复制」这一步。</div>
+</details>
+<details><summary>人类语言算不算同一类的一次转变？</summary>
+<div>这是那张表上争议最大的一条。支持的理由是它确实带来了一种全新的信息传递方式，不经过基因也能把内容传给下一代。反对的理由很直接：人并没有像工蚁那样失去独立繁殖的能力，「下层单位只能作为整体的一部分被复制」这条根本不成立。目前没有共识，Szathmáry 那次修订也主要在处理这类质疑。</div>
+</details>
+<details><summary>癌症为什么可以说是「个体性」的局部失效？</summary>
+<div>因为它满足选择的全部条件，只是舞台在你体内：细胞之间有差异、差异能传给子细胞、带某些差异的细胞留下更多子细胞。区别在于这条线走不出这具身体（少数传染性癌症例外，比如袋獾脸部肿瘤）。所以「个体」不是一个有或没有的属性，是一个被装置维持、可强可弱、也会局部失效的边界。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/The_Major_Transitions_in_Evolution" rel="noopener" target="_blank">主要演化转变（原书条目）</a>（英文） · <a href="https://en.wikipedia.org/wiki/Evolution_of_multicellularity" rel="noopener" target="_blank">多细胞的起源</a>（英文） · <a href="https://en.wikipedia.org/wiki/Worker_policing" rel="noopener" target="_blank">工蜂之间的互相压制</a>（英文） · <a href="https://en.wikipedia.org/wiki/Peto%27s_paradox" rel="noopener" target="_blank">大象为什么不该更容易得癌症</a>（英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1421398112" rel="noopener" target="_blank">Szathmáry，主要演化转变理论的修订版（2015，PNAS）</a>（英文） · <a href="https://en.wikipedia.org/wiki/T-haplotype" rel="noopener" target="_blank">小鼠 t 单倍型：在分家这一步作弊</a>（英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1115323109" rel="noopener" target="_blank">Ratcliff 等，用酵母做出多细胞的第一步（2012，PNAS）</a>（英文） · <a href="https://www.nature.com/articles/s41586-023-06052-1" rel="noopener" target="_blank">Bozdag 等，三千代之后长到肉眼可见（2023，Nature）</a>（英文）</li>
+<li><a href="https://www.nature.com/articles/342796a0" rel="noopener" target="_blank">Ratnieks &amp; Visscher，蜂群里的互相监督（1989，Nature）</a>（英文） · <a href="https://www.science.org/doi/10.1126/science.1156108" rel="noopener" target="_blank">Hughes 等，真社会性起源时祖先都是单配（2008，Science）</a>（英文） · <a href="https://jamanetwork.com/journals/jama/article-abstract/2516705" rel="noopener" target="_blank">Abegglen 等，大象的 TP53 拷贝与抗癌（2015，JAMA）</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

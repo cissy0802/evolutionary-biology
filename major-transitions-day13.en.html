@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 13: The Major Transitions</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 13 · PHASE B HISTORY OF LIFE</div>
+<h1>The Major Transitions</h1>
+<h2>Every cell in your body descends from things that could make a living on their own</h2>
+<div class="meta">2026-09-06 · BigCat</div>
+<div class="pitch">The same story has been told seven or eight times over a few billion years: things that used to get by separately became one, and after that none of them could leave. The hard part was never the merging. It was not falling apart afterwards.</div>
+</header>
+<div class="intro">
+<p>Scrape a few cells from the inside of your cheek, drop them into the right broth, and they will live a while and divide a few times. But they will never grow into a you, and they will never make a second person. They are parts — parts that run out of road the moment they leave the whole.</p>
+<p>Their ancestors were not like that. A few billion years ago every single cell was a complete business: it fed itself, copied itself, and passed its own manual on.</p>
+<p>What happened in between, to turn something that could get by on its own into a part? And this did not happen only once.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Things that used to get by on their own end up as parts</h2>
+<p>In 1995 two researchers laid a set of apparently unrelated events out on one table: separately replicating molecules linked into a single chromosome; single cells becoming multicellular; insects that once laid their own eggs becoming workers that never reproduce; a bacterium swallowed by an archaeon that became the energy granule inside your cells (the subject of the piece on endosymbiosis and the complex cell).</p>
+<p>Only one thing joins them, and it is a hard one. <strong>Before the transition, the lower-level units could replicate on their own; after it, they can only be replicated as part of a larger whole.</strong> Your skin cells cannot start a lineage. A worker ant leaves no offspring of her own. A mitochondrion outside a cell is nothing. The independent route to the next generation has been closed off.</p>
+<p>Only after that closure does division of labour make sense. Something that still has to make its own living will not drop a skill entirely — drop it and it dies. Only when the whole is the sole unit of replication can "I won't do this, someone else will" stop being fatal to the lineage. Division of labour is the consequence, not the cause.</p>
+<div class="fig">
+<svg role="img" aria-label="Before a transition three units each make their own copy; after it only one route to the next whole remains" viewbox="0 0 600 216" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="m1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker><marker id="m2" markerheight="9" markerwidth="9" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="20" y="26">Before: each one makes its own next one</text>
+<circle cx="42" cy="62" r="12" fill="#141c16" stroke="#7be0ab" stroke-width="1.5"></circle>
+<path d="M60,62 L92,62" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="112" cy="62" r="9" fill="none" stroke="#7be0ab" stroke-width="1"></circle>
+<circle cx="42" cy="112" r="12" fill="#141c16" stroke="#7be0ab" stroke-width="1.5"></circle>
+<path d="M60,112 L92,112" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="112" cy="112" r="9" fill="none" stroke="#7be0ab" stroke-width="1"></circle>
+<circle cx="42" cy="162" r="12" fill="#141c16" stroke="#7be0ab" stroke-width="1.5"></circle>
+<path d="M60,162 L92,162" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="112" cy="162" r="9" fill="none" stroke="#7be0ab" stroke-width="1"></circle>
+<path d="M148,112 L206,112" fill="none" marker-end="url(#m2)" stroke="#d2a24c" stroke-width="1.5"></path>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="177" y="102">a transition</text>
+<ellipse cx="300" cy="112" rx="72" ry="52" fill="#141c16" stroke="#52c98a" stroke-width="1.8"></ellipse>
+<circle cx="272" cy="94" r="12" fill="#0f1511" stroke="#8aa192" stroke-width="1.2"></circle>
+<rect x="316" y="82" width="24" height="24" rx="5" fill="#0f1511" stroke="#8aa192" stroke-width="1.2"></rect>
+<circle cx="296" cy="138" r="12" fill="#0f1511" stroke="#7be0ab" stroke-width="1.6"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="300" y="42">After: one whole</text>
+<path d="M374,138 L424,138" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.4"></path>
+<ellipse cx="466" cy="138" rx="30" ry="22" fill="none" stroke="#52c98a" stroke-width="1.2"></ellipse>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="404" y="122">only this route left</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="404" y="72">the other two can no</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="404" y="90">longer make a whole</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="204">The test is not "it got bigger" but "the independent route was closed"</text>
+</svg>
+<div class="cap">The three shapes differ because of division of labour; but what makes them one thing from here on is not their shape. <strong>It is that single remaining arrow on the right.</strong></div>
+</div>
+<p>Two easy misreadings to guard against. The first is to read the table as a ladder, as if life had been climbing toward complexity and arrived at us: <em>the vast majority of lineages went through no transition at all and are doing perfectly well</em>, and bacteria are second to none in numbers, range, and metabolic variety. The second is to read a pusher into it. Nothing merged "in order to" become complex; things happened to stick together without falling apart, and happened to leave more descendants — the three conditions from the piece on the logic of natural selection are not bypassed anywhere here.</p>
+<p>The weight of the table itself also needs saying: it is a framework for organising questions, not a verified law. Which events count as transitions, and whether they are one kind of thing at all, has been argued over ever since. Szathmáry revised it himself in 2015, separating origin, maintenance and subsequent evolution, and the revised list came out two items shorter. <strong>Use it as a map, not as a theorem.</strong></p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Individuality is not a given — it is held in place by a few devices</h2>
+<p>Start with the trouble. In any clump of cells working together, all it takes is one variant that copies itself faster than its neighbours, and that variant takes over the clump — even if the whole clump dies of it. This is not bad character; it is selection still running at the lower level. So "being one whole" does not take effect automatically. It has to be pinned down by a few specific devices.</p>
+<p>The first is a bottleneck of one cell each generation. You were not broken off your parent as a chunk; you started as a single cell. That move is ruthless: the tens of trillions of cells in your body share essentially one manual, so a cell that takes advantage of its neighbours is taking advantage of its own copies and cannot make a penny on the deal (this is exactly the ledger worked out in the piece on kin selection and altruism).</p>
+<p>The second is setting aside early the cells that will be passed on, so nothing the rest of the body gets up to can reach the next generation. But this one deserves honesty: <em>it is not a universal rule.</em> Plants have no dedicated germ line at all — flowers are differentiated from ordinary body cells when the time comes. So it is one solution, not a requirement.</p>
+<p>The third is fairness at the split. When sex cells are made, each of your two versions of a gene gets an even chance of being carried along. That evenness is maintained, not automatic: as soon as some version can cheat at that step, it spreads. A stretch of mouse chromosome called the t-haplotype is passed on by carrier males to something like nine offspring in ten. The cost is plain — embryos that inherit two copies mostly do not survive, and males with two copies are sterile. <strong>It spreads not because it is good, but because it altered the act of drawing lots itself.</strong></p>
+<p>None of this is inference only. In 2012 a group put baker's yeast into an environment with exactly one rule: shake daily, let it settle, keep only the fastest-settling fraction for the next round. After sixty rounds this single-celled fungus was growing in snowflake-shaped clusters. <em>What matters is not that clusters appeared, but that the cells in a cluster were all descendants of one cell rather than strangers stuck together.</em> The one-cell bottleneck came free with that way of growing; nobody installed it. Run on for six hundred rounds, roughly three thousand generations, the clusters became about twenty thousand times larger — big enough to see with the naked eye.</p>
+<div class="fig">
+<svg role="img" aria-label="A one-cell bottleneck each generation compared with splitting a clump in half, and what that does to cheating" viewbox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="n1" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker><marker id="n2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="18" y="26">Narrowed to one cell each generation</text>
+<circle cx="36" cy="66" r="9" fill="#7be0ab"></circle>
+<path d="M50,66 L82,66" fill="none" marker-end="url(#n1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="106" cy="54" r="8" fill="#7be0ab"></circle><circle cx="124" cy="64" r="8" fill="#7be0ab"></circle><circle cx="104" cy="76" r="8" fill="#7be0ab"></circle><circle cx="122" cy="86" r="8" fill="#7be0ab"></circle>
+<path d="M144,66 L176,66" fill="none" marker-end="url(#n1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="196" cy="66" r="9" fill="#7be0ab"></circle>
+<path d="M210,66 L242,66" fill="none" marker-end="url(#n1)" stroke="#7be0ab" stroke-width="1.2"></path>
+<circle cx="266" cy="54" r="8" fill="#7be0ab"></circle><circle cx="284" cy="64" r="8" fill="#7be0ab"></circle><circle cx="264" cy="76" r="8" fill="#7be0ab"></circle><circle cx="282" cy="86" r="8" fill="#7be0ab"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="316" y="60">the whole clump shares one manual</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="316" y="80">cheating a neighbour = cheating your own copy</text>
+<line stroke="#24382c" stroke-width="1" x1="18" x2="582" y1="112" y2="112"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11" x="18" y="140">Not narrowed: the clump splits in half</text>
+<circle cx="106" cy="168" r="8" fill="#7be0ab"></circle><circle cx="124" cy="178" r="8" fill="#d2a24c"></circle><circle cx="104" cy="190" r="8" fill="#7be0ab"></circle><circle cx="122" cy="200" r="8" fill="#7be0ab"></circle>
+<path d="M144,182 L176,182" fill="none" marker-end="url(#n2)" stroke="#d2a24c" stroke-width="1.2"></path>
+<circle cx="196" cy="168" r="8" fill="#d2a24c"></circle><circle cx="214" cy="178" r="8" fill="#7be0ab"></circle><circle cx="194" cy="190" r="8" fill="#d2a24c"></circle><circle cx="212" cy="200" r="8" fill="#d2a24c"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="252" y="176">two different manuals travel together</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="252" y="196">the faster copier (amber) takes more of the clump</text>
+</svg>
+<div class="cap">The only difference between the two rows is whether the next generation restarts from one cell or from a chunk of the clump. <strong>That one difference decides whether cheating pays.</strong></div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Merging does not end the trouble; it moves it inside</h2>
+<p>A honeybee colony is the best place to watch this. Workers have ovaries and can lay unfertilised eggs, which develop into males, so by rights every worker should be racing to produce sons. In fact, in a normal colony only about one male in a thousand was laid by a worker.</p>
+<p>What stops them is not discipline. It is other workers. In 1989 someone ran the comparison directly: put worker-laid and queen-laid eggs together in a hive, and workers pick out the worker-laid ones and eat them, leaving the queen's alone. Why? The queen has mated with a dozen or more males, so the workers in one hive are half-sisters. Do the arithmetic and a worker turns out to be somewhat more closely related to the queen's sons (her brothers) than to another worker's sons (her nephews). <em>So informing beats tolerating, and the policing is done by peers.</em> Reverse the setup — a queen that mated with only one male — and nephews come out closer, leaving no reason for this mutual policing to exist. It is the ledger from the piece on kin selection and altruism, doing its work.</p>
+<p>Did the high relatedness come first, or later? A 2008 comparison across 267 species of eusocial bees, ants and wasps gives an answer: in all eight independent origins examined, the ancestral state was a female mating with a single male, and multiple mating shows up only in lineages whose workers had already lost the ability to reproduce. <strong>The order looks like this: high relatedness first, or you never get through the step; multiple mating only dares appear once there is no going back.</strong> Some still find the evidence for this less than airtight, so do not treat it as closed.</p>
+<p>Nor is suppression ever finished. Cells break loose from those constraints in your body every day — that is not a metaphor, it is a round of selection running inside you: a cell that copies itself faster and ignores stop signals leaves more descendants. So multicellular bodies carry a whole set of brakes: kill yourself if the damage is bad, a ceiling on how many times you may divide, an immune system on patrol.</p>
+<p>One counterintuitive pattern suggests those brakes were themselves selected. Elephants have about a hundred times more cells than we do and live a long time, so by rights they should get far more cancer. Yet in records of 644 elephants, roughly 3% died of cancer, against 11% to 25% in humans; and the elephant genome carries as many as 20 copies of a brake gene called TP53, where we have one. <em>The causal chain between those two facts is still being argued over — not closed.</em></p>
+<p>So a transition is never "complete" in the sense that conflict has ended. It is complete when conflict has been pushed down to one level, running at a rate the whole can carry, and the whole does better than the parts would apart.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Practice · BigCat</h3>
+<ul>
+<li><b>① Engineering and systems design</b>—a downstream service slows by two hundred milliseconds, several upstream services each double their retries at the same moment and finish it off; in the post-mortem, every service's own availability number is still inside its own target. By the mechanism in "merging does not end the trouble; it moves it inside": when the sub-units each keep their own scoreboard, maxing out the local score drags the whole down, and the books all look fine. <b>What to change</b>: move timeouts, retries and backoff out of each service's own config into one place that sets them for everyone; change the number you watch from per-service availability to end-to-end success for a complete request.</li>
+<li><b>② Leading a team</b>—the thing that needs two groups to change it has been open for three quarters: raised at every planning round, ranked below each group's own goals every time, while both groups' quarterly completion rates look excellent. Same mechanism: effort flows to whichever level does the scoring. <b>What to change</b>: write it as a single item owned by both groups, where neither side scores it unless both finish; if you cannot do that, name one person and count it in their group. Track the age of cross-group items in days instead of per-group completion rates.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Across the Fence · Connections</h3>
+<ul>
+<li><b>Economics and business · everyone agreed to cut output, and every year somebody quietly overproduces</b>: a handful of suppliers agree to restrict supply and lift prices (such an alliance is called a cartel), the paperwork is immaculate, and every year some member ships over quota — held together, barely, by constant meetings, audits and threats. The mechanism is the one in "things that used to get by on their own end up as parts": a merger holds because the lower units' independent route to replication has been closed — a body cell cannot start a lineage, a worker ant leaves no offspring. A cartel closes none of it: each member's output, revenue and expansion remain entirely its own. Which yields a conclusion you would not otherwise reach: <b>to judge how long an alliance can hold, do not read the penalty clauses or count the coordination meetings — ask whether a member can still grow by going it alone. If it can, monitoring costs must keep rising, and the more members there are the faster they rise.</b> <b>Where it breaks down</b>: what closes the route in a cell is a physical fact — a body cell outside the body has no next generation — and nobody has to police it. In an economic alliance the exit is only ever expensive, and an expense can be calculated and absorbed. So do not expect "tough enough lock-in clauses" to reproduce that effect; what you can do is treat monitoring as a permanent running cost rather than a one-off.</li>
+<li><b>History and the military · the years when each state printed its own money and taxed its neighbours' goods</b>: under the confederation the thirteen North American states ran in the 1780s, each issued its own currency and set its own tariffs, and the centre had to go around asking for funds. A few years later, under a federal arrangement, what moved upward was a short list of very concrete powers: tariffs, coinage, a standing army. The mechanism is the one in "individuality is not a given — it is held in place by a few devices": whether a whole is one thing is not settled by what it declares, but by whether a few specific devices are holding it. Which yields a conclusion you would not otherwise reach: <b>to see how far an integration has actually got, charters and org charts are useless — check the devices: at which level the key resources are allocated, whether the lower level can still obtain growth by itself, and whether allocation follows the same rule every time. It also explains why "the rule was bypassed once" is far more serious than "we lost out in one allocation" — that cheating stretch of mouse chromosome spreads not because it grabbed extra once, but because it altered the act of drawing lots.</b> <b>Where it breaks down</b>: the biological merger is irreversible — a cell cannot go back to living as a single cell. Political bodies have no such irreversibility; the Soviet Union and Yugoslavia both came apart. So "are the devices in place" tells you how integrated something is right now, and never that it will not break up.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>If merging into one whole works so well, why have most organisms never done it?</summary>
+<div>Because "works well" is not a thing; leaving more descendants is. Multicellularity arose independently many times among eukaryotes (animals, plants, fungi and various algae each went their own way), so the threshold is clearly not high. But the costs are real too: slower growth, restarting from a single cell every generation, and maintaining a whole apparatus for suppressing cheats. Bacteria have collective forms as well; they simply never went as far as "the lower level can no longer replicate alone".</div>
+</details>
+<details><summary>Does human language count as a transition of the same kind?</summary>
+<div>This is the most disputed row on the table. In favour: it genuinely introduced a new way of transmitting information, one that passes content to the next generation without going through genes. Against, bluntly: humans have not lost independent reproduction the way worker ants have, so the defining condition — lower units replicating only as part of the whole — simply does not hold. There is no consensus, and Szathmáry's revision was largely a response to objections of this kind.</div>
+</details>
+<details><summary>In what sense is cancer a local failure of individuality?</summary>
+<div>Because it meets every condition for selection, with your body as the arena: cells differ, the differences pass to daughter cells, and cells with certain differences leave more daughters. What sets it apart is that the lineage cannot leave this body (with rare exceptions, such as the transmissible facial tumour in Tasmanian devils). So individuality is not a property you either have or lack. It is a boundary held in place by devices — stronger in some organisms than others, and capable of failing locally.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/The_Major_Transitions_in_Evolution" rel="noopener" target="_blank">The Major Transitions in Evolution (the book)</a> · <a href="https://en.wikipedia.org/wiki/Evolution_of_multicellularity" rel="noopener" target="_blank">Evolution of multicellularity</a> · <a href="https://en.wikipedia.org/wiki/Worker_policing" rel="noopener" target="_blank">Worker policing</a> · <a href="https://en.wikipedia.org/wiki/Peto%27s_paradox" rel="noopener" target="_blank">Why elephants ought to get more cancer</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1421398112" rel="noopener" target="_blank">Szathmáry, a revised theory of the major transitions (2015, PNAS)</a> · <a href="https://en.wikipedia.org/wiki/T-haplotype" rel="noopener" target="_blank">The mouse t-haplotype: cheating at the split</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1115323109" rel="noopener" target="_blank">Ratcliff et al., the first step to multicellularity, in yeast (2012, PNAS)</a> · <a href="https://www.nature.com/articles/s41586-023-06052-1" rel="noopener" target="_blank">Bozdag et al., visible to the naked eye after three thousand generations (2023, Nature)</a></li>
+<li><a href="https://www.nature.com/articles/342796a0" rel="noopener" target="_blank">Ratnieks &amp; Visscher, policing inside the hive (1989, Nature)</a> · <a href="https://www.science.org/doi/10.1126/science.1156108" rel="noopener" target="_blank">Hughes et al., monogamous ancestors at every origin of eusociality (2008, Science)</a> · <a href="https://jamanetwork.com/journals/jama/article-abstract/2516705" rel="noopener" target="_blank">Abegglen et al., elephant TP53 copies and cancer resistance (2015, JAMA)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
