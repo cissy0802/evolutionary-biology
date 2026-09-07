@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 14: The Cambrian Explosion</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 14 · PHASE B HISTORY OF LIFE</div>
+<h1>The Cambrian Explosion</h1>
+<h2>The few dozen basic layouts for an animal body were all settled in one stretch of time</h2>
+<div class="meta">2026-09-07 · BigCat</div>
+<div class="pitch">The word "explosion" suggests an instant. It ran for ten or twenty million years. And the hard thing to explain is not that so many layouts appeared in that window — it is that in the half a billion years since, not one new one has.</div>
+</header>
+<div class="intro">
+<p>Open the fridge and look: a prawn, a clam, a fish. Almost nothing about them lines up — the prawn wears its hard shell on the outside with the meat inside; the clam shuts itself between two plates; the fish keeps its bones down the middle. Three completely different layouts.</p>
+<p>Those three, along with the basic layout of nearly every animal alive today, were settled in one stretch of time: roughly 540 to 520 million years ago. In the sea before that, you will not find a single one of them.</p>
+<p>When a pile of things happens in one short window, there are usually only two possibilities: something really did happen then, or the way we see it changed at that moment. Here both are partly true, and the awkward part is working out how much each accounts for.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Half of the "suddenly" is the record switching its light on</h2>
+<p>Fossils do not come free with dying. Soft things rot fast; what tends to survive is hard — shells, spines, teeth, plates. And right at the start of the Cambrian, hard parts in the sea went from almost absent to everywhere. What that means is plain: <strong>this need not be organisms suddenly appearing, and at least part of it is recordable organisms suddenly becoming common.</strong> The light went on then.</p>
+<p>What came before was not empty. The Ediacaran seafloor (roughly 635 to 539 million years ago) held a set of things: flat, soft, some leaf-shaped, some spread out like blankets, many of which still cannot be confidently assigned to any group.</p>
+<p>So how do we know the pattern is not held up entirely by the change in the record? By a line of evidence that does not care about shells: <em>trace fossils</em> — the trails and burrows animals leave in mud and sand. They record behaviour, and a soft body leaves them just as well. Their change across the early Cambrian is sharp: from the simple horizontal trails scratched along the surface in the Ediacaran to burrows that go down, branch, and probe three-dimensionally through the sediment. Dense branching burrows of that kind are one of the markers used internationally to define where the Cambrian starts.</p>
+<p>That digging also rebuilt the seafloor itself: before it, the seabed lay sealed under mats of bacteria, packed and short of oxygen; once things began turning it over, the sediment loosened and oxygen seeped in, and a whole set of new ways of living had somewhere to stand — this goes by the name of the Cambrian substrate revolution. <strong>Burrowing is both a consequence and the next round's cause.</strong></p>
+<p>A third line points the other way: molecular clocks, which back-date when lineages split from the genetic differences between their living descendants. The dates they give run far earlier than the fossils — the common ancestor of animals often lands around 700 million years ago, and the major branches of two-sided animals mostly split within the Ediacaran. The error bars are wide: a 2015 study checking the method put it bluntly, that uncertain fossil calibrations and non-constant rates of molecular change impose a ceiling on the precision achievable.</p>
+<p>Put the three together and the picture sharpens: <strong>the family tree had split long before; what exploded was not the splitting but getting big, getting hard, growing eyes, and starting to eat each other.</strong> The explosion itself was not brief either — current estimates run to ten or twenty million years, and by the time fossils become common, around 520 million years ago, the fiercest part was already over.</p>
+<div class="fig">
+<svg role="img" aria-label="Timeline of three intervals — molecular-clock splits, the Ediacaran, the early Cambrian — with what fossils show and what traces on the seafloor show" viewBox="0 0 600 226" xmlns="http://www.w3.org/2000/svg">
+<text x="30" y="22" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">← earlier</text>
+<text x="570" y="22" text-anchor="end" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">later →</text>
+<rect x="30" y="34" width="210" height="34" rx="6" fill="#0f1511" stroke="#24382c" stroke-width="1.2"></rect>
+<rect x="246" y="34" width="132" height="34" rx="6" fill="#0f1511" stroke="#8aa192" stroke-width="1.2"></rect>
+<rect x="384" y="34" width="186" height="34" rx="6" fill="#141c16" stroke="#52c98a" stroke-width="1.8"></rect>
+<text x="135" y="49" text-anchor="middle" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Molecular clocks:</text>
+<text x="135" y="63" text-anchor="middle" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">the tree splits in here</text>
+<text x="312" y="56" text-anchor="middle" fill="#8aa192" font-family="Georgia,serif" font-size="11">Ediacaran</text>
+<text x="477" y="56" text-anchor="middle" fill="#7be0ab" font-family="Georgia,serif" font-size="11">Early Cambrian</text>
+<text x="312" y="84" text-anchor="middle" fill="#8aa192" font-family="Georgia,serif" font-size="9.5">about 635–539 million years ago</text>
+<text x="477" y="84" text-anchor="middle" fill="#8aa192" font-family="Georgia,serif" font-size="9.5">about 539–520 million years ago</text>
+<line x1="30" x2="570" y1="98" y2="98" stroke="#24382c" stroke-width="1"></line>
+<text x="30" y="120" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">What the fossils show:</text>
+<text x="240" y="120" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">soft, flat, hard to place</text>
+<text x="400" y="120" fill="#7be0ab" font-family="Georgia,serif" font-size="10.5">shells, spines, eyes, paired legs</text>
+<text x="30" y="150" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Traces on the seafloor:</text>
+<path d="M250,170 q12,-9 24,0 q12,9 24,0 q12,-9 24,0 q12,9 24,0" fill="none" stroke="#8aa192" stroke-width="1.3"></path>
+<text x="312" y="196" text-anchor="middle" fill="#8aa192" font-family="Georgia,serif" font-size="9.5">shallow trails along the surface</text>
+<path d="M404,152 L404,190 M404,166 L422,188" fill="none" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M446,152 L446,182 M446,162 L464,180" fill="none" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M488,152 L488,192 M488,172 L506,190" fill="none" stroke="#7be0ab" stroke-width="1.3"></path>
+<text x="477" y="208" text-anchor="middle" fill="#7be0ab" font-family="Georgia,serif" font-size="9.5">burrows going down, churning the seabed</text>
+<text x="300" y="222" text-anchor="middle" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">A burrow needs no shell, so this row is untouched by the light going on</text>
+</svg>
+<div class="cap">The change in the top row has a change in the recording method mixed into it. <strong>The bottom row does not</strong> — which is why trails and burrows carry more weight here than shells do.</div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>There is no switch, only a loop that started turning</h2>
+<p>The explanation you hear most is oxygen: a big body that swims and chases things down burns far more of it than one lying still, so this had to wait until there was enough of it in the water. That holds together, but the evidence does not point one way. Some geochemical measures support a rise around then; other work finds oxygen going up and down in pulses rather than climbing one step; and a 2019 study that laid the fossil and environmental records side by side argued the Ediacaran and the Cambrian were not as sharply distinct as the standard story has it. <em>The safer reading: oxygen looks more like a background condition raising a ceiling than a trigger you press. It is still being argued over.</em></p>
+<p>The second explanation is far more interesting: eyes. Trilobite eyes are among the earliest high-resolution eyes known, their lenses made of calcite crystal, still countable one by one on the fossil. And once something in the sea could make out what was a foot away, the game changed: hiding, burying yourself in mud, growing shells and spines, moving faster — all became useful on the same day; and better defence in turn pushed the hunting side to escalate. The arms race from the piece on the Red Queen starts running at scale right here.</p>
+<p>Could it have been new genetic tools arriving? That one is largely ruled out. Comparing animal genomes shows the regulatory genes that divide a body into segments and decide what each segment becomes were already in place before the Cambrian. <strong>The toolkit was old. What changed was the wiring, and the opportunity outside.</strong></p>
+<div class="fig">
+<svg role="img" aria-label="A four-step feedback loop: seeing, more prey caught, shells and spines, better hunting equipment" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="k1" markerWidth="9" markerHeight="9" orient="auto" refX="6" refY="3" viewBox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker></defs>
+<ellipse cx="300" cy="34" rx="92" ry="20" fill="#141c16" stroke="#52c98a" stroke-width="1.4"></ellipse>
+<text x="300" y="39" text-anchor="middle" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Eyes get good; prey is seen</text>
+<ellipse cx="474" cy="122" rx="90" ry="20" fill="#141c16" stroke="#52c98a" stroke-width="1.4"></ellipse>
+<text x="474" y="127" text-anchor="middle" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">More prey gets caught</text>
+<ellipse cx="300" cy="200" rx="98" ry="20" fill="#141c16" stroke="#52c98a" stroke-width="1.4"></ellipse>
+<text x="300" y="205" text-anchor="middle" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Shells, spines, burrows, speed</text>
+<ellipse cx="126" cy="122" rx="92" ry="20" fill="#141c16" stroke="#52c98a" stroke-width="1.4"></ellipse>
+<text x="126" y="127" text-anchor="middle" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Better hunting equipment</text>
+<path d="M382,48 Q432,66 456,100" fill="none" marker-end="url(#k1)" stroke="#7be0ab" stroke-width="1.4"></path>
+<path d="M452,144 Q414,176 380,188" fill="none" marker-end="url(#k1)" stroke="#7be0ab" stroke-width="1.4"></path>
+<path d="M218,188 Q178,174 146,146" fill="none" marker-end="url(#k1)" stroke="#7be0ab" stroke-width="1.4"></path>
+<path d="M144,100 Q170,66 216,48" fill="none" marker-end="url(#k1)" stroke="#7be0ab" stroke-width="1.4"></path>
+<text x="300" y="118" text-anchor="middle" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5">Every leg of the loop</text>
+<text x="300" y="138" text-anchor="middle" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5">is both cause and effect</text>
+<text x="300" y="240" text-anchor="middle" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Oxygen pulsing up and down · a churned seabed — background conditions, not triggers</text>
+</svg>
+<div class="cap">You cannot find "the cause" here, and not because nobody has looked hard enough. <strong>There is no starting point</strong> — the four steps meet end to end, and each of them is the result of the one before.</div>
+</div>
+<p><em>So "what caused the Cambrian explosion" is a slightly bent question: it wants a trigger, and this looks more like a loop that started turning.</em> How much weight each hypothesis carries is still unsettled. And while we are here, one sentence that comes out far too easily deserves blocking: nobody seized an opportunity. Individuals that happened to vary toward a slightly harder skin or a slightly bigger eye simply left more descendants in a sea that now had predators in it.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>While the seats are empty, a rough new layout survives too</h2>
+<p>In the four hundred million years since, animals have not added a single new basic layout. That needs more explaining than the explosion does: variation never stopped for a day, so why did the roster close?</p>
+<p>The first answer is that the seats filled up. In a sea with few incumbents, a merely workable new layout could hold its ground — the competition was rough too. Any new layout today walks on stage against opponents polished for half a billion years. <strong>The threshold was never an absolute standard; it is relative to whoever is already there.</strong></p>
+<p>The second is that it stopped being changeable. Swapping a basic layout means altering early development — but here is a detail people usually state backwards: <em>it is not that the earliest steps are the hardest to change.</em> Measured with gene-expression data, the most conserved stage is the middle one — the embryos of different animals look most alike precisely then, while earlier and later stages diverge more freely. The shape is called an hourglass, with the waist in the middle. The reason is not hard to see: the genes at the waist are the ones the largest number of later processes depend on at once, and moving one brings everything downstream down with it.</p>
+<p>The third is the most sobering: <strong>the level we call a "basic layout" is one we drew in hindsight.</strong> When those lineages first split, the differences need not have been dramatic; it is the further half a billion years each side ran that piled them up to today's scale. Early-branching lineages are bound to look more fundamental, and that needs no special mechanism at all — it comes from the way we classify. The three answers are not exclusive, and their weights are unsettled.</p>
+<p>One famous claim has since been trimmed. Gould argued that the animals of the Cambrian spanned a wider range of forms than today's, and that most were then culled by something close to a lottery. Most workers now think that went too far: many of the old "weird wonders" have been placed back within known groups. Hallucigenia is the best example — first reconstructed as a creature walking on seven pairs of rigid spines with a row of tentacles along its back, it turned out in 1991 to be upside down (the spines are dorsal defence, the tentacles are the legs), and back to front as well, the supposed head being the tail. In 2014 the nested cone-in-cone structure of its claws placed it on the branch leading to velvet worms. <em>It was not a failed experiment. It is a relative of the onychophorans.</em></p>
+</div>
+<div class="bigcat">
+<h3>🎒 In situ · BigCat</h3>
+<ul>
+<li><b>① Investing and position sizing</b> — in the first two years of a new category, everything you picked casually went up; two years on the same criteria stop working and you assume you have gotten worse. By the mechanism in "While the seats are empty, a rough new layout survives too": the survival threshold is not your absolute level, it is your level relative to whoever is already in the seats. Empty-seat periods set a low bar, and once the seats fill, the same level is no longer enough. <b>What to change</b>: in your review, stop recording only the returns on your own positions and start recording one external number — what fraction of the newcomers who entered alongside you are still in the game. That number tells you which phase you are in earlier than your own returns do.</li>
+<li><b>② Health and energy</b> — you sleep badly, get through the day on coffee, and end up sleeping worse; you go looking for "the root cause" and after six months still cannot find the one thing. "There is no switch, only a loop that started turning" describes exactly this shape: every leg of the loop is both cause and effect, so there is no trigger there to find. <b>What to change</b>: stop hunting for the root cause and break the leg that breaks easiest — fixing your wake-up time is far easier than fixing your bedtime, and cutting all caffeine after two in the afternoon is far easier than cutting the total. Swap the number you track from "hours slept last night" to "how much my sleep-onset time varied over the past two weeks".</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Across the border · connections beyond the field</h3>
+<ul>
+<li><b>Engineering and systems design · everyone knows that field was defined wrong, and nobody has touched it in ten years</b>: a field in an internal data model that everyone agrees was a mistake, still sitting there a decade on — while code written even earlier has been rewritten several times over. What runs here is the hourglass from "While the seats are empty, a rough new layout survives too": the hardest thing to change is not the earliest layer, it is the layer the largest number of downstream paths depend on at once — in animal embryos the most conserved stage is the middle, not the beginning. Which yields a conclusion you would not otherwise get: <b>to estimate the real difficulty of a refactor, do not look at how ugly that code is or how long it has been there; count how many mutually unrelated paths depend on it at once. It also explains why "tear it all down and rewrite" sometimes goes more smoothly than "change that middle layer" — a rewrite goes around the waist, while the other has to go through it.</b> <b>Where it fails</b>: in the embryo, unchangeable means lethal — move the middle and the individual dies on the spot, there is no transitional state. In software, changing that layer costs you running two of them through a migration; expensive, but payable in instalments. So "the layer with the most dependents cannot be changed" is not a law of physics here, it is a budget question.</li>
+<li><b>Western philosophy and philosophy of science · when a curve suddenly bends, don't rush to explain the world</b>: the density of events in some record shoots up over one interval; one camp says something really happened then, the other says the way things were recorded changed. That argument has the same shape everywhere. What runs here is the mechanism from "Half of the 'suddenly' is the record switching its light on": when the probability of being recorded is itself changing over time, the density curve you are looking at has a sampling curve mixed into it, and two sides arguing over that same curve cannot settle it. Which yields a conclusion you would not otherwise get: <b>separating the two curves is not a matter of arguing harder, it is a matter of finding a second, independent channel — a line of evidence whose chance of being recorded did not change with the thing under dispute. For the Cambrian that channel is trace fossils: leaving a burrow requires no hardening of the body, so their diversification is unaffected by shells becoming common.</b> <b>Where it fails</b>: palaeontology can find such a channel because the strata are still lying there waiting to be dug. Many historical and social questions have no second channel to find — the written records that survive are often themselves a product of the very change in recording practice at issue. There, admitting honestly that the two cannot be separated beats forcing out a ratio.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Were those flat Ediacaran things animals at all?</summary>
+<div>Hard to say. Most left no trace of a mouth, a gut, or paired appendages, and some look as though they lay spread on the seafloor absorbing nutrients through the surface. In 2018 cholesterol-type molecules were recovered from fossils of one of them, Dickinsonia, and taken as evidence that it was an animal — though that line has been questioned too. The consensus reaches about this far: they were real, complex organisms; some may have been animals and some may not.</div>
+</details>
+<details><summary>How safe is "no new basic layouts since the Cambrian"?</summary>
+<div>Discount it somewhat. A group's date of birth gets revised back and forth: for bryozoans, small colonial animals, a Cambrian fossil was reported in 2021 as their earliest member, reassigned in 2023 by another team working from new specimens as a green alga, and since then new evidence has again supported a Cambrian origin. That such a date can swing shows how much the line depends on how a handful of specimens are read.</div>
+</details>
+<details><summary>Rewind the tape to the Cambrian and play it again — would you still get prawns and fish?</summary>
+<div>That is the central question of the piece on replaying the tape of life. Only the Cambrian half belongs here: Gould's argument leans on the claim that the range of forms then was wider than today's, and that premise has since been weakened, so the lottery part of it is smaller than it once looked. That does not make the outcome inevitable, and both sides are still at it.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Cambrian_explosion" rel="noopener" target="_blank">The Cambrian explosion</a> · <a href="https://en.wikipedia.org/wiki/Ediacaran_biota" rel="noopener" target="_blank">The Ediacaran biota</a> · <a href="https://en.wikipedia.org/wiki/Cambrian_substrate_revolution" rel="noopener" target="_blank">The Cambrian substrate revolution</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1206375" rel="noopener" target="_blank">Erwin et al., the Cambrian conundrum: early divergence, later success (2011, Science)</a> · <a href="https://www.sciencedirect.com/science/article/pii/S096098221501177X" rel="noopener" target="_blank">dos Reis et al., the limits of precision in molecular timescales (2015, Current Biology)</a></li>
+<li><a href="https://www.nature.com/articles/s41559-019-0821-6" rel="noopener" target="_blank">Wood et al., environmental and fossil records side by side (2019, Nature Ecology &amp; Evolution)</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1819366116" rel="noopener" target="_blank">Paterson et al., trilobite rates constrain the duration (2019, PNAS)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hallucigenia" rel="noopener" target="_blank">Hallucigenia: once reconstructed upside down</a> · <a href="https://www.nature.com/articles/nature13576" rel="noopener" target="_blank">Smith &amp; Ortega-Hernández, placing Hallucigenia by its claws (2014, Nature)</a> · <a href="https://en.wikipedia.org/wiki/Phylotypic_stage" rel="noopener" target="_blank">The waist of the hourglass: why mid-development is most conserved</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
