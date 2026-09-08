@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 15: Mass Extinctions</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 15 · PHASE B HISTORY OF LIFE</div>
+<h1>Mass Extinctions</h1>
+<h2>How the list of five was counted, how the impact case was closed, and why the survivors are usually not the toughest</h2>
+<div class="meta">2026-09-08 · BigCat</div>
+<div class="pitch">The "Big Five" list has been in use for forty years. Recount it with current data and the five do not stand out as a different kind of event at all — they are simply the five largest.</div>
+</header>
+<div class="intro">
+<p>On an old shopping street, a shop or two closes every year and new ones move in. That is normal; you would not think anything had happened that year. But if half the storefronts emptied in a single year, that is another matter — you would want to know what happened.</p>
+<p>The fossil record works the same way. Species have always been disappearing, and most of the time it is a trickle. What you actually want to catch are the intervals where half the storefronts emptied at once.</p>
+<p>The trouble starts at step one: how do you know an interval was genuinely unusual, rather than that you happened to walk down that street more often just then? Get that step wrong and every explanation built on top of it stands on sand.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>The "five" were counted, not seen</h2>
+<p>Start with what the data look like. What fossils give you is an attendance sheet: for each group of organisms, the oldest rock layer it turns up in and the youngest. Count the groups whose last appearance falls inside a given stretch of time, divide by how many were present across that stretch, and you have the extinction rate for it. <strong>That is a counted proportion, not carnage read directly off the stone.</strong></p>
+<p>In 1982 two palaeontologists compiled the marine fossil record into one such sheet and ran that count. Peaks jumped out: end-Ordovician, late Devonian, end-Permian, end-Triassic, end-Cretaceous. That is where the "Big Five" comes from. Their own paper was more careful than the retellings that followed: on the data of the time, the Devonian one did not reach a level you could speak of confidently.</p>
+<p>Forty years later someone went back and checked. The conclusion is sharper still: on current data, the five are not significantly above background rates. They really are the largest five since the early Ordovician, but there is no natural line between "mass extinction" and "ordinary" — the line is one we drew. <em>That does not mean nothing happened. It means don't think of them as two different kinds of thing.</em></p>
+<p>The numbers have been shrinking too. The end-Permian is usually quoted as wiping out 96% of marine species. In 2016 someone pointed out that this figure had merged two separate events, the mid-Permian and the late Permian crises; subtract the background extinction that would have happened across that interval anyway, and about 81% is left. Still the worst on record — but the move itself is worth remembering: <strong>to say how big an event was, you first have to know how big "ordinary" is, and take it out.</strong> Skip that and what you measured is the event plus the everyday noise.</p>
+<p>There is a more awkward bias on top of that. The layer holding a species' last fossil is almost never the moment its last individual died — fossils are sparse, and the rarer the species, the earlier its "last appearance" gets recorded. So an extinction that happened over a short span is smeared in the record into a gentle ramp. <em>Which means "was it sudden, or did it take a few hundred thousand years?" cannot be answered from the shape alone.</em> The piece on the Cambrian explosion is the same bias running the other way: there the record switched its light on, here the record paints a wall into a slope.</p>
+<div class="fig">
+<svg aria-label="Side by side: what actually happened is six species ending at one moment, while the fossil record shows their last appearances staggered into a slope" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" x="26" y="24">What actually happened</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" x="322" y="24">What the fossil record shows</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="14" y2="236"></line>
+<line stroke="#7be0ab" stroke-dasharray="4 3" stroke-width="1.6" x1="252" x2="252" y1="40" y2="206"></line>
+<line stroke="#d2a24c" stroke-dasharray="4 3" stroke-width="1.6" x1="548" x2="548" y1="40" y2="206"></line>
+<rect fill="#52c98a" height="7" width="212" x="40" y="48"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="74"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="100"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="126"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="152"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="178"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="146" y="222">Six species, gone at the same moment</text>
+<rect fill="#8aa192" height="7" width="212" x="336" y="48"></rect>
+<rect fill="#8aa192" height="7" width="184" x="336" y="74"></rect>
+<rect fill="#8aa192" height="7" width="150" x="336" y="100"></rect>
+<rect fill="#8aa192" height="7" width="122" x="336" y="126"></rect>
+<rect fill="#8aa192" height="7" width="86" x="336" y="152"></rect>
+<rect fill="#8aa192" height="7" width="54" x="336" y="178"></rect>
+<circle cx="548" cy="51" fill="#d2a24c" r="3.4"></circle>
+<circle cx="520" cy="77" fill="#d2a24c" r="3.4"></circle>
+<circle cx="486" cy="103" fill="#d2a24c" r="3.4"></circle>
+<circle cx="458" cy="129" fill="#d2a24c" r="3.4"></circle>
+<circle cx="422" cy="155" fill="#d2a24c" r="3.4"></circle>
+<circle cx="390" cy="181" fill="#d2a24c" r="3.4"></circle>
+<path d="M548,51 L520,77 L486,103 L458,129 L422,155 L390,181" fill="none" stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1.2"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="452" y="222">The rarer it is, the earlier its last fossil</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="243">One event, two shapes</text>
+</svg>
+<div class="cap">The wall on the left becomes the slope on the right once it falls into a sparse record. <strong>So "gradual" is the default look of a fossil record, not evidence</strong> — to claim an extinction dragged on, you first have to show the slope is not an artefact of sampling.</div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>How a claim goes from "plausible" to "basically settled"</h2>
+<p>In 1980 a few researchers fixed on a stretch of limestone at Gubbio in Italy: the thin clay layer right at the Cretaceous–Palaeogene boundary. What they measured was iridium, a metal that is scarce in the Earth's crust and comparatively abundant in asteroids. In that clay it was absurdly enriched.</p>
+<p>By itself this is just "an anomaly". Anomalies are cheap in science; you can improvise an explanation for anything. What made this one matter is that the explanation offered — a large rock hit the Earth — immediately put itself on the line: <strong>if this is true, certain things must exist, and not finding them counts against it.</strong></p>
+<p>Three of them: the anomaly could not be confined to Italy, the same layer worldwide should carry it; the boundary layer should contain quartz with the distinctive internal patterns a shock wave presses into it, and small glass spherules formed from rock melted, thrown up, and fallen back; and somewhere on Earth there had to be a crater of that age and that size.</p>
+<p>Then came a decade. The first two were met. The third was hardest, because sixty-six million years is enough to bury a crater out of sight. In 1991 researchers identified it as a circular structure roughly 180 kilometres across beneath the Yucatán Peninsula in Mexico — nothing visible at the surface, recognised from gravity and magnetic anomalies plus cores brought up by oil drilling. Later precise dating puts it around 66 million years ago, matching the boundary layer to within a few tens of thousands of years.</p>
+<div class="fig">
+<svg aria-label="Flow diagram: one iridium anomaly forced three falsifiable predictions, each later dug up; a note below records the unresolved Deccan volcanism debate" role="img" viewbox="0 0 600 262" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="m1" markerheight="9" markerwidth="9" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="89" y="22">First, an anomaly</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="294" y="22">The predictions it forced</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="499" y="22">Dug up, one by one</text>
+<rect fill="#141c16" height="58" rx="8" stroke="#52c98a" stroke-width="1.5" width="150" x="14" y="96"></rect>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="89" y="119">Iridium absurdly high</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="89" y="137">in the clay (1980)</text>
+<rect fill="#101711" height="40" rx="7" stroke="#d2a24c" stroke-width="1.2" width="196" x="196" y="42"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="294" y="67">The same layer worldwide has it</text>
+<rect fill="#101711" height="40" rx="7" stroke="#d2a24c" stroke-width="1.2" width="196" x="196" y="105"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="294" y="123">Shock-patterned quartz, and</text>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="294" y="139">glass spherules fallen back</text>
+<rect fill="#101711" height="40" rx="7" stroke="#d2a24c" stroke-width="1.2" width="196" x="196" y="168"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="294" y="193">A crater of that age and size</text>
+<rect fill="#101711" height="40" rx="7" stroke="#52c98a" stroke-width="1.2" width="178" x="410" y="42"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="499" y="67">Measured at many sites</text>
+<rect fill="#101711" height="40" rx="7" stroke="#52c98a" stroke-width="1.2" width="178" x="410" y="105"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="499" y="130">Both found in that layer</text>
+<rect fill="#101711" height="40" rx="7" stroke="#52c98a" stroke-width="1.2" width="178" x="410" y="168"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="499" y="186">Found under Yucatan, 1991</text>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="499" y="202">about 180 km across</text>
+<path d="M168,113 Q186,92 190,70" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M168,125 L190,125" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M168,137 Q186,160 190,180" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M396,62 L404,62" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M396,125 L404,125" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M396,188 L404,188" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<line stroke="#24382c" stroke-width="1" x1="14" x2="588" y1="222" y2="222"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="300" y="246">Over the same interval the Deccan Traps erupted — how much that counts is still argued</text>
+</svg>
+<div class="cap">The anomaly on its own could be explained another way. What is worth something is <strong>the middle column</strong> — it wrote down "if you don't find these, I'm wrong".</div>
+</div>
+<p>In 2010 more than forty authors from different fields wrote a review concluding that this impact triggered the extinction. It was not unanimous: over the same interval the Deccan Traps in India were erupting on a scale, and across hundreds of thousands of years, sufficient to disturb climate and oceans, and that camp remains unconvinced — two teams using different dating methods in 2019 came to conflicting answers. <em>The common reading now is that the impact delivered the blow and the volcanism had already degraded the baseline, with the proportions unsettled.</em></p>
+<p>What this stretch is really for is not the dinosaurs but the move: <strong>a claim hardens not because it explains known facts more smoothly, but because it volunteers where you should be able to catch it if it is wrong.</strong></p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>What works at that moment is not what works in ordinary times</h2>
+<p>"Survival of the fittest" is easiest to misuse right here: you would assume a mass extinction culls the weaker and leaves the tougher. The data say otherwise.</p>
+<p>A body of work on Late Cretaceous marine molluscs separates ordinary times from the moment itself. In ordinary times — the years of background extinction — whether a species held on depended on things like whether its larvae could drift far through the water column and so spread it out, how wide the species' range was, and how many species its genus contained. Those factors genuinely did work in ordinary years.</p>
+<p>At the end-Cretaceous moment, all of them stopped working. The one thing that still predicted survival was the geographic spread of <strong>the whole genus</strong> — even if every species inside it was narrowly distributed, a genus whose species together covered a large enough map was more likely to get a branch through. The pattern turns up across several groups and several mass extinctions.</p>
+<p>To put it plainly: <em>ordinary-times excellence does not convert at that moment.</em> It is not that the stronger survived, and it is not a pure lottery either — the sieve was swapped, and the dimension the new sieve tests is one that selection barely acts on directly in ordinary times. A genus is widespread for other reasons, none of them having anything to do with an asteroid arriving later.</p>
+<p>The birds after the impact make this concrete. Pollen records across the boundary show global forests collapsed — a spike in fern spores, the signal of vegetation restarting from its simplest stage. In 2018 researchers laid that environmental line alongside the bird family tree, and the result was blunt: no tree-dwelling bird lineage left descendants. Every bird alive today descends from ancestors making a living on the ground. <strong>The birds filling the trees you look up at are the result of climbing back up after the catastrophe.</strong></p>
+<p>So do not read a survivor list as an excellence list: nobody foresaw that day and nobody prepared for it. The mammal radiation over the following tens of millions of years is not a matter of mammals being more advanced either — the seats emptied, and mammals were among those still in the room.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In practice · BigCat</h3>
+<ul>
+<li><b>① Writing, and this learning site itself</b>—an issue goes out and gets a third of the usual readers that day, and you start doubting the direction of your topic choices. The mechanism from "The 'five' were counted, not seen" is identical here: to judge whether a number is unusual, you first have to know how large the ordinary fluctuation is and subtract it; skip that and what you measured is the event plus noise. <b>What to change</b>: switch the basis for judging from "this issue's number" to "the median of the last four", and rule out external variables like publication time and day of week before talking about content; if the drop is inside the normal swing of the last ten issues, change nothing.</li>
+<li><b>② Practice and temperament</b>—you get up from sitting and feel that "there hasn't been much irritation lately", and conclude that phase has passed. This is exactly the "last appearance recorded early" bias: what you are relying on is "when was the last time", and that depends both on whether the thing happens and on whether you were paying attention — let attention slacken and it disappears from memory first. <b>What to change</b>: to judge whether a habit is fading, don't use recall, use one fixed line written each day, and treat "how many times in the last two weeks I actually watched for it" as the denominator; without the denominator written down, a small numerator proves nothing.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · connections beyond the field</h3>
+<ul>
+<li><b>Organisations and institutions · the people still standing after an industry caves in</b>: once the year or two of an industry-wide contraction is over, whoever is still around gets described as "the most capable", and their methods get written up and passed on. The mechanism running here is the one from "What works at that moment is not what works in ordinary times": the sieve was swapped, and the traits that predicted survival in ordinary times (deep specialism, one large anchor client) stop predicting, replaced by traits that are barely rewarded in ordinary times (spread out, cash-heavy, several unrelated lines). Which yields a conclusion you would not otherwise see: <b>the "success factors" distilled from the survivors of a collapse describe the shape of that sieve, not ordinary competence; to tell which of them is genuine competence, check whether it still predicts anything in years when nothing caved in.</b> <b>Where it doesn't hold</b>: a clam cannot change the geographic range of its genus, whereas people and companies can adjust in advance — open another line, hold six more months of cash. So the share attributable to luck is smaller here than in the fossil case, and calling the whole thing luck is an error in the other direction.</li>
+<li><b>Engineering and systems design · the "plausible" root cause at the post-mortem</b>: an outage happens, someone at the post-mortem offers an explanation, everyone in the room finds it plausible, it goes into the report and the case is closed; two weeks later the same outage returns. The mechanism is the one from "How a claim goes from 'plausible' to 'basically settled'": the iridium anomaly was also merely plausible when first proposed, and what hardened it was that it put itself on the line on the spot — predicting things nobody had yet seen (shock-patterned quartz, glass spherules fallen back to the ground, a crater over a hundred kilometres across), which were then dug up one at a time. Which yields a conclusion you would not otherwise see: <b>the question at a post-mortem is not "does this explanation account for what already happened", but "if it holds, what should we see in the log we haven't opened yet" — write it down first, then go look; a root cause that predicts no unexamined evidence is, informationally, the same as no root cause.</b> <b>Where it doesn't hold</b>: the impact claim could afford to wait, the strata having lain there for sixty-six million years and still being there to dig in 1991; evidence in a running system rotates away within days. So "predict first, then dig" has a time window here, and once it closes the honest answer is "we can't determine it this time", rather than putting the plausible explanation into the report.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Questions worth sitting with</h3>
+<details><summary>Does the "sixth mass extinction" hold up as a claim?</summary>
+<div>The rate half holds up: a 2015 study deliberately set the background rate at twice the usual value before comparing, and still found vertebrate extinction rates over the last century running about two orders of magnitude higher. But "reaching the magnitude of the Big Five" is another matter — those events removed tens of percent of species, and we are nowhere near that. The two datasets are also not the same kind of thing: the fossil record mostly counts genera at a resolution of hundreds of thousands of years, modern data counts species by the year. The analogy holds on rate and does not currently hold on scale.</div>
+</details>
+<details><summary>If they blend statistically into ordinary times, is the term "mass extinction" still worth keeping?</summary>
+<div>There is one reason to keep it, and it is not rate: those Late Cretaceous molluscs show that the traits deciding survival at that moment were not the ones that decided it in ordinary times. Which is to say that even if the rate is a continuous spectrum, the rules may be discontinuous. Classifying by rules is more interesting than classifying by rate, but it is also harder to measure — you need enough trait data for each event before you can see whether the rules changed.</div>
+</details>
+<details><summary>Why did the dinosaurs go and the crocodiles stay?</summary>
+<div>The honest answer is that no single factor works. Small body size, an ability to eat carrion and seeds, somewhere to shelter in water or a burrow — all correlate with survival statistically, and each has counterexamples. Most explanations stack several factors, and the weights of the stack are hard to separate out of the fossil record. Incidentally, birds are the branch of dinosaurs that survived, so "the dinosaurs all died" is not accurate either.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Extinction_event" rel="noopener" target="_blank">Extinction events, an overview</a> · <a href="https://en.wikipedia.org/wiki/Signor%E2%80%93Lipps_effect" rel="noopener" target="_blank">The last fossil is not the last individual</a> · <a href="https://en.wikipedia.org/wiki/Alvarez_hypothesis" rel="noopener" target="_blank">How the impact hypothesis unfolded</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.215.4539.1501" rel="noopener" target="_blank">Raup &amp; Sepkoski, mass extinctions in the marine fossil record (1982, Science)</a> · <a href="https://www.cambridge.org/core/journals/cambridge-prisms-extinction/article/forty-years-later-the-status-of-the-big-five-mass-extinctions/D8B7C1C298686D3622273320E778D22A" rel="noopener" target="_blank">Marshall, the "Big Five" forty years on (2023)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1613094113" rel="noopener" target="_blank">Stanley, magnitudes re-estimated after subtracting background extinction (2016, PNAS)</a> · <a href="https://www.science.org/doi/10.1126/science.1177265" rel="noopener" target="_blank">Schulte et al., the impact and the end-Cretaceous extinction (2010, Science)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.aau2422" rel="noopener" target="_blank">Schoene et al., pulsed eruption of the Deccan Traps (2019, Science)</a> · <a href="https://www.science.org/doi/10.1126/science.aav1446" rel="noopener" target="_blank">Sprain et al., the same question dated another way (2019, Science)</a></li>
+<li><a href="https://www.cell.com/current-biology/fulltext/S0960-9822(18)30534-7" rel="noopener" target="_blank">Field et al., forest collapse and the loss of tree-dwelling birds (2018, Current Biology)</a> · <a href="https://www.science.org/doi/10.1126/science.231.4734.129" rel="noopener" target="_blank">Jablonski, background and mass extinction as two sets of rules (1986, Science)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

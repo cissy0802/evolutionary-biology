@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 15：大灭绝</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 15 · PHASE B 生命史</div>
+<h1>大灭绝</h1>
+<h2>五次的名单是数出来的，撞击那次是怎么定案的，以及活下来的常常不是最能打的</h2>
+<div class="meta">2026-09-08 · BigCat</div>
+<div class="pitch">「五次大灭绝」这份名单已经用了四十年。而按现在的数据重新统计，这五次并不比记录里别的高峰更像「另一类事件」——它们只是最大的那五个。</div>
+</header>
+<div class="intro">
+<p>一条老街，每年都有一两家店关门，又有新的开进来。这是常态，你不会觉得那年出了什么事。但如果某一年，一半的门脸同时空了，那是另一回事——你会想知道那年到底发生了什么。</p>
+<p>化石记录里也是这样。物种一直在消失，大多数时候是涓涓细流。真正想抓的，是那些「一半门脸同时空掉」的年份。</p>
+<p>麻烦从第一步就开始：你怎么知道某一段真的异常，而不是你那阵子恰好多走了几趟？这一步没做干净，后面所有解释都建在沙子上。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>「五次」是数出来的，不是看出来的</h2>
+<p>先说这份数据长什么样。化石能提供的其实是一张出勤表：每一类生物最早出现在哪一层岩石里，最后出现在哪一层。把「最后一次出现」落在某一段时间里的类群数一数，除以那段时间在场的总数，就是这一段的灭绝率。<strong>它是数出来的一个比例，不是从石头里直接看见的惨状。</strong></p>
+<p>1982 年，两位古生物学家把海洋化石的出勤表统一整理了一遍，照这个算法数下来，几个高峰跳了出来：奥陶纪末、泥盆纪晚期、二叠纪末、三叠纪末、白垩纪末。「五次大灭绝」就是从这儿来的。他们的原文其实比后来的转述谨慎：按当时的数据，泥盆纪那次并没到统计上说得响的程度。</p>
+<p>四十年后有人回头重查了一遍，结论更削：按现在这批数据，这五次并不比背景速率显著地高。它们确实是早奥陶纪以来最大的五次，但「大灭绝」和「平常」之间没有一条自然的界线，线是我们划的。<em>这不等于那些事没发生，是说别把它们想成两类东西。</em></p>
+<p>连数字也在缩水。二叠纪末常被引成「96% 的海洋物种消失」。2016 年有人指出那个数把中二叠世和晚二叠世两次事件并在一起算了；把那段时间本来就会照常发生的背景灭绝先扣掉，剩下大约 81%。仍然是有史以来最狠的一次，但这个做法值得单独记住：<strong>要说一次事件有多大，你得先知道「平时」有多大，再把它减掉。</strong>不减，你量到的是事件加上日常噪声。</p>
+<p>还有一个更别扭的偏差。一个物种最后一块化石所在的位置，几乎不可能正好是最后一个个体死掉的时刻——化石本来就稀疏，越少见的物种，「最后一次出现」被记早得越多。于是一场很短时间里发生的灭绝，落进化石记录会被抹成一道缓坡。<em>所以「这次是突然的还是拖了几十万年」，光看形状答不了。</em>寒武纪大爆发那期是同一类偏差的另一个方向：那边是记录突然开了灯，这边是记录把一堵墙涂成了斜坡。</p>
+<div class="fig">
+<svg aria-label="左右对比：真实发生的是所有物种在同一时刻消失，化石记录里看到的却是最后出现时间参差不齐的一道斜坡" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" x="26" y="24">真实发生的</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" x="322" y="24">化石里看到的</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="14" y2="236"></line>
+<line stroke="#7be0ab" stroke-dasharray="4 3" stroke-width="1.6" x1="252" x2="252" y1="40" y2="206"></line>
+<line stroke="#d2a24c" stroke-dasharray="4 3" stroke-width="1.6" x1="548" x2="548" y1="40" y2="206"></line>
+<rect fill="#52c98a" height="7" width="212" x="40" y="48"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="74"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="100"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="126"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="152"></rect>
+<rect fill="#52c98a" height="7" width="212" x="40" y="178"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="146" y="222">六个物种，同一时刻一起消失</text>
+<rect fill="#8aa192" height="7" width="212" x="336" y="48"></rect>
+<rect fill="#8aa192" height="7" width="184" x="336" y="74"></rect>
+<rect fill="#8aa192" height="7" width="150" x="336" y="100"></rect>
+<rect fill="#8aa192" height="7" width="122" x="336" y="126"></rect>
+<rect fill="#8aa192" height="7" width="86" x="336" y="152"></rect>
+<rect fill="#8aa192" height="7" width="54" x="336" y="178"></rect>
+<circle cx="548" cy="51" fill="#d2a24c" r="3.4"></circle>
+<circle cx="520" cy="77" fill="#d2a24c" r="3.4"></circle>
+<circle cx="486" cy="103" fill="#d2a24c" r="3.4"></circle>
+<circle cx="458" cy="129" fill="#d2a24c" r="3.4"></circle>
+<circle cx="422" cy="155" fill="#d2a24c" r="3.4"></circle>
+<circle cx="390" cy="181" fill="#d2a24c" r="3.4"></circle>
+<path d="M548,51 L520,77 L486,103 L458,129 L422,155 L390,181" fill="none" stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1.2"></path>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="452" y="222">越少见的，最后一块化石被记得越早</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="243">同一件事，两种形状</text>
+</svg>
+<div class="cap">左边那堵墙，落进稀疏的化石记录就成了右边那道斜坡。<strong>所以「渐进」是化石里的默认长相，不是证据</strong>——要说一次灭绝拖了很久，先得证明斜坡不是采样造的。</div>
+</div>
+<p class="en-brief"><b>EN</b> What the fossil record actually gives you is an attendance sheet: for each group, the oldest rock layer it appears in and the youngest. Count the groups whose last appearance falls inside a given interval, divide by how many were present, and that is the extinction rate for that interval — a counted proportion, not a scene of carnage read off the stone. In 1982 two palaeontologists compiled the marine fossil record and ran that count. Peaks jumped out: end-Ordovician, late Devonian, end-Permian, end-Triassic, end-Cretaceous. That is where the "Big Five" comes from. Their own paper was more cautious than the retellings: four stood clearly above background, while the Devonian one did not reach statistical significance in those data. Forty years on, a review that went back to check concluded something sharper still — on current data the Big Five are not statistically distinct from background rates. They really are the five largest since the early Ordovician, but there is no natural line between "mass extinction" and "ordinary"; the line is one we drew for convenience. The numbers have shrunk too. The end-Permian is often quoted as killing 96% of marine species. A 2016 analysis pointed out that this figure merged two separate events, the mid- and late-Permian crises; subtract the background extinction that would have happened anyway across that interval, and about 81% is left. Still the worst on record — and the method is worth remembering on its own: to say how big an event was, you must first know how big "ordinary" is, and take it out. Skip that and you measure the event plus the everyday noise. One more awkward bias: the layer holding a species' last fossil is almost never the moment its last individual died. Fossils are sparse, and the rarer the species, the earlier its last appearance gets recorded. So an extinction that really happened fast is smeared in the record into a gentle ramp — a thinning first, then nothing. Which means the question "was this sudden or did it take a few hundred thousand years?" cannot be answered from the shape in the rock alone. The piece on the Cambrian explosion is the same bias running the other way: there the record switched its light on; here the record paints a wall into a slope.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>一个说法怎么从「说得通」变成「基本定案」</h2>
+<p>1980 年，几位研究者盯上了意大利古比奥一段石灰岩：白垩纪和古近纪交界处那薄薄一层黏土。他们测的是铱，一种在地壳表层很少、在小行星里相对多的金属。那层黏土里的铱高得离谱。</p>
+<p>这本身只是「一个异常」。异常在科学里其实不值钱，随便什么都能给它编一个解释。真正厉害的是为解释它而提出的那个说法——一颗大石头砸了地球——立刻把自己架到了火上：<strong>如果这是真的，有几样东西必须存在，找不到就算它错。</strong></p>
+<p>三条：这层异常不能只在意大利有，全世界同一层都该有；界线层里该找得到被冲击波压出特定纹路的石英，和熔化的岩石飞出去又落回来凝成的玻璃小球；地球上还得有一个那个年代、那个尺寸的坑。</p>
+<p>然后是十年。前两条陆续兑现；第三条最难，因为六千多万年足够把一个坑埋得看不见。1991 年，几位研究者把墨西哥尤卡坦半岛地下一个直径约 180 公里的圆形结构认成了它——地面上什么也看不出来，靠的是重力和磁场的异常，加上石油钻井取上来的岩芯。后来的精确测年把它落在约 6600 万年前，跟界线层对得上，误差只有一两万年。</p>
+<div class="fig">
+<svg aria-label="流程图：一个铱异常逼出三条能被否掉的预言，三条后来一条条被挖出来；下方注明德干火山之争仍未了" role="img" viewbox="0 0 600 262" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="m1" markerheight="9" markerwidth="9" orient="auto" refx="6" refy="3" viewbox="0 0 7 6"><path d="M0,0 L6,3 L0,6 z" fill="#7be0ab"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="95" y="22">先有一个异常</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="300" y="22">它逼出了能被否掉的预言</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="500" y="22">后来一条条被挖出来</text>
+<rect fill="#141c16" height="58" rx="8" stroke="#52c98a" stroke-width="1.5" width="152" x="19" y="96"></rect>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="95" y="119">界线那层黏土里</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="95" y="137">铱高得离谱（1980）</text>
+<rect fill="#101711" height="40" rx="7" stroke="#d2a24c" stroke-width="1.2" width="172" x="214" y="42"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="300" y="67">全世界同一层都该有</text>
+<rect fill="#101711" height="40" rx="7" stroke="#d2a24c" stroke-width="1.2" width="172" x="214" y="105"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="300" y="123">该有被压出纹路的石英</text>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="300" y="139">和落回地面的玻璃小球</text>
+<rect fill="#101711" height="40" rx="7" stroke="#d2a24c" stroke-width="1.2" width="172" x="214" y="168"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="300" y="193">该有一个那年代的大坑</text>
+<rect fill="#101711" height="40" rx="7" stroke="#52c98a" stroke-width="1.2" width="170" x="410" y="42"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="495" y="67">多地都测到了</text>
+<rect fill="#101711" height="40" rx="7" stroke="#52c98a" stroke-width="1.2" width="170" x="410" y="105"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="495" y="130">界线层里都找到了</text>
+<rect fill="#101711" height="40" rx="7" stroke="#52c98a" stroke-width="1.2" width="170" x="410" y="168"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="495" y="186">1991 年在尤卡坦找到</text>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="495" y="202">直径约 180 公里</text>
+<path d="M175,113 Q196,92 210,70" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M175,125 L208,125" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M175,137 Q196,160 210,180" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M390,62 L404,62" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M390,125 L404,125" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<path d="M390,188 L404,188" fill="none" marker-end="url(#m1)" stroke="#7be0ab" stroke-width="1.3"></path>
+<line stroke="#24382c" stroke-width="1" x1="19" x2="580" y1="222" y2="222"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="300" y="246">同期还有德干高原的巨型火山喷发——它占多大份额，至今在争</text>
+</svg>
+<div class="cap">铱异常本身换个说法也解释得通。值钱的是<strong>中间那一列</strong>——它写下了「找不到这些就算我错」。</div>
+</div>
+<p>2010 年，四十多位不同领域的作者合写了一篇综述，结论是这次撞击触发了那场灭绝。但不是全票：同一时期，印度德干高原正喷发一场持续几十万年的巨型火山，放出的气体足以把气候和海水搅乱，这一派至今没被说服，两组人在 2019 年用不同测年方法给出的结论也还打架。<em>目前多数人的读法是撞击那一击最关键、火山把底子搞坏了，但两边各占多少还没定。</em></p>
+<p>这一段真正想留下的不是恐龙，是那个动作：<strong>一个说法变硬，不是因为它把已知的事解释得更顺口，而是因为它主动说出了「我要是错了，你去哪儿能抓到我」。</strong></p>
+<p class="en-brief"><b>EN</b> In 1980 a group of researchers focused on a thin clay layer at Gubbio in Italy, right at the Cretaceous–Palaeogene boundary. They measured iridium — a metal that is scarce in the Earth's crust but comparatively abundant in asteroids and meteorites — and found it absurdly enriched. On its own that is just an anomaly, and anomalies are cheap; you can improvise an explanation for anything. What made this one matter is that the explanation offered for it — a large rock hit the Earth — immediately put itself on the line. If it were true, certain things had to exist, and failing to find them would count against it. First, the anomaly could not be confined to Italy; the same layer worldwide should carry it. Second, the shock wave would press distinctive internal patterns into quartz crystals, and rock melted and thrown up would fall back as small glass spherules; both should turn up in the boundary layer. Third, there had to be a crater somewhere of that age and that size. Then came a decade. The first two were met. The third was hardest, because sixty-six million years is enough to bury a crater out of sight. In 1991 researchers identified a circular structure roughly 180 kilometres across buried under the Yucatán Peninsula in Mexico — invisible at the surface, recognised from gravity and magnetic anomalies plus cores from oil drilling. Later precise dating puts it around 66 million years ago, matching the boundary layer to within a few tens of thousands of years. In 2010 more than forty authors from different fields wrote a review concluding that the impact triggered the extinction. It was not unanimous. Over the same interval the Deccan Traps in India were erupting on a scale, and over hundreds of thousands of years, sufficient to disturb climate and oceans, and that camp remains unconvinced. In 2019 two teams using two different dating methods reached conflicting answers: one had the largest pulses preceding the impact, the other had more than three quarters of the lava erupting some 600,000 years after the boundary. The common reading now is that the impact delivered the blow while the volcanism degraded the baseline, with the proportions still unsettled. What is worth keeping here is not the dinosaurs but the move: a claim hardens not by explaining known facts more smoothly, but by stating in advance where you should be able to catch it if it is wrong.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>那一刻管用的本事，跟平时管用的不是同一套</h2>
+<p>「适者生存」在这里最容易被用错：你会以为大灭绝就是把不够强的筛掉，剩下更能打的。数据说的不是这样。</p>
+<p>有一批对白垩纪末海洋贝类的研究，把平时和那一刻分开来看。平时——也就是背景灭绝的年头——一个物种能不能撑住，跟几件事有关：幼体能不能在水层里漂很远因而铺得开，这个物种分布多宽，它所在的属下面养着多少个种。这几条在平常年份实实在在地起作用。</p>
+<p>到了白垩纪末那一刻，这几条统统失灵。唯一还预测得动存活的，是<strong>整个属</strong>摊开的地理范围有多大——哪怕它下面每个种的分布都很窄，只要加起来铺在够大的地图上，这个属就更可能有一支活下来。这个模式在多个类群、多次大灭绝里都出现过。</p>
+<p>把这句话说明白：<em>平时的优秀在那一刻不折算。</em>不是「更强的活下来了」，也不是纯抽签——是筛子换了一把，新筛子对着的那个维度，平时几乎不被选择直接管。一个属铺得广，多半出于别的原因，跟「将来会有一颗小行星」毫无关系。</p>
+<p>撞击之后的鸟把这件事讲得更具体。界线层的花粉记录显示全球森林在那之后崩了——蕨类的孢子暴涨，那是植被从最简单的一步重新开始的信号。2018 年有人把这条环境线索和鸟类的家谱并排放，结果非常干脆：所有树栖的鸟类支系都没留下后代，活到今天的鸟，祖先都是在地面上讨生活的。<strong>今天你抬头看见满树的鸟，是灾后从地面重新爬回树上的结果。</strong></p>
+<p>所以别把幸存名单读成优秀名单：没有谁预见到那一天，也没有谁为它准备。之后几千万年哺乳动物铺开，同样不是因为哺乳动物更高级——是位置空了，而当时还在场的名单里有它们。</p>
+<p class="en-brief"><b>EN</b> "Survival of the fittest" is easiest to misuse right here. You would assume a mass extinction culls the weaker and leaves the tougher. The data say otherwise. Work comparing Late Cretaceous marine molluscs separates ordinary times from the moment itself. In background times, whether a species held on depended on things like whether its larvae could drift far through the water column and so spread it out, how wide the species' own range was, and how many species its genus contained. Those factors genuinely mattered in ordinary years. At the end-Cretaceous moment, all of them stopped working. The one thing that still predicted survival was the geographic spread of the entire genus — even if every species within it was narrowly distributed, a genus whose species collectively covered a large enough map was more likely to get a branch through. The pattern recurs across several groups and several mass extinctions. Stated plainly: ordinary-times excellence does not convert at that moment. It is not that the stronger survived, and not a pure lottery either. The sieve was swapped, and the dimension the new sieve tests is one that selection barely acts on directly in ordinary times. A genus is widespread for other reasons, none of them having anything to do with an asteroid arriving later. The birds after the impact make this concrete. Pollen records across the boundary show global forests collapsed — a spike in fern spores, the signal of vegetation restarting from its simplest stage. In 2018 researchers laid that environmental line alongside the bird family tree and found the outcome blunt: no tree-dwelling bird lineage left descendants. Every bird alive today descends from ancestors making their living on the ground. The birds filling the trees now are the result of climbing back up after the catastrophe. So do not read a survivor list as an excellence list. Nobody foresaw that day and nobody prepared for it; the sieve of that moment happened to test certain traits, and individuals that happened to carry them left more offspring. The mammal radiation over the following tens of millions of years is not a matter of mammals being more advanced either — the seats emptied, and mammals were among those still in the room.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 写作与这个学习站本身</b>——某一期发出去，当天的阅读数只有平时的三分之一，你开始怀疑选题方向走偏了。「『五次』是数出来的，不是看出来的」那节的机制在这儿一模一样：要判断一个数是不是异常，得先知道背景波动有多大再把它减掉，不减你量到的是事件加噪声。<b>可改的动作</b>：判断依据从「这一期的数」换成「连续四期的中位数」，先把发布时间、星期几这类外部变量排掉再谈内容；跌幅没超出前十期的正常起伏，就一个字都别改。</li>
+<li><b>② 修行与心性</b>——坐完起来觉得「这阵子好像没怎么起烦躁」，于是认为那个阶段过去了。这正是「最后一次出现被记早」那条偏差：你依据的是「上一次是什么时候」，而它同时取决于那件事发不发生、和你有没有在留意——注意力一松，它在回忆里就先「消失」了。<b>可改的动作</b>：判断一个习气是不是淡了别用回忆，用每天固定一行的即时记录，把「最近两周实际留意过几次」当分母；分母不写下来，分子再小也说明不了什么。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>组织与制度 · 一个行业塌下去那两年，留下来的那批人</b>：某个行业整体收缩的一两年过去之后，还在场的人会被讲成「最能干的」，做法被总结成经验传下去。跑的是「那一刻管用的本事，跟平时管用的不是同一套」那节的机制：筛子换了一把，平时预测存活的属性（做得深、做得专、绑着一个大客户）在那一刻不再预测，取而代之的是平时不怎么被奖励的那些（摊得开、现金厚、路子杂）。由此能推出一个原本看不出的结论：<b>从一次塌方的幸存者身上总结出来的「成功要素」，描述的是那把筛子的形状，不是平时的本事；要分清哪一条真是本事，得看它在没塌方的年份还预测不预测得动。</b><b>但这里不成立</b>：贝类改不了自己那个属的分布范围，人和公司却能在事前调整——多开一条线、多留半年现金。所以这边能归给运气的份额比化石那边小，把整件事说成运气是往另一个方向错。</li>
+<li><b>工程与系统设计 · 复盘会上那个「说得通」的根因</b>：线上出了一次故障，复盘会上有人给出一个解释，在场的人都觉得说得通，于是写进报告结案；两周后同样的故障又来一次。跑的是「一个说法怎么从『说得通』变成『基本定案』」那节的机制：铱异常刚提出来时也只是说得通，它变硬是因为当场把自己架上了火——预言了几样当时还没人见过的东西（被压出纹路的石英、落回地面的玻璃小球、一个直径上百公里的坑），后来一条条被挖了出来。由此能推出一个原本看不出的结论：<b>复盘该问的不是「这个解释能不能说通已经发生的事」，而是「如果它成立，我们在还没查的那份日志上应该看到什么」——先写下来，再去查；一个不预言任何未查证据的根因，和没有根因在信息上一样。</b><b>但这里不成立</b>：撞击那个说法等得起，地层在原地躺了六千多万年，1991 年去挖也还在；线上系统的证据几天就轮转掉。所以「先预言再去挖」在这里有个时间窗，窗过了，诚实的说法是「这次查不出来」，而不是把那个说得通的解释写进报告。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>「第六次大灭绝」这个说法站得住吗？</summary>
+<div>速率那一半站得住：2015 年一项研究刻意把背景速率设得比通行值高一倍去比，得出近一个世纪脊椎动物的灭绝速率仍高出约两个数量级。但「够上前五那个量级」是另一回事——那几次消失的是几十个百分点的物种，现在还差得远。何况两边的数据不是一种东西：化石里数的多是属、分辨率几十万年，现代数据数的是种、单位是年。这个类比在速率上成立，在体量上目前不成立。</div>
+</details>
+<details><summary>如果统计上和平常连成一片，还有必要保留「大灭绝」这个词吗？</summary>
+<div>有一条支持保留的理由，但它不是速率：白垩纪末那批贝类显示，那一刻决定存活的属性和平时不是同一套。也就是说，就算速率是一条连续的谱，规则可能是断的。按规则分类比按速率分类更有意思，只是也更难量——你得对每一次事件都找到足够多的性状数据，才看得出规则有没有换。</div>
+</details>
+<details><summary>为什么恐龙没了，鳄鱼还在？</summary>
+<div>诚实的回答是没有哪一条单独说得通。体型小、能吃腐肉和种子、能躲进水里或洞里——这些在统计上都跟幸存率相关，但每一条都举得出反例。多数解释是几条叠在一起，叠加的权重很难从化石里分开。顺带一提，鸟就是恐龙里活下来的那一支，所以「恐龙全没了」这句话本身也不准确。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Extinction_event" rel="noopener" target="_blank">灭绝事件总览</a>（英文） · <a href="https://en.wikipedia.org/wiki/Signor%E2%80%93Lipps_effect" rel="noopener" target="_blank">最后一块化石不是最后一个个体</a>（英文） · <a href="https://en.wikipedia.org/wiki/Alvarez_hypothesis" rel="noopener" target="_blank">撞击假说的来龙去脉</a>（英文）</li>
+<li><a href="https://www.science.org/doi/10.1126/science.215.4539.1501" rel="noopener" target="_blank">Raup &amp; Sepkoski，海洋化石记录里的大灭绝（1982，Science）</a>（英文） · <a href="https://www.cambridge.org/core/journals/cambridge-prisms-extinction/article/forty-years-later-the-status-of-the-big-five-mass-extinctions/D8B7C1C298686D3622273320E778D22A" rel="noopener" target="_blank">Marshall，四十年后再看「五次大灭绝」（2023）</a>（英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1613094113" rel="noopener" target="_blank">Stanley，把背景灭绝扣掉之后的量级重估（2016，PNAS）</a>（英文） · <a href="https://www.science.org/doi/10.1126/science.1177265" rel="noopener" target="_blank">Schulte 等，撞击与白垩纪末灭绝的综述（2010，Science）</a>（英文）</li>
+<li><a href="https://www.science.org/doi/10.1126/science.aau2422" rel="noopener" target="_blank">Schoene 等，德干火山的分期喷发（2019，Science）</a>（英文） · <a href="https://www.science.org/doi/10.1126/science.aav1446" rel="noopener" target="_blank">Sprain 等，同一问题的另一种测年（2019，Science）</a>（英文）</li>
+<li><a href="https://www.cell.com/current-biology/fulltext/S0960-9822(18)30534-7" rel="noopener" target="_blank">Field 等，森林崩塌与树栖鸟类的绝迹（2018，Current Biology）</a>（英文） · <a href="https://www.science.org/doi/10.1126/science.231.4734.129" rel="noopener" target="_blank">Jablonski，背景灭绝与大灭绝是两套规则（1986，Science）</a>（英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
