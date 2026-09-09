@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 16: Human Evolution</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body><div class="container">
+<header>
+<div class="kicker">DAY 16 · PHASE B HISTORY OF LIFE</div>
+<h1>Human Evolution</h1>
+<h2>Walking came first and the brain came much later; and "more than one kind of human on Earth" ended remarkably recently</h2>
+<div class="meta">2026-09-09 · BigCat</div>
+<div class="pitch">That marching line of apes gradually straightening into a man has the order backwards. By the time standing upright was settled, the brain was still about chimpanzee-sized — and more than three million years still lay between the two.</div>
+</header>
+<div class="intro">
+<p>You have seen the picture: a hunched ape on the far left, straightening one figure at a time towards the right, ending in a man with a spear over his shoulder. It ties two things together — standing up and growing a brain — and draws them as two ends of one process.</p>
+<p>The fossils say otherwise. By the time standing up was finished, the brain was still in the chimpanzee range, and it stayed there for another two million years before it began to grow.</p>
+<p>The picture misses something stranger still: it is a queue, one turning into the next. In reality, for long stretches there were several kinds of human on Earth at the same time, and only one is left — and that ended later than you would guess.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Walking came first; the brain was three million years later</h2>
+<p>You walk without thinking about it: knee straightening, heel landing first, the whole body balancing briefly on one leg before falling onto the other. That gait leaves deep marks in bone — deep enough to recognise from footprints alone.</p>
+<p>In 1976, at Laetoli in Tanzania, researchers found exactly such a trail pressed into freshly fallen volcanic ash, about 3.66 million years old. The prints have an arch, and the big toe lies in line with the others rather than splaying sideways to grip, the way a chimpanzee's does. They were probably left by an australopithecine — Lucy's species. Lucy's brain was a little over 400 millilitres, the same order as a chimpanzee's; her pelvis and knee were already built for walking.</p>
+<p><strong>There is the order: walking settled first, and the brain waited more than two million years.</strong> The marching picture misleads because it draws "later" as "at the same time".</p>
+<p>So why did walking start? There is no settled answer, and several are still on the table. A 2007 study measured the energy humans and chimpanzees use covering the same ground: walking on two legs costs about three quarters less than the chimpanzee's knuckle-supported gait — a real saving in an environment where food is scattered and a day's rations take a long walk to assemble. Two others: standing frees the hands to carry things; and under a midday sun an upright body catches less of it and sheds heat more easily. They do not exclude one another, and none can be demonstrated on its own.</p>
+<p><em>Do not read this as ancestors deciding to stand up so their hands would be free.</em> Nobody was deciding anything. All that can be said is this: individuals that happened to walk a little more cheaply and stand a little more steadily left more offspring than their peers, and over a few hundred thousand years that build spread.</p>
+<p>One thing gets locked in from this step onwards: once the pelvis was reshaped to carry the organs and suit walking, everything afterwards had to be done on that shape — when the skull began to enlarge a million-odd years later, there was no option to start over. This is the path dependence from the piece on adaptation and constraint: not design from scratch, but edits on the previous version.</p>
+<div class="fig">
+<svg aria-label="Timeline: evidence of upright walking begins over four million years ago, while the brain-size curve stays flat until about two million years ago" role="img" viewbox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#24382c" stroke-width="1" x1="56" x2="572" y1="200" y2="200"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="64" y="216">7 million years ago</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="274" y="216">4 million</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="417" y="216">2 million</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="558" y="216">today</text>
+<line stroke="#24382c" stroke-dasharray="3 4" stroke-width="1" x1="417" x2="417" y1="46" y2="196"></line>
+<path d="M60,164 L298,156 L331,155 L417,140 L489,106 L539,72 L560,66" fill="none" stroke="#52c98a" stroke-width="2.2"></path>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="66" y="150">brain size</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="150" y="172">just over 400 ml — chimpanzee range</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="566" y="58">about 1350 ml</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="417" y="40">the brain only starts growing here</text>
+<rect fill="rgba(210,162,76,0.22)" height="12" stroke="#d2a24c" stroke-width="1.1" width="306" x="254" y="180"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="9.5" x="262" y="189.5">already walking on two legs</text>
+<circle cx="298" cy="186" fill="#d2a24c" r="3.6"></circle>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="298" y="146">Laetoli footprints · 3.66 million years</text>
+<line stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1" x1="298" x2="298" y1="152" y2="180"></line>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="232">more than three million years lie between the two</text>
+</svg>
+<div class="cap">The amber bar started long ago while the green line is still flat. <strong>"Standing up" and "getting clever" are not two ends of one process</strong> — the gap between them is longer than the whole existence of our genus.</div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>The brain is expensive, and the money has to come from somewhere</h2>
+<p>Your brain is about two per cent of your body weight. Lying still and doing nothing, it takes roughly a fifth of your body's energy; a chimpanzee's brain takes under a tenth of its.</p>
+<p>The numbers: australopithecines four to five hundred millilitres, early Homo erectus six hundred to a thousand, modern humans about 1,350 on average. That looks like a rising curve of progress, so a caveat belongs here right away: <strong>cranial capacity has no reliable correspondence with intelligence.</strong> Neanderthal brains averaged as large as ours and some were larger; and the nineteenth-century business of ranking peoples by skull measurement is the textbook case of the opposite of science — the conclusion came first and the ruler was made to agree afterwards.</p>
+<p>The hard constraint lies elsewhere: the extra energy has to be taken from somewhere. Which organ gives it up is still unsettled — a widely repeated proposal has the gut shortening and its savings feeding the brain, but a comparison across more than a hundred mammal species found no such trade-off. <em>Which organ yields is open; that the books must balance is not.</em></p>
+<p>The most striking instance is in childhood. A 2014 study laid the brain's glucose consumption, from birth to adulthood, alongside the body's growth rate: brain energy use peaks around four and a half years old at roughly two thirds of resting metabolism, <strong>and the slowest stretch of body growth falls exactly there.</strong> The two curves are two ends of one budget.</p>
+<p>So where does that money come from? One line of evidence: food has been processed outside the body before it ever enters the mouth. Try eating only raw food — a 1999 German survey of more than five hundred long-term raw-food eaters found that the higher the raw proportion and the longer the diet, the lower the body weight: about a quarter of the women had a body mass index below the normal range, and among women under 45, roughly 30% reported partial or complete cessation of menstruation. <strong>And they had blenders and supermarkets.</strong></p>
+<p>Heat breaks up the structure of starch and unfolds proteins. Food becomes easier to chew and the gut extracts more energy from it. The traits that appear together in Homo erectus — smaller teeth, a relatively shorter gut, a larger body — are explained most smoothly this way. The trouble is that the dates do not line up: the anatomy points to something like 1.9 million years ago, while the oldest fire dug out of the ground that is widely accepted is at Wonderwerk Cave in South Africa, burning in place about a million years ago. Nearly a million years sit empty in between.</p>
+<p>Nor need it have been fire. A 2016 experiment had people chew food prepared in different ways while the force of the chewing muscles was measured: with a third of the diet as meat, and stone tools used to slice the meat and pound tubers, early Homo would have needed about 17% fewer chews a day at about 26% less force each. <em>So the state of play is this: the evidence that food was processed outside the body is strong, and the question of when it started does not join up — the responsible move is to keep that gap in plain view rather than filling it with an inference.</em></p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>There was more than one kind of human, and that ended remarkably recently</h2>
+<p>The marching picture has a second error, bigger than the order: it draws a queue, with only ever one kind of human present at any moment.</p>
+<p>The Earth of roughly sixty thousand years ago looked like this. Homo sapiens had been outside Africa for a while; Neanderthals were in Europe and western Asia; Denisovans in Asia; the island of Flores in Indonesia held Homo floresiensis, standing about a metre tall; and on Luzon in the Philippines there was another small-bodied species, named only in 2019. The last Homo erectus in Java had disappeared not long before, around 110,000 years ago. <strong>At least five kinds, present at the same time.</strong></p>
+<p>Nor were these lineages sealed off from one another. People outside Africa today generally carry one to two per cent Neanderthal ancestry in their genomes, and some populations in Oceania carry a higher share from Denisovans. They did not merely coexist; they left shared descendants.</p>
+<div class="fig">
+<svg aria-label="Bar timeline: several human species overlap across the last five hundred thousand years, with the line at sixty thousand years ago crossing five of them" role="img" viewbox="0 0 600 224" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#24382c" stroke-width="1" x1="90" x2="580" y1="190" y2="190"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="104" y="206">500,000 years ago</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="330" y="206">250,000</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="570" y="206">today</text>
+<line stroke="#d2a24c" stroke-dasharray="4 3" stroke-width="1.4" x1="512" x2="512" y1="24" y2="190"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="end" x="504" y="20">60,000 years ago</text>
+<rect fill="#3f6a52" height="9" width="376" x="90" y="34"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="90" y="30">Homo erectus (last of them, in Java)</text>
+<rect fill="#3f6a52" height="9" width="64" x="249" y="62"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="249" y="58">Homo naledi</text>
+<rect fill="#52c98a" height="9" width="375" x="157" y="90"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="157" y="86">Neanderthals</text>
+<rect fill="#52c98a" height="9" width="144" x="378" y="118"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="378" y="114">Denisovans</text>
+<rect fill="#52c98a" height="9" width="432" x="90" y="146"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="90" y="142">Homo floresiensis</text>
+<rect fill="#52c98a" height="9" width="16" x="506" y="146"></rect>
+<rect fill="#7be0ab" height="9" width="288" x="282" y="174"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="282" y="170">Homo sapiens (us)</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="522" y="154">Homo luzonensis</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="220">the line crosses five bars — back then "human" was a plural</text>
+</svg>
+<div class="cap">Both ends of every bar carry error, and some are still being revised; but <strong>that they overlap at all is no longer in dispute</strong>. Only one kind of human alive is a state that appears at the right-hand edge of this chart, not the normal condition.</div>
+</div>
+<p>So why does it look like a line? Because only one branch is left. Once the forks have all been cut, the single survivor looks like the trunk in hindsight — the same misreading as in the piece on mass extinctions: <strong>a survivor list is not an excellence list.</strong></p>
+<p>Given how long these lineages overlapped, the differences among modern human populations belong back on that scale: the great majority of human genetic variation sits within any one population, differences between populations account for a small share, and they grade continuously with no boundaries — the criteria biology uses to draw subspecies lines do not fit humans today. <em>Using evolution to rank human groups fails on the data and on the logic alike</em>: there are no such boundaries, and arriving later or carrying a larger brain has never meant better.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In practice · BigCat</h3>
+<ul>
+<li><b>① Investing and position sizing</b>—there is a position you opened years ago to hedge an exposure you have long since exited; the exposure is gone, the position is still there, and everything else in the book has been arranged around it. The mechanism from "Walking came first; the brain was three million years later" is exactly this: the step that settles first becomes a constraint on every arrangement after it. <b>What to change</b>: each quarter, write one line per holding saying what it was originally opened for. If the reason still holds, keep it; if the reason is gone but you don't want to close it, write down the new reason for keeping it — any holding you cannot write a new reason for is being held by path, not by judgement.</li>
+<li><b>② Leading a team, and organisations</b>—a number gets quoted at the weekly sync for the third time, and it was never measured; it was converted from another number, and nobody has gone back to check the assumption inside the conversion. The situation in "The brain is expensive, and the money has to come from somewhere" is the same: anatomy implies "there should have been fire 1.9 million years ago", the fire actually dug out of the ground only reaches a million, and that gap is kept in plain view rather than filled with the inference. <b>What to change</b>: in the doc, split "directly measured" from "derived from that" into two columns and mark which column a quoted figure comes from; when the two columns disagree, write a line saying they disagree before anything else.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · connections beyond the field</h3>
+<ul>
+<li><b>Parenting and education · the years from three to six, when height barely shoots up</b>: across the nursery years the height and weight curves visibly flatten, while talking, telling stories and pretend play change noticeably every year. A flat curve is easy for a parent to read as nutrition falling behind. The mechanism running here is the one from "The brain is expensive, and the money has to come from somewhere": brain energy use reaches its lifetime peak around four and a half years old at roughly two thirds of resting metabolism, and the minimum of body growth rate falls on the same stretch — two ends of one budget. Which yields a conclusion you would not otherwise see: <b>during precisely these years, the height-and-weight curve carries the least information as a general index of "developing well" — its flatness is what the money going elsewhere looks like, not a deviation waiting to be corrected.</b> <b>Where it doesn't hold</b>: this mechanism operates at the scale of the species. It explains why the human childhood curve has this shape; it says nothing about which of two children in the same class learns faster — differences between individuals are not mainly made of metabolic budget.</li>
+<li><b>History and the military · a national history written as a single line</b>: open a dynastic history and the dynasties file past one after another, a single line of succession, while the regimes that existed alongside them are pushed to the margins as breakaways, vassals, frontier trouble. The mechanism running here is the one from "There was more than one kind of human, and that ended remarkably recently": once the branches are cut, whatever remains is read backwards as the trunk — not because it was the trunk at the time, but because looking back, it is all that is left. The marching picture and the table of legitimate dynasties are the same shape. Which yields a conclusion you would not otherwise see: <b>arguing from "the main line of history" to "what must come next" has no foundation, because the line was drawn afterwards and no line was there at the time; to judge where an era is heading you have to go back to the list of what coexisted then, and see what constrained each of them.</b> <b>Where it doesn't hold</b>: the line in a history book was written by people, with a compiler and a position, so asking "who wrote this, and why this way" is a real move in history. The fossil record has no compiler — its false straight line is manufactured by extinction and by sampling, there is no motive to expose, and the only correction is more fossils. Two lines that look alike, fixed in completely different ways.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Questions worth sitting with</h3>
+<details><summary>Does a bigger brain simply mean a cleverer one?</summary>
+<div>As an index it is crude. Neanderthal brains averaged as large as ours or larger. And here is a fact that gets little airtime: over the last ten or twenty thousand years, average human cranial capacity has actually shrunk slightly. Why is not agreed — some attribute it to overall body size decreasing, others to rewiring inside the brain. What is clear: comparing across species is meaningless until body size is taken out, and within a single species the relationship with cognitive performance is far too weak to rank anyone by.</div>
+</details>
+<details><summary>Why is human childbirth so hard?</summary>
+<div>The old answer is a fight between the pelvis and the head: a pelvis suited to walking cannot be too wide, while the fetal head kept getting larger, so human infants must be born at a very immature stage. It reads smoothly, but in 2012 an alternative was proposed — the timing of birth is more likely limited by the maximum energy a mother can keep supplying than by pelvic width, and the measured cost of a slightly wider pelvis to walking efficiency turned out smaller than the old account assumed. Which matters more is still argued.</div>
+</details>
+<details><summary>If so many kinds of human coexisted, why is only one left?</summary>
+<div>There is no settled answer, and the smoothest one deserves suspicion: "we were smarter, so we won" has almost no direct evidence behind it. Factors seriously discussed include differences in population size and density, buffering capacity through violent climate swings, and interbreeding itself — a small population genetically absorbed into a large one also looks like disappearance. Neanderthals did not vanish from the genome entirely, which makes "who out-competed whom" too blunt a question to begin with.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Human_evolution" rel="noopener" target="_blank">Human evolution, an overview</a> · <a href="https://en.wikipedia.org/wiki/Laetoli" rel="noopener" target="_blank">The Laetoli footprints</a> · <a href="https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans" rel="noopener" target="_blank">Evidence for early control of fire</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.0703267104" rel="noopener" target="_blank">Sockol et al., how much energy two-legged walking saves (2007, PNAS)</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1323099111" rel="noopener" target="_blank">Kuzawa et al., childhood brain energy against growth rate (2014, PNAS)</a></li>
+<li><a href="https://www.journals.uchicago.edu/doi/10.1086/204350" rel="noopener" target="_blank">Aiello &amp; Wheeler, the gut-yields-to-brain hypothesis (1995)</a> · <a href="https://www.nature.com/articles/nature10629" rel="noopener" target="_blank">Navarrete et al., the cross-species comparison that found no such trade-off (2011, Nature)</a></li>
+<li><a href="https://www.nature.com/articles/nature16990" rel="noopener" target="_blank">Zink &amp; Lieberman, how much chewing slicing and pounding save (2016, Nature)</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1117620109" rel="noopener" target="_blank">Berna et al., in-situ fire at Wonderwerk Cave around a million years ago (2012, PNAS)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1018116108" rel="noopener" target="_blank">Roebroeks &amp; Villa, the earliest habitual fire use in Europe (2011, PNAS)</a> · <a href="https://www.nature.com/articles/s41586-019-1067-9" rel="noopener" target="_blank">Détroit et al., the naming of Homo luzonensis (2019, Nature)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1205282109" rel="noopener" target="_blank">Dunsworth et al., the energetic account of human altriciality (2012, PNAS)</a> · <a href="https://en.wikipedia.org/wiki/Human_genetic_variation" rel="noopener" target="_blank">How human genetic variation is distributed</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

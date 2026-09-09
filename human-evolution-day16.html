@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 16：人类的演化</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 16 · PHASE B 生命史</div>
+<h1>人类的演化</h1>
+<h2>先会走路，很久以后才轮到脑子；而「地球上不止一种人」这件事，结束得非常晚</h2>
+<div class="meta">2026-09-09 · BigCat</div>
+<div class="pitch">那张「猿慢慢站直变成人」的排队图，把顺序画反了。站起来这件事办完的时候，脑子还跟黑猩猩差不多大——中间隔了三百多万年。</div>
+</header>
+<div class="intro">
+<p>你见过那张图：最左边一只弓着背的猿，往右一个接一个站直，最后是个扛长矛的人。它把两件事捆在了一起——站起来和脑子变大，画得像同一个过程的两头。</p>
+<p>化石说的不是这样。站起来那一步办完的时候，脑子还是黑猩猩那个量级，之后在原地待了两百多万年才开始变大。</p>
+<p>它还漏了更奇怪的一件事：那是一支队伍，一个变成下一个。真实情况是很长时间里地球上同时有好几种人，最后只剩一种——而这件事结束得晚到你想不到。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>先会走路，脑子是三百多万年以后的事</h2>
+<p>你走路的时候不用想：膝盖伸直、脚跟先着地、整个身体在一条腿上短暂平衡一下再倒向另一条。这套动作在骨头上留的痕迹很深，深到只剩一串脚印也认得出来。</p>
+<p>1976 年在坦桑尼亚的莱托里，研究者在一层新落下的火山灰上发现了这样一串，年代约 366 万年前。脚印有足弓；大脚趾跟其他脚趾并成一排，没有像黑猩猩那样朝旁边分开去抓东西。留下它的很可能是南方古猿，也就是「露西」那个种。露西的脑子四百多毫升，跟黑猩猩一个量级；而她的骨盆和膝盖，已经是走路的构造。</p>
+<p><strong>顺序就摆在这儿：走路先定型，脑子在原地等了两百多万年。</strong>那张排队图之所以骗人，是因为它把「后来发生」画成了「一起发生」。</p>
+<p>那为什么会走起来？没有定论，几个说法都还在桌上。2007 年一项实测比较了人和黑猩猩走同样距离的耗能：人用两条腿走，比黑猩猩那种指关节撑地的走法省下约四分之三——在食物越来越散、要走很远才凑得齐一天口粮的环境里，这笔差价不小。另外两条：站着腾出手来搬东西；正午太阳直射时直立的身体被晒到的面积小、更容易散热。它们互不排斥，也没有哪一条能被单独证明。</p>
+<p><em>别把它读成「祖先决定站起来好腾出手」。</em>当时没有谁在决定什么。能说的只有这句：碰巧让它走得省一点、站得稳一点的那些个体，比同伴留下了更多后代；几十万年下来，这套骨头结构就铺开了。</p>
+<p>还有一件事从这一步起被锁死：骨盆一旦被改造成支撑内脏、适合行走的形状，后面所有事都得在这个形状上办——一百多万年后脑袋要变大，没有推倒重来的选项。这就是「适应与约束」那期的路径依赖：不是从零设计，是在上一版的基础上改。</p>
+<div class="fig">
+<svg aria-label="时间轴：直立行走的证据在四百多万年前就开始，而脑容量曲线一直到两百万年前才明显上扬" role="img" viewbox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#24382c" stroke-width="1" x1="56" x2="572" y1="200" y2="200"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="60" y="216">700 万年前</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="274" y="216">400 万年前</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="417" y="216">200 万年前</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="558" y="216">今天</text>
+<line stroke="#24382c" stroke-dasharray="3 4" stroke-width="1" x1="417" x2="417" y1="46" y2="196"></line>
+<path d="M60,164 L298,156 L331,155 L417,140 L489,106 L539,72 L560,66" fill="none" stroke="#52c98a" stroke-width="2.2"></path>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" x="66" y="150">脑有多大</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="150" y="172">四百多毫升，跟黑猩猩一个量级</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="566" y="58">约 1350 毫升</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="417" y="40">脑从这里才开始明显变大</text>
+<rect fill="rgba(210,162,76,0.22)" height="12" stroke="#d2a24c" stroke-width="1.1" width="306" x="254" y="180"></rect>
+<text fill="#e4ddcc" font-family="Georgia,serif" font-size="9.5" x="262" y="189.5">已经在用两条腿走路</text>
+<circle cx="298" cy="186" fill="#d2a24c" r="3.6"></circle>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="298" y="146">莱托里脚印 · 366 万年前</text>
+<line stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1" x1="298" x2="298" y1="152" y2="180"></line>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="232">两件事之间，隔着三百多万年</text>
+</svg>
+<div class="cap">琥珀色那条早就开始了，绿色那条还是平的。<strong>「站起来」和「变聪明」不是同一个过程的两头</strong>——它们中间隔着的时间，比整个人属存在的时间还长。</div>
+</div>
+<p class="en-brief"><b>EN</b> You walk without thinking about it: knee straightening, heel striking first, the whole body balancing briefly on one leg before falling onto the other. That gait leaves deep marks in bone — deep enough to recognise from footprints alone. In 1976 at Laetoli in Tanzania, researchers found a trail of them pressed into freshly fallen volcanic ash, about 3.66 million years old. The prints have an arch, and the big toe lies in line with the others rather than splaying sideways to grip, as a chimpanzee's does. They were probably left by an australopithecine — Lucy's species. Lucy's brain was a little over 400 millilitres, the same order as a chimpanzee's, while her pelvis and knee were already built for walking. That is the order: upright walking settled first, and the brain waited more than two million years. The marching-progress picture misleads because it draws "later" as "at the same time". Why walking started is genuinely unsettled. A 2007 study measured the energy humans and chimpanzees use covering the same ground, and found two-legged human walking about 75% cheaper than chimpanzee knuckle-walking — a real saving in an environment where food is scattered and a day's calories take a long walk to assemble. Two other candidates: standing frees the hands to carry, and an upright body catches less midday sun and so sheds heat more easily. None excludes the others, and none can be demonstrated on its own. Do not read this as ancestors deciding to stand up so their hands would be free. Nobody was deciding anything. All that can be said is that individuals whose skeletons happened to make walking cheaper left more offspring than their peers, and over hundreds of thousands of years that build spread. One thing gets locked in from this step onwards: once the pelvis was reshaped to carry the organs and suit walking, everything afterwards had to be done on that shape. When the skull began to enlarge a million-odd years later, there was no option to start over — only to work around a pelvis already fixed. That is the path dependence from the piece on adaptation and constraint: not design from scratch, but edits on the previous version.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>脑子很贵，这笔账得从别的地方挪</h2>
+<p>你的脑子约占体重的百分之二。而你安静躺着什么也不做的时候，它要用掉全身能量的五分之一左右；黑猩猩的脑子占同样状态下的能量不到一成。</p>
+<p>数字上：南方古猿四五百毫升，早期的直立人六百到一千，今天平均约一千三百五。像一条向上的进步曲线，但得马上插一句：<strong>脑容量和聪明程度之间没有可靠的对应关系。</strong>尼安德特人的脑平均和我们一样大，有些更大；十九世纪那套「量头骨定高下」是科学史上的标准反面教材——结论先有了，尺子后来才去凑。</p>
+<p>真正硬的约束在别处：多出来的这份能量必须从某处挪出来。从哪个器官挪至今没有定论——流传很广的说法是肠道缩短、省下的补给脑，但跨越上百种哺乳动物的比较没找到它预言的此消彼长。<em>「谁让位」没定论，「账必须平」没松动。</em></p>
+<p>最扎眼的一笔在童年。2014 年一项研究把人从出生到成年的脑葡萄糖消耗和身体生长速度并排放在一张图上：脑的能耗在四岁半前后达到一生最高点，占静息代谢的约三分之二；<strong>而身体长个子最慢的那一段，正好落在这里。</strong>两条曲线是同一笔预算的两头。</p>
+<p>那这笔钱是从哪儿来的？有一条线索：食物在进嘴之前，已经在体外被处理过一遍。试试只吃生的——1999 年德国一项针对五百多位长期生食者的调查发现，生食比例越高、吃得越久体重越低：女性中约四分之一的体重指数掉到正常下限以下，45 岁以下的女性里约三成出现部分或完全的月经停止。<strong>而她们有搅拌机和超市。</strong></p>
+<p>加热把淀粉的结构打散、把蛋白质的形状拆开，嚼起来省力，肠道能吸收到的能量也更多。直立人身上凑在一起的那几样——牙齿变小、肠道相对变短、身体变大——用这条解释最顺。麻烦是时间对不上：解剖学指向约一百九十万年前；而挖出来的火，最老被广泛接受的一处在南非旺德沃克洞，约一百万年前。中间空着近一百万年。</p>
+<p>而且不一定非得是火。2016 年一项实验让人嚼不同方式处理过的食物、同时测咀嚼肌用力：饮食里三分之一是肉，再用石器把肉切片、把块茎砸烂，早期人属每天要嚼的次数就少约百分之十七、每次用力少约百分之二十六。<em>所以状态是这样：食物在体外被处理过这条线索很有力，「什么时候开始」这一段接不上——负责任的做法是把缺口摆在明面上，而不是拿推断去填。</em></p>
+<p class="en-brief"><b>EN</b> Your brain is about two per cent of your body weight. Lying still and doing nothing, it takes roughly a fifth of your body's energy. A chimpanzee's brain takes under a tenth of its. The numbers run like this: australopithecines four to five hundred millilitres, early Homo erectus six hundred to a thousand, modern humans about 1,350 on average. That looks like a rising curve of progress, so a caveat belongs here immediately: cranial capacity has no reliable correspondence with intelligence. Neanderthal brains averaged as large as ours and some were larger. The nineteenth-century business of ranking peoples by skull measurement is the textbook case of the opposite of science — the conclusion came first and the ruler was made to agree afterwards. The hard constraint lies elsewhere: the extra energy has to be taken from somewhere. Which organ gives way is still unsettled — a widely repeated proposal has the gut shortening and its savings feeding the brain, but a comparison across more than a hundred mammal species did not find the trade-off it predicts. Which organ yields is open; that the books must balance is not. The most striking instance is in childhood. A 2014 study laid the brain's glucose consumption from birth to adulthood alongside the body's growth rate: brain energy use peaks around four and a half years old at roughly two thirds of resting metabolism — and the slowest stretch of body growth falls exactly there. The two curves are two ends of one budget. Where does the money for the other end come from? One line of evidence: food has already been processed outside the body before it enters the mouth. Try eating only raw food. A 1999 German questionnaire survey of more than five hundred long-term raw-food eaters found that the higher the raw proportion and the longer the diet, the lower the body weight: about a quarter of the women had a body mass index below the normal range, and among women under 45, roughly 30% reported partial or complete cessation of menstruation. And these people have blenders, year-round fruit, and supermarkets. Heat does something specific: it breaks up the structure of starch and unfolds proteins. Food becomes easier to chew and the gut extracts more energy from it. The traits appearing together in Homo erectus — smaller teeth, a relatively shorter gut, a larger body — are explained most smoothly this way. The trouble is that the dates do not line up. The anatomy points to something like 1.9 million years ago; the oldest widely accepted fire dug out of the ground is at Wonderwerk Cave in South Africa, in-situ burning around a million years old, and in Europe habitual fire use only becomes visible around 300,000 to 400,000 years ago. That leaves a gap of nearly a million years. Nor need it have been fire. A 2016 experiment had people chew food prepared in different ways while the force of the chewing muscles was measured: with a third of the diet as meat, and stone tools used to slice the meat and pound tubers, early Homo would have needed about 17% fewer chews per day at about 26% less force each. So the state of play is this: the evidence that food was processed outside the body is strong, and the question of when it started does not join up. The responsible move is to keep that gap in plain view rather than filling it with an inference.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>地球上不止一种人，这件事结束得非常晚</h2>
+<p>那张排队图还有第二个错，比顺序那个更大：它画的是一支队伍，任何时刻都只有一种人在场。</p>
+<p>大约六万年前的地球是这样的：智人已经在非洲之外走了一段；尼安德特人在欧洲和西亚；丹尼索瓦人在亚洲；印度尼西亚弗洛勒斯岛上住着身高约一米的弗洛勒斯人；菲律宾吕宋岛上还有另一种小个子的人，2019 年才被命名。爪哇最后一批直立人则刚刚消失不久，约十一万年前。<strong>同时在场的，至少五种。</strong></p>
+<p>而且这些支系并没有完全隔开。今天非洲之外的人，基因组里普遍带着百分之一到二来自尼安德特人；大洋洲一些人群里丹尼索瓦人的成分还更高。它们不只是并存过，还留下了共同的后代。</p>
+<div class="fig">
+<svg aria-label="横条时间图：过去五十万年里多个人类物种的存在区间彼此重叠，六万年前那条竖线上同时有五种" role="img" viewbox="0 0 600 224" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#24382c" stroke-width="1" x1="90" x2="580" y1="190" y2="190"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="96" y="206">50 万年前</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="330" y="206">25 万年前</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="570" y="206">今天</text>
+<line stroke="#d2a24c" stroke-dasharray="4 3" stroke-width="1.4" x1="512" x2="512" y1="24" y2="190"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="end" x="504" y="20">六万年前这一刻</text>
+<rect fill="#3f6a52" height="9" width="376" x="90" y="34"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="90" y="30">直立人（爪哇最后一批）</text>
+<rect fill="#3f6a52" height="9" width="64" x="249" y="62"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="249" y="58">纳莱迪人</text>
+<rect fill="#52c98a" height="9" width="375" x="157" y="90"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="157" y="86">尼安德特人</text>
+<rect fill="#52c98a" height="9" width="144" x="378" y="118"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="378" y="114">丹尼索瓦人</text>
+<rect fill="#52c98a" height="9" width="432" x="90" y="146"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="90" y="142">弗洛勒斯人</text>
+<rect fill="#52c98a" height="9" width="16" x="506" y="146"></rect>
+<rect fill="#7be0ab" height="9" width="288" x="282" y="174"></rect>
+<text fill="#d6e6dc" font-family="Georgia,serif" font-size="10" x="282" y="170">智人（我们）</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="522" y="154">吕宋人</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="220">竖线穿过五条——那时候「人」是个复数</text>
+</svg>
+<div class="cap">条的左右端点都有误差，有些还在改；但<strong>它们互相重叠这件事本身已经不再有争议</strong>。今天只有一种人，是图右端才刚出现的状态，不是常态。</div>
+</div>
+<p>那为什么它看起来像一条线？因为只剩一支了。分岔全断掉之后，唯一活下来的那条回头看就是主干——这跟「大灭绝」那期是同一个误读：<strong>幸存名单不是优秀名单。</strong></p>
+<p>既然这些支系并存了那么久，现代人群之间那点差别就更该放回这个尺度里看：人类的遗传变异绝大部分存在于任何一个群体的内部，群体之间的差异只占一小部分，而且连续渐变、没有边界——生物学上给「亚种」划线的那套标准，套不到今天的人身上。<em>把演化拿来给人群排高下，从数据到逻辑都不成立</em>：既没有那样的边界，「更晚出现」或「脑子更大」也从来不等于更好。</p>
+<p class="en-brief"><b>EN</b> Return to the marching-progress picture; its second error is bigger than the order. It draws a queue — one species turning into the next, only ever one kind of human present at a time. The Earth of roughly sixty thousand years ago looked like this: Homo sapiens had been outside Africa for a while; Neanderthals were in Europe and western Asia; Denisovans in Asia; the island of Flores in Indonesia held Homo floresiensis, standing about a metre tall; and on Luzon in the Philippines there was another small-bodied species, named only in 2019. The last Homo erectus in Java had disappeared not long before, around 110,000 years ago. At least five kinds of human, present at once. Nor were these lineages sealed off from one another. People outside Africa today generally carry one to two per cent Neanderthal ancestry in their genomes, and some populations in Oceania carry a higher proportion from Denisovans. They did not merely coexist; they left shared descendants. How that is read out of bones tens of thousands of years old is another matter — the subject of the piece on ancient DNA. So why does it look like a line? Because only one branch is left. Once the forks have all been cut, the single survivor looks like the trunk in hindsight. This is the same misreading as in the piece on mass extinctions: a survivor list is not an excellence list.  Given how long these lineages overlapped, the differences among modern human populations belong back on that scale. The great majority of human genetic variation sits within any one population; differences between populations account for a small share, and they grade continuously with no boundaries — the criteria biology uses to draw subspecies lines do not fit humans today. Using evolution to rank human groups fails on both the data and the logic: there are no such boundaries, and arriving later or carrying a larger brain has never meant better.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 投资与仓位</b>——有一条早年建的仓位，当初是用来对冲某个你后来早就退出的敞口；敞口没了它还在，而别的安排都是绕着它搭起来的。跑的是「先会走路，脑子是三百多万年以后的事」那节的机制：先定型的那一步会成为后面所有安排的约束。<b>可改的动作</b>：每季度给每条持仓写一行「它当初是为了什么建的」，理由还在就留着；理由没了却不想动，就写下「现在留着的新理由」——写不出新理由的那条，是被路径锁着，不是被判断留着。</li>
+<li><b>② 带团队与组织</b>——周会上那个数字第三次被引用了，而它不是量出来的，是从另一个数换算过来的，换算里那条假设没人回去核过。「脑子很贵，这笔账得从别的地方挪」那节的处境一样：解剖学推出「一百九十万年前该有火了」，地里挖出来的火只到一百万年前，而这个缺口一直被摆在明面上、没被推断填掉。<b>可改的动作</b>：文档里把「直接量到的」和「由它推出来的」分两栏，引用时标明取自哪栏；两栏对不上就先写一行「对不上」。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>育儿与教育 · 三岁到六岁那几年，个子几乎没怎么往上蹿</b>：幼儿园那几年，身高体重的曲线明显平下来，而说话、讲故事、假装游戏的本事一年一个样。曲线一平，家长容易读成营养没跟上。跑的是「脑子很贵，这笔账得从别的地方挪」那节的机制：脑的能耗在四岁半前后到达一生最高点、占静息代谢约三分之二，而身体生长速度的最低点正好落在同一段——两条曲线是同一笔预算的两头。由此能推出一个原本看不出的结论：<b>恰恰在这几年，身高体重曲线作为「发育好不好」的总指标信息量最低——它平缓正是那笔能量去了别处的样子，不是一个待纠正的偏差。</b><b>但这里不成立</b>：这条机制是物种尺度的，它解释人类儿童这条曲线为什么长成这样，不解释同一个班里两个孩子谁学得快——个体之间的差别主要不是代谢预算造成的。</li>
+<li><b>历史与军事 · 一部通史被写成一条线</b>：翻开一部王朝通史，朝代一个接一个排下去，像一条单线传承；同期并存的政权被挪到边上，写成割据、附庸、边患。跑的是「地球上不止一种人，这件事结束得非常晚」那节的机制：分支断掉之后，剩下的那条被回溯成主干——不是因为它当时就是主干，而是因为回头看只剩它。那张排队图和王朝正统表是同一个形状。由此能推出一个原本看不出的结论：<b>从「历史的主线」推「下一步必然如何」是没有地基的，因为那条线是事后画的，当时并没有一条线在那儿；要判断一个时代往哪儿走，只能回到当时的并存名单，看每一支各自被什么约束着。</b><b>但这里不成立</b>：史书那条线是人写的，有编纂者、有他的位置，所以在历史里追问「谁写的、为什么这么写」是有效的一步。化石记录里没有编纂者——那条假直线是灭绝和采样自己造的，没有动机可揭，只能靠挖出更多化石纠正。两种直线看着一样，改法完全不同。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>脑子变大就是变聪明吗？</summary>
+<div>作为指标它很粗糙。尼安德特人的脑平均和我们一样大或更大。还有个不太被提的事实：过去一两万年里现代人的平均脑容量反而略微缩了一点，为什么没有共识——有人归因于身体整体变小，有人认为跟脑内部的重新布线有关。能确定的是：跨物种比要先扣掉体型才有意义；同一物种内部，它和认知表现的关系弱到不能拿来排序。</div>
+</details>
+<details><summary>人生孩子为什么这么难？</summary>
+<div>老答案是骨盆和大脑袋打架：骨盆要适合走路就不能太宽，胎儿的头却越来越大，于是人类婴儿必须在很不成熟的阶段出生。这个说法很顺，但 2012 年有人给出另一种解释——分娩时机更可能卡在母亲能持续供给的能量上限，而不是骨盆宽度；他们还指出把骨盆加宽的代价，实测比原来假设的小。哪条更重要还在争。</div>
+</details>
+<details><summary>既然并存过那么多种人，为什么最后只剩一种？</summary>
+<div>没有定论，而且要小心那个最顺口的答案：「我们更聪明所以赢了」几乎没有直接证据。被认真讨论的因素包括人口规模和分布密度的差异、气候剧烈波动时的缓冲能力，以及混血本身——小群体被大群体在遗传上吸收掉，看起来也像消失。尼安德特人并没有从基因组里彻底消失，这让「谁淘汰了谁」的问法本身就显得太粗。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Human_evolution" rel="noopener" target="_blank">人类演化总览</a> · <a href="https://en.wikipedia.org/wiki/Laetoli" rel="noopener" target="_blank">莱托里脚印</a> · <a href="https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans" rel="noopener" target="_blank">早期人类的用火证据</a>（均英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.0703267104" rel="noopener" target="_blank">Sockol 等，两条腿走路省下多少能量（2007，PNAS）</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1323099111" rel="noopener" target="_blank">Kuzawa 等，儿童脑能耗与生长速度的此消彼长（2014，PNAS）</a>（均英文）</li>
+<li><a href="https://www.journals.uchicago.edu/doi/10.1086/204350" rel="noopener" target="_blank">Aiello &amp; Wheeler，肠子让位给脑的假说（1995）</a> · <a href="https://www.nature.com/articles/nature10629" rel="noopener" target="_blank">Navarrete 等，跨物种比较没找到那个负相关（2011，Nature）</a>（均英文）</li>
+<li><a href="https://www.nature.com/articles/nature16990" rel="noopener" target="_blank">Zink &amp; Lieberman，切片与捶打省下多少咀嚼（2016，Nature）</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1117620109" rel="noopener" target="_blank">Berna 等，旺德沃克洞约百万年前的原地火痕（2012，PNAS）</a>（均英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1018116108" rel="noopener" target="_blank">Roebroeks &amp; Villa，欧洲最早的日常用火（2011，PNAS）</a> · <a href="https://www.nature.com/articles/s41586-019-1067-9" rel="noopener" target="_blank">Détroit 等，吕宋人的命名（2019，Nature）</a>（均英文）</li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1205282109" rel="noopener" target="_blank">Dunsworth 等，早产的能量解释（2012，PNAS）</a> · <a href="https://en.wikipedia.org/wiki/Human_genetic_variation" rel="noopener" target="_blank">人类遗传变异的分布</a>（均英文）</li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
