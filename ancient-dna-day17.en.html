@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 17: The Ancient DNA Revolution</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 17 · PHASE B HISTORY OF LIFE</div>
+<h1>The Ancient DNA Revolution</h1>
+<h2>There are still letters left inside bones tens of thousands of years old, and enough of them to read; the first sentence they spelled out was that the old replacement script has to change</h2>
+<div class="meta">2026-09-10 · BigCat</div>
+<div class="pitch">To judge whether a thirty-thousand-year-old sequence is real, you do not ask how intact it is. You ask whether it has decayed in the right way. A long, clean one should make you assume: fake.</div>
+</header>
+<div class="intro">
+<p>Drop a book in water, fish it out and dry it in the sun: the paper goes brittle, it crumbles, the ink bleeds. DNA inside a bone buried for tens of thousands of years meets the same fate.</p>
+<p>So for a long time, people from that far back were only shapes to us — the shape of a skull, of a tooth, of a stone tool. Who was related to whom was guessed from angles and ratios measured off bone.</p>
+<p>From the 1980s some people tried to bypass shape and read the letters still left inside the bone. For the first twenty years it was almost all false alarms. When the road finally opened, what got rewritten was not the details. It was the main line.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>An old sequence that is too clean has to be fake</h2>
+<p>Fold a sheet of paper over and over and tear it, and you end up with a pile of scraps carrying a few letters each. DNA in a bone does the same thing, only far more slowly: the long chain snaps at one point after another into shorter and shorter fragments.</p>
+<p>How slowly can be measured. In 2012 someone picked a nearly ideal material: the extinct New Zealand moa, 158 bones, each independently dated, all buried in comparable conditions. The result was a very clean decay curve — a 242-letter stretch of mitochondrial DNA loses half of itself about every 521 years, at an effective burial temperature of around 13°C. Cold ground is much slower.</p>
+<p>Besides breakage there is a second change, and it turned out to be the key to the whole business. One of DNA's four letters is called cytosine, written C; it slowly loses an amino group of its own accord and becomes something else, which a sequencing machine reads as T. This happens especially often at the two ends of a fragment, because the letters there sit on a loose single strand with no partner half to shield them. <strong>So real ancient DNA carries a fixed medical chart: fragments only tens of letters long, a markedly raised share of end-position Cs read as T — and how bad those two are has to match the age and burial temperature the sample claims.</strong></p>
+<p>Why does that chart matter? Because for this field's first two decades the enemy was not decay but contamination: the intact human DNA in the spray from one sentence spoken beside the bench outnumbers what is left inside a bone by several orders of magnitude. The 1985 paper reporting DNA cloned from an Egyptian mummy was a sensation; later re-examination concluded that most of it was modern human DNA that had got in. The 1990s brought insects in amber and "dinosaur DNA" from a coal mine — the latter, on inspection, resembled nothing so much as a human.</p>
+<p>The way out was to treat that chart as a signature: <em>authentication does not rest on looking clean; it rests on carrying the particular kind of dirt that time necessarily leaves.</em></p>
+<div class="fig">
+<svg aria-label="Comparison: real ancient DNA is short fragments whose end letters get misread, while modern DNA that fell into the sample is long and intact" role="img" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="40">just buried</text>
+<rect fill="#3f6a52" height="11" width="430" x="140" y="31"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="90">1,000 years</text>
+<rect fill="#3f6a52" height="11" width="112" x="140" y="81"></rect>
+<rect fill="#3f6a52" height="11" width="72" x="264" y="81"></rect>
+<rect fill="#3f6a52" height="11" width="98" x="348" y="81"></rect>
+<rect fill="#3f6a52" height="11" width="112" x="458" y="81"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10" x="8" y="140">40,000 years</text>
+<rect fill="#52c98a" height="11" width="36" x="140" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="140" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="172" y="131"></rect>
+<rect fill="#52c98a" height="11" width="28" x="186" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="186" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="210" y="131"></rect>
+<rect fill="#52c98a" height="11" width="42" x="224" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="224" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="262" y="131"></rect>
+<rect fill="#52c98a" height="11" width="30" x="276" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="276" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="302" y="131"></rect>
+<rect fill="#52c98a" height="11" width="38" x="316" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="316" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="350" y="131"></rect>
+<rect fill="#52c98a" height="11" width="26" x="364" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="364" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="386" y="131"></rect>
+<rect fill="#52c98a" height="11" width="44" x="400" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="400" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="440" y="131"></rect>
+<rect fill="#52c98a" height="11" width="32" x="454" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="454" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="482" y="131"></rect>
+<rect fill="#52c98a" height="11" width="36" x="496" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="496" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="528" y="131"></rect>
+<rect fill="#52c98a" height="11" width="28" x="542" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="542" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="566" y="131"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" x="140" y="157">amber tips: far more of these Cs get read as T</text>
+<line stroke="#24382c" stroke-width="1" x1="8" x2="592" y1="176" y2="176"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="203">fell in at</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="216">the bench</text>
+<rect fill="#6b7f72" height="11" width="430" x="140" y="194"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="9.5" x="140" y="220">long, intact, no errors at the ends</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="243">clean is not a bonus, it is an alarm</text>
+</svg>
+<div class="cap">The top three rows are one stretch of DNA shattering over time; the bottom bar is modern DNA that just fell into the sample. <strong>The easiest difference to spot is not the content but the shape and the way it broke.</strong></div>
+</div>
+<p>The rest is legwork, and one piece of it paid off enormously. In 2015 someone compared different parts of the same remains: in ordinary bones and teeth only 0.3% to 20% of the DNA actually belongs to the individual, the rest being soil bacteria and contamination — while the dense little nub of the temporal bone that wraps the inner ear, the petrous, runs from 37% to 85%. A great many remains that had been written off as unreadable turned into usable samples overnight.</p>
+<p>The method has now moved beyond bones altogether: in 2017 researchers pulled Neanderthal and Denisovan mitochondrial DNA straight out of cave sediments, at spots where no matching bone was ever dug up. The current age ceiling is a mammoth tooth from Siberian permafrost, around 1.2 million years old. <em>Dinosaurs in amber remain impossible — that is still two orders of magnitude away.</em></p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>"Clean replacement" lost on a number that should have been equal</h2>
+<p>In 1997 a short stretch of mitochondrial DNA was read out of the specimen dug up in Germany in 1856 — the first Neanderthal ever recognised as such. Mitochondria are small components inside cells, each with its own little loop of DNA that passes only from mother to child; there are many copies per cell, so that DNA survives more readily, which is why early ancient-DNA work could read nothing else.</p>
+<p>That sequence sat well outside the range of every living person. At the time this looked like evidence for clean replacement: the people who walked out of Africa arrived, the resident Neanderthals went, and the two never mixed. The trouble is that mitochondrial DNA follows exactly one line — your mother's mother's mother. If there was interbreeding but that maternal line later died out, it sees nothing at all.</p>
+<p>When the draft Neanderthal nuclear genome appeared in 2010, the conclusion flipped. What flipped it was not positive evidence but a harder question: <strong>if "clean replacement" were true, what would have to be equal?</strong> If everyone outside Africa descends from the same group that left, then every population outside Africa should be equally similar to Neanderthals.</p>
+<p>It is not. Europeans and East Asians share more sites with Neanderthals than sub-Saharan Africans do — and the excess is not scattered about, it comes in blocks: whole stretches of tens of thousands of letters matching Neanderthals end to end. Similarity inherited from a common ancestor gets ground to powder by tens of thousands of generations of shuffling. Similarity in long blocks can only have been dropped in later.</p>
+<p>The current estimate is that people outside Africa generally carry one to two per cent Neanderthal ancestry. In 2024 two independent studies pinned that mixing to roughly 47,000 years ago, lasting some seven thousand years.</p>
+<p>Something stranger happened the same year as the draft genome. A finger bone came out of Denisova Cave in the Altai Mountains of Siberia, far too small to identify by shape. Only once its genome was read did it become clear that it was neither Neanderthal nor modern human, but a lineage nobody had known existed. <strong>This was the first time a human lineage was defined by a genome rather than by a skull you could set on a table.</strong> They came to be called Denisovans, and some populations in Oceania carry a far higher share of Denisovan ancestry. In 2014 it emerged that the gene variant associated with high-altitude, low-oxygen adaptation in Tibetans is arranged almost exactly as that stretch is in the Denisovan genome. <em>Do not read this as Denisovans giving Tibetans the ability to live high up</em> — the variant simply happened to enter this gene pool through one episode of interbreeding, and at altitude the people carrying it went on to leave more offspring.</p>
+<p>The bluntest piece of all came in 2018: a two-centimetre bone fragment from the same cave, half of whose chromosomes look Neanderthal and half Denisovan — a Neanderthal mother, a Denisovan father, first generation. Very few archaic humans have had their genomes read at all, and one of them turns out to be a first-generation hybrid; <em>that cannot be turned into a frequency, but it does suggest such things were no great rarity at the time.</em></p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>No population has simply "been there all along"</h2>
+<p>Standing in front of a site a few thousand years old, it is hard not to assume that the people living there today descend from the people who lived there then. Europe has enough samples in the ground to test that sentence directly. The answer is: not really.</p>
+<p>Present-day Europeans carry at least three layers, and each one arrived not as "a new technique was learned" but as a substantial replacement of people. At the bottom are the hunter-gatherers who had been there since the ice retreated. Around eight thousand years ago people carrying farming moved in from Anatolia (roughly today's Turkey), in many places largely replacing the existing population — farming reached Europe not as an idea travelling but as people walking. Around four and a half thousand years ago another group came from the steppe to the east: the Corded Ware population in Germany traces about three quarters of its ancestry to the Yamnaya of the steppe.</p>
+<div class="fig">
+<svg aria-label="Stacked chart: present-day Europeans are a mixture of three layers — hunter-gatherers, Anatolian farmers and steppe populations" role="img" viewBox="0 0 600 232" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#3f6a52" height="10" width="14" x="70" y="12"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="90" y="21">hunter-gatherers</text>
+<rect fill="#d2a24c" height="10" width="14" x="212" y="12"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="232" y="21">farmers from Anatolia</text>
+<rect fill="#7be0ab" height="10" width="14" x="392" y="12"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="412" y="21">people from the steppe</text>
+<rect fill="#3f6a52" height="130" width="76" x="62" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="100" y="198">10,000 years ago</text>
+<rect fill="#3f6a52" height="26" width="76" x="196" y="154"></rect>
+<rect fill="#d2a24c" height="104" width="76" x="196" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="234" y="198">7,000 years ago</text>
+<rect fill="#3f6a52" height="20" width="76" x="330" y="160"></rect>
+<rect fill="#d2a24c" height="52" width="76" x="330" y="108"></rect>
+<rect fill="#7be0ab" height="58" width="76" x="330" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="368" y="198">4,000 years ago</text>
+<rect fill="#3f6a52" height="26" width="76" x="464" y="154"></rect>
+<rect fill="#d2a24c" height="62" width="76" x="464" y="92"></rect>
+<rect fill="#7be0ab" height="42" width="76" x="464" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="502" y="198">Europeans today</text>
+<line stroke="#24382c" stroke-width="1" x1="40" x2="570" y1="184" y2="184"></line>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="222">every layer arrived as people walking, not as an idea spreading</text>
+</svg>
+<div class="cap">The proportions are illustrative, vary a great deal by region, and are still being revised as samples accumulate. <strong>But "people today = several layers stacked up" holds wherever there are enough samples to check.</strong></div>
+</div>
+<p>Go down and there is no pure floor. The piece on human evolution noted that sixty thousand years ago several kinds of human were on Earth at once; the sentence to add is that they did not merely coexist, they left shared descendants — and within our own species this repeated mixing has never stopped. <strong>"Pure ancestry" is an empty concept against this data: beneath every layer you take for the original inhabitants lies another that was itself replaced.</strong></p>
+<p>For that reason the conclusions here have to be read carefully. These percentages are not absolute quantities; they are similarities measured against some set of present-day reference populations, and swapping the reference set moves the numbers — when an ancestry test tells you "23% Northern European", it is saying "more like the people sorted into that box today", not "your ancestors lived in Northern Europe". At the other end, archaeology plus migration has always been favourite material for nationalism, and ancient DNA is precisely what closes that road: every lineage it produces leads, a few thousand years back, into another mixture.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Practice · BigCat</h3>
+<ul>
+<li><b>① Engineering and systems design</b> — an online experiment finishes and the headline metric is up two points; you have to decide whether those two points are real. This runs the test logic from "'Clean replacement' lost on a number that should have been equal": do not look for positive evidence that the split was random, ask instead which quantities <em>must</em> be equal across the two groups if it really was, and then deliberately pick quantities with nothing to do with this change — device-model mix, distribution of account age, last week's retention. <b>What to change</b>: fix that comparison table in place and read it before the headline metric; if one row does not match, do not read the result yet.</li>
+<li><b>② Health and energy</b> — the phrasing on an annual check-up report: some measure is "at the 85th percentile of the population", or "reference range 3.5–5.5". This runs the point at the end of "No population has simply 'been there all along'": percentiles and reference ranges are comparisons against some particular group of reference people, the numbers move when that group changes, and who those people were is usually printed in the closing pages nobody turns to. <b>What to change</b>: find the note on where the reference range comes from and check which age band and which region it was drawn from; then line up your own readings for the same measure across years — comparing yourself to yourself three years ago usually carries far more information.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing Over · Connections Beyond the Field</h3>
+<ul>
+<li><b>Economics, investing, business · a set of accounts that is too clean</b>: going through a company's historical numbers, what should raise suspicion is often not the presence of anomalies but their absence — every quarter's growth smooth, bad debt and returns barely moving. This runs the mechanism from "An old sequence that is too clean has to be fake": authentication does not rest on how intact the material is, but on whether it carries the kind of dirt time necessarily leaves — and on whether the severity of that dirt tracks the age and the circumstances the material claims. From that follows a conclusion you would not otherwise reach: <b>the right question is not "are there errors" but "are the errors of the kind there should be" — a record that never errs is more suspicious than one that errs naturally.</b> <b>Where this does not hold</b>: damage to DNA is a physical-chemical process, under nobody's intent, and that linkage cannot be faked; the "natural noise" in a set of accounts can be known and manufactured. Once auditors publish which kinds of dirt they check, those kinds get supplied — this boundary retreats as the other side learns more, whereas the ancient DNA one does not.</li>
+<li><b>Literature and the arts · an old book is several layers of copyists stacked up</b>: collating a text that has come down through manuscripts, you find wording that differs between copies and passages whose vocabulary plainly belongs to a different era than what surrounds it. The traditional reading is "the original, plus later interpolations", assuming a pure original underneath waiting to be recovered. This runs the mechanism from "No population has simply 'been there all along'": the layer in your hands is several replacements and mixtures stacked up, each of which is itself a mixture, with no floor underneath. From that follows a conclusion you would not otherwise reach: <b>"what did the original look like" is often a question about an object that does not exist; what can be asked is only "which layer was added when, and what was there before it" — the goal shifts from restoring an original to establishing an order of layers.</b> <b>Where this does not hold</b>: manuscripts really do have tree-shaped pedigrees — this copy from that one, that one from a third — and shared scribal errors let you build the tree. Populations are not a tree but a network: one group can receive migration from two or three directions at once. Carrying the tree-building method over to populations flattens the network into a tree.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>Does that one to two per cent of Neanderthal ancestry still do anything today?</summary>
+<div>Some segments fall in regions related to immunity, skin and metabolism, and some studies link particular segments to disease risk — but these are mostly statistical associations, the effect of any single segment is small, and they cannot be used to explain some trait in some individual. The reverse is more interesting: in certain regions of the genome, Neanderthal-derived segments are markedly scarce or absent altogether, especially on the X chromosome. The usual explanation is that some of the hybrid offspring of the time were at a reproductive disadvantage.</div>
+</details>
+<details><summary>Why can we not read older human DNA?</summary>
+<div>Temperature comes first. Siberian permafrost yields a million-year-old mammoth; a tropical cave struggles past a hundred thousand years. So the sample set itself is skewed — towards the cold and the high latitudes: on the deep history within Africa and in Southeast Asia, ancient DNA has far less to say than it does about northern Eurasia. That skew tends to get dropped in the retelling, leaving the impression that "where the data is" is "where things happened".</div>
+</details>
+<details><summary>Can ancient DNA tell us what language those people spoke?</summary>
+<div>Not directly. Genes and languages travel separately: a population can change language without changing genes, and change genes without changing language (incomers learn the local tongue). The link between the steppe migration and the Indo-European languages is an inference stacking three independent lines of evidence — genetics, linguistics, archaeology — not something read off the DNA, and it has both supporters and opponents. Treating a "genetic pedigree" straightforwardly as a "linguistic pedigree" is the commonest misreading in this field.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Ancient_DNA" rel="noopener" target="_blank">Ancient DNA: an overview</a> · <a href="https://en.wikipedia.org/wiki/Denisovan" rel="noopener" target="_blank">Denisovans</a> · <a href="https://en.wikipedia.org/wiki/Svante_P%C3%A4%C3%A4bo" rel="noopener" target="_blank">Svante Pääbo (Nobel Prize in Physiology or Medicine, 2022)</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2012.1745" rel="noopener" target="_blank">Allentoft et al., the half-life of DNA in moa bone (2012)</a> · <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0129102" rel="noopener" target="_blank">Pinhasi et al., DNA yields from the petrous inner ear (2015)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1188021" rel="noopener" target="_blank">Green et al., the draft Neanderthal genome (2010)</a> · <a href="https://www.nature.com/articles/nature09710" rel="noopener" target="_blank">Reich et al., the genome from that Denisova finger bone (2010)</a></li>
+<li><a href="https://www.nature.com/articles/nature13408" rel="noopener" target="_blank">Huerta-Sánchez et al., the Denisovan origin of the altitude variant (2014)</a> · <a href="https://www.nature.com/articles/s41586-018-0455-x" rel="noopener" target="_blank">Slon et al., the child of a Neanderthal mother and a Denisovan father (2018)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.aam9695" rel="noopener" target="_blank">Slon et al., DNA recovered straight from cave sediments (2017)</a> · <a href="https://www.nature.com/articles/s41586-024-08420-x" rel="noopener" target="_blank">Sümer et al., narrowing the date of admixture (2024)</a></li>
+<li><a href="https://www.nature.com/articles/nature14317" rel="noopener" target="_blank">Haak et al., the great migration from the steppe (2015)</a> · <a href="https://www.nature.com/articles/s41586-022-05453-y" rel="noopener" target="_blank">Kjær et al., environmental DNA from Greenland around 2 million years old (2022)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

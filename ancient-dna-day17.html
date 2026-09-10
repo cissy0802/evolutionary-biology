@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 17：古 DNA 革命</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 17 · PHASE B 生命史</div>
+<h1>古 DNA 革命</h1>
+<h2>几万年前的骨头里还剩下字，够读了；读出来的第一句是——「取代」那个老剧本得改</h2>
+<div class="meta">2026-09-10 · BigCat</div>
+<div class="pitch">判断一段三万年前的序列是不是真的，不看它有多完整，看它坏得对不对。又长又干净的那种，第一反应应该是：假的。</div>
+</header>
+<div class="intro">
+<p>把一本书扔进水里再捞出来晒干，纸会脆、会碎，字会晕开。埋在土里几万年的骨头，里面的 DNA 也是这么个下场。</p>
+<p>所以很长时间里，几万年前的人只剩形状——头骨的形状、牙齿的形状、石器的形状。谁跟谁是亲戚，靠量骨头上的角度和比例来猜。</p>
+<p>从 1980 年代起有人试着绕过形状，直接读骨头里剩下的字。头二十年几乎全是假警报。等这条路真走通，改写的不是细节，是主线。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>一段太干净的老序列，一定是假的</h2>
+<p>你把一张纸反复对折再撕，最后剩一堆碎片，每片上只有几个字。DNA 在骨头里是同样的过程，只是慢得多：长链一处一处断开，断成越来越短的片段。</p>
+<p>慢多少可以测。2012 年有人挑了件近乎理想的材料：新西兰已灭绝的恐鸟，158 块骨头，每块都有独立测出的年代，埋藏条件又相近。结果是一条很干净的衰减曲线——一段 242 个字母长的线粒体 DNA，平均每过约 521 年少一半（有效埋藏温度约 13 摄氏度）。冷的地方慢得多。</p>
+<p>断裂之外还有第二种变化，它后来成了整件事的关键。DNA 的四个字母里有一个叫胞嘧啶、写作 C，它会慢慢自己掉一个氨基变成别的东西，测序仪读到时就读成 T；这种事在片段的两个末端格外多，因为末端那几个字母是散着的单股，没有配对的另一半护着。<strong>于是真古 DNA 有一张固定的病历：片段短得只剩几十个字母，末端的 C 被读成 T 的比例明显偏高，而且这两样有多严重，跟它声称的年代和埋藏温度对得上。</strong></p>
+<p>这张病历为什么要紧？因为这个领域头二十年最大的敌人不是降解，是污染：一个人在实验台边说句话，喷出来的口水里完好的人类 DNA 就比骨头里剩下的多好几个数量级。1985 年第一篇「从古埃及木乃伊里克隆出 DNA」轰动一时，后来的复查认为那多半是现代人的 DNA 混了进去；1990 年代还有琥珀里的昆虫、煤矿里的「恐龙 DNA」——后者一查，最像的是人。</p>
+<p>破局的办法是把这张病历当签名：<em>验真不靠「看起来干净」，靠「有没有带上时间必然留下的那种脏」。</em></p>
+<div class="fig">
+<svg aria-label="对比图：真正的古 DNA 是短碎片、末端字母会被读错；实验室里掉进去的现代 DNA 又长又完整" role="img" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="40">刚埋进去</text>
+<rect fill="#3f6a52" height="11" width="430" x="140" y="31"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="90">一千年后</text>
+<rect fill="#3f6a52" height="11" width="112" x="140" y="81"></rect>
+<rect fill="#3f6a52" height="11" width="72" x="264" y="81"></rect>
+<rect fill="#3f6a52" height="11" width="98" x="348" y="81"></rect>
+<rect fill="#3f6a52" height="11" width="112" x="458" y="81"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10" x="8" y="140">四万年后</text>
+<rect fill="#52c98a" height="11" width="36" x="140" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="140" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="172" y="131"></rect>
+<rect fill="#52c98a" height="11" width="28" x="186" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="186" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="210" y="131"></rect>
+<rect fill="#52c98a" height="11" width="42" x="224" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="224" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="262" y="131"></rect>
+<rect fill="#52c98a" height="11" width="30" x="276" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="276" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="302" y="131"></rect>
+<rect fill="#52c98a" height="11" width="38" x="316" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="316" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="350" y="131"></rect>
+<rect fill="#52c98a" height="11" width="26" x="364" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="364" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="386" y="131"></rect>
+<rect fill="#52c98a" height="11" width="44" x="400" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="400" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="440" y="131"></rect>
+<rect fill="#52c98a" height="11" width="32" x="454" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="454" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="482" y="131"></rect>
+<rect fill="#52c98a" height="11" width="36" x="496" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="496" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="528" y="131"></rect>
+<rect fill="#52c98a" height="11" width="28" x="542" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="542" y="131"></rect>
+<rect fill="#d2a24c" height="11" width="4" x="566" y="131"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" x="140" y="157">琥珀色的两头：C 被读成 T 的比例明显偏高</text>
+<line stroke="#24382c" stroke-width="1" x1="8" x2="592" y1="176" y2="176"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="203">实验台边</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="216">掉进去的</text>
+<rect fill="#6b7f72" height="11" width="430" x="140" y="194"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="9.5" x="140" y="220">又长、又完整、末端不出错</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="243">干净不是加分项，是警报</text>
+</svg>
+<div class="cap">上三行是同一段 DNA 随时间碎掉的样子，最下面那根是刚掉进样品的现代 DNA。<strong>最好认的差别不是内容，是形状和坏法。</strong></div>
+</div>
+<p>剩下的是体力活，其中一项特别值钱。2015 年有人拿同一批遗骸的不同部位做对比：普通骨头和牙齿里真正属于本人的 DNA 只占百分之零点三到二十，其余是土里的细菌和污染；而颞骨里裹着内耳的那一小块致密骨——岩骨——能到百分之三十七到八十五。大量原本测不出来的遗骸一下变成了能用的样品。</p>
+<p>这条路现在已经走出骨头之外：2017 年有人直接从洞穴沉积物里捞出了尼安德特人和丹尼索瓦人的线粒体 DNA，那几处连骨头都没挖到。年代上限目前是西伯利亚永冻土里一颗约 120 万年前的猛犸象牙齿。<em>琥珀里的恐龙仍然不可能——还差两个数量级。</em></p>
+<p class="en-brief"><b>EN</b> Fold a sheet of paper over and over and tear it, and you end up with scraps carrying a few letters each. DNA in a buried bone does the same thing, only far more slowly: the long chain snaps at one point after another into ever shorter fragments. How slowly can be measured. In 2012 researchers picked a nearly ideal material — the extinct New Zealand moa, 158 bones each independently dated, buried in comparable conditions. The result was a clean decay curve: a 242-letter stretch of mitochondrial DNA loses half of itself about every 521 years, at an effective burial temperature around 13°C. Cold ground collapses far more slowly, and the steepness of that curve is set almost entirely by temperature. Besides breakage there is a second change, and it turned out to be the key to the whole business. One of DNA's four letters, cytosine (written C), slowly loses an amino group and turns into something else; a sequencing machine reading it calls it T. This happens especially often at the two ends of a fragment, where the letters sit on a loose single strand with no partner strand to shield them. So genuine ancient DNA carries a fixed medical chart: fragments only tens of letters long, a markedly raised proportion of end-position Cs read as T, and — crucially — a severity that matches the age and burial temperature the sample claims. Why does that chart matter? Because for the field's first two decades the enemy was not decay but contamination. Intact human DNA in the spray from one sentence spoken beside the bench outnumbers what is left inside the bone by several orders of magnitude. The 1985 paper reporting cloned DNA from an Egyptian mummy was a sensation; later re-examination concluded it was mostly modern human DNA that had got in. The 1990s brought insects in amber and "dinosaur DNA" from a coal mine — the latter turned out to resemble nothing so much as a human. The way out was to treat the chart as a signature: a sequence that is long, intact and clean at the ends is not ancient, it just fell in. Authentication does not rest on looking clean; it rests on carrying the particular kind of dirt that time necessarily leaves. The rest is legwork, and one piece of it paid off enormously. A 2015 comparison of different skeletal parts from the same remains found that in ordinary bones and teeth only 0.3% to about 20% of the DNA belongs to the individual, the remainder being soil bacteria and later contamination — while the dense nub of the temporal bone wrapping the inner ear, the petrous, runs from 37% to 85%, up to a hundred-odd times higher than some bones. That turned a great many previously hopeless remains into usable samples. The method has now moved beyond bones entirely: in 2017 researchers recovered Neanderthal and Denisovan mitochondrial DNA straight out of cave sediments, at spots where no corresponding bone was ever found. The current age ceiling is a mammoth tooth from Siberian permafrost around 1.2 million years old. Dinosaurs in amber remain impossible — that is still two orders of magnitude away.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>「干净取代」输在一个本该相等的数上</h2>
+<p>1997 年，有人从 1856 年在德国出土的那具标本——第一个被承认的尼安德特人——身上，读出了一小段线粒体 DNA。线粒体是细胞里的一个小部件，自带一小圈 DNA，只从母亲传给孩子，每个细胞里有很多份、容易剩下，所以古 DNA 一开始只能读它。</p>
+<p>那段序列跟今天所有人的都差得挺远。当时看，这像是「干净取代」的证据：走出非洲的那批人来了，原住的尼安德特人没了，两边没混过。麻烦在于线粒体只有一条线——母亲的母亲的母亲。混过血、但那条母系线后来断了，它照样什么都看不见。</p>
+<p>2010 年尼安德特人的全基因组草图出来，结论翻了个面。翻面靠的不是什么正面证据，是换了个更硬的问法：<strong>如果「干净取代」是真的，什么东西必须相等？</strong>非洲以外的人祖先都是同一批走出非洲的，那么每个人群跟尼安德特人的相似程度应该一样。</p>
+<p>测出来不一样——欧洲人、东亚人跟尼安德特人共享的位点，比撒哈拉以南非洲人多出一截；而且多出来的不是零散分布，是成块成段的，一整段几万个字母连着跟尼安德特人一致。共同祖先留下的相似会被几万代洗牌打碎成细粉；成段的相似只能是后来整块掺进来的。</p>
+<p>今天的估计是：非洲以外的人普遍带着百分之一到二的尼安德特成分。2024 年两项独立工作把这次混合定在约四万七千年前，前后持续了大约七千年。</p>
+<p>同一年还发生了另一件更奇怪的事。西伯利亚阿尔泰山的丹尼索瓦洞里出土了一小节指骨，小得没法从形状上判断是谁。测完基因组才发现，它既不是尼安德特人也不是现代人，是一支此前完全不知道的人。<strong>这是头一回，一个人类支系靠一份基因组被定义，而不是靠一块能摆在桌上的头骨。</strong>他们后来被叫作丹尼索瓦人；大洋洲一些人群里的丹尼索瓦成分要高得多。2014 年还发现，藏族人身上那个跟高原低氧适应有关的基因变体，排列方式跟丹尼索瓦人基因组里那一段几乎一模一样。<em>别读成「丹尼索瓦人给了藏族人高原能力」</em>——只是这段变体碰巧通过一次混血进了这个基因池，后来在高原上带着它的人留下了更多后代。</p>
+<p>最直白的一块是 2018 年：同一个洞里一块两厘米长的碎骨，一半染色体像尼安德特人、一半像丹尼索瓦人——母亲是尼安德特人，父亲是丹尼索瓦人，第一代。测出过基因组的古人类样本总共没多少个，居然就撞上一个第一代；<em>这不能拿来算频率，但至少说明这种事当时不是奇闻。</em></p>
+<p class="en-brief"><b>EN</b> In 1997 a short stretch of mitochondrial DNA was read out of the upper arm bone of the specimen dug up in 1856 at Feldhofer Cave in Germany — the first Neanderthal ever recognised as such. Mitochondria are small components inside cells, each carrying its own little loop of DNA that passes only from mother to child and takes no part in the shuffling of two parents' genomes. There are many copies per cell, so mitochondrial DNA survives more readily, which is why early ancient-DNA work could read nothing else. That sequence sat well outside the range of every living person; no modern human fell inside the Neanderthal branch. At the time this looked like evidence for clean replacement: the people who walked out of Africa arrived, the resident Neanderthals went, and the two never mixed. The trouble is that mitochondrial DNA follows exactly one line — your mother's mother's mother. If there was interbreeding but that particular maternal line later died out, it sees nothing at all. When the draft Neanderthal nuclear genome appeared in 2010, the conclusion flipped. What flipped it was not positive evidence but a harder question: if clean replacement were true, what would have to be equal? This: if everyone outside Africa descends from the same group of people who left, then every non-African population should be equally similar to Neanderthals. It is not. Europeans and East Asians share more sites with Neanderthals than sub-Saharan Africans do — and the excess is not scattered, it comes in blocks, whole stretches of tens of thousands of letters matching Neanderthals end to end. Similarity inherited from a common ancestor gets ground to powder by tens of thousands of generations of shuffling; similarity in long blocks can only have been dropped in later. The current estimate: people outside Africa generally carry one to two per cent Neanderthal ancestry. In 2024 two independent studies pinned this admixture to roughly 47,000 years ago, lasting some seven thousand years. Something stranger happened the same year as the draft genome. A finger bone fragment came out of Denisova Cave in the Altai Mountains of Siberia, far too small to identify by shape. Only after its genome was read did it become clear that it was neither Neanderthal nor modern human, but a lineage nobody had known existed. This was the first time a human lineage was defined by a genome rather than by a skull you could set on a table. They came to be called Denisovans, and some populations in Oceania carry a far higher proportion of Denisovan ancestry. In 2014 the relationship became very concrete: the gene variant associated with high-altitude, low-oxygen adaptation in Tibetans is arranged almost exactly as that stretch is in the Denisovan genome, and is nearly absent elsewhere. Do not read this as Denisovans giving Tibetans the ability to live high up. All that can be said is that the variant happened to enter this population's gene pool through interbreeding, and that people carrying it at altitude later left more offspring than those who did not. The most direct evidence of all came in 2018: a two-centimetre bone fragment from Denisova Cave whose chromosomes turned out to be half Neanderthal and half Denisovan — a Neanderthal mother, a Denisovan father, first generation. Very few archaic humans have had their genomes read at all, and one of them is a first-generation hybrid; that cannot be turned into a frequency, but it does suggest such things were no great rarity at the time.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>没有哪个人群是「一直在那儿」的</h2>
+<p>站在一处几千年的遗址前，很难不默认一件事：这地方今天的人，是当年住这儿那批人的后代。欧洲地底下的样品足够多，可以直接检验这句话。答案是：不太是。</p>
+<p>今天的欧洲人身上叠着至少三层，而每一层进来时都不只是「学会了新东西」，是换了相当一批人。最底下是冰期结束后就在那儿的采集狩猎者。大约八千年前，一批带着农业的人从安纳托利亚（今天的土耳其一带）迁进来，在很多地方大幅替换掉了原有人口——农业到欧洲不是一个想法传过去，是一批人走过去。大约四千五百年前，又一批人从东边草原上来了：德国的绳纹陶文化人群，血统里约四分之三追得到草原上的颜那亚人群。</p>
+<div class="fig">
+<svg aria-label="堆叠图：今天的欧洲人由采集狩猎者、安纳托利亚农人、草原人群三层混合叠成" role="img" viewBox="0 0 600 232" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#3f6a52" height="10" width="14" x="70" y="12"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="90" y="21">采集狩猎者</text>
+<rect fill="#d2a24c" height="10" width="14" x="196" y="12"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="216" y="21">安纳托利亚来的农人</text>
+<rect fill="#7be0ab" height="10" width="14" x="382" y="12"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="402" y="21">东边草原来的人群</text>
+<rect fill="#3f6a52" height="130" width="76" x="62" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="100" y="198">一万年前</text>
+<rect fill="#3f6a52" height="26" width="76" x="196" y="154"></rect>
+<rect fill="#d2a24c" height="104" width="76" x="196" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="234" y="198">七千年前</text>
+<rect fill="#3f6a52" height="20" width="76" x="330" y="160"></rect>
+<rect fill="#d2a24c" height="52" width="76" x="330" y="108"></rect>
+<rect fill="#7be0ab" height="58" width="76" x="330" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="368" y="198">四千年前</text>
+<rect fill="#3f6a52" height="26" width="76" x="464" y="154"></rect>
+<rect fill="#d2a24c" height="62" width="76" x="464" y="92"></rect>
+<rect fill="#7be0ab" height="42" width="76" x="464" y="50"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="502" y="198">今天的欧洲人</text>
+<line stroke="#24382c" stroke-width="1" x1="40" x2="570" y1="184" y2="184"></line>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="222">每一层进来，都是一批人走过来，不是一个想法传过来</text>
+</svg>
+<div class="cap">比例是示意，各地差别很大，还在随样品增加被改。<strong>但「今天的人 = 好几层叠出来的」，在有足够样品的地区都成立。</strong></div>
+</div>
+<p>往下走，没有一个「纯粹的底」。「人类的演化」那期说过，六万年前地球上同时有好几种人；现在要加一句：他们不只是并存过，还留下了共同的后代，而在智人内部，这种反复混合从来没停过。<strong>「纯血统」在这套数据面前是个空概念——每一层你以为的原住民底下，还有被替换掉的一层。</strong></p>
+<p>也正因如此，这里的结论得读得很小心。这些百分比不是绝对量，是拿你和今天某一批参考人群比出来的相似度，换一套参考人群数字就变——祖源检测给你的「百分之二十三来自北欧」，说的是「更像今天被划进这一格的那批人」，不是「祖上住在北欧」。另一头，考古加迁徙一向是民族主义爱用的材料，而古 DNA 恰恰堵死了这条路：它给出的每一条谱系，往回走几千年都通向另一次混合。</p>
+<p class="en-brief"><b>EN</b> Standing in front of a site a few thousand years old, it is hard not to assume that the people living there today descend from the people who lived there then. Europe has enough samples in the ground to test that sentence directly, and the answer is: not really. Present-day Europeans carry at least three layers, and each one arrived not as "a new technique was learned" but as a substantial replacement of people. At the bottom are the hunter-gatherers who had been there since the ice retreated. Around eight thousand years ago people carrying farming moved in from Anatolia (roughly today's Turkey), in many places largely replacing the existing population — farming did not reach Europe as an idea travelling, but as people walking. Then around four and a half thousand years ago another group came from the steppe to the east: the Corded Ware population in Germany traces about three quarters of its ancestry to a source shared with the Yamnaya of the steppe. And each of those three layers is itself the product of earlier mixtures. Going down, there is no pure floor. This is the second main-line rewrite ancient DNA delivered. The piece on human evolution noted that sixty thousand years ago several kinds of human were on Earth at once; the sentence to add is that they did not merely coexist, they left shared descendants — and within our own species this repeated mixing has never stopped. "Pure ancestry" is an empty concept against this data: beneath every layer you take for the original inhabitants lies another that was itself replaced. For that reason the conclusions here have to be read carefully, on two points especially. First, these percentages are not absolute quantities. They are similarities measured against some set of present-day reference populations; swap the reference set and the numbers move. When a consumer ancestry test tells you "23% Northern European", it is saying "more like the people sorted into that box today", not "your ancestors lived in Northern Europe". Second, archaeology plus migration has always been favourite material for nationalism — and ancient DNA is precisely what closes that road off, because every lineage it produces leads, a few thousand years back, into another mixture.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 工程与系统设计</b>——一个线上实验跑完了，主指标涨了两个点，你要判断这两个点是不是真的。跑的是「『干净取代』输在一个本该相等的数上」那节的检验逻辑：不给「分流是随机的」找正面证据，去问「如果分流真随机，哪些量必须在两组之间相等」，再专挑跟这次改动毫无关系的量来比——设备型号占比、注册时长分布、上周的留存。<b>可改的动作</b>：把这张对照表固定下来，放在主指标之前看；有一项对不上就先不读结论。</li>
+<li><b>② 健康与精力</b>——每年体检报告上那种写法：某项指标「处于人群第 85 百分位」，或者「参考区间 3.5–5.5」。跑的是「没有哪个人群是一直在那儿的」那节末尾那条：百分位和参考区间都是拿你跟某一批参考人比出来的，换一批人数字就变，而那批人是谁通常印在没人翻的最后几页。<b>可改的动作</b>：先翻到参考区间的来源说明，看它取自什么年龄段、什么地区；再把自己历年的同一项排成一列——跟三年前的自己比，通常信息量大得多。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>经济·投资·商业 · 一份太干净的报表</b>：查一家公司的历史数据，最该起疑的常常不是有异常，而是没有异常——每季增长都平滑，坏账和退货几乎不动。跑的是「一段太干净的老序列，一定是假的」那节的机制：验真不靠材料多完整，靠它带不带那套时间必然留下的脏，而且脏的程度要跟它声称的年头和处境联动。由此能推出一个原本看不出的结论：<b>正确的问法不是「有没有错」，是「有没有该有的那种错」——一条从不出错的记录，比一条错得很自然的更可疑。</b><b>但这里不成立</b>：DNA 的损伤是物理化学过程，不受谁的意图控制，那套联动伪造不出来；报表里的「自然噪声」却可以被知道、被生成——审计一旦公开自己在看哪几种脏，那几种脏就会被补上。这条边界会随对手知道得越多往回缩，古 DNA 那边不会。</li>
+<li><b>文学艺术 · 一部古书其实是好几层抄手叠出来的</b>：校勘一部流传下来的古书，抄本之间字句有出入，有些段落的用词明显跟前后不是一个时代。传统读法是「原本 + 后人窜入」，默认底下有个纯粹的原作等着被还原。跑的是「没有哪个人群是一直在那儿的」那节的机制：你手里这一层是几次替换和混合叠出来的，而每一层自己也是混合物，往下没有底。由此能推出一个原本看不出的结论：<b>「原本长什么样」问的常常是一个不存在的对象；能问的只是「哪一层什么时候被加进来、之前那一层是什么」——目标从还原原作变成给出层序。</b><b>但这里不成立</b>：抄本之间往往真有树形谱系，甲抄乙、乙抄丙，靠共同的讹误就能把树建出来；人群之间不是树是网，同一批人可以同时从两三个方向接受迁入。把建树那套方法搬到人群上，会把网压扁成树。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>那百分之一到二的尼安德特成分，今天还在起作用吗？</summary>
+<div>有些片段落在跟免疫、皮肤、代谢相关的区域，也有研究把某些片段跟疾病风险联系起来——但这多是统计关联，单个片段效应很小，不能拿来解释某个人的某个特征。更有意思的是反面：基因组里有些区域尼安德特来源的片段明显偏少甚至清空，尤其是 X 染色体上。通常的解释是当年的混血后代有一部分在繁殖上不占优。</div>
+</details>
+<details><summary>为什么读不到更老的人类 DNA？</summary>
+<div>温度是第一位的。西伯利亚永冻土里能出百万年的猛犸象，热带洞穴里连十万年都很难。所以古 DNA 的样品本身是偏的——偏冷、偏高纬度：关于非洲内部和东南亚的深层历史，它能说的比欧亚北部少得多。这个偏差常在转述时被丢掉，让人以为「有数据的地方」就是「事情发生的地方」。</div>
+</details>
+<details><summary>古 DNA 能告诉我们那些人说什么语言吗？</summary>
+<div>不能直接说。基因和语言各走各的：一个人群可以换语言不换基因，也可以换基因不换语言（迁入者学了当地话）。草原迁徙和印欧语系的关联，是把遗传、语言学、考古三条独立证据叠在一起做的推断，不是从 DNA 里读出来的，而且有人接受有人反对。把「基因谱系」直接当「语言谱系」用，是这个领域最常见的误读。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Ancient_DNA" rel="noopener" target="_blank">古 DNA 总览</a> · <a href="https://en.wikipedia.org/wiki/Denisovan" rel="noopener" target="_blank">丹尼索瓦人</a> · <a href="https://en.wikipedia.org/wiki/Svante_P%C3%A4%C3%A4bo" rel="noopener" target="_blank">Svante Pääbo（2022 年诺贝尔生理学或医学奖）</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2012.1745" rel="noopener" target="_blank">Allentoft 等，恐鸟骨里 DNA 的半衰期（2012）</a> · <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0129102" rel="noopener" target="_blank">Pinhasi 等，岩骨内耳的取样产率（2015）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1188021" rel="noopener" target="_blank">Green 等，尼安德特人基因组草图（2010）</a> · <a href="https://www.nature.com/articles/nature09710" rel="noopener" target="_blank">Reich 等，丹尼索瓦洞那节指骨（2010）</a></li>
+<li><a href="https://www.nature.com/articles/nature13408" rel="noopener" target="_blank">Huerta-Sánchez 等，高原适应变体的丹尼索瓦来源（2014）</a> · <a href="https://www.nature.com/articles/s41586-018-0455-x" rel="noopener" target="_blank">Slon 等，尼安德特母亲与丹尼索瓦父亲的孩子（2018）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.aam9695" rel="noopener" target="_blank">Slon 等，从洞穴沉积物里直接捞 DNA（2017）</a> · <a href="https://www.nature.com/articles/s41586-024-08420-x" rel="noopener" target="_blank">Sümer 等，混合时间被收紧（2024）</a></li>
+<li><a href="https://www.nature.com/articles/nature14317" rel="noopener" target="_blank">Haak 等，草原上来的那次大迁徙（2015）</a> · <a href="https://www.nature.com/articles/s41586-022-05453-y" rel="noopener" target="_blank">Kjær 等，格陵兰约 200 万年前的环境 DNA（2022）</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
