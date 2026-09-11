@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 18：演化发育生物学</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 18 · PHASE C 机制深水区</div>
+<h1>演化发育生物学</h1>
+<h2>一个受精卵里没有任何形状，只有一串按顺序执行的指令——身体的差别，差在指令什么时候被执行</h2>
+<div class="meta">2026-09-11 · BigCat</div>
+<div class="pitch">人和苍蝇长得天差地别，可翻开各自造身体的那套基因，两边用的几乎是同一批。差别不在有没有这个基因，在它什么时候被打开、在哪儿被打开、开多久。</div>
+</header>
+<div class="intro">
+<p>你家门口盖楼，工地上一定有张图纸：哪面墙多高、窗开在哪儿、管线怎么走。很难不默认基因组也是这么一张图——身体上每一处，在上面都有对应的一笔。</p>
+<p>可受精卵里没有任何形状。它只有一套按时间执行的指令：先分出哪头是头、哪头是尾，再把中间切成一段一段，再让每段自己决定长成什么。图纸描述结果，指令只描述动作。</p>
+<p>1970 年代末，有人开始成批地破坏这些指令，然后看胚胎会长成什么怪样子。怪样子反过来暴露了指令的结构。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>身体不是照图纸盖的，是一段一段被指派身份的</h2>
+<p>先看两只有名的怪苍蝇。一只本该长触角的地方长出了一条腿——不是半截，是关节俱在、长在头上的一条正经的腿。另一只，本该是一对平衡棒的地方（苍蝇的后翅退化成了两根小棒，飞的时候管平衡）长出了第二对翅膀，成了四个翅膀的苍蝇。</p>
+<p>这类突变都落在一小群基因上，后来被叫作 Hox 基因。要紧的是它们干活的方式：它们不亲手造腿，也不亲手造翅膀。每一个管身体的一段，被打开时相当于对这段说一句「你是胸部的第二节」；这一段听见了，自己会把造翅膀那一整套程序调出来。<strong>所以坏掉一个，出来的不是残件，是整段身体换了身份</strong>：本该长触角的那一段以为自己是长腿的那一段，于是老老实实长了条腿。</p>
+<p>这更像旅馆前台发房卡，不像图纸。前台不管房间里家具怎么摆，它只负责告诉你「你住三楼」；三楼自己知道三楼长什么样。发错一张卡，人不会少条胳膊，只会整个走进另一个房间。</p>
+<p>然后是这里最不讲道理的一处：这些基因在染色体上是排成一列的，而且排列的顺序，跟它们在身体上负责的位置顺序一一对应——排在这头的管头那端，排在那头的管尾那端。苍蝇是这样，人和小鼠也是这样：我们有四套这样的基因簇、一共三十九个，同样排着队；在脊椎动物里连打开的时间都按这个顺序走，靠前的先开。</p>
+<div class="fig">
+<svg aria-label="对照图：这串基因在染色体上的排列顺序，和它们在苍蝇、小鼠身上负责的位置顺序，是同一个顺序" role="img" viewbox="0 0 600 235" xmlns="http://www.w3.org/2000/svg">
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="140" y="26">头这端</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="520" y="26">尾那端</text>
+<line stroke="#24382c" stroke-width="2" x1="128" x2="532" y1="50" y2="50"></line>
+<rect fill="#2f5a45" height="20" width="44" x="140" y="40"></rect>
+<rect fill="#3f7a5a" height="20" width="44" x="188" y="40"></rect>
+<rect fill="#52c98a" height="20" width="44" x="236" y="40"></rect>
+<rect fill="#7be0ab" height="20" width="44" x="284" y="40"></rect>
+<rect fill="#bcd9a0" height="20" width="44" x="332" y="40"></rect>
+<rect fill="#e0c98a" height="20" width="44" x="380" y="40"></rect>
+<rect fill="#d2a24c" height="20" width="44" x="428" y="40"></rect>
+<rect fill="#a87a2c" height="20" width="44" x="476" y="40"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="55">这串基因</text>
+<line stroke="#24382c" stroke-dasharray="3 3" stroke-width="1" x1="162" x2="162" y1="62" y2="160"></line>
+<line stroke="#24382c" stroke-dasharray="3 3" stroke-width="1" x1="306" x2="306" y1="62" y2="160"></line>
+<line stroke="#24382c" stroke-dasharray="3 3" stroke-width="1" x1="498" x2="498" y1="62" y2="160"></line>
+<circle cx="124" cy="116" fill="none" r="10" stroke="#3f6a52" stroke-width="1.5"></circle>
+<rect fill="#2f5a45" height="22" width="44" x="140" y="105"></rect>
+<rect fill="#3f7a5a" height="22" width="44" x="188" y="105"></rect>
+<rect fill="#52c98a" height="22" width="44" x="236" y="105"></rect>
+<rect fill="#7be0ab" height="22" width="44" x="284" y="105"></rect>
+<rect fill="#bcd9a0" height="22" width="44" x="332" y="105"></rect>
+<rect fill="#e0c98a" height="22" width="44" x="380" y="105"></rect>
+<rect fill="#d2a24c" height="22" width="44" x="428" y="105"></rect>
+<rect fill="#a87a2c" height="22" width="44" x="476" y="105"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="121">苍蝇身上</text>
+<circle cx="124" cy="171" fill="none" r="10" stroke="#3f6a52" stroke-width="1.5"></circle>
+<rect fill="#2f5a45" height="22" width="44" x="140" y="160"></rect>
+<rect fill="#3f7a5a" height="22" width="44" x="188" y="160"></rect>
+<rect fill="#52c98a" height="22" width="44" x="236" y="160"></rect>
+<rect fill="#7be0ab" height="22" width="44" x="284" y="160"></rect>
+<rect fill="#bcd9a0" height="22" width="44" x="332" y="160"></rect>
+<rect fill="#e0c98a" height="22" width="44" x="380" y="160"></rect>
+<rect fill="#d2a24c" height="22" width="44" x="428" y="160"></rect>
+<rect fill="#a87a2c" height="22" width="44" x="476" y="160"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="176">小鼠身上</text>
+<line stroke="#24382c" stroke-width="1" x1="8" x2="592" y1="199" y2="199"></line>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="222">排在前面的管前面，排在后面的管后面</text>
+</svg>
+<div class="cap">同样八个颜色，在染色体上的排法和在身体上的排法是同一个顺序。<strong>顺序本身就是信息。</strong>（图为示意：苍蝇那一串在一条染色体上，脊椎动物有四套。）</div>
+</div>
+<p>为什么会排队，至今没有公认答案。<em>而且这不是铁律</em>——有些动物的这套基因簇已经散掉了，顺序对应跟着没了，身体照样长得好好的。</p>
+<p>这份指令清单怎么列出来的？1980 年，Nüsslein-Volhard 和 Wieschaus 用了个笨到极点的办法：大批量随机制造突变，再一只一只看胚胎，凡是体节数目不对、或体节内部结构乱掉的全挑出来，倒推是哪条指令坏了。他们和更早研究四翅蝇的 Lewis 在 1995 年共同拿了诺贝尔奖。<strong>清单是从坏掉的样子反推出来的，不是从好的样子读出来的。</strong></p>
+<p class="en-brief"><b>EN</b> Start with two famous monstrous flies. In one, a full leg — jointed, complete, properly formed — grows out of the head where an antenna belongs. In the other, a second pair of wings grows where the halteres should be (a fly's hindwings are reduced to two small knobs used for balance in flight), giving a four-winged fly. Mutations of this kind land on a small group of genes, later called Hox genes. What matters is how they work: they do not build a leg or a wing themselves. Each one governs a stretch of the body, and switching it on amounts to telling that stretch "you are the second thoracic segment." The stretch hears this and calls up the entire wing-building program on its own. So breaking one does not yield a fragment; an entire stretch of body takes on a different identity. The segment that should have made an antenna takes itself for the leg-making segment, and dutifully makes a leg. This is more like a hotel front desk handing out key cards than like a blueprint. The desk does not arrange the furniture; it only tells you that you are on the third floor, and the third floor knows what the third floor looks like. Hand out the wrong card and nobody loses an arm — they simply walk into a different room. Then comes the least reasonable part. These genes sit in a row on the chromosome, and the order in which they sit corresponds one to one with the order of the regions they govern: the ones at this end run the head end, the ones at that end run the tail end. It holds in flies, and it holds in mice and in us: we have four such clusters, thirty-nine genes in all, likewise lined up, and in vertebrates even the timing of activation follows the same order, with the earlier ones opening first. Why they queue up has no agreed answer; the leading guess is that the string is opened as a unit, in sequence. It is not an iron law — in some animals the cluster has broken apart and the correspondence has gone with it, and their bodies develop perfectly well. How was this list of instructions compiled? In 1980 Nüsslein-Volhard and Wieschaus used the dumbest method imaginable: generate random mutations on a large scale, then look at embryos one by one, pulling out every one with the wrong number of segments or with scrambled structure inside a segment, and work backwards to the broken instruction. Together with Lewis, who had studied the four-winged fly earlier, they shared a Nobel Prize in 1995. The list was reconstructed from what broke, not read off from what worked.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>苍蝇和你用的是同一批开关</h2>
+<p>苍蝇的眼睛是几百只小眼拼起来的复眼，你的眼睛是一颗带晶状体的单眼。两种做法差得这么远，你大概会猜底下的基因也各是各的。</p>
+<p>1995 年，Gehring 实验室在果蝇的腿上、翅膀上、触角上强行打开一个叫 eyeless 的基因，那些地方长出了成型的复眼。更过分的是把小鼠对应的那个基因（名字叫 Pax6）搬进果蝇，一样能让果蝇长出多余的眼睛——长出来的仍然是苍蝇的复眼，不是小鼠的眼。</p>
+<p>这件事很容易被听成「造眼睛的基因是共用的」，那就整个反了。小鼠的基因在苍蝇身上启动的，是苍蝇自己那一整套造眼程序。<strong>所以它不是眼睛的图纸，它是个开关；共同祖先留给两边的是这个开关和挂在它下面的一批零件，不是眼睛本身。</strong>两种眼睛在结构上多半是各造各的，底下调用的却是同一套很老的东西。这种情形叫深同源。</p>
+<p>同样的事在附肢上又来一遍。有个管「从这儿往外顶出一根东西」的基因，在昆虫的腿、蝴蝶翅膀的边缘、海胆的管足、脊椎动物的肢芽里，都在相应位置被打开。这些「伸出来的东西」在解剖上八竿子打不着，共同祖先身上并没有一根它们共同的祖先肢。</p>
+<p>为什么这套工具箱能几亿年不变？因为它们坐在程序的最上游。上游一个开关被改动，下游所有依赖它的地方跟着一起变，绝大多数结果是胚胎活不到出生——这样的变异一次也传不下去，于是留下来的改动几乎都不落在这些基因的蛋白上。<em>那改动去哪儿了？</em></p>
+<p>不过这条线能推多远还在争。把 Pax6 叫作「眼睛的总开关」现在被认为说过了头：它在很多根本不长眼睛的地方也开着，而且它不是一个人在干活，是一小圈基因互相激活。</p>
+<p class="en-brief"><b>EN</b> A fly's eye is a compound eye assembled from hundreds of little units; yours is a single eye with a lens. Two approaches this different, and you would probably guess the underlying genes are different too. In 1995 Gehring's lab forced a gene called eyeless to switch on in the legs, wings and antennae of fruit flies, and eye structures grew in those places. Better still, the corresponding mouse gene (called Pax6) put into a fly does the same thing — and what grows is still a fly's compound eye, not a mouse's eye. It is easy to hear this as "the genes for making eyes are shared," which gets it exactly backwards. The mouse gene, in a fly, starts up the fly's own eye-building program. So it is not a blueprint of an eye, it is a switch; what the common ancestor left both sides is that switch and the set of parts hanging under it, not the eye. The two eyes were very likely built separately, while what they call on underneath is the same ancient kit. This situation is called deep homology. The same story repeats for appendages. A gene in charge of "push something outward from here" — its name translates as "distal-less," because when it breaks the far end of the limb is missing — switches on at the corresponding spot in insect legs, the margins of butterfly wings, the tube feet of sea urchins and the limb buds of vertebrates. Anatomically these protruding things have nothing to do with one another; there was no single ancestral limb they all descend from. Why can such a toolkit stay put for hundreds of millions of years? Because these genes sit at the very top of the program. Change one upstream switch and everything downstream that depends on it changes too, and in the overwhelming majority of cases the embryo does not survive to be born — such a variant is never passed on even once. So the changes that do accumulate almost never land on the proteins these genes encode. Where do they land instead? One caveat on how far this line can be pushed: calling Pax6 "the master switch for eyes" is now regarded as overstatement. It is switched on in plenty of places that never make an eye, and it does not work alone — it sits in a small circle of genes that activate one another.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>演化改的是开关上的一根线，不是零件本身</h2>
+<p>长颈鹿脖子里有一根神经，从脑子出来去管喉咙。脑和喉咙之间不到一掌远，可这根神经不走这一掌：它先顺着整条脖子下到胸腔，绕过心脏旁边的一根大血管，再顺着整条脖子爬回来。来回好几米，为的是走完不到一掌的距离。</p>
+<p>鱼身上这根神经是直的。鱼没有脖子，那根血管就在鳃附近，绕一下几乎不费事。后来脖子在一代代里变长，这根神经绕的路就跟着一代代抻长。<strong>没有哪一代单独看是吃亏的——每一代都只比上一代长了那么一点点；而「把它剪断重接」这个动作，没有任何一代能做。</strong></p>
+<div class="fig">
+<svg aria-label="对比图：鱼的这根神经只绕一小段就回到喉部，长颈鹿的同一根神经要顺着整条脖子下到胸腔再折回来" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar18" markerheight="7" markerwidth="7" orient="auto" refx="5.5" refy="3"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="24" y="30">鱼</text>
+<ellipse cx="150" cy="150" fill="none" rx="92" ry="40" stroke="#3f6a52" stroke-width="1.5"></ellipse>
+<path d="M242,150 L272,128 L272,172 Z" fill="none" stroke="#3f6a52" stroke-width="1.5"></path>
+<path d="M85,137 C84,163 100,184 124,180 C146,176 140,150 110,147" fill="none" marker-end="url(#ar18)" stroke="#d2a24c" stroke-width="2"></path>
+<circle cx="85" cy="130" fill="#52c98a" r="5"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="76" y="127">脑</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="76" y="152">喉</text>
+<circle cx="128" cy="180" fill="none" r="8" stroke="#7be0ab" stroke-width="1.5"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="142" y="206">那根大血管就在边上</text>
+<line stroke="#24382c" stroke-width="1" x1="300" x2="300" y1="20" y2="228"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="11" x="330" y="30">长颈鹿</text>
+<ellipse cx="430" cy="48" fill="none" rx="22" ry="13" stroke="#3f6a52" stroke-width="1.5"></ellipse>
+<line stroke="#3f6a52" stroke-width="1.5" x1="416" x2="416" y1="60" y2="180"></line>
+<line stroke="#3f6a52" stroke-width="1.5" x1="444" x2="444" y1="60" y2="180"></line>
+<ellipse cx="470" cy="200" fill="none" rx="62" ry="26" stroke="#3f6a52" stroke-width="1.5"></ellipse>
+<path d="M428,58 L414,190 Q416,216 452,214 Q482,212 470,192 Q460,181 446,186 L436,80" fill="none" marker-end="url(#ar18)" stroke="#d2a24c" stroke-width="2"></path>
+<circle cx="430" cy="50" fill="#52c98a" r="5"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="404" y="46">脑</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="456" y="84">喉：就在隔壁</text>
+<circle cx="452" cy="196" fill="none" r="9" stroke="#7be0ab" stroke-width="1.5"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="402" y="200">心脏边上那根大血管</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="244">绕的路跟着脖子一代代抻长，没有哪一代能剪断重接</text>
+</svg>
+<div class="cap">同一根神经，同一种走法。鱼那边绕一下几乎不费事；脖子变长之后，这条路就成了好几米的冤枉路。<strong>它不是被设计成这样的，是被一路拽成这样的。</strong></div>
+</div>
+<p>发育里没有推倒重来这一步。每一代的身体都是在上一代那套正在运行的程序上改出来的，改的过程中每一步还都得是个能活下去的胚胎。法国生物学家 Jacob 在 1977 年给了个到今天还在用的说法：演化不像工程师，像修补匠——修补匠不为这次任务设计零件，手边有什么用什么，做出来的东西能用，但拆开看常常不体面。</p>
+<p>那改动通常落在哪儿？一个基因往往在身体好几处、好几个时期都被用到。改它编码的蛋白，等于所有用到它的地方一起变，通常是场灾难。但每一处用法往往由一段独立的调控序列管着——可以把这些序列想成基因门口的一排开关，每个只管一个场合。<em>删掉其中一个，只熄灭那一处的灯。</em></p>
+<p>最干净的例子是三刺鱼。海里的三刺鱼肚子底下有一对硬刺，冰期结束后被困在北美各个湖里的族群反复把这对刺丢掉了。查下去发现：管这套结构的基因本身完好无损，它在身体别处的任务照常；被删掉的是它门口那个「只在骨盆这儿生效」的开关。更说明问题的是，许多互不相连的湖各自独立地删掉了同一段——那段序列本身就容易断。把它装回去，刺会长回来。</p>
+<p>「形态上的演化主要靠改开关」这个更强的主张仍有争论，另一派认为蛋白本身的改变被系统性低估了。站得住的是弱一点那句：在已经查清楚的案例里，改的确实是开关。</p>
+<p>修补匠的作品还有一个特征：常拿一件东西去干另一件事。大熊猫撸竹叶用的那根「拇指」不是手指，是腕骨里一小块籽骨长大顶出来的——五根手指当时都另有安排。「适应与约束」那期讲过历史包袱，这里给的是包袱的来源：<strong>不是当初选错了，是每一步都必须在一个活着的胚胎身上完成。</strong></p>
+<p class="en-brief"><b>EN</b> A giraffe has a nerve that leaves the brain to serve the throat. Brain and throat are less than a hand's width apart, but the nerve does not take that route: it runs down the entire neck into the chest, loops around a major vessel beside the heart, and climbs the entire neck again. Several metres of travel to cover less than a hand's width. In a fish the same nerve runs straight. A fish has no neck, and that vessel sits near the gills, so the detour costs almost nothing. As necks lengthened generation by generation, the nerve's detour was stretched out along with them. No single generation was worse off — each was only a little longer than the last — and "cut it and reconnect it" is an operation no generation could perform. Development has no step in which you tear everything down and start over. Each generation's body is modified from the previous generation's running program, and every step along the way has to be an embryo that survives. In 1977 the French biologist François Jacob offered a phrase still in use: evolution is not an engineer but a tinkerer, who designs no parts for the job, uses whatever is at hand, and produces something that works but rarely looks respectable inside. So where do the changes usually land? A gene is typically used at several places in the body and at several times. Changing the protein it encodes changes every one of those uses at once, which is usually a catastrophe. But each individual use is generally controlled by its own stretch of regulatory sequence — think of these as a row of switches at the gene's door, each governing one occasion. Delete one and only that one light goes out. The cleanest example is the threespine stickleback. Marine sticklebacks carry a pair of hard spines on the belly; populations stranded in lakes across North America after the ice retreated have lost that pair over and over. On investigation, the gene governing the structure is entirely intact and its jobs elsewhere in the body go on as usual — what has been deleted is the switch at its door that works only at the pelvis. More telling still, many unconnected lakes deleted the same stretch independently: that sequence is itself prone to breaking. Put it back and the spines come back. The stronger claim — that morphological evolution is mostly a matter of changing switches — is still contested, with others arguing that changes in the proteins themselves are systematically underrated. What holds is the weaker version: in the cases worked out so far, what changed was the switch. Tinkerers' work has one more signature: it keeps pressing one thing into service for something else. The "thumb" a giant panda strips bamboo with is not a finger but an enlarged sesamoid bone in the wrist — all five fingers were already committed, and this small bone was the only material left to modify. The piece on adaptation and constraint discussed historical baggage; this section supplies where the baggage comes from. Not a wrong choice made long ago, but the requirement that every step be completed on a living embryo.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 育儿与教育</b>——每天晚上那套固定顺序：写作业、洗澡、讲故事、关灯。你想把其中一项挪到前面，结果整个晚上都乱套，每个环节都卡。跑的是「身体不是照图纸盖的」那节的机制：顺序本身是信息，后面每一项是被前面那一项触发的，你挪动的不是一个环节，是一串开关的触发条件。<b>可改的动作</b>：别直接换顺序，先找出每一项真正的触发信号（「洗澡」很可能其实是「屏幕关掉了」），把那个信号单独拎出来放到新位置，再动环节本身。</li>
+<li><b>② 带团队与组织</b>——一个交接流程是三年前定的，现在人人都说该改，可每次动到一半就得停：招聘、对账、值班表都挂在它上面，而这几件事一天都停不了。跑的是「演化改的是开关上的一根线」那节的修补匠约束：没有停机窗口的系统只能一边跑一边改，可行的改法从来不是「新版本一次上线」，是「新老并行一段时间」。<b>可改的动作</b>：先把挂在它上面的事一件件列出来，给每件单独搭一条新路、跑通了再摘旧的；列不出挂了哪些，就先别开工。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>工程与系统设计 · 两个毫不相干的功能，底下调的是同一个老模块</b>：一个后台里，发票导出和消息推送看着毫无关系，可你改发票导出，推送挂了——两边调的是同一个老模块。跑的是「苍蝇和你用的是同一批开关」那节的机制：越靠上游、被复用得越多的东西，动它本身的代价越高，于是能安全落地的改动全都往「只在一个调用点生效」的地方跑。由此能推出一个原本看不出的结论：<b>一个系统哪儿能动、哪儿不能动，跟那段代码写得好不好关系不大——写得再脏、只有一处在用，就是能改的；写得再干净、二十处在用，就是动不得的。评估改动风险该数的是调用点，不是代码质量。</b><b>但这里不成立</b>：软件的调用点是显式的，能一次性搜出来，还能把底层模块整个换掉再一起修好；生物这边没有这张清单，一个基因到底在多少地方被用到只能一处处测出来——「这个改动只影响一处」在生物里是事后统计，不是事前保证。</li>
+<li><b>历史与军事 · 老城的主干道为什么在那儿莫名拐个弯</b>：不少老城的主干道会在某处拐一个说不出理由的弯，顺着查下去，那里以前是道城墙、一条河或一片墓地。跑的是「演化改的是开关上的一根线」那节的修补匠约束：改造只能在城市继续运转的前提下一段段做，没有哪天能把它整个关掉重画，于是早期定下的那几条线成了后来所有改动绕着走的东西。由此能推出一个原本看不出的结论：<b>老城里最难改的不是最古老的建筑，而是那些「动它的时候整座城会停摆」的东西——刚性由承重决定，不由年代决定；一座五十年的车站可能比一段八百年的墙更动不得。</b><b>但这里不成立</b>：城市偶尔真有推土机。十九世纪的巴黎被自上而下地切开重画过，一场大火或一次战争也能把约束清零。演化没有这种外部权力——没有谁站在物种外面按下重来，中间每一步都得是个活着的胚胎。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>既然开关这么保守，物种之间为什么还能差这么多？</summary>
+<div>差别来自同一批开关按在哪儿、按多强、按多久。加拉帕戈斯群岛上不同种的雀，喙的深浅宽窄差别很大，而这些差别跟胚胎期两三个信号分子开在什么位置、开多强对得上——不是谁多了一个「造大喙的基因」。</div>
+</details>
+<details><summary>这些关于开关的说法，怎么检验？</summary>
+<div>把怀疑是开关的那段序列接上一个会显色的标记，转进胚胎，看它在哪儿、什么时候亮；再删掉看丢什么、装回去看长回来什么。三刺鱼那段就是这么被定位又装回去的。代价是这类实验只能在少数好养好操作的物种上做，所以我们对「开关怎么变」的了解天然偏向那几种动物。</div>
+</details>
+<details><summary>改的真的永远是开关、不是基因本身吗？</summary>
+<div>不是。有个反例常被拿出来：昆虫腹部不长足，跟一个 Hox 基因编码的蛋白本身发生过改变有关，不是只改了开关。所以更稳的说法是：改开关代价低、更容易积累，但它并不垄断。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evolutionary_developmental_biology" rel="noopener" target="_blank">演化发育生物学总览</a> · <a href="https://en.wikipedia.org/wiki/Hox_gene" rel="noopener" target="_blank">Hox 基因</a> · <a href="https://en.wikipedia.org/wiki/Deep_homology" rel="noopener" target="_blank">深同源</a></li>
+<li><a href="https://www.nature.com/articles/287795a0" rel="noopener" target="_blank">Nüsslein-Volhard 与 Wieschaus，影响体节数目与极性的突变（1980）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.7892602" rel="noopener" target="_blank">Halder 等，在果蝇身上诱导出多余的眼睛（1995）</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.94.10.5162" rel="noopener" target="_blank">Panganiban 等，动物附肢的起源（1997）</a></li>
+<li><a href="https://www.nature.com/articles/nature02415" rel="noopener" target="_blank">Shapiro 等，三刺鱼骨盆退化的发育基础（2004）</a> · <a href="https://www.science.org/doi/10.1126/science.1182213" rel="noopener" target="_blank">Chan 等，同一段开关被反复独立删掉（2010）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.860134" rel="noopener" target="_blank">Jacob，《演化与修补》（1977）</a> · <a href="https://en.wikipedia.org/wiki/Recurrent_laryngeal_nerve" rel="noopener" target="_blank">绕远路的那根喉神经</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Endless_Forms_Most_Beautiful_(book)" rel="noopener" target="_blank">Carroll《无尽之形最美》</a> · <a href="https://en.wikipedia.org/wiki/The_Panda%27s_Thumb" rel="noopener" target="_blank">Gould，熊猫的拇指</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
