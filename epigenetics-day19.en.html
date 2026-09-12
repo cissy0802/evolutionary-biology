@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 19: Epigenetics and the Edge of Inheritance</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 19 · PHASE C MECHANISMS</div>
+<h1>Epigenetics and the Edge of Inheritance</h1>
+<h2>Every cell in you carries the same DNA, yet a liver cell and a neuron look nothing alike — the difference is written on another layer, and that layer gets torn off twice when sperm and eggs are made</h2>
+<div class="meta">2026-09-12 · BigCat</div>
+<div class="pitch">In "acquired inheritance is back," the half that travels furthest is precisely the half with the thinnest evidence. Your grandmother's hunger may well have left something in you — but it most likely was not passed to you. It landed on you directly, at the time.</div>
+</header>
+<div class="intro">
+<p>Your liver cells and your neurons share nothing: not their shape, not their lifespan, not the work they do. Yet pull the DNA out of each and measure it, and it is the same DNA.</p>
+<p>The same book, and two departments have built completely different things from it. The difference has to lie somewhere else: which pages are sealed shut and which ones open.</p>
+<p>That layer of seals is real, and it is copied along when a cell divides. The trouble starts with "copied along" — it gets pushed all the way to "your ancestors' experiences are written into your genes." Several checkpoints sit in between, and one of them the body itself passes through twice every generation.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Every cell holds the same book; what differs is which pages are sealed shut</h2>
+<p>There are two kinds of seal. One is stuck directly onto the DNA: a tiny chemical part (one carbon carrying three hydrogens, called a methyl group) is attached to certain letters, and once it is there that stretch usually cannot be read. The other is attached to the packaging: DNA does not lie around loose as a thread, it is wound turn after turn onto a string of protein spools, and the spools carry marks of their own that set how tightly a stretch is wound — where it is wound dead tight, the machinery that reads DNA simply cannot reach.</p>
+<p>The second fact is the one that matters: <strong>these seals are copied when a cell divides.</strong> A freshly copied DNA strand starts out blank, and there is an enzyme whose whole job is to walk along it, spot a methyl group on the old strand where the new strand has none, and add one at the matching position. So the two cells a liver cell divides into are still liver cells. "A cell remembers what it is" is not a metaphor; it is this row of seals being copied down, cell generation after cell generation.</p>
+<p>The cleanest evidence you can see with your eyes is a calico cat. One of the genes for coat colour sits on the X chromosome. Every cell of a female mammal has two X chromosomes, and very early in the embryo each cell shuts one of them down entirely — the mechanism Mary Lyon proposed in 1961. Which one gets shut down is random, but once it is settled, every cell descended from that one shuts down the same one. So the orange patches and black patches on a calico are <strong>each the spread-out descendants of a single early cell</strong>, and the boundaries between patches are the lines left by that random division of labour. It also explains in passing why calicos are almost always female: you need two X chromosomes before there is anything to shut down.</p>
+<p>None of this touches a single letter of the DNA. The sequence sits there intact; some passages have simply been tagged "do not read." <em>That is what the "epi-" in epigenetics means.</em></p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>When sperm and eggs are made, that row of seals is torn off twice</h2>
+<p>If seals are copied along at cell division, passing them to the next generation sounds like it should follow. The body will not have it.</p>
+<p>Mammals go through two rounds of wholesale erasure per generation. The first comes after fertilisation: sperm and egg are each highly specialised cells covered in "I am a sperm" and "I am an egg" seals, while the fertilised egg has to be a blank sheet that can still turn into anything, so methylation across the early embryo is largely wiped and reapplied. The second is more thorough: very early on, the embryo sets aside a small group of cells that will later make sperm and eggs, and methylation in that group is stripped down to nearly zero.</p>
+<p>So for a seal the environment wrote on you to reach your grandchildren, it has to dodge two erasures back to back. <strong>That is where transmission across generations gets hard in mammals — a physical checkpoint, not a philosophical disagreement.</strong></p>
+<div class="fig">
+<svg aria-label="Schematic: in every mammalian generation the total amount of seals drops to a trough twice, once in the early embryo after fertilisation and once in the cells set aside to make sperm and eggs; only a small set of imprinted genes escape both" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#24382c" stroke-width="1.5" x1="72" x2="572" y1="196" y2="196"></line>
+<line stroke="#24382c" stroke-width="1.5" x1="72" x2="72" y1="44" y2="196"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="70">amount</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="8" y="86">of seals</text>
+<path d="M88,74 C110,74 118,150 150,162 C178,172 196,104 238,92 C300,76 330,88 356,96 C388,106 400,178 432,180 C468,182 492,110 540,76" fill="none" stroke="#52c98a" stroke-width="2.5"></path>
+<line stroke="#d2a24c" stroke-dasharray="5 4" stroke-width="2" x1="88" x2="540" y1="58" y2="58"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" x="286" y="52">imprinted genes: neither erasure touches them</text>
+<circle cx="150" cy="162" fill="#0c120e" r="5" stroke="#7be0ab" stroke-width="2"></circle>
+<circle cx="432" cy="180" fill="#0c120e" r="5" stroke="#7be0ab" stroke-width="2"></circle>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="150" y="146">first erasure</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="443" y="164">second erasure</text>
+<line stroke="#24382c" stroke-dasharray="3 3" stroke-width="1" x1="88" x2="88" y1="82" y2="196"></line>
+<line stroke="#24382c" stroke-dasharray="3 3" stroke-width="1" x1="250" x2="250" y1="96" y2="196"></line>
+<line stroke="#24382c" stroke-dasharray="3 3" stroke-width="1" x1="356" x2="356" y1="102" y2="196"></line>
+<line stroke="#24382c" stroke-dasharray="3 3" stroke-width="1" x1="540" x2="540" y1="82" y2="196"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="90" y="212">fertilisation</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="250" y="212">each part of the body applies its own</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="360" y="228">cells set aside to make sperm and eggs</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="540" y="212">next generation</text>
+</svg>
+<div class="cap">The horizontal axis is one generation, from fertilisation to making sperm and eggs again. <strong>Those two troughs are the two checkpoints anything the environment wrote has to dodge, back to back.</strong> (The curve is schematic, not measured values.)</div>
+</div>
+<p>Some things do slip through. A small set of genes carry seals that survive the erasures, tagged with whether the copy came from the father or from the mother; only one parent's copy does any work, while the other stays sealed. This is called genomic imprinting.</p>
+<p>There is an exceptionally convincing human case. Prader-Willi syndrome and Angelman syndrome look nothing alike, yet both trace to the same small stretch of the same chromosome: the same deletion gives the first when the father's copy is the one missing, and the second when the mother's is. <strong>Same DNA, same damage, two different conditions purely because of which parent it came from</strong> — the parent-of-origin tag really does pass through the germ cells intact. As for why such tags exist, the mainstream explanation is a conflict of interest between the father's copy and the mother's copy over how much a fetus should draw from the mother, with the father's copy pushing for more and the mother's pushing back; that is still argued over.</p>
+<p>Plants are a different situation entirely, and the evidence there is far harder. Plants do not set germ cells aside early — an ordinary cell on a branch can grow on to become a flower, and gametes. In 1744 Linnaeus described a toadflax whose flowers, normally bilaterally symmetrical, had turned radially symmetrical. In 1999 it was worked out that the two forms have identical sequence at the gene governing symmetry, and that the only difference is that the gene has been sealed shut by methylation — a seal that has held steady for more than two centuries. <em>So the question "can epigenetic marks be inherited across generations" has to be asked with a species attached</em>: in plants and nematodes, yes, stably. In mammals, no.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>"Your grandmother's hunger is written into you" — the two halves of that sentence differ by an order of magnitude in evidence</h2>
+<p>From the winter of 1944 into the spring of 1945 the western Netherlands was blockaded and urban rations fell very low — the Hunger Winter. It has clear start and end dates, and Dutch birth records are complete, which made it a natural experiment nobody could have designed.</p>
+<p>In 2008 Heijmans and colleagues measured a group of people conceived during the famine: six decades later, methylation at one imprinted gene in their blood was lower than in their own same-sex siblings — same parents, simply not conceived in those famine months. And only those whose conception coincided with the famine showed the difference; those who met it late in gestation did not.</p>
+<p>What does that establish? That a single environmental shock can leave a decades-long mark on the person it hit directly. <strong>That half is very solid. It does not establish the second half: that the mark was passed to someone who never experienced it.</strong></p>
+<p>In between sits a confound that is very easy to skip over. When a pregnant woman goes hungry, three generations are exposed directly at once: the woman herself; the fetus she is carrying; and the germ cells already formed inside that fetus — the future grandchildren. So a mark found in the grandchildren may still be nothing more than direct exposure. <em>To claim it was passed down, you need at least a fourth generation: the first one never touched at any point.</em> In humans that bar is nearly out of reach.</p>
+<div class="fig">
+<svg aria-label="Schematic: when a pregnant person goes hungry, she herself, the fetus she carries and the germ cells already formed inside that fetus are all exposed directly at once; only the generation after that is the first one never touched" role="img" viewbox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar19e" markerheight="7" markerwidth="7" orient="auto" refx="5.5" refy="3"><path d="M0,0 L6,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="16" y="28">a famine</text>
+<path d="M64,34 C110,44 120,66 124,90" fill="none" marker-end="url(#ar19e)" stroke="#d2a24c" stroke-width="1.8"></path>
+<ellipse cx="212" cy="128" fill="none" rx="132" ry="82" stroke="#52c98a" stroke-width="2"></ellipse>
+<ellipse cx="230" cy="136" fill="none" rx="80" ry="54" stroke="#7be0ab" stroke-width="1.8"></ellipse>
+<circle cx="248" cy="144" fill="none" r="25" stroke="#bcd9a0" stroke-width="1.8"></circle>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10" x="92" y="66">the one going hungry</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="10" x="160" y="98">the fetus she carries</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="248" y="148">germ cells</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="248" y="162">inside it</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="212" y="226">all three were hit directly — none of this is transmission</text>
+<path d="M352,132 L426,132" fill="none" marker-end="url(#ar19e)" stroke="#d2a24c" stroke-width="1.8"></path>
+<circle cx="482" cy="132" fill="none" r="34" stroke="#d2a24c" stroke-dasharray="4 4" stroke-width="2"></circle>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="482" y="130">the one</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="482" y="144">after that</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="482" y="192">the first generation</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="482" y="206">never touched at all</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="482" y="220">— look at that one</text>
+</svg>
+<div class="cap">One shock, three layers of people hit directly. <strong>Until you get past the dashed circle, no claim that "an ancestor's experience came down to them" has been separated from "they were there in the first place."</strong></div>
+</div>
+<p>On the mouse side there is a wildly travelled experiment. In 2014 Dias and Ressler trained male mice to fear a cherry-blossom-like odour (odour paired with a mild shock) and reported that their offspring and grand-offspring were more sensitive to the same odour, with altered methylation at the matching odorant-receptor gene in sperm. The result was later picked apart on statistical grounds — ten tests in one paper, all of them significant, which given the effect sizes the paper itself reported is an improbable run — and to this day it has not been robustly replicated by anyone else. <strong>The honest description: an unsettled result, not a foundation you can build on.</strong></p>
+<p>So where does "Lamarck is back" go wrong? Lamarck's claim was never "the environment can leave a mark" — everyone agrees on that. His claim was that <strong>changes produced by use and disuse, pointed in a useful direction, get passed on.</strong> And the part for which evidence exists is exactly the part that excludes "pointed in a useful direction." The row of seals a famine leaves is not a clever energy-saving scheme; it is the trace of a shock, and nobody picked where it landed or whether it helps.</p>
+<p>Turn it around: if some seal really could pass stably for many generations and also affect how many offspring you leave, it would be a target of selection, no different in kind from a change in the sequence. The sticking point is stability — sequence lasts millions of years, while in mammals a seal blurs out within a few generations and cannot accumulate anything long-term.</p>
+<p>What epigenetics actually rewrites is not genetics but the nature-versus-nurture split. The environment's contribution is not a separate item added alongside the genes; it lands on the switches of the genes themselves. <em>The piece on evolutionary developmental biology made the point that changing a switch is cheaper than changing the gene; this is the same thing happening on the scale of a single lifetime.</em></p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Practice · BigCat</h3>
+<ul>
+<li><b>① Investing and position sizing</b> — after one big loss you cannot bring yourself to touch a whole category of asset for the next two or three years, even though the specific reason stopped applying long ago. This runs the mechanism from "every cell holds the same book": a seal is far cheaper than the text, and once applied it keeps getting copied forward with nobody ever reconfirming it. <b>What to change</b>: write out the list of things you currently will not touch, and ask of each one, "which year did this go on, and does the reason still hold?" The entries where you cannot name a year are the ones that have stopped being a judgement and become a state.</li>
+<li><b>② Practice and temperament</b> — you come back from an intensive retreat or a long break and for two weeks you barely recognise how good your state is, and a month later you are exactly back to before, unable to say which day it went. This runs the mechanism from "that row of seals is torn off twice": a state never entered the channel that gets copied by force, so a change of surroundings wipes it, and it needs no reason to disappear. <b>What to change</b>: stop using "does it still feel there" as the indicator. On the day you get back, nail one concrete trigger into the calendar (what time, where, what action comes right before it) and from then on measure only whether that trigger fired.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing Over · Connections Beyond the Field</h3>
+<ul>
+<li><b>Organisations and institutions · after a round of layoffs, is "this lot are unusually cautious" passed down or just lived through</b>: a company went through a big layoff, and for years afterwards everyone plays it safe; people call this "the culture" and say the old hands taught it. This runs the mechanism from "the two halves of that sentence": one shock hits several layers of people at once, and the trace it leaves does not separate "passed down" from "was there at the time." Which yields a conclusion you would not otherwise reach: <b>the only people worth looking at are those who joined after the event and lived through none of it — how much is left in them is the actual amount transmitted. So whether a company's culture needs rescuing should be judged not from the state of the old hands but from the behaviour of new joiners six months in.</b> <b>But it fails here</b>: organisations have a bypass biology lacks — documents, processes, approval forms. An event can be written straight into the rules, and every new joiner is bound by it the moment they walk in, with nobody having to pass anything to them. Cells have no written channel that routes around copying.</li>
+<li><b>Parenting and education · the class keeps its atmosphere a year after the teacher changed</b>: a class holds on to something — whether homework gets copied around, whether anyone speaks up when someone is frozen out — long after the teacher in charge was replaced, and the new teacher inherited it without doing anything at all. This runs the mechanism from "every cell holds the same book": what keeps a state going is not who is giving orders, it is whether there is a channel copying the state to new members, and older members showing newer ones the ropes is that channel. Which yields a conclusion you would not otherwise reach: <b>whether a group state dies out on its own depends on whether that channel exists, and has little to do with how popular it is or how often it has been banned — so replacing whoever gives the orders produces almost no measurable effect, while replacing the members in a batch produces one immediately. It is why a school's atmosphere usually stratifies by intake year rather than by the head teacher's tenure.</b> <b>But it fails here</b>: copying in cells is high-fidelity and compulsory — how a seal gets copied is the enzyme's business, and no cell gets to opt out. Copying among people is voluntary and lossy, every new member can decline, and so the half-life of a group state is far shorter.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>People say measuring methylation gives you a "biological age" — what is that?</summary>
+<div>Measuring methylation at a few hundred sites in blood really can predict a person's actual age quite accurately, and some versions correlate with mortality risk. The thing to be careful about is that it measures changes that accumulate with age, which is not the same as those changes causing ageing — at present it looks more like a thermometer than a switch.</div>
+</details>
+<details><summary>Identical twins have identical DNA, so why do they drift apart?</summary>
+<div>Their methylation patterns are very close when they are young and separate as they get older. Part of that comes from different experiences, and part is just random errors in copying the seals, piling up year after year. This gets overlooked: seeing two people with different epigenetic patterns does not mean some environmental factor must be at work — it can be accumulated noise.</div>
+</details>
+<details><summary>If plants can transmit marks, what do mammals gain by going to all this trouble to erase them?</summary>
+<div>First, put it properly: not "in order to" anything — the lineages that erased cleanly are the ones still here. The explanation usually offered is that without erasure the previous generation's specialised state would be carried over wholesale, and the parasitic stretches of genome that jump around on their own would be let off the leash too. That is an explanation, not a settled result.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Epigenetics" rel="noopener" target="_blank">Epigenetics, overview</a> · <a href="https://en.wikipedia.org/wiki/DNA_methylation" rel="noopener" target="_blank">DNA methylation</a> · <a href="https://en.wikipedia.org/wiki/X-inactivation" rel="noopener" target="_blank">X-inactivation and the calico cat</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Genomic_imprinting" rel="noopener" target="_blank">Genomic imprinting</a> · <a href="https://en.wikipedia.org/wiki/Prader%E2%80%93Willi_syndrome" rel="noopener" target="_blank">Prader-Willi syndrome</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.0806560105" rel="noopener" target="_blank">Heijmans et al., persistent epigenetic differences after the Dutch Hunger Winter (2008)</a></li>
+<li><a href="https://www.nature.com/articles/43657" rel="noopener" target="_blank">Cubas et al., an epigenetic mutation behind floral symmetry in toadflax (1999)</a></li>
+<li><a href="https://www.nature.com/articles/nn.3594" rel="noopener" target="_blank">Dias and Ressler, parental olfactory experience and later generations (2014)</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4196602/" rel="noopener" target="_blank">Francis, "too much success" in these experiments (2014)</a></li>
+<li><a href="https://www.nature.com/articles/s41467-018-05445-5" rel="noopener" target="_blank">Horsthemke, a critical view on transgenerational epigenetic inheritance in humans (2018)</a> · <a href="https://www.cell.com/fulltext/S0092-8674(14)00286-4" rel="noopener" target="_blank">Heard and Martienssen, myths and mechanisms (2014)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
