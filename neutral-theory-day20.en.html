@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 20: Neutral Theory</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 20 · PHASE C MECHANISMS</div>
+<h1>Neutral Theory</h1>
+<h2>Most of the changes that get fixed into DNA are neither good nor bad — they were not picked out, they were drawn at random</h2>
+<div class="meta">2026-09-13 · BigCat</div>
+<div class="pitch">"Most of evolution is random" sounds like it is pulling the rug from under Darwin. What it actually pulls out is something else: your intuition about which things need a reason. And the irony is that our ability today to read off DNA when two species split, and to build the whole tree of life, rests precisely on the changes that have no reason.</div>
+</header>
+<div class="intro">
+<p>Swap one letter in a stretch of DNA and sometimes nothing happens at all. Not a small effect — literally nothing: the protein that gets built is identical, and the cell has no idea anything moved.</p>
+<p>Nor is this some marginal curiosity. There are vast regions of the genome where you can change whatever you like and nothing answers back.</p>
+<p>Which leaves a question you cannot dodge: these changes that nobody is minding — how do they end up being settled?</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Selection can only pick what it can see, and what it cannot see is the larger part</h2>
+<p>First, why "changed but unchanged" is possible at all. DNA letters are read three at a time, and each triplet specifies one amino acid — amino acids being the parts proteins are built from. Four letters taken three at a time gives 64 combinations, while there are only 20 amino acids to specify, plus a "stop here" signal. <strong>There are more codes than things to encode, and the surplus turns into synonyms.</strong> Several combinations point at the same amino acid, usually differing only in the third letter. Swap the third letter and the protein is identical, down to the last part.</p>
+<p>"Invisible" has a hard definition here: if a change makes no difference whatsoever to how many offspring its carrier leaves, it is transparent to selection. Selection is not being lenient; there is simply no difference to pick between — <em>selection never picks "good genes," it picks the individuals who leave more offspring, and a change that does not land on that number is not in the room.</em></p>
+<p>There is something more thorough still. Only a small slice of the genome codes for protein; the rest holds wreckage of various kinds, the cleanest sort being pseudogenes — a gene that broke partway and can no longer make anything usable, whose corpse stays where it fell and keeps on changing, with nobody caring.</p>
+<p>The evidence sits in any comparison between two related genomes. Line the same gene up on both sides and count the differences: <strong>positions where a letter changed but the amino acid did not carry visibly more differences than positions where the amino acid changed too</strong> — in every gene, in every species. And pseudogenes accumulate differences fastest of all, at nearly the rate mutations themselves occur, because there really is nothing filtering them there.</p>
+<div class="fig">
+<svg aria-label="Schematic: over the same stretch of time, three kinds of position accumulate different amounts of difference — positions that break when changed accumulate least, silent positions accumulate more, and dead pseudogenes accumulate most" role="img" viewbox="0 0 600 210" xmlns="http://www.w3.org/2000/svg">
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="200" y="24">Differences piled up over the same stretch of time</text>
+<line stroke="#24382c" stroke-width="1.5" x1="196" x2="196" y1="38" y2="182"></line>
+<rect fill="#2f5f45" height="20" width="58" x="197" y="50"></rect>
+<rect fill="#3f8a62" height="20" width="212" x="197" y="100"></rect>
+<rect fill="#52c98a" height="20" width="284" x="197" y="150"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="end" x="186" y="64">breaks things if changed</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="end" x="186" y="114">silent: same amino acid</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="end" x="186" y="164">pseudogene: already dead</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="263" y="64">most were cleared out</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="417" y="114">nobody minds</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="489" y="164">nothing filters</text>
+</svg>
+<div class="cap">Mutations land more or less at random, so all three kinds of position received about the same amount. <strong>This distribution is a filtered bill, not the original one</strong> — what landed on the positions that matter was cleared away, and what landed where nothing matters stayed. (Schematic, not measured values.)</div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Things nobody picks get settled anyway, and the rate they settle at turns out to be a constant</h2>
+<p>Picture a village of a few dozen households. Look a few generations on and most of the surnames are gone, with the few survivors covering half the village. No surname was better; it is just that how many children each family has, and whether they are sons or daughters, all carry luck — and one generation with nobody to carry a name and it never comes back. This is exactly what Galton and Watson worked out in the 1870s.</p>
+<p>Gene frequencies walk the same way. Every generation a batch is drawn from the last to be the parents, drawing has sampling error, and the proportion carrying some change wanders at random year after year <strong>until it hits 0 (gone) or 100% (everyone has it), and then stops</strong>. That is genetic drift. The smaller the village, the larger each generation's error and the faster the wander; in a big city hardly a surname dies out in centuries.</p>
+<div class="fig">
+<svg aria-label="Schematic: the proportion of a population carrying a neutral change wanders at random over time; in a small population it hits the top or bottom within a few generations, while in a large population it lingers in the middle for a long time" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#d2a24c" stroke-dasharray="4 4" stroke-width="1.2" x1="58" x2="286" y1="46" y2="46"></line>
+<line stroke="#8aa192" stroke-dasharray="4 4" stroke-width="1.2" x1="58" x2="286" y1="176" y2="176"></line>
+<line stroke="#d2a24c" stroke-dasharray="4 4" stroke-width="1.2" x1="330" x2="558" y1="46" y2="46"></line>
+<line stroke="#8aa192" stroke-dasharray="4 4" stroke-width="1.2" x1="330" x2="558" y1="176" y2="176"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" x="58" y="38">everyone carries it</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="58" y="194">gone</text>
+<path d="M58,150 L84,118 L110,142 L136,92 L162,62 L184,46" fill="none" stroke="#7be0ab" stroke-width="2"></path>
+<line stroke="#7be0ab" stroke-width="2" x1="184" x2="286" y1="46" y2="46"></line>
+<path d="M58,150 L82,166 L108,150 L130,176" fill="none" stroke="#52c98a" stroke-width="2"></path>
+<line stroke="#52c98a" stroke-width="2" x1="130" x2="286" y1="176" y2="176"></line>
+<path d="M58,150 L88,128 L118,154 L148,126 L182,156 L214,176" fill="none" stroke="#3f8a62" stroke-width="2"></path>
+<line stroke="#3f8a62" stroke-width="2" x1="214" x2="286" y1="176" y2="176"></line>
+<path d="M330,150 L362,143 L394,153 L426,139 L458,149 L490,137 L522,147 L556,134" fill="none" stroke="#7be0ab" stroke-width="2"></path>
+<path d="M330,150 L364,159 L396,150 L430,161 L464,152 L498,163 L532,154 L556,160" fill="none" stroke="#52c98a" stroke-width="2"></path>
+<path d="M330,150 L366,146 L400,156 L434,144 L470,158 L504,146 L540,156 L556,150" fill="none" stroke="#3f8a62" stroke-width="2"></path>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="172" y="228">Small population: hits an edge fast</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="444" y="228">Large population: wanders for ages</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="300" y="244">left to right: one generation after another</text>
+</svg>
+<div class="cap">The three lines are three different fates of the same neutral change. <strong>Not one of them is being pushed by anything</strong>; where each ends up is nothing but each generation's sampling error piling up. (Schematic, not measured values.)</div>
+</div>
+<p>Then comes the prettiest step in the whole idea. A neutral mutation starts as a single copy in the whole population, so its chance of eventually filling that population is small — and the larger the population, the smaller that chance. But equally, the larger the population, the more new mutations appear each generation. <strong>The two cancel exactly</strong>: the rate at which neutral changes get settled equals the rate at which neutral mutations arise, with no dependence at all on how many individuals the species has.</p>
+<p>Motoo Kimura wrote this down in 1968, and in passing it dissolved a very uncomfortable knot. Rates of protein change had just been measured and were absurdly fast; if every change had to be pushed through by selection, then on Haldane's earlier accounting the individuals a population must lose each generation to pay for it were far more than it could bear. Neutral changes owe no such bill — nothing dies for them, and they spread on their own. The following year King and Jukes said the same thing again under the deliberately provocative title "Non-Darwinian Evolution."</p>
+<p>That constancy has a far more useful consequence: <em>differences can be used as a ruler for time.</em> Zuckerkandl and Pauling noticed in the early 1960s that how many parts the same protein differs by between two species is roughly proportional to how long ago they split. That is the molecular clock, and the argument between the fossil record and the molecular clock in the piece on the Cambrian explosion is an argument about how accurate this ruler is. Honestly, it is a soft ruler: lineages run at different speeds — generation length and how well the repair machinery works both feed in — so in practice it has to be calibrated against fossils. Less a clock than an hourglass: steady overall, coarse on any single reading.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>The argument now is not "is there selection," it is "what fraction, and at which positions"</h2>
+<p>First, block the commonest misreading. Neutral theory never said there is no selection in evolution. Eyes, wings, the drug resistance bacteria grow within a few years — none of that was assembled at random. What it says is only this: <strong>on the ledger that is DNA, most of the entries recorded do not affect survival.</strong> Adaptation is still explained by selection alone. Running the two together is what produces headlines about Darwin being overturned.</p>
+<p>The genuinely interesting part is the middle ground. In 1973 Tomoko Ohta pointed out that a change need not be black or white — it can be only slightly bad. <em>And whether "slightly bad" counts as bad depends on how many individuals surround it.</em> If the harm is small enough to be comparable to each generation's random sampling error, then in a small population it is indistinguishable from neutral and drift pushes it through anyway; move it to a large population, where the sampling noise is small, and that same small harm becomes visible and gets cleared out. This is the nearly neutral theory, and it makes a prediction you can go and check: species with small populations should accumulate more slightly harmful changes in their proteins. Go and check, and the direction matches — compare across species the ratio of "differences that changed an amino acid" to "differences that did not," and fruit flies, with individuals in the millions, come out low, while humans and apes, whose populations have historically been small, come out high.</p>
+<p>At the other end, the fingerprints of selection are perfectly clear. The cleanest human example is digesting milk: most mammals switch off the enzyme that breaks down lactose after weaning, and in some populations a variant that keeps that switch on went from rare to common within a few thousand years. What clinches it is the neighbourhood — the whole long stretch of DNA around it was carried up with it, leaving diversity inside that stretch unusually flat. <strong>That is the shape a fast episode of selection leaves, and unhurried random drift cannot produce it.</strong></p>
+<p>So the question becomes quantitative: of the amino acid changes that got fixed, what fraction were pushed through by selection? One family of methods sets "how much variation is still segregating within the species" against "how much the species have already diverged." In 2002 Smith and Eyre-Walker applied this to fruit flies and got close to half; the same approach applied to humans and apes comes out far lower, some versions near zero. These estimates are extremely sensitive to method, and twofold differences between groups are common, so <em>this part is still being argued</em>. Thornier still, selection drags the neighbours along: acting at one position, it pulls a whole stretch of nearby DNA with it, so neighbours that were purely neutral stop looking purely random. <strong>The baseline itself is contaminated by selection, and that is where today's argument actually lands.</strong></p>
+<p>So neutral theory's place now is not "the faction opposed to selection." It is the null model: work out what the data should look like if there were no selection at all, then see where real data departs from it. The departures are the evidence of selection. <em>Without that baseline, "there must be a reason here" is a sentence that can never be refuted.</em></p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Practice · BigCat</h3>
+<ul>
+<li><b>① Writing, and this learning site itself</b> — the number of people who open each issue keeps bouncing around, and you can produce a reason almost every time: this one had a good title, that one went out too late, this topic is cold. This runs the mechanism from "things nobody picks get settled anyway": when the sample is small, random sampling on its own produces swings of a decent size, no reason required. <b>What to change</b>: before reaching for a reason, lay out the last ten issues and read off the range of the noise; chase causes only for the ones that fall outside it, and treat everything inside the range as not having happened.</li>
+<li><b>② Engineering and systems design</b> — every service that has run for a few years has one or two config flags, a wrapper layer, an intermediate step that nobody can explain the purpose of; each time somebody asks "do we still need this?" the room goes quiet and it survives another year. This runs the mechanism from "selection can only pick what it can see": for something to stay it only has to cause no visible harm, not to be useful — where there is no feedback channel, good and bad were never measured at all. <b>What to change</b>: stop asking "is it useful," and spend ten minutes adding one log line instead, asking "how many times has this been reached in the past thirty days?"</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing Over · Connections Beyond the Field</h3>
+<ul>
+<li><b>Western philosophy and philosophy of science · what "we found no difference" is worth depends on what you take as the default</b>: a study reports no effect and readers split in two at once — one side says that means there is none, the other says the sample was too small. What they are really arguing about is what the default state should be. This runs the mechanism from "the argument now is not is there selection": neutral theory's real contribution is not a conclusion but a computable null model — with no selection at all, how fast differences appear and what shape they fall into can be worked out in advance and then set against real data. From that follows a conclusion you would not otherwise see: <b>whether a field can judge "is there a cause here" does not depend on how much data it has, but on whether it has a computable account of what nothing-happening looks like. Without that baseline, both "there must be a cause" and "there is no cause" are unfalsifiable, and decades of argument will not converge — molecular evolution got its argument down to "what percentage" within sixty years not because sequencing got cheap, but because the baseline came first.</b> <b>Where it does not hold</b>: evolution's null model is computable because its random mechanism is a single one whose rate can be measured independently. Most "baselines" in the social sciences are fitted from historical data that already contains the very causes you wanted to test — which is auditing the books the suspect kept.</li>
+<li><b>Organisations and institutions · in a twenty-person company, the way things are done is all but certain to be fixed by the first one or two people</b>: trace the rules of a small company — how the weekly meeting runs, whether code gets reviewed, how much documentation counts as enough — and the source is often just somebody's early habit; another company of the same size grew a completely different set, and both are doing fine. This runs the mechanism from "things nobody picks get settled anyway": the strength of drift is inversely proportional to population size. With few people, whether a practice survives is determined far more by a handful of random draws (who arrived first, who happened to be in the room that week) than by how good the practice is. From that follows a conclusion you would not otherwise see: <b>extract a methodology from a twenty-person company's success and what you mostly extract is the outcome of those few draws, which will not reproduce elsewhere; conversely, a rule that survives in an organisation of thousands has actually withstood some filtering. It also explains a familiar puzzle — why a small company's "culture" looks so strong and so hard to change: not because it was validated, but precisely because it was never tested.</b> <b>Where it does not hold</b>: organisations have a channel cells do not — they can import a finished product wholesale from outside and use it, without waiting for it to grow in-house. So the randomness of a small organisation is far easier to interrupt in one stroke by an outside force than population genetics would predict.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>If most of evolution is random, what is left of Darwin?</summary>
+<div>All of adaptation. The two statements count different things: neutral theory counts how many positions in DNA have been altered, while Darwin answers where eyes and wings came from. Randomness absolutely cannot produce the latter. One is the number of lines in the ledger; the other is what the company actually accomplished.</div>
+</details>
+<details><summary>If most changes are neutral, how can DNA be used to build family trees?</summary>
+<div>Precisely because they are neutral. Differences at neutral positions depend only on time, not on how the species has been faring, which makes them a clean timer. Building trees from positions under selection is the risky option: two distantly related species that independently adapted to the same environment may end up looking alike at exactly those positions, which reads as close kinship and is not.</div>
+</details>
+<details><summary>Humans have "always had a small population"? There are eight billion of us.</summary>
+<div>What genetics counts is not today's headcount but an effective size inferred backwards from the diversity we still carry — dragged very low by historical bottlenecks and by wildly unequal reproductive success, and sitting for a long time on the order of ten thousand. The population explosion of the last few centuries is far too short on an evolutionary scale to have shown up in diversity yet.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Neutral_theory_of_molecular_evolution" rel="noopener" target="_blank">The neutral theory of molecular evolution</a> · <a href="https://en.wikipedia.org/wiki/Genetic_drift" rel="noopener" target="_blank">Genetic drift</a> · <a href="https://en.wikipedia.org/wiki/Molecular_clock" rel="noopener" target="_blank">The molecular clock</a></li>
+<li><a href="https://www.nature.com/articles/217624a0" rel="noopener" target="_blank">Kimura, evolutionary rate at the molecular level (1968)</a> · <a href="https://www.science.org/doi/10.1126/science.164.3881.788" rel="noopener" target="_blank">King and Jukes, Non-Darwinian Evolution (1969)</a></li>
+<li><a href="https://www.nature.com/articles/246096a0" rel="noopener" target="_blank">Ohta, slightly deleterious mutations and the nearly neutral theory (1973)</a></li>
+<li><a href="https://www.nature.com/articles/4151022a" rel="noopener" target="_blank">Smith and Eyre-Walker, adaptive protein evolution in Drosophila (2002)</a></li>
+<li><a href="https://academic.oup.com/mbe/article/35/6/1366/4990884" rel="noopener" target="_blank">Kern and Hahn, neutral theory in light of natural selection (2018)</a> · <a href="https://www.nature.com/scitable/topicpage/neutral-theory-the-null-hypothesis-of-molecular-839/" rel="noopener" target="_blank">Neutral theory as the null hypothesis: an overview</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
