@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 21: Conflict Inside the Genome</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 21 · PHASE C MECHANISMS</div>
+<h1>Conflict Inside the Genome</h1>
+<h2>Your genes are not a team pulling together — part of what is in there gets itself passed on by dragging the rest down</h2>
+<div class="meta">2026-09-14 · BigCat</div>
+<div class="pitch">The word "genome" sounds like a single unified blueprint. It is closer to a crowded tenement: most residents behave, a few enlarge their own share at everyone else's expense, and a whole set of genes is kept on staff to hold those few down. Some of the most precise regulation in your body is aimed not at the outside world but inward.</div>
+</header>
+<div class="intro">
+<p>Maize kernels are sometimes mottled. On one ear, some kernels are an even deep purple and others are flecked with spots, as if someone had jabbed at them with the tip of a pen.</p>
+<p>In the 1940s a researcher spent years staring at those spots, and reached a conclusion almost nobody accepted at the time: a piece of the maize chromosome moves around by itself — land it inside the gene that makes the pigment and that patch stays colourless; move back out in some cell and that cell's descendants go coloured again.</p>
+<p>The awkward question comes next. That mobile piece is of no use whatsoever to the maize. So what keeps it there — and multiplying?</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Something in your genome copies itself, and it does not need to do you any good</h2>
+<p>Take the word apart first. All of an organism's DNA together is its genome, and only a small slice of that is instructions for making proteins. About half of the human genome is what a class of sequences called transposable elements has left behind. These sequences differ wildly from one another and share exactly one property: <strong>they can increase their own copy number</strong>. Some make an RNA copy and write it back into DNA somewhere else, like running off a photocopy; others simply cut themselves out and paste themselves in elsewhere.</p>
+<p>The numbers are more extreme than you would guess. One family in humans, called Alu, runs to over a million copies and makes up more than a tenth of all our DNA. Maize is more extreme still: about eighty-five percent of its genome is built of such sequences — the researcher who stared at those speckled kernels later received a Nobel Prize, and the plant she was looking at is, in the main, made of things that move.</p>
+<p>One sentence is dangerously easy to say here, and it is wrong: they do not "want" to spread. Nothing wants anything. The logic actually running is dull. If a stretch of sequence happens to carry a property that gets itself copied, then in the next generation there are more copies of it than of things without that property. <em>It needs no benefit at all for the individual carrying it; it only needs to copy itself faster than it gets cleared out.</em> This is the replicator logic from the piece on the gene's-eye view in its barest form — selection never settles accounts on who benefits, only on who leaves more copies.</p>
+<p>And the host often pays. Land in the middle of a working gene and that gene is wrecked; several human genetic diseases start exactly that way. Fortunately most copies are long dead and can no longer move — of that million Alu copies only a handful of source elements can still generate new insertions, and of the family called LINE-1 only some eighty to a hundred copies in the whole genome remain active.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Fifty-fifty is a rule that has to be maintained, not a natural default</h2>
+<p>You get one full set of chromosomes from each parent. When sperm or eggs are made the two sets have to separate and each gamete carries away only one — so at any given position, the father's copy and the mother's copy each have a fifty percent chance of being passed on. That "half" is the most basic accounting in genetics, so basic that we never ask what makes it hold.</p>
+<p>Some things can change the ratio. House mice carry a stretch of chromosome (researchers call it the t-haplotype) that a carrier male passes to <strong>more than ninety percent</strong> of his offspring instead of half.</p>
+<p>The method is not dignified. The male makes both kinds of sperm, with and without it; the version carrying it poisons the whole batch, and the antidote is present only in the half that carries it. It does not swim faster — the others were sabotaged. A stretch of chromosome in fruit flies uses much the same trick.</p>
+<p>The cost is out in the open. Such stretches usually drag a lethal defect along: embryos that inherit two copies do not survive, or carrier males are entirely sterile. Judged by whether the mouse population as a whole comes out ahead, this is a pure loss. But <em>selection does not settle the group's books</em> — inside each carrier it lifts its own transmission from fifty percent to ninety, faster than the deaths it causes drag it down, so it persists, and it is found in wild mouse populations to this day.</p>
+<div class="fig">
+<svg aria-label="Diagram: in one male mouse, the cheating stretch poisons the whole batch of sperm and only the half carrying it holds the antidote, so its share of the offspring rises from one half to over ninety percent" role="img" viewbox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="24" y="22">Sperm made by one male mouse</text>
+<rect fill="#1a2a20" height="34" rx="5" stroke="#3f8a62" width="130" x="24" y="36"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="89" y="58">carries the cheat</text>
+<rect fill="#1a2a20" height="34" rx="5" stroke="#4d5c52" width="130" x="24" y="86"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="89" y="108">the other half</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="24" y="150">equal numbers at the start</text>
+<defs><marker id="ar21a" markerHeight="7" markerWidth="9" orient="auto" refX="8" refY="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#8aa192"></path></marker></defs>
+<line marker-end="url(#ar21a)" stroke="#8aa192" stroke-width="1.4" x1="162" x2="216" y1="53" y2="53"></line>
+<line marker-end="url(#ar21a)" stroke="#8aa192" stroke-width="1.4" x1="162" x2="216" y1="103" y2="103"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="226" y="22">whole batch gets the same poison</text>
+<rect fill="#1a2a20" height="34" rx="5" stroke="#52c98a" width="130" x="226" y="36"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="291" y="58">has the antidote</text>
+<rect fill="#140f0f" height="34" rx="5" stroke="#6b4a4a" width="130" x="226" y="86"></rect>
+<text fill="#9c7b7b" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="291" y="108">cannot swim</text>
+<line marker-end="url(#ar21a)" stroke="#8aa192" stroke-width="1.4" x1="364" x2="426" y1="53" y2="53"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="436" y="22">share of offspring</text>
+<rect fill="#3f8a62" height="30" rx="4" width="140" x="436" y="38"></rect>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="506" y="58">over 90%</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="436" y="88">instead of half</text>
+<rect fill="none" height="30" rx="4" stroke="#4d5c52" stroke-dasharray="3 3" width="70" x="436" y="100"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="471" y="120">50%</text>
+<text fill="#9c7b7b" font-family="Georgia,serif" font-size="9.5" x="24" y="190">The price: embryos with two copies often die — the population loses, the stretch itself gains</text>
+</svg>
+<div class="cap">This is not "the better half won": the two sides started equal, and the advantage was bought by wrecking the competition. <strong>Anything that can alter its own odds of being passed on can spread, even while it lowers total output.</strong> (Schematic.)</div>
+</div>
+<p>The phenomenon is called meiotic drive, and there is a maternal version: making an egg, meiosis yields four products and only one becomes the egg while the other three are discarded — "who gets that slot" is by its nature a channel that can be biased, and maize has a chromosome structure that takes it more often.</p>
+<p>Once you know this, the question inverts: not why anything cheats, but <strong>why almost nothing does</strong>.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Some of your genes run on the father's copy alone, because the two copies are fighting over the same thing</h2>
+<p>There is a small stretch of human chromosome 15 that causes trouble when it is missing — and which trouble depends on whether the missing copy came from the father or the mother. Missing from the paternal chromosome, the child has one condition (weak sucking in infancy, then appetite that is extremely hard to control); missing from the maternal one, a condition with entirely different symptoms. Same size of gap, two outcomes.</p>
+<p>So cells can tell which parent each copy came from. As sperm and eggs form, certain regions get chemical marks — the same marking system as in the piece on epigenetics and the limits of inheritance — and the marked copy stays switched off. This is genomic imprinting, and only one or two hundred genes in humans and in mice do it: a very small set.</p>
+<p>The functions of that small set cluster tightly: most of them bear on <strong>how much a fetus draws from its mother</strong>. Mice have a growth-promoting gene where normally only the paternal copy works. Break the paternal copy and the pups are born at about sixty percent of normal weight; break the maternal one and nothing changes, since it was switched off anyway. On the restraining side, it is often the maternal copy that is expressed.</p>
+<div class="fig">
+<svg aria-label="Diagram: the paternal and maternal copies of the same chromosome stretch carry different marks, one switched on and one off, so losing the paternal copy and losing the maternal copy cause two entirely different conditions" role="img" viewbox="0 0 600 190" xmlns="http://www.w3.org/2000/svg">
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="24" y="22">One stretch of chromosome, two copies</text>
+<rect fill="#1a2a20" height="26" rx="4" stroke="#52c98a" width="250" x="24" y="38"></rect>
+<rect fill="#3f8a62" height="18" rx="3" width="60" x="166" y="42"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" x="32" y="56">from the father</text>
+<text fill="#eaf3ec" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="196" y="55">on</text>
+<rect fill="#1a2a20" height="26" rx="4" stroke="#4d5c52" width="250" x="24" y="78"></rect>
+<rect fill="#232f28" height="18" rx="3" width="60" x="166" y="82"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" x="32" y="96">from the mother</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="196" y="95">marked off</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="24" y="128">different origin, different switch state</text>
+<defs><marker id="ar21b" markerHeight="7" markerWidth="9" orient="auto" refX="8" refY="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#8aa192"></path></marker></defs>
+<line marker-end="url(#ar21b)" stroke="#8aa192" stroke-width="1.4" x1="286" x2="326" y1="51" y2="51"></line>
+<line marker-end="url(#ar21b)" stroke="#8aa192" stroke-width="1.4" x1="286" x2="326" y1="91" y2="91"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="336" y="22">so which one is lost decides everything</text>
+<rect fill="#140f0f" height="30" rx="4" stroke="#6b4a4a" width="240" x="336" y="38"></rect>
+<text fill="#d3b0b0" font-family="Georgia,serif" font-size="10" x="346" y="58">paternal copy lost → one condition</text>
+<rect fill="#140f0f" height="30" rx="4" stroke="#6b4a4a" width="240" x="336" y="78"></rect>
+<text fill="#d3b0b0" font-family="Georgia,serif" font-size="10" x="346" y="98">maternal copy lost → another one</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="336" y="128">same gap, unrelated symptoms</text>
+</svg>
+<div class="cap">To the cell the two copies are not equivalent: "which parent it came from" is recorded as information. The price is real — <strong>switch one copy off and the position goes from double cover to a single point of failure</strong>, with nothing to fall back on.</div>
+</div>
+<p>Haig's explanation runs like this. In a species where a mother may bear litters by different males, the paternal copy inside one fetus need not be present in her future offspring at all, whereas her own copy has a fifty percent chance of being present in every child she has. So "draw a bit more from the mother" scores differently on the two ledgers: drawing more depletes her and lowers her future offspring count, a cost the maternal copy bears and the paternal copy largely does not. <em>The result is that variants letting a fetus take more are more readily retained when they come down the father's line, and variants restraining the taking are more readily retained down the mother's.</em> Two copies of one gene get pushed into two different settings.</p>
+<p>This is not settled. It explains the growth-related imprinted genes beautifully, but others sit in the brain with unclear functions, and rival hypotheses are in play. The argument is still open.</p>
+<p>Put the three sections together: a genome holds self-copying stretches, cheats that bias their own transmission, and two parental copies pulling against each other — and it still runs as "one individual". That is not free. Germ cells carry a dedicated set of small RNAs holding transposable elements down, and recombination each generation breaks the chromosomes up so a cheat cannot drag its accomplices along. As the piece on the major evolutionary transitions put it, individuality is something suppression produces rather than something given — and the inside of a genome is the smallest example of that sentence.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Context · BigCat</h3>
+<ul>
+<li><b>① Leading a team and organisations</b>—every time someone leaves, whoever takes over starts a fresh handover document and nobody deletes the old one; two years later the same process has five mutually contradictory write-ups, and when a newcomer asks which is authoritative nobody dares answer. This runs the mechanism from "something in your genome copies itself": copy number is set by the gap between the cost of creating and the cost of clearing, not by quality — a new document takes ten minutes, while deleting an old one means reading it first and owning the risk of deleting the wrong thing. <b>What you can change</b>: stop organising "documentation clean-up days" (clear it once, the entrance is still open, it grows back in six months). Put the deletion inside the moment of copying — add a mandatory checkbox to the handover list: "previous version archived or deleted".</li>
+<li><b>② Writing, and this learning site itself</b>—look back through six months of your own writing and you will run into one opening move used dozens of times. Not because it is the best one, but because it is the easiest to reach for. Same mechanism again: how often a device shows up measures its cost of retrieval, not its effect — something easy to reach for does not need anyone to like it in order to carpet the place. <b>What you can change</b>: do not rely on "I'll watch out for it next time". Add a line to the pre-publication check script that counts how many of the last ten pieces open the same way, and forces a different opening past a threshold.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing Over · Connections Beyond the Field</h3>
+<ul>
+<li><b>Engineering and systems design · a system that has run five years without incident, with two opposing mechanisms cancelling each other daily</b>: one service carries both autoscaling and a hard-coded ceiling, added at different times by different people worried about opposite things; nobody notices anything wrong until the ceiling gets "tidied away" and scaling immediately runs off. This runs the mechanism from "some of your genes run on the father's copy alone": when two sources whose interests only partly overlap both push on the same quantity, what grows is not a compromise value but <b>a pair of opposed devices, each turned up further, cancelling out</b> — so removing either side exposes not the other's natural state but the extreme it was pushed to. From that follows a conclusion you would not otherwise see: <b>the most dangerous places in a system are exactly the parameters that have looked steadiest for years. Steadiness comes in two kinds — no force acting on it, or two large forces exactly cancelling — and from outside they are identical. To find the fragile points, do not measure variance; count how many things are pushing on that quantity.</b> <b>Where it does not hold</b>: in an engineered system those two mechanisms can be read back — the commit history says who added what and why, and you can pull both out and rewrite them together. A genome has no commit history and no "pull both out" option: every intermediate step has to be a viable embryo, so the opposition can only pile up thicker, never be settled.</li>
+<li><b>Economics, investing and business · a fund's "we beat the benchmark" figure, with the benchmark of its own choosing</b>: actively managed funds usually pick their own comparison index to report against, and the same holdings can go from beating it to trailing it with a different choice; inflows watch exactly that number. This runs the meiotic drive from "fifty-fifty is a rule that has to be maintained": a component that can reach <b>the channel deciding whether it gets passed on</b> can expand even while lowering total output — what it moves is not the returns but the scoring convention that decides where money flows. From that follows a conclusion you would not otherwise see: <b>to judge whether an institution will be quietly hollowed out by internal arbitrage, do not look at how finely the incentive terms are drafted; look at who holds the scoring channel. However well aligned the terms, if the measure is chosen by the party being measured the bias will be stable and will deepen year by year — externalising the measure (benchmarks registered in advance, the numbers pulled by someone else) beats adjusting bonus percentages. The genome gives the same answer: fairness does not rest on good intentions, it rests on recombination prising cheats apart from their accomplices every generation.</b> <b>Where it does not hold</b>: a fund has something a genome does not — holders can redeem and walk away at any time. A chromosome cannot exit its genome, so internal suppression is the only road left; where there is an exit, the ceiling on cheating is naturally far lower.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>So is most of our DNA junk?</summary>
+<div>The word "junk" runs two things together. A sequence being useless to the individual does not mean it can never do anything. Plenty of transposable-element wreckage does just lie there; but a fair amount has been repurposed on the spot — some of it became regulatory switches, and several genes essential to the placenta were reworked from viral sequence that inserted itself long ago. The safer statement: they need no reason to stay, and being put to use now and then is a windfall.</div>
+</details>
+<details><summary>If transposable elements are harmful, why were they not cleared out over hundreds of millions of years?</summary>
+<div>Because clearing costs too, and cannot be done cleanly — they are inserted everywhere, and excising them one by one damages the genome in the process. What happens looks more like a tug of war: the host evolves ways to hold them down, and they occasionally get around it. Where the balance settles differs enormously between species, which is part of why genome sizes vary a hundredfold while complexity does not follow.</div>
+</details>
+<details><summary>How is the imprinting explanation tested in humans?</summary>
+<div>The most direct route is checking the prediction: are growth-promoting imprinted genes paternally expressed and growth-restraining ones maternally expressed? Broadly, yes. A stronger test is comparative — where females mate with only one male, theory predicts weaker conflict and weaker imprinting; where litters have multiple fathers, stronger. Such comparisons have been made and point roughly the right way, but with few species and many confounders, they are far from conclusive.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Intragenomic_conflict" rel="noopener" target="_blank">Intragenomic conflict</a> · <a href="https://en.wikipedia.org/wiki/Transposable_element" rel="noopener" target="_blank">Transposable elements</a> · <a href="https://en.wikipedia.org/wiki/Meiotic_drive" rel="noopener" target="_blank">Meiotic drive</a> · <a href="https://en.wikipedia.org/wiki/Genomic_imprinting" rel="noopener" target="_blank">Genomic imprinting</a></li>
+<li><a href="https://www.nature.com/scitable/topicpage/barbara-mcclintock-and-the-discovery-of-jumping-34083/" rel="noopener" target="_blank">McClintock and the discovery of jumping genes</a> · <a href="https://www.nobelprize.org/prizes/medicine/1983/press-release/" rel="noopener" target="_blank">The 1983 Nobel Prize announcement</a></li>
+<li><a href="https://www.science.org/doi/full/10.1126/science.1178534" rel="noopener" target="_blank">The maize genome (2009)</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4124830/" rel="noopener" target="_blank">LINE-1 in structural variation and disease</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3462314/" rel="noopener" target="_blank">A review of Igf2</a></li>
+<li><a href="https://www.nature.com/articles/ng0495-395" rel="noopener" target="_blank">The imprinting centre on chromosome 15 (1995)</a> · <a href="https://www.nature.com/articles/hdy201429" rel="noopener" target="_blank">Theories, predictions and empirical tests on the evolution of imprinting (2014)</a> · <a href="https://www.rutgersuniversitypress.org/genomic-imprinting-and-kinship/9780813530277" rel="noopener" target="_blank">Haig, Genomic Imprinting and Kinship</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
