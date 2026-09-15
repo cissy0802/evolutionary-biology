@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 22：微生物组与共生</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 22 · PHASE C 机制深水区</div>
+<h1>微生物组与共生</h1>
+<h2>是伙伴还是敲诈犯，不是那个细菌的属性——是它怎么传到下一代决定的</h2>
+<div class="meta">2026-09-15 · BigCat</div>
+<div class="pitch">「共生」听上去像双方谈成了一笔好买卖。实际更像房东和房客：关系处得好不好，很少取决于谁人品好，取决于租约怎么签、搬走要花多少钱。</div>
+</header>
+<div class="intro">
+<p>玫瑰枝上那种绿色的小虫子，蚜虫，一辈子只吸植物的汁液。</p>
+<p>按理说这东西养不活它。植物汁液糖多得发腻，却缺一批动物自己造不出来、只能吃进去的氨基酸——氨基酸是拼成蛋白质的零件，缺几种，身体就搭不起来。蚜虫应该慢慢饿死才对。</p>
+<p>把蚜虫切开，会看到肚子里有几十个特别大的细胞，里面塞满了细菌。缺的那几种氨基酸，是这些细菌造的。</p>
+<p>问题就在这儿：这批细菌住在别人身体里、吃着人家的东西，它凭什么不趁机多拿一点、少给一点？</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>它不占你便宜，是因为它早就没有退路了</h2>
+<p>这类细菌有个名字，叫布赫纳氏菌。它住在蚜虫专门腾出来的那几十个大细胞里，一辈子不出来。它传到下一代只有一条路：<strong>钻进母虫的卵</strong>。没有第二条。</p>
+<p>代价看得见。它的全部 DNA 只剩六十四万个碱基对——碱基对就是 DNA 上的一个字母配对，可以当成一个字——大约五百八十个基因，只有近亲大肠杆菌的七分之一。丢掉的正好是「在外面单过」需要的那些：应付环境变化的、造那些蚜虫本来就能造的氨基酸的。留下的恰好是造蚜虫缺的那几种的。而蚜虫这边，自己造这几种氨基酸的本事也早没了。</p>
+<p>两边现在谁离了谁都活不成。这不是最近才谈拢的：蚜虫的家谱和这种菌的家谱形状几乎重合——每一次蚜虫分成两支，它身上的菌也跟着分成两支。不是各家各自捡来的，是一起分的叉，至少一亿六千万年。</p>
+<p>要紧的是别把这讲成一个道德故事。它不是「学会了忠诚」。跑的账很枯燥：它的拷贝只能坐在卵里出去，所以宿主多留一个后代，它就多一批拷贝；宿主死了，它这条线整条断。于是<em>「多拿一点」的变异就算当场占到便宜，也同时把自己唯一的出口弄小了——这种变异留不下来</em>。不是它选择了不作弊，是作弊的那些品系没传下来。传递通道把两边的繁殖成功绑成了同一个数字。</p>
+<p>「内共生与真核革命」那期讲的线粒体，是这条路走到最尽头的样子：基因丢到只剩十几个，谁也不再把它当成一个独立生物了。</p>
+<p class="en-brief"><b>EN</b> These bacteria have a name: <i>Buchnera</i>. They live inside a few dozen oversized cells the aphid sets aside for them and never leave. They have exactly one route to the next generation — getting into the mother's eggs. There is no second route. The cost is visible. Their entire DNA is down to about 640,000 base pairs (a base pair is one paired letter of DNA) and roughly 580 genes, about a seventh of what their relative <i>E. coli</i> carries. What they lost is precisely what "living on your own outside" requires: coping with a changing environment, making the amino acids the aphid can already make. What they kept is precisely the machinery for the ones the aphid lacks. And on the aphid's side, the ability to make those few amino acids is long gone too. Neither can now survive without the other, and this is not a recent arrangement: the aphid family tree and the bacterial family tree have almost the same shape — each time aphids split into two lineages, their bacteria split too. They did not each pick up a partner separately; they branched together, for at least 160 million years. The important thing is not to tell this as a morality tale. Nothing "learned loyalty". The accounting is dull: copies of the bacterium can only leave inside an egg, so every extra offspring the host raises means another batch of copies, and if the host dies that whole line ends. A "take a bit more" variant may win locally, but it shrinks its own only exit at the same time — so such variants do not persist. Nothing chose not to cheat; the cheating strains simply left no descendants. The transmission channel welds both sides' reproductive success into one number. Mitochondria, from the piece on endosymbiosis and the eukaryotic revolution, are what this road looks like at the very end: genes reduced to barely a dozen, and nobody counts them as a separate organism any more.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>同一种细菌，在这个宿主身上是必需品，在那个宿主身上是敲诈犯</h2>
+<p>另一种菌叫沃尔巴克氏体。它感染节肢动物（昆虫、蜘蛛、甲壳类这一大群）的比例，不同调查给出的数从四成到七成都有——方法差别太大，但总之极多。</p>
+<p>它也只随卵传，精子里挤不进去。<strong>于是雄性对它来说是死胡同</strong>。它身上出现了各种把宿主性别比往雌性掰的手段：杀掉受感染母亲产下的雄性胚胎；把遗传上本该是雄性的个体发育成雌性；让雌性不用交配就能产卵。</p>
+<p>最常见的一手更绕。带菌的雄虫和不带菌的雌虫交配，胚胎发育不起来；带菌的雌虫跟谁配都没事。结果不是带菌的更能生，是<em>不带菌的雌虫被相对惩罚了</em>——菌因此在群体里一路铺开，对虫子本身没有任何好处。这和「基因组内的冲突」那期的减数分裂驱动跑的是同一条逻辑，只不过这回作弊的不是自家的一段染色体，是另一个物种。</p>
+<p>可是同属的沃尔巴克氏体，在丝虫身上完全是另一回事。丝虫是引起象皮病和河盲症的那类寄生线虫，它体内这种菌是必需的：用抗生素把菌打掉，虫子就不育，寿命从十来年掉到两三年。这已经成了一种在用的临床手段——打菌，间接治那个寄生虫病。而近亲罗阿丝虫身上干脆没有这种菌。</p>
+<div class="fig">
+<svg aria-label="示意图：一条横轴，左端是『它的下一代只能坐宿主的卵出去』，右端是『它换个宿主几乎没有损失』；蚜虫的布赫纳氏菌、丝虫体内的沃尔巴克氏体、昆虫体内的沃尔巴克氏体、乌贼的费氏弧菌、人肠道里的大多数菌，依次落在这条轴的不同位置上" role="img" viewbox="0 0 600 215" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar22a" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#8aa192"></path></marker></defs>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="24" y="18">它自己的出口，跟宿主的繁殖重合多少</text>
+<line marker-end="url(#ar22a)" stroke="#8aa192" stroke-width="1.4" x1="44" x2="568" y1="118" y2="118"></line>
+<line stroke="#3f8a62" stroke-width="1.2" x1="95" x2="95" y1="113" y2="123"></line>
+<line stroke="#3f8a62" stroke-width="1.2" x1="215" x2="215" y1="113" y2="123"></line>
+<line stroke="#3f8a62" stroke-width="1.2" x1="345" x2="345" y1="113" y2="123"></line>
+<line stroke="#3f8a62" stroke-width="1.2" x1="455" x2="455" y1="113" y2="123"></line>
+<line stroke="#3f8a62" stroke-width="1.2" x1="545" x2="545" y1="113" y2="123"></line>
+<circle cx="95" cy="118" fill="#7be0ab" r="4.5"></circle>
+<circle cx="215" cy="118" fill="#7be0ab" r="4.5"></circle>
+<circle cx="345" cy="118" fill="#d2a24c" r="4.5"></circle>
+<circle cx="455" cy="118" fill="#8aa192" r="4.5"></circle>
+<circle cx="545" cy="118" fill="#8aa192" r="4.5"></circle>
+<line stroke="#3f8a62" stroke-dasharray="2 3" stroke-width="1" x1="95" x2="95" y1="113" y2="66"></line>
+<line stroke="#3f8a62" stroke-dasharray="2 3" stroke-width="1" x1="215" x2="215" y1="113" y2="98"></line>
+<line stroke="#3f8a62" stroke-dasharray="2 3" stroke-width="1" x1="345" x2="345" y1="113" y2="66"></line>
+<line stroke="#3f8a62" stroke-dasharray="2 3" stroke-width="1" x1="455" x2="455" y1="113" y2="98"></line>
+<line stroke="#3f8a62" stroke-dasharray="2 3" stroke-width="1" x1="545" x2="545" y1="113" y2="66"></line>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="95" y="42">蚜虫的</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="95" y="58">布赫纳氏菌</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="215" y="78">丝虫体内的</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="215" y="94">沃尔巴克氏体</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="345" y="42">昆虫体内的</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="345" y="58">沃尔巴克氏体</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="455" y="78">乌贼的</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="455" y="94">费氏弧菌</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="end" x="576" y="42">人肠道里的</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10" text-anchor="end" x="576" y="58">大多数菌</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="24" y="142">完全重合：只能坐卵出去</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="576" y="142">几乎不重合：换个宿主无损</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="110" y="172">占宿主便宜 = 弄小自己的出口</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="9.5" text-anchor="middle" x="352" y="172">只搭雌性这条线，于是对雄性下手</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="end" x="576" y="196">改了也会漂回去</text>
+</svg>
+<div class="cap">互利和寄生不是两个盒子，是这条轴上的位置。注意中间那点：昆虫身上的沃尔巴克氏体也只随卵传，可它只搭得上雌性这一条线——<strong>出口窄不等于利益对齐，要看窄在哪儿</strong>。（示意，不是精确刻度。）</div>
+</div>
+<p>轴的右半边还有一个反例。夏威夷短尾乌贼靠肚里的费氏弧菌发光，在月夜抹掉自己的影子。这批菌不随卵传，每代小乌贼都要从海水里重新招。没有卵可搭，怎么保证招进来的不揩油？靠筛：发光器的入口只放这一种菌进去，之后每天清晨排掉九成到九成五，剩下的重新长满。<strong>绑定和筛选是两条路，通向同一件事——让占便宜的那一支没有出口。</strong></p>
+<p class="en-brief"><b>EN</b> A second bacterium: <i>Wolbachia</i>. Estimates of how many arthropod species (insects, spiders, crustaceans) carry it range from forty to seventy percent depending on the survey — the methods differ too much to pin down, but either way it may be the most widespread bacterium on Earth. It too travels only in eggs; it cannot get into sperm. So males are a dead end for it, and it has acquired a whole repertoire for tilting host sex ratios female: killing the male embryos of infected mothers, developing genetic males into females, letting females lay without mating. The commonest trick is more roundabout. An infected male crossed with an uninfected female produces embryos that fail to develop, while an infected female is fine with any partner. The infected are not more fertile — the uninfected females are relatively penalised. So the bacterium spreads through the population while doing nothing good for any individual insect. This is the same logic as meiotic drive in the piece on intragenomic conflict, except the cheat is not a stretch of the host's own chromosome but another species. Yet the same genus of <i>Wolbachia</i> is something else entirely inside filarial nematodes, the parasitic worms behind elephantiasis and river blindness. There it is indispensable: clear it with antibiotics and the worms become sterile and their lifespan drops from around ten years to two or three. That is now a real clinical approach — hit the bacterium to treat the worm infection. And the close relative <i>Loa loa</i> simply has no such bacterium at all. There is a telling counter-case on the other side of the axis too. The Hawaiian bobtail squid uses <i>Vibrio fischeri</i> in its light organ to erase its own shadow on moonlit nights. These bacteria are not passed in eggs; every young squid has to recruit them from seawater afresh. With no egg to ride, what stops the recruits from skimming? Filtering: the light organ's entrance admits only this one species, and each dawn the squid vents ninety to ninety-five percent of them, leaving the rest to regrow. Binding and filtering are two different roads to the same thing — leaving no exit for the lineage that takes advantage.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>「你和你的菌是一个整体」这句话好听，但它当不了结算单位</h2>
+<p>先承认真实的那部分。在完全无菌的环境里养大的小鼠确实不正常：肠道附近的淋巴组织发育不全，胸腺偏小，而且吃同样多的东西反而更瘦，要维持同样体重得吃得更多。菌不是可有可无的房客。</p>
+<p>于是有人提出一个很顺理成章的想法：把宿主和它身上全部的微生物当成一个东西看（有人管它叫「全生物」），两边的基因合起来算一份基因组，选择就作用在这个整体上。</p>
+<p>反对意见抓的是一个很硬的点：<strong>一个东西要能被当成单位来结算，前提是这一整套可靠地、成套地一起传到下一代。</strong>蚜虫和它的菌满足——菌就在卵里，整套一起走。人不满足：你肠道里的大多数菌是从环境、食物、身边人那里陆续捡来的，一次抗生素、一趟旅行、换种主食就变掉一大块。<em>组成不成套传递，「整体」就没有一条连续的世系可供选择去筛</em>；被稳定筛的还是宿主的基因和每个菌各自的基因。有位研究者说得到位：把宿主和菌当成一个演化单位，该是需要被检验的假设，不是默认前提。</p>
+<p>这块最该注意的是别被数字带着跑。流传最广的那句「体内细菌是人体细胞的十倍」是错的，2016 年重算下来大约一比一（细菌约三十八万亿，人体细胞约三十万亿）。一个放大十倍的数字流传几十年没人核，本身就说明这个领域多容易过热。</p>
+<p>因果证据到哪一步了？确凿的是艰难梭菌反复感染——把健康人的肠道菌群整套移植过去，治愈率八成以上，远高于继续用抗生素。而「改菌群能减肥」这类说法，小鼠身上做得漂亮，人身上一直没复现出同样强度的因果，近几年综述的口径明显收紧了，这个还有争论。两者的差别正好落回本期的杠杆：移植管用，是因为一个被清空的位置被整套填上；而长期改造一套本来就没有传递通道的组合，改完自然漂回去。</p>
+<p class="en-brief"><b>EN</b> Start by granting the real part. Mice raised in a completely germ-free environment genuinely are abnormal: the lymphoid tissue near the gut is underdeveloped, the thymus is small, and they are leaner on the same food, needing to eat more to hold the same weight. Microbes are not optional lodgers. So a very natural idea appeared: treat a host and all its microbes as one thing (some call it a holobiont), add the two sets of genes into a single genome, and let selection act on the whole. The objection lands on something hard: for anything to be settled as a unit, the whole package has to be passed to the next generation reliably and as a set. Aphids and their bacteria qualify — the bacteria are inside the egg and the set travels together. People do not: most of the bacteria in your gut are picked up piecemeal from the environment, from food, from the people around you, and one course of antibiotics, one trip, one change of staple food can swap out a large chunk. If the composition is not transmitted as a set, the "whole" has no continuous lineage for selection to sift; what is stably sifted is still the host's genes and each microbe's own genes. As one researcher put it, treating host plus microbes as an evolutionary unit should be the hypothesis under test, not the default assumption. The thing to watch here is not being carried along by numbers. The most-repeated line — that bacteria outnumber human cells ten to one — is wrong; a 2016 recalculation put it at roughly one to one (about thirty-eight trillion bacteria against thirty trillion human cells). That a tenfold-inflated figure circulated for decades unchecked tells you how easily this field overheats. How far does the causal evidence go? Solid for recurrent <i>Clostridioides difficile</i> infection: transplanting gut microbes from a healthy donor cures well over eighty percent of cases, far better than continuing antibiotics. Claims that changing the microbiome drives weight loss look beautiful in mice but have not reproduced at the same strength in humans, and recent reviews have visibly narrowed their language. That one is still contested. Interestingly, the difference between the two lands back on this piece's lever: a transplant works where a niche emptied by antibiotics gets refilled as a set, whereas permanently reshaping a combination that has no stable transmission channel to begin with will drift back.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 健康与精力</b>——吃完一个疗程抗生素，之后一两周排便和胃口都乱；顺手买盒益生菌吃两周，说不清有没有用，下回再来一遍。跑的是「你和你的菌是一个整体」那节的机制：菌能不能留下取决于有没有通道和空位，跟吃进去多少无关——多数市售菌株停用几周就检测不到，而肠道本来也在自己往回漂，两条曲线长得一样。<b>可改的动作</b>：抗生素前后各记两周同一个指标（排便规律，或那个具体症状），只有前后对照能把自然恢复和补剂分开。</li>
+<li><b>② 育儿与教育</b>——孩子小的时候，家里为「要不要那么讲卫生」反复拉扯：一边消毒湿巾擦遍台面，一边让他在土里滚。跑的是「同一种细菌，在这个宿主身上是必需品」那节的机制：一个菌是伙伴还是麻烦不是它的属性，是接触方式和时机给它的位置——按「干净／脏」分类，分的是一个并不存在的类别。<b>可改的动作</b>：把「洗手」和「给家里消毒」拆开对待，前者证据硬，后者薄得多；别问「这东西干净吗」，改问「这次接触万一错了，撤不撤得回来」。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>历史与军事 · 一支武装进城之后，是抢完就走还是开始修桥铺路</b>：经济史学者奥尔森比较过两类掠夺者：流动的劫掠队抢光一处换下一处；占下来不走的那一支，往往反过来修水利、立规矩、挡住别的劫掠者，把抢劫改成固定征税。跑的是「它不占你便宜，是因为它早就没有退路了」那节的机制：一方的收成只能通过同一个宿主的长期产出兑现时，榨取的所得和它自己的出口就绑成了同一个数，换宿主越贵，绑得越死。由此能推出一个原本看不出的结论：<b>判断一个占据者会不会变「温和」，不该看他的宣示和承诺，该看他换一个宿主要花多大代价。换得越便宜的，无论说什么都会滑向榨取；把退出成本抬高——资产、家人、声誉都锁在同一处——比任何道德约束都更能改变行为。最稳的统治常常不是从善意开始的，是从退不出去开始的。</b><b>但这里不成立</b>：坐下来的统治者能在一年内改主意，形势一变又变回流寇，他是在一代之内算账的。布赫纳氏菌没有「决定温和」这回事，它只是把不温和的品系丢光了，而且靠丢掉基因把退路永久烧掉，回不去。人类那种绑定解得开，生物这一种解不开——所以历史上的「温和期」总比共生关系短得多。</li>
+<li><b>东方思想 · 佛教讲的「无我」，可以变成一道能算的题</b>：无我不是说没有你这个人，是说拆下去找不到一个能独立成立、边界清楚的「我」——所谓五蕴（大致是身体加四类心理活动）每一样都靠别的条件才成立，没哪一样能单拎出来当主人。跑的是「『你和你的菌是一个整体』这句话好听」那节的判据：一个集合体能不能当成单位来结算，不取决于它看上去多整体，取决于它整不整地、可靠地一起传到下一代。由此能推出一个原本看不出的结论：<b>这把一句哲学宣称换成了可以分尺度作答的问题，答案不是「有」或「无」。蚜虫和它的菌满足那条判据，那个复合体就真是一个单位；人和肠道菌群不满足，「人＋菌」这个我不成立，而「人」这一层仍然结实。同一个对象在一个尺度上没有自性、在另一个尺度上成立并不矛盾——判据问的从来不是它多像一个整体，而是它怎么传下去。</b><b>但这里不成立</b>：佛教讲无我的落点在怎么活、怎么断我执；本期这条判据只回答「选择在哪一层结算」，对「该怎么活」一个字也给不出。从「找不到独立的我」推到「所以不必在意自己」，这套机制走不了——那是从「是什么」跳到「该怎样」，中间没有桥。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>「讲卫生讲过头会得过敏」这种说法，到底有多少证据？</summary>
+<div>有一条相对硬的。2016 年有项研究比较了美国的阿米什人和胡特尔派儿童：两群人祖源相近、生活方式相似，主要差别是阿米什仍紧挨畜舍务农。阿米什孩子的哮喘患病率约为对方的四分之一，过敏致敏约六分之一；他们家里灰尘中的内毒素（细菌外壁的一种成分）高出近七倍，把这种灰尘给小鼠吸能压住实验性哮喘反应。但它说的是幼年暴露于某类微生物环境，不等于「家里越脏越好」。</div>
+</details>
+<details><summary>既然沃尔巴克氏体会操纵宿主，人能不能反过来利用它？</summary>
+<div>已经在用了。有项目把这种菌导入埃及伊蚊，带菌蚊子传播登革热的能力明显下降；而「带菌雄虫配不带菌雌虫、胚胎发育不起来」那一手，正好帮它在野外蚊群里自己铺开，不必年年重投。印尼日惹的一项随机对照试验里，投放区的登革热发病率比对照区低约七成七。长期会不会被绕过去，得看几十年。</div>
+</details>
+<details><summary>人和自己的肠道菌算不算「共同演化」？</summary>
+<div>部分算。母乳里有一类人自己消化不了的糖，某些双歧杆菌专门能拆它，这套对应不像巧合。但大多数肠道菌跟你祖上没有专属世系关系，换个饮食就换一批。更准的说法是：人这一侧演化出了一整套管理微生物的装置（黏液层、免疫筛选、母乳里那份定向口粮），而被管理的具体是谁可以换人。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Symbiosis" rel="noopener" target="_blank">共生总览</a> · <a href="https://en.wikipedia.org/wiki/Buchnera_(bacterium)" rel="noopener" target="_blank">布赫纳氏菌</a> · <a href="https://en.wikipedia.org/wiki/Wolbachia" rel="noopener" target="_blank">沃尔巴克氏体</a> · <a href="https://en.wikipedia.org/wiki/Holobiont" rel="noopener" target="_blank">全生物</a></li>
+<li><a href="https://www.nature.com/articles/35024074" rel="noopener" target="_blank">布赫纳氏菌基因组（Nature 2000）</a> · <a href="https://academic.oup.com/femsec/article/24/1/1/517092" rel="noopener" target="_blank">共生菌与细菌来源的细胞器：蚜虫证据</a></li>
+<li><a href="https://journals.asm.org/doi/10.1128/mbio.02099-15" rel="noopener" target="_blank">Douglas &amp; Werren：全基因组概念的漏洞（2016）</a> · <a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002311" rel="noopener" target="_blank">Moran &amp; Sloan：全基因组概念有用还是空洞（2015）</a></li>
+<li><a href="https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002533" rel="noopener" target="_blank">人体细胞与细菌数量的修订估计（2016）</a> · <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1508749" rel="noopener" target="_blank">阿米什与胡特尔派儿童的先天免疫与哮喘（NEJM 2016）</a> · <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2030243" rel="noopener" target="_blank">带菌蚊子控制登革热的随机试验（NEJM 2021）</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
