@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 23: Viruses and Evolution</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 23 · PHASE C MECHANISMS</div>
+<h1>Viruses and Evolution</h1>
+<h2>How something that brings no tools of its own rewrote the tree of life several times over</h2>
+<div class="meta">2026-09-16 · BigCat</div>
+<div class="pitch">Viruses get treated as the crudest branch on the tree of life. They are more like weather: not growing on the tree, yet constantly rewriting it — including the stretch of DNA that lets you be born at all.</div>
+</header>
+<div class="intro">
+<p>The last time you had a cold, it probably felt like a war was going on inside you for a few days.</p>
+<p>Yet the virus itself brings no weapons. It does not eat, does not generate energy, cannot move on its own. Outside a cell it is a chemical particle drifting in air or water — a set of instructions wrapped in a protein shell, and nothing more.</p>
+<p>Intuitively, something that carries nothing should be a minor band of parasites off at the edge of biology.</p>
+<p>In fact about a twelfth of your DNA is wreckage they left behind tens of millions of years ago, and the reason a placenta can form at all is one of those pieces.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>It does not even carry the tools to copy itself; it borrows all of them</h2>
+<p>To make one more of itself, a cell needs a full kit: assembly plants that string the sequence in a gene into a protein (ribosomes, thousands of them per cell), a set of reactions for energy, channels to bring raw material in. A virus has none of it.</p>
+<p>Once a viral particle squeezes into a cell, it does exactly one thing: it gets that cell's plants working from its instructions.</p>
+<p>Do not read this as shrewdness. The accounting is dull: among the variants that happened to arise, the ones that dropped the "build your own plant" part and could still get into cells had shorter instructions, copied faster, and released more copies per infection — so those are the ones that persisted. <em>Losing the toolkit is not a price it paid; it is the default outcome on this road</em> — the same subtraction the mitochondria took in the piece on endosymbiosis and the eukaryotic revolution.</p>
+<p>So where did the thing come from originally? Three ideas are on the table. Escape: cells already contain stretches of DNA or RNA that copy themselves, and some of them happened to acquire a coat and could then get out. Reduction: they were once cells living on their own, and parasitism shed genes until nothing was left but instructions. Priority: before there were cells, that soup already held molecules that copied themselves, and viruses descend from the branch that was never absorbed into cells.</p>
+<p>The important part is that this is not a multiple-choice question. <strong>Viruses very likely are not a group with one common ancestor</strong>, and different viruses took different roads. In 2003, researchers identified a class of "giant viruses" in amoebae from cooling-tower water, with genomes above a million base pairs — a base pair is one paired letter of DNA — larger than plenty of parasitic bacteria, and even carrying some of the parts used to make proteins, with only the ribosome missing. Whether it is a shrunken cell or a virus bloated by picking up genes is still argued about. Another clue points to multiple origins: viruses with no detectable relationship to each other often fold their coat proteins into the very same shape.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>You can be born because of a gene a virus left behind</h2>
+<p>One class of virus, the retroviruses, writes its instructions into the host's DNA on the way in, lands at some position, and from then on is copied along with that DNA.</p>
+<p>Land in an ordinary cell and it vanishes with that person. But if it lands in the cells that will become eggs or sperm, it rides along to the next generation and stays in that lineage forever.</p>
+<p>About 8% of human DNA is this kind of wreckage. Almost all of it was broken by mutation long ago and is kept quiet by the cell. It is not the same as the transposons in the piece on conflict inside the genome: those are stretches that jump around within a genome, whereas these could once wrap themselves in a coat, leave the cell and infect other individuals. They came from outside.</p>
+<p>A few got put to work. The mammalian placenta has one distinctive tissue: many cells fused into a single sheet sharing one membrane, without which there is no interface between mother and fetus. The protein that fuses them comes from a retroviral coat gene — the virus used it to fuse its own membrane with a cell's to get in, and the same protein now fuses placental cells to each other. Knock the corresponding gene out in mice and the embryos die mid-gestation, with that layer unfused (2009).</p>
+<p>This is not a virus doing anyone a favour. <strong>Captures of this kind happened separately in different mammal lineages</strong>: primates, mice, rabbits and carnivores use virus-derived genes of different origins. Insertions keep happening, nearly all of them useless and suppressed; occasionally one lands where it can be read and happens to carry a membrane-fusing protein, and it may be kept — not one stroke of luck, but a chance that keeps being run into.</p>
+<div class="fig">
+<svg aria-label="Diagram: a branching lineage tree. One insertion on the ancestral trunk is present at the same position in both descendant species; a second insertion sits on one branch only, having arrived after the split; a dashed arrow runs sideways from a separate bacterial lineage into one branch of the tree" role="img" viewbox="0 0 620 245" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar23a" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#d2a24c"></path></marker></defs>
+<line stroke="#7be0ab" stroke-width="2" x1="150" x2="150" y1="215" y2="150"></line>
+<line stroke="#7be0ab" stroke-width="2" x1="150" x2="88" y1="150" y2="72"></line>
+<line stroke="#7be0ab" stroke-width="2" x1="150" x2="212" y1="150" y2="72"></line>
+<line stroke="#8aa192" stroke-width="2" x1="470" x2="470" y1="215" y2="72"></line>
+<path d="M150,188 l6,-9 l-6,-9 l-6,9 z" fill="#d2a24c"></path>
+<path d="M119,112 l6,-9 l-6,-9 l-6,9 z" fill="#d2a24c"></path>
+<path d="M181,112 l6,-9 l-6,-9 l-6,9 z" fill="#d2a24c"></path>
+<path d="M212,120 l5.5,-8 l-5.5,-8 l-5.5,8 z" fill="#52c98a"></path>
+<line marker-end="url(#ar23a)" stroke="#d2a24c" stroke-dasharray="4 4" stroke-width="1.5" x1="462" x2="196" y1="140" y2="140"></line>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="88" y="60">Species A</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="212" y="60">Species B</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="470" y="60">A bacterium</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="150" y="232">Common ancestor</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="168" y="186">One insertion in the ancestor</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="end" x="112" y="96">Same position</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="end" x="112" y="108">in both</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10" x="224" y="118">Inserted after the split</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="330" y="132">A gene arriving sideways</text>
+</svg>
+<div class="cap">What travels vertically is lineage; what comes in sideways never passes through reproduction. The insertion in the ancestor is found at the same position in both descendant species — that is the fossil. Insertions after the split sit in one branch only, exactly as separate infections should look. (Schematic.)</div>
+</div>
+<p>The whole business also handed evolutionary biology a hard tool. Insertion sites are essentially random, with hundreds of millions of possible landing spots. <em>The same piece of wreckage found at the same position in the human and chimpanzee genomes leaves one economical explanation: when it went in, we were still one ancestral population</em>. The odds of two independent infections hitting the identical letter are small enough to ignore. Conversely, the young insertions are found in one lineage only — which is exactly what being infected separately after the split should look like.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Genes do not only travel downward; they also jump sideways across the species wall</h2>
+<p>A familiar hospital story: one bacterial species stops responding to an antibiotic, and a few months later a completely different species stops responding too. The second one did not slowly mutate its way there — the resistance gene was handed to it.</p>
+<p>There are several ways to hand it over: bacteria can build a tube between them and push across a small free-standing ring of DNA; a bacteriophage (a virus that infects bacteria) that packages itself wrongly carries a stretch of the last host's DNA into the next; bacteria can also pick up DNA shed by dead neighbours straight out of the water.</p>
+<p>The mechanism takes one sentence: <strong>a piece of DNA that can get into a new cell and be copied there has spread, with no reproduction involved at all.</strong> The consequences are not small. At the bacterial level the "tree of life" is not much of a tree; it is more like a net, and asking which species a given gene belongs to is often meaningless. The piece on adaptation and constraint described evolution as hemmed in by historical baggage; this is a hole in that rule — a new capability need not be ground out step by step, it can be moved in whole.</p>
+<p>In animals and plants this is rare, but it is real. Every cultivated sweet potato examined — more than two hundred and ninety varieties — carries a stretch of DNA inserted by <i>Agrobacterium</i>, while its wild relatives do not; in other words, it was a naturally transgenic crop before anyone started farming it. Aphids make their own carotenoids (the pigments behind a red body) with genes that came from fungi, which animals otherwise do not have.</p>
+<p>But the real lesson here is the standard of proof. <em>Horizontal transfer is the class of conclusion most easily faked by contamination</em>: a trace of some other organism in the sample looks exactly like a foreign gene. In 2001 the first human genome paper reported that over two hundred genes had come directly from bacteria into a vertebrate ancestor; within the same year others recounted, and the few that survived were explained just as well by "other lineages each lost these genes". Today's view is that direct bacteria-to-human transfer, if it exists at all, is very rare. Which is exactly what makes the evidence in the previous section hard — <strong>matching insertion sites are not a resemblance but a coordinate, and contamination cannot forge a coordinate.</strong></p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Context · BigCat</h3>
+<ul>
+<li><b>① Engineering and systems design</b> — a script or utility function copied wholesale out of another project, at the time just to "get it running"; a year on it sits in the main path, the original has been rewritten three times, and nobody on your side knows. This runs the mechanism from "genes do not only travel downward": a piece of something that can get in and be copied here has spread, without passing through your own design lineage — and the provenance was severed the moment it was copied, unrecoverable afterwards by reading the code. <b>What to change</b>: when you copy something in, write one line at the top of the file with the source and the date, just one; when it breaks, your first move is to go look at what changed upstream over the year, not to read your own copy from the top.</li>
+<li><b>② Leading a team</b> — every incident review adds one more item to the checklist, and after a few years there are dozens that nobody dares delete, on the grounds that "there must have been a reason someone added it". This runs the mechanism from "you can be born because of a gene a virus left behind": wreckage accumulates not because it is useful but because switching it off is cheaper than clearing it out; that 8% of the genome is exactly how it stayed, and the few that were put to work are a tiny minority. <b>What to change</b>: record two fields against each checklist item — the incident that added it, and the last time it actually caught something; decide deletions on the second field only, never the first.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing Over · Connections Beyond the Field</h3>
+<ul>
+<li><b>Literature · An old book survives only as dozens of hand copies, and textual scholars build its family tree from the copying errors</b>: ancient texts usually have no original, only manuscripts copied by hand down the generations. Since the nineteenth century the method has been to ignore who got it right and look at who got it wrong the same way — when two manuscripts share a corruption found nowhere else, the most economical explanation is that both were copied from one intermediate. This runs the mechanism from "you can be born because of a gene a virus left behind": a random, position-specific accident can serve as a lineage marker because the odds of two lines independently erring at the identical spot are small enough to ignore; what is shared is not a resemblance but the same accident at the same coordinate. From which follows something not otherwise visible: <b>the provenance of a text, or a genome, lies mainly not in the parts that are correct or useful but in the parts that are broken and unused — silenced viral wreckage is like a miscopied word in that, precisely because it does nothing and nobody repairs it, it preserves the history intact; the passages that matter functionally get independently fixed and polished, ending up similar in ways that carry no information about descent.</b> <b>Where it breaks down</b>: a scribe may collate two manuscripts and carry a reading from one into the other — textual critics call this contamination — and once it happens the tree is no longer a tree, and shared errors no longer point to a shared source. That is precisely the situation on the bacterial side.</li>
+<li><b>Parenting and education · Within one term the children in a class all start using some expression nobody at home ever taught them</b>: this runs the mechanism from "genes do not only travel downward, they also jump sideways across the species wall": transmission need not pass through reproduction, and anything that can enter a new carrier and be copied there has spread; the vertical channel exists, but the sideways one is usually orders of magnitude faster. From which follows something not otherwise visible: <b>to trace where a habit came from, asking up the family tree is close to useless; the question is who they have been sharing a contact network with over the past month or two. And once something that arrived sideways is built into daily routine, you can no longer separate out what was "ours" — like the stretch of <i>Agrobacterium</i> DNA in sweet potato, farmed along with the crop for thousands of years, the question "is this a rule of our household or something picked up outside" often no longer has an answer.</b> <b>Where it breaks down</b>: DNA is copied with extremely high fidelity, so an insertion can sit unchanged for tens of millions of years, which is what lets "shared errors" serve as evidence; an expression passed from mouth to mouth drifts at every step and is washed out within weeks. So this mechanism explains the spread but cannot be run backwards to infer the source.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>Are viruses alive or not?</summary>
+<div>This is mostly not an evidential question but a definitional one. If "alive" requires metabolising and copying yourself, viruses are out; if it only requires heredity, variation and being sifted by selection, they qualify thoroughly — nothing evolves faster. Giant viruses muddy the boundary further. What researchers actually work with is mechanism rather than the label, so most people simply route around it.</div>
+</details>
+<details><summary>Why does flu need a new vaccine every year while one measles shot lasts decades?</summary>
+<div>Two things stack up. First, whether copying is proofread: the copying enzyme of viruses like flu essentially does not proofread, so every round brings in a batch of errors and change is fast. Second, whether changing pays — a variant only gains when a small change lets it dodge the immunity most people already have, which is frequency dependence, the same logic as the piece on the Red Queen. Why measles barely changes is usually explained by the few parts it uses to enter cells failing as soon as they are altered, but this is not fully settled.</div>
+</details>
+<details><summary>Could the viral wreckage in your genome come back to life?</summary>
+<div>In mice and some other species there are genuine cases of endogenous viruses producing infectious particles again. On the human side almost all of it has been broken by mutation, and there is no evidence of infectious particles being produced. The concrete concern is animal-to-human organ transplants: when pig organs go into people, the endogenous viruses in the pig genome are a known risk point, and in 2017 a group used gene editing to inactivate all such sequences in pig cells at once and raise piglets from them.</div>
+</details>
+<details><summary>Can bacteriophages be used like antibiotics?</summary>
+<div>The idea is older than antibiotics, and resistance has made it hot again. Individual cases have worked: in 2019 a patient with cystic fibrosis was reported to have a very hard-to-treat mycobacterial infection brought under control with engineered phages. But results from rigorous randomised trials remain thin. The difficulty is precisely this page's mechanism: bacteria quickly evolve variants that block a phage, and phages change in turn — it runs both ways, and it is not a one-and-done drug.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Viral_evolution" rel="noopener" target="_blank">Viral evolution</a> · <a href="https://en.wikipedia.org/wiki/Endogenous_retrovirus" rel="noopener" target="_blank">Endogenous retroviruses</a> · <a href="https://en.wikipedia.org/wiki/Syncytin-1" rel="noopener" target="_blank">The placental fusion protein</a> · <a href="https://en.wikipedia.org/wiki/Horizontal_gene_transfer" rel="noopener" target="_blank">Horizontal gene transfer</a> · <a href="https://en.wikipedia.org/wiki/Mimivirus" rel="noopener" target="_blank">Giant viruses</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.0902925106" rel="noopener" target="_blank">Knocking out the placental fusion gene in mice (PNAS 2009)</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1115346109" rel="noopener" target="_blank">A separate capture in carnivores (PNAS 2012)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1419685112" rel="noopener" target="_blank">Agrobacterium DNA in cultivated sweet potato (PNAS 2015)</a> · <a href="https://www.science.org/doi/10.1126/science.1187113" rel="noopener" target="_blank">Pigment genes aphids got from fungi (Science 2010)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1061036" rel="noopener" target="_blank">"Bacterial genes" in the human genome: transfer or gene loss? (Science 2001)</a> · <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1214-2" rel="noopener" target="_blank">Horizontal transfer is not a hallmark of the human genome (2017)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1239181" rel="noopener" target="_blank">Giant viruses with genomes up to 2.5 million base pairs (Science 2013)</a> · <a href="https://www.nature.com/articles/s41591-019-0437-z" rel="noopener" target="_blank">Engineered phages treating one patient (Nature Medicine 2019)</a> · <a href="https://www.science.org/doi/10.1126/science.aan4187" rel="noopener" target="_blank">Inactivating endogenous retroviruses in pigs (Science 2017)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

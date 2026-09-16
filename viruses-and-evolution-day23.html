@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 23：病毒与演化</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 23 · PHASE C 机制深水区</div>
+<h1>病毒与演化</h1>
+<h2>一种什么工具都不自带的东西，怎么会把整棵生命之树改写好几遍</h2>
+<div class="meta">2026-09-16 · BigCat</div>
+<div class="pitch">病毒常被当成生命之树上最简陋的那根枝条。它更像天气：不长在树上，却一直在改写这棵树——包括你身上那段让你能出生的 DNA。</div>
+</header>
+<div class="intro">
+<p>你上一次感冒，大概觉得那几天身体里在打仗。</p>
+<p>可是病毒本身连打仗的家伙都没有。它不吃东西、不产生能量、不会自己动，离开细胞就是一粒漂在空气或水里的化学颗粒——一份说明书，裹在一层蛋白壳里，如此而已。</p>
+<p>按直觉，这种什么都不带的东西应该是生物界边角上一小撮寄生虫。</p>
+<p>实际上，你的 DNA 里大约有十二分之一是它们几千万年前留下的残骸，而胎盘之所以能长成，靠的正是其中一段。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>它连复制自己的工具都没有，全靠借</h2>
+<p>细胞要多复制一份自己，需要一整套家什：把基因上的序列拼成蛋白质的装配车间（叫核糖体，细胞里成千上万台），供能的一套化学反应，把原料运进来的通道。病毒一样都没有。</p>
+<p>一颗病毒颗粒挤进细胞之后，干的事只有一件：让这个细胞的车间照它的说明书开工。</p>
+<p>别把这讲成精明。跑的账很枯燥：在碰巧出现的各种变异里，凡是丢掉了「自己造车间」那部分、又还进得去细胞的，说明书更短、复制更快、一次感染放出去的拷贝更多，于是这些留了下来。<em>丢掉工具不是它付出的代价，是这条路上的默认结局</em>——「内共生与真核革命」那期讲的线粒体，走的是同一种减法。</p>
+<p>那这东西最初从哪来？桌上主要有三种想法。一是逃逸：细胞里本来就有能自我复制的 DNA 或 RNA 片段，其中某些碰巧配上了一层壳，从此能出门。二是退化：本来是能独立过日子的细胞，寄生久了一路丢基因，丢到只剩说明书。三是更早：细胞出现之前那锅汤里就有会自我复制的分子，病毒是没被并进细胞的那一支的后代。</p>
+<p>要紧的是，这不是三选一的考题。<strong>病毒很可能根本不是一个有共同祖先的类群</strong>，不同的病毒走的是不同的路。2003 年，研究者在冷却塔水里的变形虫身上认出一类「巨病毒」，基因组一百多万个碱基对——碱基对就是 DNA 上的一个字母配对——比不少寄生细菌还大，甚至带着一批造蛋白用的零件，唯独没有核糖体。它究竟是缩水下来的细胞，还是一路捡基因胀起来的病毒，还在争论。另一条线索指向多次起源：许多亲缘上八竿子打不着的病毒，外壳蛋白折出来的形状却是同一种。</p>
+<p class="en-brief"><b>EN</b> To copy itself, a cell needs a full kit: assembly plants that turn gene sequences into proteins (ribosomes, thousands per cell), a set of reactions for energy, channels for raw materials. A virus has none of it. Once a viral particle squeezes into a cell it does exactly one thing: make that cell's plants run off its instructions. Do not read this as cunning. The accounting is dull: among the variants that happen to arise, the ones that dropped the "build your own plant" part and could still get into cells had shorter instructions, copied faster, and released more copies per infection — so those are what persisted. Losing the toolkit is not a price paid; it is the default outcome on this road, the same subtraction mitochondria made in the piece on endosymbiosis and the eukaryotic revolution. So where did the thing come from? Three ideas are on the table: escape (self-copying stretches of DNA or RNA inside cells that happened to acquire a coat), reduction (once free-living cells that parasitised their way down to instructions only), and priority (self-copying molecules older than cells, of which viruses are the branch never absorbed). This is not a multiple-choice question. Viruses very likely are not a group with one common ancestor, and different viruses took different roads. One spoiler: in 2003 researchers identified "giant viruses" in amoebae from cooling-tower water, with genomes above a million base pairs — larger than many parasitic bacteria, and relatives found later reach beyond two million. They even carry some protein-making parts, but no ribosome. Whether they are shrunken cells or viruses bloated by picking up genes is still contested. Another clue points to multiple origins: viruses with no detectable relationship often fold their coat proteins into the same shape, as if "build a shell" was independently hit upon a handful of times.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>你能出生，靠的是一段病毒留下的基因</h2>
+<p>有一类病毒叫逆转录病毒，进了细胞会把自己的说明书写进宿主的 DNA 里，插在某个位置上，从此跟着宿主的 DNA 一起被复制。</p>
+<p>插进普通细胞，它随这个人一起消失。但万一插进的是将来要变成卵或精子的那批细胞，它就跟着传给下一代，永远留在那条世系里。</p>
+<p>人的 DNA 里约 8% 是这种残骸。绝大多数早被突变打坏，又被细胞压着不让出声。它们和「基因组内的冲突」那期讲的转座子不一样：那些是自家在基因组里跳来跳去的段落，这些原本能裹上壳、出细胞、去感染别的个体，是从外面进来的。</p>
+<p>少数被拿去用了。哺乳动物的胎盘上有一层特别的组织：许多细胞融成一大片，共用一层膜，母体和胎儿之间那道界面才成立。让它们融起来的那个蛋白，来自逆转录病毒的外壳基因——病毒本来用它把自己的膜和细胞膜融到一起好进门，现在同一个蛋白用来把胎盘细胞彼此融起来。小鼠身上把对应的基因敲掉，胚胎在孕期中段就死了，该融的那层没融（2009 年）。</p>
+<p>这不是病毒帮了谁的忙。<strong>同类的捕获在不同哺乳动物支系里各自发生过</strong>：灵长类、小鼠、兔、食肉类用的是来源不同的病毒基因。插入一直在发生，绝大多数没用、被压住；偶尔一处碰巧插在能被读到的地方，又碰巧带着一个会融膜的蛋白，就可能被留下——不是一次幸运，是一个不断被撞上的机会。</p>
+<div class="fig">
+<svg aria-label="示意图：一棵分叉的世系树，祖先这一段上有一次插入，两个后代物种的基因组同一位置都带着它；另一支上有一次分家之后才发生的插入；右边一条细菌世系有一条虚线箭头横着接进树的一支" role="img" viewbox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar23a" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#d2a24c"></path></marker></defs>
+<line stroke="#7be0ab" stroke-width="2" x1="150" x2="150" y1="215" y2="150"></line>
+<line stroke="#7be0ab" stroke-width="2" x1="150" x2="88" y1="150" y2="72"></line>
+<line stroke="#7be0ab" stroke-width="2" x1="150" x2="212" y1="150" y2="72"></line>
+<line stroke="#8aa192" stroke-width="2" x1="470" x2="470" y1="215" y2="72"></line>
+<path d="M150,188 l6,-9 l-6,-9 l-6,9 z" fill="#d2a24c"></path>
+<path d="M119,112 l6,-9 l-6,-9 l-6,9 z" fill="#d2a24c"></path>
+<path d="M181,112 l6,-9 l-6,-9 l-6,9 z" fill="#d2a24c"></path>
+<path d="M212,120 l5.5,-8 l-5.5,-8 l-5.5,8 z" fill="#52c98a"></path>
+<line marker-end="url(#ar23a)" stroke="#d2a24c" stroke-dasharray="4 4" stroke-width="1.5" x1="462" x2="196" y1="140" y2="140"></line>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="88" y="60">物种甲</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="212" y="60">物种乙</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="470" y="60">一种细菌</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="150" y="232">共同祖先</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="168" y="186">祖先身上的一次插入</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="end" x="112" y="102">两边同一位置都有</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10" x="224" y="118">分家之后才插的</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="330" y="132">横着来的一段基因</text>
+</svg>
+<div class="cap">竖着传的是世系，横着来的那条不经过繁殖。祖先身上那次插入，在两个后代物种的同一个位置都找得到——这就是化石；分家之后的插入只在一支里有，正是「各自又被感染」该有的样子。（示意）</div>
+</div>
+<p>这件事顺带给了演化生物学一件硬工具。插入位置基本是随机的，可选的落点上亿个。<em>同一段残骸出现在人和黑猩猩基因组的同一个位置上，最省事的解释只剩一个：插进去的时候，我们还是同一群祖先</em>。两次独立感染刚好插到同一个字母上的概率，小到可以不算。反过来，年轻的那批插入只在一支里找得到——这也正是分家之后各自又被感染该有的样子。</p>
+<p class="en-brief"><b>EN</b> One class of virus, the retroviruses, writes its instructions into the host's DNA on entry and is copied along with it ever after. In an ordinary cell that copy dies with the person. But if it lands in cells destined to become eggs or sperm, it travels to the next generation and stays in that lineage forever. About 8% of human DNA is this kind of wreckage. Almost all of it was long ago broken by mutation and is kept silenced. It differs from the transposons in the piece on conflict inside the genome: those are stretches that jump around within a genome, while these once wrapped themselves in a coat, left the cell and infected other individuals — they came from outside. A few got put to use. The mammalian placenta has a tissue where many cells fuse into one sheet sharing a single membrane; without it the interface between mother and fetus does not exist. The protein that fuses them comes from a retroviral coat gene — the virus used it to fuse its own membrane with a cell's to get in; now the same protein fuses placental cells to each other. Knock the corresponding gene out in mice and the embryos die mid-gestation with that layer unfused (2009). This is not a virus doing anyone a favour. Captures of this kind happened separately in different mammal lineages: primates, mice, rabbits and carnivores use virus-derived genes of different origins. Insertions happen all the time, nearly all of them useless and suppressed; occasionally one lands where it can be read and happens to carry a membrane-fusing protein, and it may be kept — not one piece of luck, but a chance that keeps being run into. The whole business also handed evolutionary biology a hard tool. Insertion sites are essentially random, with hundreds of millions of possible landing spots. The same piece of wreckage found at the very same position in the human and chimpanzee genomes leaves one economical explanation: when it went in, we were still one ancestral population. The odds of two independent infections hitting the identical letter are negligible. Conversely, the young insertions are found in one lineage only — exactly what being infected separately after the split should look like.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>基因不只往下传，也会横着跳过物种的墙</h2>
+<p>医院里常见这么一件事：一种细菌先对某种抗生素不再敏感，几个月后，另一种完全不同的细菌也不敏感了。第二种不是自己慢慢突变出来的——那段耐药基因是被递过去的。</p>
+<p>递法有好几种：细菌之间能搭一根管子，把一小圈独立的 DNA 送过去；噬菌体（专门感染细菌的病毒）在打包时装错，会把上一个宿主的一段 DNA 带进下一个；细菌也能直接从水里捡起死掉同类散出的 DNA。</p>
+<p>机制上只要一句话：<strong>一段 DNA 只要能进到新细胞里、并在那儿被复制，就扩散了，完全不必经过繁殖。</strong>后果不小。在细菌那一层，「生命之树」不太像树，更像一张网；问某个基因「属于哪个物种」经常没有意义。「适应与约束」那期说演化受历史包袱限制，这里是那条规则的一个缺口：一个新本事可以不靠自己一步步磨出来，而是整套搬进来。</p>
+<p>动物和植物里这事罕见，但真有。所有检查过的栽培甘薯——两百九十多个品种——体内都带着一段农杆菌插进去的 DNA，而它的野生近亲没有；也就是说，人类开始种甘薯之前，它已经是一种天然的转基因作物了。蚜虫能自己造类胡萝卜素（让身体发红的那类色素），这套基因来自真菌，动物本来没有。</p>
+<p>但这块最该学的是判定门槛。<em>横向转移是最容易被污染伪造出来的一类结论</em>：样品里混进一点别的生物，看上去就像一段外来基因。2001 年人类基因组第一篇论文写道，有两百多个基因是从细菌直接转进脊椎动物祖先的；同年就被人重算，剩下的少数用「别的支系各自把这些基因丢了」解释得一样好。今天的看法是：人基因组里直接来自细菌的横向转移，即使有也极少。这恰好反衬出上一节那类证据为什么硬——<strong>插入位点对上的不是「像」，是坐标，污染伪造不出来。</strong></p>
+<p class="en-brief"><b>EN</b> A familiar hospital story: one bacterial species stops responding to an antibiotic, and months later a completely different species stops responding too. The second one did not mutate its way there — the resistance gene was handed to it. There are several ways to hand it over. Bacteria can build a tube between them and pass across a small independent ring of DNA; a bacteriophage (a virus that infects bacteria) packaging itself wrongly carries a stretch of the last host's DNA into the next; bacteria can also pick up DNA shed by dead neighbours straight from the water. The mechanism takes one sentence: a piece of DNA that can get into a new cell and be copied there has spread, with no reproduction involved. The consequences are large. At the bacterial level the "tree of life" is less a tree than a net, and asking which species a gene belongs to is often meaningless. The piece on adaptation and constraint described evolution as hemmed in by historical baggage; this is a hole in that rule — a new capability need not be ground out step by step, it can be moved in whole. In animals and plants this is rare but real. Every cultivated sweet potato examined — over two hundred and ninety varieties — carries a stretch of DNA inserted by <i>Agrobacterium</i>, while its wild relatives do not: it was a naturally transgenic crop before anyone farmed it. Aphids make their own carotenoids (the pigments behind red bodies) using genes that came from fungi, which animals otherwise lack. The real lesson here, though, is the standard of proof. Horizontal transfer is the conclusion most easily faked by contamination: a trace of another organism in the sample looks exactly like a foreign gene. In 2001 the first human genome paper reported over two hundred genes transferred directly from bacteria into a vertebrate ancestor; within the same year others recounted, and the few that survived were explained just as well by "other lineages each lost these genes". Today's view is that direct bacteria-to-human transfer, if it happens at all, is very rare. Which is exactly why the evidence in the previous section is hard: matching insertion sites are not a resemblance but a coordinate, and contamination cannot forge a coordinate.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 工程与系统设计</b>——从另一个项目整段复制过来的一个脚本或工具函数，当时只为了「先跑起来」；一年后它在主流程里，原处早改过三版，你们这边没人知道。跑的是「基因不只往下传，也会横着跳过物种的墙」那节的机制：一段东西只要能进来、在这里被复制，就扩散了，不经过你们自己的设计世系——而来源信息在复制的那一刻就断了，事后靠读代码找不回来。<b>可改的动作</b>：复制进来时在文件头写一行来源和日期，就一行；出问题时第一个动作是去原处看这一年改了什么，而不是从头读自己这份。</li>
+<li><b>② 带团队与组织</b>——每次事故复盘加一条检查项，几年下来清单几十条，没人敢删，理由都是「当初加它一定有原因」。跑的是「你能出生，靠的是一段病毒留下的基因」那节的机制：残骸堆着不是因为有用，是因为关掉它比清除它便宜；基因组里那 8% 就是这么留下的，真正被拿去用的是极少数。<b>可改的动作</b>：每条检查项记两个字段——加它的那次事故，以及上一次它真的拦下东西是什么时候；删不删只看第二个字段，别看第一个。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>文学艺术 · 一部古书传到今天只剩几十种抄本，校勘学家靠抄错的地方给它们排家谱</b>：古籍多半没有原稿，只有后人一代代手抄的本子。十九世纪以来的做法是：不看谁抄得对，看谁错得一样——两个本子共有一处别处都没有的讹误，最省事的解释是它们抄自同一个中间本。跑的是「你能出生，靠的是一段病毒留下的基因」那节的机制：随机的、位置特定的意外能当世系标记，靠的是两条线独立错到同一个位置的概率小到可以不算；共享的不是「像」，是同一个坐标上的同一个意外。由此能推出一个原本看不出的结论：<b>一份文本、一个基因组的来路，主要不藏在它正确或有用的部分里，而藏在坏掉的、没人用的部分里——被压住不表达的病毒残骸和抄错的字一样，正因为不起作用、没人去修，才把历史原样保存着；功能要紧的那些段落反而会被独立地修好，长得像却毫无亲缘含义。</b><b>但这里不成立</b>：抄手会拿两个本子对校，把甲本的读法抄进乙本，校勘学管这叫「污染」——一旦发生，树就不再是树，共有的错误也不再指向共同来源。那正是细菌那一侧的处境。</li>
+<li><b>育儿与教育 · 一个学期之内，班上孩子集体开始用某个说法，家里谁都没教过</b>：跑的是「基因不只往下传，也会横着跳过物种的墙」那节的机制：传递不必经过繁殖，只要能进入一个新载体并在那里被复制就算扩散；纵向那条通道存在，但横向那条通常快上几个量级。由此能推出一个原本看不出的结论：<b>要追一个习惯是哪来的，往上问家谱基本无效，该问的是这一两个月他和谁共处同一个接触网；而且横向进来的东西一旦编进日常，就再分不出哪些是「自家的」——像甘薯身上那段农杆菌 DNA 被一起种了几千年，问「这是我们家的规矩还是外面学来的」往往已经没有答案。</b><b>但这里不成立</b>：DNA 复制保真度极高，一处插入能原样待几千万年，「共有的错误」才当得了证据；说法在人嘴里传，每传一次就走样，几周就被冲刷干净。所以这条解释得了扩散，却不能反过来推来源。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>病毒到底算不算活的？</summary>
+<div>这多半不是证据问题，是定义问题。如果「活」要求自己代谢、自己复制，病毒不算；如果只要求有遗传、有变异、被选择筛，它算得相当彻底——它演化起来比谁都快。巨病毒把边界搅得更浑。研究者真正在用的是机制而不是这个标签，所以多数人干脆绕开它。</div>
+</details>
+<details><summary>为什么流感年年要重打疫苗，麻疹一支管几十年？</summary>
+<div>两件事叠在一起。一是复制时校不校对：流感这类病毒的复制酶基本不校对，每复制一轮都带进一批错，变异快。二是变了有没有好处——只有当「变一下就能躲开大部分人已有的免疫」时，变异株才占便宜，这是频率依赖，和「红皇后」那期同一条逻辑。麻疹为什么几乎不变，目前较被接受的解释是它进入细胞的那几处关键部位一动就失灵，但这个还没有完全讲清楚。</div>
+</details>
+<details><summary>你基因组里那些病毒残骸会不会重新活过来？</summary>
+<div>在小鼠等物种里确实有内源病毒重新产生感染性颗粒的例子。人这边绝大多数已被突变打坏，目前没有证据显示能产出有传染性的颗粒。真正现实的关切在异种器官移植：把猪器官移给人时，猪基因组里的内源病毒是个已知风险点，2017 年有团队用基因编辑把猪细胞里这类序列一次性灭活并培育出猪崽。</div>
+</details>
+<details><summary>噬菌体能当抗生素用吗？</summary>
+<div>这个想法比抗生素还老，因为耐药性又热了起来。个案有成功：2019 年有报道给一名囊性纤维化患者用改造过的噬菌体，控制住了一种极难治的分枝杆菌感染。但严格的随机对照试验结果到目前仍很有限。难处恰好是本页的机制：细菌会很快演化出挡住噬菌体的变异，而噬菌体也在变——这是双向的，不是一劳永逸的药。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Viral_evolution" rel="noopener" target="_blank">病毒的演化</a> · <a href="https://en.wikipedia.org/wiki/Endogenous_retrovirus" rel="noopener" target="_blank">内源逆转录病毒</a> · <a href="https://en.wikipedia.org/wiki/Syncytin-1" rel="noopener" target="_blank">胎盘融合蛋白</a> · <a href="https://en.wikipedia.org/wiki/Horizontal_gene_transfer" rel="noopener" target="_blank">水平基因转移</a> · <a href="https://en.wikipedia.org/wiki/Mimivirus" rel="noopener" target="_blank">巨病毒</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.0902925106" rel="noopener" target="_blank">敲掉胎盘融合基因的小鼠（PNAS 2009）</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1115346109" rel="noopener" target="_blank">食肉类身上另一次独立捕获（PNAS 2012）</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.1419685112" rel="noopener" target="_blank">栽培甘薯里的农杆菌 DNA（PNAS 2015）</a> · <a href="https://www.science.org/doi/10.1126/science.1187113" rel="noopener" target="_blank">蚜虫从真菌得到的色素基因（Science 2010）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1061036" rel="noopener" target="_blank">人基因组里的「细菌基因」：横向转移还是基因丢失（Science 2001）</a> · <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1214-2" rel="noopener" target="_blank">横向转移不是人类基因组的特征（2017）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1239181" rel="noopener" target="_blank">基因组达两百五十万碱基对的巨病毒（Science 2013）</a> · <a href="https://www.nature.com/articles/s41591-019-0437-z" rel="noopener" target="_blank">改造噬菌体治疗一名患者（Nature Medicine 2019）</a> · <a href="https://www.science.org/doi/10.1126/science.aan4187" rel="noopener" target="_blank">灭活猪内源病毒（Science 2017）</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
