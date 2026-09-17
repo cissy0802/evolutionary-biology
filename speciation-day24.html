@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 24：物种形成</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 24 · PHASE C 机制深水区</div>
+<h1>物种形成</h1>
+<h2>一群东西什么时候算变成了两群——以及为什么这条线得由你来画</h2>
+<div class="meta">2026-09-17 · BigCat</div>
+<div class="pitch">分家很少是「啪」地一声断开。更常见的是断到一半卡在那儿几十万年，或者断了又接回去——你身上就带着一次接回去的证据。</div>
+</header>
+<div class="intro">
+<p>欧洲的乌鸦有件怪事。</p>
+<p>从伦敦到柏林，乌鸦一身全黑。从维也纳往东到莫斯科，乌鸦是灰身子配黑头黑翅。两种一眼就能分出来。中间在中欧有一条几十公里宽的带子，带子里的鸟什么花色都有，是混血；而这条带子几十年下来几乎没挪过窝。</p>
+<p>那它们算一种，还是两种？你大概觉得这题有个标准答案。实际上问三个分类学家能得到三个答案——三个人都拿得出理由。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>「是不是同一种」这个问题，换把尺子答案就变</h2>
+<p>最常用的那把尺子这么划线：能互相交配、生下来的后代自己还能再生育，就算一种。马和驴能生出骡子，但骡子基本不能再生育，所以马和驴是两种。这把尺子 1942 年被系统地写进教科书之后，统治了几十年。</p>
+<p>它有三处明显失灵。化石不能拿来做交配实验，可古生物学家每天都在给化石定种。细菌基本不搞两性繁殖，这把尺子对它们没有输入。最麻烦的是第三处：一大批被算作两种的东西照样杂交、后代照样能生——灰熊和北极熊、很多种鸭子、大批兰花，都是。</p>
+<p>于是还有别的尺子。看长相的：形态差到某个程度就算两种。看家谱的：在 DNA 上能不能认出一条只属于它自己、没和别人混在一起的分支。看饭碗的：生态位是不是各自独立。这几把尺子彼此不换算。</p>
+<p>换尺子的后果是可以量的。全球鸟类，按「能不能互相交配」数，大约一万种。2016 年有一组研究者抽了两百个已命名的种重新审，改用「在形态和 DNA 上能不能认出独立分支」这条标准，推出全球真实数字接近一万八千。<em>同一批鸟，没有任何新发现，数字差了将近一倍。</em></p>
+<p>2007 年有人把这团乱麻理了一下：这些尺子其实都在描同一样东西——一条独立往下走的世系；分歧只在于拿哪个线索当判据。而这些线索是在分开的过程里陆续出现的，顺序还不固定：有的两群先长得不一样、很久以后才不能杂交，有的正好反过来。所以从「开始分开」到「每条线索都对上」，中间隔着一段很长的灰区。</p>
+<p>要紧的是别把这读成「物种是人编出来的」。<strong>灰区里有真实的结构</strong>：基因流动的强弱、杂交后代能不能活、求偶时认不认，每一样都能测。含糊的不是自然界，是「种」这个词——它是一条线，自然界给的是一个过程。你把刀切在过程中间，落点当然取决于手里那把尺。</p>
+<p class="en-brief"><b>EN</b> The most familiar ruler draws the line like this: if two things interbreed and their offspring can themselves reproduce, they are one species. Horses and donkeys make mules, and mules are effectively sterile, so horses and donkeys are two. Systematically written into textbooks in 1942, this ruler ruled for decades. It fails visibly in three places. Fossils cannot be put in a breeding cage, yet palaeontologists name species daily. Bacteria mostly do not have sex, so the ruler takes no input from them. Worst of all, plenty of things counted as two species hybridise happily and their offspring breed — grizzlies and polar bears, many ducks, a great many orchids. So there are other rulers: appearance, ancestry (whether DNA shows a branch of its own that is not blending with others), and ecological niche. They do not convert into one another. The consequences are measurable. Counted by interbreeding, the world has roughly 10,000 bird species; in 2016 a team re-examined a sample of 200 named species under a "distinct lineage in form and DNA" standard and projected close to 18,000. Same birds, nothing newly discovered, nearly double the number. In 2007 someone untangled this: all the rulers are describing one thing — a lineage evolving separately — and differ only in which clue they use as the verdict. Those clues appear one after another during the split, and not in a fixed order. Between "beginning to separate" and "every clue agreeing" lies a long grey zone. Do not read this as "species are made up". The grey zone has real structure: the strength of gene flow, whether hybrids survive, whether courtship is recognised — each is measurable. What is vague is the word, not the world. The word is a line; nature offers a process.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>不育不需要谁想隔离，只要两边各改各的</h2>
+<p>为什么两群东西分开久了就生不出后代？顺口的答案是「它们演化出了隔离机制」。这句话把结果说成了目的，而实际跑的账里没有目的这一项。</p>
+<p>先把「隔离」拆成两类。一类是见面之前就没成：发情的季节对不上，求偶的调子对方不认，花粉落到另一种柱头上根本不萌发。另一类是成了之后才出问题：受精卵长不成，或者后代长成了却不育，骡子就是。</p>
+<p>第二类怎么来的，有个很干净的解释。设想祖先身上有一套彼此配合的零件。这群东西分成两拨、各走各的之后，左边那拨某个零件碰巧换了新版本，在左边剩下的一整套背景里配合得好好的；右边那拨是另一个零件换了新版本，在右边也一切正常。关键在于：<strong>左边的新版和右边的新版，从来没在同一个身体里待过。</strong>杂交后代是它们第一次碰面，于是卡住。</p>
+<div class="fig">
+<svg aria-label="示意图：祖先的两个零件配合正常；分成两拨后，左边换了一号零件的新版、右边换了二号零件的新版，各自都正常；杂交后代同时带上两个新版，第一次碰面就卡住" role="img" viewbox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar24a" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#52c98a"></path></marker><marker id="ar24b" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#d2a24c"></path></marker></defs>
+<rect fill="#16231b" height="34" rx="7" stroke="#7be0ab" stroke-width="1.3" width="250" x="175" y="8"></rect>
+<text fill="#cfe3d6" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="29">祖先：一号零件和二号零件，配合得好好的</text>
+<line marker-end="url(#ar24a)" stroke="#52c98a" stroke-width="1.6" x1="230" x2="130" y1="46" y2="78"></line>
+<line marker-end="url(#ar24a)" stroke="#52c98a" stroke-width="1.6" x1="370" x2="470" y1="46" y2="78"></line>
+<rect fill="#131d17" height="48" rx="7" stroke="#52c98a" stroke-width="1.1" width="200" x="20" y="84"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="120" y="103">左边这拨：一号换了新版</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="120" y="121">在左边这套背景里一切正常</text>
+<rect fill="#131d17" height="48" rx="7" stroke="#52c98a" stroke-width="1.1" width="200" x="380" y="84"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="480" y="103">右边这拨：二号换了新版</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="480" y="121">在右边这套背景里一切正常</text>
+<line marker-end="url(#ar24b)" stroke="#d2a24c" stroke-width="1.6" x1="150" x2="250" y1="136" y2="168"></line>
+<line marker-end="url(#ar24b)" stroke="#d2a24c" stroke-width="1.6" x1="450" x2="350" y1="136" y2="168"></line>
+<rect fill="#1d1811" height="38" rx="7" stroke="#d2a24c" stroke-width="1.3" width="290" x="155" y="174"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="197">杂交后代：两个新版第一次碰面，卡住</text>
+</svg>
+<div class="cap">两边都没做错什么，各自内部都自洽。出问题的只是那个从没被试过的组合。没有任何一步是冲着「别让我们杂交」去的。（示意）</div>
+</div>
+<p>不育是副产品。果蝇里已经找到好几对这样互相拆台的基因。还有个不太好察觉的推论：出事的是「左边的新东西 × 右边的新东西」这种配对，配对数涨得比差异本身快，所以刚分开时几乎什么都不发生，之后隔离越积越快——这被叫作滚雪球。</p>
+<p>那第一类（见面之前就没成）呢？如果杂交后代真的很差，在两拨碰头的地方，「挑剔一点」的变异就占便宜：不把繁殖机会浪费在杂交上的，留下的后代更多，接触地带的求偶偏好于是被越筛越严。这有证据：有人比较了大批果蝇的物种对，发现分布重叠的那些，在遗传距离相同的条件下，交配前的隔离明显强于分布不重叠的。这是个统计模式，不是直接看着它发生，但很难用别的方式解释得同样自然。</p>
+<p>而隔离甚至可以不靠地理。北美有一种在山楂上产卵的蝇，1850 到 1860 年代有一批转到了新引进的苹果树上。苹果熟得比山楂早几周，而这种蝇正好是在果子上求偶的。时间一错开，两拨在同一片果园里却基本不照面了。<em>没有海、没有山，一个「几周」就够了。</em>今天这两拨有可以测出来的遗传差异，但还远不是两个种——这个过程就卡在灰区里。</p>
+<p class="en-brief"><b>EN</b> Why do two groups separated long enough stop producing offspring together? The glib answer — "they evolved isolating mechanisms" — states an outcome as a purpose, and there is no purpose line in the ledger. Split isolation in two. Some of it happens before mating: breeding seasons that no longer overlap, courtship songs the other side does not recognise, pollen that will not germinate on the wrong stigma. Some happens after: embryos that fail, or offspring that grow up sterile, as mules do. The second kind has a clean explanation. Picture an ancestor with a set of parts that work together. After the group splits and each side goes its own way, one side happens to swap in a new version of part one, which works perfectly against everything else on that side; the other side swaps in a new version of part two, equally fine at home. The point is that the two new versions have never shared a body. A hybrid is their first meeting, and it jams. Sterility is a by-product; nothing aimed at it. Several such mutually sabotaging gene pairs have been found in fruit flies. There is a less obvious corollary: incompatibilities come from pairings of "new thing on the left times new thing on the right", and the number of pairings grows faster than the differences themselves — so almost nothing happens at first, then isolation accumulates ever faster. This is called snowballing. As for the first kind: if hybrids really do badly, then where the two groups meet, choosier variants gain — they waste no reproduction on hybrids — and courtship preferences in the contact zone get filtered sharper. The evidence: across many fruit-fly species pairs, those with overlapping ranges show markedly stronger pre-mating isolation at the same genetic distance than non-overlapping ones. That is a statistical pattern rather than the process observed directly, but it is hard to explain as naturally any other way. Isolation need not even use geography. In North America a fly that lays its eggs in hawthorn had a portion shift, in the 1850s–60s, to newly introduced apple trees. Apples ripen a few weeks earlier, and this fly courts on the fruit. Once timing diverged, the two groups barely met although they share an orchard. They now show measurable genetic differences — and are still nowhere near two species. The process is parked in the grey zone.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>边界不在整个基因组上，只挡在几个地方</h2>
+<p>回到开头那两种乌鸦。2014 年一组研究者把两边的基因组从头到尾比了一遍。八百多万个有变化的位点里，「固定差异」——一边全是这个版本、另一边全是那个版本——只有 82 处。其中 81 处挤在 18 号染色体上不到两百万个碱基的一小段里，而那一段上的基因跟羽毛色素和视觉有关。</p>
+<p>换句话说，除了那一小段，两边的基因组几乎是通着的：杂交带里的鸟每一代都在交换基因，交换得相当彻底，只有那一小段过不去。</p>
+<p>原因不神秘。在那几个位点上带着「另一边版本」的鸟，找对象吃亏——两边的鸟都更愿意找看起来像自己的，于是每一代都有一点点被筛掉。<strong>选择只按在这几个位点上，其余地方随便流。</strong>结果就是你眼睛看到的样子：外表泾渭分明，底下几乎混成一片。研究者把这种地方叫基因组上的「岛」。</p>
+<div class="fig">
+<svg aria-label="示意图：上方是一条地带，左边全黑的乌鸦、中间一条窄的混血带、右边灰身黑头的乌鸦；下方是沿基因组走一遍的差异曲线，绝大部分很低，只有一处尖峰" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#1b241e" height="44" width="215" x="40" y="16"></rect>
+<rect fill="#44554b" height="44" width="48" x="255" y="16"></rect>
+<rect fill="#7d8d84" height="44" width="257" x="303" y="16"></rect>
+<text fill="#cfe3d6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="147" y="43">全黑（西欧）</text>
+<text fill="#11190f" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="431" y="43">灰身黑头（中欧以东）</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="279" y="76">窄窄一条混血带</text>
+<line stroke="#24382c" stroke-width="1" x1="40" x2="560" y1="92" y2="92"></line>
+<polyline fill="none" points="40,218 90,214 130,220 170,212 210,219 250,215 290,217 330,213 355,212 372,170 382,140 392,168 410,211 450,216 490,212 530,218 560,215" stroke="#7be0ab" stroke-width="1.8"></polyline>
+<line stroke="#8aa192" stroke-width="1.2" x1="40" x2="560" y1="232" y2="232"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="40" y="126">两边的差异</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="382" y="132">82 处固定差异，81 处挤在这里</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="44" y="247">沿着基因组从头走到尾 · 其余部分几乎通着，随便交换</text>
+</svg>
+<div class="cap">外表上是两种鸟，基因组上只有一小段还挡得住。分化不是整体发生的，是长在几个点上的。（示意，曲线为示意形状而非实测数据）</div>
+</div>
+<p>这件事改了问题本身。「它们是不是两个种」问的是整体，而分化并不整体发生。该问的是：基因组上还有哪几处挡得住，靠什么挡住，挡得住多久。</p>
+<p>还有一类例子把灰区直接铺在地图上。绕着青藏高原一圈分布着一群柳莺，相邻的两群能正常交配，可绕完一圈，在北边两端碰头的地方，两边基本不来往了。加州中央谷地周围的一群蝾螈是同一个套路。这种「环物种」是教科书最爱的插图，因为它把「连续变化」和「两端已经分开」摆在同一张图上，不用你想象几十万年。</p>
+<p>诚实一点说：2014 年的基因组研究确认那个圈确实存在，但没有插图画得那么干净——历史上基因流断过几次，两端在有的地方还混过血。经典案例走近看常常都这样毛糙，这不推翻结论，只是提醒你别把示意图当照片。分家半途而废本来就是常态。</p>
+<p>你自己就带着一个例子：现代人的祖先和尼安德特人分开了几十万年，重新遇上时照样留下了共同的后代，那些片段现在还在你的基因组里（见「古 DNA 革命」那期）。两条线分开又接回去——在那一段历史上，「物种」这条线根本画不下去。</p>
+<p class="en-brief"><b>EN</b> Back to the crows. In 2014 a team compared the two genomes end to end. Among over eight million variable sites, there were only 82 fixed differences — positions where one side is uniformly one version and the other side uniformly the other. Eighty-one of those 82 sit crammed into a stretch of under two million bases on chromosome 18, carrying genes tied to feather pigment and to vision. In other words, apart from that one stretch the two genomes are essentially open to each other. Birds in the hybrid zone exchange genes every generation, and thoroughly; only that stretch will not pass. The reason is not mysterious: at those sites, a bird carrying the other side's version does worse at finding a mate, because birds on both sides prefer partners that look like themselves. A little is filtered out each generation. Selection presses on a handful of positions; everywhere else flows freely. The result is what your eye sees: two sharply distinct appearances over a genome that is nearly blended. Researchers call such places genomic islands. This reframes the question. "Are they two species" asks about the whole, and divergence does not happen as a whole. The question to ask is which few places still hold, by what, and for how long. Another kind of example lays the grey zone out on a map. A chain of warblers rings the Tibetan plateau: neighbouring populations interbreed normally, but where the two ends of the ring meet in the north, they largely do not. A chain of salamanders around California's Central Valley is the same trick. Such ring species are a textbook favourite because they put continuous variation and separated endpoints on one map, with no need to imagine hundreds of thousands of years. In honesty: genomic work in 2014 confirmed the ring is real but nowhere near as tidy as the diagram — gene flow was broken several times historically, and the ends have interbred in places. Classic cases usually look ragged up close; that does not overturn the conclusion, it just warns against reading a diagram as a photograph. Half-finished splits are the norm. You carry one: the ancestors of modern humans and Neanderthals were apart for hundreds of thousands of years and still left shared descendants when they met again, with those fragments still in your genome (see the piece on the ancient DNA revolution). Two lines separated and rejoined — across that stretch of history, the species line simply cannot be drawn.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 写作与这个学习站本身</b>——同一个概念隔了十几期又要用一次，你重新造了一句定义，和上次那句其实不一样，自己没察觉。跑的是「『是不是同一种』这个问题，换把尺子答案就变」那节的机制：判据一换划分就变，而判据的漂移是无声的。<b>可改的动作</b>：写到旧概念时先搜站内上一次那句话，原样复述一遍再往下展开；决定要不要单开一期，看的不是主题名像不像，是两期需要的前置知识重合了多少。</li>
+<li><b>② 投资与仓位</b>——你把钱分到两个策略上，名义上是分散；一年后发现它们在同一次回撤里一起往下掉。跑的是「边界不在整个基因组上，只挡在几个地方」那节的机制：边界不是名字给的，是实际交换量给的。<b>可改的动作</b>：别核对两边标的名单重不重叠，去数过去若干次单日大跌里两边同向的比例；比例高就当一个仓位记敞口，不管挂在几个账户名下。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>组织与制度 · 一个团队拆出去独立两年，再合起来做一件事时，两边连「上线了」指的是什么都对不上</b>：拆分那天两边的流程是同一套。之后左边为了自己的场景改了发布流程，右边为了自己的场景改了验收标准，各自内部都跑得很顺。跑的是「不育不需要谁想隔离，只要两边各改各的」那节的机制：不相容不来自任何一方做错，而来自两个从没在同一个流程里共处过的改动第一次相遇。由此能推出一个原本看不出的结论：<b>合并的代价不取决于哪边做得烂，而取决于分开之后各自独立改动的次数，而且它涨得比改动次数还快——因为出事的是「左边的改动 × 右边的改动」这种配对，配对数是乘出来的。所以「先各自跑半年再整合」这个安排，成本不是随时间线性累积的。</b><b>但这里不成立</b>：生物那边的不相容写在基因里，不能商量，每一代都重新出现；组织这边两边可以坐下来重新对齐一次定义，隔离就清零了。所以真正维持边界的不是不相容本身，而是没人愿意付那次重新对齐的账——边界是可撤的，这一点和乌鸦不一样。</li>
+<li><b>工程与系统设计 · 一个内部库被 fork 出去两年，大部分文件还能互相打补丁，合不动的永远是那三四个</b>：fork 就是复制一份出去自己改。两年下来 diff 有上万行，但把补丁从一边搬到另一边，绝大多数时候是干净的，只有少数几个文件每次都冲突。跑的是「边界不在整个基因组上，只挡在几个地方」那节的机制：分化长在几个点上而不是整体上，其余部分一直在自由交换。由此能推出一个原本看不出的结论：<b>「这两个版本还能不能合」是个问错的问题。该问的是哪几个文件是岛——合并成本几乎全压在那几处，和总 diff 行数基本无关；估合并工作量时数行数会系统性地估歪。</b><b>但这里不成立</b>：乌鸦那几段之所以稳定挡得住，是因为每一代都有个持续的筛选把外来版本清掉，岛的数目不涨。代码这边没有这样的筛选，两个 fork 的差异只会一直堆着，岛会越来越多——所以这个结构是会恶化的，不是一个稳态。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>人类会不会分化成不同的物种？</summary>
+<div>按机制看方向是反的。分化要求基因流长期切断，而现代人类各人群之间的基因流从来没有断过，全球流动只增不减，正在往「越来越混」的方向走。另外要说清一件常被误读的事：现代人在遗传上不是一组一组离散的分群——绝大部分遗传变异存在于任何一个人群内部，而不是人群之间，划分出来的「人种」在基因上找不到对应的边界。把演化语言套到这上面去做高下之分，既不是科学，也没有数据。</div>
+</details>
+<details><summary>形成一个新物种要多久？</summary>
+<div>差得非常远，没有统一答案。植物里一次染色体加倍就能在一代之内造出一个和亲本无法杂交的新种。动物那边通常要几十万到几百万年，而非洲几个大湖里的丽鱼出名地快。快慢主要看基因流断得多干净、两边的选择压差多大。</div>
+</details>
+<details><summary>分类学家吵不出结果，会有什么实际后果吗？</summary>
+<div>有，而且相当直接。保护法规、濒危名录、栖息地划定基本都按「种」来写。同一群动物，算成一个广布的种就不算濒危，拆成三个各自分布狭窄的种就都上名录。2016 年那项把鸟种数翻倍的研究，明确把这一点当成写它的理由。「种」不只是学术标签，还是分配资源的单位。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Speciation" rel="noopener" target="_blank">物种形成</a> · <a href="https://en.wikipedia.org/wiki/Species_concept" rel="noopener" target="_blank">物种概念之争</a> · <a href="https://en.wikipedia.org/wiki/Hybrid_zone" rel="noopener" target="_blank">杂交带</a> · <a href="https://en.wikipedia.org/wiki/Ring_species" rel="noopener" target="_blank">环物种</a> · <a href="https://en.wikipedia.org/wiki/Bateson%E2%80%93Dobzhansky%E2%80%93Muller_model" rel="noopener" target="_blank">杂交不育的零件模型</a></li>
+<li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166307" rel="noopener" target="_blank">换一把尺子，全球鸟种数接近翻倍（PLOS ONE 2016）</a> · <a href="https://academic.oup.com/sysbio/article/56/6/879/1653163" rel="noopener" target="_blank">把各种物种概念统一起来的尝试（Systematic Biology 2007）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1253226" rel="noopener" target="_blank">乌鸦：外表分明而基因组几乎通着（Science 2014）</a> · <a href="https://www.nature.com/articles/nature13285" rel="noopener" target="_blank">柳莺这个环没有课本画得那么干净（Nature 2014）</a></li>
+<li><a href="https://www.nature.com/articles/336061a0" rel="noopener" target="_blank">苹果与山楂上的两拨蝇已经有遗传差异（Nature 1988）</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1635049100" rel="noopener" target="_blank">它们靠果子的气味认路（PNAS 2003）</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>

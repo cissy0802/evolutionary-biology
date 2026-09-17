@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 24: Speciation</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 24 · PHASE C DEEP MECHANISM</div>
+<h1>Speciation</h1>
+<h2>When does one group of things count as having become two — and why the line is yours to draw</h2>
+<div class="meta">2026-09-17 · BigCat</div>
+<div class="pitch">Splitting apart is rarely a clean snap. More often it stalls halfway for a few hundred thousand years, or breaks and then rejoins — and you carry the evidence of one rejoining.</div>
+</header>
+<div class="intro">
+<p>European crows do something odd.</p>
+<p>From London to Berlin, crows are entirely black. From Vienna east to Moscow, crows have a grey body with a black head and wings. You can tell them apart at a glance. Between them, across central Europe, runs a band a few dozen kilometres wide where the birds come in every mix of the two; and that band has barely shifted in decades.</p>
+<p>So are they one species, or two? You probably assume the question has a settled answer. Ask three taxonomists and you get three — and all three can give you reasons.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Change the ruler and "is it the same species" changes its answer</h2>
+<p>The most familiar ruler draws the line like this: if two things interbreed and the offspring can themselves reproduce, they are one species. Horses and donkeys make mules, and mules essentially cannot breed, so horses and donkeys are two. Written systematically into textbooks in 1942, this ruler ruled for decades.</p>
+<p>It fails visibly in three places. Fossils cannot be put in a breeding cage, yet palaeontologists name fossil species every day. Bacteria mostly do not reproduce sexually, so the ruler receives no input from them at all. Worst is the third: a great many things counted as two species hybridise happily and their offspring breed — grizzlies and polar bears, many kinds of duck, a large number of orchids.</p>
+<p>So there are other rulers. By looks: differ enough in form and you are two. By ancestry: whether DNA shows a branch belonging only to this group, not blending into others. By livelihood: whether each holds an ecological niche of its own. None of these rulers converts into another.</p>
+<p>The consequence of switching rulers can be measured. Counted by "can they interbreed", the world holds roughly ten thousand bird species. In 2016 a team re-examined a sample of two hundred already-named species using a "distinct lineage in form and DNA" standard, and projected that the real figure is close to eighteen thousand. <em>The same birds, nothing newly discovered, and the number nearly doubles.</em></p>
+<p>In 2007 someone untangled the mess: all these rulers are describing the same thing — a lineage running on separately — and differ only in which clue they take as the verdict. Those clues appear one after another over the course of a split, and not in a fixed order: sometimes two groups look different long before they stop interbreeding, sometimes the reverse. Between "starting to separate" and "every clue agreeing" lies a long grey zone.</p>
+<p>What matters is not to read this as "species are made up". <strong>The grey zone has real structure</strong>: how strongly genes flow, whether hybrids survive, whether courtship is recognised — each of these is measurable. What is vague is not nature but the word. The word is a line; nature hands you a process. Cut into the middle of a process and where the cut falls depends, of course, on the ruler in your hand.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Sterility needs nobody wanting isolation, only each side changing its own stuff</h2>
+<p>Why do two groups kept apart long enough stop producing offspring together? The glib answer is "they evolved isolating mechanisms". That sentence states an outcome as a purpose, and there is no purpose line in the ledger that actually runs.</p>
+<p>Split "isolation" in two. One kind happens before anything is consummated: breeding seasons that no longer line up, a courtship song the other side does not recognise, pollen that will not germinate on the wrong stigma. The other kind shows up afterwards: the fertilised egg fails, or the offspring grows up sterile, as a mule does.</p>
+<p>Where the second kind comes from has a very clean explanation. Picture an ancestor carrying a set of parts that work together. After the group splits in two and each side goes its own way, the left side happens to swap in a new version of one part, which fits perfectly against everything else on the left; the right side swaps in a new version of a different part, equally fine at home. The key point: <strong>the left side's new version and the right side's new version have never shared a body.</strong> A hybrid is their first meeting, and it jams.</p>
+<div class="fig">
+<svg aria-label="Diagram: the ancestor's two parts work together; after the split, the left group swaps in a new version of part one and the right group a new version of part two, each fine at home; the hybrid carries both new versions, which meet for the first time and jam" role="img" viewbox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar24a" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#52c98a"></path></marker><marker id="ar24b" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><path d="M0,0 L9,3.5 L0,7 z" fill="#d2a24c"></path></marker></defs>
+<rect fill="#16231b" height="34" rx="7" stroke="#7be0ab" stroke-width="1.3" width="290" x="155" y="8"></rect>
+<text fill="#cfe3d6" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="29">Ancestor: part one and part two work together fine</text>
+<line marker-end="url(#ar24a)" stroke="#52c98a" stroke-width="1.6" x1="230" x2="130" y1="46" y2="78"></line>
+<line marker-end="url(#ar24a)" stroke="#52c98a" stroke-width="1.6" x1="370" x2="470" y1="46" y2="78"></line>
+<rect fill="#131d17" height="48" rx="7" stroke="#52c98a" stroke-width="1.1" width="215" x="14" y="84"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="121" y="103">Left group: new version of part one</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="121" y="121">All fine against the left-hand backdrop</text>
+<rect fill="#131d17" height="48" rx="7" stroke="#52c98a" stroke-width="1.1" width="215" x="371" y="84"></rect>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="478" y="103">Right group: new version of part two</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="478" y="121">All fine against the right-hand backdrop</text>
+<line marker-end="url(#ar24b)" stroke="#d2a24c" stroke-width="1.6" x1="150" x2="250" y1="136" y2="168"></line>
+<line marker-end="url(#ar24b)" stroke="#d2a24c" stroke-width="1.6" x1="450" x2="350" y1="136" y2="168"></line>
+<rect fill="#1d1811" height="38" rx="7" stroke="#d2a24c" stroke-width="1.3" width="330" x="135" y="174"></rect>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="11" text-anchor="middle" x="300" y="197">Hybrid: the two new versions meet for the first time, and jam</text>
+</svg>
+<div class="cap">Neither side did anything wrong, and each is internally consistent. What fails is only the combination that was never tried. No step along the way aimed at "keep us from interbreeding". (Schematic.)</div>
+</div>
+<p>Sterility is a by-product. Several such mutually sabotaging gene pairs have been found in fruit flies. There is a corollary that is easy to miss: what goes wrong is a pairing of "new thing on the left times new thing on the right", and the number of pairings grows faster than the differences themselves — so almost nothing happens right after a split, and then isolation piles up faster and faster. This is called snowballing.</p>
+<p>And the first kind, the failures before mating? If hybrids really do badly, then where the two groups meet, choosier variants gain: those that waste no reproduction on hybrids leave more offspring, and courtship preference in the contact zone gets filtered sharper. There is evidence. Someone compared a large number of fruit-fly species pairs and found that, at the same genetic distance, pairs with overlapping ranges show markedly stronger pre-mating isolation than pairs that do not overlap. That is a statistical pattern rather than the process watched directly, but it is hard to explain as naturally any other way.</p>
+<p>Isolation need not even use geography. In North America there is a fly that lays its eggs in hawthorn; in the 1850s and 1860s a portion of it moved onto newly introduced apple trees. Apples ripen a few weeks earlier than hawthorn, and this fly courts on the fruit itself. Once the timing slipped, the two groups barely encountered each other although they shared an orchard. <em>No sea, no mountain — a few weeks was enough.</em> Today the two show measurable genetic differences, yet are nowhere near two species: the process is parked in the grey zone.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>The boundary is not across the whole genome, it holds in only a few places</h2>
+<p>Back to those crows. In 2014 a team compared the two genomes end to end. Among over eight million variable sites, the "fixed differences" — positions where one side is uniformly one version and the other side uniformly the other — numbered just 82. Eighty-one of those sit crammed into a stretch of under two million bases on chromosome 18, a stretch carrying genes tied to feather pigment and to vision.</p>
+<p>In other words, apart from that one stretch the two genomes are essentially open to each other: birds in the hybrid zone swap genes every generation, and swap them thoroughly. Only that stretch will not pass.</p>
+<p>The reason is not mysterious. At those particular sites, a bird carrying the other side's version does worse at finding a mate — birds on both sides prefer partners that look like themselves — so a little is filtered out each generation. <strong>Selection presses on this handful of positions; everywhere else flows freely.</strong> The result is exactly what your eye sees: two sharply distinct appearances over a genome that is nearly blended underneath. Researchers call such places genomic islands.</p>
+<div class="fig">
+<svg aria-label="Diagram: above, a belt with all-black crows on the left, a narrow hybrid band in the middle and grey-bodied black-headed crows on the right; below, a curve of difference walked along the genome, low almost everywhere with a single spike" role="img" viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#1b241e" height="44" width="215" x="40" y="16"></rect>
+<rect fill="#44554b" height="44" width="48" x="255" y="16"></rect>
+<rect fill="#7d8d84" height="44" width="257" x="303" y="16"></rect>
+<text fill="#cfe3d6" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="147" y="43">All black (western Europe)</text>
+<text fill="#11190f" font-family="Georgia,serif" font-size="10.5" text-anchor="middle" x="431" y="43">Grey body, black head (east of there)</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="279" y="76">A narrow band of hybrids</text>
+<line stroke="#24382c" stroke-width="1" x1="40" x2="560" y1="92" y2="92"></line>
+<polyline fill="none" points="40,218 90,214 130,220 170,212 210,219 250,215 290,217 330,213 355,212 372,170 382,140 392,168 410,211 450,216 490,212 530,218 560,215" stroke="#7be0ab" stroke-width="1.8"></polyline>
+<line stroke="#8aa192" stroke-width="1.2" x1="40" x2="560" y1="232" y2="232"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="40" y="126">Difference between the two sides</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="382" y="132">81 of the 82 fixed differences sit here</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="44" y="247">Walking the genome end to end · everywhere else stays open and freely exchanged</text>
+</svg>
+<div class="cap">Two kinds of bird to the eye; one short stretch of genome still holding the line. Divergence does not happen as a whole — it grows at a few points. (Schematic; the curve is illustrative, not measured data.)</div>
+</div>
+<p>This changes the question itself. "Are they two species" asks about the whole, and divergence is not a property of the whole. The question to ask is: which few places still hold, by what, and for how long.</p>
+<p>Another kind of example lays the grey zone straight onto a map. A chain of warblers rings the Tibetan plateau. Neighbouring populations interbreed normally, but go all the way round and, where the two ends meet in the north, the two barely mix. A chain of salamanders around California's Central Valley is the same trick. These "ring species" are the textbook's favourite illustration, because they put continuous variation and separated endpoints on a single map, with no need to imagine hundreds of thousands of years.</p>
+<p>To be honest about it: genomic work in 2014 confirmed the ring is real, but not as tidy as the illustration — gene flow was interrupted several times historically, and the two ends have interbred in places. Classic cases usually look ragged up close; that does not overturn the conclusion, it just warns you against reading a diagram as a photograph. Half-finished splits are the norm.</p>
+<p>You carry an example yourself: the ancestors of modern humans and Neanderthals were apart for hundreds of thousands of years, and still left shared descendants when they met again — those fragments are in your genome now (see the piece on the ancient DNA revolution). Two lines separated and rejoined, and across that stretch of history the species line simply cannot be drawn.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenes · BigCat</h3>
+<ul>
+<li><b>① Writing, and this learning site itself</b>—a concept comes back a dozen issues later and you coin a fresh definition for it, not quite the one you used last time, without noticing. What is running is the mechanism from "Change the ruler and 'is it the same species' changes its answer": switch the criterion and the divisions switch with it, and criterion drift is silent. <b>The changeable move</b>: when an old concept comes up, search the site for the sentence you used last time and restate it verbatim before going further, rather than coining a new one; and when deciding whether something deserves its own issue, look not at how similar the topic names are but at how much of the required background the two issues share.</li>
+<li><b>② Investing and position sizing</b>—you split money across two strategies and call it diversification; a year later they fall together in the same drawdown. What is running is the mechanism from "The boundary is not across the whole genome, it holds in only a few places": a boundary comes from the actual volume of exchange, not from the names. <b>The changeable move</b>: stop checking whether the two holdings lists overlap and start counting, across the last several big down days, the fraction on which both moved the same way; if that fraction is high, book them as one position for exposure purposes, however many accounts they hang under.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>Organisations and institutions · A team is spun out for two years, and when the two sides finally work on something together they cannot even agree what "shipped" means</b>: on the day of the split both sides ran the same process. Then the left side changed its release process for its own situation and the right side changed its acceptance criteria for its own, and each ran smoothly at home. What is running is the mechanism from "Sterility needs nobody wanting isolation, only each side changing its own stuff": incompatibility comes not from either side doing something wrong, but from two changes that never shared a process meeting for the first time. From which follows a conclusion you would not otherwise see: <b>the cost of merging does not depend on which side did worse work, but on how many independent changes each made after the split — and it climbs faster than that count, because what breaks is a pairing of "a change on the left times a change on the right", and pairings multiply. So "let each run alone for six months and integrate afterwards" does not accumulate cost linearly with time.</b> <b>Where it does not hold</b>: in biology the incompatibility is written into genes, is not negotiable, and reappears every generation; in an organisation both sides can sit down and realign the definitions once, and the isolation resets to zero. So what actually maintains the boundary is not the incompatibility but the fact that nobody wants to pay for that realignment — the boundary is revocable, and that is unlike the crows.</li>
+<li><b>Engineering and systems design · An internal library is forked for two years; most files still take each other's patches, and the ones that will not merge are always the same three or four</b>: a fork is a copy taken away and changed separately. Two years on the diff runs to tens of thousands of lines, yet moving a patch from one side to the other is clean nearly every time, and only a few files conflict on every attempt. What is running is the mechanism from "The boundary is not across the whole genome, it holds in only a few places": divergence grows at a few points rather than across the whole, while everything else keeps exchanging freely. From which follows a conclusion you would not otherwise see: <b>"can these two versions still be merged" is the wrong question. The question is which files are the islands — merge cost is almost entirely concentrated there and has little to do with total diff size, so estimating merge effort by counting lines will be wrong in a systematic direction.</b> <b>Where it does not hold</b>: those crow stretches hold the line stably because a continuous filter clears out the foreign version every generation, so the number of islands does not grow. Code has no such filter; differences between two forks simply accumulate and the islands multiply. The structure degrades — it is not a steady state.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Will humans split into different species?</summary>
+<div>By the mechanism, the direction is the opposite. Divergence requires gene flow to be cut off for a long time, and gene flow between human populations has never stopped; global movement only increases, so the trend runs towards more mixing, not less. One thing that is often misread also deserves saying plainly: modern humans are not genetically a set of discrete groups — the overwhelming majority of genetic variation sits within any given population rather than between populations, and the "races" people draw have no matching boundary in the genes. Dressing rankings of people up in evolutionary language is neither science nor supported by data.</div>
+</details>
+<details><summary>How long does it take to form a new species?</summary>
+<div>Enormously variable; there is no single answer. In plants, one doubling of the chromosome set can produce, in a single generation, something that cannot interbreed with its parents. In animals it usually takes hundreds of thousands to millions of years, while the cichlid fishes of several African lakes are famously fast. The pace depends mostly on how cleanly gene flow is cut and how different the selection pressures are on the two sides.</div>
+</details>
+<details><summary>Does it matter in practice that taxonomists cannot settle the argument?</summary>
+<div>It does, quite directly. Conservation law, endangered-species lists and habitat designations are written in terms of species. The same animals, counted as one widespread species, are not endangered; split into three narrowly distributed ones, all three are listed. The 2016 study that doubled the bird count named this explicitly as its reason for existing. "Species" is not only an academic label, it is a unit for allocating resources.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Speciation" rel="noopener" target="_blank">Speciation</a> · <a href="https://en.wikipedia.org/wiki/Species_concept" rel="noopener" target="_blank">The species-concept argument</a> · <a href="https://en.wikipedia.org/wiki/Hybrid_zone" rel="noopener" target="_blank">Hybrid zones</a> · <a href="https://en.wikipedia.org/wiki/Ring_species" rel="noopener" target="_blank">Ring species</a> · <a href="https://en.wikipedia.org/wiki/Bateson%E2%80%93Dobzhansky%E2%80%93Muller_model" rel="noopener" target="_blank">The mismatched-parts model of hybrid sterility</a></li>
+<li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166307" rel="noopener" target="_blank">Change the ruler and the world's bird count nearly doubles (PLOS ONE 2016)</a> · <a href="https://academic.oup.com/sysbio/article/56/6/879/1653163" rel="noopener" target="_blank">An attempt to unify the species concepts (Systematic Biology 2007)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1253226" rel="noopener" target="_blank">Crows: distinct to the eye, nearly open in the genome (Science 2014)</a> · <a href="https://www.nature.com/articles/nature13285" rel="noopener" target="_blank">The warbler ring is less tidy than the textbook (Nature 2014)</a></li>
+<li><a href="https://www.nature.com/articles/336061a0" rel="noopener" target="_blank">Apple and hawthorn flies already differ genetically (Nature 1988)</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.1635049100" rel="noopener" target="_blank">They navigate by the smell of the fruit (PNAS 2003)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
