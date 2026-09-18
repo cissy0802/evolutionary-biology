@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolutionary Biology Day 25: Convergent Evolution</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 25 · PHASE C MECHANISMS IN DEPTH</div>
+<h1>Convergent Evolution</h1>
+<h2>Why two unrelated lineages keep arriving at the same answer</h2>
+<div class="meta">2026-09-18 · BigCat</div>
+<div class="pitch">Looking alike is usually taken as evidence of being related. Yet a dolphin and a 200-million-year-old ichthyosaur are mistakable for each other precisely because they are not related — the likeness was pressed into them by water, not handed down by an ancestor.</div>
+</header>
+<div class="intro">
+<p>At the aquarium, a shark and a dolphin swim past you. Spindle-shaped body, a fin on the back, a tail pushing from behind. Not knowing better, you would take them for the same kind of thing.</p>
+<p>They are far apart. A shark is a fish; a dolphin's ancestors walked on four legs on land, and it still has to surface for air. Add a third: the ichthyosaur, a marine reptile from over 200 million years ago, whose fossil could almost be paired with a dolphin, and which is related to neither of the other two. Three separate origins, trimmed by the same water into the same outline.</p>
+<p>The strange part is not that they look alike. It is that the likeness follows a rule: some things get stumbled upon again and again — eyes, this spindle shape, proteins that keep blood from freezing — while others look as though they succeeded only once. Why is the same machine so generous with one kind of answer and so stingy with another?</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>"An eye could never be stumbled upon" — it has been stumbled upon at least forty times</h2>
+<p>Close your eyes and turn your face to the sun. Red glow behind the lids. Turn away, and it darkens. Your eyes never opened, yet you know which side the light is on.</p>
+<p>That is the whole job of the most primitive eye: a patch of skin that senses light. Between that patch and what you are using right now lie several steps, and <strong>every one of them has to pay off on the spot</strong> — nobody is storing a half-finished part for you until it becomes useful later.</p>
+<p>A flat patch can only report bright or dark. Let it dip inward a little and the rim blocks light coming from the side, so you begin to tell which direction light comes from; deeper means sharper, and each increment is immediately useful — knowing which side the shadow is falling from is knowing which way to dodge. Close it into a near-sealed cup with only a pinhole left, and light forms an image inside: the nautilus still uses this eye today, which sees shapes, but dimly. Grow a transparent membrane over the opening to keep grit out, thicken its middle, and it starts to focus. <em>A lens was not invented; it is a membrane slowly getting thicker.</em></p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 190" role="img" aria-label="Diagram: a flat light-sensitive patch, then a cup, then a near-closed pinhole, then a membrane thickening into a lens, with what each step immediately buys">
+<defs><marker id="ar25a" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><path d="M0,0 L9,3.5 L0,7 z" fill="#52c98a"></path></marker></defs>
+<rect x="14" y="30" width="122" height="60" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<line x1="34" y1="70" x2="116" y2="70" stroke="#7be0ab" stroke-width="3"></line>
+<text x="75" y="52" font-size="10" fill="#c2d2c6" font-family="Georgia,serif" text-anchor="middle">Flat patch of skin</text>
+<text x="75" y="110" font-size="9" fill="#8aa192" font-family="Georgia,serif" text-anchor="middle">Buys: bright or dark</text>
+<rect x="160" y="30" width="122" height="60" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<path d="M182 58 Q221 92 260 58" fill="none" stroke="#7be0ab" stroke-width="3"></path>
+<text x="221" y="46" font-size="10" fill="#c2d2c6" font-family="Georgia,serif" text-anchor="middle">It dips into a cup</text>
+<text x="221" y="110" font-size="9" fill="#8aa192" font-family="Georgia,serif" text-anchor="middle">Buys: which way light comes</text>
+<rect x="306" y="30" width="122" height="60" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<path d="M328 50 Q367 108 406 50" fill="none" stroke="#7be0ab" stroke-width="3"></path>
+<text x="367" y="42" font-size="10" fill="#c2d2c6" font-family="Georgia,serif" text-anchor="middle">Closed to a pinhole</text>
+<text x="367" y="110" font-size="9" fill="#8aa192" font-family="Georgia,serif" text-anchor="middle">Buys: an image, but dim</text>
+<rect x="452" y="30" width="134" height="60" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.2"></rect>
+<path d="M472 48 Q511 110 550 48" fill="none" stroke="#e6c07b" stroke-width="3"></path>
+<ellipse cx="511" cy="52" rx="17" ry="9" fill="none" stroke="#e6c07b" stroke-width="2"></ellipse>
+<text x="519" y="110" font-size="9" fill="#8aa192" font-family="Georgia,serif" text-anchor="middle">Buys: bright and sharp</text>
+<line x1="138" y1="60" x2="156" y2="60" stroke="#52c98a" stroke-width="1.5" marker-end="url(#ar25a)"></line>
+<line x1="284" y1="60" x2="302" y2="60" stroke="#52c98a" stroke-width="1.5" marker-end="url(#ar25a)"></line>
+<line x1="430" y1="60" x2="448" y2="60" stroke="#52c98a" stroke-width="1.5" marker-end="url(#ar25a)"></line>
+<text x="300" y="175" font-size="10" fill="#8aa192" font-family="Georgia,serif" text-anchor="middle">Each box sees a little more than the one before, so each box can pay its own way</text>
+</svg>
+<div class="cap">Nowhere on this slope does anything have to run at a loss first. Half an eye is not half of a useless thing; it is an eye that sees more coarsely.</div>
+</div>
+<p>In 1994 two researchers costed the slope out: allowing shape to change by only one percent per generation, and choosing conservative values at every turn, going from a flat light-sensitive patch to a fish-like lens eye takes roughly 364,000 generations — a few hundred thousand years for a small animal with one generation a year. That is a model, not a fossil record, but it answers the question that actually stalls people: is there enough time? Comfortably.</p>
+<p>The count is even more telling. In 1977 someone went through the eyes of the major animal groups one by one: eyes of a basic kind have arisen independently at least 40 times in the animal kingdom, and possibly as many as 65.</p>
+<p>"Independently" has a limit, though. An octopus eye is a camera eye like yours: one opening, one lens, one retina; their common ancestor had no such eye, and the two sides built it separately. Yet the molecule you both use to catch light belongs to the same family, and the master switch gene that starts eye development is the same one — an old part that was already around long before. <strong>What got reinvented over and over is the optical scheme; the light sensor was invented once, and has been conscripted ever since.</strong></p>
+<p>And building separately leaves scars: your retina is installed backwards, with the cabling laid in front of the photoreceptors and a hole punched through to let the bundle out — that hole is your blind spot; the octopus has no such trouble. <em>One function, two implementations, each carrying the debts of its own road.</em></p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Evolution does not favour a shape; there were never many usable shapes to begin with</h2>
+<p>Water is about 800 times denser than air. For anything trying to be fast in it, drag overrides every other consideration, and the usable body shapes get squeezed into a narrow band: blunt in front, thick in the middle, tapering behind, driven from the rear of the body.</p>
+<p>Saying "they became streamlined in order to swim fast" is fluent, and wrong exactly where it matters — there is no "in order to" in evolution. What actually runs in the ledger is this: each generation is born with shapes that vary a little; the ill-suited ones swim slightly slower and get eaten slightly more often, and leave slightly fewer offspring. <strong>Water needs no intention. It only needs to charge a higher price for the wrong shape.</strong> Charge it for a few million years and what is left all looks the same.</p>
+<p>Constraint has a second source: the parts on hand. Evolution can only edit what already exists. A dolphin's tail beats up and down — its ancestors' spines flexed up and down as they ran on land; a shark's tail beats side to side. The same outline, and two perpendicular ways of rowing. <em>History fingerprints the answer without changing the answer itself.</em></p>
+<p>This has really happened, and with frightening precision. Antarctic notothenioid fish and Arctic cod each evolved almost identical antifreeze glycoproteins, whose job is to stick to newly formed ice crystals in the blood and stop them growing. The Antarctic version was remodelled from a digestive-enzyme gene; the Arctic one has nothing to do with that gene and came from somewhere else entirely. <em>The same answer, from two unrelated starting points.</em></p>
+<p>The scale can be large, too. C4 photosynthesis — a package of modifications involving leaf structure and several biochemical steps that lets a plant waste less water where it is hot and dry — has arisen independently at least 60 times in flowering plants. Bats and toothed whales each took up echolocation to move in the dark, and even the inner-ear protein that amplifies sound has been changing in the same direction in both.</p>
+<p>But do not push this too far. The thylacine and the wolf, separated by about 160 million years, have nearly identical skulls. After the thylacine genome was sequenced in 2018, almost no signal of convergence with the wolf turned up in the protein-coding genes; abundant signs of it were found later in regulatory regions — the parts that set when, where, and how strongly a gene switches on. <strong>The outlines collided head-on, but the parts that changed were not the same parts.</strong></p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Whether a replay comes out the same depends on which layer you are asking about</h2>
+<p>There are four large islands in the Caribbean: Cuba, Hispaniola, Jamaica, Puerto Rico. Each has its own population of anole lizards, and on each island those lizards split into the same cast of roles: big-bodied ones working the crown, short-limbed short-tailed ones creeping along thin twigs, long-legged ones sprinting between trunk and ground. Four separate runs, the same division of labour, matching even in body proportions.</p>
+<p>Why can it repeat? Two conditions hold at once. The selection pressure is narrow: walk on a thin twig with long legs and you cannot keep your footing — that is mechanics, and it does not negotiate. And the supply of variation is ample: large numbers, many generations, usable variants in the same direction turning up again and again, so raw material is never short. The better those two hold, the more alike the replays.</p>
+<p>Sometimes even the genes repeat. After sticklebacks moved from the sea into freshwater lakes, populations everywhere repeatedly lost their bony armour and pelvic spines (fresh water is low in calcium, and the predators are a different set). In unrelated lakes, the step that loses the pelvic spine often lands on the same switch beside the same gene — and that stretch of switch happens to break unusually easily. <em>It was not chosen; it is the cheapest thing to break, so the same "accident" replays lake after lake.</em></p>
+<p>Another layer, though, does not replay. There is an experiment that has been running since 1988: twelve flasks of identical <em>E. coli</em>, passaged generation after generation in identical medium. The medium has always contained citrate, which this bacterium does not use when oxygen is present. Thirty thousand generations passed and not one flask had learned. At about 31,500 generations, one suddenly did. The researchers pulled that flask's frozen samples from across the years and replayed them: the trait reappeared only when restarted from the later time points, and never from the early ones, however many runs they did. <strong>Before that step, a set of changes had accumulated that showed no benefit at the time — they were the ticket of admission to the step that followed.</strong> The same environment, the same starting point: the innovation happened in one flask out of twelve, and will not replay from the wrong point in its history.</p>
+<p>So "is evolution predictable" is too coarse a question; it has to be split. <strong>At the layer of ecological roles and body shapes, it is highly repeatable</strong> — give it a body of water, a thin twig, a freezing sea, and there are only so many answers; anyone who walks in here will collide with the same one. <strong>At the layer of one particular innovation, it often is not</strong> — that one rides on a string of prior changes that paid nothing at the time, and only once they have all landed does the rest become possible. Some read the sheer quantity of convergence as meaning a replayed Earth would look much the same; others hold that contingency overwhelms everything. The argument is unsettled — and the two sides are holding different layers.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 IN CONTEXT · BigCat</h3>
+<ul>
+<li><b>① Health and energy</b>: you have tried three different daily schedules; the first fortnight is different every time, and a month later each one has slumped back into the same shape — the only unbroken block of time left is late at night. Three plans, the same result, which says the shape is set not by the plan but by the constraints: the meeting fixed in the early evening, the two ends of the commute, the daytime shredded into fragments. That is exactly the mechanism from "Evolution does not favour a shape; there were never many usable shapes to begin with". Do not buy a fourth book about waking up early. Count the blocks in your week that genuinely cannot be moved, then pick one and try to move it (shift that fixed evening meeting to the morning). If it moves, the shape can change; if it does not, that block is your water and your thin twig.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · Connections beyond the field</h3>
+<ul>
+<li><b>Western philosophy and philosophy of science · the same discovery is often made within months by several people who have never met</b>: calculus was worked out by Newton and by Leibniz; natural selection was written up by Darwin and by Wallace; in 1922 someone catalogued over a hundred such "multiple discoveries". The mechanism running here is the one from "Evolution does not favour a shape; there were never many usable shapes to begin with": once the preconditions are in place (the mathematical tools, the data, the precision of the instruments), only a few workable solutions remain, and whoever walks into that position collides with the same one. From that follows a conclusion you would not otherwise see: <b>the density of independent re-discovery in a field measures how tight the constraints are, not how thick the geniuses are on the ground. The reverse use is the interesting one — if nobody anywhere has independently hit on your idea, that is more likely because the preconditions are not yet assembled than because you are cleverer, and racing for priority is pointless; what needs work is the missing precondition.</b> <b>But here is where it fails</b>: the convergence in biology is genuinely blind, with no channel of information between the two lineages, whereas scientists read the same papers and attend the same meetings, so "simultaneous" has a great deal of transmission mixed into it. The reading is only usable once you have subtracted that flow — and when you cannot subtract it, the reading is worthless.</li>
+<li><b>Parenting and education · put together a group of deaf children who have never shared a language, and within a few years they grow a sign language with a grammar</b>: Nicaragua in the 1980s is the fully documented case, and the grammar became finer as each cohort of children took it over. Meanwhile, sign languages built by unrelated deaf communities around the world keep colliding on certain structural features. The mechanism running here is the one from "'An eye could never be stumbled upon' — it has been stumbled upon at least forty times": every step has to pay off on the spot — a half-built grammar that cannot make you understood right now never reaches the next cohort. Only what can be cashed in piecemeal survives, so different communities get filtered towards similar structures by the same sieve. From that follows a conclusion you would not otherwise see: <b>a complex thing appearing independently many times is not evidence that it is "written in the genes"; it only shows the slope up to it is gentle enough, with no rung that has to be paid for and not used. So "innate or learned" is a dichotomy that gets you nothing here; the question worth asking is which steps on this road can be cashed in immediately.</b> <b>But here is where it fails</b>: the sieve in evolution settles a reproductive account every generation — whether a variant stays depends on whether the individuals carrying it have offspring. Children building a language pass through no inheritance at all: a usage lives as soon as a peer picks it up, and can be borrowed sideways. The slopes have the same shape; the bookkeeping does not — so do not convert speeds from one to the other.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>THINKING FURTHER</h3>
+<details><summary>Does this much convergence mean evolution has a direction?</summary>
+<div>Think about what has not appeared. Large animals have almost no joint that rotates through a full circle — the usual explanation is that the intermediates do not pay: a "half wheel" that cannot turn all the way round is no better than a leg, and a rotating part cannot be kept supplied with blood and nerves. The sense of direction comes largely from counting only the answers that did appear. Constraints narrowing the exit, and somebody leading the way from the front, are two different things.</div>
+</details>
+<details><summary>How do you tell that two similar things were arrived at separately rather than inherited?</summary>
+<div>Start with the family tree: map the trait onto the tree, and if the two branches carrying it are separated by a crowd of relatives that lack it, separate origins is the cheapest explanation. Harder evidence comes from the molecular level — different parts used (as with the antifreeze proteins) settles it. It also cuts the other way: building family trees from outward shape gets you led astray by convergence, and an ichthyosaur and a dolphin would be filed together on silhouette alone.</div>
+</details>
+<details><summary>If the Earth were run again, would we be here?</summary>
+<div>Honestly, nobody knows. What can be separated out is this: things stumbled upon dozens of times over, like eyes and streamlining, would very likely show up in a replay. Whereas the cell merger discussed in the issue on endosymbiosis and the eukaryotic revolution — something that appears to have succeeded only once in four billion years — nobody can say whether a replay would repeat it. Humans sit closer to the second category. So "would there be intelligent life" and "would there be us" are questions of quite different difficulty.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Convergent_evolution" target="_blank" rel="noopener">Convergent evolution</a> · <a href="https://en.wikipedia.org/wiki/Evolution_of_the_eye" target="_blank" rel="noopener">Evolution of the eye</a> · <a href="https://en.wikipedia.org/wiki/Anolis_ecomorphs" target="_blank" rel="noopener">Anolis ecomorphs</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.1994.0048" target="_blank" rel="noopener">How long does it take an eye to evolve (Proc. R. Soc. B 1994)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.94.8.3817" target="_blank" rel="noopener">Polar antifreeze proteins evolved separately at each pole (PNAS 1997)</a> · <a href="https://www.pnas.org/doi/10.1073/pnas.94.8.3811" target="_blank" rel="noopener">The Antarctic one was remodelled from a digestive-enzyme gene (PNAS 1997)</a></li>
+<li><a href="https://www.nature.com/articles/s44358-025-00114-0" target="_blank" rel="noopener">C4 photosynthesis has arisen at least 60 times (Nature Reviews Biodiversity 2025)</a> · <a href="https://www.nature.com/articles/nature12511" target="_blank" rel="noopener">Convergence in the genomes of echolocating mammals (Nature 2013)</a></li>
+<li><a href="https://genome.cshlp.org/content/29/10/1648" target="_blank" rel="noopener">Thylacine and wolf: convergence concentrated in regulatory regions (Genome Research 2019)</a> · <a href="https://www.science.org/doi/10.1126/science.1182213" target="_blank" rel="noopener">Sticklebacks lose the pelvis repeatedly by breaking the same switch (Science 2010)</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.0803151105" target="_blank" rel="noopener">One flask in twelve learned to use citrate, and it will not replay from the wrong point in history (PNAS 2008)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
