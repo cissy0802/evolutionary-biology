@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolutionary Biology Day 26: The Evolution of Behavior</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 26 · PHASE D BEHAVIOR AND MIND</div>
+<h1>The Evolution of Behavior</h1>
+<h2>One sentence — why does it do that? — is really asking four separate things</h2>
+<div class="meta">2026-09-19 · BigCat</div>
+<div class="pitch">Most arguments about why an animal behaves the way it does are not about who has the harder evidence. Two people are answering different questions, each convinced the other is wrong.</div>
+</header>
+<div class="intro">
+<p>Spring, still dark, and the bird outside your window starts up. Day after day, almost on schedule.</p>
+<p>You ask why it sings now. Someone tells you the days are getting longer and its hormones are shifting. Someone else tells you males who start earlier hold better territories. The two answers sound like rivals for the same slot. Neither is blocking the other.</p>
+<p>Behavior is much harder to study than bone. Bone fossilizes; you can put it on a table and measure it. Behavior vanishes the moment it happens, and it is unusually easy to load with intentions that were never there. Yet everyday language hands us only one word: why.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>The sentence "why does it do that" is really four questions that cannot stand in for each other</h2>
+<p>Back to the bird outside your window. Four kinds of answer, all of them true.</p>
+<p><strong>One: what is happening inside its body right now.</strong> Days lengthen, light signals reach the brain, a cascade of hormones follows, and the brain regions that control song swell during the breeding season and shrink again afterwards — something first measured in canaries.</p>
+<p><strong>Two: how this particular bird came to sing this way.</strong> Who it heard as a chick, during which stretch of time, and how long it practised afterwards.</p>
+<p><strong>Three: whether individuals who sing like this leave more offspring or fewer.</strong> This is the slot that goes crooked most easily. Do not say it sings in order to attract a mate — that is not how the ledger works. What actually happens: males hatched each year vary in when and how hard they sing, some of them end up holding better territories, pairing up and fledging young, and their variants make up a slightly larger share of the next generation. Nobody wants anything. Some simply leave more descendants.</p>
+<p><strong>Four: when this behavior appeared in the lineage.</strong> Whether close relatives do anything like it, and on which branch it first showed up.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: a two-by-two table. Columns are asking how it works right now and asking how it came to be. Rows are looking at this one individual and looking at the lineage. The four cells hold what is happening in the body, how this individual grew into it, whether carriers leave more offspring, and when the behavior appeared in ancestors" viewbox="0 0 600 252" xmlns="http://www.w3.org/2000/svg">
+<text x="240" y="22" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">Asking how it works right now</text>
+<text x="478" y="22" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">Asking how it came to be</text>
+<text x="64" y="90" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">This one bird</text>
+<text x="64" y="192" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">The lineage</text>
+<rect x="124" y="36" width="234" height="96" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<text x="140" y="62" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">What the body is doing now</text>
+<text x="140" y="86" fill="#8aa192" font-family="Georgia,serif" font-size="10">Longer days, shifting hormones,</text>
+<text x="140" y="104" fill="#8aa192" font-family="Georgia,serif" font-size="10">song brain regions swell in season</text>
+<rect x="362" y="36" width="234" height="96" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<text x="378" y="62" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">How this one grew into it</text>
+<text x="378" y="86" fill="#8aa192" font-family="Georgia,serif" font-size="10">Who it heard, in which window,</text>
+<text x="378" y="104" fill="#8aa192" font-family="Georgia,serif" font-size="10">and how long it practised</text>
+<rect x="124" y="140" width="234" height="96" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.1"></rect>
+<text x="140" y="166" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Do carriers leave more offspring</text>
+<text x="140" y="190" fill="#8aa192" font-family="Georgia,serif" font-size="10">Those holding territories end up a</text>
+<text x="140" y="208" fill="#8aa192" font-family="Georgia,serif" font-size="10">larger share of the next generation</text>
+<rect x="362" y="140" width="234" height="96" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.1"></rect>
+<text x="378" y="166" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">When ancestors first had it</text>
+<text x="378" y="190" fill="#8aa192" font-family="Georgia,serif" font-size="10">Whether close relatives do it,</text>
+<text x="378" y="208" fill="#8aa192" font-family="Georgia,serif" font-size="10">and on which branch it appeared</text>
+</svg>
+<div class="cap">The four cells cannot substitute for one another, and they do not contradict one another. Most arguments about behavior turn out to be one person in the top-left cell and another in the bottom-left.</div>
+</div>
+<p>In 1963 Niko Tinbergen wrote these four questions out as a checklist, and it became the basic discipline of the field. Its value is not that there are four boxes. Its value is the pressure it puts on you to say first which box you are answering.</p>
+<p>An honest note: why the pre-dawn chorus is so dense is still contested — too dark to hunt insects, cool morning air carries sound further, having the energy to sing then advertises that last night went well. <em>The third cell is the hardest of the four to nail down, because a plausible story is cheap.</em></p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>"Is this instinct or is it learned" is a question that yields nothing</h2>
+<p>The white-crowned sparrow is a common North American bird. Raise a newly hatched male alone, so that he never hears another of his own kind, and he still sings as an adult. What comes out is blurred and impoverished, but it is still recognizably a sparrow's song and would not be mistaken for another species. So "learns nothing, sings nothing" is wrong: he already carries a rough sketch.</p>
+<p>The decisive step comes next. Play him recordings of his own species between roughly day ten and day fifty after hatching, and as an adult he sings the song well; play them outside that stretch and nothing takes. And he is picky — recordings of other species during that same window are largely refused. <em>He carries not only a sketch but a filter, which already knows which kind of sound is worth keeping.</em></p>
+<p>Then it gets harder. Having heard is not enough. In 1965 someone did the following: let a chick hear a normal tutor, then deafen him before he first sang. He could not produce the song. He needs to hear his own voice and tune it, pass after pass, against the remembered model.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: the four stages of birdsong learning in a row — listening, silence, singing while hearing oneself, and crystallization; below, three disruption experiments and what each produces" viewbox="0 0 600 208" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar26a" markerwidth="9" markerheight="7" refx="8" refy="3.5" orient="auto"><path d="M0,0 L9,3.5 L0,7 z" fill="#52c98a"></path></marker></defs>
+<rect x="10" y="26" width="128" height="52" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<text x="74" y="48" fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle">Listening</text>
+<text x="74" y="66" fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">about day 10–50</text>
+<rect x="156" y="26" width="128" height="52" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<text x="220" y="48" fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle">Silence</text>
+<text x="220" y="66" fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">months of no song</text>
+<rect x="302" y="26" width="128" height="52" rx="8" fill="#131d17" stroke="#52c98a" stroke-width="1.1"></rect>
+<text x="366" y="48" fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle">Singing and listening</text>
+<text x="366" y="66" fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">tuning toward the memory</text>
+<rect x="448" y="26" width="140" height="52" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.2"></rect>
+<text x="518" y="48" fill="#eaf3ec" font-family="Georgia,serif" font-size="11" text-anchor="middle">Crystallized</text>
+<text x="518" y="66" fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">barely changes after</text>
+<line x1="140" y1="52" x2="152" y2="52" stroke="#52c98a" stroke-width="1.5" marker-end="url(#ar26a)"></line>
+<line x1="286" y1="52" x2="298" y2="52" stroke="#52c98a" stroke-width="1.5" marker-end="url(#ar26a)"></line>
+<line x1="432" y1="52" x2="444" y2="52" stroke="#52c98a" stroke-width="1.5" marker-end="url(#ar26a)"></line>
+<text x="20" y="116" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">Take away one step and you get</text>
+<text x="20" y="142" fill="#c2d2c6" font-family="Georgia,serif" font-size="10">No step one (never heard its own kind): a blurred song, still a sparrow's kind of song</text>
+<text x="20" y="166" fill="#c2d2c6" font-family="Georgia,serif" font-size="10">Heard it, then deafened before step three: no song — it cannot match its own voice</text>
+<text x="20" y="190" fill="#c2d2c6" font-family="Georgia,serif" font-size="10">Deafened after crystallization: the song barely changes; the ears no longer matter</text>
+</svg>
+<div class="cap">Three things, none of them optional: the built-in sketch, the heard content, and the tuning that runs on self-listening.</div>
+</div>
+<p>So answer the question: what fraction of this song is innate? <strong>The template is built in, the content is heard, the tuning runs on listening to itself.</strong> The question yields nothing, rather like asking what share of a biscuit's shape is flour. In 1953 someone put this into a fierce critique, and the innate-versus-learned split has not been usable in its naive form since.</p>
+<p>One more result dissolves even the window. That "day ten to day fifty" figure came from tape recordings. In 1984 researchers swapped in a live tutor — a real bird next door, visible and able to interact. The birds learned past day fifty, and some learned the song of an entirely different species. <em>The window is not a welded door. It is closer to a cost curve: past that stretch, the same input needs a stronger social signal behind it to move anything.</em></p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Learning itself is a fussy eater — some things stick in one trial, others will not stick in a hundred</h2>
+<p>A beautifully built experiment from 1966. Rats were given water of two kinds: one sweetened, the other rigged so that licking the spout set off a flashing lamp and a clicking relay — call it bright-noisy water. The consequence came in two kinds too: half the animals were made nauseous afterwards, half got a mild shock.</p>
+<p>The result was not that everyone learned. It crossed over. Sweet water plus nausea, and the rat avoids the taste from then on; sweet water plus shock, and it drinks on as before. Bright-noisy water plus shock, and it avoids the lamp and the click; bright-noisy water plus nausea, and it drinks on as before.</p>
+<p>Same animal, same business of pairing two events — and whether it can be learned depends on which two. What is more, taste and nausea link up across tens of minutes, from a single trial. <strong>Under the dominant learning theory of the time that should not have happened</strong>: that theory held any cue pairs with any consequence about equally, and what mattered was how many repetitions and how long the gap.</p>
+<p>You have this too. Throw up once after eating something spoiled and you can avoid that taste for years; get badly startled while a song happens to be playing and you do not usually end up afraid of the song.</p>
+<p>Nobody designed this for the rat. Read it this way instead: ancestors varied in which things linked easily to which, and those whose sense of taste linked fast to a bad gut died slightly less often from eating the wrong thing, so that configuration slowly grew as a share of later generations.</p>
+<p>Imprinting is the same thing wearing a different face. In its first hours out of the shell a greylag gosling fixes on the first roughly suitable moving object it sees and follows it — usually its mother, sometimes, in experiments, a person. <em>That is not learning especially fast. It is being narrowly sensitive, to a narrow class of input, inside a narrow stretch of time.</em></p>
+<p>Put these two together and the instinct-or-learned split collapses completely. They are not two drawers. What gets passed on is never a particular action but a whole set of biases about when, toward what, and how easily learning happens. Behavior looks flexible; the fussiness underneath it is hard.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenes · BigCat</h3>
+<ul>
+<li><b>① Practice and temperament</b>: You sit down to be still for a while, and for the first ten minutes your head is entirely full of the thing that just happened — almost every time. The thought that surfaces here is "maybe I am just not built to sit still," which is exactly the false binary from the section on why "is this instinct or is it learned" yields nothing: it swaps a checkable question about conditions for an unchangeable question about identity. Make it checkable. Log three sessions, recording only what you did in the hour before sitting down. Then stop the single most suspicious item — usually still scrolling messages right up to the moment you sit — and after a week see whether those ten minutes got shorter. If they did, it was a condition. If three different conditions change nothing, then it is time to talk about something else.</li>
+<li><b>② Leading a team</b>: In a new hire's first two weeks, their judgment about what counts as good work here basically sets, and anything written in a document afterwards struggles to move it. That is the mechanism from the section on learning being a fussy eater — inputs are not equivalent, and a particular class of input in a particular stretch of time carries absurdly more weight. The heavy-weighted input is always what they watch get praised and what they watch get let slide, never what they read. What is changeable is the schedule for those two weeks: swap "read the standards, sit in on meetings" for "do one thing you will be doing every day from now on, and watch on the spot how that thing gets judged." And stop one thing: do not let them sit and observe a process you do not endorse yourself during those two weeks.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>Engineering and system design · An endpoint slows down, three people argue at the postmortem, and all three are right</b>: One says the cache is missing. One says two tables were merged back when the launch was being rushed. The third says this endpoint was always meant for backend batch jobs and nobody should be calling it from a page. The mechanism is the one in the section on why "why does it do that" is four questions that cannot stand in for each other — the three of them are standing in the cells for how it works now, how it came to be this way, and what it is for in the system. Which yields a conclusion you would not otherwise see: <b>a technical argument that drags on is usually not short of evidence; nobody has pointed out that the parties are answering different cells. So the thing to do before the meeting ends is not to keep producing evidence but to write the three cells as three lines and fill each with one sentence. If all three fill up and do not contradict each other, there is no disagreement, only a division of labour. Only when two mutually exclusive answers are sitting in the same line is there something left to investigate.</b> <b>But here it breaks down</b>: biology has an external ruler for "what is it for" — whether individuals carrying it leave more offspring, which you can attack with data. Software has no such ruler for "what was this meant to do," and anyone can supply a purpose after the fact. This is precisely the kind of after-the-fact storytelling biology gets criticized hardest for. So that line has to be filled from the original documents or commit history, and left blank when it cannot be — never invented on the spot.</li>
+<li><b>Economics, investing and business · "Did that company take off because of the founder, or because of the timing"</b>: The question has the same defect as "is this instinct or is it learned" — it assumes two factors hold some percentage each and can be added up. What is actually running is the mechanism from the section on why that question yields nothing: the person's judgment was itself grown inside those years of feedback, and a different feedback regime would have grown a different judgment, so the two cannot be separated for accounting. Which yields a conclusion you would not otherwise see: <b>if you want to reproduce a success, the thing to copy is not what that person did but the conditions that supplied the feedback. So whether a playbook transfers depends on whether the receiving end has the same class of feedback signal — how fast you learn you were wrong, who delivers that verdict, and whether anything can still be changed afterwards — not on how closely the operator resembles the original.</b> <b>But here it breaks down</b>: on the biology side the built-in part has a hard boundary, the sequence carried in the fertilized egg, and experiments can pull it apart from environmental input by rearing an animal in isolation. On the company side no cut separates the person from the era. So this analogy runs only as far as "stop adding percentages." Push further and ask which part is the template, and there is no answer to be had here.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>If "innate or learned" yields nothing, what is a twin study reporting when it says heritability is some percentage?</summary>
+<div>It reports this: within this population and this range of environments, how much of the variation between individuals lines up with variation in genes. It is a statistic about differences, not a statement that some trait in some person is a certain percentage innate. Change the range of environments and the same trait's heritability moves — where everyone is well fed, for instance, genes account for a larger share of the variation in height. So it cannot answer whether a behavior is innate. It answers a different question.</div>
+</details>
+<details><summary>What counts as actually answering the "what is it for" cell?</summary>
+<div>The weakest version is telling a story that hangs together, which anyone can do. The harder approaches all share one feature: they commit to a prediction that could be overturned. Change a condition and see whether the behavior moves as predicted; compare close relatives that have the behavior with ones that do not; or simply measure how many offspring carriers and non-carriers leave. Stories are free. Predictions can lose. That is the difference.</div>
+</details>
+<details><summary>Do humans have sensitive periods too?</summary>
+<div>Some phenomena look very much like it: speech sounds you were exposed to as a small child stay much easier to tell apart as an adult, and people who start a second language late usually keep an accent. But the argument is far more contested here than in birds, because it is hard to separate "the window closed" from "there was less exposure later, and different motivation too." The bird work offers a useful lesson: the window measured with tape tutors widened as soon as a live tutor was used. <em>A measured window is partly defined by the way it was measured.</em></div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Tinbergen%27s_four_questions" target="_blank" rel="noopener">Tinbergen's four questions</a> · <a href="https://en.wikipedia.org/wiki/Ethology" target="_blank" rel="noopener">Ethology</a> · <a href="https://en.wikipedia.org/wiki/Imprinting_(psychology)" target="_blank" rel="noopener">Imprinting</a></li>
+<li><a href="https://link.springer.com/article/10.1007/BF00299673" target="_blank" rel="noopener">Sensitive phase and song dialects in white-crowned sparrows (Behav. Ecol. Sociobiol.)</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1439-0310.1965.tb01688.x" target="_blank" rel="noopener">Auditory feedback in the control of vocalization (Z. Tierpsychol. 1965)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0003347284803358" target="_blank" rel="noopener">A live tutor widens the window (Animal Behaviour 1984)</a></li>
+<li><a href="https://doi.org/10.1086/399858" target="_blank" rel="noopener">A critique of the theory of instinctive behavior (Quarterly Review of Biology 1953)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Conditioned_taste_aversion" target="_blank" rel="noopener">Conditioned taste aversion</a> · <a href="https://escholarship.org/uc/item/5sx993rm" target="_blank" rel="noopener">A retrospective on the sweet-water and bright-noisy-water experiment</a> · <a href="https://en.wikipedia.org/wiki/Preparedness_(learning)" target="_blank" rel="noopener">Preparedness in learning</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></head></html>
