@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 27：演化心理学：承诺与陷阱</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 27 · PHASE D 行为与心智</div>
+<h1>演化心理学：承诺与陷阱</h1>
+<h2>一个说得通的故事，和一个可能输掉的预测，中间隔着这门学科的全部信誉</h2>
+<div class="meta">2026-09-20 · BigCat</div>
+<div class="pitch">这门学科挨骂最多的那些研究，毛病不在于它们扯上了演化——而在于无论数据出来什么样，它们都扯得上。</div>
+</header>
+<div class="intro">
+<p>公园草丛里露出一截绳子，孩子先跳开，再回头看清楚。回到家，插座就在墙上，插进去真会出事，你提醒过一百遍，他照样往里塞东西。</p>
+<p>绳子从没害过他，插座天天在那儿。按「吃过亏才会怕」这个说法，两件事该反过来才对。</p>
+<p>于是有人接一句：怕蛇是刻在我们身上的，插座太新了来不及刻。这句话听着很顺，而且里面大概率有一部分是真的。麻烦在于，它顺得不需要任何证据也能说出口——一门靠这种句子吃饭的学科，很难跟一个会讲故事的人区分开。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>同一道逻辑题，换个说法你就突然会做了</h2>
+<p>桌上四张卡片，每张一面印字母、一面印数字。你现在看到的四个面是：E、K、4、7。有人告诉你一条规则：<em>一面是元音字母，那另一面必须是偶数。</em>要检查这条规则有没有被破坏，你最少得翻哪几张？</p>
+<p>多数人翻 E，再翻 4。正确答案是 E 和 7。E 的背面要是奇数，规则就破了；7 的背面要是元音，规则也破了。翻 4 什么都说明不了——规则没说偶数背面一定得是元音。这道题从 1960 年代起被反复做，做对的人常年在一成到两成半之间，结果很稳。</p>
+<p>换个说法再来一次。你是酒吧的服务生，店里的规矩是：<em>喝含酒精的饮料，必须满 18 岁。</em>四位客人，你手上各有一张卡，一面写他在喝什么，一面写他多大。你看到的四个面是：在喝啤酒、在喝可乐、25 岁、16 岁。你该去查哪两位？</p>
+<p>几乎人人当场答对：查喝啤酒那位多大，查 16 岁那位在喝什么。不用纸笔，不用想。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：上下两排各四张卡片。上排是抽象版 E、K、4、7，规则是一面元音另一面必须偶数，该翻的是 E 和 7；下排是酒吧版在喝啤酒、在喝可乐、25 岁、16 岁，规则是喝酒精饮料必须满 18 岁，该查的是喝啤酒那位和 16 岁那位" viewBox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#d2a24c" font-family="Georgia,serif" font-size="11">抽象版　规则：一面是元音，另一面必须是偶数</text>
+<rect x="50" y="28" width="110" height="58" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.4"></rect>
+<text x="105" y="60" fill="#eaf3ec" font-family="Georgia,serif" font-size="17" text-anchor="middle">E</text>
+<text x="105" y="78" fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">该翻</text>
+<rect x="180" y="28" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="235" y="60" fill="#8aa192" font-family="Georgia,serif" font-size="17" text-anchor="middle">K</text>
+<rect x="310" y="28" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="365" y="60" fill="#8aa192" font-family="Georgia,serif" font-size="17" text-anchor="middle">4</text>
+<text x="365" y="78" fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">多数人翻了这张</text>
+<rect x="440" y="28" width="110" height="58" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.4"></rect>
+<text x="495" y="60" fill="#eaf3ec" font-family="Georgia,serif" font-size="17" text-anchor="middle">7</text>
+<text x="495" y="78" fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">该翻，多数人漏了</text>
+<text x="20" y="128" fill="#52c98a" font-family="Georgia,serif" font-size="11">酒吧版　规则：喝含酒精的饮料，必须满 18 岁</text>
+<rect x="50" y="138" width="110" height="58" rx="8" fill="#16241b" stroke="#52c98a" stroke-width="1.4"></rect>
+<text x="105" y="168" fill="#eaf3ec" font-family="Georgia,serif" font-size="12" text-anchor="middle">在喝啤酒</text>
+<text x="105" y="186" fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">该查</text>
+<rect x="180" y="138" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="235" y="168" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle">在喝可乐</text>
+<rect x="310" y="138" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="365" y="168" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle">25 岁</text>
+<rect x="440" y="138" width="110" height="58" rx="8" fill="#16241b" stroke="#52c98a" stroke-width="1.4"></rect>
+<text x="495" y="168" fill="#eaf3ec" font-family="Georgia,serif" font-size="12" text-anchor="middle">16 岁</text>
+<text x="495" y="186" fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">该查</text>
+<text x="20" y="224" fill="#c2d2c6" font-family="Georgia,serif" font-size="10">两排的骨架完全一样，差的只有内容：都是查「前一半成立、后一半不成立」。</text>
+</svg>
+<div class="cap">上排做对的常年在一成到两成半，下排这类社会规矩的版本常常有六成半到八成半。同一道题，成绩差出好几倍。</div>
+</div>
+<p>这个落差本身没人否认。它至少说明一件事：脑子不是一台通用的推理机器，题目骨架不动、内容换掉，输出质量会变。</p>
+<p>1989 年 Leda Cosmides 把这个落差解释成：我们身上有一套专门盯着「谁拿了好处却没付代价」的处理方式。这里得把话说准。所谓「专用回路」，不是脑子里有个抽屉写着「作弊」，而是碰上某一类内容时，跑起来的不是同一套程序。也别说「演化让我们长出了作弊检测器」——账不是这么记的：在祖先那种反复拿好处换好处的处境里，如果认得出谁白拿了的个体确实留下了更多后代，这套处理方式占的份额就会一代代升上去。是不是真这么回事，得另外查。</p>
+<p>争论也正在这儿。落差是真的，「落差是因为社会契约」只是其中一种解释。有人把功劳记在「这个说法你本来就熟」上；还有人发现带警告性质的规则（「进车间必须戴安全帽」）一样能把成绩拉起来，可那里面并没有谁占谁便宜。<em>这个到今天还在争。</em></p>
+<p class="en-brief"><b>EN</b> Four cards on a table, each with a letter on one side and a number on the other. You see E, K, 4, 7. The rule: if one side is a vowel, the other must be even. Which cards must you turn? Most people pick E and 4. The answer is E and 7. Turning 4 proves nothing — the rule never said even numbers must have vowels. Since the 1960s, only about 10 to 25 per cent get this right. Now change the wording. You are a bartender; the rule is that anyone drinking alcohol must be over 18. The four cards read: drinking beer, drinking cola, 25 years old, 16 years old. Almost everyone instantly checks the beer drinker's age and what the 16-year-old is drinking. The logical skeleton is identical; only the content changed, and scores jump to roughly 65 to 85 per cent. So the mind is not a general-purpose reasoning engine: swap the content, keep the structure, and output quality shifts. In 1989 Leda Cosmides read that gap as evidence of machinery tuned to spotting people who took a benefit without paying the cost. Be precise about what that claims. Not a drawer in the head labelled "cheating", but a different routine running on a certain kind of content. And not "evolution gave us a cheater detector" — the ledger does not work that way. What it would mean is that among ancestors who repeatedly traded favours, individuals who noticed the free riders left more descendants, so that way of processing grew as a share of each generation. Whether that is what happened is a separate question. The gap is not disputed; the social-contract reading of it is only one candidate. Others credit familiarity, and rules about hazards — hard hats in a workshop — lift scores too, with nobody cheating anyone. This is still argued about.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>一个说得通的故事，是最便宜的东西</h2>
+<p>1979 年，Gould 和 Lewontin 借吉卜林一本童话书的名字，管这类解释叫「原来如此的故事」——书里讲大象的长鼻子是被鳄鱼拽出来的，讲得有鼻子有眼，你还真挑不出它哪句错。（适应与约束那期讲拱肩，用的就是这篇文章。）</p>
+<p>举个真的。2007 年有一项研究，让两百来人在成对的颜色里连着挑，结果女性的平均偏好偏向偏红的那一端，男性偏向蓝绿，这个差异在统计上相当结实。研究之外，媒体上接的解释是：祖先分工里女性采集浆果，红色在绿叶背景上最跳。</p>
+<p>这个解释的毛病不在于它荒唐，在于它安全得过分。假如数据反过来——女性偏蓝绿——现成的故事一样等着：水源、天色、平安的信号。<em>一个不管结果朝哪边都能讲的解释，讲出来等于没讲。</em></p>
+<p>还有一层更直接的麻烦。1918 年，美国一本童装行业刊物白纸黑字写着：通行的规矩是男孩穿粉、女孩穿蓝，理由是粉色更强烈更有决断，蓝色更娇嫩秀气。要到 1940 年代之后，今天这一套才固定下来。</p>
+<p>别把这一条用过头。它推不出「颜色偏好里没有任何生物学成分」——那项研究量的是对色调的偏好，不是「粉色属于女孩」这个符号，两码事。它推出的只有一件事：那个采浆果的故事，套在一个几十年前还是反过来的现象上也一样顺——说明它根本不挑事实。</p>
+<p>反过来也一样。「这是个事后编的故事」这句指控本身，可能同样便宜。你说一个解释是编的，就得把话说到位：它哪一条预测会输？答不上来，这句指控和它要批评的东西是一路货。</p>
+<p class="en-brief"><b>EN</b> In 1979 Gould and Lewontin borrowed the title of a Kipling children's book and called this kind of account a "just-so story" — the book explains that the elephant got its trunk when a crocodile pulled on it, and you cannot point to a false sentence anywhere in it. A real example: a 2007 study had a couple of hundred people choose repeatedly between pairs of colours. Women's average preference leaned toward the reddish end, men's toward blue-green, and the difference was statistically solid. The explanation that travelled through the press was that ancestral women gathered berries, and red stands out against green leaves. The trouble is not that this is absurd; it is that it is far too safe. Had the data run the other way, a story was waiting: water, sky, signals of safety. An account that works whichever way the numbers fall has told you nothing. There is a blunter problem too. In 1918 an American children's-clothing trade journal stated plainly that the accepted rule was pink for boys and blue for girls, pink being the stronger and more decided colour and blue the daintier one. Today's convention only settled after the 1940s. Do not overplay this. It does not show that colour preference has no biological component — the study measured hue preference, not the cultural sign that pink belongs to girls. It shows one thing: the berry story fits just as smoothly onto a pattern that was reversed a few decades ago, which means it is not constrained by facts at all. The reverse holds as well. "That's a just-so story" can be just as cheap an accusation. If you say an account was made up after the fact, finish the sentence: which of its predictions could lose? If you cannot answer, your objection is made of the same material as its target.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>值钱的不是它解释了什么，是它禁止了什么</h2>
+<p>1891 年，芬兰学者 Edvard Westermarck 提出了一个跟当时主流相反的说法。主流是：人天生想跟亲人交配，所以社会得立禁忌压住。他说反了——是先没有这个念头，禁忌才立得稳；而让念头消失的不是血缘本身，是小时候天天挤在一起。</p>
+<p>这不只是换个说法。它伸出了一样可以被打断的东西：<em>找两个没有血缘、但从小一起长大的人，他们成年后要是照样互相吸引，这个说法就完了。</em></p>
+<p>刚好有两组数据能查，而且当初记录它们的人根本不为这个假说服务。</p>
+<p>一组在以色列的集体农庄。那里的孩子按年龄编成同伴组，从小一起吃住长大，彼此没有血缘。后来统计下来，近三千桩婚姻里只有十四桩发生在同一个同伴组内部，而这十四桩里，没有一桩是在头六年一起养大的。</p>
+<p>另一组在台湾。当地旧时有童养媳：女孩很小被抱进未来丈夫家，和他一起长大，成年后成婚。人类学家 Arthur Wolf 翻了日治时期留下的户籍册子，把这类婚姻和普通婚姻比——离婚更多，生下的孩子更少。</p>
+<p>这两组数据的分量，不在于它们「支持」了什么，在于它们本来完全可以把这个说法打死。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：一条横条代表所有可能出现的观察结果。上面一条整条被事后故事覆盖，表示什么都能容纳；下面一条被切成两段，左段是说法允许出现的结果，右段标着出现就作废" viewBox="0 0 600 176" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">横条 = 所有可能被观察到的结果</text>
+<text x="20" y="54" fill="#d2a24c" font-family="Georgia,serif" font-size="11">事后讲的故事</text>
+<rect x="150" y="32" width="430" height="38" rx="7" fill="#1d1811" stroke="#d2a24c" stroke-width="1.2"></rect>
+<text x="365" y="56" fill="#e6c07b" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">全都能容纳</text>
+<text x="150" y="88" fill="#8aa192" font-family="Georgia,serif" font-size="10">数据往哪边走它都解释得了，等于没排除任何东西</text>
+<text x="20" y="130" fill="#52c98a" font-family="Georgia,serif" font-size="11">会输的预测</text>
+<rect x="150" y="108" width="252" height="38" rx="7" fill="#16241b" stroke="#52c98a" stroke-width="1.2"></rect>
+<text x="276" y="132" fill="#a8dcbd" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">这些结果它允许</text>
+<rect x="410" y="108" width="170" height="38" rx="7" fill="#2a1414" stroke="#c96b5a" stroke-width="1.2" stroke-dasharray="5 3"></rect>
+<text x="495" y="132" fill="#e2a294" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">出现就作废</text>
+<text x="150" y="164" fill="#8aa192" font-family="Georgia,serif" font-size="10">例：没有血缘却一起长大的两个人照样互相吸引</text>
+</svg>
+<div class="cap">判断一个解释值多少，不看它能解释多少已经发生的事，看它事先禁掉了哪些还没发生的事。</div>
+</div>
+<p>争论还是得说清楚。集体农庄那边的数字被质疑过：同伴组内部本来就另有社会压力不让成婚。童养媳这边最硬的替代解释是，这种婚姻本就被看作穷人家的将就、受人轻视，过得差并不奇怪；Wolf 做过控制，但没有定案。</p>
+<p>把标准又抬了一级的，是 2007 年发在《自然》上的一项研究。它的问法更狠：假如真有这么一套机制在估「这个人跟我有多近」，那它总得靠某个线索来估，而线索是可以去量的。研究去问人们小时候和手足同住了多少年，发现同住的年头越长，一个人对自己跟手足发生性关系的反感越强，对别人这么做的道德义愤也越强。而且对先出生的那个孩子来说，「有没有亲眼见过母亲照顾这个婴儿」是比同住年数更强的线索。</p>
+<p>严格检验长的就是这个样子：不是回头把已经知道的事再解释一遍，是先说出某个量该往哪边动、动多少，然后去量。</p>
+<p class="en-brief"><b>EN</b> In 1891 the Finnish scholar Edvard Westermarck proposed the opposite of the going view. The going view was that people naturally desire relatives, so society must impose a taboo. He reversed it: the desire is absent first, which is what lets the taboo hold — and what removes it is not shared blood but growing up in daily physical proximity. That is not merely a rephrasing. It sticks its neck out: find two unrelated people raised together from early childhood, and if they are still drawn to each other as adults, the claim is finished. Two bodies of data happened to be available, recorded by people with no stake in the hypothesis. One comes from Israeli collective farms, where children were raised in age-based peer groups, eating and sleeping together, unrelated. Of nearly three thousand marriages, only fourteen were within a peer group, and none of those fourteen involved people raised together through the first six years. The other comes from Taiwan, where a girl might be taken into her future husband's household very young, raised alongside him, and married to him as an adult. The anthropologist Arthur Wolf worked through household registers kept during the Japanese colonial period and compared these marriages with ordinary ones: more divorce, fewer children. What gives these numbers their weight is not that they support something, but that they could have killed the claim outright. The disputes are real. The kibbutz figures have been questioned, since peer groups carried other social pressures against marrying within them. For the Taiwanese case the strongest rival reading is that such marriages were seen as a poor family's makeshift and were looked down on, so unhappy outcomes are unsurprising; Wolf tried to control for this, and it is not settled. A 2007 paper in Nature raised the bar again with a sharper question: if machinery really estimates how closely related someone is, it must use some cue, and cues can be measured. Asking people how many years they had lived with a sibling, the study found that longer coresidence went with stronger personal aversion to sex with that sibling and stronger moral objection to others doing the same — and that for the elder child, having seen their mother care for the newborn was a stronger cue than years of coresidence. That is what rigorous testing looks like: not re-explaining what is already known, but stating in advance which way a quantity should move, and by how much, then going out to measure it.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 修行与心性</b>：坐下来状态不好的那天，脑子里几乎立刻会冒出一个来由——昨晚睡得少、最近事多、这几天懈怠了。这个解释永远现成，而且从来不会被推翻，因为你不会再回去查它。<b>可改的动作</b>：记录表上加一栏，当天状态旁边把你当时给的那个理由也写下来；一周后回头，只看那些理由有没有提前说中过第二天。一条都没说中，就把「给状态找原因」这个动作停掉，只留状态那一栏。</li>
+<li><b>② 健康与精力</b>：你改了一件事——掐掉下午那杯咖啡，或者提前一小时躺下。过几天你会觉得「好像有用」。这个「好像有用」几乎每次都会出现，不管你改的是哪一件。<b>可改的动作</b>：动手之前先写下一个会输的数——哪个指标、多少天、往哪个方向变多少（比如「两周之内，下午三点犯困的次数从每周五次掉到两次以下」）。写不出这句就先别改：不是因为它没用，是因为改完你没办法知道它有没有用，于是这一条会永远赖在清单上占着位置。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>历史与军事 · 一战之前，欧洲几国的军事学说都相信进攻精神能压过火力</b>：这套学说最大的好处是它从不出错——打赢了是精神足，打输了是冲得不够狠。跑的是「一个说得通的故事，是最便宜的东西」那节的机制：一个在任何结果下都成立的解释，没有排除掉任何东西。由此能推出一个原本看不出的结论：<b>判断一份战后总结有没有信息量，不看它解释了多少已经发生的事，看它事先禁掉了什么——翻一翻里面有没有一句「下次要是出现某某情况，就说明我们这条是错的」。没有这句，同一套话在下一仗里照样套得上，还照样显得对。</b><b>但这里不成立</b>：Westermarck 那个说法能被真查，靠的是一批跟它毫无关系的人留下的户籍册子；战史里很难指望这种干净档案，因为哪些记录被保留下来，本身常常是由胜负决定的。所以这边只能事前把预测封存起来，指望事后翻出一份不受结果污染的材料多半落空。</li>
+<li><b>组织与制度 · 评审会上问「这个方案有什么风险」，半天问不出东西；换成「假设一年后这事砸了，我们现在回头看是因为什么」，一屋子人抢着说</b>：后一种问法叫事前验尸：事情还没做，先假装它已经砸了，再去找原因。跑的是「同一道逻辑题，换个说法你就突然会做了」那节的机制：骨架一样的任务，换成脑子本来跑得顺的那类内容（给一个已知结果补原因，我们太熟；凭空估一个抽象概率，我们很差），输出就变。由此能推出一个原本看不出的结论：<b>会上问不出东西，先别急着怪人不敢讲，先看这个问题是不是被包装成了一种人本来就不擅长处理的形式。</b><b>但这里不成立</b>：翻卡片那道题换个说法能救，是因为两个版本在逻辑上真的等价，对错有唯一答案可以判分；事前验尸这边没有标准答案，多冒出来的那些理由，谁也说不清哪些是真风险、哪些只是顺口编的——正好是「一个说得通的故事，是最便宜的东西」那节的毛病。所以这招能把搜索范围撑大，提高不了判断力，冒出来的还得另想办法筛。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>行为不留化石，祖先的环境也没人看见过，这门学科有没有可能做到严格？</summary>
+<div>难，但不是零。能用的路有几条：看同一个模式是不是在文化差别极大的人群里都出现；把假说逼出一个量化的、可能输的预测再去量；拿近亲物种比较，看这套东西在哪一支上才有；或者去找发育上的时间窗。难和不可能是两件事，中间隔着愿不愿意先把预测写下来。</div>
+</details>
+<details><summary>那翻卡片那个实验到底证明了什么？</summary>
+<div>它稳稳证明了一件事：内容会改变推理成绩，同一个骨架换个说法，对的人能多出好几倍。它没有稳稳证明那个起作用的内容必须是「有人占便宜」——带警告性质的规则也能把成绩拉起来。分胜负的地方在于哪个版本敢做更细的预测：如果真是盯作弊的，把规则里谁得利谁付代价的角色对调，成绩就该按特定方向变。</div>
+</details>
+<details><summary>说心智是「模块化」的，两边吵的是同一个东西吗？</summary>
+<div>常常不是。哲学家 Jerry Fodor 最早说的模块有一串很硬的条件，其中一条叫信息封装——这块东西跑起来不理会你知道的其他任何事（视错觉就算你明知是错的也还是看着错）。演化心理学用的「模块」松得多，多半只指「针对某类内容的专门处理方式」。同一个词，两套标准，这场争论里有相当一部分力气是花在这上面空转的。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Wason_selection_task" target="_blank" rel="noopener">四卡片选择任务</a> · <a href="https://www.sciencedirect.com/science/article/pii/0010027789900231" target="_blank" rel="noopener">社会交换的逻辑（Cognition 1989）</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.1979.0086" target="_blank" rel="noopener">圣马可的拱肩与适应主义纲领（Proc. R. Soc. B 1979）</a> · <a href="https://en.wikipedia.org/wiki/Just-so_story" target="_blank" rel="noopener">「原来如此的故事」</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S096098220701559X" target="_blank" rel="noopener">颜色偏好中的性别差异（Current Biology 2007）</a> · <a href="https://www.smithsonianmag.com/history/unraveling-the-colorful-history-of-why-girls-wear-pink-and-boys-wear-blue-1370097/" target="_blank" rel="noopener">粉与蓝的历史是怎么翻过来的</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Westermarck_effect" target="_blank" rel="noopener">韦斯特马克效应</a> · <a href="https://anthrosource.onlinelibrary.wiley.com/doi/abs/10.1525/aa.1968.70.5.02a00040" target="_blank" rel="noopener">Wolf 关于童养媳婚姻的原始论文（1968）</a></li>
+<li><a href="https://www.nature.com/articles/nature05510" target="_blank" rel="noopener">人类亲属识别的架构（Nature 2007）</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Evolutionary_psychology" target="_blank" rel="noopener">演化心理学（含主要批评）</a> · <a href="https://en.wikipedia.org/wiki/Modularity_of_mind" target="_blank" rel="noopener">心智的模块性</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></head></html>

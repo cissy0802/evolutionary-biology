@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 27: Evolutionary Psychology: Promise and Pitfalls</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 27 · PHASE D BEHAVIOR AND MIND</div>
+<h1>Evolutionary Psychology: Promise and Pitfalls</h1>
+<h2>Between a story that sounds right and a prediction that could lose sits this field's entire credibility</h2>
+<div class="meta">2026-09-20 · BigCat</div>
+<div class="pitch">The studies this field gets hammered for are not wrong because they invoke evolution — they are wrong because they could have invoked it whichever way the data came out.</div>
+</header>
+<div class="intro">
+<p>A length of rope in the grass at the park, and the child jumps back before looking again. Back home, the wall socket is right there, putting something in it really would hurt, you have said so a hundred times, and they keep poking at it.</p>
+<p>The rope never hurt anyone. The socket is there every day. If fear came only from getting burned, these two should be the other way round.</p>
+<p>So somebody adds: fear of snakes is carved into us, sockets are too new to have been carved. That sounds right, and some part of it is probably true. The trouble is that it sounds right without needing any evidence at all — and a field that lives on sentences like this one is hard to tell apart from a person who is good at telling stories.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>The same logic problem, reworded, and suddenly you can do it</h2>
+<p>Four cards on a table, each with a letter on one side and a number on the other. The faces you can see are E, K, 4, 7. Someone gives you a rule: <em>if one side is a vowel, the other side must be an even number.</em> To check whether the rule has been broken, which cards must you turn over?</p>
+<p>Most people turn E, then 4. The answer is E and 7. If E has an odd number behind it, the rule is broken. If 7 has a vowel behind it, the rule is broken. Turning 4 tells you nothing — the rule never said an even number must have a vowel behind it. This puzzle has been run over and over since the 1960s, and the share of people who get it right has stayed at roughly one in ten to one in four.</p>
+<p>Now reword it. You are working behind a bar, and the house rule is: <em>anyone drinking alcohol must be over 18.</em> Four customers, and for each of them you hold a card with what they are drinking on one side and their age on the other. The faces you can see are: drinking beer, drinking cola, 25 years old, 16 years old. Which two do you check?</p>
+<p>Almost everyone gets it instantly: check how old the beer drinker is, and check what the 16-year-old is drinking. No pen, no thinking.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: two rows of four cards. The top row is the abstract version E, K, 4, 7 under the rule that a vowel on one side requires an even number on the other, where E and 7 must be turned. The bottom row is the bar version drinking beer, drinking cola, 25 years old, 16 years old under the rule that drinking alcohol requires being over 18, where the beer drinker and the 16-year-old must be checked" viewBox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#d2a24c" font-family="Georgia,serif" font-size="11">Abstract version — rule: a vowel on one side means an even number on the other</text>
+<rect x="50" y="28" width="110" height="58" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.4"></rect>
+<text x="105" y="60" fill="#eaf3ec" font-family="Georgia,serif" font-size="17" text-anchor="middle">E</text>
+<text x="105" y="78" fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">must turn</text>
+<rect x="180" y="28" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="235" y="60" fill="#8aa192" font-family="Georgia,serif" font-size="17" text-anchor="middle">K</text>
+<rect x="310" y="28" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="365" y="60" fill="#8aa192" font-family="Georgia,serif" font-size="17" text-anchor="middle">4</text>
+<text x="365" y="78" fill="#8aa192" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">most people turn this</text>
+<rect x="440" y="28" width="110" height="58" rx="8" fill="#1d1811" stroke="#d2a24c" stroke-width="1.4"></rect>
+<text x="495" y="60" fill="#eaf3ec" font-family="Georgia,serif" font-size="17" text-anchor="middle">7</text>
+<text x="495" y="78" fill="#d2a24c" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">must turn, usually missed</text>
+<text x="20" y="128" fill="#52c98a" font-family="Georgia,serif" font-size="11">Bar version — rule: anyone drinking alcohol must be over 18</text>
+<rect x="50" y="138" width="110" height="58" rx="8" fill="#16241b" stroke="#52c98a" stroke-width="1.4"></rect>
+<text x="105" y="168" fill="#eaf3ec" font-family="Georgia,serif" font-size="12" text-anchor="middle">drinking beer</text>
+<text x="105" y="186" fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">must check</text>
+<rect x="180" y="138" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="235" y="168" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle">drinking cola</text>
+<rect x="310" y="138" width="110" height="58" rx="8" fill="#131d17" stroke="#3b5a48" stroke-width="1.1"></rect>
+<text x="365" y="168" fill="#8aa192" font-family="Georgia,serif" font-size="12" text-anchor="middle">25 years old</text>
+<rect x="440" y="138" width="110" height="58" rx="8" fill="#16241b" stroke="#52c98a" stroke-width="1.4"></rect>
+<text x="495" y="168" fill="#eaf3ec" font-family="Georgia,serif" font-size="12" text-anchor="middle">16 years old</text>
+<text x="495" y="186" fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" text-anchor="middle">must check</text>
+<text x="20" y="224" fill="#c2d2c6" font-family="Georgia,serif" font-size="10">Same skeleton in both rows, only the content differs: check the case where the first half holds and the second may not.</text>
+</svg>
+<div class="cap">The top row stays at one in ten to one in four. Versions phrased as a social rule, like the bottom row, often run from about 65 to 85 per cent. Same puzzle, several times the score.</div>
+</div>
+<p>Nobody disputes the gap itself. It shows at least this much: the mind is not a general-purpose reasoning engine. Keep the skeleton, swap the content, and the quality of the output changes.</p>
+<p>In 1989 Leda Cosmides read that gap as evidence of machinery tuned to one thing: who took a benefit without paying the cost. Be precise about what that claims. A "special-purpose circuit" is not a drawer in the head labelled cheating; it means that on a certain kind of content, a different routine runs. And do not say evolution gave us a cheater detector — the ledger does not work that way. What it would mean is that among ancestors who traded favours over and over, individuals who noticed who had taken without giving left more descendants, so that way of processing grew as a share of each generation. Whether that is what actually happened is a separate question.</p>
+<p>Which is exactly where the argument is. The gap is real; reading it as social contracts is only one candidate. Some credit plain familiarity with the wording. Others have found that rules about hazards — hard hats in a workshop — lift scores just as well, and nobody is cheating anyone there. <em>This is still contested.</em></p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>A story that sounds right is the cheapest thing there is</h2>
+<p>In 1979, Gould and Lewontin borrowed the title of a Kipling children's book and called this kind of account a just-so story. That book explains that the elephant got its long trunk because a crocodile pulled on it — told in full detail, and you cannot point to a single false sentence. (It is the same paper behind the spandrels discussed in the issue on adaptation and constraint.)</p>
+<p>A real case. In 2007 a study had a couple of hundred people choose repeatedly between pairs of colours. Women's average preference leaned toward the redder end, men's toward blue-green, and the difference was statistically solid. What travelled through the press was an explanation: ancestral women gathered berries, and red stands out against green leaves.</p>
+<p>The problem is not that this is absurd. The problem is that it is far too safe. Had the numbers run the other way, with women leaning blue-green, a story was already waiting: water, sky, signals of safety. <em>An account that works whichever way the data fall has told you nothing.</em></p>
+<p>There is a blunter difficulty. In 1918 an American children's-clothing trade journal stated flatly that the accepted rule was pink for boys and blue for girls — pink being the stronger, more decided colour, blue the daintier and prettier one. Today's convention only hardened after the 1940s.</p>
+<p>Do not push this too far. It does not show that colour preference has no biological component; the study measured preference among hues, not the cultural sign that pink belongs to girls. Those are different things. It shows one thing only: the berry story fits just as smoothly onto a pattern that was reversed a few decades ago, which means facts are not constraining it.</p>
+<p>The reverse holds too. "That is a just-so story" can be just as cheap. If you say an account was made up after the fact, finish the sentence: which of its predictions could lose? If you cannot answer that, your objection is made of the same material as its target.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>What an explanation is worth is not what it explains, but what it forbids</h2>
+<p>In 1891 the Finnish scholar Edvard Westermarck proposed the opposite of the going view. The going view was that people naturally desire their relatives, so society must impose a taboo to hold them back. He turned it around: the desire is absent first, which is what lets a taboo stick — and what removes it is not shared blood but being packed in together day after day as small children.</p>
+<p>That is not just a rewording. It sticks out something that can be snapped off: <em>find two unrelated people raised together from early childhood, and if they are still drawn to each other as adults, the claim is finished.</em></p>
+<p>Two bodies of data happened to be available, kept by people with no stake in the hypothesis.</p>
+<p>One comes from the collective farms of Israel, where children were sorted into peer groups by age and grew up eating and sleeping together, unrelated to one another. Of nearly three thousand marriages, only fourteen were within a peer group — and of those fourteen, not one involved people raised together through the first six years.</p>
+<p>The other comes from Taiwan, where an older custom brought a girl into her future husband's household while she was very small, raised her alongside him, and married the two as adults. The anthropologist Arthur Wolf worked through household registers kept during the Japanese colonial period and compared these marriages with ordinary ones: more divorce, fewer children.</p>
+<p>What gives these two sets their weight is not that they support something. It is that either of them could have killed the claim outright.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: a horizontal bar stands for every result that could be observed. The upper bar is covered entirely by an after-the-fact story, meaning it accommodates anything. The lower bar is split into a segment the claim allows and a segment marked as ruling the claim out" viewBox="0 0 600 176" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">The bar stands for every result that could be observed</text>
+<text x="20" y="54" fill="#d2a24c" font-family="Georgia,serif" font-size="11">Story told afterwards</text>
+<rect x="150" y="32" width="430" height="38" rx="7" fill="#1d1811" stroke="#d2a24c" stroke-width="1.2"></rect>
+<text x="365" y="56" fill="#e6c07b" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">accommodates all of it</text>
+<text x="150" y="88" fill="#8aa192" font-family="Georgia,serif" font-size="10">It explains the data whichever way they fall, so it has ruled nothing out</text>
+<text x="20" y="130" fill="#52c98a" font-family="Georgia,serif" font-size="11">Prediction that can lose</text>
+<rect x="150" y="108" width="252" height="38" rx="7" fill="#16241b" stroke="#52c98a" stroke-width="1.2"></rect>
+<text x="276" y="132" fill="#a8dcbd" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">these results it allows</text>
+<rect x="410" y="108" width="170" height="38" rx="7" fill="#2a1414" stroke="#c96b5a" stroke-width="1.2" stroke-dasharray="5 3"></rect>
+<text x="495" y="132" fill="#e2a294" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">these would kill it</text>
+<text x="150" y="164" fill="#8aa192" font-family="Georgia,serif" font-size="10">e.g. two unrelated people raised together who are still drawn to each other</text>
+</svg>
+<div class="cap">What an explanation is worth is not how much of what already happened it covers, but which not-yet-observed results it ruled out in advance.</div>
+</div>
+<p>The disputes still need stating. The kibbutz figures have been questioned: peer groups carried other social pressures against marrying within them. For the Taiwanese case the strongest rival reading is that such marriages were treated as a poor family's makeshift and were looked down on, so unhappy outcomes are hardly surprising. Wolf tried to control for that, and it is not settled.</p>
+<p>What raised the bar again was a 2007 paper in Nature, with a harder question: if machinery really is estimating how closely related someone is, it has to run on some cue, and cues can be measured. Asking people how many years they had lived with a sibling, the study found that the longer the coresidence, the stronger a person's aversion to sex with that sibling, and the stronger their moral objection to others doing the same. And for the elder child, having seen their mother care for the newborn turned out to be a stronger cue than years of living together.</p>
+<p>That is what rigorous testing looks like: not re-explaining what is already known, but saying in advance which way a quantity should move, and by how much, and then going out to measure it.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenes · BigCat</h3>
+<ul>
+<li><b>① Practice and temperament</b>: on the days when you sit down and the state is poor, a reason shows up almost immediately — slept badly, too much on, been slack this week. That explanation is always available, and it never gets refuted, because you never go back and check it. <b>What to change</b>: add a column to the log and write down, next to the day's state, the reason you gave at the time. A week later, look only at whether any of those reasons called the next day in advance. If none of them did, drop the act of assigning a reason altogether and keep only the state column.</li>
+<li><b>② Health and energy</b>: you change one thing — cut the afternoon coffee, get to bed an hour earlier. A few days later it feels like it helped. That feeling turns up almost every time, whichever thing you changed. <b>What to change</b>: before you start, write down a number that can lose — which measure, over how many days, moving which way by how much (say, "within two weeks, the number of times I am fading at three in the afternoon drops from five a week to under two"). If you cannot write that sentence, do not make the change yet: not because it is useless, but because afterwards you will have no way to tell whether it was, so the item will sit on your list forever taking up a slot.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>History and war · Before the First World War, several European military doctrines held that offensive spirit would overcome firepower</b>: the great virtue of that doctrine was that it could never be wrong — a victory meant the spirit was there, a defeat meant the attack had not been pressed hard enough. It runs the mechanism from "a story that sounds right is the cheapest thing there is": an account that holds under every outcome has ruled nothing out. From which follows something you would not otherwise see: <b>to judge whether an after-action report carries any information, do not count how much of what happened it explains — look at what it forbade in advance. Go through it for a sentence of the form "if such-and-such shows up next time, this point of ours was wrong." Without that sentence, the same words will fit the next war too, and will look just as right.</b><b>Where this breaks down</b>: what made Westermarck's claim checkable was a pile of household registers kept by people with no connection to it. Military history rarely offers archives that clean, because which records survive is itself often decided by who won. So here the only move is to seal your predictions beforehand; hoping to dig up uncontaminated material afterwards will usually come to nothing.</li>
+<li><b>Organizations and institutions · Asked at a review "what are the risks with this plan", the room has nothing; asked "suppose a year from now this has failed, what do we say went wrong", everyone talks at once</b>: the second phrasing has a name, the premortem — before the thing is done, pretend it has already failed, then look for causes. It runs the mechanism from "the same logic problem, reworded, and suddenly you can do it": same skeleton, but swapped onto content the mind already handles well (supplying reasons for a known outcome, which we do constantly; estimating an abstract probability from nothing, which we do badly), and the output changes. From which follows something you would not otherwise see: <b>when a meeting produces nothing, do not start by blaming people for not speaking up — first check whether the question has been packaged into a form humans are bad at handling.</b><b>Where this breaks down</b>: rewording saves the card puzzle because the two versions really are logically equivalent, with one right answer you can mark. A premortem has no answer key, and among the extra reasons the rewording shakes loose, nobody can say which are real risks and which were improvised on the spot — precisely the failing described in "a story that sounds right is the cheapest thing there is". So the trick widens the search; it does not improve judgement, and what falls out still has to be filtered some other way.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Behaviour leaves no fossils and nobody watched the ancestral environment — can this field be rigorous at all?</summary>
+<div>It is hard, but not zero. A few routes are open: check whether the same pattern shows up in populations whose cultures differ enormously; force the hypothesis to yield a quantitative prediction that could lose, then measure it; compare close relatives to see which branch the thing appears on; or look for developmental windows. Hard and impossible are different things, and what sits between them is whether you are willing to write the prediction down first.</div>
+</details>
+<details><summary>So what did the card experiment actually establish?</summary>
+<div>It established one thing firmly: content changes reasoning performance, and rewording the same skeleton can multiply the number of people who get it right. It did not firmly establish that the content doing the work has to be someone taking a benefit unpaid — hazard rules lift scores too. What decides it is which version dares to make a finer prediction: if the machinery really tracks cheating, then switching around who gains and who pays in the rule should move scores in a specific direction.</div>
+</details>
+<details><summary>When people call the mind "modular", are the two sides arguing about the same thing?</summary>
+<div>Often not. The modules the philosopher Jerry Fodor originally described came with a demanding list of conditions, one of them informational encapsulation — the thing runs without regard to anything else you know (an optical illusion still looks wrong even when you know it is wrong). The "modules" of evolutionary psychology are much looser, usually meaning no more than processing specialised for a kind of content. One word, two standards, and a fair share of the energy in this argument goes into that gap.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Wason_selection_task" target="_blank" rel="noopener">The Wason selection task</a> · <a href="https://www.sciencedirect.com/science/article/pii/0010027789900231" target="_blank" rel="noopener">The logic of social exchange (Cognition 1989)</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.1979.0086" target="_blank" rel="noopener">The spandrels of San Marco and the adaptationist programme (Proc. R. Soc. B 1979)</a> · <a href="https://en.wikipedia.org/wiki/Just-so_story" target="_blank" rel="noopener">Just-so story</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S096098220701559X" target="_blank" rel="noopener">Biological components of sex differences in colour preference (Current Biology 2007)</a> · <a href="https://www.smithsonianmag.com/history/unraveling-the-colorful-history-of-why-girls-wear-pink-and-boys-wear-blue-1370097/" target="_blank" rel="noopener">How pink and blue swapped places</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Westermarck_effect" target="_blank" rel="noopener">The Westermarck effect</a> · <a href="https://anthrosource.onlinelibrary.wiley.com/doi/abs/10.1525/aa.1968.70.5.02a00040" target="_blank" rel="noopener">Wolf's original paper on minor marriage (1968)</a></li>
+<li><a href="https://www.nature.com/articles/nature05510" target="_blank" rel="noopener">The architecture of human kin detection (Nature 2007)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Evolutionary_psychology" target="_blank" rel="noopener">Evolutionary psychology, including the main criticisms</a> · <a href="https://en.wikipedia.org/wiki/Modularity_of_mind" target="_blank" rel="noopener">Modularity of mind</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></head></html>
