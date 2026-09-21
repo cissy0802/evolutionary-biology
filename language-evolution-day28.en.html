@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 28: The Evolution of Language</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 28 · PHASE D BEHAVIOR AND MIND</div>
+<h1>The Evolution of Language</h1>
+<h2>Something that happens around you every day and leaves no fossil at all</h2>
+<div class="meta">2026-09-21 · BigCat</div>
+<div class="pitch">The gene the press called "the language gene" for twenty years lost its hardest piece of evidence in 2018 — and that made the field better, not worse.</div>
+</header>
+<div class="intro">
+<p>A two-and-a-half-year-old points out of the window and says: "Car. Gone." Two words, and you understood instantly — the car drove off, and he wants you to see it too.</p>
+<p>The dog understands "outside", "wait", "fetch the ball", and probably more words than you would guess. It has never once put two of them together.</p>
+<p>The difference is not the words. Other animals can learn words, more of them than you think. The difference is the joining.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Animals that know a thousand words exist; animals that join two of them do not</h2>
+<p>There was a border collie called Chaser whose owner trained her four or five hours a day for three years. In the 2011 paper she knew the names of 1,022 toys — and the researchers randomly re-paired names with commands to show she knew the name pointed at the object itself. Training stopped because her owner ran out of time, not because she stopped learning.</p>
+<p>The bonobo Kanzi went further: he used printed symbols on a board as words, and researchers reported he understood sentences he had never heard, at roughly the level of a two-and-a-half-year-old — though there was one subject, the scorers knew what to expect, and no other lab reproduced it, so <em>this one is still argued about</em>.</p>
+<p>But all of these stop in the same place. Around age two a child starts combining words, and combines them by rule — "car went" is not "went car". More to the point, once the combining starts there is no ceiling: finitely many words, infinitely many sentences. No animal has been seen doing this in the wild.</p>
+<p>So "is language uniquely human" is the wrong shape of question. Break it into parts and it gets clear: can you change your own vocalisations by listening to others; can you use a sign for something not in front of you; can you guess what another individual knows; can you slot one whole thing into another whole thing. The first three turn up piecemeal in other animals. The fourth does not.</p>
+<p>The first one is especially interesting. Learning to reshape your own voice is found in songbirds, parrots, hummingbirds, whales, bats and elephants — branches far apart on the tree, each hitting on it independently. And chimpanzees, our closest relatives, barely have it. That is exactly the pattern from the convergent evolution issue: <em>the same thing hit upon independently many times over, and absent in your nearest relative.</em> Human control of the voice was not inherited up the ape line; our branch added it later.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 236" role="img" aria-label="Diagram: a four-row, four-column table. Learning new vocalisations: songbirds and humans yes, dogs and apes no. Using a sign for an absent thing: dogs, apes and humans yes, songbirds unclear. Tracking what another knows: dogs and apes partly, humans yes, songbirds unclear. Slotting a whole inside a whole: humans only">
+<text x="20" y="20" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Language broken into parts: who has which one</text>
+<text x="252" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">songbirds</text>
+<text x="348" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">dogs</text>
+<text x="444" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">trained apes</text>
+<text x="540" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11" text-anchor="middle">humans</text>
+<line x1="20" y1="54" x2="580" y2="54" stroke="#24382c" stroke-width="1"></line>
+<text x="20" y="80" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">learn sounds you could not make before</text>
+<text x="252" y="80" fill="#52c98a" font-family="Georgia,serif" font-size="13" text-anchor="middle">●</text>
+<text x="348" y="80" fill="#4d5c52" font-family="Georgia,serif" font-size="13" text-anchor="middle">✕</text>
+<text x="444" y="80" fill="#4d5c52" font-family="Georgia,serif" font-size="13" text-anchor="middle">✕</text>
+<text x="540" y="80" fill="#52c98a" font-family="Georgia,serif" font-size="13" text-anchor="middle">●</text>
+<line x1="20" y1="92" x2="580" y2="92" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="118" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">use a sign for something not present</text>
+<text x="252" y="118" fill="#4d5c52" font-family="Georgia,serif" font-size="13" text-anchor="middle">?</text>
+<text x="348" y="118" fill="#52c98a" font-family="Georgia,serif" font-size="13" text-anchor="middle">●</text>
+<text x="444" y="118" fill="#52c98a" font-family="Georgia,serif" font-size="13" text-anchor="middle">●</text>
+<text x="540" y="118" fill="#52c98a" font-family="Georgia,serif" font-size="13" text-anchor="middle">●</text>
+<line x1="20" y1="130" x2="580" y2="130" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="156" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">track what the other one knows</text>
+<text x="252" y="156" fill="#4d5c52" font-family="Georgia,serif" font-size="13" text-anchor="middle">?</text>
+<text x="348" y="156" fill="#d2a24c" font-family="Georgia,serif" font-size="13" text-anchor="middle">○</text>
+<text x="444" y="156" fill="#d2a24c" font-family="Georgia,serif" font-size="13" text-anchor="middle">○</text>
+<text x="540" y="156" fill="#52c98a" font-family="Georgia,serif" font-size="13" text-anchor="middle">●</text>
+<line x1="20" y1="168" x2="580" y2="168" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="194" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">slot one whole thing inside another</text>
+<text x="252" y="194" fill="#4d5c52" font-family="Georgia,serif" font-size="13" text-anchor="middle">✕</text>
+<text x="348" y="194" fill="#4d5c52" font-family="Georgia,serif" font-size="13" text-anchor="middle">✕</text>
+<text x="444" y="194" fill="#4d5c52" font-family="Georgia,serif" font-size="13" text-anchor="middle">✕</text>
+<text x="540" y="194" fill="#52c98a" font-family="Georgia,serif" font-size="13" text-anchor="middle">●</text>
+<line x1="20" y1="206" x2="580" y2="206" stroke="#24382c" stroke-width="1"></line>
+<text x="20" y="226" fill="#8aa192" font-family="Georgia,serif" font-size="10">● has it    ○ has some of it    ✕ does not    ? not yet clear</text>
+</svg>
+<div class="cap">Not one of the first three rows is uniquely human. Only the last row is — and it is the one that turns the rows above it into language. Birdsong syllables do come in a fixed order, but that is sounds queuing up, not meanings nested inside meanings.</div>
+</div>
+<p>One thing said plainly: there is no such thing here as "language evolved in order to communicate". The ledger only reads one way — among variants that happened to appear, those that let individuals get meaning across and thereby leave more descendants grew as a share of each generation.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>It may have started with the hands, or with the tune, and each side holds one hard piece of evidence</h2>
+<p>If it was not inherited up the line of ape calls, where did it start? Two roads are mainly on the table. One says hands came first. Wild chimpanzees have a recorded repertoire of more than thirty distinguishable gestures, a good number of which map reliably onto a specific request — follow me, give me that, climb on my back. These are more flexible than their calls: a call is welded to the animal's current state (hurt, frightened, found food), while a gesture is aimed at one particular individual, and if it goes unseen it gets repeated.</p>
+<p>There is a lovely experiment on this road. In 1998 researchers compared the hands of congenitally blind children and sighted children while they talked. Blind speakers, who had never seen anyone gesture, gestured anyway; and they kept gesturing even when told their listener was blind too. <em>Gesture needs neither a model to copy nor an audience to watch.</em> Hand movement and speech look like they come out of the same machinery, not like decoration added to speech.</p>
+<p>The other road says the tune came first, which was Darwin's own guess: whole emotional songs with no separable parts, later cut up and fitted with meanings. What supports it is that the exaggerated pitch swings adults use with infants show up across many cultures, and that babies catch prosody long before they catch words. The two roads are not necessarily rivals; plausibly both channels ran and only later converged on one.</p>
+<p>But what this section is really for is not which side wins; it is why the question cannot be settled. <em>This layer leaves no trace.</em> Throat, tongue and brain tissue do not fossilise, and gestures and grammar are not even objects; what can be dug up is bone, stone tools and ancient genomes. A Neanderthal hyoid bone found in an Israeli cave in 1989 is close in shape to ours — which rules out "their throats simply could not produce complex sound", yet tells you nothing about what they said, let alone whether hands or tune came first.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 214" role="img" aria-label="Diagram: three horizontal bands. Bone and teeth can be dug up and answer whether throat anatomy was a barrier. Ancient genomes can be dug up and answer when a change was already present. Gesture, prosody and grammar form an empty dashed band with nothing left behind">
+<text x="20" y="20" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Which layers turn into something you can dig up</text>
+<rect x="20" y="34" width="168" height="40" rx="7" fill="#16241b" stroke="#52c98a" stroke-width="1.2"></rect>
+<text x="104" y="59" fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">bone and teeth</text>
+<text x="204" y="52" fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5">answers: was throat anatomy a barrier</text>
+<text x="204" y="69" fill="#8aa192" font-family="Georgia,serif" font-size="10">the Neanderthal hyoid is close to ours in shape</text>
+<rect x="20" y="86" width="168" height="40" rx="7" fill="#16241b" stroke="#52c98a" stroke-width="1.2"></rect>
+<text x="104" y="111" fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">ancient genomes</text>
+<text x="204" y="104" fill="#c2d2c6" font-family="Georgia,serif" font-size="10.5">answers: when a change was already present</text>
+<text x="204" y="121" fill="#8aa192" font-family="Georgia,serif" font-size="10">but not what it was doing at the time</text>
+<rect x="20" y="138" width="168" height="40" rx="7" fill="#12171400" stroke="#4d5c52" stroke-width="1.2" stroke-dasharray="5 4"></rect>
+<text x="104" y="163" fill="#8aa192" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">gesture · tune · grammar</text>
+<text x="204" y="156" fill="#4d5c52" font-family="Georgia,serif" font-size="10.5">nothing was left behind</text>
+<text x="204" y="173" fill="#4d5c52" font-family="Georgia,serif" font-size="10">no fossils, no archives</text>
+<text x="20" y="202" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">"Hands first or tune first" falls entirely inside the third band.</text>
+</svg>
+<div class="cap">The two hypotheses cannot finish their fight, not because the evidence is still too thin, but because the layer that would settle them never turns into anything diggable.</div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>The gene called "the language gene" for twenty years has a better real story than the legend</h2>
+<p>In the 1990s a three-generation London family came to researchers' attention. About half its members had severe speech difficulty — not simple mispronunciation but an inability to organise the movements of mouth and face — and they also scored clearly low on grammar tests. Half affected, half not, which points at a single genetic change. It was found in 2001: one altered site in a gene called FOXP2 on chromosome 7. The press took it from there and made it "the language gene", and that label is thoroughly wrong.</p>
+<p>FOXP2 is a transcription factor — in plain terms a switch governing when hundreds of other genes turn on and off. Nor is it ours alone: mice have it, birds have it, fish have it, and it has barely changed over enormous stretches of time. In 2007 researchers worked on zebra finches: while a young bird is learning its song, expression of this gene rises in one brain region, and suppressing it leaves the learned song inaccurate and incomplete. In 2009 another group put the two human-version changes into mice; the mice's calls changed, and so did the shape of neurons in one brain region — not a mouse starting to talk, but the switch really does sit on circuitry to do with vocalisation.</p>
+<p>The part worth telling comes next. A famous 2002 paper reported that the human version of FOXP2 had been through strong selection within the last 200,000 years — the trace a useful variant leaves when it appears and sweeps through a population. It went into countless popular accounts, and the date lined up neatly with the story of modern human behaviour suddenly getting complex.</p>
+<p>In 2018 a team redid the analysis on far larger and far more diverse genomes. The signal was gone. The original rested on a few stretches of sequence from about twenty people, with African populations barely represented; look at African populations on their own and the sweep disappears. What had been read as selection looks more like an artefact of who carried which version out of Africa. Add the 2007 finding that Neanderthals carry the same two changes we do, and it is not even specific to our species.</p>
+<p>So today's version reads: FOXP2 really is involved in speech, because speech is the first thing to fail when it breaks. But "the most conspicuous failure" and "the only thing it governs" are different claims — for a node with hundreds of things downstream, whichever downstream thing is least robust is the one that lends the node its name. <em>Hunting for the gene was the wrong search; the thing to find is the network.</em> And being overturned made the field better: a pretty story that has survived a test is worth far more than one never tested.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenes · BigCat</h3>
+<ul>
+<li><b>① Parenting and education</b>: your two-and-a-half-year-old is still firing off single words while other people's children speak in sentences, so you search for "language delay" and then, without noticing, start counting how many words he has. This runs the mechanism from "Animals that know a thousand words exist; animals that join two of them do not": vocabulary size and joining are two different things. A 2018 study ran whole-day home recordings of thirty-odd four- to six-year-olds, and what matched their language scores and the response of the brain region handling language was not how many words the adults said in a day, but how many back-and-forth turns the two of them completed. So stop counting words and count turns — you say something, he answers, that is one turn; see how far a meal gets. The thing to stop doing: reading a picture book at him and turning the page without leaving him room to break in.</li>
+<li><b>② Investing and position sizing</b>: a position is wiped out, you sit down to review it and try to work out whether the call was wrong or the call was fine and the luck was not. This runs the mechanism from "It may have started with the hands, or with the tune": some questions are unanswerable not for lack of material but because the layer that would settle them leaves no trace — in a single outcome, judgement quality and luck are twisted together, and no after-the-fact record can separate them. So stop grading single trades and grade the distribution once a few dozen of the same kind of decision have accumulated; and the thing to change is to write one line at order time saying what you are relying on, then review only whether that line still holds today — if it was never written, that trade can never be reviewed.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>Engineering and system design · an internal data format that was a flat row of key-value pairs until some release allowed a field to contain another thing of the same shape</b>: after that change what it can express goes from "finitely many" to "no ceiling", with not one extra field added. This runs the mechanism from "Animals that know a thousand words exist; animals that join two of them do not": what opens up expressive power is not more units, it is permission to slot one whole thing into another whole thing. From which follows something you could not otherwise see: <b>to judge how long a format, a template or a form can last, counting its fields is useless — without that opening, every new requirement needs a new field, so the field count climbs while what can be expressed hits a ceiling; with it, the field count can stay small and the ceiling is off. Look for that one property, not for length.</b><b>But it does not hold here</b>: the opening in a format was written into a spec by someone in one release, with a record of when and by whom; language has no "release", and nobody can say in which generation it appeared or whether it appeared at once, because bone does not record grammar. Protocol history can be told down to "who added it, which year"; the origin of language never will be.</li>
+<li><b>Organisations and institutions · one person goes on holiday, three apparently unrelated things break at once, so he is designated "the owner of that area" and from then on everything gets piled on him</b>: this runs the mechanism from "The gene called 'the language gene' for twenty years": which failure is most conspicuous when you knock out a node does not mean the node only governs that thing — it may just be a junction shared by many unrelated paths. From which follows something you could not otherwise see: <b>to judge whether he is really the bottleneck, do not count how many incidents happen while he is away; look at whether those incidents have anything to do with each other. Related, and he really is the core of that area; unrelated, and the real problem is many paths crowding through one person — in which case giving him a deputy solves nothing and the sharing has to be broken up.</b><b>But it does not hold here</b>: on the gene side you can actually knock it out and look, as many times as you like; in an organisation you cannot make a person vanish to check, so you wait for holidays and departures that happen anyway — and those moments are not remotely random. People tend not to take leave in the busiest season, so "nothing broke while he was away" may only mean he picked a quiet week.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>If fossils do not record grammar, is this field condemned to guessing forever?</summary>
+<div>Hard, but not hopeless. A few roads are open: compare living species part by part and see which branch has which piece; use ancient genomes to date when a given change was already fixed; watch the order in which children acquire things; and go to the places where new languages are actually born — sign languages that deaf children grow themselves, and lab experiments where an invented set of symbols is passed down a chain of people to see what regularities emerge after a few rounds. None of this settles "hands first or tune first", but it does strike off the versions that do not work.</div>
+</details>
+<details><summary>When we say the sentences are "infinite", are they really?</summary>
+<div>In the sense of the rules, yes: you can put one sentence inside another — "he said she thought I forgot" — and no rule says which level is the last. In practice memory stops you; three or four levels deep and people cannot follow. That is also where the argument sits: some hold that this self-nesting capacity is the core of human language, while others report languages that barely use it. Still contested.</div>
+</details>
+<details><summary>Could Neanderthals speak?</summary>
+<div>What is settled: their hyoid bone is close to ours in shape; they carry the same two FOXP2 changes we do; they made complex stone tools, used pigments, buried their dead. Together that rules out "the anatomy simply did not allow it". What is not settled is what their speech was like — whether it had grammar, how many words it had — since none of that leaves a trace either. So the honest statement is: no reason to think they could not speak, and no way to know what they said.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0376635710002925" target="_blank" rel="noopener">A border collie knows over a thousand object names (2011)</a> · <a href="https://en.wikipedia.org/wiki/Kanzi" target="_blank" rel="noopener">Kanzi the bonobo, and the criticisms</a></li>
+<li><a href="https://www.cell.com/current-biology/fulltext/S0960-9822(14)00667-8" target="_blank" rel="noopener">The meanings of chimpanzee gestures (2014)</a> · <a href="https://www.nature.com/articles/24300" target="_blank" rel="noopener">Why people gesture when they speak (1998)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Vocal_learning" target="_blank" rel="noopener">Which branches evolved vocal learning</a> · <a href="https://en.wikipedia.org/wiki/Origin_of_language" target="_blank" rel="noopener">Hypotheses on the origin of language</a></li>
+<li><a href="https://www.nature.com/articles/35097076" target="_blank" rel="noopener">A severe speech disorder mapped to FOXP2 (2001)</a> · <a href="https://en.wikipedia.org/wiki/FOXP2" target="_blank" rel="noopener">FOXP2</a></li>
+<li><a href="https://www.cell.com/cell/fulltext/S0092-8674(18)30851-1" target="_blank" rel="noopener">No evidence for recent selection at FOXP2 (2018)</a> · <a href="https://www.nature.com/articles/s41576-018-0046-6" target="_blank" rel="noopener">FOXP2 tells a cautionary tale (2018)</a></li>
+<li><a href="https://www.cell.com/current-biology/fulltext/S0960-9822(07)02065-9" target="_blank" rel="noopener">Neanderthals carried the modern human FOXP2 variant (2007)</a></li>
+<li><a href="https://journals.sagepub.com/doi/abs/10.1177/0956797617742725" target="_blank" rel="noopener">Conversational turns, not word counts, are what track (2018)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
