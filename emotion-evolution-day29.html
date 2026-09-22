@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 29：情绪的演化</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 29 · PHASE D 行为与心智</div>
+<h1>情绪的演化</h1>
+<h2>半夜那一声响，为什么身体比你先知道</h2>
+<div class="meta">2026-09-22 · BigCat</div>
+<div class="pitch">一位两侧杏仁核都已经坏掉、摸蛇进鬼屋都不怕的人，吸了一口二氧化碳之后惊恐发作——「恐惧」根本不是一样东西。</div>
+</header>
+<div class="intro">
+<p>半夜你被楼下一声响吵醒。还没弄清是什么，心跳已经上去了，呼吸变浅，你在黑里一动不动，耳朵支着。</p>
+<p>半分钟后你想起来，是猫。可身体不跟着一起回来，还要好几分钟才降下去。</p>
+<p>顺序是反的。不是你先害怕、身体再跟上，是一整套设置先切过去，你后知道。这件事本身就需要解释：谁在切，按什么切。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>情绪不是一种感受，是一次把几十个开关一起拨过去</h2>
+<p>那半分钟里变的不止心跳。呼吸、瞳孔、肌肉张力都变了；注意力窄成一条缝，本来在想的事全停了；记忆被翻到跟危险沾边的那一格，你突然想起上周门好像没锁。这些不是你一件件做的，是一起来的。</p>
+<p>祖先反复碰上的局面就那么几类：被什么东西盯上、吃进去的东西不对、孩子不见了。每一类要的那套配置不一样——被盯上时要绷紧和窄视野，吃错东西时要反胃和吐出去，混着用等于都没用。碰巧出现的变异让某些个体多出一条连线：一个线索到了，一整套设置跟着翻过去。这类个体遇上那类局面时活下来、把孩子带大的概率高一点；得临场一件件调的，慢就吃亏。</p>
+<p>把情绪看成「统管其他系统的上位程序」（Tooby 和 Cosmides 的说法）组织力很强，但这个框架本身不是结论，每个具体情绪都得单独拿证据。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：左边一个方框写着黑里那一声响，五条箭头指向右边五行文字，分别是心跳呼吸肌肉一起变、注意力窄成一条缝、记忆翻到危险那一格、值不值得冒险的标准临时换掉、脸上的动作自己出来" viewBox="0 0 600 216" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar29a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">一个线索到了，同时被拨过去的东西</text>
+<rect x="20" y="86" width="140" height="46" rx="8" fill="none" stroke="#d2a24c" stroke-width="1"></rect>
+<text x="90" y="114" fill="#d2a24c" font-family="Georgia,serif" font-size="12" text-anchor="middle">黑里那一声响</text>
+<line x1="166" x2="240" y1="105" y2="46" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="107" y2="84" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="109" y2="122" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="111" y2="160" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="113" y2="198" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<text x="250" y="50" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">心跳、呼吸、肌肉张力一起变</text>
+<text x="250" y="88" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">注意力窄成一条缝，别的念头停住</text>
+<text x="250" y="126" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">记忆被翻到跟危险沾边的那一格</text>
+<text x="250" y="164" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">「值不值得冒险」临时换一套标准</text>
+<text x="250" y="202" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">脸上的动作自己就出来了</text>
+</svg>
+<div class="cap">变的不是一项，是一组，而且是同时。切过去用不了一秒，切回来要好几分钟。</div>
+</div>
+<p>一条证据是表情不是看来的：2004 年雅典，有人拍下奥运会和残奥会柔道赛结束那一刻运动员的脸。先天失明的选手从没见过一张人脸，赢了输了脸上的动作却跟看得见的选手是同一套。</p>
+<p>另一条更狠。被称作 S.M. 的患者，两侧杏仁核因一种罕见病坏掉了。带她去宠物店摸蛇、进鬼屋，她不怕；给她看别人恐惧的脸，她认不出。可 2013 年研究者让她吸一口含三成半二氧化碳的空气，她当场惊恐发作，扯着面罩喊「我喘不上气」，另外两位同样受损的患者也一样。防外面的威胁要杏仁核；察觉身体里喘不上气，走的是另一条路。一个词，盖住了至少两套东西。</p>
+<p class="en-brief"><b>EN</b> An emotion looks less like a feeling than like a switch that flips many settings at once — attention, memory retrieval, muscle tone, risk thresholds. Congenitally blind judo athletes make the same winning and losing faces as sighted ones. And patient S.M., whose amygdalae are destroyed, feels no fear of snakes yet panics on inhaling CO2: external threat and internal suffocation run on separate routes.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>怕蛇好学，怕插座学不会</h2>
+<p>插座、马路、药瓶，是真会要命的东西，你得跟小孩说上一百遍，他还不一定往心里去。可他只要有一次看见大人见了虫子猛地一缩，往后自己见了虫子也缩。</p>
+<p>这件事在实验室里被做干净过。Mineka 实验室养大的恒河猴从没见过蛇，自己不怕。给它看另一只猴子对着蛇惊慌失措的录像，看几遍就怕上了，怕到不肯把手伸过蛇去拿食物。妙在剪辑：研究者把同一段惊慌画面接到假花上、接到玩具兔上，观看的猴子怎么看都学不会怕花；接到玩具蛇、玩具鳄鱼上，一学就会——画面里那只猴子的表情一模一样，差别只在它对着什么。</p>
+<p>所以传下去的不是「怕蛇」这个内容，是「把害怕跟某几类东西连起来特别容易」这个偏置。偏置不保证你怕蛇，它只是把某几条学习通道铺得比别的宽。恐惧症的分布因此一点都不随机：怕蛇、怕蜘蛛、怕高的人，远多过怕电、怕插座、怕车的，而后面这几样才是今天真正弄死人的东西。</p>
+<p>反过来说一句：不是演化「知道」蛇危险。是几千万年里灵长类跟蛇打交道打得太久，学得快的那些平均多留下了一点后代；插座只有一百来年，什么都来不及。</p>
+<p>猴子那组实验干净，人身上就没那么干净。给人看蛇和蜘蛛的照片配上电击，做出来的条件反射是不是真的更难消掉？2018 年一篇综述把三十二个这类实验汇总起来，只有十个做出了效果。这条在猴子身上站得住，在人身上还没定。</p>
+<p class="en-brief"><b>EN</b> Lab-reared monkeys learn to fear snakes from a video of a frightened monkey, but the same frightened footage spliced onto flowers teaches them nothing. What is inherited is not the fear itself but a bias: some associations are cheap to form. It explains why phobias cluster on snakes and heights rather than sockets and cars. In humans the evidence is weaker — a 2018 review found only 10 of 32 experiments supported it.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>恶心管的不是危险，是病原</h2>
+<p>列两张单子。让你恶心的：呕吐物、腐肉、流脓的伤口、粪便、从食物上爬过去的蟑螂。真会要你命的：汽车、电、高处、吃错的药。两张几乎不重合。</p>
+<p>2004 年有人把一份问卷挂在 BBC 的科学网页上，清掉不可信的回答还剩将近四万份，来自一百多个国家和地区。题目是成对的图：一张带着病原线索——溃烂、寄生虫、腐肉、体液，另一张构图几乎一样，但换掉颜色之后就看不出病原含义了。带线索那张在所有地区都被打得更恶心；女性评分普遍更高，评分随年龄一路往下走。这是相关不是因果，但这个模式是事先能预言的，不是看到数据之后编出来的。</p>
+<p>病原看不见。等到发烧腹泻，东西已经进去了，所以能起作用的只剩接触之前的可见线索——气味、颜色、质地、有没有东西在上面爬。碰巧带着「见到这类线索就退开」这条反应的个体，感染少一点，留下的后代多一点。触发它的从来不是实际风险，是线索本身。汽车不让人恶心，就因为汽车身上没有祖先认得的线索。</p>
+<p>同一套线索系统也会对着人跑：身上有明显病征的人被回避，实验里看得到。但再往外推一步、说它能解释对外族的排斥，证据就薄了——2023 年一篇综述把这条路上的证据评为大多是间接的，跨国比较里恶心敏感度跟排外倾向的关联很小。还有一句得说在前头：讲清一个反应从哪来，跟认可它，是两件事。这套系统照着几万年前的线索调，认错人是常事。</p>
+<p class="en-brief"><b>EN</b> The things that disgust us are not the things that kill us. A survey of nearly 40,000 people found disease-salient images rated more disgusting everywhere, more so by women, declining with age. Pathogens are invisible, so only pre-contact cues can work — which is why cars trigger nothing. Extending this to outgroup prejudice is much weaker: a 2023 review rates that evidence mostly indirect. Explaining a reaction is not endorsing it.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>触发条件是照着一个已经没有了的世界调的</h2>
+<p>婴儿半夜醒过来，发现屋里没人，会哭到你不得不起来。你知道他绝对安全：门锁着，屋里二十二度，什么都进不来。他不知道。</p>
+<p>被单独留下时的哭闹在出生后半年到一岁之间冒出来，时间表在差别很大的文化里都差不多，连在发育压力很重的孟加拉农村样本里也照常出现。放回几万年前看：把一个不会走路的婴儿单独留在封闭空间里过夜，这件事根本不存在；那时「周围一个大人都没有」这条线索，跟真危险几乎是一回事。触发条件是按那个世界的统计量调的，不是按你家。</p>
+<p>它为什么这么容易响？因为两种错的代价不对称。响错了，成本是白哭一场；该响没响，成本可能是没有下一次。只要不对称在，阈值就会一路被压低，压到宁可天天误报。有人拿烟雾报警器打比方：你家那个一烤面包就叫，不是它坏了，是设定它的人算过这笔账。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：三列对照表。第一列线索，第二列几万年前它多半意味着什么，第三列今天它多半意味着什么。四行分别是：黑里一声响，过去是有东西进来了，今天是猫碰倒了杯子；屋里一个大人都没有，过去是真的被落下了，今天是大人在隔壁房间；尝到甜，过去是熟果子难得赶紧吃，今天是货架上三块钱一瓶；很多陌生的脸看着你，过去是出大事了，今天是你发了一条动态" viewBox="0 0 600 212" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">同一条线索，两个世界</text>
+<text x="20" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">线索</text>
+<text x="230" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">几万年前多半意味着</text>
+<text x="420" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">今天多半意味着</text>
+<line x1="20" x2="580" y1="54" y2="54" stroke="#24382c" stroke-width="1"></line>
+<text x="20" y="80" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">黑里一声响</text>
+<text x="230" y="80" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">有东西进来了</text>
+<text x="420" y="80" fill="#8aa192" font-family="Georgia,serif" font-size="11">猫碰倒了杯子</text>
+<line x1="20" x2="580" y1="92" y2="92" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="118" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">屋里一个大人都没有</text>
+<text x="230" y="118" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">真的被落下了</text>
+<text x="420" y="118" fill="#8aa192" font-family="Georgia,serif" font-size="11">大人在隔壁房间</text>
+<line x1="20" x2="580" y1="130" y2="130" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="156" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">尝到甜</text>
+<text x="230" y="156" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">熟果子，难得，赶紧吃</text>
+<text x="420" y="156" fill="#8aa192" font-family="Georgia,serif" font-size="11">货架上三块钱一瓶</text>
+<line x1="20" x2="580" y1="168" y2="168" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="194" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">很多陌生的脸看着你</text>
+<text x="230" y="194" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">出大事了</text>
+<text x="420" y="194" fill="#8aa192" font-family="Georgia,serif" font-size="11">你发了一条动态</text>
+<line x1="20" x2="580" y1="204" y2="204" stroke="#24382c" stroke-width="1"></line>
+</svg>
+<div class="cap">左边一列没变，右边两列越差越远。情绪不会自己更新这张表：变异加选择要很多代才挪得动，而这几百年世界换得太快。</div>
+</div>
+<p>这个说法很顺手，顺手到几乎什么都能套，而这正是演化心理学那期那道门槛要拦的：一个演化解释要算数，得先说清它在别处该看见什么，然后真的去看，看见相反的东西时它会倒。婴儿那条过了一部分——跨文化的时间表可以事先预言，也可以被推翻。而「现代人普遍焦虑是因为错配」，你想不出什么观察能推翻它，那它就还只是个说法。</p>
+<p class="en-brief"><b>EN</b> Separation distress appears between six months and a year on a similar timetable across very different cultures. Its trigger was calibrated to a world in which a baby left alone meant real danger. Because a false alarm is cheap while a miss can be terminal, the threshold sits absurdly low — smoke-detector logic. But "modern life is a mismatch" explains everything and predicts nothing; only the falsifiable parts count.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 工程与系统设计</b>：某个告警一响全组扑过去，最近三十次里二十几次是虚惊，可谁也不敢提关掉它。这是「触发条件是照着一个已经没有了的世界调的」那节的形状：误报不疼、漏报要命，阈值只会越压越低。可改的是别在它响的时候讨论它该不该响——那一刻所有人都站在漏报那一边；改成每季度把「响了几次」和「真出事几次」并排摆出来重算一次，指标从「有没有漏过」换成真出事次数除以响的次数。</li>
+<li><b>② 带团队与组织</b>：一次当众被否掉的提案之后，那个人半年没再开口，而这半年你说了十几遍「欢迎提意见」。这是「怕蛇好学，怕插座学不会」那节的形状：当众被否落在一条本来就宽的老通道上，一次就够；那句客气话没有通道，说一百遍也进不去。可改的是停掉这句话，改成公开复盘那次被否的提案，讲清当时为什么否、现在回头看对不对；指标不看这次会上有几个人发言，看上次发过言的人这次还发不发。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>育儿与教育 · 「写完作业再玩」讲了无数遍没用，可商场里走丢的那十分钟之后，他再也不撒手</b>：跑的是「怕蛇好学，怕插座学不会」那节的机制——一件事进不进得去，不由重复次数决定，由它落没落在一条本来就宽的通道上。走丢那次落在「身边一个大人都没有」这条老通道上，一次就够；作业和玩之间那条因果链是全新的，只能一遍遍磨。由此能推出一个原本看不出的结论：<b>判断一条规矩要讲多少遍，别看它多重要，看它接不接得上一条现成的通道；接不上的，该换的是环境和默认值——把东西放在够不着的地方比说一百遍管用，不是孩子听不懂，是那条通道根本不在。</b><b>但这里不成立</b>：猴子那个实验能下结论，是因为同一段画面接到花上、接到蛇上别的全不变；走丢那十分钟里还有陌生环境、大人的脸色、事后所有亲戚的复述，你没法知道是哪一样让他记住的。</li>
+<li><b>经济·投资·商业 · 被一次现金流断裂吓过之后，公司账上永远压着远超需要的现金</b>：跑的是「触发条件是照着一个已经没有了的世界调的」那节的不对称——漏一次就没有下一次，误报一百次只是少赚，于是阈值一路下压，而且没有力量把它推回去。由此能推出一个原本看不出的结论：<b>看到一条过度保守的规则，问「是不是算错了」没有用，多半没人算错；该问的是它上一次被改是什么时候、靠什么信号改的——不对称的代价结构自己就会长出一个越来越保守的阈值，哪怕每个人都清醒。</b><b>但这里不成立</b>：生物里这个阈值只能在很多代里慢慢挪，没有哪个个体改得动；公司里一次决策就能改完。所以它停在原地不是改不动，是改完万一真出事得有人担——那是责任怎么分的问题，别拿演化开脱。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>情绪到底有没有一张固定的清单？六种？七种？</summary>
+<div>传统那条路是给不同文化的人看表情照片，让他们从几个词里挑，挑得相当一致。2014 年在纳米比亚，研究者换了做法：请当地的辛巴人把照片自由分堆，不给词也不给类别。结果不是整整齐齐的六堆，同一张还会出现在好几堆里，他们更像按「好受还是难受」在分。几乎没人否认有些反应有生物基础，争的是它们是不是被打包成了几个有名字的类。</div>
+</details>
+<details><summary>说某个情绪「是适应」，要拿出什么才算数？</summary>
+<div>至少三样：它要解决的那个问题在祖先环境里确实反复出现（要独立证据，不能靠想象）；这套反应真的能解决它；它的设计细节跟这个问题对得上，而不是跟另外三个问题同样对得上。光是「讲得通」不算——讲得通的故事要多少有多少。</div>
+</details>
+<details><summary>既然是错配，把环境改回去不就行了？</summary>
+<div>改不回去，也不必。「祖先环境」不是某个地方某个年代，是一大片一直在变的条件；而且错配只说明触发条件对不上了，没说这个反应本身坏——同一套系统也在帮你躲开真变质的东西。能动的是线索所在的环境：把手机拿出卧室比命令自己别焦虑管用，因为前者改的是线索，后者是在跟一套你够不着的设置较劲。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://www.nature.com/articles/nn.3323" target="_blank" rel="noopener">双侧杏仁核受损者仍会惊恐发作（2013）</a> · <a href="https://www.sciencedaily.com/releases/2013/02/130204130106.htm" target="_blank" rel="noopener">同一研究的通俗报道</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/19210060/" target="_blank" rel="noopener">先天失明者的自发表情（2009）</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/2230660/" target="_blank" rel="noopener">猴子学得会怕蛇，学不会怕花（1990）</a> · <a href="https://en.wikipedia.org/wiki/Preparedness_(learning)" target="_blank" rel="noopener">「准备好的学习」词条</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0149763418304561" target="_blank" rel="noopener">人身上的证据汇总：32 个实验只有 10 个支持（2018）</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/15252963/" target="_blank" rel="noopener">恶心与疾病风险的大样本调查（2004）</a> · <a href="https://www.lshtm.ac.uk/newsevents/news/2004/disgustfactor.html" target="_blank" rel="noopener">研究机构的说明稿</a></li>
+<li><a href="https://www.nature.com/articles/s44159-023-00226-4" target="_blank" rel="noopener">行为免疫系统与社会偏见：批判性综述（2023）</a></li>
+<li><a href="https://journals.sagepub.com/doi/abs/10.1177/0956797613517239" target="_blank" rel="noopener">辛巴人对情绪的知觉存在文化差异（2014）</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0163638312000422" target="_blank" rel="noopener">分离抗议在高发育压力样本中照常出现（2012）</a> · <a href="https://en.wikipedia.org/wiki/Evolution_of_emotion" target="_blank" rel="noopener">情绪演化词条</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

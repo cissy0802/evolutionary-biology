@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 29: The Evolution of Emotion</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 29 · PHASE D BEHAVIOR AND MIND</div>
+<h1>The Evolution of Emotion</h1>
+<h2>That noise at 3am — why your body knows before you do</h2>
+<div class="meta">2026-09-22 · BigCat</div>
+<div class="pitch">A woman whose amygdalae are both destroyed will handle snakes and walk through a haunted house unmoved — then have a full panic attack after one breath of carbon dioxide. "Fear" is not one thing.</div>
+</header>
+<div class="intro">
+<p>Something thuds downstairs in the middle of the night. Before you have worked out what it was, your heart rate is up, your breathing has gone shallow, and you are lying perfectly still in the dark with your ears straining.</p>
+<p>Half a minute later you remember: the cat. Your body does not come back with you — it takes several more minutes to settle.</p>
+<p>The order is backwards. You do not get frightened and then your body follows; a whole set of settings flips first, and you find out afterwards. That by itself needs explaining: what is doing the flipping, and on what.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>An emotion is not a feeling, it is dozens of switches thrown at once</h2>
+<p>More than your heart rate changed in that half minute. Breathing, pupils and muscle tone all shifted; attention narrowed to a slit; memory got turned to the page marked danger, and you suddenly wondered whether you locked the door last week. You did not do these one at a time. They arrived together.</p>
+<p>Ancestors ran into a small number of situations over and over: something is stalking you, what you swallowed was bad, the child is gone. Each one needs a different setting, and a fixed one — being stalked calls for tension and a narrow field of view, bad food calls for nausea and getting it back out, and mixing the two is useless. A variation that happened to appear wired one cue to the whole set at once. Individuals carrying that wiring were a little likelier to survive such a moment and raise their young; the ones who had to dial each knob on the spot were slow, and slow lost.</p>
+<p>Treating emotions as "superordinate programs that run the other systems" (the phrase is Tooby and Cosmides') organizes the field well, but the framework itself is not a result — every specific emotion has to earn its own evidence.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: a box on the left reading a thud in the dark, with five arrows pointing to five lines of text on the right: heart rate, breathing and muscle tone shift together; attention narrows to a slit; memory turns to the page marked danger; the threshold for what counts as worth risking is swapped out; the face does it by itself" viewBox="0 0 600 216" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar29a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">One cue arrives — everything thrown at the same moment</text>
+<rect x="20" y="86" width="140" height="46" rx="8" fill="none" stroke="#d2a24c" stroke-width="1"></rect>
+<text x="90" y="114" fill="#d2a24c" font-family="Georgia,serif" font-size="12" text-anchor="middle">a thud in the dark</text>
+<line x1="166" x2="240" y1="105" y2="46" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="107" y2="84" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="109" y2="122" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="111" y2="160" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<line x1="166" x2="240" y1="113" y2="198" stroke="#52c98a" stroke-width="1" marker-end="url(#ar29a)"></line>
+<text x="250" y="50" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">heart rate, breathing, muscle tone</text>
+<text x="250" y="88" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">attention narrows, other thoughts stop</text>
+<text x="250" y="126" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">memory turns to the page marked danger</text>
+<text x="250" y="164" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">"worth the risk?" gets a new threshold</text>
+<text x="250" y="202" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5">the face does it by itself</text>
+</svg>
+<div class="cap">Not one setting but a set, and all at once. Flipping over takes under a second; coming back takes minutes.</div>
+</div>
+<p>One piece of evidence says the faces are not copied from anyone. In Athens in 2004, researchers photographed judo competitors at the Olympic and Paralympic Games in the instant a match ended. Athletes blind from birth, who have never seen a single human face, made the same winning and losing faces as the sighted ones.</p>
+<p>The second piece is harder. A patient known as S.M. lost both amygdalae to a rare disease. Taken to a pet store to handle snakes, walked through a haunted house, she was not afraid; shown photographs of frightened faces, she could not tell what they were. Yet in 2013 researchers had her inhale air with 35% carbon dioxide, and she had a panic attack on the spot, clawing at the mask and saying she could not breathe. Two other patients with the same damage did the same. Guarding against threats out there needs the amygdala; noticing that something inside you has gone wrong runs on another route. One word had been covering at least two systems.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Fear of snakes is easy to learn, fear of power outlets is not</h2>
+<p>Sockets, traffic, pill bottles — the things that genuinely kill — take a hundred tellings, and a small child may still not take them in. But let him see an adult recoil from an insect once, and from then on he recoils too.</p>
+<p>This has been done cleanly in the lab. Rhesus monkeys raised in Mineka's laboratory had never seen a snake and were not afraid of one. Show such a monkey a video of another monkey panicking at a snake and after a few viewings it is afraid — afraid enough to refuse to reach over the snake for food. The trick is in the editing: researchers spliced the very same panic footage onto artificial flowers and a toy rabbit, and the watching monkeys never learned to fear flowers; spliced onto a toy snake or a toy crocodile, they learned at once. The model monkey's expression is identical; all that differs is what it is aimed at.</p>
+<p>So what gets passed on is not the content "snakes are frightening" but a bias: some pairings are unusually cheap to form. The bias does not guarantee you fear snakes, it only paves a few learning channels wider than the rest. That is why phobias are anything but randomly distributed: far more people fear snakes, spiders and heights than fear electricity, sockets or cars — and it is the second list that does the killing now.</p>
+<p>Put the other way round: evolution does not "know" snakes are dangerous. Primates dealt with snakes for tens of millions of years, and the quick learners among them left slightly more offspring on average. Sockets have had about a century, which is nothing.</p>
+<p>The monkey work is clean; the human work is not. Do pictures of snakes and spiders paired with a shock really produce a conditioned response that is harder to extinguish? A 2018 review pooled thirty-two such experiments and found the effect in only ten. This one holds up in monkeys and is unsettled in humans.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Disgust is not tracking danger, it is tracking pathogens</h2>
+<p>Write two lists. Things that disgust you: vomit, rotting meat, a suppurating wound, faeces, a cockroach crossing your food. Things that will actually kill you: cars, electricity, heights, the wrong pill. The lists barely overlap.</p>
+<p>In 2004 someone put a questionnaire on the BBC's science pages; after implausible responses were dropped, just under forty thousand remained, from more than a hundred countries and territories. The items were paired images: one carrying a disease cue — lesions, parasites, rotting meat, bodily fluids — and one almost identically composed but recoloured so the disease reading disappears. The cue-carrying image was rated more disgusting in every region; women rated higher than men, and ratings declined steadily with age. This is correlation, not causation, but the pattern was predicted in advance rather than read off the data afterwards.</p>
+<p>Pathogens are invisible. By the time there is a fever, they are already in, so the only thing that can work is a visible cue before contact — smell, colour, texture, whether something is crawling on it. Individuals who happened to carry "see this sort of cue, back away" got infected a little less and left a few more offspring. What sets it off is never the actual risk, it is the cue. Cars do not disgust anyone for exactly that reason: a car carries no cue any ancestor would recognize.</p>
+<p>The same cue system also runs on people: individuals with visible signs of illness get avoided, and that shows up in experiments. Push one step further — claim the system explains hostility toward outgroups — and the evidence thins fast. A 2023 review rates that line of evidence as mostly indirect, and across dozens of countries the link between disgust sensitivity and prejudice is small. One thing has to be said up front: explaining where a reaction comes from is not endorsing it. This system was calibrated to cues from tens of thousands of years ago, and it gets people wrong all the time.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>The trigger was calibrated for a world that no longer exists</h2>
+<p>A baby wakes at night, finds the room empty, and cries until you have to get up. You know he is perfectly safe: the door is locked, the room is 22 degrees, nothing can get in. He does not know that.</p>
+<p>Crying at being left alone shows up between six months and a year, on much the same timetable across very different cultures — it even appears on schedule in a rural Bangladeshi sample under heavy developmental stress. Set that back tens of thousands of years: leaving an infant who cannot walk alone overnight in a sealed room simply did not happen, and back then "no adult anywhere nearby" and real danger were close to the same thing. The trigger is set to that world's statistics, not to your house.</p>
+<p>Why does it go off so easily? Because the two errors do not cost the same. A false alarm costs one wasted bout of crying; a miss can cost everything. As long as that asymmetry holds, the threshold gets pushed down until false alarms are routine. People call it smoke-detector logic: the one in your kitchen that screams at toast is not broken, whoever set it did the arithmetic.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: a three-column table. Column one, the cue; column two, what it usually meant tens of thousands of years ago; column three, what it usually means today. Four rows: a thud in the dark, something got in, the cat knocked over a glass; no adult in the room, you have actually been left behind, the adults are next door; tasting sweet, ripe fruit is rare so eat it now, three dollars a bottle on the shelf; many unfamiliar faces watching you, something serious is happening, you posted something" viewBox="0 0 600 212" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">One cue, two worlds</text>
+<text x="20" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">the cue</text>
+<text x="230" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">then, it usually meant</text>
+<text x="420" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">now, it usually means</text>
+<line x1="20" x2="580" y1="54" y2="54" stroke="#24382c" stroke-width="1"></line>
+<text x="20" y="80" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">a thud in the dark</text>
+<text x="230" y="80" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">something got in</text>
+<text x="420" y="80" fill="#8aa192" font-family="Georgia,serif" font-size="11">the cat hit a glass</text>
+<line x1="20" x2="580" y1="92" y2="92" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="118" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">no adult in the room</text>
+<text x="230" y="118" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">you were left behind</text>
+<text x="420" y="118" fill="#8aa192" font-family="Georgia,serif" font-size="11">they are next door</text>
+<line x1="20" x2="580" y1="130" y2="130" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="156" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">tasting sweet</text>
+<text x="230" y="156" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">ripe, rare, eat it now</text>
+<text x="420" y="156" fill="#8aa192" font-family="Georgia,serif" font-size="11">a bottle on the shelf</text>
+<line x1="20" x2="580" y1="168" y2="168" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="194" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">many strange faces on you</text>
+<text x="230" y="194" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">something serious</text>
+<text x="420" y="194" fill="#8aa192" font-family="Georgia,serif" font-size="11">you posted something</text>
+<line x1="20" x2="580" y1="204" y2="204" stroke="#24382c" stroke-width="1"></line>
+</svg>
+<div class="cap">The left column has not changed; the other two drift further apart every decade. Emotions do not update this table on their own — variation plus selection needs many generations, and the last few centuries went too fast.</div>
+</div>
+<p>This story is handy, handy enough to fit anything, which is exactly what the bar set out in the evolutionary psychology piece is there to stop: an evolutionary explanation counts only if it first says what should be visible somewhere else, then goes and looks, and falls over when the opposite turns up. The infant case clears part of that bar — the cross-cultural timetable can be predicted in advance and could have been refuted. "Modern anxiety is caused by mismatch" has no observation that could overturn it, so it is still a story rather than a result.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenes · BigCat</h3>
+<ul>
+<li><b>① Engineering and systems design</b>: one alert fires and the whole team drops everything; of the last thirty firings, twenty-odd were false, and nobody dares suggest turning it off. This is the shape from "The trigger was calibrated for a world that no longer exists": false alarms are painless, a miss is fatal, so the threshold only ever gets pushed lower. What can change is the procedure — stop debating whether it should fire while it is firing, because in that moment everyone is standing on the miss side. Once a quarter, put "times it fired" and "times something was really wrong" side by side and recompute; and change the metric from "have we ever missed one" to real incidents divided by firings.</li>
+<li><b>② Leading a team</b>: someone's proposal got shot down in front of everyone, and they have not spoken up in six months — during which you have said "feedback is always welcome" a dozen times. This is the shape from "Fear of snakes is easy to learn, fear of power outlets is not": being refused in public lands on a channel that was already wide, so once is enough, while the polite sentence has no channel at all and a hundred repetitions will not get in. What can change: stop saying the sentence. Instead, review that rejected proposal publicly — why it was turned down then, and how it looks now. And change the metric: not how many people spoke in this meeting, but whether the people who spoke last time speak again.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>Parenting and education · "Homework before play" has been said a thousand times and changed nothing, but after those ten minutes lost in a shopping mall he will not let go of your hand</b>: this runs the mechanism from "Fear of snakes is easy to learn, fear of power outlets is not" — whether something gets in is not decided by how often it is repeated but by whether it lands on a channel that was already wide. Getting lost lands on "no adult anywhere near me", and once is enough; the causal link between homework and play is brand new, so it can only be ground in. Which yields a conclusion you would not otherwise reach: <b>to judge how many times a rule will have to be said, do not look at how important it is, look at whether it connects to an existing channel. If it does not, what needs changing is the environment and the defaults — putting the thing out of reach beats saying it a hundred times, not because the child cannot understand, but because the channel simply is not there.</b><b>Where it breaks down</b>: the monkey experiment could settle anything only because the same panic footage was spliced onto flowers and onto snakes with nothing else varied. Those ten minutes in the mall also carried an unfamiliar place, the look on your face, and every relative retelling it afterwards — you cannot know which one made it stick.</li>
+<li><b>Economics and business · After one brush with running out of cash, a company keeps far more on the balance sheet than it needs, and nobody can say how much would be right</b>: this runs the asymmetry from "The trigger was calibrated for a world that no longer exists" — miss once and there is no next time, while a hundred false alarms only cost some upside, so the threshold is pushed down and nothing pushes it back. Which yields a conclusion you would not otherwise reach: <b>when you see a rule that is far too conservative, asking "did someone miscalculate?" is useless, because usually nobody did. Ask instead when that rule was last changed and on what signal — an asymmetric cost structure grows an ever more conservative threshold by itself, even when everyone involved is clear-headed.</b><b>Where it breaks down</b>: in biology such a threshold can only drift over many generations and no individual can move it, whereas a company can change it in one meeting. So the fact that it has not moved does not mean it cannot — it means whoever changes it has to carry the blame if something then goes wrong. That is a question of how accountability is shared, and evolution is no excuse for it.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Is there a fixed list of emotions? Six? Seven?</summary>
+<div>The traditional route shows people from different cultures photographs of expressions and asks them to pick from a few words, and agreement is fairly high. In 2014 in Namibia researchers changed the task: they asked Himba participants to sort the photographs into piles freely, with no words and no categories supplied. The result was not six tidy piles; the same photograph turned up in several, and the sorting looked more like "pleasant versus unpleasant". Almost nobody denies that some of these responses have a biological basis; the argument is over whether they come packaged as a few named kinds.</div>
+</details>
+<details><summary>What does it take before calling an emotion an adaptation counts?</summary>
+<div>At least three things: the problem it supposedly solves really did recur in ancestral environments (which needs independent evidence, not imagination); the response really would solve it; and the details of its design fit that problem specifically, rather than fitting three other problems equally well. "It makes sense" is not enough — stories that make sense are available in unlimited supply.</div>
+</details>
+<details><summary>If it is a mismatch, why not change the environment back?</summary>
+<div>You cannot, and you do not need to. The "ancestral environment" is not one place at one date but a broad range of shifting conditions; and mismatch only says the trigger no longer fits, not that the response itself is bad — the same system still steers you away from genuinely spoiled food. What is movable is the environment the cue sits in: taking the phone out of the bedroom beats ordering yourself not to be anxious, because the first changes a cue and the second argues with a setting you cannot reach.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://www.nature.com/articles/nn.3323" target="_blank" rel="noopener">Fear and panic in humans with bilateral amygdala damage (2013)</a> · <a href="https://www.sciencedaily.com/releases/2013/02/130204130106.htm" target="_blank" rel="noopener">A plain-language report of the same study</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/19210060/" target="_blank" rel="noopener">Spontaneous facial expressions of congenitally blind athletes (2009)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/2230660/" target="_blank" rel="noopener">Monkeys learn to fear snakes but not flowers (1990)</a> · <a href="https://en.wikipedia.org/wiki/Preparedness_(learning)" target="_blank" rel="noopener">Preparedness in learning</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0149763418304561" target="_blank" rel="noopener">The human evidence pooled: 10 of 32 experiments support it (2018)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/15252963/" target="_blank" rel="noopener">Disgust and disease risk, a large survey (2004)</a> · <a href="https://www.lshtm.ac.uk/newsevents/news/2004/disgustfactor.html" target="_blank" rel="noopener">The institution's own write-up</a></li>
+<li><a href="https://www.nature.com/articles/s44159-023-00226-4" target="_blank" rel="noopener">The behavioural immune system and social prejudice: a critical review (2023)</a></li>
+<li><a href="https://journals.sagepub.com/doi/abs/10.1177/0956797613517239" target="_blank" rel="noopener">Cultural variation in how the Himba perceive emotion (2014)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0163638312000422" target="_blank" rel="noopener">Separation protest emerges even under severe developmental stress (2012)</a> · <a href="https://en.wikipedia.org/wiki/Evolution_of_emotion" target="_blank" rel="noopener">Evolution of emotion</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
