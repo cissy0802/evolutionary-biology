@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 30: Gene-Culture Coevolution</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 30 · PHASE D BEHAVIOR AND MIND</div>
+<h1>Gene-Culture Coevolution</h1>
+<h2>What your ancestors started doing is written into your body today</h2>
+<div class="meta">2026-09-23 · BigCat</div>
+<div class="pitch">Europeans were milking animals and making cheese 9,000 years ago, yet the variant that lets an adult drink milk without trouble only became common thousands of years after that. The body was not what moved first. The practice was.</div>
+</header>
+<div class="intro">
+<p>You have four people over for dinner and serve a cream soup. Two are fine. One is bloated and heading for the bathroom half an hour later. The fourth waves it away: never touched milk, not since childhood.</p>
+<p>Nobody here has a delicate stomach. Every mammal winds down the enzyme that breaks apart the sugar in milk once it is weaned. Winding it down is the factory setting. Drinking milk with no consequences is the exception.</p>
+<p>So where does the exception come from? Not from the body on its own. That route opened the day somebody started keeping sheep and milking them.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Still drinking milk after weaning is the exception, not the norm</h2>
+<p>The sugar in milk is called lactose, and an enzyme has to cut it apart before you can absorb it. In childhood that enzyme is switched on; around weaning it gets turned down. Turning it down makes sense: a weaned calf will never meet milk again, and keeping a machine running for nothing is waste. About two thirds of adults worldwide are still parked at that default setting, and too much milk leaves them bloated with a bad stomach. We call this "lactose intolerance" — but from the mammal's side, intolerance is the original edition.</p>
+<p>In a minority of people the switch never closes. The cause is a tiny variant, and it does not sit in the lactase gene itself; it sits in a nearby stretch of sequence that works the switch. What changed is not the machine, it is the switch. In people carrying it, the enzyme stays on into adulthood.</p>
+<p>What makes the case is that this happened more than once. Europeans mostly carry one variant; some herding populations in East Africa and the Arabian peninsula carry several others at different positions, each arisen independently, all doing the same job. The same pressure sifting out the same result over and over is the shape of the convergent evolution issue.</p>
+<p>But do not reverse the order: the variant did not appear because milk needed drinking. When it appeared and where it landed had nothing to do with whether there was milk around. That part is chance. Where there was milk, the people who happened to carry it left more offspring on average; where there was none, it was a useless little change that came and went.</p>
+<p>Then a genuinely counterintuitive layer. Milk fat residues in pottery show Europeans were milking and making dairy products for at least 9,000 years — more than 7,000 sherds from over 550 sites. Yet ancient DNA shows the variant that digests lactose became common thousands of years later than that. People drank milk for millennia before their bodies caught up even a little. The 2022 study that pulled this together adds an unexpected claim: the modest extra nutrition from milk cannot carry selection this strong, and the signal fits better once famine and pathogen pressure are in the model. On an ordinary day a bad reaction is just diarrhoea; in a famine year or a plague year, the dehydration can kill. That explanation is still being argued over.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>The clearing you cut got written into your blood thousands of years later</h2>
+<p>Here is a heavier example. In parts of West Africa, the variant behind sickle-shaped red blood cells is unusually common. People carrying one copy face a lower risk of severe malaria and of dying from it; people carrying two copies have sickle cell disease, which is serious.</p>
+<p>That distribution was not always there. In 1958 Livingstone tied it to farming: people cleared rainforest to plant yams, and once the canopy was open the ground held sunlit pools of standing water of every size. The mosquitoes that carry the malaria parasite happen to favour exactly that kind of pool. Their numbers rose, and malaria went from something you occasionally met to something permanently resident. Once it was resident, carriers of one copy left slightly more offspring on average, and the variant climbed through the population.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: five boxes stacked top to bottom, joined by arrows into a chain. First, clear the forest and plant yams; second, sunlit pools of standing water are left on the ground; third, the mosquitoes that carry malaria increase; fourth, malaria becomes permanently resident; fifth, people carrying one copy of the sickle-cell variant leave more offspring" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar30a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<text x="20" y="20" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">A chain nobody was planning</text>
+<rect x="140" y="34" width="320" height="30" rx="7" fill="none" stroke="#d2a24c" stroke-width="1"></rect>
+<text x="300" y="54" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">clear the forest, plant yams (practice changes)</text>
+<line x1="300" x2="300" y1="64" y2="73" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="76" width="320" height="30" rx="7" fill="none" stroke="#24382c" stroke-width="1"></rect>
+<text x="300" y="96" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">sunlit pools of standing water (environment changes)</text>
+<line x1="300" x2="300" y1="106" y2="115" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="118" width="320" height="30" rx="7" fill="none" stroke="#24382c" stroke-width="1"></rect>
+<text x="300" y="138" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">the mosquitoes that carry malaria multiply</text>
+<line x1="300" x2="300" y1="148" y2="157" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="160" width="320" height="30" rx="7" fill="none" stroke="#24382c" stroke-width="1"></rect>
+<text x="300" y="180" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">malaria becomes resident (selection pressure changes)</text>
+<line x1="300" x2="300" y1="190" y2="199" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="202" width="320" height="30" rx="7" fill="none" stroke="#52c98a" stroke-width="1"></rect>
+<text x="300" y="222" fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">one-copy carriers leave more offspring (genes change)</text>
+</svg>
+<div class="cap">The chain starts with a practice and comes back round to the body. Every step is only what happened at the time; no step is aimed at the next one.</div>
+</div>
+<p>The cost has to be stated plainly. When two one-copy carriers have children, on average one in four gets two copies and a serious disease. So this is emphatically not "good for the population" — nothing is doing the accounting for a population. All that happened is that where malaria was resident, one-copy carriers left more offspring than non-carriers, so the variant became more common, and so did the suffering attached to it. "Evolution selected the sickle-cell gene to fight malaria" rolls off the tongue, but it turns a statistical outcome into an arrangement.</p>
+<p>Details of the chain are still being filled in — which populations, at what dates, at what pace farming spread. But the format, practice changes the environment and the environment turns round and sifts people, holds up, and it has a name of its own: niche construction.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Practices get sifted too, and the sifting needs nobody to understand them</h2>
+<p>Bitter manioc will poison you if you eat it straight; it contains compounds that turn into cyanide inside the body. Some Amazonian peoples process it through an absurdly long sequence: scrape, grate, wash repeatedly, press, leave the pulp spread out for days, and only then cook it. Ask why those days of waiting are necessary and the answer is usually that this is how it has always been done. Yet when the cyanide is measured, every added step knocks the level down another notch, until what is left can be ignored. Nobody can state the chemistry, and the procedure is right anyway.</p>
+<p>What really makes the point is what happened when it travelled. Manioc was carried to Africa, and the processing was shortened. In some places — especially in drought years and periods of upheaval, when the shortcuts get taken — an illness called konzo appears: the legs give out suddenly, and it does not reverse. In manioc's homeland, populations who have eaten bitter varieties for thousands of years show no record of that chronic cyanide poisoning. What went missing was not knowledge; nobody could explain the sequence anyway. What went missing was the sequence itself.</p>
+<p>How did the sequence survive? Take it apart and the skeleton is the same as the genetic one: households differ in how they do it (variation), children copy the adults (transmission), and people who skip steps, along with their families, are likelier to get hurt, so others stop copying them (differential survival). What is being copied is not a stretch of sequence but a string of movements of the hands. Otherwise there is no difference.</p>
+<p>Add a case somebody measured. In Fiji in 2010, researchers matched pregnancy and breastfeeding food taboos item by item against the risk that local fish carry ciguatera toxin: the forbidden species are exactly the large reef fish most likely to carry it, and keeping the taboos cut the chance of poisoning by roughly 30% in pregnancy and 60% while breastfeeding. Those taboos are learned from mothers, mothers-in-law and the older women a village recognizes as knowing — not worked out first-hand. One person testing alone could not accumulate that sample size in a lifetime.</p>
+<p>Do not run this backwards, though. Surviving practices do hold knowledge nobody can articulate, but all we see are the ones that survived; useless and even harmful traditions travel just as long, as long as the cost of their failures does not land on the people passing them on. Age by itself is not evidence.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>Practices move faster than genes, so it is always the genes doing the chasing</h2>
+<p>Genes have exactly one route: parent to child. Practices have many — parent to child, master to apprentice, colleague to colleague, one person to thousands who never met them. A new practice can spread without waiting for a generation to be born.</p>
+<p>The nature of the variation differs too. Genetic variation is blind: where it lands has nothing to do with whether it helps. Cultural variation is often steered — you wanted the thing to work better, so you changed it and then passed it on. And transmission carries preferences: copy what most people do, copy whoever is recognized as good at it. The Fijian taboos travel on that second one.</p>
+<p>Fidelity differs by orders of magnitude as well. Genetic copying errs very rarely; tell one sentence to ten people and you get ten slightly different versions, because the receiver rebuilds it in their own head rather than taking it down as written. That is why culture cannot be cut into clean units the way genes can — the sticking point for Dawkins' proposal that cultural units be treated as replicators. The working model now is dual inheritance theory: genes and culture as two parallel lines of inheritance, each with its own transmission rules, each changing the selection pressures on the other.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: a three-column table comparing the genetic line with the practice line. Four rows: who it passes to, genes only parent to child, practices anyone to anyone; how long a new change takes to spread, genes at least a generation, practices as little as a day; is the change blind, genes yes and unrelated to usefulness, practices often steered toward what is wanted; how faithful the copying is, genes extremely faithful, practices rebuilt at every hand" viewBox="0 0 600 212" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Two lines of inheritance, different rules</text>
+<text x="230" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">the gene line</text>
+<text x="420" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">the practice line</text>
+<line x1="20" x2="580" y1="54" y2="54" stroke="#24382c" stroke-width="1"></line>
+<text x="20" y="80" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">passes to whom</text>
+<text x="230" y="80" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">parent to child only</text>
+<text x="420" y="80" fill="#8aa192" font-family="Georgia,serif" font-size="11">anyone to anyone</text>
+<line x1="20" x2="580" y1="92" y2="92" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="118" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">spreading a change</text>
+<text x="230" y="118" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">a generation at least</text>
+<text x="420" y="118" fill="#8aa192" font-family="Georgia,serif" font-size="11">a day can do it</text>
+<line x1="20" x2="580" y1="130" y2="130" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="156" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">is the change blind</text>
+<text x="230" y="156" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">yes, unrelated to use</text>
+<text x="420" y="156" fill="#8aa192" font-family="Georgia,serif" font-size="11">often steered on purpose</text>
+<line x1="20" x2="580" y1="168" y2="168" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="194" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">copying fidelity</text>
+<text x="230" y="194" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">extremely high</text>
+<text x="420" y="194" fill="#8aa192" font-family="Georgia,serif" font-size="11">rebuilt at every hand</text>
+<line x1="20" x2="580" y1="204" y2="204" stroke="#24382c" stroke-width="1"></line>
+</svg>
+<div class="cap">Same skeleton, parameters off by orders of magnitude. Those orders of magnitude are the whole reason culture moves first and genes come after.</div>
+</div>
+<p>Lay the speed difference out and the conclusion arrives by itself: in coevolution it is almost always culture that moves first and genes that chase, and the chase does not close. On milk the genes caught up partly, over thousands of years, and only in some populations. Today's environment — sitting all day, screens lit until midnight, sugar within arm's reach — turns over far faster than that. The mismatch described in the issue on the evolution of emotion is therefore not a temporary glitch but the normal product of that gap, and as long as culture keeps accelerating the gap only widens.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenarios · BigCat</h3>
+<ul>
+<li><b>① Writing and this learning site itself</b>: each issue's layout is copied from the last one, and somewhere in that copying is a rule nobody can now say what problem it was meant to block. This is the shape of "practices get sifted too, and the sifting needs nobody to understand them" — the action entered the transmission channel and the reason did not. What is changeable: write every layout rule on the same line as the flaw it was meant to prevent, and for any rule where you cannot write the second half, delete it next issue and see. Swap the measure from "does this issue look like the last one" to "did anyone say it got harder to read".</li>
+<li><b>② Parenting and education</b>: the tablet bought for remote classes becomes, six months later, the default place free time goes — and when you want the child to go play downstairs, the other children his age are not down there either. This is the shape of "the clearing you cut got written into your blood thousands of years later": what you and the other parents each changed was the environment, and the environment turned round and sifted the options away. The child did not get lazier. What is changeable: stop negotiating over whether the tablet is allowed today, which is arguing with an environment that already moved, and build the other side first — fix a time and a place with two or three other families. Do not measure screen time; measure how often he asks to go out on his own.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · connections from other fields</h3>
+<ul>
+<li><b>Engineering and systems design · the compatibility branch in the code nobody dares delete</b>: the comment says only "kept for old clients", the old clients are long gone, and whoever proposes removing it owns the fallout, so it stays another year. The mechanism running here is the one in "practices get sifted too, and the sifting needs nobody to understand them": whether a practice can use "it is still here" as evidence that it works depends on whether the cost of its failures lands back on the people keeping it, visibly and at the time. Manioc processing passes that test — skip a step and you poison yourself, over and over. Which yields a conclusion you would not otherwise see: <b>to judge an old rule nobody can explain, do not look at how old it is or how many people follow it; look at who gets hurt when it fails and how long afterwards. Where the cost lands on another team, or three years later, "it has always been there" is no evidence at all and you have to test it separately.</b><b>But it does not hold here</b>: in the manioc case no generation could stop and run a controlled trial, so selection was the only source of information. Deleting a branch of code is a half-day experiment for one person. So that branch surviving is not "tradition is smarter than you", it is only that nobody tried — two situations that look identical and call for opposite handling.</li>
+<li><b>Organizations and institutions · an approval step added in a hurry to ship one release becomes, three years on, a default assumption in every new project's schedule</b>: the mechanism is the one in "the clearing you cut got written into your blood thousands of years later" — what you built to cope with the environment of the moment becomes the environment every later practice has to fit, so what gets sifted out is not the weak proposals but every proposal incompatible with it. Which yields a conclusion you would not otherwise see: <b>to guess what a team will be capable of in three years, look less at its current people and goals and more at what irreversible things it added to its process in the last three — most options are sifted out by the environment with nobody discussing them, not voted down in a review meeting.</b><b>But it does not hold here</b>: in the forest-clearing chain, the generation that changed the environment is not the one sifted by it, the change takes many generations to enter the population, and no individual can opt out. In a company it is the same people seeing the consequences within months, and it can be reversed at any time. So that approval step surviving is not lock-in; it is that if reversing it goes wrong somebody carries the blame. That is a question of how costs are distributed — do not let evolution take the excuse.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Is cultural change really "Darwinian"?</summary>
+<div>The Darwinian skeleton asks for only three things: variation, some way of passing it on, and differences in the chance of being passed on. Culture has all three. The objections are about the details — cultural variation is often introduced on purpose, transmission is not faithful, and it cannot be cut into clean units. Most researchers now borrow the skeleton without forcing the genetic details onto it, and the more specific the claim, the more it has to say exactly what is being copied.</div>
+</details>
+<details><summary>Besides lactose, are there solid examples?</summary>
+<div>There are plenty of candidates — variants linked to starch, alcohol, high altitude, cold-climate diets — but the strength and quality of the evidence varies a lot. Lactase is the textbook case because four things line up at once: the practice has archaeological evidence, the variant can be located, the selection signal is strong, and it arose independently more than once. Given any list of "gene X was selected by culture Y", those four are what to check it against.</div>
+</details>
+<details><summary>Can this be used to argue that some populations are superior?</summary>
+<div>It has been, historically, and it is wrong every time. Selection is always local, aimed at one specific pressure in one place and time: carrying a variant means only that ancestors lived where that pressure existed. It implies nothing about overall ranking and it does not come as a package — every site goes its own way, and what is selected here may be a burden there, as sickle cell shows. On top of which, as the issue on neutral theory covers, most of the differences between populations were never selected at all; they drifted.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://www.nature.com/articles/s41586-022-05010-7" target="_blank" rel="noopener">Dairying, diseases and the evolution of lactase persistence in Europe (2022)</a> · <a href="https://en.wikipedia.org/wiki/Lactase_persistence" target="_blank" rel="noopener">Lactase persistence</a></li>
+<li><a href="https://www.nature.com/articles/ng1946" target="_blank" rel="noopener">Convergent adaptation of human lactase persistence in Africa and Europe (2007)</a></li>
+<li><a href="https://www.nature.com/articles/s41576-023-00660-3" target="_blank" rel="noopener">The evolutionary tale of lactase persistence (2023)</a> · <a href="https://link.springer.com/article/10.1186/1471-2148-10-36" target="_blank" rel="noopener">Worldwide phenotype and genotype distribution</a></li>
+<li><a href="https://anthrosource.onlinelibrary.wiley.com/doi/abs/10.1525/aa.1958.60.3.02a00110" target="_blank" rel="noopener">Anthropological implications of sickle cell gene distribution in West Africa (1958)</a></li>
+<li><a href="https://lalandlab.wp.st-andrews.ac.uk/files/2015/08/Publication182.pdf" target="_blank" rel="noopener">Genes, culture and agriculture: an example of human niche construction</a> · <a href="https://en.wikipedia.org/wiki/Niche_construction" target="_blank" rel="noopener">Niche construction</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2010.1191" target="_blank" rel="noopener">Fijian food taboos protect against dangerous marine toxins (2010)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Konzo" target="_blank" rel="noopener">Konzo</a> · <a href="https://journals.plos.org/plosntds/article?id=10.1371%2Fjournal.pntd.0001051" target="_blank" rel="noopener">From cassava and cyanogen intake to this neurological disease</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dual_inheritance_theory" target="_blank" rel="noopener">Dual inheritance theory</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

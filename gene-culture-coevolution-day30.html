@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 30：基因-文化协同演化</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 30 · PHASE D 行为与心智</div>
+<h1>基因-文化协同演化</h1>
+<h2>你祖上开始做的那件事，写进了你今天的身体</h2>
+<div class="meta">2026-09-23 · BigCat</div>
+<div class="pitch">欧洲人挤奶做奶酪的证据有九千年，可「成年后喝奶不闹肚子」这个变异变常见，要晚好几千年——先动的不是身体，是做法。</div>
+</header>
+<div class="intro">
+<p>你请四个人吃饭，上了一份奶油浓汤。两个喝完没事；一个半小时后开始胀气往厕所跑；还有一个摆手说我从小就不碰奶。</p>
+<p>这不是谁肠胃娇气。所有哺乳动物断奶之后，都会把分解奶里那种糖的酶慢慢关掉。关掉是出厂设置，喝了没事才是例外。</p>
+<p>例外从哪来？不是身体自己长出来的。是从有人开始养羊、挤奶那天起，这条路才被打开。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>断奶之后还能喝奶，是例外不是常态</h2>
+<p>奶里那种糖叫乳糖，得有一种酶把它剪开才吸收得了。人小时候这个酶开着，断奶前后一路调低。调低很合理：一头断了奶的小牛这辈子不会再碰到奶，白养一台机器是浪费。今天全世界大概三分之二的成年人就停在这个默认状态上，奶喝多了胀气腹泻。这被叫成「乳糖不耐受」，可从哺乳动物这边看，不耐受才是原装那一版。</p>
+<p>少数人的开关没关上。原因是一处很小的变异，而且它不在管乳糖酶的那个基因身上，在旁边一段负责开关的序列里——改的不是机器，是开关。带着它的人成年后酶照样开着。</p>
+<p>更说明问题的是这事不止发生过一次。欧洲人里常见的是一处变异；东非和阿拉伯半岛的一些牧民群体里，是位置不同的另外几处，各自独立冒出来，效果一样。同一种压力反复筛出同一个结果，这是趋同演化那期的形状。</p>
+<p>但顺序别说反：不是因为「要喝奶」才出现这个变异。它什么时候出、出在哪儿，跟身边有没有奶毫无关系，是碰巧。有奶的地方，碰巧带着它的人平均多留下了后代；没奶的地方，它就是个没用的小改动，来了又没了。</p>
+<p>还有一层反直觉的。陶片上的乳脂残留显示，欧洲人挤奶、做奶制品至少有九千年——七千多片残片，五百多个遗址。可古 DNA 显示，能消化乳糖的那个变异变常见比这晚了好几千年：人先喝了几千年奶，身体才跟上一点点。2022 年那篇汇总研究还给了个意外的说法：光靠「喝奶多一点营养」撑不起这么强的选择，把饥荒和病原压力放进模型才对得上——平常喝了不舒服只是拉肚子，荒年和疫年，腹泻脱水可能是致命的。这个解释还在讨论中。</p>
+<p class="en-brief"><b>EN</b> Shutting the lactase gene down after weaning is the mammalian default; roughly two thirds of adults worldwide still do it. A few populations carry a variant in the nearby switch sequence that keeps it on — and it arose independently in Europe, East Africa and Arabia. Pottery residues show Europeans were milking for 9,000 years, but the variant only became common thousands of years later, and a 2022 study argues famine and pathogen exposure fit the selection signal better than milk alone.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>你砍出来的那片地，几千年后写进了血里</h2>
+<p>换一个沉一点的例子。西非有些地方的人，带镰刀形红细胞那个变异的比例特别高。带一份的人得疟疾时，重症和死亡的风险低一些；带两份的人得镰状细胞病，很重。</p>
+<p>这个分布不是从来就有的。1958 年，Livingstone 把它跟农业连了起来：人砍开雨林种山药，林子一开，地面上留下大大小小晒得到太阳的浅水坑。传疟原虫的那种蚊子正好偏爱这种水塘，数量涨上去，疟疾从偶尔碰上变成常住的。疟疾一常住，带一份变异的人平均多留下一点后代，这个变异在人群里就升了上去。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：自上而下五个方框，用箭头连成一条链。第一框砍开林子种山药，第二框地上留下晒得到太阳的浅水坑，第三框传疟疾的那种蚊子多起来，第四框疟疾从偶尔碰上变成常住的，第五框带一份镰刀形变异的人平均多留下后代" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar30a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#52c98a"></path></marker></defs>
+<text x="20" y="20" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">一条没有谁在规划的链子</text>
+<rect x="140" y="34" width="320" height="30" rx="7" fill="none" stroke="#d2a24c" stroke-width="1"></rect>
+<text x="300" y="54" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">砍开林子，种山药（做法变了）</text>
+<line x1="300" x2="300" y1="64" y2="73" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="76" width="320" height="30" rx="7" fill="none" stroke="#24382c" stroke-width="1"></rect>
+<text x="300" y="96" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">地上留下晒得到太阳的浅水坑（环境变了）</text>
+<line x1="300" x2="300" y1="106" y2="115" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="118" width="320" height="30" rx="7" fill="none" stroke="#24382c" stroke-width="1"></rect>
+<text x="300" y="138" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">传疟疾的那种蚊子多起来</text>
+<line x1="300" x2="300" y1="148" y2="157" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="160" width="320" height="30" rx="7" fill="none" stroke="#24382c" stroke-width="1"></rect>
+<text x="300" y="180" fill="#c2d2c6" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">疟疾变成常住的（选择压变了）</text>
+<line x1="300" x2="300" y1="190" y2="199" stroke="#52c98a" stroke-width="1" marker-end="url(#ar30a)"></line>
+<rect x="140" y="202" width="320" height="30" rx="7" fill="none" stroke="#52c98a" stroke-width="1"></rect>
+<text x="300" y="222" fill="#7be0ab" font-family="Georgia,serif" font-size="11.5" text-anchor="middle">带一份变异的人多留下后代（基因变了）</text>
+</svg>
+<div class="cap">链条从做法起头，绕一圈回到身体。每一步都只是当下发生的事，没有哪一步是奔着下一步去的。</div>
+</div>
+<p>代价得说清。两个都带一份的人生孩子，平均每四个里有一个拿到两份，得重病。所以这绝不是「对种群有好处」——没有任何东西在替种群算账。发生的只是：在有疟疾的地方，带一份的人留下的后代比不带的多，于是这个变异连同它带来的痛苦一起变多了。「演化选出镰刀形基因来对抗疟疾」顺口，但它把一个统计结果说成了一次安排。</p>
+<p>这条链的细节还在补（哪个人群、什么时候、农业扩张的节奏），但「做法改环境、环境回头筛人」这个格式已经站住了，有个专门的名字叫生态位建构。</p>
+<p class="en-brief"><b>EN</b> Where forest was cleared for yams, sunlit pools bred the mosquitoes that carry malaria; malaria became permanent, and carrying one copy of the sickle-cell variant paid. The chain runs practice to environment to selection pressure to gene frequency, with nobody planning it — and it is not "good for the species": one child in four of two carriers gets a severe disease. The general pattern has a name, niche construction.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>做法自己也在被筛，筛的时候不需要谁懂</h2>
+<p>苦木薯直接吃会中毒，它含有在体内能变成氰化物的成分。亚马逊一些人群处理它的工序长得离谱：刮皮、磨碎、反复水洗、挤压、把浆摊着放几天，最后才烤。问为什么非要放那几天，答案通常是祖上就这么做的。可实测下来每多一道工序，氰含量就掉一截，最后剩下的可以忽略。没人说得出化学，工序却是对的。</p>
+<p>真正说明问题的是把它搬到别处之后。木薯被带到非洲，加工被简化过；在一些地方，尤其干旱和动荡年份抄近道的时候，出现了一种叫 konzo 的病：双腿突然瘫掉，不可逆。而在木薯老家，吃了几千年苦木薯的人群里没有这种慢性氰中毒的记录。少掉的不是知识——那套动作本来也没人解释得了——是动作本身。</p>
+<p>这套动作怎么留下来的？拆开看，骨架跟基因那套一样：各家做法有出入（变异），小孩照着大人做（传递），漏步骤的人和家里人更容易出事、别人也就不照着他学（差异存活）。被复制的不是一段序列，是一串手上的动作，别的没差。</p>
+<p>再加一个被量过的例子。2010 年在斐济，研究者把孕期和哺乳期的饮食禁忌逐条对上当地鱼类带雪卡毒素的风险：被禁的恰好是风险最高的那几种大型礁石鱼，守禁忌让孕期中毒概率降约三成，哺乳期降约六成。而这些禁忌是从母亲、婆婆和村里公认懂行的年长女性那里学来的——一个人自己试，一辈子也攒不出这个样本量。</p>
+<p>但这条别倒过来用。留下来的做法里确实藏着一批没人说得清的知识，可我们看见的全是活下来的那些；没用甚至有害的传统同样能传很久，只要它出错的代价不落在传它的人身上。「老」本身不是证据。</p>
+<p class="en-brief"><b>EN</b> Amazonian manioc processing takes many steps nobody can explain, and cyanide content falls at each one; where the sequence was shortened in Africa, an irreversible paralysis called konzo appears. Fijian pregnancy food taboos land on exactly the reef fish most likely to carry ciguatera toxin, cutting poisoning risk by roughly 30% in pregnancy and 60% while breastfeeding — and they are learned from elders, not discovered. Variation, transmission, differential survival: the skeleton is the same, only the thing copied is a set of actions. But survivorship cuts both ways: age alone is no evidence.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>做法比基因跑得快，所以永远是基因在追</h2>
+<p>基因只有一条通道：父母到孩子。做法的通道多得多——父母到孩子，师傅到徒弟，同事之间，一个人到几千个从没见过面的人。一个新做法铺开，不用等一代人出生。</p>
+<p>变异的性质也不同。基因的变异是盲的，出在哪儿跟有没有用毫无关系；做法的变异常常带方向——你本来就想让它更顺手，改完再传。传的时候还带偏好：跟着多数人做，跟着被公认在行的人做（斐济那套禁忌走的正是后一条）。</p>
+<p>保真度也差着量级。基因复制出错率极低；一句话传过十个人，出来的是十个稍有出入的版本——接收的人在自己脑子里重建它，不是原样收下，所以文化里切不出基因那样干净的「单元」（Dawkins 当年提 meme 这个词想把文化也当复制子，卡住的正是这里）。学界现在更常用双重继承理论：基因和文化是两条并行的遗传线，各有各的传递规则，互相改对方的选择压。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：三列对照表，比较基因这条线和做法这条线。四行分别是：传给谁，基因只能父母到孩子，做法谁到谁都行；铺开一个新变化要多久，基因至少一代人，做法一天也够；变化是不是盲的，基因是且跟有没有用无关，做法常常照着想要的方向改；复制得准不准，基因极准，做法每传一手都在重建" viewBox="0 0 600 212" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">两条遗传线，规则不一样</text>
+<text x="20" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11"> </text>
+<text x="230" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">基因这条线</text>
+<text x="420" y="44" fill="#d2a24c" font-family="Georgia,serif" font-size="11">做法这条线</text>
+<line x1="20" x2="580" y1="54" y2="54" stroke="#24382c" stroke-width="1"></line>
+<text x="20" y="80" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">传给谁</text>
+<text x="230" y="80" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">只能父母到孩子</text>
+<text x="420" y="80" fill="#8aa192" font-family="Georgia,serif" font-size="11">谁到谁都行</text>
+<line x1="20" x2="580" y1="92" y2="92" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="118" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">铺开一个新变化</text>
+<text x="230" y="118" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">至少一代人</text>
+<text x="420" y="118" fill="#8aa192" font-family="Georgia,serif" font-size="11">一天也够</text>
+<line x1="20" x2="580" y1="130" y2="130" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="156" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">变化是盲的吗</text>
+<text x="230" y="156" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">是，跟有没有用无关</text>
+<text x="420" y="156" fill="#8aa192" font-family="Georgia,serif" font-size="11">常常照着想要的方向改</text>
+<line x1="20" x2="580" y1="168" y2="168" stroke="#1d2a22" stroke-width="1"></line>
+<text x="20" y="194" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">复制得准吗</text>
+<text x="230" y="194" fill="#c2d2c6" font-family="Georgia,serif" font-size="11">极准</text>
+<text x="420" y="194" fill="#8aa192" font-family="Georgia,serif" font-size="11">每传一手都在重建</text>
+<line x1="20" x2="580" y1="204" y2="204" stroke="#24382c" stroke-width="1"></line>
+</svg>
+<div class="cap">骨架一样，参数差了好几个量级。差的这几个量级，就是「文化先动、基因在后面追」的全部原因。</div>
+</div>
+<p>把速度差摆出来，结论自己就出来了：协同演化里几乎永远是文化先动、基因在后面追，而且追不上。喝奶这件事上基因追上了一部分，花掉几千年，还只在几个人群里；今天这个环境——整天坐着、亮到半夜的屏幕、伸手就有的糖——变得比那快得多。情绪的演化那期讲的错配因此不是暂时的故障，是这个速度差的常态产物，而且只要文化还在加速，缺口只会更大。</p>
+<p class="en-brief"><b>EN</b> Genes travel one route, parent to child; practices travel any route, and a new one can spread in a day. Genetic variation is blind, cultural variation is often steered, and cultural copying is lossy — receivers rebuild rather than replicate, which is why the "meme as replicator" framing stays contested and dual inheritance theory is the working model. Culture moves first and genes chase: lactase persistence took millennia and reached only some populations, while modern environments turn over far faster. Mismatch is the normal product of that gap, not a glitch.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 写作与这个学习站本身</b>：每期的版式照着上一期抄，抄到某一条时已经没人说得出它当初要挡的是什么毛病。这是「做法自己也在被筛，筛的时候不需要谁懂」那节的形状——动作进了传递通道，理由没进。可改的：把每条版式规则和它当初要挡的毛病写在同一行，写不出后半句的下一期删掉试一次；指标从「这期像不像上期」换成「删掉之后有没有人说读不下去」。</li>
+<li><b>② 育儿与教育</b>：为了上网课买的那台平板，半年后成了默认的空闲去处；等你想让他下楼玩，发现楼下同龄的孩子也不在了。这是「你砍出来的那片地，几千年后写进了血里」那节的形状——你和别的家长各自改掉的是环境，环境回头把选项筛没了，不是孩子变懒了。可改的：别在「今天能不能玩平板」上谈判，那是在跟一个已经变了的环境对着干；改成先把另一边建起来——跟两三家约固定时间、固定地点。指标别看屏幕时间，看他自己开口要出门的次数。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>工程与系统设计 · 代码里那段谁也不敢删的兼容分支</b>：注释只剩一句「为了兼容旧客户端」，旧客户端早就没了，可谁提删谁担责任，于是它一年年留着。跑的是「做法自己也在被筛，筛的时候不需要谁懂」那节的机制——一个做法能不能拿「它还在」当有用的证据，取决于它出错的代价是不是落回到留着它的人身上、而且当场看得见。木薯那套工序过得了这一关：漏一步的人自己中毒，重复了无数次。由此能推出一个原本看不出的结论：<b>判断一条没人说得清的老规矩该不该留，别看它多老、多少人在用，看它出问题时谁疼、多久之后才疼；代价落在别的团队、落在三年以后的，「它一直在」不提供任何证据，得另外去测。</b><b>但这里不成立</b>：木薯那边没人停得下来做一次对照实验，筛选是唯一的信息来源；一段代码的删除实验一个人半天就做完。所以那段分支还在，算不上「传统比你聪明」，只能算没人试过——两件事外表一样，处理方式正相反。</li>
+<li><b>组织与制度 · 为了赶一次上线临时加的一道审批，三年后成了所有新项目排期时的默认前提</b>：跑的是「你砍出来的那片地，几千年后写进了血里」那节的机制——你为应付当时环境造出来的东西，变成了后来一切新做法必须适配的环境本身，于是被筛掉的不是差方案，是所有不兼容它的方案。由此能推出一个原本看不出的结论：<b>要猜一个团队三年后做得成什么，与其看它现在的人和目标，不如看它过去三年往流程里加了哪些撤不回去的东西——大部分选项是在没人讨论的情况下被环境筛掉的，不是在评审会上被否掉的。</b><b>但这里不成立</b>：砍林种薯那条链上，改环境的那代人不会被自己改的环境筛掉，要很多代才写进群体，也没人退得出去；公司里是同一批人几个月就看见后果，随时撤得掉。所以那道审批还在不是被锁死，是撤回之后万一出事得有人担——那是代价怎么分的问题，别拿演化开脱。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>文化的变化，算得上「达尔文式」的吗？</summary>
+<div>达尔文那套骨架只要三条：有变异、能传下去、传下去的机会有差别。文化三条都占。反对的声音卡在细节上：文化的变异常常是有意改出来的，传递不保真，也切不出干净的单元。多数研究者的做法是借骨架、不硬套基因那边的细节——用得越具体，越要说清被复制的到底是什么。</div>
+</details>
+<details><summary>除了乳糖，还有别的确凿例子吗？</summary>
+<div>候选不少，跟淀粉、酒精、高原、寒带饮食有关的都有人提，但强度和证据参差。乳糖酶那个之所以是教科书案例，是四样都齐了：做法有考古证据，变异找得到，选择信号强，独立出现过好几次。见到一份「某某基因是被某某文化选出来的」清单，拿这四样一条条去对就行。</div>
+</details>
+<details><summary>这套说法会不会被拿去论证人群有高下？</summary>
+<div>历史上被拿过，一拿就错。选择永远是局部的，针对当时当地的一个具体压力：带着某个变异，只意味着祖上待的地方有过那个压力，不构成整体上的高下，也不能打包——每个位点各走各的，这儿被选的在那儿可能是负担，镰刀形就是。何况像中性理论那期说的，人群间的多数差异不是被选出来的，是漂过去的。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://www.nature.com/articles/s41586-022-05010-7" target="_blank" rel="noopener">挤奶、疾病与乳糖酶持续性的演化（2022）</a> · <a href="https://en.wikipedia.org/wiki/Lactase_persistence" target="_blank" rel="noopener">乳糖酶持续性词条</a></li>
+<li><a href="https://www.nature.com/articles/ng1946" target="_blank" rel="noopener">非洲与欧洲各自独立演化出乳糖酶持续性（2007）</a></li>
+<li><a href="https://www.nature.com/articles/s41576-023-00660-3" target="_blank" rel="noopener">乳糖酶持续性研究综述（2023）</a> · <a href="https://link.springer.com/article/10.1186/1471-2148-10-36" target="_blank" rel="noopener">全球表型与基因型分布</a></li>
+<li><a href="https://anthrosource.onlinelibrary.wiley.com/doi/abs/10.1525/aa.1958.60.3.02a00110" target="_blank" rel="noopener">西非镰刀形基因分布的人类学含义（1958）</a></li>
+<li><a href="https://lalandlab.wp.st-andrews.ac.uk/files/2015/08/Publication182.pdf" target="_blank" rel="noopener">基因、文化与农业：生态位建构的一个例子</a> · <a href="https://en.wikipedia.org/wiki/Niche_construction" target="_blank" rel="noopener">生态位建构词条</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2010.1191" target="_blank" rel="noopener">斐济的饮食禁忌挡住了海洋毒素（2010）</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Konzo" target="_blank" rel="noopener">konzo 词条</a> · <a href="https://journals.plos.org/plosntds/article?id=10.1371%2Fjournal.pntd.0001051" target="_blank" rel="noopener">从木薯、氰化物摄入到这种神经疾病</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dual_inheritance_theory" target="_blank" rel="noopener">双重继承理论词条</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
