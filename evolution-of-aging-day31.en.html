@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 31: Why Aging Evolved</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body></head><body>
+</head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 31 · PHASE D BEHAVIOUR &amp; MIND</div>
+<h1>Why Aging Evolved</h1>
+<h2>Parts don't wear out — selection just loses its grip late in life</h2>
+<div class="meta">2026-09-24 · BigCat</div>
+<div class="pitch">A bat weighing under ten grams was recaptured at least forty-one years after it was ringed; a house mouse of similar weight is visibly old at three. The difference isn't part quality. It's how easily you get eaten.</div>
+</header>
+<div class="intro">
+<p>Your back aches more often than last year, cuts heal slower, one all-nighter costs you two days. Item by item it all looks like wear and tear: things get used up.</p>
+<p>Swap the subject and the explanation collapses. That little bat and that mouse run the same chemistry, both with fast hearts and furious metabolisms. If old age were just wear, the one that flew for forty years should give out first.</p>
+<p>So the hard question isn't "why do we age." It is: how did something that degrades every part of your second half of life, and finally kills you, escape being cleared away by natural selection?</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>A bad variant that fires at forty is something selection can barely grab</h2>
+<p>Start with a real case. Huntington's disease is a neurodegenerative condition; one copy of the variant is enough, the decline is irreversible, and it is eventually fatal. A variant like that should have been scrubbed out completely. It hasn't been.</p>
+<p>The reason is the age of onset: most carriers begin showing symptoms between their thirties and fifties. For almost all of human history, people that age had already finished having children — the variant had been passed on before the damage showed. Natural selection keeps books on one thing only, who left more offspring, and an entry made after the children are born never reaches those books.</p>
+<p>Generalise that and you have the foundation of the whole topic. Wild animals rarely die of old age: predation, starvation, cold and disease thin them out year after year, so fewer and fewer individuals reach each later age. A defect that fires at twenty hits nearly every carrier and is cleared fast; one that fires at sixty acts only on the small remainder who got there, with a force close to zero. Medawar gave that region a name in 1952: <em>the selection shadow</em>.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: a curve falling from upper left to lower right shows the fraction of a wild population still alive as age increases. An annotation at the left says a defect firing here hits nearly every carrier and is cleared fast. A shaded region at the right, labelled the selection shadow, says only a few individuals live this long, so a defect firing here is barely cleared at all." viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar31a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">A wild population: fraction still alive, by age</text>
+<path d="M60,196 L60,42 M60,196 L556,196" fill="none" stroke="#24382c" stroke-width="1"></path>
+<path d="M400,52 L400,196 L556,196 L556,190 Z" fill="rgba(210,162,76,0.10)" stroke="none"></path>
+<polyline points="60,44 118,72 176,98 234,120 292,140 350,157 408,171 466,182 524,190 556,193" fill="none" stroke="#52c98a" stroke-width="2"></polyline>
+<text x="64" y="212" fill="#8aa192" font-family="Georgia,serif" font-size="10">birth</text>
+<text x="300" y="212" fill="#8aa192" font-family="Georgia,serif" font-size="10">older and older →</text>
+<text x="10" y="48" fill="#8aa192" font-family="Georgia,serif" font-size="10">all</text>
+<text x="8" y="194" fill="#8aa192" font-family="Georgia,serif" font-size="10">none</text>
+<line x1="150" x2="112" y1="96" y2="72" stroke="#d2a24c" stroke-width="1" marker-end="url(#ar31a)"></line>
+<text x="155" y="94" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">a defect firing here hits nearly</text>
+<text x="155" y="108" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">every carrier: cleared fast</text>
+<text x="404" y="74" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">the selection shadow:</text>
+<text x="404" y="88" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">only this many get here, so</text>
+<text x="404" y="102" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">a defect here is barely cleared</text>
+</svg>
+<div class="cap">The curve falls for reasons that have nothing to do with aging — being eaten, going hungry, getting sick. Precisely because it falls, the late stretch becomes a blind spot.</div>
+</div>
+<p>While we're here, one very common claim is worth breaking: "if the old didn't die, the young would have nowhere to live." That keeps the books for the population, and nothing keeps books for a population. If a variant really did make you die early to clear space for others, its carriers would leave fewer offspring and it would disappear first. Aging isn't selected for; it is what is left where selection can't reach.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>The bad news piles up in the corner nobody clears</h2>
+<p>The bins by the gate of a housing block get emptied daily; the one at the far end gets emptied once a month. Nobody decreed that the far bin should be filthier. It just is — the clearing frequency differs, so the mess settles where the clearing is thin.</p>
+<p>Genomes have the same shape. Every generation throws up a fresh batch of harmful variants, and the age at which each one acts has nothing to do with how harmful it is; that's just luck of the draw. Early-acting ones are cleared fast; late-acting ones can't be, so they settle, generation after generation, thickest at the late end. This is Medawar's <em>mutation accumulation</em>: aging needs no "aging gene" at all, only a heap of unrelated small faults that happen to line up in the back half.</p>
+<p>There is experimental support. In the 1980s, Rose did something very plain with fruit flies: each generation, only flies still laying eggs late in life were allowed to breed. Kept up for dozens of generations, those lines lived 30 to 50 percent longer than controls. Breed only from the earliest layers instead, and lifespan shrinks back. Two things follow: lifespan does contain heritable variation selection can act on, and shifting selection's weight a little later clears out part of that late-end pile.</p>
+<p>But be honest: Rose's result is explained equally well by this section's mechanism and by the one that follows, and a longer lifespan alone can't tell you which was at work. How much each contributes is a question the field still hasn't settled.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>A variant that pays at twenty and charges at sixty spreads anyway</h2>
+<p>The more awkward case is the third one: selection saw it, and took it — back-end bill included. A variant with only costs gets cleared; one with only benefits spreads. But what about a variant that adds points when you are twenty and subtracts them when you are sixty? The books are kept in offspring, and the entry at twenty weighs far more than the one at sixty (few get to sixty in the first place), so it spreads regardless, and the deduction is taken in full. Williams named this in 1957: <em>antagonistic pleiotropy</em> — one gene doing several jobs (pleiotropy) whose effects point opposite ways (antagonistic).</p>
+<p>Roundworms give a clean example. In 1993 it was found that altering a gene called daf-2 doubles a worm's average lifespan, which looks like money on the floor — so why don't wild worms all carry it? In 2004 someone cultured mutants and normal worms together for many generations and let them compete. The mutants were squeezed out. The longevity was real, but the losses elsewhere were heavy enough to lose the competition.</p>
+<p>Another much-cited candidate is the tumour suppressor p53: a batch of mice with raised p53 activity in 2002 had markedly fewer tumours but aged faster than their littermates. Cleaner later models failed to reproduce the premature aging, so this one counts as contested and can't be used as settled fact.</p>
+<p>And the same reminder: this is not a trade of lifespan for reproduction, because nobody is negotiating. All that happened is that individuals carrying it left more offspring on average, so the variant became common — and the late-life cost riding along with it became common too.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>Repair isn't free — it competes with having children for the same supply</h2>
+<p>Cells in your body are going wrong every minute: DNA broken, proteins misfolded, membranes oxidised. A whole repair crew is busy handling it. But repair burns energy and materials, and those same things go into making eggs, making sperm, carrying a pregnancy, producing milk. Put them one place and there's less for the other.</p>
+<p>Kirkwood's 1977 point: if an animal will most likely be taken by a hawk before it turns three, pouring resources into a body that still works at fifteen never pays back — most carriers never get there. In that environment, individuals that shift resources forward and breed early leave more offspring on average. A sloppily maintained body isn't a body that couldn't afford repairs; it's one for which better repairs would never be used. Hence the name <em>disposable soma</em>: the body is a single-use container for passing things on, not an asset to be maintained for a lifetime.</p>
+<p>That yields a falsifiable prediction: the harder a species is to kill, the more slowly it should age. It holds. Fliers, shelled animals and underground dwellers all far outlive ground animals of the same body weight — the little bat from the opening lived forty-one years, the same-sized house mouse three. Naked mole-rats, living in underground tunnels with almost no predators, are more extreme still: data on over three thousand individuals across thirty years show their risk of death does not rise with age, which is highly unusual for a mammal.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: four horizontal bars comparing lifespans, where animals that are harder to eat have longer bars. House mouse, lives on the ground, about 3 years. Opossum, on the ground with many predators, about 2 years in the wild. Naked mole-rat, in underground tunnels, over 30 years. A small bat under ten grams that can fly, 41 years." viewBox="0 0 600 206" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Harder to eat, slower to age (bar length = known lifespan)</text>
+<text x="20" y="48" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">House mouse · on the ground</text>
+<rect x="230" y="38" width="26" height="13" rx="3" fill="#3c6b52"></rect>
+<text x="264" y="48" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">about 3 years</text>
+<text x="20" y="84" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Opossum · ground, many predators</text>
+<rect x="230" y="74" width="18" height="13" rx="3" fill="#3c6b52"></rect>
+<text x="256" y="84" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">about 2 years (wild)</text>
+<text x="20" y="120" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Naked mole-rat · underground</text>
+<rect x="230" y="110" width="262" height="13" rx="3" fill="#52c98a"></rect>
+<text x="500" y="120" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">30+ years</text>
+<text x="20" y="156" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Small bat · flies, under 10 g</text>
+<rect x="230" y="146" width="308" height="13" rx="3" fill="#52c98a"></rect>
+<text x="546" y="156" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">41 yrs</text>
+<line x1="230" x2="556" y1="172" y2="172" stroke="#24382c" stroke-width="1"></line>
+<text x="226" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10">0</text>
+<text x="378" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10">20 years</text>
+<text x="530" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10">40 years</text>
+</svg>
+<div class="cap">Similar weights, similarly fast metabolisms, lifespans differing more than tenfold. What predicts this isn't body size or metabolic rate — it's how likely you are to be killed by something else.</div>
+</div>
+<p>The prettiest test made the prediction first and took the data afterwards. In 1993 Austad compared two opossum populations: one on the mainland with a full set of predators, the other on an island that had gone four or five thousand years without large predators. The island animals lived 25 to 50 percent longer than their mainland relatives, bore smaller litters, and even aged more slowly in their tail tendon fibres — nobody touched their genes, the pressure of "easily eaten" was simply removed for a few thousand years.</p>
+<p>The boundary should be stated plainly. The specific claim that repair and reproduction compete for one pool of resources has taken some uncomfortable knocks from experiments, and theorists have pointed out that once population density feedback is included, "easier to kill means faster aging" doesn't hold monotonically. But the coarser claim — species that are hard to kill age slowly — keeps being confirmed, and stands firm.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BigCat</h3>
+<ul>
+<li><b>① Investing and position sizing</b>: you keep money in two pots, one for what you'll need within three years and one you won't touch for twenty. Every time the market dips or cash gets tight, the pot you raid is always the twenty-year one. That's the shape of "a bad variant that fires at forty is something selection can barely grab" — the far-horizon pot isn't being rejected, it never enters the decision at all, because its consequences surface last. What you can change: raise the friction on the far pot specifically (a separate account, a rule that any move must wait overnight), so touching it is harder than touching the near one; and add one metric, "how many times have I touched the far pot in the last twelve months" — that number says more about what will be left in twenty years than this year's return does.</li>
+<li><b>② Health and energy</b>: three nights running to hit a deadline, and on the fourth day one good sleep used to put you back. These last couple of years one sleep isn't enough — it takes two, and you only feel clear on the third day. That's the shape of "repair isn't free — it competes with having children for the same supply": repair was never a free add-on, it draws on the same energy as whatever you're producing right now; you couldn't see the bill before, not because there wasn't one, but because you could pay it. What you can change: stop judging recovery by "can I get up tomorrow" (that measures whether you can start work, not whether the repairs are done) and use the quality of your output on the third day after; and drop "sprint now, recover later" as the default schedule — book the two recovery days in advance.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · Connections Across Fields</h3>
+<ul>
+<li><b>Engineering and systems design · once a batch of devices passes its support date, the faults they throw stop appearing on anyone's list</b>: the vendor no longer fixes them, users stop bothering to report them — the faults keep happening, there is simply no loop carrying them back to design. This runs the mechanism from "a bad variant that fires at forty is something selection can barely grab": whether a defect gets cleared depends not on how severe it is, but on whether the feedback loop still exists at the moment it surfaces. From which follows a conclusion you wouldn't otherwise see: <b>to know when a system will start to rot, don't read the design docs — look at how long its feedback loops live. Warranty period, on-call rota, how long the owner stays in the role: whichever expires first is where the rot starts, and all classes of defect start together, not worst-first.</b> It also explains why "raise quality awareness" never moves this: what has failed isn't awareness, it's the loop. <b>But here it breaks down</b>: in evolution the shadow cannot be lengthened directly — nobody decides how many individuals the wolves take — whereas support windows, rotas and tenures are all written down, and one edited line pushes the shadow back. So the real engineering question was never "how do we make people more responsible," it's "who is renewing that loop, and for how long."</li>
+<li><b>Philosophy and philosophy of science · one word "why" with two non-substitutable questions under it</b>: "why do humans age" was long treated as a physiological question — which part fails first, what accumulates inside cells. What Medawar swapped in 1952 was not the answer but the question: that the damage exists is unremarkable; what's remarkable is that it was never cleared. This runs the mechanism of the whole page — whether a trait persists is a statistical outcome across dozens of generations at the population level, a separate ledger from how it operates inside your body. From which follows a conclusion you wouldn't otherwise see: <b>in an argument that has run for decades with evidence on both sides and no convergence, the first thing to check isn't whose data is stronger but whether both sides mean the same "why"; if they are two ledgers, both can be entirely right without contradiction, and comparing data harder will only deepen the deadlock.</b> A molecular biologist finding a pathway that doubles a worm's lifespan and an evolutionary biologist saying aging stems from selection's weakness in late life were never in conflict: one describes how the machine breaks, the other why breaking persists. <b>But here it breaks down</b>: that cut is clean in evolutionary biology because each ledger has its own explicit test (Tinbergen's four questions, from the evolution of behaviour, split it into four separately checkable ones). Most fields have no such criterion, and forcing the move tends to hand each side a hat and excuse both from ever producing evidence — that isn't separating the question, it's cancelling it.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>Does aging count as an "adaptation"?</summary>
+<div>The mainstream answer is no: it wasn't selected for, it's the residue left where selection can't reach. People have proposed "programmed death" — dying on time to free resources for descendants. But explanations like that require selection at the group level, which is far weaker: any individual that refused to die on schedule would leave more offspring. The evidence doesn't support it.</div>
+</details>
+<details><summary>If life-extending variants exist, why aren't wild animals all long-lived?</summary>
+<div>Because they lose points elsewhere — the roundworm case exactly: lifespan doubled, squeezed out in mixed culture. And where the chance of being eaten is high, few individuals live long enough for the payoff to land. Only once the odds of being killed have dropped does longevity become worth it.</div>
+</details>
+<details><summary>Is any of this useful for living longer?</summary>
+<div>It answers "why we age" and doesn't hand you a method directly (specific protocols are health-longevity's job). But it carries one hard implication: if aging is a great many independent late-life defects stacked on each other, there is no reason to expect a master switch. When something claims to have found "the cause of aging," first ask how it explains dozens of unrelated declines starting at once.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evolution_of_ageing" target="_blank" rel="noopener">Evolution of ageing</a> · <a href="https://en.wikipedia.org/wiki/Mutation_accumulation_theory" target="_blank" rel="noopener">Mutation accumulation theory</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1558-5646.1957.tb02911.x" target="_blank" rel="noopener">Williams 1957: Pleiotropy, natural selection and the evolution of senescence</a> · <a href="https://en.wikipedia.org/wiki/Antagonistic_pleiotropy_hypothesis" target="_blank" rel="noopener">Antagonistic pleiotropy</a></li>
+<li><a href="https://www.nature.com/articles/270301a0" target="_blank" rel="noopener">Kirkwood 1977: Evolution of ageing</a> · <a href="https://en.wikipedia.org/wiki/Disposable_soma_theory" target="_blank" rel="noopener">Disposable soma theory</a></li>
+<li><a href="https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/j.1469-7998.1993.tb02665.x" target="_blank" rel="noopener">Austad 1993: Retarded senescence in an insular opossum population</a></li>
+<li><a href="https://elifesciences.org/articles/31157" target="_blank" rel="noopener">Naked mole-rat mortality does not increase with age (2018)</a> · <a href="https://elifesciences.org/reviewed-preprints/88057" target="_blank" rel="noopener">Redone five years later with double the data (2024)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/8247153/" target="_blank" rel="noopener">A roundworm mutant that lives twice as long (1993)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15590605/" target="_blank" rel="noopener">Fitness cost of extended lifespan (2004)</a></li>
+<li><a href="https://www.nature.com/articles/415045a" target="_blank" rel="noopener">p53 mutant mice with early ageing phenotypes (2002)</a> · <a href="https://elifesciences.org/articles/34701" target="_blank" rel="noopener">A p53 polymorphism affecting ageing and longevity in mice</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1558-5646.1984.tb00370.x" target="_blank" rel="noopener">Rose 1984: Laboratory evolution of postponed senescence in Drosophila</a> · <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1558-5646.1993.tb01241.x" target="_blank" rel="noopener">Abrams 1993: Does increased mortality favor more rapid senescence?</a></li>
+<li><a href="https://www.nature.com/articles/ncomms3212" target="_blank" rel="noopener">Genome analysis of a long-lived small bat</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

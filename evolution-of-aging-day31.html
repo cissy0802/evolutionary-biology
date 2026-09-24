@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 31：衰老为什么会演化出来</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body></head><body>
+</head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 31 · PHASE D 行为与心智</div>
+<h1>衰老为什么会演化出来</h1>
+<h2>不是零件被用坏了，是选择在晚年几乎使不上力</h2>
+<div class="meta">2026-09-24 · BigCat</div>
+<div class="pitch">一只不到十克重的小蝙蝠，被重新捉到时至少活了四十一岁；一只差不多重的家鼠，三年就老态毕现。差别不在零件质量，在有多容易被吃掉。</div>
+</header>
+<div class="intro">
+<p>你今年比去年更容易腰酸，划破的口子愈合得更慢，熬一个通宵要缓两天。一件件看都像磨损：东西用久了就该这样。</p>
+<p>可这个解释一换对象就塌了。那只小蝙蝠和那只家鼠用的是同一套化学，心跳都快，代谢都猛。要是老就是被用坏的，飞了四十年的那个该先垮。</p>
+<p>所以真正难回答的不是「为什么会老」，是：一个让你后半辈子所有零件一起变差、最后要了你命的东西，凭什么没被自然选择清掉？</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>一个四十岁才发作的坏变异，选择几乎抓不住它</h2>
+<p>先看一个真实的例子。亨廷顿病是一种神经退行病，带一份变异就会发病，不可逆，最后致命。这种变异按说该被清得干干净净，可它一直在人群里。</p>
+<p>原因是发病年龄：多数人在三十几到五十几岁之间才开始出现症状。在人类历史的绝大部分时间里，这个岁数的人孩子早就生完了——变异该传的已经传下去，坏处才开始显形。自然选择只在「谁留下了更多后代」这一件事上算账，账发生在孩子生完之后，就不进这本账。</p>
+<p>一般化之后就是整个话题的地基。野外的动物很少是「老死」的：被吃掉、饿死、冻死、染病，一年一年地减员，所以能活到某个年龄的个体越往后越少。一个二十岁发作的缺陷，几乎每个携带者都会碰上，筛得很快；一个六十岁发作的，只作用在那一小撮活到六十的个体身上，力度接近于零。Medawar 1952 年给这块区域起了个名字：<em>选择的阴影</em>。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：一条从左上向右下滑落的曲线，表示野外一个群体里还活着的比例随年龄下降。曲线左端标注年轻时几乎所有携带者都在，一个这时候发作的缺陷被筛得很快；曲线右端阴影区标注只剩很少个体活到这里，一个这时候发作的缺陷几乎不被筛" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar31a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">野外一个群体，随年龄还活着的比例</text>
+<path d="M60,196 L60,42 M60,196 L556,196" fill="none" stroke="#24382c" stroke-width="1"></path>
+<path d="M400,52 L400,196 L556,196 L556,190 Z" fill="rgba(210,162,76,0.10)" stroke="none"></path>
+<polyline points="60,44 118,72 176,98 234,120 292,140 350,157 408,171 466,182 524,190 556,193" fill="none" stroke="#52c98a" stroke-width="2"></polyline>
+<text x="64" y="212" fill="#8aa192" font-family="Georgia,serif" font-size="10">出生</text>
+<text x="300" y="212" fill="#8aa192" font-family="Georgia,serif" font-size="10">年龄越来越大 →</text>
+<text x="14" y="48" fill="#8aa192" font-family="Georgia,serif" font-size="10">全在</text>
+<text x="14" y="194" fill="#8aa192" font-family="Georgia,serif" font-size="10">没了</text>
+<line x1="150" x2="112" y1="96" y2="72" stroke="#d2a24c" stroke-width="1" marker-end="url(#ar31a)"></line>
+<text x="155" y="94" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">这时候发作的缺陷，几乎每个</text>
+<text x="155" y="108" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">携带者都碰上，筛得很快</text>
+<text x="404" y="74" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">选择的阴影：</text>
+<text x="404" y="88" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">只剩这么点人活到这儿，</text>
+<text x="404" y="102" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">缺陷几乎不被筛</text>
+</svg>
+<div class="cap">曲线滑下去的原因跟衰老无关——是被吃、是饿、是病。正因为它滑下去了，晚年那一段才成了盲区。</div>
+</div>
+<p>顺手破一个最常听到的说法：「老的不死，年轻的没地方活。」这话把账算到了「种群」头上，可没有任何东西在替种群算账。真有一个变异让你早点死给别人腾地方，它的携带者留下的后代只会更少，它自己先消失。衰老不是被选出来的，是选择够不着的地方剩下的东西。</p>
+<p class="en-brief"><b>EN</b> Huntington's disease is dominant and fatal, yet it persists: symptoms typically begin between the thirties and fifties, after most carriers have already reproduced. Generalise that and you get the foundation of the whole topic — in the wild, animals are steadily removed by predation, starvation and disease, so fewer and fewer individuals reach each later age. A defect that strikes at twenty hits nearly every carrier; one that strikes at sixty acts only on the few who got there. Medawar named that region the selection shadow in 1952. Aging is not selected for; it is what is left where selection cannot reach.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>坏消息堆在没人清的那个角落</h2>
+<p>小区里的垃圾桶，门口那几个天天清，最里头那个一个月才轮到一次。没人规定里头的桶必须更脏，它就是更脏——清理频率不一样，脏东西自然堆在清得少的地方。</p>
+<p>基因组里也是这个形状。每一代都会新冒出一批坏变异，它们在什么年龄发作，跟有没有害处毫无关系，纯粹是碰巧。早发作的被清得快；晚发作的清不动，于是一代代沉淀下来，越往晚年越厚。这就是 Medawar 提的<em>突变积累</em>：衰老不需要任何一个「衰老基因」，只需要一堆各管各的小毛病碰巧都排在后半程。</p>
+<p>这有实验支持。上世纪八十年代，Rose 拿果蝇做了件很朴素的事：每一代只让还在晚年产卵的那些果蝇留后代，别的不要。连着做几十代，这些果蝇的寿命比对照长了三成到五成。反过来只挑最早产卵的留种，寿命就缩回去。这说明两件事：寿命里确实有可以被选择的遗传变异；而只要把选择的力气往晚年挪一点，晚年那堆毛病就会被清掉一部分。</p>
+<p>但要诚实：Rose 那个结果，这节的机制能解释，后面那条同样能解释，光看寿命变长分不出是哪一个在起作用。两者各占多少，这个领域到今天也没算清。</p>
+<p class="en-brief"><b>EN</b> Bins by the gate get emptied daily; the one at the far end gets emptied monthly, and that is where the mess piles up — not by design, but by clearing frequency. Genomes work the same way. New harmful variants arise every generation, and the age at which they act is unrelated to how harmful they are. Early-acting ones are cleared fast; late-acting ones are not, so they accumulate. That is Medawar's mutation accumulation: aging needs no aging gene, only a heap of unrelated small faults that happen to land late. Rose's fly experiments in the 1980s, breeding only from late-laying flies, extended lifespan by 30–50%. But that result is equally consistent with the next section's mechanism, and how much each contributes is still unsettled.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>年轻时加分、老了扣分的变异，照样会扩散</h2>
+<p>更别扭的是第三种情况：选择看见了，而且选了，连同后面那笔账一起收下。一个变异如果只有坏处会被清掉，只有好处会铺开；可要是它二十岁给你加分、六十岁扣分呢？账按「留下多少后代」算，二十岁那一笔的分量远大于六十岁那一笔（能活到六十的本来就少），于是它照样扩散，扣的分照扣。Williams 1957 年给这条起名<em>拮抗多效性</em>——一个基因同时管着好几件事（多效性），方向却相反（拮抗）。</p>
+<p>线虫身上有个干净的例子。1993 年发现，把一个叫 daf-2 的基因改一改，线虫的平均寿命能翻一倍，看上去像白捡的便宜——那为什么野生线虫不都带着它？2004 年有人把突变体和正常线虫混在一起养了很多代，让它们自己竞争。突变体被挤了出去。长寿是真的，但在别的地方亏得厉害，亏到在竞争里活不下来。</p>
+<p>另一个常被引用的候选是抑制肿瘤的 p53：2002 年一批 p53 活性调高的小鼠，肿瘤明显变少，却老得比同窝的快。但后来做法更干净的模型没重现早衰，所以这条目前算争议中，不能当定论用。</p>
+<p>还是那句提醒：这不是「拿寿命换繁殖」的交易，没有谁在谈判。发生的只是——带着它的个体平均留下了更多后代，于是变异变多了，它附带的晚年代价也跟着变多了。</p>
+<p class="en-brief"><b>EN</b> Williams (1957) pointed at a nastier case than oversight: a variant that helps at twenty and harms at sixty spreads anyway, because the early ledger entry weighs far more. In worms, altering the daf-2 gene doubles average lifespan — yet when mutants and wild type were cultured together for many generations in 2004, the long-lived mutants were competed out. Mice with elevated p53 activity got fewer tumours but aged early (2002); cleaner later models with properly regulated extra p53 did not reproduce that, so this case stays contested. And nobody is trading lifespan for reproduction: carriers simply left more offspring, so the variant and its late cost both became common.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>修理不是免费的，它跟生孩子抢同一份东西</h2>
+<p>你身上每时每刻都有细胞在出错：DNA 被打断、蛋白折错、膜被氧化。身体有一整套修理工在忙着处理。但修理要烧能量、要原料，而这些同时也是造卵子、造精子、怀孕、喂奶要用的。放哪边就少哪边。</p>
+<p>Kirkwood 1977 年的说法是：如果一只动物有很大概率在三岁之前就被鹰抓走，把资源砸在「让身体撑到十五岁还好用」上就收不回来——大多数携带者根本活不到那天。在这种环境里，资源前移、早点多生的个体平均留下更多后代。身体修得潦草不是因为修不起，是修得再好也用不上。这叫<em>一次性体细胞</em>：身体是传递用的一次性容器，不是要保养一辈子的资产。</p>
+<p>这给出一条能被证伪的预测：越难被别的东西弄死的物种，衰老应该越慢。对上了。会飞的、背着壳的、住在地下的，寿命普遍远超同体重的地面动物——开头那只小蝙蝠四十一岁，同体重的家鼠三年。住地下洞道、几乎没天敌的裸鼹鼠更极端：三十年、三千多只个体的数据显示它们的死亡风险不随年龄上升，这在哺乳动物里极不寻常。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：四条横条比较寿命，越难被吃掉的动物条越长。家鼠住在地上谁都能抓，约三年；负鼠住在地上天敌多，约两年；裸鼹鼠住在地下几乎没天敌，三十年以上；一只不到十克的小蝙蝠会飞，四十一岁" viewBox="0 0 600 206" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">越难被别的东西吃掉，衰老得越慢（横条长度＝已知寿命）</text>
+<text x="20" y="48" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">家鼠 · 地上跑</text>
+<rect x="210" y="38" width="28" height="13" rx="3" fill="#3c6b52"></rect>
+<text x="246" y="48" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">约 3 年</text>
+<text x="20" y="84" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">负鼠 · 地上跑，天敌多</text>
+<rect x="210" y="74" width="19" height="13" rx="3" fill="#3c6b52"></rect>
+<text x="237" y="84" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">约 2 年（野外）</text>
+<text x="20" y="120" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">裸鼹鼠 · 住地下洞道</text>
+<rect x="210" y="110" width="281" height="13" rx="3" fill="#52c98a"></rect>
+<text x="499" y="120" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">30 年以上</text>
+<text x="20" y="156" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">小蝙蝠 · 会飞，不到 10 克</text>
+<rect x="210" y="146" width="330" height="13" rx="3" fill="#52c98a"></rect>
+<text x="548" y="156" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">41 岁</text>
+<line x1="210" x2="556" y1="172" y2="172" stroke="#24382c" stroke-width="1"></line>
+<text x="206" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10">0</text>
+<text x="370" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10">20 年</text>
+<text x="536" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10">40 年</text>
+</svg>
+<div class="cap">体重差不多、代谢都快，寿命差十几倍。能预测它的不是体型也不是代谢率，是「平常有多大概率被别的东西弄死」。</div>
+</div>
+<p>最漂亮的一次检验是先出预测、后取数据。Austad 1993 年比较了两群负鼠：一群在天敌齐全的大陆，另一群在一座四五千年没有大型捕食者的岛上。岛上那群比大陆同类长寿两成半到五成，一胎少生，连尾腱纤维的老化都慢下来了——没人改过它们的基因，只是把「容易被吃掉」撤掉了几千年。</p>
+<p>边界得说清：「修理和繁殖在抢同一份资源」这个具体说法被一些实验戳得不太舒服，理论上也有人指出，把种群密度算进去之后，「容易被弄死就衰老快」不总是单调成立。但更粗的那条——难被弄死的物种衰老慢——反复对上，很稳。</p>
+<p class="en-brief"><b>EN</b> Repair costs energy and materials that could go into reproduction instead. Kirkwood (1977): if you will probably be eaten before you are three, building a body that still works at fifteen never pays off — hence the disposable soma. That yields a falsifiable prediction: species that are hard to kill should age slowly. Fliers, shelled animals and underground rodents all outlive same-sized ground dwellers, and naked mole-rat mortality does not rise with age across 30 years of data. Austad's 1993 opossum study tested it prospectively: an island population with no large predators for millennia lived 25–50% longer, bred smaller litters and aged more slowly in the tendons. The specific resource-allocation claim is contested; the coarse prediction holds well.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 投资与仓位</b>：钱分两边放，一边是三年内要用的，一边是二十年后才动的。每次市场一跌或者手头临时紧，先动的永远是二十年那边。这是「一个四十岁才发作的坏变异，选择几乎抓不住它」那节的形状——远期那部分不是被你否掉的，是从来没进过决策的视野，因为它的后果最晚显形。可改的：把远期那部分的操作门槛单独抬高（放进另一个账户、定一条必须隔夜才能执行的规矩），让动它比动近期那边麻烦；指标里加一条「过去十二个月动过远期那边几次」，它比今年的收益率更能说明二十年后会剩下什么。</li>
+<li><b>② 健康与精力</b>：赶一个交付连熬三个晚上，第四天补一觉就觉得回来了。这两年你发现补一觉不够，要两天，而且第三天才真的清醒。这是「修理不是免费的，它跟生孩子抢同一份东西」那节的形状——修理不是免费的附加项，它和你当下要产出的东西抢同一份能量；以前看不见不是因为不花钱，是因为付得起。可改的：判断恢复没恢复别用「第二天能不能爬起来」（那测的是能不能开工，不是修完了没），换成「熬完之后第三天的产出质量」；停掉「赶完再补」这个默认排法，把补的那两天提前排进日程。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>工程与系统设计 · 一批设备的支持期到了之后，它们身上再出的问题不再进任何人的待办列表</b>：厂商不修了，用的人也懒得报了——问题照样在发生，只是没有回路把它带回设计那边。跑的是「一个四十岁才发作的坏变异，选择几乎抓不住它」那节的机制：一个缺陷会不会被清掉，不取决于它有多严重，取决于它显形的那一刻，反馈回路还在不在。由此能推出一个原本看不出的结论：<b>想知道一个系统会从哪个时间点开始烂，别看设计文档，看它的反馈回路能活多久——保修期、值班表、负责人的在岗年限，哪个先到期，腐烂就从那儿起头，而且是各类缺陷一起起头，不是最严重的先来。</b>这也解释了为什么「加强质量意识」推不动它：使不上力的不是意识，是回路断了。<b>但这里不成立</b>：演化那边的阴影没法直接延长，没有谁能决定野外有多少个体被狼吃掉；而支持期、值班表、在岗年限都是写出来的，改一行字就能把阴影往后推。所以工程上真正的问题不是「怎么让人更负责」，是「谁在续那条回路，续多久」。</li>
+<li><b>西方哲学与科学哲学 · 同一个「为什么」底下压着两个互不替代的问题</b>：「人为什么会老」在很长时间里被默认成生理学问题——哪个零件先坏、什么在细胞里累积。1952 年 Medawar 换掉的不是答案，是问题本身：坏处存在不稀奇，稀奇的是它们为什么没被清掉。跑的是本期整页的机制——一个性状留没留下来，是群体层面几十代的统计结果，跟它在你身体里怎么运转是两笔账。由此能推出一个原本看不出的结论：<b>一场吵了几十年、两边各自拿得出证据又谁也说服不了谁的争论，第一件该查的不是谁的数据更硬，是两边的「为什么」是不是同一个；如果是两笔账，两边全对也不矛盾，继续比数据只会更僵。</b>分子生物学家找到一条能让线虫活两倍的通路，和演化生物学家说衰老源于选择在晚年使不上力，从来就不冲突：一个说机器怎么坏的，一个说坏掉为什么留得住。<b>但这里不成立</b>：这一刀在演化生物学里切得干净，是因为两笔账各有明确的检验办法（行为的演化那期的廷贝亨四问就是把它拆成了四条分别可查的问题）。多数领域没有这种判据，硬套往往变成给双方各发一顶帽子、谁也不必再举证——那不是把问题分开，是把问题取消了。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>那衰老算不算一种「适应」？</summary>
+<div>主流答案是不算：它不是被选出来的，是选择够不着的地方剩下的残渣。历史上有人提过「程序性死亡」——早点死给后代腾资源。但这类解释要靠群体层面的选择才成立，而它弱得多：任何一个「不肯按时死」的个体都会留下更多后代。目前证据不支持。</div>
+</details>
+<details><summary>既然存在能延寿的变异，野生动物为什么没都变长寿？</summary>
+<div>因为它们在别处扣分——线虫那个例子就是：寿命翻倍，混养竞争里被挤出去。而且在被吃掉概率很高的环境里，能活到收益兑现的个体本来就少。只有当被弄死的概率先降下来，长寿才划算。</div>
+</details>
+<details><summary>这套理论对「怎么活得更久」有用吗？</summary>
+<div>它回答的是「为什么会老」，不直接给方法（具体协议是 health-longevity 那边的活）。但有个很硬的含义：如果衰老是一大堆各管各的晚年缺陷叠在一起，就不该指望存在一个总开关。看到任何声称找到「衰老主因」的说法，先问它怎么解释几十条互不相干的退化同时开始。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evolution_of_ageing" target="_blank" rel="noopener">衰老的演化词条</a> · <a href="https://en.wikipedia.org/wiki/Mutation_accumulation_theory" target="_blank" rel="noopener">突变积累理论词条</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1558-5646.1957.tb02911.x" target="_blank" rel="noopener">Williams 1957：多效性、自然选择与衰老</a> · <a href="https://en.wikipedia.org/wiki/Antagonistic_pleiotropy_hypothesis" target="_blank" rel="noopener">拮抗多效性词条</a></li>
+<li><a href="https://www.nature.com/articles/270301a0" target="_blank" rel="noopener">Kirkwood 1977：衰老的演化</a> · <a href="https://en.wikipedia.org/wiki/Disposable_soma_theory" target="_blank" rel="noopener">一次性体细胞理论词条</a></li>
+<li><a href="https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/j.1469-7998.1993.tb02665.x" target="_blank" rel="noopener">Austad 1993：一个岛屿负鼠群体中延缓的衰老</a></li>
+<li><a href="https://elifesciences.org/articles/31157" target="_blank" rel="noopener">裸鼹鼠的死亡率不随年龄上升（2018）</a> · <a href="https://elifesciences.org/reviewed-preprints/88057" target="_blank" rel="noopener">五年后用双倍数据重做（2024）</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/8247153/" target="_blank" rel="noopener">一个寿命翻倍的线虫突变体（1993）</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/15590605/" target="_blank" rel="noopener">延长寿命的适合度代价（2004）</a></li>
+<li><a href="https://www.nature.com/articles/415045a" target="_blank" rel="noopener">表现出早衰的 p53 突变小鼠（2002）</a> · <a href="https://elifesciences.org/articles/34701" target="_blank" rel="noopener">p53 多态性对小鼠衰老与寿命的影响</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1558-5646.1984.tb00370.x" target="_blank" rel="noopener">Rose 1984：果蝇中延后衰老的实验室演化</a> · <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1558-5646.1993.tb01241.x" target="_blank" rel="noopener">Abrams 1993：死亡率升高一定会选出更快的衰老吗</a></li>
+<li><a href="https://www.nature.com/articles/ncomms3212" target="_blank" rel="noopener">一种长寿小蝙蝠的基因组分析</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
