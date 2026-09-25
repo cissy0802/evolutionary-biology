@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 32: Evolutionary Medicine</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 32 · PHASE E BIG QUESTIONS</div>
+<h1>Evolutionary Medicine</h1>
+<h2>Why a machine this old still has so many places where it breaks</h2>
+<div class="meta">2026-09-25 · BigCat</div>
+<div class="pitch">When you have a fever you feel cold, you shiver, you want another blanket — the body is already hotter than usual and it is still working hard to heat up. Broken things do not behave like that.</div>
+</header>
+<div class="intro">
+<p>Two in the morning, thermometer reads 38.6. You take a paracetamol tablet. Underneath that reflex sits an unspoken judgement: the fever is part of the illness, so pushing it down is a step in the right direction.</p>
+<p>But think back to the half hour before it climbed. You were shivering, hunting for blankets, complaining the room was cold. A broken air conditioner stops cooling; it does not read thirty degrees and keep heating. This looks more like somebody turned the thermostat up a notch, with the body dutifully chasing the new number.</p>
+<p>"Why do we get sick" does not have one answer. One of them is: the thing you took to be the illness is not the illness.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Fever is not a breakdown; the thermostat was turned up a notch</h2>
+<p>There is a small region under your brain called the hypothalamus, and it holds a set point — the temperature the body is supposed to maintain. During an infection, signalling molecules released by immune cells act on that region and push the set point higher. Everything after that follows: measured against the new number you are now "too cold", so your blood vessels constrict, your muscles shiver, you go looking for blankets, and you keep heating until you catch up. The body is doing all of it on purpose, and it burns real extra energy to do it.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: on the left, the normal state, where the target temperature and the actual body temperature line up. On the right, the infected state, where immune signals push the target temperature higher while actual temperature lags, so the body judges itself too cold and starts shivering, constricting blood vessels and seeking blankets until it catches up." viewBox="0 0 600 236" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar32a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">The body is not being overheated — it changed its own target</text>
+<text x="26" y="44" fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5">Normally</text>
+<line x1="26" x2="256" y1="52" y2="52" stroke="#24382c" stroke-width="1"></line>
+<rect x="26" y="66" width="150" height="15" rx="3" fill="#3c6b52"></rect>
+<text x="182" y="78" fill="#8aa192" font-family="Georgia,serif" font-size="10">actual temp</text>
+<line x1="176" x2="176" y1="60" y2="112" stroke="#52c98a" stroke-dasharray="3 3" stroke-width="1.4"></line>
+<text x="26" y="106" fill="#52c98a" font-family="Georgia,serif" font-size="10.5">Target sits here · the two line up, you feel neither cold nor hot</text>
+<text x="326" y="44" fill="#eaf3ec" font-family="Georgia,serif" font-size="11.5">During infection</text>
+<line x1="326" x2="556" y1="52" y2="52" stroke="#24382c" stroke-width="1"></line>
+<rect x="326" y="66" width="150" height="15" rx="3" fill="#3c6b52"></rect>
+<rect x="476" y="66" width="62" height="15" rx="3" fill="rgba(210,162,76,0.30)"></rect>
+<line x1="538" x2="538" y1="60" y2="112" stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1.4"></line>
+<text x="326" y="106" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">Immune signals push the target up to here</text>
+<line x1="470" x2="530" y1="130" y2="130" stroke="#d2a24c" stroke-width="1.2" marker-end="url(#ar32a)"></line>
+<text x="326" y="134" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">This gap is the whole story:</text>
+<text x="326" y="152" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">you are judged "too cold" → shivering, blankets</text>
+<text x="326" y="170" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">and it keeps heating until it catches up</text>
+</svg>
+<div class="cap">"Feeling cold" is the key piece of evidence. Something being heated passively never feels cold; only something chasing a higher target does.</div>
+</div>
+<p>The cleanest evidence that the response actually helps comes from an experiment by Kluger's group in 1975. Desert iguanas cannot generate their own heat; they set their body temperature entirely by moving into sun or shade. After being injected with a pathogenic bacterium they chose warmer spots and ran about two degrees hotter than usual. The decisive step was next: infected lizards were confined to cool, medium or warm environments with no choice, and the cool group died at markedly higher rates. Temperature had been isolated as a single variable, so the conclusion holds.</p>
+<p>There is corroborating evidence in humans. A 1973 study gave an antimotility drug to volunteers infected with Shigella, a bacterium that causes dysentery. The diarrhoea was indeed stopped; the price was that fever lasted longer and the bacteria took longer to clear. Plug the thing that flushes outward, and the mess stays inside for extra days.</p>
+<p>One more sentence has to follow, though: <em>a defence being useful</em> is not the same as <em>suppressing it being harmful</em>. In 2015, a 700-patient randomised trial across more than twenty Australian and New Zealand intensive care units gave paracetamol to febrile patients with suspected infection, and found no difference in mortality or in days spent out of intensive care. The two statements look like they are fighting. They are not.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>The alarm goes off a hundred times a year and ninety-nine times there is no fire</h2>
+<p>Your kitchen smoke alarm shrieks whenever you pan-fry fish, and you have probably thought about pulling the battery out. The manufacturer could make it duller but must not: the two kinds of error cost wildly different amounts. Alarm without fire costs you five annoyed minutes. Fire without alarm costs the house. Even if the real fire has a probability of one in a thousand, setting the threshold at "better to shriek too often" is still the better deal.</p>
+<p>The responses that make you feel awful run the same arithmetic. Vomiting costs one meal and half a miserable day. Failing to vomit something genuinely poisonous can cost you every meal after that. So the threshold that got filtered through must lean towards "better to throw up a few times too many". Nesse named this the <em>smoke detector principle</em>. Nobody is weighing anything here — it is only that individuals with looser thresholds left more offspring on average, so loose became the default.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: a two-by-two cost table. Real danger with a response costs one meal; real danger with no response can cost everything; no danger with a response costs a meal and half a bad day; no danger with no response costs nothing. Because the missed-danger cell is so much heavier than the rest, an over-eager threshold is the better setting." viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Of the four cells, only one is genuinely lethal</text>
+<text x="196" y="46" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Real danger</text>
+<text x="392" y="46" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Nothing wrong</text>
+<text x="24" y="86" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Body reacts</text>
+<rect x="160" y="60" width="180" height="42" rx="6" fill="rgba(82,201,138,0.16)" stroke="#3c6b52"></rect>
+<text x="172" y="78" fill="#a8dcbd" font-family="Georgia,serif" font-size="10.5">Threw it up · survived</text>
+<text x="172" y="94" fill="#8aa192" font-family="Georgia,serif" font-size="10">cost: one meal</text>
+<rect x="356" y="60" width="180" height="42" rx="6" fill="rgba(210,162,76,0.10)" stroke="#3c6b52"></rect>
+<text x="368" y="78" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">False alarm</text>
+<text x="368" y="94" fill="#8aa192" font-family="Georgia,serif" font-size="10">cost: a meal + half a bad day</text>
+<text x="24" y="140" fill="#eaf3ec" font-family="Georgia,serif" font-size="11">Body does not</text>
+<rect x="160" y="114" width="180" height="42" rx="6" fill="rgba(196,70,70,0.20)" stroke="#8a4a3c"></rect>
+<text x="172" y="132" fill="#e8a99a" font-family="Georgia,serif" font-size="10.5">Toxin reaches the blood</text>
+<text x="172" y="148" fill="#c9a49c" font-family="Georgia,serif" font-size="10">cost: possibly no next meal</text>
+<rect x="356" y="114" width="180" height="42" rx="6" fill="rgba(255,255,255,0.03)" stroke="#24382c"></rect>
+<text x="368" y="132" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Nothing happened</text>
+<text x="368" y="148" fill="#8aa192" font-family="Georgia,serif" font-size="10">cost: zero</text>
+<text x="24" y="186" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">The bottom-left cell outweighs the other three, so "better to over-report" is the cheaper setting.</text>
+</svg>
+<div class="cap">The table also explains why you almost never feel a defence saving you: on the occasion it did, the bad thing never happened, so nothing reached your memory.</div>
+</div>
+<p>A direct consequence: the vast majority of the fevers, nausea, anxiety and pain you experience in a lifetime really were suffered for nothing. That is not a counterexample; it is exactly what a well-calibrated system looks like. Demanding that it fire only when something is truly wrong is demanding that it accept misses — and the missed cell outweighs the other three.</p>
+<p>The two seemingly contradictory conclusions at the end of "fever is not a breakdown" dissolve right here. Suppressing one episode of a defence usually costs nothing, because that episode was not saving you; occasionally one of them does cost, and you cannot tell in advance which. The intensive care trial measured an average over a large group — and an average showing no difference is perfectly compatible with the defence mattering in a small minority of cases.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>The genes did not change; the place you live did</h2>
+<p>Myopia makes a good example because the numbers are so stark. Among people finishing secondary school in East Asia, 80–90% are short-sighted, and one to two in ten are highly myopic — a degree that really does damage the retina. All of that rose within a few decades, and a few decades are nowhere near enough for genes to shift that far.</p>
+<p>The eyeball does not grow to a blueprint in childhood; it calibrates its own length against what it sees as it grows. Under bright outdoor light with distant scenery, that calibration produces an eye focused correctly at distance; move it into indoor lighting dominated by screens and books at arm's length, and the same rule overshoots. The rule did not break. The input changed.</p>
+<p>This is not a guess made after the fact. A randomised trial in Guangzhou in 2015 took twelve primary schools and roughly 1,900 first-graders, and gave half the schools an extra forty minutes of outdoor class a day. Three years later, cumulative myopia incidence was 30.4% in the extra-outdoors group against 39.5% in the controls. Randomised, three years of follow-up, that sample size — it is among the hardest evidence the field has.</p>
+<p>Ailments of this shape — the trait did not get worse, the statistics of the environment changed — are called <em>mismatch</em>. The concept needs a guardrail, though: it is a superb generator of hypotheses and also the easiest thing in biology to spin stories with. Any modern complaint can be fitted with an offhand "our ancestors didn't live like this", and it will sound plausible every time. The just-so story critique from the evolutionary psychology topic is the same failure mode. There is exactly one test: can you name the specific environmental parameter that changed, and can you change it back and watch the outcome move? Myopia passes (outdoor hours, changed back, incidence genuinely fell). Most popular claims do not.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>Some faults are change from another purchase; some are roads that were never built</h2>
+<p>Two more kinds of ailment are neither defences nor things you can dodge by changing the environment.</p>
+<p>The first kind comes bundled. Sickle cell disease is a severe blood disorder caused by two copies of one variant, yet in regions with heavy malaria that variant stays at a substantial frequency. The reason is that people carrying a single copy do not get the disease but resist severe malaria strongly — a 2005 Kenyan study put the protection at close to 90%. In that environment, single-copy carriers left more offspring on average, so the variant grew more common; and as long as it is common, every generation necessarily produces some children with two copies. Nobody weighed anything, and nobody traded anything away "for malaria resistance" — the ledger simply came out positive, and the attached cost stayed on with it.</p>
+<p>The second kind has nowhere to go. Your food and your air share a stretch of throat, which is why you can choke, and occasionally die of it. This is not a step that went wrong; it is the result of fish anatomy from hundreds of millions of years ago being modified one step at a time, with no option to start over. As the evolutionary developmental biology topic put it, evolution is a tinkerer, not an engineer — it reworks whatever is at hand. Choking is the price of that history.</p>
+<p>Set the four bills side by side: <strong>it is a defence, not damage</strong> (fever, coughing, vomiting); <strong>the adversary turns over far faster than you do</strong> (bacteria can run dozens of generations in a day, you take twenty-odd years for one, so in this tug-of-war you are always catching up — it is why flu vaccines have to be reformulated every year); <strong>the environment's statistics changed</strong> (myopia); <strong>bundled costs and roads never built</strong> (sickle cell, choking). One question, four entirely different explanations.</p>
+<p>One last thing to nail down: these explanations answer why the machine tends to break in this particular way, never whether to fix it. Knowing fever is a defence does not mean you should grit your teeth through it; knowing a sickle variant had benefits in some places does not mean it should go untreated. Sliding from "this is how it came about" to "therefore this is how it ought to be" is the most common and most harmful misreading in the whole field.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BigCat</h3>
+<ul>
+<li><b>① Parenting and education</b>: your child spikes to thirty-nine degrees in the middle of the night, you sit by the thermometer taking a reading every half hour, and the moment the number crosses 38.5 you want to dose again. This has the shape of "fever is not a breakdown; the thermostat was turned up a notch" — the number you are watching is a target the body set for itself, not a gauge of how ill the child is. What to change: swap the thermometer for the child as your evidence — alertness, whether they will drink, whether crying can be soothed. Mainstream paediatric guidance says it plainly: antipyretics are for making the child comfortable, not for pushing the number back to normal. What to stop: waking a sleeping child so the temperature "doesn't climb further". (Lethargy, seizures, dehydration, or fever in an infant under three months — see a doctor; none of the above changes that.)</li>
+<li><b>② Leading a team</b>: the check that got added after an incident, and six months on someone raises it at every weekly meeting — "can we drop this, it's slowing us down" — with data to back it: in six months it has not caught a single thing. This has the shape of "the alarm goes off a hundred times a year and ninety-nine times there is no fire" — incidents a defence prevented do not, by definition, appear on the incident list, so on paper every defence is pure cost. What to change: stop asking "how many times has it caught something" and ask instead "before it existed, how often did this class of incident happen". If you genuinely want to evaluate it, switch it to log-only for a month, see what it flags, and then decide.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · CONNECTIONS ACROSS FIELDS</h3>
+<ul>
+<li><b>History and war · During the Blitz, London's sirens sounded far more often than bombs actually fell, and in the end many people simply stopped going down to the shelters</b>: the five deep shelters opened in 1944 against the flying bombs held forty thousand beds, and occupancy stayed well under ten thousand. The mechanism is the one from "the alarm goes off a hundred times a year and ninety-nine times there is no fire": an alarm threshold is set by the ratio between the two error costs, not by accuracy, so false alarms must dominate. Which yields a conclusion you would not otherwise see: <b>judging an alarm system by its false-alarm rate is the wrong question — it is supposed to be wrong most of the time. The real failure is that the receiving end has been trained not to respond; at that moment the cost ratio is rewritten (a miss still costs what it always did, while a false alarm has gone from "five annoyed minutes" to "the whole channel is dead"), and only then should the threshold be pulled back.</b> <b>Where it does not hold</b>: defences in the body have no equivalent of getting tired of listening — your vomiting reflex does not start being ignored by you because it has fired too often. A receiver that fatigues is a variable unique to human-made systems, which is why "better to over-report" is sound in biology and wrecks an alerting regime when copied straight into an organisation.</li>
+<li><b>Economics and business · A pricing and stocking habit formed in one era starts producing steady losses once the structure of demand shifts</b>: the actions did not change, nor did the people doing them get worse, and yet the ledger flipped. The mechanism is the one from "the genes did not change; the place you live did": a rule was filtered through under one environment's statistics, and once a parameter moves, the same rule starts producing bad outputs — the rule itself never got worse. Which yields a conclusion you would not otherwise see: <b>to tell when an old rule that is still making money will turn on you, its current profit is useless (after the environment shifts it will coast profitably for a while); the only workable method is to be able to name the environmental parameter that made it work in the first place, and then watch that parameter itself.</b> This is also exactly the test that separates real mismatch from a story told after the fact — if you cannot name the parameter, you are telling a story. <b>Where it does not hold</b>: a body cannot swap out the eyeball's growth rule, so mismatch in biology can only be worked around (spend time outdoors rather than redesign the eye); a company can simply replace the rule. So an old rule that stubbornly fails to change is usually not a mismatch problem at all, but a different one: whose position is tied to the old rule.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>If fever is a defence, should we stop taking antipyretics?</summary>
+<div>That does not follow. "This response is useful" and "suppressing it will make you worse" are two different claims, with the smoke detector cell sitting between them — most episodes were surplus to begin with. Current human evidence does not show that routine fever reduction worsens outcomes. A better frame: antipyretics treat discomfort, not the infection; discomfort is worth treating too.</div>
+</details>
+<details><summary>How do you tell a real mismatch from a story that merely sounds right?</summary>
+<div>Ask three things: which specific environmental parameter changed (not a vague "modern life"); is there evidence independent of the story that it did change; and can you change it back and run a test. Myopia answers all three. Most "our bodies aren't suited to modern society" claims stall on the first.</div>
+</details>
+<details><summary>Why do harmful variants persist in a population at all?</summary>
+<div>Three routes: the variant pays off somewhere else (sickle in malarial regions); it acts too late for selection to reach it (the selection shadow from the aging topic); or it is simply new and has not been cleared yet. When you meet "why hasn't this disease been eliminated", work out which of the three it is first.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evolutionary_medicine" target="_blank" rel="noopener">Evolutionary medicine</a> · <a href="https://en.wikipedia.org/wiki/Why_We_Get_Sick" target="_blank" rel="noopener">Nesse &amp; Williams, <i>Why We Get Sick</i></a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.1114347" target="_blank" rel="noopener">Kluger et al. 1975: Fever and survival</a> · <a href="https://en.wikipedia.org/wiki/Fever" target="_blank" rel="noopener">Fever</a></li>
+<li><a href="https://jamanetwork.com/journals/jama/article-abstract/352180" target="_blank" rel="noopener">DuPont &amp; Hornick 1973: Adverse effect of antimotility therapy in shigellosis</a></li>
+<li><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1508375" target="_blank" rel="noopener">Acetaminophen for fever in critically ill patients (2015 randomised trial)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Smoke_detector_principle" target="_blank" rel="noopener">The smoke detector principle</a></li>
+<li><a href="https://jamanetwork.com/journals/jama/fullarticle/2441261" target="_blank" rel="noopener">He et al. 2015: Time outdoors and myopia in children (randomised trial)</a> · <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(12)60272-4/abstract" target="_blank" rel="noopener">Morgan et al. 2012: Myopia</a></li>
+<li><a href="https://academic.oup.com/jid/article/192/1/178/872633" target="_blank" rel="noopener">Williams et al. 2005: Sickle cell trait and the risk of malaria</a> · <a href="https://en.wikipedia.org/wiki/Sickle_cell_trait" target="_blank" rel="noopener">Sickle cell trait</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Mismatch_(evolution)" target="_blank" rel="noopener">Evolutionary mismatch</a> · <a href="https://en.wikipedia.org/wiki/Antigenic_drift" target="_blank" rel="noopener">Antigenic drift (why flu vaccines are reformulated)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
