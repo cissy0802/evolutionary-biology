@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 33: The Selection Pressures We Create</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 33 · PHASE E BIG QUESTIONS &amp; APPLICATIONS</div>
+<h1>The Selection Pressures We Create</h1>
+<h2>Antibiotics, herbicides, cities — every day we run the sieve for other species</h2>
+<div class="meta">2026-09-26 · BigCat</div>
+<div class="pitch">A course of antibiotics kills 99.9% of the bacteria. That sounds like a success. But the surviving one in a thousand now has the whole dish to itself.</div>
+</header>
+<div class="intro">
+<p>Your throat hurts, the doctor prescribes seven days of antibiotics. By day four it stops hurting, so the remaining three days go into a drawer for next time.</p>
+<p>On your side of the transaction, you saved three days of pills. On the bacteria's side, it was an unfinished sieve — you killed most of them, left the hardest to kill, and cleared out space for them into the bargain.</p>
+<p>But the genuinely counterintuitive part is elsewhere. The bacteria did not "learn" to resist. They learned nothing. The hard-to-kill ones were already inside you before you swallowed the first pill.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>The drug does not create resistance; it only clears away the susceptible</h2>
+<p>In 1952 Joshua and Esther Lederberg ran an experiment of almost comic simplicity. First they let bacteria grow into a few hundred small colonies on a plate, each colony a clump descended from one cell. Then they pressed a pad of velvet onto the plate and pressed it onto a second plate — the colonies were transferred as a faithful print, position for position.</p>
+<p>The second plate contained something that kills them (the earliest version used a virus that infects bacteria; the same trick was later run with antibiotics). Only a scattered few positions grew. The decisive step came next: going back to the original plate, which had never met the drug at all, they picked the colonies at those same coordinates and grew them separately — and those were resistant too.</p>
+<p>Resistance was not forced out of them by the drug; it was there before the drug arrived. There is no "wanting" here and no "learning": mutations turn up at random (the issue on where variation comes from covers this), the drug simply clears away everything without the mutation, and what is left is everything with it.</p>
+<div class="fig">
+<svg role="img" viewBox="0 0 600 226" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram: a long tray divided into five bands, drug concentration rising tenfold per band from none on the outside to a thousand times the lowest dose in the middle. Bacteria grow in from the edge, stall at each concentration boundary until a mutant that can cross appears at one point, then fan out from that point into the next band">
+<defs><marker id="ar33a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"/></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">A two-metre tray, drug dose rising tenfold per band</text>
+<rect x="20" y="34" width="112" height="58" fill="rgba(82,201,138,0.20)" stroke="#3c6b52"/>
+<rect x="132" y="34" width="112" height="58" fill="rgba(210,162,76,0.07)" stroke="#3c6b52"/>
+<rect x="244" y="34" width="112" height="58" fill="rgba(210,162,76,0.13)" stroke="#3c6b52"/>
+<rect x="356" y="34" width="112" height="58" fill="rgba(210,162,76,0.20)" stroke="#3c6b52"/>
+<rect x="468" y="34" width="112" height="58" fill="rgba(210,162,76,0.28)" stroke="#3c6b52"/>
+<text x="42" y="58" fill="#a8dcbd" font-family="Georgia,serif" font-size="10">no drug</text>
+<text x="160" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">1×</text>
+<text x="272" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">10×</text>
+<text x="382" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">100×</text>
+<text x="492" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">1000×</text>
+<circle cx="60" cy="80" r="3.4" fill="#7be0ab"/><circle cx="92" cy="76" r="3.4" fill="#7be0ab"/>
+<circle cx="150" cy="80" r="3.4" fill="#7be0ab"/><circle cx="196" cy="74" r="3.4" fill="#7be0ab"/>
+<circle cx="266" cy="78" r="3.4" fill="#7be0ab"/><circle cx="376" cy="76" r="3.4" fill="#7be0ab"/><circle cx="492" cy="78" r="3.4" fill="#7be0ab"/>
+<line x1="20" y1="120" x2="560" y2="120" stroke="#24382c" stroke-width="1"/>
+<line x1="20" y1="120" x2="126" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="130" cy="120" r="4" fill="#d2a24c"/>
+<line x1="134" y1="120" x2="238" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="242" cy="120" r="4" fill="#d2a24c"/>
+<line x1="246" y1="120" x2="350" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="354" cy="120" r="4" fill="#d2a24c"/>
+<line x1="358" y1="120" x2="462" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="466" cy="120" r="4" fill="#d2a24c"/>
+<line x1="470" y1="120" x2="556" y2="120" stroke="#52c98a" stroke-width="3" marker-end="url(#ar33a)"/>
+<text x="20" y="146" fill="#52c98a" font-family="Georgia,serif" font-size="10.5">green = the bacterial front advancing</text>
+<text x="252" y="146" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">amber dot = stalled at a boundary, waiting for a mutant</text>
+<text x="20" y="176" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">The advance is not steady: it pauses at each boundary, one point gets through first,</text>
+<text x="20" y="196" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">then the front fans out from there. About eleven days to reach the centre.</text>
+</svg>
+<div class="cap">In 2016 someone filmed the whole thing: a two-metre tray, the dose stepping up in five bands, the middle one a thousand times the lowest dosed band. What you see is not "bacteria getting stronger" — it is one point getting through, then everyone following.</div>
+</div>
+<p>One more thing makes this sieve turn faster: resistance travels sideways. Bacteria can hand each other small free-standing rings of DNA that often carry resistance genes, and they cross between species (the horizontal gene transfer covered in the issue on viruses and evolution). A trick stumbled onto by some harmless bacterium in your gut can end up in a pathogen.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Killing half is the strongest sieve setting there is</h2>
+<p>Kill everything and there are no descendants, so there is no selection. Use nothing and every individual is treated alike, so again there is no selection. Only "kill most, leave a few" is a clean sieve: the ones that can take it survive, and the space and food just vacated are all theirs. Too low a dose, a course abandoned halfway, a trace of the drug drifting around the environment for years — these look mild, but they are the same thing, the sieve turned to its most effective setting.</p>
+<p>Agriculture turned this into a textbook case. Glyphosate was the most widely used herbicide of the late twentieth century, and in many places it was the only one used, year after year. A 2010 paper reported how Palmer amaranth — one of the worst weeds in American cotton and soy fields — got around it. It did not remodel the protein glyphosate attacks. It copied the gene encoding that protein over and over: resistant plants carried five to more than a hundred and sixty times as many copies as ordinary ones. Same drug, simply more targets than it can hit.</p>
+<p>This is also why rotating and mixing agents is not a stopgap but the mechanically correct answer: it does not rely on a fiercer drug, it requires one individual to happen to carry two unrelated mutations at once — two small probabilities multiplied, which is much smaller. Severe tuberculosis and HIV are both treated with several drugs together for exactly this reason.</p>
+<p>On the human side one old piece of advice has recently been seriously challenged: "always finish the whole course of antibiotics, or you will cause resistance." In 2017 a group of clinicians argued in the British Medical Journal that this specific causal link lacks direct evidence, and that the better-documented risk comes from taking a drug for longer than necessary. The matter is not settled. What can be said is only this: how long a course should run is decided by the specific infection and the specific evidence — not by "until I feel better", and not by "longer is safer".</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Cities are a new environment we built, and this time we can watch it happen</h2>
+<p>Selection happens without drugs too. A city is a large, consistently directed set of new conditions: hotter summers, salted roads in winter, lawns mowed on a schedule, far fewer animals grazing — and all of it presses on every living thing in town at once.</p>
+<p>White clover is a good material for testing this, because it carries one unusually clean trait: some plants release a trace of cyanide when damaged (a chemical defence, and incidentally tied to drought tolerance), and others produce none at all. Both types grow in the same patch of grass, so the ratio can simply be counted.</p>
+<p>A very large study published in 2022 did exactly that: 287 researchers, 160 cities in 26 countries, more than 110,000 clover plants. In many cities the same directional gradient turned up — the closer to the city centre, the lower the proportion of cyanide-producing plants, and the further out, the higher. Different continents, different climate zones, same direction. Why it is so consistent is not fully settled; current explanations involve the scarcity of grazing animals in cities and the differences in drought and snow cover between centre and outskirts.</p>
+<p>There is also a classic example whose virtue is that it ran the whole curve. Britain's peppered moths are mostly pale and speckled, near-invisible on lichen-covered bark. When industrial soot blackened the bark and killed the lichen, the once-rare dark form rose to dominate some industrial districts; after clean-air legislation it fell back again. The case was fiercely disputed for a while, until a long-running field experiment published in 2012 pinned it down: observing predation at the moths' natural resting positions, the dark form's daily chance of being eaten by a bird ran about ten per cent higher than the pale form's — strong enough to explain both the rise and the fall.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>Take the pressure away and things do not have to go back</h2>
+<p>Resistance usually has to be paid for. Whatever change lets a bacterium shrug off the drug often makes it grow a little slower, or costs it something elsewhere. With no drug around, it would gradually be outcompeted by its ordinary relatives. So in principle, use less of the drug and the resistant fraction should fall on its own.</p>
+<p>But there is a second route: another mutation happens to turn up that covers the loss without touching resistance. Individuals carrying both are resistant and pay nothing, so they leave more descendants than relatives carrying resistance alone, and the whole population soon looks like that — this is called compensation. Once it is in place, withdrawing the drug reverses nothing: there is no longer any loss to punish.</p>
+<div class="fig">
+<svg role="img" viewBox="0 0 600 214" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram: time on the horizontal axis, the share of resistant individuals in the population on the vertical axis. While the drug is in use the share climbs. After withdrawal the line splits: if resistance still carries its cost, the share slowly falls; if the cost has already been offset by another mutation, the share stays high">
+<defs><marker id="ar33b" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#8aa192"/></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">After withdrawal, which line you get depends on whether the cost is still there</text>
+<line x1="56" y1="36" x2="56" y2="150" stroke="#24382c" stroke-width="1"/>
+<line x1="56" y1="150" x2="566" y2="150" stroke="#24382c" stroke-width="1" marker-end="url(#ar33b)"/>
+<text x="22" y="44" fill="#8aa192" font-family="Georgia,serif" font-size="10">high</text>
+<text x="26" y="148" fill="#8aa192" font-family="Georgia,serif" font-size="10">low</text>
+<text x="524" y="168" fill="#8aa192" font-family="Georgia,serif" font-size="10">time</text>
+<rect x="56" y="36" width="230" height="114" fill="rgba(210,162,76,0.07)"/>
+<text x="96" y="52" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">drug in continuous use</text>
+<line x1="286" y1="36" x2="286" y2="158" stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1.2"/>
+<text x="294" y="52" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">withdrawn</text>
+<path d="M56,144 C140,138 210,96 286,66" fill="none" stroke="#7be0ab" stroke-width="2.4"/>
+<path d="M286,66 C360,64 460,62 552,62" fill="none" stroke="#e8a99a" stroke-width="2.4"/>
+<path d="M286,66 C360,82 440,122 552,138" fill="none" stroke="#52c98a" stroke-width="2.4" stroke-dasharray="6 4"/>
+<text x="286" y="188" fill="#e8a99a" font-family="Georgia,serif" font-size="10.5">cost already offset by another mutation → stays high</text>
+<text x="286" y="206" fill="#52c98a" font-family="Georgia,serif" font-size="10.5">cost still paid → slowly outcompeted by ordinary relatives</text>
+<text x="56" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">vertical axis: share of</text>
+<text x="56" y="206" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">resistant individuals</text>
+</svg>
+<div class="cap">The figure also shows why "use less of it" cannot be given a blanket verdict: whether it works depends on whether the cost has been absorbed, and the answer differs from drug to drug and bug to bug.</div>
+</div>
+<p>An honest caveat: the laboratory and the clinic disagree. In a flask, resistance persists stably for many generations after the drug is withdrawn. In the field, when a region stops using a drug, resistance frequencies often really do decline. One explanation is that compensation which is complete in a flask is incomplete in a body. This is still argued over; do not take either side as settled.</p>
+<p>So why could the peppered moth go back? Because its cost is imposed from outside: on pale bark, dark is conspicuous, and you cannot be both dark and inconspicuous — no internal mutation can cover that bill. <strong>Whether a cost can be absorbed internally decides whether the change is reversible.</strong> And we have no option of not applying selection pressure — taking drugs, farming and building cities do it every day. What we get to choose is only how hard the pressure is, and which trait it actually lands on.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In Context · BigCat</h3>
+<ul>
+<li><b>① Health and energy</b>: your throat has hurt for two days, you dig out half a box of antibiotics left over from last time, take them for two days, and stop when it clears. This has the shape of "killing half is the strongest sieve setting there is" — half a box, for that many days, lands squarely on "kill most, leave the hardest to kill". Two things are changeable: throw leftovers away rather than keeping them (keeping them is itself what manufactures the next half-course); and at the appointment, change the question from "could I have something for the inflammation?" to "what is the basis for calling this bacterial rather than viral?" — most sore throats are viral, and antibiotics do nothing to viruses. Whether to use one, and for how long, is for the clinician who actually examined you.</li>
+<li><b>② Leading teams and organisations</b>: a new rule goes out, it is watched closely for two weeks, then other things come up, the checking slackens, and the rule stays in the document. Six months later the same thing is pushed again. Same shape: every round of "push hard, then let it slide" is a sieve, and what survives is not the practice that complies but the practice of riding out the first fortnight — validated afresh each round. What is changeable: before the next push, fix a revocation condition (by which date, on what evidence, it is formally stopped), replacing "it fizzled out" with "it was called off" — the difference for the people executing it is that the first teaches everyone to wait and the second does not. What to stop doing: leaving rules that are dead in practice hanging in the document.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing Over · Interdisciplinary Notes</h3>
+<ul>
+<li><b>Parenting and education · You catch the same infraction again and again, the number of catches really does drop, and you have no idea whether it happened less or was hidden better</b>: checking the phone, checking the homework — the first round always turns something up, and it gets cleaner from there. What is running is the mechanism from "the drug does not create resistance; it only clears away the susceptible": the pressure a check applies lands on the observable trait of getting caught, not directly on the behaviour, and what it removes is the clumsily concealed version. From which follows a conclusion you would not otherwise see: <b>a falling count of catches can come from less happening or from better hiding, and those two move the same direction in the same data, so "we're catching fewer" can never on its own serve as evidence of effect. To tell them apart you need a separate channel that this round of checking does not touch — the kind of consequence that only surfaces later and cannot be hidden. The tighter the checking, the less information that number carries.</b> <b>But here it breaks down</b>: on the bacterial side the variation is random and pre-existing, so it can only be sifted generation by generation; a child learns directionally within a single lifetime and can understand the reason behind a rule. That brings a consequence bacteria have no equivalent of — once the pressure lifts, "resistance" on the human side can genuinely disappear quickly, without waiting for anyone to be outcompeted.</li>
+<li><b>Engineering and systems design · A layer added to work around some limit, the limit lifted long ago, and the layer can never be removed</b>: an interface was slow, so you put a cache in front of it; two years later the interface has been rewritten, the cache is still there, and nobody dares touch it. What is running is the mechanism from "take the pressure away and things do not have to go back": it had a cost at the outset (one more thing to maintain, stale data, harder debugging), and once the pressure lifted that cost should have retired it — except that over those two years the surrounding code was changed piece by piece to accommodate it, so the cost got absorbed by other changes. It no longer loses anything, so nothing selects against it. From which follows a conclusion you would not otherwise see: <b>to judge whether a temporary fix can still be pulled out, do not look at why it was added — look at whether anyone still pays its cost. If people still complain that it is slow or that the data is stale, the cost is still live and it can still go. Once the complaints stop, that usually does not mean the problem was solved; it means compensation is complete and the thing has grown into the structure. "Nobody mentions it any more" is the signal of irreversibility, not of improvement.</b></li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going Deeper</h3>
+<details><summary>If the resistant mutations are already there, what is the point of using less of the drug?</summary>
+<div>The point is not to stop the mutation from arising — it is to deny it the whole field. Mutations turn up at random and usually carry some cost, so in a drug-free environment they get diluted out by ordinary relatives. Using the drug is what takes them from one in a thousand to all of them. Using less does not change whether resistance appears, only whether it can spread.</div>
+</details>
+<details><summary>How can we be sure the changes in cities are evolution and not just "the environment made it grow that way"?</summary>
+<div>This is the hardest gate in the field. The same plant grows differently in different environments — that is plasticity, and it involves no change in gene frequencies. One way to separate them is to grow seeds from different sources in a single common environment and see whether the difference survives; another is to look for the difference at the genetic level directly. The clover study did both, which is why it is harder evidence than a pile of "city animals seem bolder" observations.</div>
+</details>
+<details><summary>Could "we are creating selection pressure" itself be abused into just-so storytelling?</summary>
+<div>It could, so put the test up front: name the specific pressure, name the measurable trait it acts on, say what is expected to happen when that pressure is removed or changed, and make that expectation testable. Antibiotics, herbicides and urban gradients all clear those three. Claims like "modern life is making people anxious, so we're evolving" usually fail at the first.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further Reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Antimicrobial_resistance" target="_blank" rel="noopener">Antimicrobial resistance (Wikipedia)</a> · <a href="https://en.wikipedia.org/wiki/Replica_plating" target="_blank" rel="noopener">Replica plating — Lederberg 1952</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.aag0822" target="_blank" rel="noopener">Baym et al. 2016: evolution of resistance on a giant plate</a></li>
+<li><a href="https://www.pnas.org/doi/full/10.1073/pnas.0906649107" target="_blank" rel="noopener">Gaines et al. 2010: gene amplification confers glyphosate resistance</a> · <a href="https://en.wikipedia.org/wiki/Herbicide_resistance" target="_blank" rel="noopener">Herbicide resistance</a></li>
+<li><a href="https://www.bmj.com/content/358/bmj.j3418" target="_blank" rel="noopener">Llewelyn et al. 2017: the debate over finishing the course</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.abk0989" target="_blank" rel="noopener">Santangelo et al. 2022: white clover across global cities</a> · <a href="https://en.wikipedia.org/wiki/Global_Urban_Evolution_Project" target="_blank" rel="noopener">Global Urban Evolution Project</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rsbl.2011.1136" target="_blank" rel="noopener">Cook et al. 2012: bird predation on the peppered moth</a> · <a href="https://en.wikipedia.org/wiki/Peppered_moth_evolution" target="_blank" rel="noopener">Peppered moth evolution</a></li>
+<li><a href="https://www.nature.com/articles/nrmicro2319" target="_blank" rel="noopener">Andersson &amp; Hughes 2010: the cost of resistance and its reversibility</a> · <a href="https://en.wikipedia.org/wiki/Horizontal_gene_transfer" target="_blank" rel="noopener">Horizontal gene transfer</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Urban_evolution" target="_blank" rel="noopener">Urban evolution</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

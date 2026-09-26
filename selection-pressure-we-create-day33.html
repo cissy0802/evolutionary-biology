@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 33：我们正在制造的选择压</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 33 · PHASE E 大问题与应用</div>
+<h1>我们正在制造的选择压</h1>
+<h2>抗生素、除草剂、城市——我们每天都在替别的物种做筛选</h2>
+<div class="meta">2026-09-26 · BigCat</div>
+<div class="pitch">一盒药杀掉九成九的细菌，听上去很成功。可剩下那千分之一，从此独占了整个培养皿。</div>
+</header>
+<div class="intro">
+<p>你嗓子疼，医生开了七天的药。吃到第四天不疼了，剩下三天的收进抽屉，想着下次再说。</p>
+<p>这个动作在你这边是省了三天药。在细菌那边，是一次没做完的筛选——你把大部分杀掉了，留下了最难杀的那一小撮，还顺手给它们腾空了地方。</p>
+<p>但真正反直觉的不在这里。细菌并没有「学会」抵抗，它们什么也没学。难杀的那批，在你吃下第一片药之前就已经在你身上了。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>药不制造耐药，它只是把不耐药的那些清走</h2>
+<p>1952 年，Joshua 和 Esther Lederberg 做了一个手法极简单的实验。先在一个培养皿里让细菌长出几百个小菌落，每个菌落都是一个细胞分裂出来的一小团。然后拿一块绒布往皿上一按，再按到另一个皿上——菌落就被原样印了过去，位置一一对应。</p>
+<p>第二个皿里加了能杀死它们的东西（最早用的是一种专门感染细菌的病毒，后来同样的做法用在了抗生素上）。结果只有零星几个位置长出来。关键的一步在后面：回到那个从来没接触过药的原始皿，按照坐标把对应位置的菌落挑出来单独培养——它们同样扛得住。</p>
+<p>耐药不是被药逼出来的，它在遇到药之前就在那儿。这里没有「想要」也没有「学会」：变异随机地出现（变异从哪来那期讲过这件事），药只是把不带变异的那部分清走，于是带变异的那部分占了全部。</p>
+<div class="fig">
+<svg role="img" viewBox="0 0 600 226" xmlns="http://www.w3.org/2000/svg" aria-label="示意图：一个长条培养皿，从左到右分成五格，药的浓度一格比一格高十倍，最左边没有药，最右边是最低有药浓度的一千倍。细菌从左边长起，在每道浓度边界前停住，直到某一点冒出一个能扛住的变异，再从那一点扇形展开推进到下一格">
+<defs><marker id="ar33a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"/></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">一张两米长的培养皿，药量一格比一格高十倍</text>
+<rect x="20" y="34" width="112" height="58" fill="rgba(82,201,138,0.20)" stroke="#3c6b52"/>
+<rect x="132" y="34" width="112" height="58" fill="rgba(210,162,76,0.07)" stroke="#3c6b52"/>
+<rect x="244" y="34" width="112" height="58" fill="rgba(210,162,76,0.13)" stroke="#3c6b52"/>
+<rect x="356" y="34" width="112" height="58" fill="rgba(210,162,76,0.20)" stroke="#3c6b52"/>
+<rect x="468" y="34" width="112" height="58" fill="rgba(210,162,76,0.28)" stroke="#3c6b52"/>
+<text x="42" y="58" fill="#a8dcbd" font-family="Georgia,serif" font-size="10">没有药</text>
+<text x="158" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">一倍</text>
+<text x="270" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">十倍</text>
+<text x="378" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">一百倍</text>
+<text x="488" y="58" fill="#d2a24c" font-family="Georgia,serif" font-size="10">一千倍</text>
+<circle cx="60" cy="80" r="3.4" fill="#7be0ab"/><circle cx="92" cy="76" r="3.4" fill="#7be0ab"/>
+<circle cx="150" cy="80" r="3.4" fill="#7be0ab"/><circle cx="196" cy="74" r="3.4" fill="#7be0ab"/>
+<circle cx="266" cy="78" r="3.4" fill="#7be0ab"/><circle cx="376" cy="76" r="3.4" fill="#7be0ab"/><circle cx="492" cy="78" r="3.4" fill="#7be0ab"/>
+<line x1="20" y1="120" x2="560" y2="120" stroke="#24382c" stroke-width="1"/>
+<line x1="20" y1="120" x2="126" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="130" cy="120" r="4" fill="#d2a24c"/>
+<line x1="134" y1="120" x2="238" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="242" cy="120" r="4" fill="#d2a24c"/>
+<line x1="246" y1="120" x2="350" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="354" cy="120" r="4" fill="#d2a24c"/>
+<line x1="358" y1="120" x2="462" y2="120" stroke="#52c98a" stroke-width="3"/>
+<circle cx="466" cy="120" r="4" fill="#d2a24c"/>
+<line x1="470" y1="120" x2="556" y2="120" stroke="#52c98a" stroke-width="3" marker-end="url(#ar33a)"/>
+<text x="20" y="146" fill="#52c98a" font-family="Georgia,serif" font-size="10.5">绿色＝细菌往前推进</text>
+<text x="160" y="146" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">琥珀点＝卡在浓度边界上，等一个能过去的变异冒出来</text>
+<text x="20" y="176" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">推进不是匀速的：每道边界前先停一阵，某一点先冒出来，再从那一点扇形铺开。</text>
+<text x="20" y="196" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">十一天左右，细菌从两边一路长到了最中间那格。</text>
+</svg>
+<div class="cap">2016 年有人把这个过程直接拍了下来：两米长的培养皿，药量分成五格阶梯，最中间是最低有药那格的一千倍。看得见的不是「细菌越来越强」，是一次次「某一点先过去，然后全场跟上」。</div>
+</div>
+<p>还有一件事让这台筛子转得更快：耐药能横着传。细菌之间可以直接交换一小圈独立的环状 DNA，上面常载着耐药基因，不同种之间也能传（病毒与演化那期讲的水平基因转移）。你身上某种无害细菌碰出来的本事，可能被递给一个致病菌。</p>
+<p class="en-brief"><b>EN</b> Resistance is not induced by the drug; it is already present. In 1952 Joshua and Esther Lederberg pressed a velvet pad onto a plate of bacterial colonies and stamped them onto a second plate containing a lethal agent. Only a few positions grew — and when the corresponding colonies were picked from the original, never-exposed plate, they were resistant too. Selection removes the susceptible; it does not teach the survivors. A 2016 experiment filmed the process on a two-metre plate with drug concentrations stepping up tenfold per band to 1,000-fold: the bacterial front stalls at each boundary until a mutant appears at one point, then fans out. Horizontal transfer of small circular DNA elements between species makes the whole process faster still.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>杀掉一半，是选择压最强的一种做法</h2>
+<p>把全部杀光，没有后代留下，也就没有筛选。完全不用药，所有个体一视同仁，同样没有筛选。只有「杀掉大部分、剩下一小撮」才是一次干净利落的筛选：能扛的活下来，而且刚刚空出来的地方和食物全归它们。剂量不够、疗程半途而废、环境里长期飘着一点点药——这几件事看起来温和，其实是同一件事，都是把筛子调到了最有效的那一档。</p>
+<p>农业上这条被做成了教科书。草甘膦是二十世纪后期用得最广的一种除草剂，很多地方连着很多年只用它。2010 年一篇论文报告了长芒苋（美国棉花和大豆田里最难缠的杂草之一）的抗性怎么来的：它不是改造了那个被草甘膦攻击的蛋白，而是把编码这个蛋白的基因复制了一大堆——抗性植株身上这个基因的拷贝数，是普通植株的五倍到一百六十倍以上。药还是那个药，只是靶子多到打不完。</p>
+<p>这也解释了为什么「轮换」和「混用」不是权宜之计，而是机制上的正解：它不靠更猛的药，而是要求同一个个体同时碰巧带上两种互不相干的变异——两个小概率相乘，就小得多。重症结核和艾滋病的治疗都是几种药一起上，理由正是这个。</p>
+<p>人这边有一条老话最近被认真挑战了：「抗生素一定要吃完整个疗程，否则会耐药」。2017 年一批临床医生在《英国医学杂志》上撰文说，「没吃完导致耐药」这个具体因果缺乏直接证据，更确凿的风险来自用得比需要的更久。这件事目前还有争论。能确定的只有一条：疗程多长要按具体感染和具体证据定，既不是「吃到感觉好了」，也不是「越久越保险」。</p>
+<p class="en-brief"><b>EN</b> Killing everything leaves no descendants and so no selection; killing nothing selects nothing. Only killing most and leaving a few is a clean sieve — and it hands the survivors the space and food just vacated. Sub-lethal doses, abandoned courses and low-level environmental residues are all the same thing: the sieve turned to its most effective setting. In agriculture this became a textbook case. A 2010 paper showed that Palmer amaranth resisted glyphosate not by altering the targeted protein but by amplifying its gene — resistant plants carried from five to more than 160 times as many copies. This is why rotating and mixing agents works: it requires one individual to hold two unrelated mutations at once. On the human side, a 2017 BMJ analysis challenged the "always finish the course" message, arguing the direct evidence is lacking and that longer-than-necessary use is the better-documented risk. That debate is not settled.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>城市是我们盖出来的新环境，这一次能看着它发生</h2>
+<p>不用药也在筛。城市是一套大规模、方向一致的新条件：夏天更热、冬天路面撒盐、草地定期被割、吃草的野生动物少得多，而这些条件同时压在所有住在城里的生物身上。</p>
+<p>白三叶草是检验它的好材料，因为它有个特别干净的性状：有的植株被咬伤时会放出微量氰化物（一种化学防御，顺带和抗旱有关），有的完全不产。同一片草地上两种都有，比例可以直接数。</p>
+<p>2022 年有一项做得很大的研究：287 位研究者，26 个国家 160 座城市，采了十一万多株三叶草。很多城市里都出现了同一个方向的梯度——越靠市中心，会产氰化物的植株比例越低，越往郊外越高。不同大洲、不同气候带，方向却一致。为什么一致还没完全说清，目前的解释和城里吃草的动物少、以及市中心与郊外在缺水和积雪上的差别有关。</p>
+<p>还有一个经典例子好在它把整条曲线走完了。英国的桦尺蛾大多是浅色带斑点的，停在长着地衣的树皮上几乎看不见。工业革命时煤烟把树皮熏黑、地衣也死了，原本罕见的黑色型在一些工业区涨到占绝大多数；空气清洁之后又跌了回去。这个案例一度被质疑得很凶，2012 年发表的一项长期实验把它钉住了：在蛾子自然停歇的位置上观察被鸟吃掉的情况，黑色型每天被吃掉的概率比浅色型高约一成——这个强度既够解释它涨，也够解释它跌。</p>
+<p class="en-brief"><b>EN</b> Cities apply large, consistent new conditions: heat, road salt, mowing, far fewer herbivores, water running off concrete. White clover is a clean test case because some plants release small amounts of cyanide when damaged and others produce none, so the ratio can simply be counted. A 2022 study by 287 researchers sampled over 110,000 plants across 160 cities in 26 countries and found the same directional gradient in many of them: cyanide-producing plants are rarer near the city centre and commoner further out, across continents and climates. The peppered moth completed the whole curve — dark forms rose in sooty industrial Britain and fell again after clean-air legislation. A long-running field experiment published in 2012 measured bird predation at natural resting sites and put the daily disadvantage of the dark form at roughly ten per cent, enough to explain both the rise and the fall.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>把压力撤掉，不保证回到原来那样</h2>
+<p>耐药通常是要付钱的。让细菌扛住药的那个改动，往往同时让它长得慢一点、或者在别的方面吃点亏。没有药的时候，它本来会被普通同类慢慢比下去。所以按理说，少用药，耐药的比例应该自己回落。</p>
+<p>但还有第二条路：碰巧再出现一个变异，把那点亏补掉，又不影响耐药。这种个体既扛药又不吃亏，会比只有耐药变异的同类留下更多后代，于是整群很快都变成这样——这叫补偿性改动。一旦补上，撤掉药也不会自动回落：它已经不亏了。</p>
+<div class="fig">
+<svg role="img" viewBox="0 0 600 214" xmlns="http://www.w3.org/2000/svg" aria-label="示意图：横轴是时间，纵轴是耐药个体在整群里占的比例。用药期间比例一路上升。停药之后分成两条路：如果耐药那点代价还在，比例慢慢回落；如果代价已经被另一个变异补掉，比例停在高位不动">
+<defs><marker id="ar33b" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#8aa192"/></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">停药之后，耐药比例走哪一条，取决于那点代价还在不在</text>
+<line x1="56" y1="36" x2="56" y2="150" stroke="#24382c" stroke-width="1"/>
+<line x1="56" y1="150" x2="566" y2="150" stroke="#24382c" stroke-width="1" marker-end="url(#ar33b)"/>
+<text x="20" y="44" fill="#8aa192" font-family="Georgia,serif" font-size="10">高</text>
+<text x="20" y="148" fill="#8aa192" font-family="Georgia,serif" font-size="10">低</text>
+<text x="524" y="168" fill="#8aa192" font-family="Georgia,serif" font-size="10">时间</text>
+<rect x="56" y="36" width="230" height="114" fill="rgba(210,162,76,0.07)"/>
+<text x="96" y="52" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">一直在用药</text>
+<line x1="286" y1="36" x2="286" y2="158" stroke="#d2a24c" stroke-dasharray="3 3" stroke-width="1.2"/>
+<text x="294" y="52" fill="#d2a24c" font-family="Georgia,serif" font-size="10.5">停药</text>
+<path d="M56,144 C140,138 210,96 286,66" fill="none" stroke="#7be0ab" stroke-width="2.4"/>
+<path d="M286,66 C360,64 460,62 552,62" fill="none" stroke="#e8a99a" stroke-width="2.4"/>
+<path d="M286,66 C360,82 440,122 552,138" fill="none" stroke="#52c98a" stroke-width="2.4" stroke-dasharray="6 4"/>
+<text x="300" y="188" fill="#e8a99a" font-family="Georgia,serif" font-size="10.5">代价已被另一个变异补掉 → 停在高位</text>
+<text x="300" y="206" fill="#52c98a" font-family="Georgia,serif" font-size="10.5">代价还在 → 慢慢被普通同类比下去</text>
+<text x="56" y="188" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">纵轴：耐药个体</text>
+<text x="56" y="206" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">占整群的比例</text>
+</svg>
+<div class="cap">这张图也说明为什么「少用药」的效果没法一概而论：它起不起作用，取决于那点代价有没有被抹掉，而这件事在不同的药、不同的细菌身上答案不一样。</div>
+</div>
+<p>这里要老实说一句：实验室和临床对不上。培养瓶里撤掉药之后，耐药能稳稳留着很多代；可临床上观察某地停用某种药之后，耐药比例往往确实在下降。一种解释是，补偿在培养瓶里补得干净，换到人体这种复杂得多的环境就补不干净。这个还有争论，别把哪一边当定论。</p>
+<p>桦尺蛾为什么就能跌回去？因为它那点代价是环境直接摁在身上的：在浅色树皮上，黑色就是显眼，你没法既是黑的又不显眼，体内出多少变异都补不掉这一条。<strong>代价能不能在内部被抹掉，决定这件事可不可逆。</strong>而我们没有「不施加选择压」这个选项——吃药、种地、盖城市每天都在做这件事。能选的只有两样：压力多大，以及它究竟作用在哪个性状上。</p>
+<p class="en-brief"><b>EN</b> Resistance usually carries a cost, so without the drug the resistant type should slowly lose ground. But a second mutation can offset that cost without touching resistance; individuals carrying both leave more descendants, and once such compensation spreads, withdrawing the drug no longer reverses anything. Honest caveat: laboratory and clinical findings disagree. In culture, resistance persists stably for many generations after withdrawal; in the field, resistance frequencies often do fall when a drug stops being used — possibly because compensation that is complete in a flask is incomplete in a body. The peppered moth could reverse because its cost is imposed from outside: on pale bark, dark is conspicuous, and no internal mutation can make it otherwise. Whether a cost can be absorbed internally decides whether the change is reversible.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 健康与精力</b>：嗓子疼了两天，你翻抽屉找出上次剩的半盒抗生素，吃两天，好了就停。这是「杀掉一半，是选择压最强的一种做法」那节的形状——半盒药的量和天数正好落在「杀掉大部分、留下最难杀的」那一档。可改的动作有两个：剩药倒掉而不是留着（留着本身就在制造下一次半疗程）；看诊时把问题从「能不能开点消炎药」换成「这次判断是细菌还是病毒，依据是什么」——绝大多数嗓子疼由病毒引起，抗生素对病毒不起作用。该不该用、用多久，交给当面看过你的医生定。</li>
+<li><b>② 带团队与组织</b>：一项新规定推下去，头两周盯得很紧，然后别的事来了，检查松了，规定还挂在文档里。半年后再推一次同样的事。这是同一节的形状：每一轮「推一阵就松」都在筛，留下的不是执行得好的做法，是「扛过开头那两周」这种做法，而且它每轮都被验证一次。可改的：推之前先定死撤销条件（到什么日期、满足什么条件就正式停），把「不了了之」换成「明确停掉」——差别在于前者教会大家等，后者没有。停掉的动作：把名存实亡的旧规定继续挂在文档里。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>育儿与教育 · 同一种违规反复抓，抓到的次数真的少了，可你并不知道是少发生了还是更会藏了</b>：查手机、查作业，第一轮总有收获，往后越来越干净。跑的是「药不制造耐药，它只是把不耐药的那些清走」那节的机制：检查施加的压力作用在「会不会被发现」这个可观察的性状上，不直接作用在行为本身；被筛掉的是藏得笨的那些做法。由此能推出一个原本看不出的结论：<b>检出次数下降，既可能来自真的少了，也可能来自更会藏了，这两件事在同一份数据里方向完全一样，所以「抓到的少了」单独永远不能当成效果的证据。要分辨只能另找一个不受这轮检查影响的口径——比如那种事后才会暴露、藏不住的后果。检查越密，手里那个数字的信息量越低。</b><b>但这里不成立</b>：细菌那边的变异是随机出现、事先就在的，只能靠一代代筛；孩子是在一代之内定向学的，而且他听得懂规则背后的理由。这带来一个细菌那边完全没有的后果——压力一撤，人这边的「抗性」可以很快就真的消失，不需要等谁被淘汰。</li>
+<li><b>工程与系统设计 · 为绕开某个限制临时加的一层东西，限制早就撤销了，那层东西却再也拿不掉</b>：当初某个接口慢，你加了一层缓存；两年后接口早就重写过了，缓存还在，谁也不敢动。跑的是「把压力撤掉，不保证回到原来那样」那节的机制：它当初有代价（多一处要维护、数据会过期、出问题难排查），压力撤掉之后本该因为这点代价被淘汰；可这两年里周边的东西一件件改成了迁就它的样子，那点代价被别的改动吃掉了——它不再吃亏，也就不再有被淘汰的理由。由此能推出一个原本看不出的结论：<b>判断一个临时方案还撤不撤得掉，别看它当初为什么加，看它的代价还有没有人承担。还有人抱怨它慢、抱怨数据不准，说明代价还在，还能撤；一旦没人抱怨了，多半不是问题解决了，而是补偿已经完成、它已经长进结构里了。「没人再提」是不可逆的信号，不是好转的信号。</b></li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>既然耐药的变异本来就在，少用药还有什么意义？</summary>
+<div>意义不在于「不产生变异」，而在于不给它独占地盘的机会。变异是随机冒出来的，多数情况下它带点代价，在没有药的环境里会被普通同类稀释掉。用药只是让它从千分之一变成全部。少用药改变不了它出现，只改变它能不能铺开。</div>
+</details>
+<details><summary>城市里那些变化，怎么确定是演化而不只是「环境让它长成这样」？</summary>
+<div>这是这个领域最要紧的一道关。同一株植物在不同环境里会长得不一样，这叫可塑性，不涉及基因频率改变。分辨的办法之一是把不同来源的种子拿到同一个环境里种，看差异还在不在；另一种是直接查基因层面的差异。三叶草那项研究两样都做了，这也是它比一堆「城里的动物变大胆了」之类观察更硬的原因。</div>
+</details>
+<details><summary>「我们在制造选择压」这个说法，会不会也能被滥用成随便编故事？</summary>
+<div>会，所以判据得摆在前面：说得出是哪个具体的压力、作用在哪个可以测量的性状上、去掉或改变这个压力之后预期会发生什么，并且这个预期能被检验。抗生素、除草剂、城市梯度都过得了这三关。「现代社会让人变得更焦虑所以在演化」这类说法通常第一关就卡住。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Antimicrobial_resistance" target="_blank" rel="noopener">抗微生物药物耐药性词条</a> · <a href="https://en.wikipedia.org/wiki/Replica_plating" target="_blank" rel="noopener">影印平板法词条（Lederberg 1952）</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.aag0822" target="_blank" rel="noopener">Baym 等 2016：巨型培养皿上的耐药演化</a></li>
+<li><a href="https://www.pnas.org/doi/full/10.1073/pnas.0906649107" target="_blank" rel="noopener">Gaines 等 2010：基因扩增造成草甘膦抗性</a> · <a href="https://en.wikipedia.org/wiki/Herbicide_resistance" target="_blank" rel="noopener">除草剂抗性词条</a></li>
+<li><a href="https://www.bmj.com/content/358/bmj.j3418" target="_blank" rel="noopener">Llewelyn 等 2017：关于「吃完整个疗程」的争议</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.abk0989" target="_blank" rel="noopener">Santangelo 等 2022：全球城市里的白三叶草</a> · <a href="https://en.wikipedia.org/wiki/Global_Urban_Evolution_Project" target="_blank" rel="noopener">全球城市演化计划词条</a></li>
+<li><a href="https://royalsocietypublishing.org/doi/10.1098/rsbl.2011.1136" target="_blank" rel="noopener">Cook 等 2012：桦尺蛾的鸟类捕食实验</a> · <a href="https://en.wikipedia.org/wiki/Peppered_moth_evolution" target="_blank" rel="noopener">桦尺蛾演化词条</a></li>
+<li><a href="https://www.nature.com/articles/nrmicro2319" target="_blank" rel="noopener">Andersson &amp; Hughes 2010：耐药的代价与可逆性综述</a> · <a href="https://en.wikipedia.org/wiki/Horizontal_gene_transfer" target="_blank" rel="noopener">水平基因转移词条</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Urban_evolution" target="_blank" rel="noopener">城市演化词条</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
