@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 34：驯化</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 34 · PHASE E 大问题与应用</div>
+<h1>驯化</h1>
+<h2>狗、小麦、也许还有我们自己——一场没有人打算发动的筛选</h2>
+<div class="meta">2026-09-27 · BigCat</div>
+<div class="pitch">没有人发明过狗，也没有人发明过小麦。这两件事都是在没人打算做的情况下，花了上千年做完的。</div>
+</header>
+<div class="intro">
+<p>你走过小区的垃圾桶，那边趴着几只野猫。有的隔着五米就窜走了，有的会停下来看你一眼，你再走近一点它才不情愿地挪开。</p>
+<p>这个「能让你靠多近」的距离，在同一群猫里差别很大，而且能拿尺子量。一万多年前，人类营地旁边的狼群里也有这个差别。</p>
+<p>接下来的事听起来像一个好心人的故事，其实一点都不是。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>没有人把狼牵回家，是不那么怕人的那批吃到了剩饭</h2>
+<p>营地边上堆着吃不完扔掉的骨头和内脏。对狼来说这是一份稳定、好拿、不用追的食物。能不能拿到它，取决于一件很具体的事：离人多近就开始恐慌。</p>
+<p>恐慌门槛高一点的那些多吃到一口，多养活一点幼崽；幼崽平均又更不怕人一点。一代代下来，这群狼和留在野外的那些分开了。这里没有谁做决定，也没有「为了吃到剩饭而变温顺」这回事：不怕人的变异随机冒出来，营地只是让带着它的那些留下了更多后代。第一步很可能根本不是人做的，是狼自己走过来的。</p>
+<p>有一件实物把这条线钉住了。1914 年德国波恩附近挖出一座墓，一男一女和两只狗葬在一起，年代约一万四千两百年前。2018 年有人重查其中那只幼犬的牙齿，发现它十九周龄左右得了犬瘟热——一种病程三周、致死率极高的病——却又活了八周多，牙齿上的病程刻痕说明那八周里有人一直在喂它。这已经不是「跟着捡食」的关系。基因那边给的是另一种刻度：2020 年测出的二十七个古代狗基因组显示，到大约一万一千年前，狗已经分成至少五个差别很大的支系；分化成五支要很长时间，所以驯化本身比这早得多。在哪里开始、发生过一次还是几次，还有争论。</p>
+<p class="en-brief"><b>EN</b> The first step of dog domestication was probably not taken by people. Camp refuse is a stable, easy food source, and access to it depended on one measurable trait: how close an animal will come before panicking. Wolves with a higher panic threshold ate more and raised more pups; no wolf decided anything. One hard object anchors the timeline: a grave near Bonn, Germany, dated to roughly 14,200 years ago, holds two humans and two dogs. A 2018 re-examination of one puppy's teeth found it contracted canine distemper at about 19 weeks — a disease with a three-week course and very high mortality — yet survived a further eight weeks, which requires sustained human care. Genetics gives another scale: 27 ancient dog genomes published in 2020 show at least five deeply distinct lineages already in place by about 11,000 years ago, so domestication itself is considerably older. Where it began, and whether once or several times, is still debated.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>你只挑了一样，来的却是一整套</h2>
+<p>1959 年起，苏联新西伯利亚的贝利亚耶夫和特鲁特养了一批银狐，每一代只按一个标准挑：伸手过去，它躲不躲、凶不凶。不挑毛色，不挑耳朵，不挑体型。几十代之后，这群狐狸身上出现了一串没人挑过的东西——耳朵软塌、尾巴上卷、毛色出现白斑、繁殖季节变长。这一串在很多家养动物身上都能看到一部分，有个名字叫驯化综合征。</p>
+<p>为什么拧一个旋钮会带出一串输出？目前最流行的解释盯住了一批细胞：胚胎很早就在背上分出一群会到处迁移的细胞，它们最后长成几样互不相干的东西，下面这张图画的就是各自的去处。如果你挑的是「应激反应弱一点」，实际挑中的可能是「这群细胞少一点、迁移得慢一点」，那么软骨、色素、颌骨就被一起带着动了。没有人挑过耳朵。</p>
+<div class="fig">
+<svg role="img" viewbox="0 0 600 196" xmlns="http://www.w3.org/2000/svg" aria-label="示意图：左边是唯一的挑选标准「伸手过去它躲不躲」，箭头指向中间一群在胚胎早期从背上分出、往全身迁移的细胞，这群细胞再分四路，分别长成肾上腺的一部分、耳朵鼻子的软骨、皮肤里的色素细胞、颌骨和牙齿，对应的可见结果是不容易惊、耳朵软塌、出现白斑、脸变短牙变小">
+<defs><marker id="ar34a" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="16">一个旋钮，四个去处</text>
+<rect fill="rgba(82,201,138,0.16)" height="46" rx="5" stroke="#52c98a" width="128" x="16" y="88"></rect>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10.5" x="28" y="107">你挑的只有一样：</text>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10.5" x="28" y="124">伸手过去它躲不躲</text>
+<line marker-end="url(#ar34a)" stroke="#d2a24c" stroke-width="1.6" x1="146" x2="194" y1="111" y2="111"></line>
+<rect fill="rgba(210,162,76,0.13)" height="62" rx="5" stroke="#d2a24c" width="112" x="196" y="80"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="206" y="99">胚胎早期从背上</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="206" y="114">分出、往全身</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="206" y="129">迁移的一群细胞</text>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="100" y2="46"></line>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="106" y2="90"></line>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="118" y2="134"></line>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="124" y2="178"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="36">肾上腺的一部分</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="51">（应激反应的开关）→ 不容易惊</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="80">耳朵和鼻子里的软骨</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="95">→ 耳朵软塌下来</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="124">皮肤里的色素细胞</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="139">→ 毛色出现白斑</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="168">颌骨和牙齿的一部分</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="183">→ 脸变短、牙变小</text>
+</svg>
+<div class="cap">一个旋钮接在一批会迁移的细胞上，而这批细胞同时供着几个互不相干的部位。中间那一步还没被钉住；右边「挑一样会带走一串」本身没有争议。</div>
+</div>
+<p>得老实说：这个解释好看，证据还不够硬。2021 年有过一场公开来回，质疑方指出，在家养动物身上找到的那些相关基因只能说明由这批细胞派生的部位变了，不能证明别的性状是被同一个机制连带的。目前没有定论。</p>
+<p>那批狐狸自己还出了问题：2019 年底有文章指出，贝利亚耶夫的银狐来自加拿大一处已经养了几十年的毛皮养殖场，那里的狐狸在俄国实验开始之前就被记录过温顺、也出现过白斑。「只挑温顺、凭空长出一整套」这个教科书版本因此被削掉一大块。但核心机制不靠狐狸撑着——你挑一个性状会连带挪动和它连着的其他性状，育种里天天遇到。</p>
+<p class="en-brief"><b>EN</b> From 1959, Belyaev and Trut selected silver foxes in Novosibirsk on a single criterion: whether the animal flinched or snapped when a hand reached in. Within a few dozen generations the line showed floppy ears, curled tails, piebald coats and longer breeding seasons — none of which anyone selected for. The most popular explanation points at neural crest cells, a population that migrates out of the embryonic back and gives rise to part of the adrenal glands (the acute stress switch), ear and nose cartilage, skin pigment cells and part of the jaw and teeth; selecting for a weaker stress response may amount to selecting for fewer or slower-migrating cells, dragging the rest along. The evidence is not settled: a 2021 exchange in Genetics argued the gene-level support only shows that neural-crest-derived structures changed, not that other traits are pleiotropically linked, and a 2023 paper proposed disrupted reproductive rhythms instead. The foxes themselves are also compromised — a 2019 analysis showed Belyaev's stock came from Prince Edward Island fur farms where foxes had been bred for decades and where tameness and piebald coats were recorded before the Russian experiment began. The underlying mechanism does not depend on the foxes: selecting one trait moves correlated traits with it, as every breeder knows.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>我们挑的，恰好是让它自己活不下去的那些</h2>
+<p>野生小麦和大麦成熟之后，穗子会自己一节节断开，籽粒撒到地上——撒到地上才能明年发芽。</p>
+<p>人拿镰刀去割，割回来的是那些还没断、籽粒还挂在穗上的。它们被带回营地，第二年被种下去。于是「穗子不自己断」这个在野外等于绝后的性状，在人手里成了唯一能传下去的性状，旁边几样东西也跟着被挑走：种子不再分几年零星发芽而是一起发芽，种皮变薄。</p>
+<p>这里没有哪一代人是在「驯化小麦」。近东的考古记录里，大麦在公元前 9500 年之前几乎全是会自己散落的野生型；到公元前 9000 到 8500 年，不散落的穗轴碎片在少数遗址里占到三成；要到公元前 7400 年之后，才有遗址是清一色的不散落。前后两千年，中间每一代人只是在割穗子。</p>
+<div class="fig">
+<svg role="img" viewbox="0 0 600 202" xmlns="http://www.w3.org/2000/svg" aria-label="示意图：左边是野生麦穗，成熟后自己断开、籽粒落到地上，明年发芽，这是它在没有人时的活路。右边是没有断开的麦穗，被人割走带回营地，第二年被人种下，这是它在有人时唯一能传下去的路。下面一条时间轴标出公元前 9500 年几乎全是会散落的野生型，公元前 9000 到 8500 年不散落的在少数遗址占到三成，公元前 7400 年之后有遗址是清一色不散落">
+<defs><marker id="ar34b" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#8aa192"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="16">同一个性状，两种命运</text>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10.5" x="20" y="40">穗子自己断开</text>
+<line stroke="#52c98a" stroke-width="2" x1="40" x2="40" y1="50" y2="92"></line>
+<line stroke="#52c98a" stroke-width="1.6" x1="34" x2="46" y1="56" y2="56"></line>
+<line stroke="#52c98a" stroke-width="1.6" x1="34" x2="46" y1="66" y2="66"></line>
+<circle cx="66" cy="98" fill="#7be0ab" r="2.8"></circle><circle cx="80" cy="104" fill="#7be0ab" r="2.8"></circle><circle cx="52" cy="104" fill="#7be0ab" r="2.8"></circle>
+<line marker-end="url(#ar34b)" stroke="#8aa192" stroke-width="1.3" x1="96" x2="150" y1="100" y2="100"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="154" y="96">落到地上 → 明年发芽</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="154" y="112">没有人的时候，这是唯一的活路</text>
+<line stroke="#24382c" stroke-dasharray="4 4" stroke-width="1" x1="16" x2="584" y1="128" y2="128"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="20" y="148">穗子不断</text>
+<line stroke="#d2a24c" stroke-width="2" x1="40" x2="40" y1="156" y2="192"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="34" x2="46" y1="162" y2="162"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="34" x2="46" y1="172" y2="172"></line>
+<circle cx="40" cy="156" fill="#e6c07b" r="2.8"></circle>
+<line marker-end="url(#ar34b)" stroke="#8aa192" stroke-width="1.3" x1="96" x2="150" y1="172" y2="172"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="154" y="168">被割走 → 明年被人种下</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="154" y="184">有人的时候，这是唯一的活路</text>
+<line marker-end="url(#ar34b)" stroke="#24382c" stroke-width="1" x1="360" x2="584" y1="60" y2="60"></line>
+<circle cx="372" cy="60" fill="#52c98a" r="3.4"></circle>
+<circle cx="452" cy="60" fill="#d2a24c" r="3.4"></circle>
+<circle cx="546" cy="60" fill="#e8a99a" r="3.4"></circle>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10" x="360" y="42">公元前 9500</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="360" y="76">几乎全是</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="360" y="89">会散落的</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="426" y="42">前 9000–8500</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="426" y="76">少数遗址里</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="426" y="89">不散落占三成</text>
+<text fill="#e8a99a" font-family="Georgia,serif" font-size="10" x="522" y="42">前 7400 后</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="518" y="76">有遗址是</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="518" y="89">清一色不散落</text>
+</svg>
+<div class="cap">两条路没有高低之分：没有人的地里，会自己散落的留下更多后代；有人收割的地里反过来。变的不是「本性」，是哪一套条件在筛。</div>
+</div>
+<p>玉米更极端：祖先墨西哥类蜀黍的每一粒籽外面都裹着一层硬壳，一个基因的变化让硬壳张开——从那以后籽粒既散不出去，也失去了保护。</p>
+<p>还有一件顺带发生的事值得单独记住：拿去种的只是野生群体里很小一撮，一代代下来，同一种作物内部的差别越来越小。整片田是同一个答案，病原体只要解开这一个答案就能通吃——红皇后那期讲的军备竞赛在这里变成一边倒，病原体一年迭代好几轮，作物的基因组被我们冻在原地。十九世纪爱尔兰的马铃薯就这么塌了。</p>
+<p class="en-brief"><b>EN</b> Wild wheat and barley shatter at maturity, dropping their grain — that is how they survive. A sickle brings home the ears that have not shattered, and those are the grains sown next year, so a trait that is lethal in the wild becomes the only route forward under cultivation, dragging along synchronous germination, thinner seed coats and self-pollination. No generation was "domesticating wheat". In Near Eastern assemblages, barley is almost entirely wild-type before 9500 BC; non-shattering rachis fragments reach about 30% at a few sites between 9000 and 8500 BC; only after 7400 BC do some sites show fully non-shattering populations. Two thousand years for one trait. Maize is starker: its ancestor teosinte has few grains, each sealed in a hard casing. One gene change opens the casing, another turns a branching bush into a single stalk — after which the plant can neither disperse nor protect its seed. One side effect deserves its own note: only a small slice of the wild population was ever planted, so variation within a crop keeps shrinking. A whole field is one answer, and a pathogen that solves it takes everything — the arms race of the Red Queen becomes one-sided when the pathogen iterates yearly and the crop genome is frozen by us. Ireland's potatoes collapsed exactly that way.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>我们脸上那些变化和狗身上的很像，但像不等于同一回事</h2>
+<p>把智人的头骨和三十万年前的早期化石、和尼安德特人摆在一起，方向相当一致：眉弓变平、面部前突减小、颅骨变圆、牙齿变小。这一串和家养动物那套有不小的重叠。行为上还有一件更扎眼的事：你每天和几百个不认识的人挤在一节车厢里，一路不打架；把同样密度的陌生黑猩猩关在一起会出人命。</p>
+<p>自我驯化假说说的就是这件事：筛选压来自群体内部。一种具体版本是，语言和结盟让一群人可以商量着一起对付本群里最霸道的那个，于是最容易当场发作的那些人留下的后代更少。这里没有「为了群体好」这回事——起作用的只是各自的后代数量：被联手对付掉的那个，后代就少。</p>
+<p>最硬的一条旁证是倭黑猩猩。它和黑猩猩是近亲，大约一两百万年前分开，全程没有人参与；它对同类的攻击性明显更低，颅骨和牙齿也朝偏幼态的方向变了一些。2012 年有人正式把它写成一个自然发生的自我驯化案例——有这个自然实验就意味着，这套变化不需要有人来筛。</p>
+<p>为什么它到现在还只是假说？狗那边你说得出谁在筛、筛的是哪个性状；人这边「谁在筛」全靠推断，性状清单也有事后拼凑的嫌疑——颅骨变圆可以有别的解释，比如脑发育节奏改变。它有意思、有部分旁证，远没有定论。</p>
+<p>还有一条必须说明白：这个假说拿的是物种之间的对比，问的是人和黑猩猩为什么不一样，尺度是几十万年。任何把它挪到「哪群人比哪群人更驯化」上的读法都没有证据——<strong>一个是物种间的差异，一个是群体内部的差异，两个尺度根本对不上。</strong></p>
+<p class="en-brief"><b>EN</b> Set modern human skulls beside 300,000-year-old fossils and beside Neanderthals and the direction is consistent: flatter brow ridges, less facial projection, rounder braincase, smaller teeth — a list that overlaps noticeably with domesticated animals. Behaviourally, the striking fact is that you ride a packed train with hundreds of strangers and nobody fights; chimpanzees at that density would kill. The self-domestication hypothesis holds that the selection came from inside the group: language and coalitions let people jointly deal with the most domineering member, so the most reactively aggressive left fewer descendants. Nothing here runs "for the good of the group" — what operates is individual descendant counts. The strongest comparative leg is the bonobo, which split from chimpanzees roughly one to two million years ago with no human involvement, is markedly less aggressive, and shows some paedomorphic cranial and dental shifts; a 2012 paper framed it as a naturally occurring case. Why it remains a hypothesis: with dogs you can name the selector and the trait, while here the selector is inferred; the trait list looks partly assembled after the fact; and genomic searches for overlap between human and domesticate selection targets remain statistically contested. One thing must be stated plainly: the hypothesis compares species across hundreds of thousands of years. Any reading that shifts it onto differences between human populations has no evidence behind it and no bearing on what the hypothesis explains — the two scales simply do not match.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 工程与系统设计</b>：一套服务的所有实例跑同一份镜像、同一个版本，行为一致、排查简单，真出事就是一次全塌。这是「我们挑的，恰好是让它自己活不下去的那些」那节顺带发生的那件事：一致性提上去的同时，能被同一件事同时命中的比例也提到了百分之百。可改的：把指标从「实例是否完全一致」换成「主版本有个致命缺陷时，几分钟内多少流量会命中它」。</li>
+<li><b>② 修行与心性</b>：你每年都在等一个能重新开始的节点——年初、生日、搬完家。可真正变掉的那几件事，没有哪一件有起点日期。大麦那个不自己散落的性状花了两千年才成为主流，中间每一代人只是在割穗子。可改的：判断一件事有没有在动，别看你有没有下决心，看有没有一个每天都会遇到的默认项被换掉了。停掉的动作：为「从下周一开始」做准备。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>东方思想 · 庄子说伯乐「善治马」，结果是马「死者已过半矣」</b>：《马蹄》那篇把烧马蹄、上笼头和陶匠治泥、木匠治木放在一起，说这些手艺让东西合用，同时把它别的可能性削掉了。跑的是「我们挑的，恰好是让它自己活不下去的那些」那节的机制：被选中的不是「更好」，是「更适合这套照料」，而这两件事在小麦身上正好互斥——不自己散落的穗子在没有人的地里必死。由此能推出一个原本看不出的结论：<b>判断一个东西被驯化到什么程度，不看它表现得多好，看把照料撤掉之后它还剩多少可行性；这份损失不是副作用，是选择的直接产物，被挑掉的恰恰就是「自己也能活」那部分。</b><b>但这里不成立</b>：庄子把「治」说成对「真性」的损害，预设了一个本来完好的原状。演化这边没有这个原状——野生小麦会自己散落也不是什么本性，同样是筛出来的。后果很实际：把人撤走，它不会「回到本性」，只会被新的一套条件重新筛一遍。</li>
+<li><b>组织与制度 · 一个团队里出现了一整套没人挑过的共同特征</b>：几年里招人只有一个真正起决定作用的口径——面试里表达是否顺畅。到某一天你发现团队还共享着另外几样东西：都不太爱在会上提反对意见，都在同一类问题上有盲区，都倾向于把没想清楚的事讲得像想清楚了。跑的是「你只挑了一样，来的却是一整套」那节的机制：你筛的那一个性状和另外几个在统计上连着，于是它们跟着被筛了。由此能推出一个原本看不出的结论：<b>排查团队为什么有某个盲点，别去找「是谁带进了这个风气」，去找当初那个唯一起决定作用的口径；这些附带特征也不会因为你事后宣布要它们的反面而消失。</b>不过这里和狐狸有个关键差别，而它正好是个好消息：狐狸身上那一串是发育上连着的，同一批胚胎细胞派生出来的部位，拿不开；组织里那一串多数只是统计相关，换个口径就能拆开。这反过来是个判据——口径都换过了，三年后那串特征还在，那就不是筛选带来的，得另找原因。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>「驯化」和「养着」差在哪里？</summary>
+<div>关键在于繁殖归谁管。马戏团里的老虎再听话也不是驯化的——它是野生个体被驯服的，下一代不会因此更听话。驯化说的是一群生物的繁殖长期受另一个物种影响，于是遗传组成被改掉了：它不是一只动物的状态，是一个群体在很多代里发生的事。</div>
+</details>
+<details><summary>既然驯化综合征还有那么多争论，凭什么还讲它？</summary>
+<div>要分开两件事。「挑一个性状会连带挪动别的性状」是确定的，育种里到处都是。有争论的是更强的版本：所有家养动物共享同一套性状，而且由同一个发育机制造成。目前不同物种只共享其中一部分。可以讲，但得把强弱标清楚——把还在争论的当成已知，是这个题材最常见的失手。</div>
+</details>
+<details><summary>自我驯化假说听起来什么都能解释，怎么才算真正检验它？</summary>
+<div>至少要过三关：说得出筛选压具体是什么（不是「社会变复杂了」）、它作用在哪个可测量的性状上、如果假说错了应该看到什么。倭黑猩猩有力，是因为它给了一个对照：同一类近亲，一边攻击性降了，一边没降，而且都没有人参与。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Domestication" rel="noopener" target="_blank">驯化词条</a> · <a href="https://en.wikipedia.org/wiki/Domestication_syndrome" rel="noopener" target="_blank">驯化综合征词条</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0305440318300049" rel="noopener" target="_blank">Janssens 等 2018：重新检视波恩－上卡瑟尔那只狗</a> · <a href="https://en.wikipedia.org/wiki/Bonn%E2%80%93Oberkassel_dog" rel="noopener" target="_blank">波恩－上卡瑟尔犬词条</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.aba9572" rel="noopener" target="_blank">Bergström 等 2020：史前狗的起源与遗传遗产</a></li>
+<li><a href="https://academic.oup.com/genetics/article/197/3/795/5935921" rel="noopener" target="_blank">Wilkins 等 2014：神经嵴细胞假说</a> · <a href="https://academic.oup.com/genetics/article/219/1/iyab097/6318714" rel="noopener" target="_blank">Johnsson 等 2021：神经嵴细胞假说不成立</a> · <a href="https://academic.oup.com/genetics/article/219/1/iyab098/6323656" rel="noopener" target="_blank">Wrangham 等 2021 的回应</a></li>
+<li><a href="https://royalsocietypublishing.org/rspb/article/290/1995/20222464/86682/Shared-reproductive-disruption-not-neural-crest-or" rel="noopener" target="_blank">2023：另一种解释——繁殖节律被打乱</a></li>
+<li><a href="https://www.cell.com/trends/ecology-evolution/fulltext/S0169-5347(19)30302-7" rel="noopener" target="_blank">Lord 等 2020：农场狐狸的历史削弱了驯化综合征</a> · <a href="https://en.wikipedia.org/wiki/Domesticated_silver_fox" rel="noopener" target="_blank">家养银狐词条</a></li>
+<li><a href="https://academic.oup.com/aob/article/100/5/903/136060" rel="noopener" target="_blank">Fuller 2007：作物驯化速率的考古植物学证据</a> · <a href="https://en.wikipedia.org/wiki/Domestication_of_plants" rel="noopener" target="_blank">植物驯化词条</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S000334721100546X" rel="noopener" target="_blank">Hare 等 2012：倭黑猩猩的自我驯化假说</a> · <a href="https://en.wikipedia.org/wiki/Self-domestication" rel="noopener" target="_blank">自我驯化词条</a> · <a href="https://en.wikipedia.org/wiki/Teosinte" rel="noopener" target="_blank">类蜀黍词条</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>

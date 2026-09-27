@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 34: Domestication</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 34 · PHASE E BIG QUESTIONS AND APPLICATIONS</div>
+<h1>Domestication</h1>
+<h2>Dogs, wheat, and perhaps ourselves — a round of selection nobody set out to run</h2>
+<div class="meta">2026-09-27 · BigCat</div>
+<div class="pitch">Nobody invented the dog. Nobody invented wheat either. Both were finished over thousands of years while no one was trying to do it.</div>
+</header>
+<div class="intro">
+<p>You walk past the bins outside your building and a few stray cats are lying there. One bolts while you are still five metres off. Another stops and looks at you, and only shifts, reluctantly, when you come closer.</p>
+<p>That distance — how near you can get — varies a lot within one group of cats, and you can measure it with a tape. Ten-odd thousand years ago the same variation existed in the wolves around human camps.</p>
+<p>What happened next sounds like a story about someone kind. It is nothing of the sort.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Nobody led a wolf home; the ones less afraid of people got the leftovers</h2>
+<p>Bones and offal that no one could finish piled up at the edge of camp. To a wolf that is a steady, easy food supply that does not have to be chased down. Whether it could be reached depended on one very concrete thing: how close to a human the animal could get before panic set in.</p>
+<p>Wolves with a higher panic threshold ate a little more and raised a few more pups; those pups were, on average, a little less afraid again. Generation after generation, this group separated from the ones that stayed wild. Nobody decided anything here, and there was no "growing tame in order to get the scraps": the mutations that lower fear turn up at random, and the camp simply let the animals carrying them leave more descendants. The first step was probably not taken by people at all. The wolves walked over on their own.</p>
+<p>One physical object pins the timeline down. In 1914 a grave was dug up near Bonn, Germany, holding a man, a woman and two dogs, dated to roughly 14,200 years ago. In 2018 someone re-examined the teeth of one of the puppies and found that at around 19 weeks old it had contracted canine distemper — a disease with a three-week course and very high mortality — and yet it lived another eight weeks or more. The disease record written into its teeth means somebody was feeding it throughout those eight weeks. That is no longer a scavenging relationship. Genetics gives a different kind of ruler: 27 ancient dog genomes sequenced in 2020 show that by about 11,000 years ago dogs had already split into at least five markedly distinct lineages, and splitting five ways takes a long time, so domestication itself is considerably older. Where it started, and whether it happened once or several times, is still argued about.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>You selected one thing, and a whole set arrived</h2>
+<p>From 1959, Belyaev and Trut in Novosibirsk bred a line of silver foxes and each generation selected on a single criterion: reach a hand in, and does the animal flinch or snap? Not coat colour, not ears, not body size. A few dozen generations later, a string of things nobody had selected for had appeared — floppy ears, curled-up tails, patches of white in the coat, longer breeding seasons. Part of this string shows up in many domesticated animals, and it has a name: the domestication syndrome.</p>
+<p>Why should turning one knob produce a string of outputs? The most popular explanation at the moment points at a group of cells. Very early on, the embryo sends out from its back a population of cells that migrate all over the body and end up building several unrelated things — the figure below shows where each of them goes. If what you selected for is "a weaker stress response", what you may actually have selected is "fewer of these cells, migrating more slowly", and then cartilage, pigment and jaw get dragged along with it. Nobody ever selected for ears.</p>
+<div class="fig">
+<svg role="img" viewbox="0 0 600 196" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram: on the left, the single selection criterion, whether the animal flinches when a hand reaches in. An arrow points to a population of cells that migrates out of the embryonic back. That population then fans out four ways, becoming part of the adrenal glands, ear and nose cartilage, skin pigment cells, and part of the jaw and teeth, with the visible results being a calmer animal, floppy ears, white patches and a shorter face with smaller teeth">
+<defs><marker id="ar34a" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="16">One knob, four destinations</text>
+<rect fill="rgba(82,201,138,0.16)" height="46" rx="5" stroke="#52c98a" width="136" x="16" y="88"></rect>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10.5" x="26" y="107">You select one thing:</text>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10.5" x="26" y="124">does it flinch or snap?</text>
+<line marker-end="url(#ar34a)" stroke="#d2a24c" stroke-width="1.6" x1="154" x2="194" y1="111" y2="111"></line>
+<rect fill="rgba(210,162,76,0.13)" height="62" rx="5" stroke="#d2a24c" width="112" x="196" y="80"></rect>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="204" y="99">a population of</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="204" y="114">cells that migrates</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="204" y="129">out of the back</text>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="100" y2="46"></line>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="106" y2="90"></line>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="118" y2="134"></line>
+<line marker-end="url(#ar34a)" stroke="#3c6b52" stroke-width="1.3" x1="310" x2="356" y1="124" y2="178"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="36">part of the adrenal glands</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="51">(the stress switch) → calmer</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="80">ear and nose cartilage</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="95">→ ears flop over</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="124">pigment cells in the skin</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="139">→ white patches appear</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="360" y="168">part of the jaw and teeth</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="360" y="183">→ shorter face, smaller teeth</text>
+</svg>
+<div class="cap">One knob wired to a population of migrating cells, and that population supplies several unrelated parts at once. The middle step is not nailed down; the claim on the right — that selecting one thing carries a set along — is not in dispute.</div>
+</div>
+<p>Honestly, though: the explanation is elegant and the evidence is not yet solid. A public exchange in 2021 had critics pointing out that the candidate genes found in domesticated animals only show that structures derived from these cells have changed, not that other traits are dragged along by the same mechanism. It is unsettled.</p>
+<p>The foxes themselves are also compromised. A piece published at the end of 2019 noted that Belyaev's silver foxes came from a Canadian fur farm that had already been breeding them for decades, where tameness had been recorded and white patches had appeared before the Russian experiment began. The textbook version — select for tameness alone and a whole set materialises out of nowhere — loses a large chunk of its force. But the core mechanism does not rest on the foxes: select one trait and you shift the traits tied to it, which every breeder meets daily.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>What we selected was exactly what leaves the plant unable to survive alone</h2>
+<p>When wild wheat and barley ripen, the ear breaks apart segment by segment and the grain scatters on the ground — reaching the ground is the only way it germinates next year.</p>
+<p>A person with a sickle brings home the ears that have not broken apart, the ones still holding their grain. Those grains go back to camp and are sown the following year. So "the ear does not shatter on its own", a trait that means no descendants in the wild, became the only trait that could be passed on in human hands, and a few other things were selected along with it: seeds that germinate together instead of trickling out over several years, and thinner seed coats.</p>
+<p>No generation here was "domesticating wheat". In the Near Eastern archaeological record, barley before 9500 BC is almost entirely the wild, shattering type; between 9000 and 8500 BC non-shattering rachis fragments reach about 30% at a few sites; only after 7400 BC do some sites turn up uniformly non-shattering. Two thousand years from end to end, and in between every generation was simply cutting ears.</p>
+<div class="fig">
+<svg role="img" viewbox="0 0 600 202" xmlns="http://www.w3.org/2000/svg" aria-label="Diagram: at the top, a wild ear that breaks apart on its own, its grain falling to the ground and germinating next year, which is its only route when no people are involved. Below, an ear that does not break apart, cut and carried back to camp and sown by people the next year, which is its only route when people are involved. On the right, a timeline: before 9500 BC almost all barley is the shattering wild type; between 9000 and 8500 BC non-shattering reaches about 30% at a few sites; after 7400 BC some sites are uniformly non-shattering">
+<defs><marker id="ar34b" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#8aa192"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="16" y="16">One trait, two fates</text>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10.5" x="20" y="40">the ear shatters</text>
+<line stroke="#52c98a" stroke-width="2" x1="40" x2="40" y1="50" y2="92"></line>
+<line stroke="#52c98a" stroke-width="1.6" x1="34" x2="46" y1="56" y2="56"></line>
+<line stroke="#52c98a" stroke-width="1.6" x1="34" x2="46" y1="66" y2="66"></line>
+<circle cx="66" cy="98" fill="#7be0ab" r="2.8"></circle><circle cx="80" cy="104" fill="#7be0ab" r="2.8"></circle><circle cx="52" cy="104" fill="#7be0ab" r="2.8"></circle>
+<line marker-end="url(#ar34b)" stroke="#8aa192" stroke-width="1.3" x1="96" x2="150" y1="100" y2="100"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="154" y="96">falls to the ground → germinates</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="154" y="112">with no people around, the only route</text>
+<line stroke="#24382c" stroke-dasharray="4 4" stroke-width="1" x1="16" x2="584" y1="128" y2="128"></line>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="20" y="148">the ear holds</text>
+<line stroke="#d2a24c" stroke-width="2" x1="40" x2="40" y1="156" y2="192"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="34" x2="46" y1="162" y2="162"></line>
+<line stroke="#d2a24c" stroke-width="1.6" x1="34" x2="46" y1="172" y2="172"></line>
+<circle cx="40" cy="156" fill="#e6c07b" r="2.8"></circle>
+<line marker-end="url(#ar34b)" stroke="#8aa192" stroke-width="1.3" x1="96" x2="150" y1="172" y2="172"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10.5" x="154" y="168">gets cut → sown by people</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="154" y="184">with people around, the only route</text>
+<line marker-end="url(#ar34b)" stroke="#24382c" stroke-width="1" x1="360" x2="584" y1="60" y2="60"></line>
+<circle cx="372" cy="60" fill="#52c98a" r="3.4"></circle>
+<circle cx="452" cy="60" fill="#d2a24c" r="3.4"></circle>
+<circle cx="546" cy="60" fill="#e8a99a" r="3.4"></circle>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10" x="360" y="42">before 9500 BC</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="360" y="76">nearly all</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="360" y="89">shattering</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10" x="426" y="42">9000–8500 BC</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="426" y="76">about 30% at</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="426" y="89">a few sites</text>
+<text fill="#e8a99a" font-family="Georgia,serif" font-size="10" x="516" y="42">after 7400 BC</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="516" y="76">some sites</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="516" y="89">uniformly not</text>
+</svg>
+<div class="cap">Neither route is better than the other: in ground with no people, the plants that scatter leave more descendants; in ground that gets harvested, the reverse. What changed is not a "true nature" but which set of conditions is doing the sieving.</div>
+</div>
+<p>Maize is starker: every grain of its ancestor teosinte sits inside a hard casing, and one gene change opens that casing — after which the grain can neither disperse nor protect itself.</p>
+<p>One side effect is worth remembering on its own: only a small slice of the wild population was ever planted, so generation by generation the variation within a crop keeps shrinking. A whole field is one answer, and a pathogen that solves that one answer takes everything. The arms race from the Red Queen topic goes one-sided here — the pathogen iterates several times a year while we hold the crop's genome still. That is how Ireland's potatoes collapsed in the nineteenth century.</p>
+</div>
+<div class="section">
+<span class="num">// 04</span>
+<h2>The changes in our faces look a lot like the ones in dogs, but looking alike is not being the same thing</h2>
+<p>Set a modern human skull beside early fossils from 300,000 years ago and beside a Neanderthal, and the direction is fairly consistent: flatter brow ridges, less facial projection, a rounder braincase, smaller teeth. That string overlaps considerably with the domesticated-animal set. Behaviourally there is something even more striking: you spend every day packed into a carriage with hundreds of strangers and nobody fights, whereas unfamiliar chimpanzees at that density would kill each other.</p>
+<p>This is what the self-domestication hypothesis is about: the selection pressure came from inside the group. One specific version has it that language and coalitions let a group jointly deal with its most domineering member, so the people quickest to lash out left fewer descendants. Nothing here runs "for the good of the group" — what does the work is individual descendant counts: the one who gets dealt with collectively leaves fewer.</p>
+<p>The strongest supporting line is the bonobo. It is a close relative of the chimpanzee, split off roughly one to two million years ago with no human involvement anywhere in the process; it is markedly less aggressive towards its own kind, and its skull and teeth have shifted somewhat in a juvenile-looking direction. In 2012 it was formally written up as a naturally occurring case of self-domestication — and having that natural experiment means this set of changes does not need anyone to do the sieving.</p>
+<p>Why is it still only a hypothesis? With dogs you can name who was sieving and which trait; here the selector is entirely inferred, and the trait list looks partly assembled after the fact — a rounder braincase has other possible explanations, such as a change in the pace of brain development. It is interesting, it has partial support, and it is far from settled.</p>
+<p>One more thing has to be said plainly: this hypothesis is a comparison between species, asking why humans differ from chimpanzees on a scale of hundreds of thousands of years. Any reading that shifts it onto "which group of people is more domesticated than which" has no evidence behind it — <strong>one is a difference between species, the other a difference within one; the two scales simply do not line up.</strong></p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BIGCAT</h3>
+<ul>
+<li><b>① Engineering and systems design</b>: every instance of a service runs the same image and the same version. Behaviour is consistent, debugging is simple, and when something does go wrong it all falls over at once. This is the side effect from the section on selecting exactly what leaves a thing unable to survive alone: as consistency goes up, so does the fraction that a single trigger can hit simultaneously — all the way to one hundred per cent. What to change: swap the metric "are the instances fully identical" for "if the current main version has a fatal defect, how much traffic hits it within minutes".</li>
+<li><b>② Practice and temperament</b>: every year you wait for a node to start over from — New Year, a birthday, the week after a move. Yet none of the few things that actually did change has a start date. The non-shattering trait in barley took two thousand years to become the norm, and in between every generation was just cutting ears. What to change: to judge whether something is moving, don't look at whether you resolved to do it; look at whether one default you meet every day has been swapped out. What to stop: preparing for "starting next Monday" — the preparation reliably pushes the first actual occurrence further out.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · CONNECTIONS ACROSS FIELDS</h3>
+<ul>
+<li><b>Eastern thought · Zhuangzi on the famous horse-tamer Bole, whose skill left "more than half the horses dead"</b>: the chapter "Horses' Hooves" puts branding and bridling alongside the potter working clay and the carpenter working wood, and says such crafts make a thing usable while cutting away its other possibilities. The mechanism running here is the one from the section on selecting exactly what leaves a thing unable to survive alone: what gets chosen is not "better" but "better suited to this particular care", and in wheat those two are mutually exclusive — an ear that does not shatter is dead in ground with no people. From which follows a conclusion you would not otherwise see: <b>to judge how far something has been domesticated, don't look at how well it performs; look at how much viability is left once the care is withdrawn. And that loss is not a side effect but a direct product of the selection — what was selected away is precisely the part that could survive on its own.</b><b>Where this breaks down</b>: Zhuangzi casts such "working on" as damage to a true nature, which presupposes an intact original state. Evolution has no such original state — wild wheat shattering is not a nature either; it was sieved in just as much. The consequence is practical: take the people away and it does not "return to its nature", it simply gets sieved again by a new set of conditions.</li>
+<li><b>Organisations and institutions · a team ends up sharing a whole set of traits nobody ever selected for</b>: for years, hiring turned on one criterion that actually decided anything — how fluently someone spoke in the interview. Then one day you notice the team shares several other things: nobody much likes voicing disagreement in meetings, everyone has a blind spot in the same class of problem, everyone tends to present half-formed thinking as finished. The mechanism is the one from the section on selecting one thing and getting a whole set: the trait you screened on is statistically tied to several others, and they came along. From which follows a conclusion you would not otherwise see: <b>when working out why a team has a particular blind spot, don't hunt for "who brought this culture in"; find the one criterion that actually decided hiring. And those tag-along traits will not disappear because you have since announced that you want their opposite.</b>There is one key difference from the foxes, and it happens to be good news: the fox string is developmentally linked, parts derived from the same population of embryonic cells, and cannot be pulled apart; the string in an organisation is mostly statistical correlation, and changing the criterion pulls it apart. That gives you a test in reverse — if the criterion really has changed and the set of traits is still there three years later, it was not selection that produced it, and you need another explanation.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>DIGGING DEEPER</h3>
+<details><summary>What is the difference between domestication and just keeping an animal?</summary>
+<div>It comes down to who controls reproduction. A circus tiger, however obedient, is not domesticated — it is a wild individual that has been tamed, and its offspring are no more obedient for it. Domestication means the reproduction of a whole population is influenced over the long run by another species, so its genetic makeup changes. It is not the state of one animal; it is something that happens to a population across many generations.</div>
+</details>
+<details><summary>Given how much of the domestication syndrome is disputed, why talk about it at all?</summary>
+<div>Two claims need separating. "Selecting one trait shifts others along with it" is settled and turns up everywhere in breeding. What is disputed is the stronger version: that all domesticated animals share one and the same set of traits, produced by one and the same developmental mechanism. At present different species share only part of that set. It can be taught, as long as the strong and weak parts are labelled — treating a live dispute as established is the usual way this subject goes wrong.</div>
+</details>
+<details><summary>Self-domestication sounds like it can explain anything. What would count as really testing it?</summary>
+<div>At minimum three hurdles: state the selection pressure concretely (not "society got more complex"), state which measurable trait it acts on, and state what you should see if the hypothesis is wrong. The bonobo carries weight because it supplies a control: two close relatives, aggression down in one and not in the other, and no humans involved in either.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Domestication" rel="noopener" target="_blank">Domestication (overview)</a> · <a href="https://en.wikipedia.org/wiki/Domestication_syndrome" rel="noopener" target="_blank">Domestication syndrome (overview)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0305440318300049" rel="noopener" target="_blank">Janssens et al. 2018: a new look at the Bonn-Oberkassel dog</a> · <a href="https://en.wikipedia.org/wiki/Bonn%E2%80%93Oberkassel_dog" rel="noopener" target="_blank">Bonn-Oberkassel dog (overview)</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.aba9572" rel="noopener" target="_blank">Bergström et al. 2020: origins and genetic legacy of prehistoric dogs</a></li>
+<li><a href="https://academic.oup.com/genetics/article/197/3/795/5935921" rel="noopener" target="_blank">Wilkins et al. 2014: the neural crest cell hypothesis</a> · <a href="https://academic.oup.com/genetics/article/219/1/iyab097/6318714" rel="noopener" target="_blank">Johnsson et al. 2021: no unified explanation</a> · <a href="https://academic.oup.com/genetics/article/219/1/iyab098/6323656" rel="noopener" target="_blank">the 2021 reply</a></li>
+<li><a href="https://royalsocietypublishing.org/rspb/article/290/1995/20222464/86682/Shared-reproductive-disruption-not-neural-crest-or" rel="noopener" target="_blank">2023: a different explanation — shared reproductive disruption</a></li>
+<li><a href="https://www.cell.com/trends/ecology-evolution/fulltext/S0169-5347(19)30302-7" rel="noopener" target="_blank">Lord et al. 2020: the history of farm foxes undermines the syndrome</a> · <a href="https://en.wikipedia.org/wiki/Domesticated_silver_fox" rel="noopener" target="_blank">Domesticated silver fox (overview)</a></li>
+<li><a href="https://academic.oup.com/aob/article/100/5/903/136060" rel="noopener" target="_blank">Fuller 2007: archaeobotanical evidence on rates of crop domestication</a> · <a href="https://en.wikipedia.org/wiki/Domestication_of_plants" rel="noopener" target="_blank">Domestication of plants (overview)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S000334721100546X" rel="noopener" target="_blank">Hare et al. 2012: the self-domestication hypothesis in bonobos</a> · <a href="https://en.wikipedia.org/wiki/Self-domestication" rel="noopener" target="_blank">Self-domestication (overview)</a> · <a href="https://en.wikipedia.org/wiki/Teosinte" rel="noopener" target="_blank">Teosinte (overview)</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
