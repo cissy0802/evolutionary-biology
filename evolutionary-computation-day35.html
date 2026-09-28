@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 35：演化计算与 AI</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 35 · PHASE E 大问题与应用</div>
+<h1>演化计算与 AI</h1>
+<h2>把筛子搬进计算机之后，才看清演化少了什么、又靠什么撑住</h2>
+<div class="meta">2026-09-28 · BigCat</div>
+<div class="pitch">有一根上过太空的天线，形状像一段被反复揉过又拉开的铁丝。没有人画过它，也没有人能完整说清它为什么好用。</div>
+</header>
+<div class="intro">
+<p>你见过的天线大多是规整的：对称、直角、看一眼就知道哪段负责什么。</p>
+<p>那一根不是。它每个拐角的位置都看不出道理，像是被谁拧坏了。它确实在轨道上工作过。</p>
+<p>把演化这台机器搬进计算机之后会发生两件事：它开始交一些你看不懂的答卷，而它在自然界里藏着的那一面反而露出来了。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>筛出来的东西不欠你一个解释</h2>
+<p>那根天线是美国航天局一次叫「空间技术 5 号」的任务带上去的，2006 年 3 月发射，工作到 6 月底。做法很朴素：让计算机随机改形状，每改一版就算一下性能，留下算得好的那些，在这些上面接着改。两套算法各自跑出一个最好的，做成实物实测，都比承包商手工设计的那版强。</p>
+<p>这台机器要的东西只有三样：一个能随便改的东西、改动能传给下一版、一个决定谁留下的判据。变异、遗传、差异繁殖——自然选择的逻辑那期说的三个条件，一条没多一条没少。介质从碳换成比特，机器照样转。</p>
+<p>转起来之后你会发现它有个脾气。1996 年英国萨塞克斯大学的 Adrian Thompson 用同一套办法，在一块可以现场重新改内部接线的芯片上演化电路，要求很简单：听到一千赫兹的音就输出高电平，一万赫兹就输出低。他划出一百个逻辑单元的一角给它用。跑出来的电路只用了三十七个，没有时钟，大部分接成互相绕回去的环。最怪的是有五个单元根本没有通路连到输出，按电路图不该起作用，可你关掉任何一个，整个电路就不灵了。它在利用那块硅片自身的物理性质，而这些性质不在任何人的电路模型里。把同一份配置装到同型号的另一块芯片上，它就不可靠了。</p>
+<p>筛子只认分数，不认理由。所以它交上来的东西可能用了你压根没打算让它用的资源，而且不会告诉你用了什么。生物身上到处是这个签名：你眼睛里那个盲点，是因为视神经从感光细胞的前面穿出去，在视网膜上戳了个洞。这不是更好的接法，是那条谱系最早凑出来的接法碰巧如此，之后每一步只能在它上面接着改——适应与约束那期说的路径依赖。章鱼的眼睛独立凑了另一次，神经从后面走，就没这个洞。</p>
+<p class="en-brief"><b>EN</b> The antenna flew on NASA's Space Technology 5 mission — three copies, launched March 2006, operating in orbit until late June. The method was plain: perturb the shape at random, score each version's performance, keep the good ones, perturb those. Two different algorithms each produced a best design; both were fabricated and both out-measured the contractor's hand-built version. The machine needs only three things — something that can vary, variation that carries to the next version, and a rule deciding who stays. Variation, heredity, differential reproduction: exactly the three conditions behind natural selection, with the medium switched from carbon to bits. It also has a temperament. In 1996 Adrian Thompson at Sussex evolved a circuit on a chip whose internal wiring can be rewritten on the spot, asked only to hold its output high for a 1 kHz tone and low for 10 kHz. Given a corner of 100 logic cells, the winning circuit used 37, had no clock, and wired most of them into tangled feedback loops. Five cells had no path at all to the output, yet disabling any one of them broke it: the circuit was exploiting physical properties of that particular piece of silicon, properties absent from anyone's circuit model. Loaded onto another chip of the same type, it no longer worked reliably. Selection scores outcomes, not reasons, so what it hands you may draw on resources you never meant to offer, and it will not say which. Biology carries the same signature: the blind spot in your eye exists because the optic nerve exits in front of the photoreceptors, punching a hole through the retina — not a better wiring, just the first one that happened to work in that lineage, with every later step obliged to build on it. Octopus eyes were assembled independently, run the nerve behind, and have no such hole.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>分数是谁定的，决定了这台机器能走多远</h2>
+<p>1994 年 Karl Sims 在计算机里养了一批由方块和关节拼成的东西，按「往前游得多快」给分。有几种解法很扫兴：模拟器算运动时把时间切成一小步一小步，这个切法有缺陷，于是有些生物学会了让身上一个小零件高频抖动，凭空多出一点动量。分数是真高的。</p>
+<p>另一个任务是跳得高。最省事的解不是学会跳，而是长得很高然后倒下去。</p>
+<p>这些都不是算法出错。它极其准确地做了你让它做的事：在所有能让那个数上升的路里找最便宜的那条。你想要的是「会走路」，你写下来的是「重心离地多高」，它给你的是后者。</p>
+<p>这里藏着人造演化和自然演化最深的一道差别：算法里的分数是人写的，自然界没有人写分数。生物学里的「适应度」不是外面发下来的成绩，它是事后的记录——谁留下了更多后代。没有考卷，所以也没有作弊这件事。而且这个分数还会自己动：一种做法划不划算，取决于你周围大多数个体在怎么做（演化博弈那期的频率依赖）；一方稍微改进就让另一方的分数掉下去（红皇后那期的军备竞赛）。</p>
+<p>分数写死了会有什么后果，有一个很干净的对照。2011 年 Lehman 和 Stanley 摆了一个迷宫，出口在一条必须先往反方向绕的通道尽头。按「离出口的直线距离还剩多少」给分，四十次里零次走通：整群搜索全挤在离出口最近的那面墙后面，因为任何要先走远的一步都被判成退步。他们换掉分数，完全不看出口，只奖励「这个走法以前没出现过」——四十次里通了三十九次。</p>
+<div class="fig">
+<svg aria-label="示意图：同一个迷宫的两种评分。左边按「离出口还有多远」给分，一群搜索者从起点直奔出口方向，全部堵在中间那道墙后面、也就是离出口最近的位置，四十次里零次走通。右边只按「这个走法以前没出现过」给分，路线先沿底部绕到墙的下方缺口，再折上去到出口，四十次里三十九次走通" role="img" viewbox="0 0 600 196" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar35a" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker>
+<marker id="ar35b" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#52c98a"></path></marker>
+</defs>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="16" y="16">按「离出口还有多远」给分</text>
+<rect fill="none" height="120" stroke="#24382c" stroke-width="1.4" width="238" x="18" y="30"></rect>
+<line stroke="#3c6b52" stroke-width="3.4" x1="176" x2="176" y1="30" y2="112"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="150" y="126">墙</text>
+<circle cx="46" cy="130" fill="#7be0ab" r="4"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="34" y="146">起点</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="13" x="212" y="60">★</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="206" y="76">出口</text>
+<line marker-end="url(#ar35a)" stroke="#d2a24c" stroke-width="1.5" x1="54" x2="166" y1="124" y2="70"></line>
+<circle cx="170" cy="62" fill="#d2a24c" r="2.6"></circle>
+<circle cx="169" cy="74" fill="#d2a24c" r="2.6"></circle>
+<circle cx="170" cy="86" fill="#d2a24c" r="2.6"></circle>
+<circle cx="168" cy="98" fill="#d2a24c" r="2.6"></circle>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="30" y="170">40 次里 0 次走通</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="318" y="16">只按「这个走法以前没出现过」给分</text>
+<rect fill="none" height="120" stroke="#24382c" stroke-width="1.4" width="238" x="320" y="30"></rect>
+<line stroke="#3c6b52" stroke-width="3.4" x1="478" x2="478" y1="30" y2="112"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="452" y="126">墙</text>
+<circle cx="348" cy="130" fill="#7be0ab" r="4"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="336" y="146">起点</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="13" x="514" y="60">★</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="508" y="76">出口</text>
+<polyline fill="none" points="356,134 470,138 506,132 512,84" stroke="#52c98a" stroke-width="1.5"></polyline>
+<line marker-end="url(#ar35b)" stroke="#52c98a" stroke-width="1.5" x1="512" x2="514" y1="84" y2="68"></line>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10" x="332" y="170">40 次里 39 次走通</text>
+</svg>
+<div class="cap">同一个迷宫，同一个算法，只换了给分方式。左边那种分数把「必须先变差几步」全判成退步，于是整群搜索稳定地卡在离目标最近的死路里。</div>
+</div>
+<p>这条线一直连到这个领域至今没解决的那个问题。1991 年 Tom Ray 写了个叫 Tierra 的小世界，里面跑着一些会自我复制的程序。他没写过任何「要出现寄生者」的规则，寄生者自己出现了：有些程序不再自带复制指令，改成借邻居的；接着出现了躲得开它们的宿主；再接着是专吃寄生者的更上一层。这是人造系统最像自然的一次。可这类系统跑久了都会停：多样性先冲上去，然后整群朝更简单更省的少数几个解收拢，不再出新东西。地球上的生物圈四十亿年没停过，至今没有人造系统做到这一点。差的是什么还没答案；有人怀疑差的就是「分数不由任何人写」本身。</p>
+<p class="en-brief"><b>EN</b> In 1994 Karl Sims raised blocks-and-joints creatures in a computer, scored on forward swimming speed. Some winning solutions were deflating: the simulator computes motion in discrete time steps, that discretisation has a flaw, and creatures learned to twitch a small part rapidly and gain momentum out of nothing. Their scores were genuinely high. Asked to jump high, the cheapest solution was not to jump but to grow tall and topple over. None of that is the algorithm failing. It is doing exactly what it was told: finding the cheapest route to raising that number. You wanted walking; you wrote down centre-of-mass height; you got the latter. Here sits the deepest gap between artificial and natural evolution: in an algorithm a person writes the score, and in nature nobody does. Fitness is not a mark handed down from outside — it is the after-the-fact record of who left more descendants. There is no exam, so there is nothing to cheat. And the score moves: whether a tactic pays depends on what most others around you are doing (frequency dependence, from evolutionary game theory), and one side's improvement lowers the other's score (the Red Queen arms race). A clean demonstration of what a frozen score costs: in 2011 Lehman and Stanley set a maze whose exit sat at the end of a corridor you must first walk away from. Scored by remaining straight-line distance to the exit, search solved it 0 times out of 40, the whole population piling up behind the wall nearest the exit, because any step that walked away counted as regress. Replacing the score with novelty alone — reward whatever behaviour has not been seen before, ignore the exit entirely — solved it 39 times out of 40. That line runs straight into the field's unsolved problem. In 1991 Tom Ray wrote Tierra, a small world of self-replicating programs. He never wrote a rule calling for parasites; parasites appeared anyway, programs that dropped their own copy instructions and borrowed a neighbour's, followed by hosts that evaded them, followed by hyper-parasites feeding on the parasites. It is the closest an artificial system has come to nature. Yet such systems stall: diversity rises, then the population converges onto a few simpler, cheaper solutions and stops producing anything new. Earth's biosphere has not stalled in four billion years, and no artificial system has matched that. What is missing has no answer yet; some suspect it is precisely that nobody writes the score.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>梯度下降知道往哪走，演化只知道谁还在</h2>
+<p>把你放在浓雾里的一个山坡上，要往高处去，能看见的只有脚边一圈。</p>
+<p>第一种办法：用脚在四周试一圈，哪边是上坡就往那边迈一步，再试。今天训练 AI 模型用的就是这个办法，叫梯度下降——先把「输出错得多厉害」算成一个数，再算出每一个可调的旋钮往哪边转会让这个数变小一点，然后所有旋钮一起往那边挪一点点。关键在于它算得出方向。</p>
+<p>第二种办法：从你站的地方派出一千个人，各往一个随机方向走一步，回来报个高度；你朝报得高的那些人挪一点，再派一千个。这不需要知道哪边是上坡，只需要能比高低。演化跑的是第二种——而且连那个「你」都没有：没人负责汇总，站得高的自己多留下后代，这就是汇总。</p>
+<div class="fig">
+<svg aria-label="示意图：雾里上山的两种办法。左边一个人站在山坡上，用脚试出哪边是上坡，沿着坡向迈一步，标注为「算得出方向，一个就够」。右边同一个山坡上，一个点向五个随机方向各派出一小步，其中两步到了更高的位置、三步到了更低的位置，然后整体朝那两步的方向挪一点，标注为「算不出方向，只能比高低，一次要一千个」" role="img" viewbox="0 0 600 190" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar35c" markerheight="7.5" markerwidth="7.5" orient="auto" refx="6.6" refy="2.8"><path d="M0,0 L6.6,2.8 L0,5.6 z" fill="#d2a24c"></path></marker>
+<marker id="ar35d" markerheight="7" markerwidth="7" orient="auto" refx="6.2" refy="2.6"><path d="M0,0 L6.2,2.6 L0,5.2 z" fill="#5b7a68"></path></marker>
+</defs>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="16" y="16">办法一：算得出哪边是上坡</text>
+<path d="M22,156 C74,156 104,120 134,96 C166,70 214,52 274,46" fill="none" stroke="#3c6b52" stroke-width="1.7"></path>
+<circle cx="110" cy="116" fill="#7be0ab" r="4.2"></circle>
+<line marker-end="url(#ar35c)" stroke="#d2a24c" stroke-width="1.7" x1="116" x2="150" y1="112" y2="86"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="30" y="178">一个就够，每一步都往上</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="318" y="16">办法二：只能比高低</text>
+<path d="M324,156 C376,156 406,120 436,96 C468,70 516,52 576,46" fill="none" stroke="#3c6b52" stroke-width="1.7"></path>
+<circle cx="412" cy="116" fill="#7be0ab" r="4.2"></circle>
+<line marker-end="url(#ar35d)" stroke="#5b7a68" stroke-width="1.2" x1="410" x2="384" y1="120" y2="136"></line>
+<line marker-end="url(#ar35d)" stroke="#5b7a68" stroke-width="1.2" x1="414" x2="422" y1="122" y2="142"></line>
+<line marker-end="url(#ar35d)" stroke="#5b7a68" stroke-width="1.2" x1="408" x2="392" y1="112" y2="102"></line>
+<line marker-end="url(#ar35b)" stroke="#52c98a" stroke-width="1.6" x1="416" x2="440" y1="110" y2="92"></line>
+<line marker-end="url(#ar35b)" stroke="#52c98a" stroke-width="1.6" x1="418" x2="436" y1="116" y2="104"></line>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="9.5" x="446" y="88">这两步高了</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="352" y="112">低了</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="332" y="178">一次要一千个，绝大多数白走</text>
+</svg>
+<div class="cap">两种办法都在爬同一个坡。差别不在谁聪明，在能不能拿到「哪边是上坡」这条信息——拿不到就只能用数量换。</div>
+</div>
+<p>第二种真的能用。2017 年有一组人把它拿去训练控制策略：一千四百四十台机器并行，十分钟之内让一个物理模拟里的三维人形学会走路；在一批老式电子游戏上训练一小时，成绩和当时主流的那类「反复试、按结果给奖励」的学习方法可比。它能并行到这个规模，是因为机器之间只需交换两样极小的东西：一个能让对方生成出相同随机数的小整数，和一个分数。代价论文写明了：要跑的回合数比对照方法多好几倍，省下的是墙上的时间，不是总算力。它真正占优的场合只有两类：分数算不出方向（结果是个整数、是「过／不过」），以及地形长得像「分数是谁定的，决定了这台机器能走多远」那节里那个迷宫。</p>
+<p>生物这边缺的正好就是方向。没有任何机制能告诉一个种群哪边是上坡。它手上是另外三样东西：数量极大（你肠道里的细菌比地球上所有人加起来还多好几个数量级）、时间极长、后代从父母停下的地方接着开始——不归零。还有一条差别很少被提：机器上你可以存档、回滚、重跑同一段；演化没有存档，死了就是死了，路径依赖在这里是绝对的。</p>
+<p>最后一件最容易搞反的事。「演化是一种优化算法」这句话是把摹本套回原作。遗传算法本来就是照着生物学画的，所以它当然像。但原作里没有目标函数，没有要被最大化的量，也没有谁在优化。剩下的只有一句话：碰巧出现的变异里，让携带者留下更多后代的那些变多了。「优化」是我们事后套上去的框，框很好用——但别把它当成那个东西本身。</p>
+<p class="en-brief"><b>EN</b> Put yourself on a hillside in thick fog, wanting to go up, able to see only a metre around. Method one: feel the ground, find which way is uphill, step that way, repeat. This is how today's AI models are trained — gradient descent: turn "how wrong the output is" into a number, work out for every adjustable knob which way to turn it to make that number smaller, and nudge them all. The point is that it can compute a direction. Method two: send a thousand people one step each in random directions, have them report their height, shift towards those who reported high, send another thousand. This needs no uphill direction, only the ability to compare heights. Evolution runs the second — without even the "you": nobody aggregates, the ones standing higher simply leave more offspring, and that is the aggregation. The second really works. In 2017 a group used it to train control policies: 1,440 machines in parallel solved a simulated 3D humanoid's walking in under ten minutes, and an hour of training on a batch of old video games reached scores comparable to the mainstream try-and-reward learning methods of the day. It parallelises that far because machines exchange only two tiny things — a small integer that lets the other side generate identical random numbers, and a score. The paper states the cost plainly: several times more episodes than the comparison method. What is saved is wall-clock time, not total compute. The second method wins where no direction can be computed (the result is an integer, a pass/fail, the state of a finished simulation) and where the landscape resembles that maze. What biology lacks is exactly the direction: no mechanism tells a population which way is uphill. It holds three other things — enormous numbers (the bacteria in your gut outnumber all humans on Earth by orders of magnitude), enormous time, and offspring that start where their parents stopped rather than from zero. One difference is rarely raised: on a machine you can checkpoint, roll back and rerun a stretch. Evolution has no checkpoint; dead is dead, so path dependence here is absolute. And the thing most easily got backwards: calling evolution an optimisation algorithm maps the copy back onto the original. Genetic algorithms were drawn from biology, so of course they resemble it — but the original has no objective function, no quantity being maximised, and nobody optimising. What is left is one sentence: among variants that happened to arise, those whose carriers left more descendants became more common. "Optimisation" is a frame we fitted afterwards. It is a useful frame; it is not the thing.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 写作与这个学习站本身</b>：每期写完自己读一遍，「顺不顺」几乎是唯一的即时分数，而它最好刷：删掉最难讲的那节、把还在争论的地方写成确定的、把具体数字换成「研究表明」，三个动作都让它上升。可改的：换一个刷不动的判据——隔一天凭记忆复述，能说出几个具体实验、几个具体数字；顺但复述不出来，被刷的就是顺。停掉的动作：为了句子好读而删掉「这个目前还有争论」。</li>
+<li><b>② 投资与仓位</b>：每年年底复盘那几天，你会给去年赚钱的那几笔各配一个理由，而这些理由基本都是知道结局之后才写的。Thompson 那块芯片的教训直接适用：一个高分解实际用到的东西和你以为它用到的东西可能是两码事，分数本身不会告诉你差在哪。可改的：判断一笔盈利能不能重复，别看收益率，看这笔的理由里有几条是开仓前就写在纸上的。停掉的动作：给没有事前记录的已平仓交易写归因。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>育儿与教育 · 一门科目上长期卡住，越练越熟练地卡在同一个地方</b>：有人在某一类题上练了很久，正确率不动，常见解释是不够努力或没天赋。可他手上的反馈几乎只有一种：「离正确答案还差多少」。跑的是「分数是谁定的，决定了这台机器能走多远」那节里迷宫的那条机制：按离目标的距离给分，会把整群搜索按在离目标最近的那条死路上，因为要走通必须先有几步把分数弄低。由此能推出一个原本看不出的结论：<b>停滞能持续多久，取决于反馈允不允许暂时变差；反馈越密、越只报离答案的远近，停滞就越稳定——「练得更多」不改变它，改变它的是有一段时间的评价不按离答案的远近算。</b><b>但这里不成立</b>：迷宫里那个搜索不知道出口在哪，只能撞；学生和老师都知道正确答案长什么样，所以人这边有一条搜索没有的近路——可以直接被告知「这条走不通，先往回」。演化没有这条近路，这正是它要烧掉那么多代的原因。</li>
+<li><b>文学艺术 · 博尔赫斯那座图书馆装着所有可能的书，却一本有用的都给不出</b>：《巴别图书馆》里那座馆藏是穷尽的：所有字母的所有排列都在架上，你要的每一本都在里面，连它的每一版错字本也在。而馆里的人一辈子翻不到一句通顺的话。跑的是「筛出来的东西不欠你一个解释」那节的机制：可能形态的空间大到穷举毫无意义，能产出东西的从来不是「进得去这个空间」，而是「有一条每一步都还站得住的小步路径」。由此能推出一个原本看不出的结论：<b>一部作品或一个物种的难处不在最终形态有多难想到，而在中间每一稿都必须自己立得住；真正的约束是可行的中间态有多少，不是终点有多远。</b><b>但这里不成立</b>：写字的人可以整章删掉、回到三稿之前。演化没有这个动作，上一代已经不在了——文学里最常用的「推翻重来」在生物身上找不到对应物，这正好解释了为什么生物体里留着那么多绕远路的结构，比如那个盲点。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>遗传算法既然是照着演化设计的，为什么不能反过来拿它解释演化？</summary>
+<div>因为那是用摹本解释原作，会把摹本里为了好算而加的东西倒灌回去。算法里有人写的目标函数、固定的一代、明确的终止条件，这三样自然界都没有；听起来讲通了，其实你讲的是那个程序。反过来可以：拿演化解释算法为什么给出怪答案，不循环。</div>
+</details>
+<details><summary>「开放式演化」到底想要什么？怎么算做到了？</summary>
+<div>想要的是「一直出新东西，而且新东西会给别的东西造出新问题」。难点在判据：多样性上升不算，很快就饱和；复杂度上升也不够，因为怎么定义复杂度会直接决定结论。比较被接受的判据看「新出现的东西有没有改变后面能出现什么」——寄生者出现之后宿主的问题变了，这才是往外长。</div>
+</details>
+<details><summary>自然界没有目标函数，那说一个性状「更适应」还有什么意义？</summary>
+<div>有意义，但它是比较句不是评价句：在这套具体条件下，带着这个变异的个体平均留下更多后代。它不说这个性状更好、更高级，也不能脱离条件成立——条件一换，同一个性状可能立刻变成拖累。把「更适应」听成「更优秀」，是这门学科最贵的误读。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evolutionary_computation" rel="noopener" target="_blank">演化计算词条</a> · <a href="https://en.wikipedia.org/wiki/Genetic_algorithm" rel="noopener" target="_blank">遗传算法词条</a> · <a href="https://en.wikipedia.org/wiki/Gradient_descent" rel="noopener" target="_blank">梯度下降词条</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Evolved_antenna" rel="noopener" target="_blank">演化天线词条</a> · <a href="https://dl.acm.org/doi/10.1162/EVCO_a_00005" rel="noopener" target="_blank">Hornby 等：演化出来的 X 波段天线</a></li>
+<li><a href="https://link.springer.com/chapter/10.1007/3-540-63173-9_61" rel="noopener" target="_blank">Thompson 1997：与物理纠缠在一起的演化电路</a> · <a href="https://en.wikipedia.org/wiki/Evolvable_hardware" rel="noopener" target="_blank">可演化硬件词条</a></li>
+<li><a href="https://stars.library.ucf.edu/facultybib2010/1530/" rel="noopener" target="_blank">Lehman &amp; Stanley 2011：放弃目标——只靠寻找新异来演化</a></li>
+<li><a href="https://arxiv.org/abs/1803.03453" rel="noopener" target="_blank">Lehman 等：数字演化令人意外的创造力</a> · <a href="https://en.wikipedia.org/wiki/Karl_Sims" rel="noopener" target="_blank">Karl Sims 词条</a></li>
+<li><a href="https://arxiv.org/abs/1703.03864" rel="noopener" target="_blank">Salimans 等 2017：演化策略可以替代强化学习</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tierra_(computer_simulation)" rel="noopener" target="_blank">Tierra 词条</a> · <a href="https://alife.org/encyclopedia/digital-evolution/avida/" rel="noopener" target="_blank">Avida 平台介绍</a> · <a href="https://arxiv.org/abs/nlin/0210027" rel="noopener" target="_blank">Standish：开放式人工演化综述</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 35: Evolution and AI</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 35 · PHASE E BIG QUESTIONS AND APPLICATIONS</div>
+<h1>Evolution and AI</h1>
+<h2>Move the sieve into a computer and you can finally see what evolution lacks, and what holds it up instead</h2>
+<div class="meta">2026-09-28 · BigCat</div>
+<div class="pitch">An antenna that has flown in space looks like a length of wire someone crumpled and pulled straight again. Nobody drew it, and nobody can fully say why it works.</div>
+</header>
+<div class="intro">
+<p>Most antennas you have seen are tidy: symmetrical, square-cornered, one glance and you can tell which part does what.</p>
+<p>That one is not. Not one of its bends looks like it has a reason, as if somebody had twisted it out of shape. It really did work in orbit.</p>
+<p>Move evolution into a computer and two things happen: it starts handing you answers you cannot read, and the side of itself it keeps hidden out in nature comes into view.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>What the sieve hands you owes you no explanation</h2>
+<p>That antenna went up on a NASA mission called Space Technology 5, launched in March 2006 and working until late June. The method was plain: let the computer change the shape at random, score each version's performance, keep the ones that scored well, change those. Two different algorithms each produced a best design; both were fabricated and measured, and both beat the version the contractor had designed by hand.</p>
+<p>This machine needs only three things: something that can be altered, alterations that carry to the next version, and a rule deciding who stays. Variation, heredity, differential reproduction — exactly the three conditions behind the logic of natural selection, not one more and not one fewer. Swap the medium from carbon to bits and it still turns.</p>
+<p>Once it is turning you notice it has a temperament. In 1996 Adrian Thompson at the University of Sussex used the same method on a chip whose internal wiring can be rewritten on the spot, asking for something simple: hold the output high for a one-kilohertz tone, low for a ten-kilohertz one. He fenced off a corner of one hundred logic cells for it. The circuit that came out used thirty-seven of them, had no clock, and wired most of them into loops that curl back on themselves. The strangest part: five cells had no path at all to the output and should have done nothing according to the circuit diagram, yet switching off any one of them broke the whole thing. It was using physical properties of that particular piece of silicon, properties that sit in nobody's circuit model. Loaded onto another chip of the same type, it no longer worked reliably.</p>
+<p>The sieve scores outcomes, not reasons. So what it hands in may have drawn on resources you never meant to offer, and it will not tell you which. Biology carries this signature everywhere: the blind spot in your eye is there because the optic nerve exits in front of the light-sensing cells, punching a hole through the retina. That is not a better way to wire an eye. It is the first way that happened to work in that lineage, with every later step forced to build on top of it — the path dependence from the issue on adaptation and constraint. Octopus eyes were assembled in a separate, independent go, run the nerve behind, and have no such hole.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Who writes the score decides how far this machine can go</h2>
+<p>In 1994 Karl Sims raised a batch of creatures made of blocks and joints inside a computer, scored on how fast they swam forward. Some of the solutions were deflating. The simulator computes motion by chopping time into small steps, that chopping has a flaw, and some creatures learned that twitching one small part at high frequency conjures a little extra momentum out of nothing. Their scores were genuinely high.</p>
+<p>Another task was jumping high. The cheapest solution was not to learn to jump but to grow very tall and topple over.</p>
+<p>None of this is the algorithm going wrong. It did with great precision what it was told to do: among all the routes that make that number go up, find the cheapest. You wanted walking; what you wrote down was how far the centre of mass gets off the ground; what you got was the latter.</p>
+<p>Here sits the deepest difference between artificial and natural evolution: in an algorithm a person writes the score, and out in nature nobody writes one. Fitness in biology is not a mark handed down from outside — it is the after-the-fact record of who left more descendants. There is no exam paper, so there is no such thing as cheating. And the score moves on its own: whether a given tactic pays depends on what most of the individuals around you are doing (the frequency dependence from the issue on evolutionary games), and one side's slight improvement drops the other side's score (the arms race from the issue on the Red Queen).</p>
+<p>There is a very clean demonstration of what a frozen score costs. In 2011 Lehman and Stanley laid out a maze whose exit sits at the end of a corridor you have to walk away from first. Scored on how much straight-line distance to the exit is left, search solved it zero times out of forty: the whole population piled up behind the wall nearest the exit, because any step that went further away counted as regress. They swapped the score for one that ignores the exit entirely and rewards only behaviour that has not been seen before — and it got through thirty-nine times out of forty.</p>
+<div class="fig">
+<svg aria-label="Diagram: the same maze under two scoring rules. On the left, scored on remaining distance to the exit, searchers head straight from the start towards the exit and all jam up behind the middle wall, the position closest to the exit, solving it zero times out of forty. On the right, scored only on whether a behaviour has not been seen before, the route first runs along the bottom to the gap below the wall and then turns up to the exit, solving it thirty-nine times out of forty" role="img" viewbox="0 0 600 196" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar35a" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker>
+<marker id="ar35b" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#52c98a"></path></marker>
+</defs>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="16" y="16">Scored on distance left to the exit</text>
+<rect fill="none" height="120" stroke="#24382c" stroke-width="1.4" width="238" x="18" y="30"></rect>
+<line stroke="#3c6b52" stroke-width="3.4" x1="176" x2="176" y1="30" y2="112"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="146" y="126">wall</text>
+<circle cx="46" cy="130" fill="#7be0ab" r="4"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="32" y="146">start</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="13" x="212" y="60">★</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="204" y="76">exit</text>
+<line marker-end="url(#ar35a)" stroke="#d2a24c" stroke-width="1.5" x1="54" x2="166" y1="124" y2="70"></line>
+<circle cx="170" cy="62" fill="#d2a24c" r="2.6"></circle>
+<circle cx="169" cy="74" fill="#d2a24c" r="2.6"></circle>
+<circle cx="170" cy="86" fill="#d2a24c" r="2.6"></circle>
+<circle cx="168" cy="98" fill="#d2a24c" r="2.6"></circle>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="24" y="170">solved 0 times out of 40</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="318" y="16">Scored only on &quot;never seen before&quot;</text>
+<rect fill="none" height="120" stroke="#24382c" stroke-width="1.4" width="238" x="320" y="30"></rect>
+<line stroke="#3c6b52" stroke-width="3.4" x1="478" x2="478" y1="30" y2="112"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="448" y="126">wall</text>
+<circle cx="348" cy="130" fill="#7be0ab" r="4"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="334" y="146">start</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="13" x="514" y="60">★</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="506" y="76">exit</text>
+<polyline fill="none" points="356,134 470,138 506,132 512,84" stroke="#52c98a" stroke-width="1.5"></polyline>
+<line marker-end="url(#ar35b)" stroke="#52c98a" stroke-width="1.5" x1="512" x2="514" y1="84" y2="68"></line>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="10" x="326" y="170">solved 39 times out of 40</text>
+</svg>
+<div class="cap">Same maze, same algorithm, only the scoring changed. The score on the left counts every step that must get worse first as regress, so the whole population parks itself, reliably, in the dead end nearest the goal.</div>
+</div>
+<p>That line runs straight into the problem this field still has not solved. In 1991 Tom Ray wrote a small world called Tierra with self-replicating programs living in it. He never wrote any rule calling for parasites; parasites showed up on their own. Some programs stopped carrying their own copying instructions and borrowed a neighbour's; then hosts appeared that could dodge them; then a further layer appeared that fed on the parasites. It is the closest an artificial system has come to nature. Yet systems of this kind all stall when you run them long enough: diversity climbs, then the population converges on a few simpler, cheaper solutions and stops producing anything new. Earth's biosphere has not stalled in four billion years, and no artificial system has matched that. What is missing has no answer yet; some suspect it is exactly the fact that nobody writes the score.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Gradient descent knows which way to go, evolution only knows who is still here</h2>
+<p>Put yourself on a hillside in thick fog. You want to get higher, and all you can see is the ground around your feet.</p>
+<p>Method one: feel around with your foot, find the direction that goes up, take a step that way, feel again. This is how AI models are trained today, and it is called gradient descent — turn "how badly the output is wrong" into a number, work out for every adjustable knob which way to turn it to make that number a little smaller, then nudge all the knobs that way at once. The point is that it can compute a direction.</p>
+<p>Method two: from where you stand, send out a thousand people, each one step in a random direction, and have them report a height; you shift a little towards the ones who reported high, then send another thousand. This needs no knowledge of which way is up, only the ability to compare heights. Evolution runs the second — and it does not even have the "you": nobody aggregates, the ones standing higher simply leave more offspring, and that is the aggregation.</p>
+<div class="fig">
+<svg aria-label="Diagram: two ways up a hill in fog. On the left one walker on the slope feels out which way is uphill and takes a step along it, labelled one is enough because every step goes up. On the right, on the same slope, a point sends out five short steps in random directions, two of which land higher and three lower, and the whole thing then shifts a little towards those two, labelled a thousand at a time with most of them wasted" role="img" viewbox="0 0 600 190" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar35c" markerheight="7.5" markerwidth="7.5" orient="auto" refx="6.6" refy="2.8"><path d="M0,0 L6.6,2.8 L0,5.6 z" fill="#d2a24c"></path></marker>
+<marker id="ar35d" markerheight="7" markerwidth="7" orient="auto" refx="6.2" refy="2.6"><path d="M0,0 L6.2,2.6 L0,5.2 z" fill="#5b7a68"></path></marker>
+</defs>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="16" y="16">Method one: the uphill direction can be computed</text>
+<path d="M22,156 C74,156 104,120 134,96 C166,70 214,52 274,46" fill="none" stroke="#3c6b52" stroke-width="1.7"></path>
+<circle cx="110" cy="116" fill="#7be0ab" r="4.2"></circle>
+<line marker-end="url(#ar35c)" stroke="#d2a24c" stroke-width="1.7" x1="116" x2="150" y1="112" y2="86"></line>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="24" y="178">one is enough, every step goes up</text>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="318" y="16">Method two: heights can only be compared</text>
+<path d="M324,156 C376,156 406,120 436,96 C468,70 516,52 576,46" fill="none" stroke="#3c6b52" stroke-width="1.7"></path>
+<circle cx="412" cy="116" fill="#7be0ab" r="4.2"></circle>
+<line marker-end="url(#ar35d)" stroke="#5b7a68" stroke-width="1.2" x1="410" x2="384" y1="120" y2="136"></line>
+<line marker-end="url(#ar35d)" stroke="#5b7a68" stroke-width="1.2" x1="414" x2="422" y1="122" y2="142"></line>
+<line marker-end="url(#ar35d)" stroke="#5b7a68" stroke-width="1.2" x1="408" x2="392" y1="112" y2="102"></line>
+<line marker-end="url(#ar35b)" stroke="#52c98a" stroke-width="1.6" x1="416" x2="440" y1="110" y2="92"></line>
+<line marker-end="url(#ar35b)" stroke="#52c98a" stroke-width="1.6" x1="418" x2="436" y1="116" y2="104"></line>
+<text fill="#a8dcbd" font-family="Georgia,serif" font-size="9.5" x="446" y="88">these two went up</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="344" y="112">went down</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="326" y="178">a thousand at a time, most of them wasted</text>
+</svg>
+<div class="cap">Both methods climb the same slope. The difference is not cleverness but whether the information "which way is up" is available — and when it is not, the only currency left is numbers.</div>
+</div>
+<p>The second method really does work. In 2017 a group used it to train control policies: 1,440 machines in parallel had a simulated three-dimensional humanoid walking in under ten minutes, and an hour of training on a batch of old video games reached scores comparable to the mainstream try-repeatedly-and-reward-by-outcome learning methods of the day. It parallelises that far because the machines only need to exchange two tiny things: a small integer that lets the other side generate the same random numbers, and a score. The paper states the cost plainly — it runs several times more episodes than the comparison method, so what is saved is wall-clock time, not total compute. It really wins in only two kinds of situation: when no direction can be computed from the score (the result is an integer, or a pass/fail), and when the landscape looks like that maze from the section on who writes the score.</p>
+<p>What biology lacks is precisely the direction. No mechanism can tell a population which way is uphill. What it holds instead is three other things: enormous numbers (the bacteria in your gut outnumber every human on Earth by several orders of magnitude), enormous time, and offspring that start from where their parents stopped rather than from zero. And one difference that rarely gets raised: on a machine you can checkpoint, roll back and rerun a stretch. Evolution has no checkpoint. Dead is dead, and path dependence here is absolute.</p>
+<p>One last thing that is easy to get backwards. Saying "evolution is a kind of optimisation algorithm" maps the copy back onto the original. Genetic algorithms were drawn from biology, so of course they resemble it. But the original has no objective function, no quantity being maximised, and nobody doing the optimising. What is left is one sentence: among the variants that happened to arise, the ones whose carriers left more descendants became more common. "Optimisation" is a frame we fitted afterwards. It is a very useful frame — just don't mistake it for the thing.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BIGCAT</h3>
+<ul>
+<li><b>① Writing, and this learning site itself</b>: after each issue you read it through once, and "does it read smoothly" is almost the only immediate score — and it is the easiest one in the whole set to game. Cut the section that is hardest to explain, write a disputed point as settled, replace a specific number with "studies show", and all three push it up. What to change: switch to a criterion that cannot be gamed — a day later, recount the page from memory and see how many specific experiments and specific numbers come out. Smooth but unrecountable means what got gamed was the smoothness. What to stop: deleting "this is still disputed" for the sake of a better sentence.</li>
+<li><b>② Investing and position sizing</b>: in those few days of year-end review you assign a reason to each of last year's winning trades, and nearly all of those reasons are written after the outcome is known. The lesson of Thompson's chip applies directly: what a high-scoring solution actually used and what you think it used can be two different things, and the score itself will not tell you where they differ. What to change: to judge whether a profit can be repeated, don't look at the return, look at how many of the reasons for that trade were on paper before the position was opened. What to stop: writing attributions for closed trades that have no record made in advance.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · CONNECTIONS ACROSS FIELDS</h3>
+<ul>
+<li><b>Parenting and education · stuck for a long time in one subject, getting steadily better at being stuck in the same place</b>: someone drills one class of problem for a long time and the accuracy does not move. The usual explanations are insufficient effort or no aptitude. But nearly all the feedback they hold is of one kind: how far the answer still is from correct. The mechanism running here is the maze one from the section on who writes the score: scoring by distance to the goal pins the whole population in the dead end nearest the goal, because getting through requires several steps that drive the score down first. From which follows a conclusion you would not otherwise see: <b>how long the plateau lasts depends on whether the feedback signal permits getting temporarily worse; the denser the feedback and the more exclusively it reports distance-to-answer, the more stable the plateau — "drill more" does not change it, and what changes it is a stretch of time in which the evaluation is not scored by distance to the answer.</b><b>Where this breaks down</b>: the search in that maze does not know where the exit is and can only bump into it, while the student and the teacher both know what the correct answer looks like. So people have a shortcut the search does not — being told directly that this route is a dead end and to walk back first. Evolution has no such shortcut, and that is exactly why it burns through so many generations.</li>
+<li><b>Literature and art · Borges's library holds every possible book and cannot give you one useful one</b>: the collection in "The Library of Babel" is exhaustive. Every permutation of every letter is on the shelves, so every book you want is in there, along with every version of it containing a typo — and the people in the library spend their lives without finding one coherent sentence. The mechanism is the one from the section on what the sieve hands you owing no explanation: the space of possible forms is so large that enumerating it is meaningless, and what produces anything is never "being able to enter the space" but "having a path of small steps in which every step still stands up". From which follows a conclusion you would not otherwise see: <b>the difficulty of a work, or of a species, is not how hard the final form is to think of but that every intermediate draft has to stand on its own; the real constraint is how many viable intermediates exist, not how far away the endpoint is.</b><b>Where this breaks down</b>: a writer can delete a whole chapter and go back to the state of three drafts ago. Evolution has no such move, because the previous generation is no longer there — literature's most-used manoeuvre, tearing it up and starting again, has no counterpart in a living body, which is exactly why bodies are full of structures that take the long way round, the blind spot among them.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>DIGGING DEEPER</h3>
+<details><summary>If genetic algorithms were designed after evolution, why can't they be used to explain evolution in return?</summary>
+<div>Because that explains the original by way of the copy, and it pours back in the things the copy added for computational convenience. An algorithm has a human-written objective function, a fixed generation, and a defined stopping condition, and nature has none of the three; it sounds as though you have explained something, but what you have explained is the program. The other direction is fine: using evolution to explain why an algorithm returns such strange answers is not circular.</div>
+</details>
+<details><summary>What does "open-ended evolution" actually want, and what would count as achieving it?</summary>
+<div>What it wants is "new things keep appearing, and the new things create new problems for other things". The hard part is the criterion. Rising diversity does not count, because it saturates quickly. Rising complexity is not enough either, because how you define complexity decides the conclusion outright. The more accepted criterion asks whether what newly appears changes what can appear afterwards — once parasites exist, the host's problem is a different problem, and that is growing outward.</div>
+</details>
+<details><summary>If nature has no objective function, does calling a trait "fitter" mean anything?</summary>
+<div>It does, but it is a comparative statement rather than an evaluative one: under this particular set of conditions, individuals carrying this variant leave more descendants on average. It does not say the trait is better or more advanced, and it does not hold independently of the conditions — change them and the same trait can become a liability immediately. Hearing "fitter" as "superior" is the most expensive misreading in the field.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evolutionary_computation" rel="noopener" target="_blank">Evolutionary computation (overview)</a> · <a href="https://en.wikipedia.org/wiki/Genetic_algorithm" rel="noopener" target="_blank">Genetic algorithm (overview)</a> · <a href="https://en.wikipedia.org/wiki/Gradient_descent" rel="noopener" target="_blank">Gradient descent (overview)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Evolved_antenna" rel="noopener" target="_blank">Evolved antenna (overview)</a> · <a href="https://dl.acm.org/doi/10.1162/EVCO_a_00005" rel="noopener" target="_blank">Hornby et al.: the evolved X-band antenna</a></li>
+<li><a href="https://link.springer.com/chapter/10.1007/3-540-63173-9_61" rel="noopener" target="_blank">Thompson 1997: an evolved circuit entwined with physics</a> · <a href="https://en.wikipedia.org/wiki/Evolvable_hardware" rel="noopener" target="_blank">Evolvable hardware (overview)</a></li>
+<li><a href="https://stars.library.ucf.edu/facultybib2010/1530/" rel="noopener" target="_blank">Lehman &amp; Stanley 2011: abandoning objectives, evolving through the search for novelty alone</a></li>
+<li><a href="https://arxiv.org/abs/1803.03453" rel="noopener" target="_blank">Lehman et al.: the surprising creativity of digital evolution</a> · <a href="https://en.wikipedia.org/wiki/Karl_Sims" rel="noopener" target="_blank">Karl Sims (overview)</a></li>
+<li><a href="https://arxiv.org/abs/1703.03864" rel="noopener" target="_blank">Salimans et al. 2017: evolution strategies as an alternative to reinforcement learning</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tierra_(computer_simulation)" rel="noopener" target="_blank">Tierra (overview)</a> · <a href="https://alife.org/encyclopedia/digital-evolution/avida/" rel="noopener" target="_blank">The Avida platform</a> · <a href="https://arxiv.org/abs/nlin/0210027" rel="noopener" target="_blank">Standish: open-ended artificial evolution</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
