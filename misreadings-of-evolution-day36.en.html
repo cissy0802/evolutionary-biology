@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 36: A Century of Misreadings</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 36 · PHASE E BIG QUESTIONS</div>
+<h1>A Century of Misreadings</h1>
+<h2>The version that is easiest to understand is usually the wrong one</h2>
+<div class="meta">2026-09-29 · BigCat</div>
+<div class="pitch">"Survival of the fittest" is not Darwin's phrase. A philosopher wrote it first; Darwin only took it into the fifth edition of the Origin — by which time what the world would do with those four words was no longer his to decide.</div>
+</header>
+<div class="intro">
+<p>Someone at dinner says "well, the strong survive, that's just nature." A sentence like that needs no explanation; everyone nods.</p>
+<p>But three judgements are packed inside it: that there exists a ladder running from low to high; that whoever sits lower deserves to be removed; and that the whole thing has a direction, and the direction is called progress. Not one of the three is in anything Darwin wrote.</p>
+<p>A theory gets misread this badly not because readers are careless. Quite the opposite — the misread version is easier to follow, easier to say, easier to use. The trouble is that it is also wronger, and wrong with consequences.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>The "progress" in "progressive evolution" was added later, by us</h2>
+<p>You have almost certainly seen the picture: a stooping ape on the far left, walking rightwards, back straightening step by step, until it becomes an upright human. It is on T-shirts, in adverts, on textbook covers.</p>
+<p>It has a definite source: a 1965 illustration in Time-Life's Early Man, by the painter Rudolph Zallinger, originally titled "The Road to Homo Sapiens". The original was a row of separate fossil reconstructions, laid out as a queue — and then the queue walked off on its own for sixty years.</p>
+<p>The queue implies three things, none of which holds: that each figure is what the previous one turned into; that further right means higher; that the road has a destination and we happen to be standing on it. The real shape is a branching bush — several kinds of hominin were alive at the same time, cousins rather than parents and children, and most of the branches ended partway up.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 246" role="img" aria-label="Side-by-side diagram. On the left, the familiar queue: five figures growing larger from a stooping ape to an upright human, with an arrow pointing right, labelled as reading like a ladder whose last figure is the destination. On the right, the actual shape: a bush branching upward from the base, with several branches ending partway and marked with crosses for extinction, and only a few reaching the dashed line at the top marked now, where everything alive today sits together.">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">The same fossils, drawn two ways</text>
+<text x="24" y="42" fill="#d2a24c" font-family="Georgia,serif" font-size="11.5">The one you have seen: a queue</text>
+<line x1="24" x2="264" y1="50" y2="50" stroke="#24382c" stroke-width="1"></line>
+<circle cx="44" cy="96" r="7" fill="#3c6b52"></circle>
+<circle cx="94" cy="93" r="8" fill="#43775b"></circle>
+<circle cx="146" cy="89" r="9" fill="#4a8465"></circle>
+<circle cx="200" cy="84" r="10" fill="#52c98a"></circle>
+<circle cx="256" cy="78" r="11" fill="#7be0ab"></circle>
+<defs><marker id="ar36a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<line x1="30" x2="272" y1="122" y2="122" stroke="#d2a24c" stroke-width="1.2" marker-end="url(#ar36a)"></line>
+<text x="24" y="150" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Reads as: further right means "higher",</text>
+<text x="24" y="168" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">and the last one is the destination</text>
+<text x="326" y="42" fill="#52c98a" font-family="Georgia,serif" font-size="11.5">What it is: a branching bush</text>
+<line x1="326" x2="578" y1="50" y2="50" stroke="#24382c" stroke-width="1"></line>
+<line x1="326" x2="578" y1="70" y2="70" stroke="#52c98a" stroke-dasharray="4 4" stroke-width="1.2"></line>
+<text x="326" y="64" fill="#52c98a" font-family="Georgia,serif" font-size="10">Now · everything alive today sits on this line</text>
+<path d="M452,196 L452,160 L392,124 L392,70" fill="none" stroke="#3c6b52" stroke-width="1.6"></path>
+<path d="M452,160 L512,126 L512,70" fill="none" stroke="#3c6b52" stroke-width="1.6"></path>
+<path d="M392,124 L344,100 L344,70" fill="none" stroke="#3c6b52" stroke-width="1.6"></path>
+<path d="M512,126 L556,102 L556,70" fill="none" stroke="#3c6b52" stroke-width="1.6"></path>
+<path d="M392,124 L420,104" fill="none" stroke="#2c4a3a" stroke-width="1.4"></path>
+<path d="M512,126 L484,106" fill="none" stroke="#2c4a3a" stroke-width="1.4"></path>
+<path d="M452,160 L418,142" fill="none" stroke="#2c4a3a" stroke-width="1.4"></path>
+<text x="414" y="101" fill="#8aa192" font-family="Georgia,serif" font-size="11">✕</text>
+<text x="478" y="103" fill="#8aa192" font-family="Georgia,serif" font-size="11">✕</text>
+<text x="410" y="140" fill="#8aa192" font-family="Georgia,serif" font-size="11">✕</text>
+<text x="326" y="214" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Crosses are branches that ended partway</text>
+</svg>
+<div class="cap">A branching bush cannot draw a ranking: every species alive today has been evolving for exactly as long, and they all stop on the same "now" line.</div>
+</div>
+<p>Darwin himself detested the ranking. In an 1837 notebook he wrote that it is absurd to talk of one animal as higher than another. Around 1845 he pencilled a reminder to himself in the margin of his copy of Vestiges of the Natural History of Creation — a bestseller of the day arguing that evolution is one long climb — never to say higher or lower.</p>
+<p>The hardest counterexamples are the organisms that went the other way. A tapeworm has no gut at all: it sits in its host's intestine and absorbs already-digested food straight through its body wall, and its ancestors had guts. Sacculina is a barnacle whose adult keeps no eyes, no limbs, not even a segmented body. Measured with a "steadily more complex" ruler, both are regressions; yet they come off the same machine as a giraffe's neck — variants turn up by chance, and the ones whose bearers leave more offspring stay. Sitting inside someone else's intestine, dropping an entire digestive system is a bargain.</p>
+<p>But surely it is true that the most complex organisms have become steadily more complex? That one is still argued over. Gould offered an explanation: life started pressed against a wall, since complexity cannot fall below zero, so even if every step were random there is only one direction to spread in, the average drifts upward, and no "trend" is needed to push it. The argument is unsettled, but a rising average is not every lineage rising.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>"In order to" is a habit even the professionals cannot drop</h2>
+<p>"A sunflower turns in order to catch the sun." "Trees make oxygen so that animals can breathe." Both sound unobjectionable. The second is false: oxygen is a waste product of photosynthesis and has nothing to do with whether animals need to breathe; Earth had oxygen long before anything breathed it.</p>
+<p>Kelemen and colleagues ran an experiment in 2013: eighty working scientists — chemists, geoscientists and physicists from universities like Harvard, Brown and MIT — judged a set of statements true or false, with sentences of exactly that kind mixed in. Given unlimited time they called such statements true about fifteen percent of the time; put under time pressure, with only seconds per item, it rose to nearly thirty, while their accuracy on control items held. This is not a knowledge problem — explaining the world by purpose is a default setting, and training covers it rather than removing it.</p>
+<p>Once "in order to" enters a sentence it smuggles in three things. Foresight: as if the variant knew it would be useful later. A beneficiary: "for the good of the species" is the most common version, and it is wrong — a trait is not kept because it helps the species; there is only one criterion, that the individuals carrying it leave more offspring who themselves go on to breed. And necessity: as if the thing had to happen, rather than happening not to die out.</p>
+<p>Biologists use this shorthand daily, and that is fine, provided it can be cashed out on demand. Pittendrigh coined the word teleonomy in the 1950s — read it as "an imitation of purpose" — meaning that the appearance of purpose is an output of selection, not its cause. The test is concrete: rewrite the sentence in the form "this variant appeared, and the individuals carrying it left more offspring". If it rewrites, the shorthand is safe; if it does not, it is still an unredeemed promise.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 214" role="img" aria-label="Diagram: an amber box at the top holds a shorthand sentence with the words in order to, saying moths turned black in order to hide on soot-darkened bark. An arrow points down to four numbered green lines that rewrite it: a dark form already existed rarely and was first recorded in Manchester in 1848; soot blackened the bark so pale moths were easier for birds to spot; dark individuals therefore left more offspring; by the end of the century dark moths were the large majority there.">
+<defs><marker id="ar36b" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Cashing out an "in order to": if it rewrites into the four steps, the shorthand is safe</text>
+<rect x="24" y="30" width="552" height="30" rx="6" fill="rgba(210,162,76,0.14)" stroke="#d2a24c" stroke-width="1"></rect>
+<text x="38" y="50" fill="#e6c07b" font-family="Georgia,serif" font-size="11.5">Moths turned black in order to hide on the soot-darkened bark</text>
+<line x1="300" x2="300" y1="62" y2="80" stroke="#d2a24c" stroke-width="1.2" marker-end="url(#ar36b)"></line>
+<text x="38" y="106" fill="#d8e4da" font-family="Georgia,serif" font-size="10.5">1. A dark form already turned up now and then — first recorded in Manchester, 1848, and rare</text>
+<text x="38" y="130" fill="#d8e4da" font-family="Georgia,serif" font-size="10.5">2. Soot from the mills blackened the bark; pale moths resting on it were easier for birds to spot</text>
+<text x="38" y="154" fill="#d8e4da" font-family="Georgia,serif" font-size="10.5">3. So dark individuals left, on average, more offspring that went on to breed</text>
+<text x="38" y="178" fill="#d8e4da" font-family="Georgia,serif" font-size="10.5">4. By the end of the century dark moths were the large majority in that area</text>
+<line x1="26" x2="26" y1="92" y2="186" stroke="#52c98a" stroke-width="2"></line>
+<text x="38" y="204" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Not one "in order to" in the four steps</text>
+</svg>
+<div class="cap">The rewrite is three times as long, but every step can be checked on its own; the sentence above it cannot — it has made the outcome into the cause.</div>
+</div>
+<p>The rewrite also forces you to name a place. "Dark is better" carries nothing; "in that stretch of soot-blackened woodland, dark moths were harder for birds to spot" carries something. Later the soot was cleaned up, the bark went pale again, and the dark form fell back — the same trait, filtered in opposite directions within a century.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>"Fittest" is a bookkeeping word, not a compliment</h2>
+<p>Back to that sentence at dinner. "Survival of the fittest" was not written by Darwin. It was written by Herbert Spencer, an English philosopher, in Principles of Biology in 1864. Spencer's own account of evolution was published a few years before the Origin and turned on everything moving towards greater perfection — not the same thing at all. Darwin only took the phrase into the fifth edition of the Origin in 1869, on Wallace's urging, hoping to dodge the flavour of somebody doing the picking that clung to "natural selection". The trouble he got in exchange was larger.</p>
+<p>Because in biology "fitness" is not an adjective, it is an account: in one specific environment, over one specific stretch of time, how many offspring capable of breeding the carriers of a trait left on average. That is all of it, with no sense of better, stronger or more advanced attached. Where malaria is common, carrying one copy of the sickle-cell variant gives better resistance to it, carrying two brings severe anaemia; move the same variant somewhere without malaria and only the cost remains. Fitness travels with the environment, and when the environment shifts the ranking is redrawn.</p>
+<p>So the sentence "the strong survive, that's nature, therefore…" breaks at "therefore", whatever comes next. The break has a name in philosophy: Hume pointed out in the eighteenth century that no pile of statements about what is yields a statement about what ought to be, and Moore later named the move of equating "good" with some natural property the naturalistic fallacy.</p>
+<p>This is not a matter of taste. In the twentieth century people did step across that break. In the United States, from the 1920s to the mid-1970s, more than sixty thousand people (some counts approach seventy thousand) were sterilised without their consent; in 1927 the Supreme Court upheld such laws eight to one in Buck v. Bell. Among those selected, poor people, ethnic minorities, deaf and blind people and people labelled "feeble-minded" were represented out of all proportion. The justification offered was improving the quality of the population, and the vocabulary was borrowed from biology.</p>
+<p>The label "social Darwinism" is itself disputed: it was rarely used in the nineteenth century and became common only after Hofstadter's 1944 book, and historians have since pointed out that many of the people it covers — Spencer among them — did not rest their case on Darwin's theory at all. However that dispute settles, it leaves the previous paragraph untouched: borrowing biology's vocabulary to endorse a human arrangement is something that happened, and the cost was real.</p>
+<p>One more thing has to be said flatly. The great majority of human genetic variation sits inside any one population, and the portion between populations is small. So "that population is more advanced" does not need a moral argument to defeat it; it fails at the level of the data. And "more advanced", as above, has no definition in this field at all.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 SCENES · BIGCAT</h3>
+<ul>
+<li><b>1. Parenting and education</b> · In the days after a streaming decision or a set of midterm rankings comes out, the conversation at home slides from "which questions did you get wrong" to "is he actually cut out for this". The accounting from "fittest is a bookkeeping word" applies directly: a rank is a number measured under this paper and this marking scheme, and a different format redraws it. What can change is one sentence — replace "is he any good" with "which items was this ranked on, and which of them would look different in another format". If that can be answered there is a next step; if it cannot, "not cut out for this" had no content in the first place.</li>
+<li><b>2. Health and energy</b> · Two late nights in a row and the next day you badly want something sweet; the ready explanation is "my body is telling me to top up on energy". This has exactly the fault of "trees make oxygen so animals can breathe": it turns a recurring reaction into a piece of advice with intent behind it, so it can neither be wrong nor point to a next step. Swap in a checkable question — remove which condition and the reaction stops? Concretely: catch up on sleep for two nights and see whether the sugar craving is still there. The explanation becomes an observation you can actually make.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 CROSSING OVER · CONNECTIONS ACROSS FIELDS</h3>
+<ul>
+<li><b>History and war · After France fell in six weeks in 1940, a great deal of contemporary commentary wrote the defeat up as a nation or a system having "degenerated"</b>: the historian Marc Bloch was serving at the time, and his Strange Defeat gives another account — the failure was in the rhythm of command, a system that took decisions by the day running into one that took them by the hour. The mechanism is the one from "the progress in progressive evolution was added later, by us": rank the two sides by the outcome and the ranking is reverse-engineered from the ending, and a ranking derived that way carries no information about the next round. Which yields a conclusion you would not otherwise see: <b>"more advanced" carries information only when you can say in advance which measurable condition it wins on, and that condition still holds on a different battlefield; when you cannot, it is just a restatement of "they won".</b> <b>Where it does not hold</b>: natural selection needs the same sieve applied to many individuals over many generations before the statistics mean anything; a battle happens once, and "frequency" cannot even be defined. All that transfers is the single rule about not reverse-engineering rank from outcomes — treating nations as species and war as selection is precisely the metaphor that has gone wrong most often in the past century.</li>
+<li><b>Organisations and institutions · Reviewing a process that has been running for years, "it was designed that way for X" turns up almost every time, and nobody asks it for evidence</b>: the mechanism is the one from "in order to is a habit even the professionals cannot drop" — purpose language turns what survived into what was designed, skipping the filtering step in between. Cashing it out takes a fixed form: other versions really did exist, and they failed because of X. Which yields a conclusion you would not otherwise see: <b>a "for X" that cannot name the other versions is an admission that nobody knows what this process has been blocking; when you assess the risk of removing it, the real uncertainty is not in the process but in the fact that the memory is gone.</b> <b>Where it does not hold</b>: biology keeps no meeting minutes, so "in order to" can only ever be shorthand there; an organisation really did have designers, and the archive can sometimes be retrieved. Which hands you a clean test — whoever can produce the original document has earned the words "for X"; whoever cannot is saying the same kind of thing as "the tapeworm dropped its gut in order to become a parasite".</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>GOING DEEPER</h3>
+<details><summary>If evolution has no direction, does that mean anything at all can happen?</summary>
+<div>No. The constraints are hard: physics, the developmental process, and the pile of historical baggage inherited from ancestors are all busy cutting off possible paths. The example from the issue on convergent evolution — image-forming eyes appearing independently in unrelated groups many times over — shows that some solutions get found again and again, so predictability is real. "No direction" means no predetermined endpoint and no ladder, not no regularities.</div>
+</details>
+<details><summary>Biologists write "in order to" themselves, so who is this rule actually for?</summary>
+<div>It is about whether the sentence can be cashed out, not about which words get used. When someone inside the field writes "this structure is there to shed heat", a whole set of unpackable claims follows in their head: where the variant came from, under what conditions it was filtered, how large the difference in offspring was. A reader outside the field gets a designer with intentions instead. So the standard is not what the sentence looks like, but whether questions about it can be answered.</div>
+</details>
+<details><summary>If "survival of the fittest" yields no "ought", what use is evolution to anyone's life?</summary>
+<div>It is good at answering "what will happen": whether resistance will arrive, under what conditions a rule starts to fail, what a trait costs once the environment has changed. Anything that sounds like advice comes from somewhere else — ethics, law, your own trade-offs. Keeping the two apart makes the field more useful, not less.</div>
+</details>
+</div>
+<div class="refs">
+<h3>FURTHER READING</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/March_of_Progress" target="_blank" rel="noopener">The "Road to Homo Sapiens" illustration</a> · <a href="https://en.wikipedia.org/wiki/Great_chain_of_being" target="_blank" rel="noopener">Great chain of being</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Orthogenesis" target="_blank" rel="noopener">Orthogenesis</a> · <a href="https://en.wikipedia.org/wiki/Full_House_(book)" target="_blank" rel="noopener">Gould, Full House</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cestoda" target="_blank" rel="noopener">Tapeworms</a> · <a href="https://en.wikipedia.org/wiki/Sacculina" target="_blank" rel="noopener">Sacculina</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/23067062/" target="_blank" rel="noopener">Kelemen et al. 2013: teleological tendencies in working scientists</a> · <a href="https://en.wikipedia.org/wiki/Teleonomy" target="_blank" rel="noopener">Teleonomy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Teleology_in_biology" target="_blank" rel="noopener">Teleology in biology</a> · <a href="https://en.wikipedia.org/wiki/Peppered_moth_evolution" target="_blank" rel="noopener">Peppered moth evolution</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Survival_of_the_fittest" target="_blank" rel="noopener">Survival of the fittest</a> · <a href="https://www.dianebpaul.com/uploads/2/3/2/9/23295024/selection_of_survival_of_fittest.pdf" target="_blank" rel="noopener">Paul: how the phrase was selected</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Social_Darwinism" target="_blank" rel="noopener">Social Darwinism</a> · <a href="https://www.princeton.edu/~tleonard/papers/myth.pdf" target="_blank" rel="noopener">Leonard: origins of the myth</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Buck_v._Bell" target="_blank" rel="noopener">Buck v. Bell</a> · <a href="https://en.wikipedia.org/wiki/Is%E2%80%93ought_problem" target="_blank" rel="noopener">The is-ought problem</a> · <a href="https://en.wikipedia.org/wiki/Naturalistic_fallacy" target="_blank" rel="noopener">Naturalistic fallacy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Human_genetic_variation" target="_blank" rel="noopener">Human genetic variation</a> · <a href="https://en.wikipedia.org/wiki/Strange_Defeat" target="_blank" rel="noopener">Marc Bloch, Strange Defeat</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
