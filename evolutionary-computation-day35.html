@@ -64,8 +64,8 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <div class="container">
 <header>
 <div class="kicker">DAY 35 · PHASE E 大问题与应用</div>
-<h1>演化计算与 AI</h1>
-<h2>把筛子搬进计算机之后，才看清演化少了什么、又靠什么撑住</h2>
+<h1 data-tts="96251a738474e5ef">演化计算与 AI</h1>
+<h2 data-tts="dc3bf99d87bd4561">把筛子搬进计算机之后，才看清演化少了什么、又靠什么撑住</h2>
 <div class="meta">2026-09-28 · BigCat</div>
 <div class="pitch">有一根上过太空的天线，形状像一段被反复揉过又拉开的铁丝。没有人画过它，也没有人能完整说清它为什么好用。</div>
 </header>
@@ -76,7 +76,7 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </div>
 <div class="section">
 <span class="num">// 01</span>
-<h2>筛出来的东西不欠你一个解释</h2>
+<h2 data-tts="c4ec072c53ca27da">筛出来的东西不欠你一个解释</h2>
 <p>那根天线是美国航天局一次叫「空间技术 5 号」的任务带上去的，2006 年 3 月发射，工作到 6 月底。做法很朴素：让计算机随机改形状，每改一版就算一下性能，留下算得好的那些，在这些上面接着改。两套算法各自跑出一个最好的，做成实物实测，都比承包商手工设计的那版强。</p>
 <p>这台机器要的东西只有三样：一个能随便改的东西、改动能传给下一版、一个决定谁留下的判据。变异、遗传、差异繁殖——自然选择的逻辑那期说的三个条件，一条没多一条没少。介质从碳换成比特，机器照样转。</p>
 <p>转起来之后你会发现它有个脾气。1996 年英国萨塞克斯大学的 Adrian Thompson 用同一套办法，在一块可以现场重新改内部接线的芯片上演化电路，要求很简单：听到一千赫兹的音就输出高电平，一万赫兹就输出低。他划出一百个逻辑单元的一角给它用。跑出来的电路只用了三十七个，没有时钟，大部分接成互相绕回去的环。最怪的是有五个单元根本没有通路连到输出，按电路图不该起作用，可你关掉任何一个，整个电路就不灵了。它在利用那块硅片自身的物理性质，而这些性质不在任何人的电路模型里。把同一份配置装到同型号的另一块芯片上，它就不可靠了。</p>
@@ -85,7 +85,7 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </div>
 <div class="section">
 <span class="num">// 02</span>
-<h2>分数是谁定的，决定了这台机器能走多远</h2>
+<h2 data-tts="c876597b0af7c86c">分数是谁定的，决定了这台机器能走多远</h2>
 <p>1994 年 Karl Sims 在计算机里养了一批由方块和关节拼成的东西，按「往前游得多快」给分。有几种解法很扫兴：模拟器算运动时把时间切成一小步一小步，这个切法有缺陷，于是有些生物学会了让身上一个小零件高频抖动，凭空多出一点动量。分数是真高的。</p>
 <p>另一个任务是跳得高。最省事的解不是学会跳，而是长得很高然后倒下去。</p>
 <p>这些都不是算法出错。它极其准确地做了你让它做的事：在所有能让那个数上升的路里找最便宜的那条。你想要的是「会走路」，你写下来的是「重心离地多高」，它给你的是后者。</p>
@@ -130,7 +130,7 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </div>
 <div class="section">
 <span class="num">// 03</span>
-<h2>梯度下降知道往哪走，演化只知道谁还在</h2>
+<h2 data-tts="d4cff031932552ed">梯度下降知道往哪走，演化只知道谁还在</h2>
 <p>把你放在浓雾里的一个山坡上，要往高处去，能看见的只有脚边一圈。</p>
 <p>第一种办法：用脚在四周试一圈，哪边是上坡就往那边迈一步，再试。今天训练 AI 模型用的就是这个办法，叫梯度下降——先把「输出错得多厉害」算成一个数，再算出每一个可调的旋钮往哪边转会让这个数变小一点，然后所有旋钮一起往那边挪一点点。关键在于它算得出方向。</p>
 <p>第二种办法：从你站的地方派出一千个人，各往一个随机方向走一步，回来报个高度；你朝报得高的那些人挪一点，再派一千个。这不需要知道哪边是上坡，只需要能比高低。演化跑的是第二种——而且连那个「你」都没有：没人负责汇总，站得高的自己多留下后代，这就是汇总。</p>
@@ -165,21 +165,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <p class="en-brief"><b>EN</b> Put yourself on a hillside in thick fog, wanting to go up, able to see only a metre around. Method one: feel the ground, find which way is uphill, step that way, repeat. This is how today's AI models are trained — gradient descent: turn "how wrong the output is" into a number, work out for every adjustable knob which way to turn it to make that number smaller, and nudge them all. The point is that it can compute a direction. Method two: send a thousand people one step each in random directions, have them report their height, shift towards those who reported high, send another thousand. This needs no uphill direction, only the ability to compare heights. Evolution runs the second — without even the "you": nobody aggregates, the ones standing higher simply leave more offspring, and that is the aggregation. The second really works. In 2017 a group used it to train control policies: 1,440 machines in parallel solved a simulated 3D humanoid's walking in under ten minutes, and an hour of training on a batch of old video games reached scores comparable to the mainstream try-and-reward learning methods of the day. It parallelises that far because machines exchange only two tiny things — a small integer that lets the other side generate identical random numbers, and a score. The paper states the cost plainly: several times more episodes than the comparison method. What is saved is wall-clock time, not total compute. The second method wins where no direction can be computed (the result is an integer, a pass/fail, the state of a finished simulation) and where the landscape resembles that maze. What biology lacks is exactly the direction: no mechanism tells a population which way is uphill. It holds three other things — enormous numbers (the bacteria in your gut outnumber all humans on Earth by orders of magnitude), enormous time, and offspring that start where their parents stopped rather than from zero. One difference is rarely raised: on a machine you can checkpoint, roll back and rerun a stretch. Evolution has no checkpoint; dead is dead, so path dependence here is absolute. And the thing most easily got backwards: calling evolution an optimisation algorithm maps the copy back onto the original. Genetic algorithms were drawn from biology, so of course they resemble it — but the original has no objective function, no quantity being maximised, and nobody optimising. What is left is one sentence: among variants that happened to arise, those whose carriers left more descendants became more common. "Optimisation" is a frame we fitted afterwards. It is a useful frame; it is not the thing.</p>
 </div>
 <div class="bigcat">
-<h3>🎒 场景 · BigCat</h3>
+<h3 data-tts="f7259ad533c9b19d">🎒 场景 · BigCat</h3>
 <ul>
 <li><b>① 写作与这个学习站本身</b>：每期写完自己读一遍，「顺不顺」几乎是唯一的即时分数，而它最好刷：删掉最难讲的那节、把还在争论的地方写成确定的、把具体数字换成「研究表明」，三个动作都让它上升。可改的：换一个刷不动的判据——隔一天凭记忆复述，能说出几个具体实验、几个具体数字；顺但复述不出来，被刷的就是顺。停掉的动作：为了句子好读而删掉「这个目前还有争论」。</li>
 <li><b>② 投资与仓位</b>：每年年底复盘那几天，你会给去年赚钱的那几笔各配一个理由，而这些理由基本都是知道结局之后才写的。Thompson 那块芯片的教训直接适用：一个高分解实际用到的东西和你以为它用到的东西可能是两码事，分数本身不会告诉你差在哪。可改的：判断一笔盈利能不能重复，别看收益率，看这笔的理由里有几条是开仓前就写在纸上的。停掉的动作：给没有事前记录的已平仓交易写归因。</li>
 </ul>
 </div>
 <div class="crossx">
-<h3>🌀 越界 · 跨学科的联想</h3>
+<h3 data-tts="31b6f2251fa798cc">🌀 越界 · 跨学科的联想</h3>
 <ul>
 <li><b>育儿与教育 · 一门科目上长期卡住，越练越熟练地卡在同一个地方</b>：有人在某一类题上练了很久，正确率不动，常见解释是不够努力或没天赋。可他手上的反馈几乎只有一种：「离正确答案还差多少」。跑的是「分数是谁定的，决定了这台机器能走多远」那节里迷宫的那条机制：按离目标的距离给分，会把整群搜索按在离目标最近的那条死路上，因为要走通必须先有几步把分数弄低。由此能推出一个原本看不出的结论：<b>停滞能持续多久，取决于反馈允不允许暂时变差；反馈越密、越只报离答案的远近，停滞就越稳定——「练得更多」不改变它，改变它的是有一段时间的评价不按离答案的远近算。</b><b>但这里不成立</b>：迷宫里那个搜索不知道出口在哪，只能撞；学生和老师都知道正确答案长什么样，所以人这边有一条搜索没有的近路——可以直接被告知「这条走不通，先往回」。演化没有这条近路，这正是它要烧掉那么多代的原因。</li>
 <li><b>文学艺术 · 博尔赫斯那座图书馆装着所有可能的书，却一本有用的都给不出</b>：《巴别图书馆》里那座馆藏是穷尽的：所有字母的所有排列都在架上，你要的每一本都在里面，连它的每一版错字本也在。而馆里的人一辈子翻不到一句通顺的话。跑的是「筛出来的东西不欠你一个解释」那节的机制：可能形态的空间大到穷举毫无意义，能产出东西的从来不是「进得去这个空间」，而是「有一条每一步都还站得住的小步路径」。由此能推出一个原本看不出的结论：<b>一部作品或一个物种的难处不在最终形态有多难想到，而在中间每一稿都必须自己立得住；真正的约束是可行的中间态有多少，不是终点有多远。</b><b>但这里不成立</b>：写字的人可以整章删掉、回到三稿之前。演化没有这个动作，上一代已经不在了——文学里最常用的「推翻重来」在生物身上找不到对应物，这正好解释了为什么生物体里留着那么多绕远路的结构，比如那个盲点。</li>
 </ul>
 </div>
 <div class="thinking">
-<h3>深入思考</h3>
+<h3 data-tts="52378efdfe22fe8e">深入思考</h3>
 <details><summary>遗传算法既然是照着演化设计的，为什么不能反过来拿它解释演化？</summary>
 <div>因为那是用摹本解释原作，会把摹本里为了好算而加的东西倒灌回去。算法里有人写的目标函数、固定的一代、明确的终止条件，这三样自然界都没有；听起来讲通了，其实你讲的是那个程序。反过来可以：拿演化解释算法为什么给出怪答案，不循环。</div>
 </details>
@@ -191,7 +191,7 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </details>
 </div>
 <div class="refs">
-<h3>延伸阅读（均为英文）</h3>
+<h3 data-tts="8cfb4faa85603a1c">延伸阅读（均为英文）</h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Evolutionary_computation" rel="noopener" target="_blank">演化计算词条</a> · <a href="https://en.wikipedia.org/wiki/Genetic_algorithm" rel="noopener" target="_blank">遗传算法词条</a> · <a href="https://en.wikipedia.org/wiki/Gradient_descent" rel="noopener" target="_blank">梯度下降词条</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Evolved_antenna" rel="noopener" target="_blank">演化天线词条</a> · <a href="https://dl.acm.org/doi/10.1162/EVCO_a_00005" rel="noopener" target="_blank">Hornby 等：演化出来的 X 波段天线</a></li>
@@ -208,4 +208,4 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <script defer="" src="https://hub.cissychen.com/search.js"></script>
 <script defer="" src="https://hub.cissychen.com/index-button.js"></script>
 <script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
-</body></html>
+</body></head></html>
