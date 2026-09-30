@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 37：现代综合与扩展综合</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 37 · PHASE E 大问题与应用</div>
+<h1>现代综合与扩展综合</h1>
+<h2>吵了八十年的那场架，争的不是有没有，是算不算原因</h2>
+<div class="meta">2026-09-30 · BigCat</div>
+<div class="pitch">达尔文从来没把他的理论建在基因上——他不知道有基因这回事。「自然选择」和「遗传的规则」是两拨人各自搞出来的，而且这两拨人吵了将近二十年，双方都认定对方那套跟自己没关系。</div>
+</header>
+<div class="intro">
+<p>课本上那句「变异随机出现，选择留下有利的」，读起来像达尔文写下的第一行。它不是——它是 1918 到 1950 年之间，一群互相看不上的人被数学逼到同一张纸上之后才凑出来的。</p>
+<p>凑的过程里有一整块东西被留在外面：一个基因到底怎么长成一只眼睛。不是有人觉得它不重要，是因为不打开这个盒子也能算得很准。八十年后还在吵的那场架，争的就是这个盒子——而双方都不否认盒子里有东西。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>「综合」不是发现了新东西，是把两拨互不搭理的人算到了一张纸上</h2>
+<p>达尔文有个洞，他自己也知道。《物种起源》要成立得有三样东西：个体之间不一样、这些不一样能传给后代、不一样导致留下的后代数不同。第一和第三样他有成堆的观察，第二样他没有机制——1859 年没人知道遗传怎么运作。1867 年一位叫 Fleeming Jenkin 的工程师顺着这个洞戳了一刀：如果后代是父母的平均（当时多数人就这么想），每过一代差异就被抹掉一半，几代之后大家一样，选择没东西可挑。</p>
+<p>答案 1900 年就摆在桌上了：孟德尔被重新发现，遗传的单位是颗粒状的，不混合，差异不会被平均掉。结果它引出一场架，吵了近二十年。一边是数豌豆的：性状一类一类，皱的和圆的之间没有中间态。另一边是量身高的：他们到野外测真实群体，测到的全是连成一片的曲线。两边的数据都是真的——他们量的是同一台机器，一个量到了零件，一个量到了整机的读数。</p>
+<p>1918 年 Fisher 把这件事算清楚了：一个连续的性状若不由一个颗粒决定，而是许多颗粒各出一小份力，把小份加起来就是连成一片的钟形曲线。颗粒状的遗传和连续的性状不矛盾，后者正是前者数量一多之后的必然长相。这是数学论证，不是实验；实验上的确认要再往后很多年。</p>
+<p>接下来二十年，Fisher、Haldane、Wright 把「一个变异的比例在选择、突变、纯运气、迁入之下怎么变」算成了可推演的东西，Dobzhansky 1937 年把它带到野外的果蝇上，Huxley 1942 年给这一整套起了名字：现代的综合。被综合出来的是几句话：演化就是群体里各种变异的比例在变；变异出现的方向跟需要无关；能造出适应的定向力量只有选择；身体这辈子经历了什么，改不了它传下去的东西。（写进课本的版本比这些人主张的窄：Gould 说它到六十年代「硬化」成几乎只剩选择，这个判断本身也有争论。）</p>
+<p class="en-brief"><b>EN</b> Darwin had selection but no mechanism of inheritance, and in 1867 the engineer Fleeming Jenkin pointed out that if offspring average their parents, half the variation vanishes each generation, leaving selection nothing to work on. Mendel's rediscovery in 1900 supplied particulate inheritance, but set off an eighteen-year quarrel: Mendelians counted discrete classes in peas and thought big mutations made species, while biometricians measured wild populations and found only smooth curves. Fisher's 1918 paper showed that many particulate factors of small effect sum to exactly such a curve — a mathematical demonstration, empirically confirmed much later. Population genetics followed in the 1920s and 30s, Dobzhansky took it into the field in 1937, and Huxley named the package the Modern Synthesis in 1942. Gould argued in 1983 that the textbook version hardened into near-exclusive selectionism; that historical claim is itself disputed.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>一个框架最强的地方，往往是它让某些问题问不出来</h2>
+<p>你可以把一个城市的人口算得很准：哪个区在涨、二十年后什么分布。这件事完全不需要知道任何一栋房子是怎么盖起来的——正因为不碰盖房子那一层，人口这一层才算得清。现代综合干的是同一件事：「一个基因怎么长成一只眼睛」这个盒子它不打开，算比例变化不需要打开，算出来的还经得起检验——这是它的力量来源。</p>
+<p>代价在另一边。有一类问题在这套算式里不是被答错，是没有位置：为什么有些变异反复出现，有些从来不出现？默认答案是「突变像均匀撒下来的噪声」。演化发育生物学那期讲过这不成立——从苍蝇到人共用一套很老的开关基因，它决定了哪些形态根本不在可及范围里、哪些一改就是一大片跟着改。变异不是均匀的雨，它有形状。</p>
+<p>于是有一批人提出，四样东西该从「输入」搬进「原因」：<em>发育偏向</em>（身体能长成什么样本来就偏心）、<em>表型可塑性</em>（同一套基因在不同环境里做出不同的身体）、<em>生态位建造</em>（河狸把溪流改成池塘，后代继承的是这个被改过的环境）、<em>基因以外的继承</em>（甲基化标记、肠道微生物、学来的行为）。这套主张叫扩展演化综合。</p>
+<div class="fig">
+<svg role="img" aria-label="示意图：核心里是突变、选择、纯运气、迁入；外圈是被当成输入的发育偏向、可塑性、生态位建造、基因以外的继承，箭头指向核心" viewbox="0 0 600 272" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar37a" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="20" y="18">同一批现象，争的是把它们放在哪一圈</text>
+<rect x="24" y="36" width="356" height="216" rx="16" fill="#101a13" stroke="#24382c" stroke-width="1.2"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="38" y="54">外圈：当成输入或背景，不必打开</text>
+<rect x="120" y="112" width="168" height="80" rx="12" fill="#142a1d" stroke="#52c98a" stroke-width="1.4"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="140" y="136">核心：算式里出现的</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="140" y="156">突变 · 选择 · 纯运气 · 迁入</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="140" y="174">只算比例怎么变</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="40" y="80">发育偏向</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="262" y="80">表型可塑性</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="40" y="232">生态位建造</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="252" y="232">基因以外的继承</text>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="66" x2="116" y1="90" y2="122"></line>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="288" x2="252" y1="90" y2="110"></line>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="70" x2="116" y1="222" y2="186"></line>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="284" x2="250" y1="222" y2="196"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="404" y="98">扩展综合</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="9.5" x="404" y="118">该搬进核心，算原因</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="404" y="164">反对方</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="9.5" x="404" y="184">留在外圈当输入就够</text>
+</svg>
+<div class="cap">分歧只在一件事上：外圈那四样是选择作用的材料，还是方向本身的来源。</div>
+</div>
+<p>2014 年《自然》上有过一次同页对垒：Laland 等八人说需要改，而且很急；Wray、Hoekstra、Lenski 等七人说不需要，一切都好。争的不是那四样存不存在——反对方明确承认它们是真的。争的是把它们当选择作用的材料算进去，还是承认它们自己就携带方向。反对方的质问很硬：说它是原因，能多预测出什么？主张方的回击也硬：正因为一直当输入记账，「方向从哪来」才八十年没被正经问过。</p>
+<p>这场架没有判决，而且有一部分不是经验问题——「什么算一个原因」不会因为再做一个实验就有答案。顺便说清：双方都是达尔文主义者，谁也没说身体的经历能写回给后代（表观遗传与遗传的边界那期说过这条线画在哪）。</p>
+<p class="en-brief"><b>EN</b> Population genetics works precisely because it treats the route from gene to body as a box it need not open — the same reason city demographics can be projected without knowing how any house was built. The cost is that "why do some variants recur and others never appear" has no slot in the equations; mutation enters as uniform noise, which developmental biology has shown it is not. Proponents of an extended evolutionary synthesis want four things moved from input to cause: developmental bias, phenotypic plasticity, niche construction and inheritance outside the genes. A 2014 Nature point-counterpoint put Laland, Uller, Müller, Moczek and Jablonka against Wray, Hoekstra, Futuyma, Lenski, Mackay, Schluter and Strassmann. Both sides agree the four phenomena are real; the dispute is over whether calling them causes buys any prediction, and part of it is not empirical at all. Nobody on either side is reviving Lamarck.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>也许先变的是身体，基因只是后来才追上来</h2>
+<p>拿一包同样的种子，一半种在风口，一半种在墙根。风口那批长得矮、茎粗、根扎得深。基因一模一样——同一套基因在两种环境里做出了两种身体。这个能力叫表型可塑性，几乎所有生物都有，只是程度不同。</p>
+<p>课本上新形态出现的顺序是：一个突变碰巧出现，某个个体因此有了新样子，这样子让它留下更多后代，比例就升上去。可塑性优先说的顺序前半段反过来——环境先变，一大批个体同时做出同一个新样子，因为它们本来就带着这个反应能力。</p>
+<p>这个「先后」不是文字游戏：突变那条路上，新样子只长在一个个体身上，纯运气就能抹掉它；可塑性这条路上，它一出现就是一群，选择立刻有够用的材料。</p>
+<div class="fig">
+<svg role="img" aria-label="上下两行对比图。上行标准顺序：突变出现、一个个体有新样子、被筛、比例升上去。下行可塑性优先：环境先变、一大批个体同时做出新样子、选择微调门槛、遗传变化跟在后面" viewbox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar37b" markerheight="7" markerwidth="7" orient="auto" refx="6" refy="2.6"><path d="M0,0 L6,2.6 L0,5.2 z" fill="#8aa192"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="20" y="18">两种先后顺序</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="20" y="42">标准顺序</text>
+<rect x="20" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="76">一个突变</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="94">碰巧出现</text>
+<rect x="166" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="76">只有这一个</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="94">个体有新样子</text>
+<rect x="312" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="76">被筛：留下</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="94">更多后代</text>
+<rect x="458" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="85">比例升上去</text>
+<line marker-end="url(#ar37b)" stroke="#8aa192" stroke-width="1.1" x1="144" x2="162" y1="80" y2="80"></line>
+<line marker-end="url(#ar37b)" stroke="#8aa192" stroke-width="1.1" x1="290" x2="308" y1="80" y2="80"></line>
+<line marker-end="url(#ar37b)" stroke="#8aa192" stroke-width="1.1" x1="436" x2="454" y1="80" y2="80"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="20" y="136">可塑性优先</text>
+<rect x="20" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="182">环境先变了</text>
+<rect x="166" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="166">一大批个体</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="183">同时做出</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="200">同一个新样子</text>
+<rect x="312" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="166">选择微调</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="183">触发的门槛</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="200">和程度</text>
+<rect x="458" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="166">遗传上的变化</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="183">跟在后面</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="200">把它固定</text>
+<line marker-end="url(#ar37b)" stroke="#3c6b52" stroke-width="1.1" x1="144" x2="162" y1="177" y2="177"></line>
+<line marker-end="url(#ar37b)" stroke="#3c6b52" stroke-width="1.1" x1="290" x2="308" y1="177" y2="177"></line>
+<line marker-end="url(#ar37b)" stroke="#3c6b52" stroke-width="1.1" x1="436" x2="454" y1="177" y2="177"></line>
+</svg>
+<div class="cap">两条路的终点像，起点的处境差得远：一个个体的新样子容易被纯运气抹掉，一群的一开始就够选择动手。</div>
+</div>
+<p>有个案例做得比较干净。加州有一片约两万两千五百年前形成的黑色熔岩流，上面的侧斑鬣蜥比周围沙地上的同类深得多。研究者测了一百多只的基因组：熔岩之外的蜥蜴本来就能按背景调深浅，这本事比那片熔岩还老——顺序是先住得下去；然后在熔岩那群里，两个跟黑色素有关的基因带着只在这群出现的变异，携带者孵出来时更黑。铲足蟾那边也看得到同一条路：几个近亲物种里，蝌蚪的「食肉型」从只能靠吃虾触发，一路过渡到不用触发也常出现。</p>
+<p>反方向同样真实。1949 年前后 Bogert 注意到：一只蜥蜴只要挪进阴影就能维持体温，那些本来会因为不耐热吃亏的基因型根本没吃到亏——选择什么都没看见，遗传上的变化就停在那里。这叫行为惰性。可塑性能加速也能刹住，取决于环境变化多快、多稳。</p>
+<p>判定「先后」很难，因为你在重建一段已经发生完的历史，严格满足全部判据的案例至今不多。站得住的是：可塑性优先确实发生过；它是否普遍到需要改写框架，没有答案——这恰好是「一个框架最强的地方，往往是它让某些问题问不出来」那节那场架里，能靠证据往前推的那部分。</p>
+<p class="en-brief"><b>EN</b> The same packet of seeds sown in a windy spot and a sheltered one grows two different plants from one genotype; that capacity is phenotypic plasticity. Plasticity-first inverts half the textbook order: the environment shifts, a whole cohort expresses the same new form at once, selection then tunes the threshold, and genetic change follows. The order matters because a mutant form starts in one individual and drift can erase it, while an induced form arrives in numbers. On a 22,500-year-old California lava flow, side-blotched lizards were already able to darken with background before the lava existed; two melanin-related genes now carry variants found only in the lava population, and carriers hatch darker. Spadefoot tadpoles show a gradient across related species from diet-induced to near-constitutive carnivore morphs. But plasticity also brakes evolution — Bogert's point that a lizard which simply moves into shade never exposes the genotypes selection would have penalised. Establishing order requires reconstructing history, and few cases meet all the strict criteria.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 带团队与组织</b>：两个组并完之后，新的评审模板定下来了——然后有一类问题再也没人提过，不是被驳倒的，是提出来显得离题。跑的是「一个框架最强的地方，往往是它让某些问题问不出来」那节的机制：统一口径换来能比较、能算，代价是模板里没格子的东西自动降级成噪声。可改的：把上一版模板删掉的那几栏逐条问「当初靠什么删的」。该停的动作：把这类问题挪到「以后单独聊」——那等于确认它没有位置。</li>
+<li><b>② 修行与心性</b>：到了要发火的那半秒你按住了，可并不觉得自己变温和了，于是怀疑这不算数。跑的是「也许先变的是身体，基因只是后来才追上来」那节的顺序：先出现的是环境触发的反应，固定成性情在后面。可改的：别拿「我现在是什么样的人」当指标，改数「那半秒出现过几次」。该停的动作：事后追问「我是不是真的变了」——这问题在这阶段答不出来，答它要花掉用来数次数的注意力。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>西方哲学与科学哲学 · 一个学派把某类问题判成「不值得问」，几乎从来不是靠反驳完成的</b>：科学哲学家 Lakatos 说一套研究纲领有个「硬核」——最里面那几条假设不拿去受检验，被检验的永远是外面那圈辅助假设。现代综合对发育做的事更彻底：它把发育划到了「不必打开的输入」。跑的是「一个框架最强的地方，往往是它让某些问题问不出来」那节的机制——把一整块过程当黑盒，是换来可计算性付的价。由此推出一个原本看不出的结论：<b>一场争论如果双方同意全部的经验事实，那它争的必定是「什么算一个原因」；这种争论不可能靠再做一个实验判决，所以听到「再等等数据」就该知道这是在回避——数据不回答归类问题。</b><b>但这里不成立</b>：库恩那套「范式互相听不懂、换代靠改宗」在这儿过头了：两边用同一批数据、同一套机制，还在同一本刊物上隔着一页写文章。这不是革命，是关于记账方式的争论。</li>
+<li><b>工程与系统设计 · 一段服务先靠运行时的临时手段扛过负载，很久以后那个手段才被写进架构</b>：某个接口撑不住，先加一层缓存（把算过的结果存起来，下次直接拿）、多开几台机器扛过去——都不动主体结构，只临时改行为。两年后这层东西成了默认配置，再后来进了新服务模板。跑的是「也许先变的是身体，基因只是后来才追上来」那节的顺序：先出现的是环境触发的反应，固定是后面的事，而固定的程度取决于这个反应被触发得多频繁。由此推出一个原本看不出的结论：<b>你现在的架构不是一份设计决策清单，是一份「哪些临时手段被触发得最多」的记录；要预测明年哪一块会变成硬结构，别看路线图，看告警日志里哪个动作重复得最勤。</b><b>但这里不成立</b>：生物那边没人来做「写进架构」这一步——固定下来要求群体里本来就存在关于触发门槛的可遗传差异，没有它，可塑性可以永远只是可塑性。工程这边有人拍板，这一步几乎总会发生；对应地，工程里稀缺的不是固定，是把已经固定的东西重新解开。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>双方都同意那四样东西是真的，那还有什么可吵的？</summary>
+<div>吵的是账怎么记。同一件事可以记成「选择作用的材料」，也可以记成「方向的来源之一」：如果是材料，解释适应时你只需盯住选择；如果它自己带方向，不看它就漏掉一半原因。但两种记法目前给出的预测大体重合——这正是反对方最有力的一击。</div>
+</details>
+<details><summary>可塑性优先和「后天获得的东西能遗传」差在哪？</summary>
+<div>差在传下去的是什么。可塑性优先里传下去的一直是基因，环境触发的是同一套基因的另一种表达方式，而「能被触发」这本事本来就写在基因里；后来固定它的也是普通的遗传变化。风口那株矮壮的植物并没有把「矮壮」写回给种子，它的后代在墙根下照样长高。</div>
+</details>
+<details><summary>争论没判决，那读到这里该按哪套理解演化？</summary>
+<div>算数还是用核心那几样：变异、选择、纯运气、迁入——这一层的预测几十年来一直有效。外圈那四样当「提问的清单」用：遇到一个形态，先问它是不是环境触发的、这个群体有没有改造过自己的环境、有没有基因之外的东西在传。这些问题不改变算法，但决定你会不会看到该看的东西。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Modern_synthesis_(20th_century)" rel="noopener" target="_blank">现代综合词条</a> · <a href="https://link.springer.com/article/10.1007/s10739-019-09585-2" rel="noopener" target="_blank">专刊导言：重访现代综合</a></li>
+<li><a href="https://en.wikipedia.org/wiki/The_Correlation_between_Relatives_on_the_Supposition_of_Mendelian_Inheritance" rel="noopener" target="_blank">Fisher 1918 那篇论文的词条</a> · <a href="https://en.wikipedia.org/wiki/Fleeming_Jenkin" rel="noopener" target="_blank">Fleeming Jenkin 词条</a></li>
+<li><a href="https://www.nature.com/articles/514161a" rel="noopener" target="_blank">2014《自然》同页对垒：演化理论需要重想吗</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Extended_evolutionary_synthesis" rel="noopener" target="_blank">扩展演化综合词条</a> · <a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2015.1019" rel="noopener" target="_blank">Laland 等 2015：结构、假设与预测</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Niche_construction" rel="noopener" target="_blank">生态位建造词条</a> · <a href="https://en.wikipedia.org/wiki/Phenotypic_plasticity" rel="noopener" target="_blank">表型可塑性词条</a> · <a href="https://en.wikipedia.org/wiki/Genetic_assimilation" rel="noopener" target="_blank">遗传同化词条</a></li>
+<li><a href="https://www.cell.com/current-biology/fulltext/S0960-9822(18)30899-6" rel="noopener" target="_blank">Corl 等 2018：熔岩上的蜥蜴</a> · <a href="https://www.sciencedirect.com/science/article/pii/S0960982218309801" rel="noopener" target="_blank">同期评论：可塑性对选择，还是可塑性加选择</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Polyphenism" rel="noopener" target="_blank">多型现象词条</a> · <a href="https://en.wikipedia.org/wiki/Spea_bombifrons" rel="noopener" target="_blank">铲足蟾词条</a> · <a href="https://onlinelibrary.wiley.com/doi/10.1111/evo.14388" rel="noopener" target="_blank">Muñoz 2022：行为惰性</a></li>
+<li><a href="https://www.cell.com/trends/ecology-evolution/fulltext/S0169-5347(22)00216-6" rel="noopener" target="_blank">2022 综述：可塑性的作用取决于环境变化</a> · <a href="https://en.wikipedia.org/wiki/Imre_Lakatos" rel="noopener" target="_blank">Lakatos 词条</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>

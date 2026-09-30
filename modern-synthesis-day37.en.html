@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 37: The Modern Synthesis and Its Extensions</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 37 · PHASE E BIG QUESTIONS</div>
+<h1>The Modern Synthesis and Its Extensions</h1>
+<h2>Eighty years of argument, and it was never about whether these things exist — it is about whether they count as causes</h2>
+<div class="meta">2026-09-30 · BigCat</div>
+<div class="pitch">Darwin never built his theory on genes — he did not know genes existed. Natural selection and the rules of inheritance were worked out by two separate crowds, and those crowds spent nearly twenty years each insisting the other's work had nothing to do with their own.</div>
+</header>
+<div class="intro">
+<p>The textbook line — variation arises at random, selection keeps what helps — reads like Darwin's opening sentence. It is not. It was assembled between 1918 and 1950 by a group of people who had little time for each other and were forced onto the same sheet of paper by mathematics.</p>
+<p>One whole block of the problem was left outside during that assembly: how a gene actually grows into an eye. Not because anyone thought it unimportant, but because you can calculate very accurately without opening that box. The argument still running eighty years later is about that box — and neither side denies there is something inside it.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>The Synthesis did not discover anything new; it got two crowds who ignored each other onto one sheet of paper</h2>
+<p>Darwin had a hole and he knew it. On the Origin of Species needs three things to work: individuals differ, those differences pass to offspring, and the differences change how many offspring get left behind. For the first and third he had observations by the cartload. For the second he had no mechanism — in 1859 nobody knew how inheritance worked. In 1867 an engineer named Fleeming Jenkin pushed a knife into that hole: if offspring are the average of their parents (which is what most people assumed), half the variation in a population is wiped out every generation, and after a few generations everyone is alike and selection has nothing left to pick from.</p>
+<p>The answer had been on the table since 1900, when Mendel was rediscovered: the units of inheritance are particulate, they do not blend, so differences never get averaged away. What it actually produced was a quarrel that ran for nearly two decades. On one side, the pea-counters: traits come in discrete classes, with nothing in between wrinkled and round. On the other, the height-measurers, who went into the field, measured real populations, and found nothing but smooth continuous curves. Both sets of data were real. They were measuring the same machine — one had got down to the parts, the other was reading the dial on the whole thing.</p>
+<p>In 1918 Fisher did the arithmetic that settled it: if a continuous trait is governed not by one particle but by many particles each contributing a small share, then adding up the small shares gives exactly a smooth bell-shaped spread. Particulate inheritance and continuous traits are not in conflict; the second is what the first inevitably looks like once there are enough particles. That was a mathematical demonstration, not an experiment; empirical confirmation came many years later.</p>
+<p>Over the next twenty years Fisher, Haldane and Wright turned "how does the proportion of a variant in a population change under selection, mutation, sheer luck and migration" into something you could derive. Dobzhansky took it out to wild fruit flies in 1937, and Huxley gave the whole package its name in 1942: the modern synthesis. What got synthesised amounts to a few sentences. Evolution is the changing proportions of variants in a population. The direction in which variation appears has nothing to do with what is needed. The only directional force that builds adaptation is selection. And, most importantly, whatever a body goes through in its lifetime does not change what it passes on. (The textbook version came out narrower than what these people themselves held: Gould argued it had "hardened" by the 1960s into almost nothing but selection — a historical claim that is itself disputed.)</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>A framework is often strongest exactly where it makes certain questions unaskable</h2>
+<p>You can project a city's population quite accurately: which districts are growing, what the distribution looks like in twenty years. Doing it requires knowing nothing about how any single house was built — and it is precisely by not touching the house-building layer that the population layer becomes calculable. The modern synthesis does the same thing: it leaves the box marked "how a gene grows into an eye" shut, because calculating proportions does not require opening it, and the results hold up. That is where its power comes from.</p>
+<p>The cost lands elsewhere. There is a class of question that the equations do not get wrong so much as have no slot for: why do some variants keep appearing and others never appear at all? The default answer is that mutation is noise sprinkled evenly over everything. Developmental biology has shown that this is false — from flies to humans the same very old set of switch genes is at work, and it determines which forms are not within reach at all, and which forms cannot be changed without a whole cluster changing along with them. Variation is not an even rain. It has a shape.</p>
+<p>So a group of researchers has proposed that four things should move from "input" to "cause": <em>developmental bias</em> (what a body can grow into is skewed from the start), <em>phenotypic plasticity</em> (one set of genes building different bodies in different environments), <em>niche construction</em> (a beaver turns a stream into a pond, and what its descendants inherit is the altered environment), and <em>inheritance outside the genes</em> (methylation marks, gut microbes, behaviour picked up from others). The proposal is called the extended evolutionary synthesis.</p>
+<div class="fig">
+<svg role="img" aria-label="Diagram: the core box holds mutation, selection, sheer luck and migration; the outer ring holds the four things treated as inputs — developmental bias, plasticity, niche construction and inheritance outside the genes — with arrows pointing into the core" viewbox="0 0 600 272" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar37a" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="20" y="18">Same phenomena — the fight is over which ring they belong in</text>
+<rect x="24" y="36" width="356" height="216" rx="16" fill="#101a13" stroke="#24382c" stroke-width="1.2"></rect>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="38" y="54">Outer ring: treated as input, never opened</text>
+<rect x="120" y="112" width="168" height="80" rx="12" fill="#142a1d" stroke="#52c98a" stroke-width="1.4"></rect>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="11" x="134" y="136">Core: what the maths holds</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="134" y="156">mutation · selection · luck</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="134" y="174">migration · proportions only</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="40" y="80">developmental bias</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="250" y="80">plasticity</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="40" y="232">niche construction</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="10" x="218" y="232">inheritance outside genes</text>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="66" x2="116" y1="90" y2="122"></line>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="288" x2="252" y1="90" y2="110"></line>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="70" x2="116" y1="222" y2="186"></line>
+<line marker-end="url(#ar37a)" stroke="#d2a24c" stroke-width="1.1" x1="284" x2="250" y1="222" y2="196"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="404" y="98">Extended synthesis</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="9.5" x="404" y="118">move them in, as causes</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="404" y="164">The other side</text>
+<text fill="#c2d2c6" font-family="Georgia,serif" font-size="9.5" x="404" y="184">input in the ring is enough</text>
+</svg>
+<div class="cap">The disagreement is over one thing only: are those four the material selection works on, or a source of direction in their own right?</div>
+</div>
+<p>In 2014 Nature ran the two positions a page apart. Laland and seven co-authors: yes, urgently. Wray, Hoekstra, Lenski and four others: no, all is well. The fight is not over whether those four things exist — the opposing side explicitly grants that they are real. It is over whether you enter them as the material selection acts on, or concede that they carry direction of their own. The objection is hard to dodge: call it a cause, and what extra prediction do you get? So is the reply: it is precisely because they have always been booked as inputs that "where does direction come from" has gone eighty years without being properly asked.</p>
+<p>There is no verdict, and part of the dispute is not empirical at all — no further experiment settles what counts as a cause. One thing worth stating plainly: both sides are Darwinians, and nobody is claiming that what a body goes through gets written back into its offspring (the issue on epigenetics and the limits of inheritance covers where that line sits).</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>Maybe the body changes first and the genes only catch up later</h2>
+<p>Take one packet of seeds, sow half in an exposed spot and half against a wall. The exposed ones come up short, thick-stemmed, deep-rooted. The genes are identical — one set of genes building two bodies in two environments. That capacity is called phenotypic plasticity, and nearly every organism has some of it.</p>
+<p>The textbook order in which a new form appears is: a mutation happens to turn up, one individual therefore looks different, and if looking that way leaves it more offspring, the proportion climbs. Plasticity-first reverses the first half — the environment shifts, and a whole cohort produces the same new form at once, because the capacity to respond that way was already in them.</p>
+<p>That ordering is not a word game. On the mutation route the new form sits in a single individual, where sheer luck can erase it. On the plasticity route it arrives as a crowd, and selection has usable material immediately.</p>
+<div class="fig">
+<svg role="img" aria-label="Two rows compared. Top row, the standard order: a mutation turns up, one individual looks different, it is filtered, the proportion climbs. Bottom row, plasticity-first: the environment shifts, a whole cohort makes the same new form, selection tunes the threshold, genetic change follows behind" viewbox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar37b" markerheight="7" markerwidth="7" orient="auto" refx="6" refy="2.6"><path d="M0,0 L6,2.6 L0,5.2 z" fill="#8aa192"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="20" y="18">Two orderings</text>
+<text fill="#d2a24c" font-family="Georgia,serif" font-size="10.5" x="20" y="42">Standard order</text>
+<rect x="20" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="76">a mutation</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="94">happens to turn up</text>
+<rect x="166" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="76">one individual</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="94">looks different</text>
+<rect x="312" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="76">filtered: leaves</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="94">more offspring</text>
+<rect x="458" y="52" width="122" height="56" rx="9" fill="#141c16" stroke="#24382c"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="85">proportion climbs</text>
+<line marker-end="url(#ar37b)" stroke="#8aa192" stroke-width="1.1" x1="144" x2="162" y1="80" y2="80"></line>
+<line marker-end="url(#ar37b)" stroke="#8aa192" stroke-width="1.1" x1="290" x2="308" y1="80" y2="80"></line>
+<line marker-end="url(#ar37b)" stroke="#8aa192" stroke-width="1.1" x1="436" x2="454" y1="80" y2="80"></line>
+<text fill="#52c98a" font-family="Georgia,serif" font-size="10.5" x="20" y="136">Plasticity first</text>
+<rect x="20" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="182">environment shifts</text>
+<rect x="166" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="166">a whole cohort</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="183">makes the same</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="178" y="200">new form at once</text>
+<rect x="312" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="166">selection tunes</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="183">the threshold</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="324" y="200">that triggers it</text>
+<rect x="458" y="146" width="122" height="62" rx="9" fill="#142a1d" stroke="#3c6b52"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="166">genetic change</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="183">follows behind</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="470" y="200">and fixes it</text>
+<line marker-end="url(#ar37b)" stroke="#3c6b52" stroke-width="1.1" x1="144" x2="162" y1="177" y2="177"></line>
+<line marker-end="url(#ar37b)" stroke="#3c6b52" stroke-width="1.1" x1="290" x2="308" y1="177" y2="177"></line>
+<line marker-end="url(#ar37b)" stroke="#3c6b52" stroke-width="1.1" x1="436" x2="454" y1="177" y2="177"></line>
+</svg>
+<div class="cap">The two routes end up looking alike; their starting positions are far apart. A new form in one individual is easy for sheer luck to erase; a crowd of them gives selection something to work with from the first day.</div>
+</div>
+<p>One case has been worked out fairly cleanly. In California there is a black lava flow that formed roughly 22,500 years ago, and the side-blotched lizards living on it are far darker than their relatives on the surrounding sand. Researchers sequenced the genomes of more than a hundred animals: lizards off the lava can already adjust how dark they are to match their background, and that adjusting capacity is older than the lava flow itself — so the order was that they could live there first. Then, within the lava population, two genes involved in melanin carry variants found only in that population, and hatchlings carrying them come out darker. Spadefoot toads show the same route: across several closely related species, the big-headed "carnivore" form of the tadpole shifts from appearing only when triggered by a diet of shrimp to appearing often without any trigger at all.</p>
+<p>The opposite effect is just as real. Around 1949 Bogert noticed that a lizard which simply moves into the shade keeps its body temperature where it wants it — so the genotypes that would have paid a price for poor heat tolerance never pay it. Selection sees nothing, and genetic change stalls there. This is called behavioural inertia. Plasticity can speed things up and it can put a brake on them, depending on how fast and how steady the environmental change is.</p>
+<p>Establishing the order is hard, because you are reconstructing a history that has already finished, and cases meeting all the strict criteria are still few. What stands is this: plasticity-first does happen; whether it is common enough to require rewriting the framework has no answer yet. That is exactly the part of the fight in "a framework is often strongest exactly where it makes certain questions unaskable" that evidence can still push forward.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In practice · BigCat</h3>
+<ul>
+<li><b>① Leading a team, and organisations</b>: the first months after two groups are merged, a new review template gets settled — and then there is a class of question nobody raises again, not because it was refuted but because raising it now looks off-topic. This runs the mechanism from "a framework is often strongest exactly where it makes certain questions unaskable": a common format buys comparability and arithmetic, and the price is that anything without a box on the form is automatically downgraded to noise. What you can change: take the columns that got dropped from the previous template and ask of each one what the reason for dropping it was. What to stop doing: moving these questions to "let's discuss that separately sometime" — that confirms they have no slot.</li>
+<li><b>② Practice and temperament</b>: in the half-second before you lose your temper, you hold it — and you do not feel any gentler, so you suspect it does not count. This runs the ordering from "maybe the body changes first and the genes only catch up later": what shows up first is the environmentally triggered response, and its hardening into temperament comes afterwards. What you can change: stop using "what kind of person am I now" as the metric and start counting how many times that half-second has occurred. What to stop doing: asking afterwards whether you have really changed — at this stage the question has no answer, and answering it spends the attention you were going to use for counting.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · notes from other fields</h3>
+<ul>
+<li><b>Western philosophy and philosophy of science · when a school rules a class of question "not worth asking", it almost never gets there by refuting it</b>: the philosopher of science Lakatos described a research programme as having a "hard core" — the innermost assumptions are never put up for testing, and what gets tested is always the belt of auxiliary hypotheses outside them. The modern synthesis did something more thorough to development: it filed development under "input you need not open". This runs the mechanism from "a framework is often strongest exactly where it makes certain questions unaskable" — treating a whole process as a black box is the price paid for calculability. From which follows something you would not otherwise see: <b>if both sides of a dispute accept all the empirical facts, then what they are arguing about must be what counts as a cause; a dispute like that cannot be settled by one more experiment, so "let's wait for more data" is an evasion — data does not answer questions about classification.</b><b>Where it fails</b>: Kuhn's picture of paradigms that cannot hear each other and changeovers that require conversion is plainly too strong here. Both sides use the same data and the same mechanisms, and they publish a page apart in the same journal. This is not a revolution; it is an argument about bookkeeping.</li>
+<li><b>Engineering and systems design · a service first survives a load with a runtime workaround, and only much later does that workaround get written into the architecture</b>: some endpoint cannot cope, so you put a cache in front of it (store the results you have already computed and hand them back next time), or add machines — none of which touches the main structure; they just change the behaviour temporarily. Two years later that layer is the default configuration, and later still it is in the template for new services. This runs the ordering from "maybe the body changes first and the genes only catch up later": the environmentally triggered response comes first, fixing it comes afterwards, and how thoroughly it gets fixed depends on how often the response is triggered. From which follows something you would not otherwise see: <b>your current architecture is not a list of design decisions, it is a record of which temporary measures fired most often; so to predict which part becomes hard structure next year, do not read the roadmap — read which action repeats most in the alerting logs.</b><b>Where it fails</b>: on the biology side nobody performs the "write it into the architecture" step. Fixing requires that heritable differences in the triggering threshold already exist in the population; without them, plasticity can stay plasticity forever. In engineering somebody decides, so this step nearly always happens — and correspondingly, what is scarce in engineering is not fixing things but prising apart what is already fixed.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>If both sides agree those four things are real, what is left to argue about?</summary>
+<div>How to book them. The same thing can be entered as "material that selection acts on" or as "one of the sources of direction": if it is material, then explaining adaptation only requires watching selection; if it carries direction itself, then not looking at it means missing half the cause. But the two ways of booking currently yield largely overlapping predictions — which is the objectors' strongest single blow.</div>
+</details>
+<details><summary>How is plasticity-first different from acquired characteristics being inherited?</summary>
+<div>In what gets passed on. Under plasticity-first what is passed on is still genes; the environment triggers a different way of expressing the same genes, and the capacity to be triggered was written in the genes already. What later fixes it is ordinary genetic change too. The short, stout plant in the exposed spot did not write "short and stout" back into its seeds; its offspring grow tall again against a wall.</div>
+</details>
+<details><summary>With no verdict, which version should a reader use to understand evolution?</summary>
+<div>For calculating, still the core: variation, selection, sheer luck, migration — that layer's predictions have held for decades. Use the outer four as a checklist of questions: faced with a form, ask first whether it is environmentally triggered, whether this population has been remodelling its own surroundings, and whether anything outside the genes is being transmitted. Those questions do not change the arithmetic, but they decide whether you notice what is there to be noticed.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Modern_synthesis_(20th_century)" rel="noopener" target="_blank">The modern synthesis</a> · <a href="https://link.springer.com/article/10.1007/s10739-019-09585-2" rel="noopener" target="_blank">Special issue introduction: revisiting the modern synthesis</a></li>
+<li><a href="https://en.wikipedia.org/wiki/The_Correlation_between_Relatives_on_the_Supposition_of_Mendelian_Inheritance" rel="noopener" target="_blank">Fisher's 1918 paper</a> · <a href="https://en.wikipedia.org/wiki/Fleeming_Jenkin" rel="noopener" target="_blank">Fleeming Jenkin</a></li>
+<li><a href="https://www.nature.com/articles/514161a" rel="noopener" target="_blank">Nature 2014, both sides a page apart: does evolutionary theory need a rethink?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Extended_evolutionary_synthesis" rel="noopener" target="_blank">Extended evolutionary synthesis</a> · <a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2015.1019" rel="noopener" target="_blank">Laland et al. 2015: structure, assumptions, predictions</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Niche_construction" rel="noopener" target="_blank">Niche construction</a> · <a href="https://en.wikipedia.org/wiki/Phenotypic_plasticity" rel="noopener" target="_blank">Phenotypic plasticity</a> · <a href="https://en.wikipedia.org/wiki/Genetic_assimilation" rel="noopener" target="_blank">Genetic assimilation</a></li>
+<li><a href="https://www.cell.com/current-biology/fulltext/S0960-9822(18)30899-6" rel="noopener" target="_blank">Corl et al. 2018: lizards on the lava flow</a> · <a href="https://www.sciencedirect.com/science/article/pii/S0960982218309801" rel="noopener" target="_blank">Commentary: plasticity versus selection, or plasticity and selection?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Polyphenism" rel="noopener" target="_blank">Polyphenism</a> · <a href="https://en.wikipedia.org/wiki/Spea_bombifrons" rel="noopener" target="_blank">Spadefoot toads</a> · <a href="https://onlinelibrary.wiley.com/doi/10.1111/evo.14388" rel="noopener" target="_blank">Muñoz 2022: the Bogert effect</a></li>
+<li><a href="https://www.cell.com/trends/ecology-evolution/fulltext/S0169-5347(22)00216-6" rel="noopener" target="_blank">2022 review: plasticity's role depends on the environmental change</a> · <a href="https://en.wikipedia.org/wiki/Imre_Lakatos" rel="noopener" target="_blank">Lakatos</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script defer="" src="https://hub.cissychen.com/comments.js"></script>
+<script defer="" src="https://hub.cissychen.com/search.js"></script>
+<script defer="" src="https://hub.cissychen.com/index-button.js"></script>
+<script defer="" src="https://hub.cissychen.com/i18n-tts.js"></script>
+</body></html>
