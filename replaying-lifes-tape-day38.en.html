@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 38: Replaying Life's Tape</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+</head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 38 · PHASE E BIG QUESTIONS</div>
+<h1>Replaying Life's Tape</h1>
+<h2>If you ran it all again, would it still come out as us — someone actually turned this into an experiment</h2>
+<div class="meta">2026-10-01 · BigCat</div>
+<div class="pitch">Someone froze one starting point in a freezer and spent thirty years thawing it and running it again. The answer is neither "the same every time" nor "different every time" — it depends on how far back you rewind.</div>
+</header>
+<div class="intro">
+<p>Five fingers on your hand, a bird flying past your window, and you reading this line. Treat the last four billion years of Earth as a tape that has been recorded, rewind it to some point and play it again: would you get fingers, wings, something that reads?</p>
+<p>It sounds like pure daydreaming, because history ran once and there is no rewind button. Except that at small scale it can actually be done: split one flask of bacteria into twelve, let each run on its own, freeze a sample every five hundred generations, and thirty years later you have both an archive and a way back into it. What came out matches neither intuition.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>Rewind the tape and play it again, and what grows is probably not us</h2>
+<p>Watch a film a second time and every frame is where it was — a tape is a tape. In 1989, in <i>Wonderful Life</i>, the palaeontologist Stephen Jay Gould argued that life's tape is not like that: rewind to five hundred million years ago, play it again, and the world that comes out would be unrecognisable, with nothing like us in it.</p>
+<p>His reason was not that everything is random. Randomness sits at one level only — which spot in the copying happens to come out wrong. His point was different: what you can reach at each step depends on which lineages happen to still be alive. An extinction erases not only those species but everything that could only ever have been built out of them; as the issue on mass extinctions put it, surviving often has little to do with being any good. So a small disturbance in who fails to die rewrites what is buildable for hundreds of millions of years afterwards. This is historical contingency: every step has solid causes, yet move the starting point slightly and the endpoint is no longer even in the same direction.</p>
+<p>His evidence was a slab of roughly five-hundred-million-year-old shale in the Canadian Rockies — the Burgess Shale — full of animals that look like nothing alive now. What Gould read in them was a wider range of body designs than exists today, winnowed down to a few, with no criterion he could identify for which ones got dropped. And if you cannot see the criterion, a replay has no reason to keep the same ones.</p>
+<p>That foundation has since been dug into. A good many of those "failed experiments" have been reassigned as early offshoots of groups still around: Hallucigenia, the one with spines on its back and legs like stilts, was placed next to velvet worms (a group of soft land-dwelling crawlers) in 2014 on the layered structure of its claws. The claim that there were more body designs then than now has been contested all along. The contingency argument did not fall over, but it can no longer lean on a crowd of monsters belonging to nothing.</p>
+<p>And there is a worse problem: the whole thing is a verdict on an experiment nobody can run. There is only one Earth.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Someone really did rewind one starting point and run it again, many times</h2>
+<p>In 1988 Richard Lenski split one flask of the gut bacterium <i>Escherichia coli</i> into twelve identical flasks: same sugar water, same temperature, sugar kept just short of enough. Every day a drop from each flask goes into fresh medium, and a day is about seven generations. It has been running ever since and has passed eighty thousand generations.</p>
+<p>The real trick is the freezer. A sample goes in every five hundred generations, and frozen bacteria still grow after thawing. So the twelve lines are not just twelve independent replays; each one still holds every intermediate state of its own history — something close to unique in biology, a past you can go back into.</p>
+<p>The twelve lines never exchange anything, and yet they came out remarkably alike: all grow faster, all have larger cells, all got better at using that sugar. Even at the level of genes they keep hitting the same handful — not the same mutation, but the same switch broken in different ways. Independent lines arriving at the same place means something steady is pushing, not that luck went one way. And fitness is still climbing, ever more slowly, with no sign of settling onto some "best possible" value.</p>
+<p>Then there is the thing that happened once. The medium has always had citrate in it, something this bacterium normally cannot use, and for decades eleven of the lines never touched it. Around generation thirty-one thousand, one line — the third — produced cells that could eat citrate, which is like a whole extra dish appearing out of nowhere. Its density shot up.</p>
+<p>Zachary Blount then did the thing in this issue's title: thaw the archive, tube by tube, and run it again. From the original ancestral sample he checked cells by the trillion and not one could use citrate; from sixty clones taken out of the first fifteen thousand generations, again trillions of cells, not one. But replays started from later archives produced citrate-users again and again.</p>
+<p>So this is not the story of one lucky mutation. Several changes carrying no visible benefit of their own had to accumulate quietly first and open the door before that last step was even possible — the word for this is potentiation. Which makes the answer neither "repeatable" nor "contingent": rewind to after twenty thousand generations and the citrate business will likely happen again; rewind to before ten thousand and it probably never will. Same history, different depth of rewind, different repeatability.</p>
+<div class="fig">
+<svg aria-label="Diagram: a timeline from the 1988 starting point to generation thirty-one thousand where one line begins using citrate, with freezer archive points every five hundred generations; below it three replay arrows from the ancestor, from before fifteen thousand generations and from after twenty thousand generations, the first two yielding none and the last yielding citrate-users repeatedly" role="img" viewbox="0 0 600 262" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar38a" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 z" fill="#d2a24c"></path></marker></defs>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="20" y="18">One starting point; how far back you rewind changes the answer</text>
+<line stroke="#3c6b52" stroke-width="2" x1="40" x2="560" y1="52" y2="52"></line>
+<circle cx="40" cy="52" fill="#52c98a" r="5"></circle>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="9.5" x="22" y="42">start</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9" x="26" y="72">1988</text>
+<circle cx="180" cy="52" fill="#141c16" r="4" stroke="#8aa192"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9" x="146" y="72">gen 15,000</text>
+<circle cx="300" cy="52" fill="#141c16" r="4" stroke="#8aa192"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9" x="272" y="72">gen 20,000</text>
+<circle cx="500" cy="52" fill="#d2a24c" r="6"></circle>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="9.5" x="420" y="42">gen 31,000: one line</text>
+<text fill="#e6c07b" font-family="Georgia,serif" font-size="9.5" x="420" y="72">starts eating citrate</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9" x="176" y="100">frozen every 500 generations, revivable</text>
+<rect fill="#141c16" height="44" rx="9" stroke="#24382c" width="150" x="20" y="124"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="142">replay the ancestor</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9" x="32" y="159">trillions of cells</text>
+<rect fill="#141c16" height="44" rx="9" stroke="#24382c" width="150" x="20" y="180"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="198">replay 60 clones from</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9" x="32" y="215">before gen 15,000</text>
+<rect fill="#142a1d" height="44" rx="9" stroke="#3c6b52" width="150" x="20" y="236"></rect>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="9.5" x="32" y="256">replay after gen 20,000</text>
+<line marker-end="url(#ar38a)" stroke="#d2a24c" stroke-width="1.1" x1="176" x2="238" y1="146" y2="146"></line>
+<line marker-end="url(#ar38a)" stroke="#d2a24c" stroke-width="1.1" x1="176" x2="238" y1="202" y2="202"></line>
+<line marker-end="url(#ar38a)" stroke="#d2a24c" stroke-width="1.1" x1="176" x2="238" y1="256" y2="256"></line>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="246" y="150">not a single citrate-user</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10" x="246" y="206">not a single one</text>
+<text fill="#7be0ab" font-family="Georgia,serif" font-size="10" x="246" y="260">they appear again and again</text>
+</svg>
+<div class="cap">The door was opened by earlier changes that showed no benefit of their own. Rewind to before it opened and no amount of running gets you there; rewind to after, and it is all but waiting to happen again.</div>
+</div>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>How predictable it is depends on which level you ask about, and over how long</h2>
+<p>Four of the larger Caribbean islands each carry their own group of anole lizards, and each group radiated on its own island. What grew out was the same cast of roles: the short-legged twig specialist whose tail can curl round a branch; the giant up in the crown; the absurdly long-tailed one down in the grass; the long-legged sprinter running from trunk to ground. There are six roles in all, and four of them turned up on all four islands (the grass one is missing from Jamaica). Lookalikes on the same island are usually not close relatives — each grew into that shape separately. Losos and colleagues put it straight into the title of their 1998 paper: contingency and determinism together.</p>
+<p>Why the repetition? Because within one kind of setting the ways of staying alive are not unlimited. Lose your grip on a thin branch and you fall, so the short-legged ones with a tail that can hold on leave more offspring; fail to sprint on the ground and you get eaten, so the long-legged ones leave more offspring. The setting narrows the workable options down to a few, and different starting points crowd onto the same ones. That is what the issue on convergent evolution was about. Whether a replay comes out the same depends in part on how many workable options there are.</p>
+<p>But "the same" has to be asked at a level. Bodies repeat beautifully; genes often go their separate ways — the same dark colouring can be built out of different genes. The bacteria show it too: the same gene gets hit over and over, the same mutation almost never.</p>
+<div class="fig">
+<svg aria-label="Grid diagram: four islands (Cuba, Hispaniola, Jamaica, Puerto Rico) against four ways of living (thin-branch, crown giant, trunk-to-ground, grass); the first three occur on all four islands, the grass form is missing on Jamaica" role="img" viewbox="0 0 600 196" xmlns="http://www.w3.org/2000/svg">
+<text fill="#8aa192" font-family="Georgia,serif" font-size="10.5" x="20" y="18">Four islands, four separate radiations, one cast of roles</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="242" y="44">Cuba</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="322" y="44">Hispaniola</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="424" y="44">Jamaica</text>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9.5" x="502" y="44">Puerto Rico</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="20" y="74">thin branches, short legs, gripping tail</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="20" y="104">giant up in the crown</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="20" y="134">trunk to ground, long-legged sprinter</text>
+<text fill="#d8e4da" font-family="Georgia,serif" font-size="10" x="20" y="164">down in the grass, very long tail</text>
+<circle cx="256" cy="70" fill="#52c98a" r="6"></circle>
+<circle cx="350" cy="70" fill="#52c98a" r="6"></circle>
+<circle cx="448" cy="70" fill="#52c98a" r="6"></circle>
+<circle cx="530" cy="70" fill="#52c98a" r="6"></circle>
+<circle cx="256" cy="100" fill="#52c98a" r="6"></circle>
+<circle cx="350" cy="100" fill="#52c98a" r="6"></circle>
+<circle cx="448" cy="100" fill="#52c98a" r="6"></circle>
+<circle cx="530" cy="100" fill="#52c98a" r="6"></circle>
+<circle cx="256" cy="130" fill="#52c98a" r="6"></circle>
+<circle cx="350" cy="130" fill="#52c98a" r="6"></circle>
+<circle cx="448" cy="130" fill="#52c98a" r="6"></circle>
+<circle cx="530" cy="130" fill="#52c98a" r="6"></circle>
+<circle cx="256" cy="160" fill="#52c98a" r="6"></circle>
+<circle cx="350" cy="160" fill="#52c98a" r="6"></circle>
+<circle cx="448" cy="160" fill="#141c16" r="6" stroke="#4d5c52"></circle>
+<circle cx="530" cy="160" fill="#52c98a" r="6"></circle>
+<text fill="#8aa192" font-family="Georgia,serif" font-size="9" x="20" y="190">hollow circle: never turned up on that island</text>
+</svg>
+<div class="cap">The repetition was not carried across by ancestry. Each island ran into the same small set of ways to stay alive.</div>
+</div>
+<p>Length of time changes the answer too. The finches of the Galápagos have been measured for decades: in the 1977 drought the small soft seeds went first, only large hard ones were left, the deeper-beaked birds could crack them and left more offspring, and the population's average beak got deeper within a single generation. That was predicted well. But when conditions reversed, the direction of selection reversed with them and beaks went back. Short-term direction is predictable — provided you know next year's rainfall. Over the long run there is no steady "more and more" of anything. The misreading that evolution means steadily getting better has nowhere to stand in front of this data set, as the issue on a century of misreadings laid out.</p>
+<p>The argument between Gould and Simon Conway Morris, who emphasises convergence, has still not been settled, and part of it is no longer an empirical question at all. Eyes arose independently dozens of times: does that count as repetition? Those dozens of eyes are built differently inside: what does that count as? At this point the argument is about what counts as the same outcome.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 In practice · BigCat</h3>
+<ul>
+<li><b>① Engineering and system design</b>: production blew up once and you have never been able to reproduce it — same request, same version, it just will not happen. This runs the mechanism from "someone really did rewind one starting point and run it again, many times": whether you can replay something does not depend on how good you are at debugging, it depends on whether the starting state was stored, and what you stored was a stack trace, not a starting state. What to change: when it happens, snapshot the concurrency level, queue depth and upstream timeouts alongside the error, and track "can this be reproduced" as a recorded number in its own right. What to stop doing: closing the ticket because it cannot be reproduced.</li>
+<li><b>② Investing and position sizing</b>: at every quarterly review, the trade that made the most money quietly becomes next quarter's template. This runs the mechanism from "how predictable it is depends on which level you ask about, and over how long": in a single outcome, luck and repeatability are mixed together, and there is exactly one way to separate them — many runs under the same sort of conditions. What to change: make the unit of review not "this trade" but "every time I have taken this kind of action under this kind of condition, and how often it paid". What to stop doing: ranking strategies by what a single outcome returned.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · notes from other fields</h3>
+<ul>
+<li><b>Economics, investing and business · once a standard has won a market, nobody can say what exactly it won on</b>: the layout of letters on a typewriter keyboard, the war between two home video cassette formats — in neither case was the winner the one anybody called technically best. The economist W. Brian Arthur modelled this class of process as increasing returns: the more people use a thing, the better it works for the next person, because accessories, trained users and teaching material all grow up around it, so a small early lead amplifies itself. That runs the potentiation mechanism from "someone really did rewind one starting point and run it again, many times" plus one extra piece, frequency dependence: what an option is worth depends on how many have already picked it, so which routes remain open is closed off by what has already happened. Which yields a conclusion you would not otherwise see: <b>to judge whether a leading standard can still be challenged, the thing to look at is not the quality gap but whether the amplifying loop has started turning — complements, switching costs, how many people already know it. Before the loop starts, a large gap can still be overturned; once it is turning, being much better is not enough.</b><b>Where it does not hold</b>: what makes the citrate line powerful is that you really can go back and run it again. Business history has no freezer, so "if only, back then" stays a conjecture forever. Telling a lock-in story as established causation is treating one unreplayable run of history as an experiment.</li>
+<li><b>Organisations and institutions · two teams founded on the same day with the same setup work completely differently a year later</b>: in one expansion several teams get stood up from the same starting point — same goals, similar headcount, the same tools. A year on, their processes, their review habits, even the way they talk have diverged, and each can give you reasons. That runs the mechanism from "how predictable it is depends on which level you ask about, and over how long": luck and repeatability can only be separated by parallel replicate lines. Something recurring inside one team tells you nothing; the same thing arising separately in several unconnected teams says something is pushing. Which yields a conclusion you would not otherwise see: <b>the evidential weight of a "best practice" does not come from how successful that team was, it comes from how many independent lines arrived at the same place on their own; a practice that has only ever appeared on one line is a piece of history, however successful, not a conclusion.</b><b>Where it does not hold</b>: teams watch each other, copy each other, and sit under one set of performance metrics — which makes them not independent replicates, more like twelve flasks with a few drops passed between them. Those twelve exchange strictly nothing, which is exactly why hitting the same gene counts for something. Inside a company "arrived there independently" is nearly impossible to establish, so this line can only be used to discount a single success, never to prove which practice is right.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>What is the difference between contingent and random?</summary>
+<div>Random is the dice level: which spot happens to be miscopied, who happens not to die in an extinction. Contingency is about the structure of the consequences — every step has solid causes, but which squares you can reach is set by the path already walked. So contingency is not an absence of regularity; it requires causation to be tight. Precisely because those earlier steps really did close some doors, moving the starting point slightly redraws the whole map of routes.</div>
+</details>
+<details><summary>If bacteria can be replayed, why does that not answer Gould?</summary>
+<div>The scales are far apart. A flask of sugar water produces no new ecological niches, has no mass extinctions, has its environment pinned down by hand, and nobody expects an eye to come out of it. It answers cleanly the question "does rerunning one starting point give the same result", and the answer is "depends how deep you rewind". It cannot answer "would a replay still produce us".</div>
+</details>
+<details><summary>If evolution is predictable to some degree, does that mean it is heading somewhere?</summary>
+<div>No. What is predictable is which individuals leave more offspring in this environment — reverse the environment and the direction reverses immediately, which is what the back-and-forth in finch beak depth is. Predictability says there is a stable relation between conditions and consequences. Whether there is a goal, or whether things are getting better, is a different matter entirely.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Wonderful_Life_(book)" rel="noopener" target="_blank">Wonderful Life</a> · <a href="https://en.wikipedia.org/wiki/Contingency_(evolutionary_biology)" rel="noopener" target="_blank">Contingency in evolutionary biology</a> · <a href="https://en.wikipedia.org/wiki/Burgess_Shale" rel="noopener" target="_blank">The Burgess Shale</a></li>
+<li><a href="https://www.nature.com/articles/nature13576" rel="noopener" target="_blank">Smith &amp; Ortega-Hernández 2014: Hallucigenia's claws</a> · <a href="https://en.wikipedia.org/wiki/Hallucigenia" rel="noopener" target="_blank">Hallucigenia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/E._coli_long-term_evolution_experiment" rel="noopener" target="_blank">The long-term evolution experiment</a> · <a href="https://the-ltee.org/" rel="noopener" target="_blank">The experiment's own site</a></li>
+<li><a href="https://www.pnas.org/doi/10.1073/pnas.0803151105" rel="noopener" target="_blank">Blount et al. 2008: historical contingency and a key innovation</a> · <a href="https://www.science.org/doi/10.1126/science.1243357" rel="noopener" target="_blank">Wiser et al. 2013: why fitness has not stopped climbing</a></li>
+<li><a href="https://www.science.org/doi/10.1126/science.279.5359.2115" rel="noopener" target="_blank">Losos et al. 1998: contingency and determinism</a> · <a href="https://en.wikipedia.org/wiki/Anolis_ecomorphs" rel="noopener" target="_blank">Anolis ecomorphs</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Life%27s_Solution" rel="noopener" target="_blank">Conway Morris, Life's Solution</a> · <a href="https://en.wikipedia.org/wiki/Darwin%27s_finches" rel="noopener" target="_blank">Darwin's finches</a> · <a href="https://en.wikipedia.org/wiki/Daphne_Major" rel="noopener" target="_blank">Daphne Major and the Grants' long-term measurements</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Path_dependence" rel="noopener" target="_blank">Path dependence</a> · <a href="https://en.wikipedia.org/wiki/W._Brian_Arthur" rel="noopener" target="_blank">W. Brian Arthur</a> · <a href="https://en.wikipedia.org/wiki/Videotape_format_war" rel="noopener" target="_blank">The videotape format war</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
