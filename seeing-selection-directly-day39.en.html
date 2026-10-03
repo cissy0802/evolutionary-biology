@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolutionary Biology Day 39: Seeing Natural Selection Directly</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 39 · PHASE E BIG QUESTIONS</div>
+<h1>Seeing Natural Selection Directly</h1>
+<h2>Line fifteen thousand ancient genomes up by date and selection stops being an inference — you can watch it walk, millennium by millennium</h2>
+<div class="meta">2026-10-03 · BigCat</div>
+<div class="pitch">"Human evolution stopped long ago" has been said for a hundred years. Sort the genomes of more than fifteen thousand ancient West Eurasians by date and you can count four hundred and seventy-nine variants that were demonstrably being pushed — and the pushing got harder after farming arrived.</div>
+</header>
+<div class="intro">
+<p>A glass of milk in the morning is probably fine for you; for someone else it means a bad hour. Bread is fine for you; for someone else it inflames the gut, and that condition has a name — coeliac disease. Part of these differences is written in genes, and the share of people in a population carrying those variants was not the same ten thousand years ago as it is now.</p>
+<p>Nobody used to be able to see that share change. You could only reason backwards from the genomes of living people: find a stretch with suspiciously little variation around it and guess that something had swept through. It is like walking into a wood, seeing a few unusually tall trees, and guessing that someone pruned them — you have no photographs, only the wood as it stands.</p>
+<p>Now there are photographs.</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>We used to guess backwards from the finish; now we watch it walk along the time axis</h2>
+<p>From one graduation photo you cannot tell who grew three inches. Take one every year and there is nothing to guess — you just flip through them.</p>
+<p>Natural selection, by definition, is a variant's share of a population changing directionally over time. So the most direct approach is to line up the genomes of people who died in different eras and read along the queue. As the ancient DNA revolution topic covered, pulling a genome out of bones and teeth tens of thousands of years old has gone from impossible to routine in twenty years — once enough data piles up, this becomes doable.</p>
+<p>But there is a hard problem: <strong>a share that changed is not a share that selection pushed.</strong> A variant can become more common in a place for at least four reasons. Selection: its carriers happened to leave more descendants in that environment. Migration: a group that already carried it moved in. Admixture: two groups mixed, and the share got averaged. And drift — in a population that is not large, who has how many children carries a lot of luck, so the share wobbles on its own, with no force required. West Eurasia over these ten thousand years happens to be the age of mass resettlement: farmers out of West Asia, herders off the steppe, arriving and mixing in wave after wave. All four causes were running at once.</p>
+<p>In April 2026, Ali Akbari, David Reich and colleagues published in <i>Nature</i> a study that does exactly this: model out the share that migration and admixture should have produced anyway, then look at what is left. The data are 15,836 ancient West Eurasian genomes (10,016 of them reported here for the first time) plus thousands of present-day ones, spanning more than ten millennia. The first-order conclusion is counter-intuitive — of all that frequency change, only about 2% is attributable to directional selection.</p>
+<p>The second-order conclusion is the point. Inside that 2% sit <strong>479</strong> variants whose evidence is strong enough to name individually — where inference from modern genomes had firmly established perhaps a dozen or two (the famous one is lactase persistence, covered in the gene-culture coevolution topic). Another 7,600-odd loci are rated "more likely than not" to be real. A small fraction times a whole genome is still a large absolute number.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>Farming was not the end of evolution — it was a new sieve swapped in</h2>
+<p>Open your fridge: milk, bread, cheese, a box of eggs. Fifteen thousand years ago not one of those existed. And it was not only diet that changed — people settled, packed together, lived up against livestock, stored grain in one place, and the rats and pathogens came with it.</p>
+<p>When the environment changes, the answer to "who leaves more descendants" changes with it. Note that there is <em>no</em> such thing here as "evolving something in order to adapt to farming": nobody set a goal. Variation was already scattered through the population, most of it neither good nor bad; the new environment simply meant some carriers happened to have a few more children, and dozens of generations later their variant was common. The sieve changed. The material did not take orders.</p>
+<p>The study's most striking single finding is this: <strong>selection got stronger after farming appeared, not weaker.</strong></p>
+<p>There is an immune-system gene called HLA-DQB1, and one variant on it is today the largest risk factor for coeliac disease (eat the gluten protein in wheat and the gut inflames). Along the time axis it climbed from near zero to about 20% in only four thousand years. Why it was pushed up is still debated — variants in immune regions usually have something to do with whichever pathogens were circulating, and being useful against a pathogen and being intolerant of gluten can perfectly well be two faces of the same variant. No variant comes with upside only.</p>
+<p>Another is blood type B, from near zero to about 8% over six thousand years. The third is the most instructive: on a gene called TYK2 there is a variant that raises the risk of tuberculosis. It rose from about 2% around 5,500 years ago to about 9% by 3,000 years ago — and then fell back to roughly 3%. <strong>The direction reversed.</strong></p>
+<p>That turning curve does more work than any argument: having been favoured is no guarantee of staying favoured. Selection answers only to the environment of the moment, and when population density, livestock and the prevalence of a pathogen shift, the same variant goes from credit to debit. So "this variant was selected" always needs the clause "under what conditions".</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" role="img" aria-label="Schematic: the vertical axis is a variant's share of the population, the horizontal axis is years before present. One line is the coeliac risk variant, rising from near zero to about twenty per cent; the other is the tuberculosis risk variant, rising from two to nine per cent and falling back to three">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">Two variants' share of the population, walking along the time axis</text>
+<line x1="64" y1="40" x2="64" y2="200" stroke="#3c6b52" stroke-width="1.4"></line>
+<line x1="64" y1="200" x2="566" y2="200" stroke="#3c6b52" stroke-width="1.4"></line>
+<text x="20" y="46" fill="#8aa192" font-family="Georgia,serif" font-size="9">25%</text>
+<text x="26" y="204" fill="#8aa192" font-family="Georgia,serif" font-size="9">0%</text>
+<text x="40" y="220" fill="#8aa192" font-family="Georgia,serif" font-size="9">10,000 years ago</text>
+<text x="520" y="220" fill="#8aa192" font-family="Georgia,serif" font-size="9">today</text>
+<polyline points="364,200 430,170 490,120 550,78" fill="none" stroke="#7be0ab" stroke-width="2.2"></polyline>
+<circle cx="550" cy="78" r="4" fill="#7be0ab"></circle>
+<text x="330" y="86" fill="#7be0ab" font-family="Georgia,serif" font-size="9.5">coeliac risk variant: ~0% to ~20% in four thousand years</text>
+<polyline points="290,187 350,165 413,142 470,170 550,181" fill="none" stroke="#d2a24c" stroke-width="2.2"></polyline>
+<circle cx="413" cy="142" r="4" fill="#d2a24c"></circle>
+<text x="296" y="134" fill="#e6c07b" font-family="Georgia,serif" font-size="9.5">tuberculosis risk variant: 2% to 9%, then back to 3%</text>
+<line x1="290" y1="40" x2="290" y2="200" stroke="#3c6b52" stroke-width="0.9" stroke-dasharray="3,3"></line>
+<text x="196" y="54" fill="#8aa192" font-family="Georgia,serif" font-size="9">~5,500 years ago</text>
+</svg>
+<div class="cap">The vertical axis is the variant's share of the population, the horizontal axis is time. Start and end frequencies and the duration follow what the paper reports; the exact placement in time is schematic. Where the amber line turns over is where "it was favoured once" stops meaning "it stays favoured".</div>
+</div>
+<p>"Civilisation switched natural selection off" does not survive this time axis: farming, settlement and dense populations are themselves new sieves, not an off switch for sieving. But do not slide to the other extreme either — these data cover the past ten thousand years. They say selection did not stop over that stretch, not that you can read off what is being selected today.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>What a variant predicts today is not why it was selected then</h2>
+<p>There is a gene called CCR5, and what it builds happens to be the handle the HIV virus grabs to get into a cell. Some people are born missing a small piece of it, and those missing both copies are essentially never infected. That deletion is not rare in Europeans, and along the time axis it was being pushed up.</p>
+<p>But HIV is a twentieth-century disease. So whatever pushed it up back then cannot possibly have been HIV.</p>
+<p>This is the step in the whole business where it is easiest to fall. What a variant "is associated with now" is an association measured in today's environment, in this group of people; the reason it was pushed then can be something else entirely. Two routes make that mismatch near-inevitable. One is <strong>pleiotropy</strong> — a single variant usually touches several things at once, the one selected need not be the one you measure. The other is <strong>hitchhiking</strong> — chromosomes travel down in blocks, so a genuinely favoured variant drags a string of neighbours up with it, and those neighbours, which did nothing, light up alongside it in today's statistics.</p>
+<p>The paper is at its most careful exactly here. It also reports another class of result: those scores that add up thousands of small-effect variants shifted, over ten thousand years, by about one standard deviation of present-day variation — predicted body fat and schizophrenia risk going down, predicted cognitive-test performance going up. And immediately after comes the sentence that matters: these predictors were all built in modern industrialised societies, and how they relate to the traits that actually affected reproduction back then is unknown.</p>
+<p>That is not politeness. Such scores already lose accuracy noticeably when moved to a population of different ancestry — a repeatedly confirmed fact — and the gap to be crossed here is not one population but ten thousand years, over which environment, nutrition, disease and what even counts as "cognitive-test performance" all changed. Add two hard boundaries: the study covers West Eurasian populations only, so nothing extends to humanity as a whole; and "selected" has never been a synonym for "better" — that tuberculosis curve rising and falling is the ready-made counterexample. Reading results like these as one population being innately superior is a substitution made at exactly this step, and it is where this stretch of scientific history has gone wrong most often.</p>
+<p>The evolutionary psychology topic named a failure mode: see that a trait is useful now and reason backwards to its having been selected for that — plausible-sounding, and impossible to falsify. The contribution of ancient DNA time series is not that it finds evidence for stories like that, but that it turns them, for the first time, into questions data can refuse: did that variant actually rise back then? Go and look.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 Scenes · BigCat</h3>
+<ul>
+<li><b>① Health and energy</b>: every time you change a sleep schedule or a supplement, the verdict comes from "how did I feel for a few days after" — days on which you also shipped something, stayed up twice and watched the temperature drop. The mechanism is the one from "we used to guess backwards from the finish; now we watch it walk along the time axis": in a single before-and-after, the effect and the background noise are mixed together, and separating them does not come from feeling more carefully, it comes from a continuous record of one measure. What to change: log two weeks of baseline before you touch anything, with the measure fixed as something countable (resting heart rate on first waking, or alertness rated one to five at a fixed hour). What to stop: concluding anything from how those few days felt.</li>
+<li><b>② Parenting and education</b>: the yardstick changes each term — this term it is pages read, next term contest placing — the ranking flips with it, and then you join those rankings into a line labelled "improving or slipping". The mechanism is the one from "farming was not the end of evolution — it was a new sieve swapped in": whether a trait rises or falls depends on what is being sieved at the time, so numbers from before and after a change of yardstick are not comparable. What to change: write down which two or three things this ranking was computed from, and when the yardstick changes, keep recording the old item as well. What to stop: joining rankings from different yardsticks into a curve.</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 Crossing over · Connections beyond the field</h3>
+<ul>
+<li><b>Engineering and systems design · a five-year-old configuration, and nobody can say which line was added to solve what</b>: all you hold is the file as it stands now, so the discussion of "can we delete this" always lands on "what if something breaks". The mechanism is the one from "we used to guess backwards from the finish; now we watch it walk along the time axis": a terminal state cannot separate the sources — a habit someone brought in when the team turned over, something changed in passing during a framework upgrade, and something that genuinely held during an incident all look identical in that file. Which yields a conclusion you could not otherwise see: <b>whether a config line can be deleted does not depend on whether it looks useful now, but on whether the archive holds the sequence showing that some measure actually moved around the time it was added; without that sequence, deleting and keeping are both bets, and what you are betting on is not the technology but a memory that is already gone.</b><b>But it does not hold here</b>: ancient DNA can say "2% goes to selection" because there is a computable baseline for how much a frequency should drift with no selection at all, set by population size. Configuration has no "expected magnitude of casual edits", so you can never compute what share of changes had a reason. What transfers is "get the sequence"; what does not is the fraction — frequency needs many individuals to even be defined, and your system exists in one copy.</li>
+<li><b>History and military affairs · why a dynasty collapsed was long answerable only from chronicles, and chronicles are written by whoever survived</b>: then tree-ring widths, ice-core layers and lake sediments arrived, offering an annual sequence with no connection to any participant's account — and some old explanations were rewritten, because once the drought years are laid out, attributions of the "they lost virtue" sort do not line up in time. Same mechanism: attribution can only be built on what came before what, and that takes continuous measurement to see; with only a terminal state, simultaneous and sequential are the same thing. Which yields a conclusion you could not otherwise see: <b>how testable a historical explanation is depends not on how rich the sources are but on whether there exists a continuous sequence independent of the participants' accounts; without it, more sources are only more detail about the same endpoint.</b><b>But it does not hold here</b>: ancient DNA can put a number on selection's share because it has a null model. Between a climate sequence and a dynastic collapse there is no such model, so no one can compute "what fraction of collapses goes to drought". What tree rings can do is rule out — that year was not dry, so that explanation is void; quantitative attribution they cannot do.</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>Going deeper</h3>
+<details><summary>Why would the same variant be pushed up and then pushed back down?</summary>
+<div>Because selection never scores the variant itself; it scores the consequences of that variant in the environment of the moment. Tuberculosis prevalence, population density, how much livestock — those were changing on their own across millennia. Flip the environment and credit becomes debit. Which is why "is this gene good or bad" has basically no answer, only "under what conditions".</div>
+</details>
+<details><summary>If selection is now visible, can we find out why some trait was selected?</summary>
+<div>What is checkable is "did that variant rise, and when" — real progress. "Why it rose" still needs other evidence: archaeological, ancient-pathogen, dietary. One variant touches several things at once and carries hitchhiking neighbours alongside, so between "it rose" and "it rose because of trait X" there will always be a missing step.</div>
+</details>
+<details><summary>What do these findings mean for questions about differences between populations?</summary>
+<div>Hold three boundaries. The data come from West Eurasia only; the predictors were built in modern industrialised societies only; and "selected" bears no relation to "better". Erase any one of them and what remains is a local dataset, carrying its own measurement conditions, retold as a ranking of humanity — which is precisely how this field has gone wrong for over a century. What work like this yields is never a hierarchy; it is the trajectory of one variant in one population over one stretch of time.</div>
+</details>
+</div>
+<div class="refs">
+<h3>Further reading</h3>
+<ul>
+<li><a href="https://www.nature.com/articles/s41586-026-10358-1" target="_blank" rel="noopener">Akbari et al. 2026, Nature: pervasive directional selection across West Eurasia</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/41986721/" target="_blank" rel="noopener">the same paper in the literature database</a> · <a href="https://www.biorxiv.org/content/10.1101/2024.09.14.613021v1" target="_blank" rel="noopener">the 2024 preprint, with methods</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ancient_DNA" target="_blank" rel="noopener">Ancient DNA</a> · <a href="https://reich.hms.harvard.edu/datasets" target="_blank" rel="noopener">Reich lab public datasets</a> · <a href="https://en.wikipedia.org/wiki/Genetic_drift" target="_blank" rel="noopener">Genetic drift</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Coeliac_disease" target="_blank" rel="noopener">Coeliac disease</a> · <a href="https://en.wikipedia.org/wiki/Human_leukocyte_antigen" target="_blank" rel="noopener">The human leukocyte antigen region</a> · <a href="https://en.wikipedia.org/wiki/TYK2" target="_blank" rel="noopener">TYK2</a></li>
+<li><a href="https://en.wikipedia.org/wiki/CCR5" target="_blank" rel="noopener">CCR5</a> · <a href="https://en.wikipedia.org/wiki/CCR5-%CE%9432_polymorphism" target="_blank" rel="noopener">The CCR5 deletion variant</a> · <a href="https://en.wikipedia.org/wiki/Genetic_hitchhiking" target="_blank" rel="noopener">Genetic hitchhiking</a> · <a href="https://en.wikipedia.org/wiki/Pleiotropy" target="_blank" rel="noopener">Pleiotropy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Polygenic_score" target="_blank" rel="noopener">Polygenic scores, including the cross-population accuracy problem</a> · <a href="https://www.nature.com/articles/s41588-019-0379-x" target="_blank" rel="noopener">Martin et al. 2019: why these scores transfer poorly</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dendrochronology" target="_blank" rel="noopener">Dendrochronology</a> · <a href="https://en.wikipedia.org/wiki/Lactase_persistence" target="_blank" rel="noopener">Lactase persistence</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>进化生物学 Day 39：直接看见自然选择</title>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Noto Serif SC","Songti SC",serif;background:linear-gradient(170deg,#0a0f0b,#0c120e 40%,#080d09);color:#d8e4da;line-height:1.9;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+header{padding:52px 0 30px;border-bottom:1px solid #24382c}
+header .kicker{font-size:0.75rem;color:#d2a24c;letter-spacing:2.5px;font-family:"SF Mono",Menlo,monospace}
+header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(100deg,#52c98a,#7be0ab 60%,#d2a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.5px;margin-top:12px;line-height:1.28}
+header h2{font-size:1rem;color:#8aa192;margin-top:10px;font-weight:400}
+header .meta{margin-top:14px;font-size:0.85rem;color:#8aa192}
+header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
+.intro{margin-top:30px;font-size:1.02rem;color:#c2d2c6}
+.intro p{margin-bottom:13px}
+.section{margin:46px 0;background:rgba(255,255,255,0.025);padding:28px 26px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
+.section .num{display:inline-block;font-size:0.75rem;color:#52c98a;font-family:"SF Mono",Menlo,monospace;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:1.32rem;color:#eaf3ec;margin-bottom:16px;font-weight:700;line-height:1.35}
+.section p{margin-bottom:14px;font-size:0.98rem}
+.section strong{color:#fff}
+.section em{color:#d2a24c;font-style:normal}
+.section ul{list-style:none;margin:14px 0}
+.section li{margin-bottom:10px;padding-left:20px;position:relative}
+.section li::before{content:"◈";position:absolute;left:0;top:0.42em;color:#52c98a;font-size:0.7rem}
+.rule{margin:20px 0;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:1.5rem;color:#7be0ab;letter-spacing:3px}
+.fig{margin:24px 0 10px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:0.82rem;color:#8aa192;margin-top:8px;text-align:left;line-height:1.65}
+.en-brief{margin-top:18px;padding:12px 16px;border-left:2px solid rgba(138,161,146,0.45);background:rgba(255,255,255,0.02);border-radius:0 8px 8px 0;font-size:0.85rem;color:#93a89a;line-height:1.62}
+.en-brief b{color:#a8bcae;font-family:"SF Mono",Menlo,monospace;font-size:0.68rem;letter-spacing:1.5px;margin-right:9px;font-weight:700}
+.crossx{margin:40px 0;background:linear-gradient(135deg,rgba(210,162,76,0.11),rgba(82,201,138,0.05));border:1px solid rgba(210,162,76,0.32);border-radius:14px;padding:22px 26px}
+.crossx h3{color:#d2a24c;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.crossx ul{list-style:none;margin:0}
+.crossx li{color:#e4ddcc;font-size:0.93rem;line-height:1.8;margin-bottom:14px;padding-left:20px;position:relative}
+.crossx li:last-child{margin-bottom:0}
+.crossx li::before{content:"◈";position:absolute;left:0;top:0.35em;color:#52c98a;font-size:0.72rem}
+.crossx b{color:#e6c07b;font-weight:600}
+.thinking{background:linear-gradient(135deg,rgba(82,201,138,0.05),rgba(210,162,76,0.05));border:1px solid rgba(82,201,138,0.22);border-radius:12px;padding:24px 26px;margin:40px 0}
+.thinking h3{color:#52c98a;font-size:0.9rem;letter-spacing:2px;margin-bottom:14px;font-family:"SF Mono",Menlo,monospace}
+.thinking details{background:rgba(8,13,9,0.5);border:1px solid rgba(82,201,138,0.18);border-radius:9px;padding:13px 17px;margin:10px 0;transition:all 0.2s}
+.thinking details[open]{background:rgba(82,201,138,0.05);border-color:rgba(82,201,138,0.4)}
+.thinking summary{cursor:pointer;color:#a8dcbd;font-weight:600;font-size:0.93rem;list-style:none;outline:none;line-height:1.55}
+.thinking summary::-webkit-details-marker{display:none}
+.thinking summary::before{content:"▸ ";color:#d2a24c}
+.thinking details[open] summary::before{content:"▾ "}
+.thinking details>div{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(210,162,76,0.2);color:#cfdcd3;font-size:0.9rem;line-height:1.8}
+.refs{margin-top:34px}
+.refs h3{color:#d2a24c;font-size:0.85rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.refs ul{list-style:none}
+.refs li{margin-bottom:9px;font-size:0.88rem;color:#8aa192}
+.refs a{color:#52c98a;text-decoration:none;border-bottom:1px dotted rgba(82,201,138,0.4)}
+.refs a:hover{color:#7be0ab;border-bottom-color:#7be0ab}
+.bigcat{margin:40px 0 0;background:linear-gradient(135deg,rgba(82,201,138,0.10),rgba(210,162,76,0.04));border:1px solid rgba(82,201,138,0.30);border-radius:14px;padding:22px 26px}
+.bigcat h3{color:#7be0ab;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.bigcat ul{list-style:none;margin:0}
+.bigcat li{color:#d6e6dc;font-size:0.93rem;line-height:1.8;margin-bottom:14px}
+.bigcat li:last-child{margin-bottom:0}
+.bigcat b{color:#7be0ab;font-weight:600}
+footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
+@media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+</style></head><body>
+<div class="container">
+<header>
+<div class="kicker">DAY 39 · PHASE E 大问题与应用</div>
+<h1>直接看见自然选择</h1>
+<h2>一万多个古人的基因组排成一条时间轴，选择不用再靠反推——可以看着它一千年一千年地走</h2>
+<div class="meta">2026-10-03 · BigCat</div>
+<div class="pitch">「人类的演化早就停了」这句话讲了一百年。把一万五千多个古代西欧亚人的基因组按年代排好之后，数出来四百七十九个正被明确推着走的变异——而且农业出现以后，推得更狠。</div>
+</header>
+<div class="intro">
+<p>你早上喝一杯牛奶大概没事，换一个人可能喝完肚子就闹。你吃面包没事，另一个人吃了肠子会发炎，那个毛病叫乳糜泻。这些差别有一部分写在基因里，而带着这些变异的人在人群里占多大比例，一万年前和今天不是一个数。</p>
+<p>过去没人能直接看见这个数怎么变。只能拿今天活人的基因组往回推：哪一段附近的变异少得反常，就猜它当年被什么力量扫过。这像走进一片林子，看见几棵特别高的树，猜它们是不是被人修过——你没有照片，只有现在这片林子。</p>
+<p>现在有了照片。</p>
+</div>
+<div class="section">
+<span class="num">// 01</span>
+<h2>以前是从终局往回猜，现在是沿着时间轴看着它走</h2>
+<p>只有一张毕业合照，你看不出谁这三年长高了。每年拍一张就不用猜——翻一遍就看见了。</p>
+<p>自然选择这件事，定义上就是一个变异在人群里的比例随时间定向地变。那最直接的办法就是把不同年代死去的人的基因组按年代排成队，一代代看过去。古 DNA 革命那期讲过，从几万年前的骨头牙齿里读出基因组，这二十年已经从不可能变成了流水作业——数据一攒够，这件事就能做。</p>
+<p>但有个很硬的麻烦：<strong>比例变了，不等于被选择推了。</strong>一个变异在某地变多，至少有四种原因。一是选择：带着它的人在那个环境里刚好多留下了后代。二是迁徙：外面来了一群本来就带着它的人。三是混合：两群人混在一起，比例被摊成中间值。四是随机漂变——群体不大时谁生几个孩子有很大运气成分，比例自己就会摆动，不需要任何力量。而西欧亚这一万年恰好是人群大搬家的时代，西亚的农民、草原的牧人一波波进来又混进去，这四种原因全在同时发生。</p>
+<p>2026 年 4 月，Ali Akbari 和 David Reich 他们发表在《自然》上的研究，做的就是先把搬家和混合本该造成的那部分算出来扣掉，再看剩下的：一万五千八百多个古代西欧亚人的基因组（一万零十六个是这篇第一次报告的）加上几千个今天的人，跨度一万多年。第一层结论很反直觉——所有比例变化里归得给定向选择的只有约百分之二。</p>
+<p>第二层才是重点：就这百分之二里头，有 <strong>479</strong> 个变异的证据强到能单独点名——此前靠现代基因组反推、公认立得住的例子大致只有十几二十个（最有名的是乳糖耐受，基因-文化协同演化那期讲过）。另有七千六百多个位点「有一半以上可能是真的」。小比例乘上整个基因组，绝对量仍然很大。</p>
+<p class="en-brief"><b>EN</b> Selection is, by definition, a directional change in allele frequency over time, so the cleanest way to study it is to line ancient genomes up by date and watch. The hard part is that frequencies also move through migration, admixture and drift — and West Eurasia spent the last ten millennia being repeatedly resettled. Akbari, Reich and colleagues (Nature, April 2026) modelled those causes out across 15,836 ancient West Eurasian genomes (10,016 newly reported) plus thousands of present-day ones. Only about 2% of all frequency change is attributable to directional selection — but inside that 2% sit 479 individually nameable alleles, against the dozen or two that inference from modern genomes had firmly established, plus some 7,600 further loci rated more likely than not.</p>
+</div>
+<div class="section">
+<span class="num">// 02</span>
+<h2>农业不是演化的终点，是换上来的一把新筛子</h2>
+<p>打开你家冰箱：牛奶、面包、奶酪、一盒鸡蛋。一万五千年前这里头一样都没有。变的不只是吃什么——人开始定居、挤在一起、贴着牲畜住，粮食囤在一处，老鼠和病原体跟着就来。</p>
+<p>环境换了，「谁多留下后代」的答案就换了。注意这里<em>没有</em>「为了适应农业而演化出什么」这回事：没谁在订目标。人群里本来散落着各种变异，大多数不好不坏；新环境一来，某些携带者刚好孩子多一些，几十代之后它就占得多了。筛子换了，不是材料听了话。</p>
+<p>这篇研究最醒目的一条就是：<strong>选择在农业出现之后变强了，不是变弱。</strong></p>
+<p>免疫系统里有个叫 HLA-DQB1 的基因，它上头一个变异是今天乳糜泻（吃小麦里的面筋蛋白就肠子发炎）最大的风险因素。时间轴上它从几乎为零涨到约两成，只用了四千年。为什么被推上去还有争论——免疫区的变异一般跟当时流行的病原体有关，而对病原体有用和对面筋过不去，可以是同一个变异的两面。没有哪个变异只带好处。</p>
+<p>再一个是 B 型血，六千年里从几乎为零涨到约百分之八。最有意思的是第三个：一个叫 TYK2 的基因上，有个变异会提高结核病风险。它从约五千五百年前的百分之二涨到三千年前的百分之九，然后掉回百分之三左右。<strong>方向反过来了。</strong></p>
+<p>这条掉头的曲线比说理管用：被选上去过，完全不保证继续被选。选择只对当时那个环境负责，人口密度、牲畜、病原体流行程度一变，同一个变异就从加分变成扣分。所以「这个变异被选择过」永远要带一句「在什么条件下」。</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" role="img" aria-label="示意图：纵轴是某个变异在人群里的比例，横轴是距今年数。一条线代表乳糜泻风险变异，从接近零涨到约两成；另一条线代表结核风险变异，从百分之二涨到百分之九后掉回百分之三">
+<text x="20" y="18" fill="#8aa192" font-family="Georgia,serif" font-size="10.5">两个变异在人群里的比例，沿时间轴怎么走</text>
+<line x1="64" y1="40" x2="64" y2="200" stroke="#3c6b52" stroke-width="1.4"></line>
+<line x1="64" y1="200" x2="566" y2="200" stroke="#3c6b52" stroke-width="1.4"></line>
+<text x="20" y="46" fill="#8aa192" font-family="Georgia,serif" font-size="9">25%</text>
+<text x="26" y="204" fill="#8aa192" font-family="Georgia,serif" font-size="9">0%</text>
+<text x="46" y="220" fill="#8aa192" font-family="Georgia,serif" font-size="9">一万年前</text>
+<text x="520" y="220" fill="#8aa192" font-family="Georgia,serif" font-size="9">今天</text>
+<polyline points="364,200 430,170 490,120 550,78" fill="none" stroke="#7be0ab" stroke-width="2.2"></polyline>
+<circle cx="550" cy="78" r="4" fill="#7be0ab"></circle>
+<text x="376" y="86" fill="#7be0ab" font-family="Georgia,serif" font-size="9.5">乳糜泻风险变异：四千年里从约 0% 到约 20%</text>
+<polyline points="290,187 350,165 413,142 470,170 550,181" fill="none" stroke="#d2a24c" stroke-width="2.2"></polyline>
+<circle cx="413" cy="142" r="4" fill="#d2a24c"></circle>
+<text x="300" y="134" fill="#e6c07b" font-family="Georgia,serif" font-size="9.5">结核风险变异：2% → 9%，然后掉回 3%</text>
+<line x1="290" y1="40" x2="290" y2="200" stroke="#3c6b52" stroke-width="0.9" stroke-dasharray="3,3"></line>
+<text x="196" y="54" fill="#8aa192" font-family="Georgia,serif" font-size="9">约五千五百年前</text>
+</svg>
+<div class="cap">纵轴是这个变异在人群里占的比例，横轴是时间。起止比例和持续长度照论文报告画，具体年代位置是示意。琥珀色那条掉头的地方，就是「被选上过不等于一直被选」。</div>
+</div>
+<p>「文明让自然选择失效了」这个说法在这条时间轴前面站不住：农业、定居、密集人口本身就是新筛子，不是筛子的关闭开关。但也别滑到另一头——这份数据覆盖过去一万年，说的是那段时间里选择没停，不等于能读出今天正在被选什么。</p>
+<p class="en-brief"><b>EN</b> Farming did not end selection; it swapped in a new sieve. Nobody set a goal — variation was already scattered through the population, and the new environment simply meant some carriers left more descendants. The study's headline is that selection intensified after the transition to farming. A risk variant at the immune gene HLA-DQB1, today the largest risk factor for coeliac disease, climbed from near zero to roughly 20% in four thousand years; blood type B went from near zero to about 8% over six thousand. Most instructive is a tuberculosis-risk variant at TYK2, which rose from about 2% around 5,500 years ago to about 9% by 3,000 years ago and then fell back to roughly 3%. Direction reversed — having been favoured is no guarantee of staying favoured.</p>
+</div>
+<div class="section">
+<span class="num">// 03</span>
+<h2>今天跟什么有关，不等于当年因为它被选中</h2>
+<p>人身上有个基因叫 CCR5，它造出来的东西正好是艾滋病毒进细胞时要抓的把手。有些人这个基因天生缺了一小段，两份都缺的人几乎不会被感染。这个缺失版本在欧洲人里不算少见，而且时间轴上看，它是被推上去的。</p>
+<p>但艾滋病是二十世纪的事。所以当年把它推上去的，绝不可能是艾滋病。</p>
+<p>这是整件事里最容易摔的一步。一个变异「现在跟什么相关」，是在今天这个环境、这群人身上量出来的关联；当年它被推，理由完全可以是别的。两条路径让这种错位几乎必然发生：一是<strong>一因多效</strong>——同一个变异往往同时碰好几件事，被选的是其中一件，你量到的可能是另一件。二是<strong>搭便车</strong>——染色体整段往下传，真被选中的那个会把旁边一串邻居一起带上去，邻居毫无功劳，却在今天的统计里和它一起亮。</p>
+<p>这篇论文最谨慎的地方恰好在这里。他们也报了另一类结果：把成千上万个小效应变异加起来算的那种预测分数，一万年里移动了相当于今天人群变异一个标准差——体脂和精神分裂症风险的预测值在降，认知测验成绩的预测值在升。紧接着是一句关键的话：这些预测器全是在现代工业化社会里建起来的，它们和当年真正影响繁殖的性状是什么关系，不清楚。</p>
+<p>这不是客套。这类分数换一个祖源的人群就明显失准，是反复证实过的事；而这里要跨的不是一个人群，是一万年——环境、营养、疾病全换了一遍。再加两条硬边界：这项研究只覆盖西欧亚人群，结论不能往全人类推；「被选中」也从来不是「更好」的同义词，TYK2 那条升了又降的曲线就是现成的反例。把这类结果读成某个人群天生优越，是在这一步上偷换，也是这段科学史上出错最多的地方。</p>
+<p>演化心理学那期说过一个毛病：看见某个特征现在有用，就倒推它当年因此被选中——听着讲得通，却怎么都不可能被证伪。古 DNA 时间序列的贡献不是给这类故事找到证据，而是第一次把它变成能被数据驳回的问题：那个变异当年到底涨没涨，可以去查。</p>
+<p class="en-brief"><b>EN</b> A deletion in the gene CCR5 makes double carriers essentially immune to HIV, and the time series shows it rising. HIV is a twentieth-century disease, so whatever pushed it up was not HIV. Two routes make this mismatch near-inevitable: pleiotropy, where one variant touches several traits and the one selected need not be the one you measure today; and hitchhiking, where chromosomes travel in blocks so a genuinely favoured variant drags innocent neighbours up with it. The paper is careful about exactly this. It reports shifts of about one present-day standard deviation in combined-variant predictors of complex traits — lower predicted body fat and schizophrenia risk, higher predicted cognitive-test performance — and immediately notes that those predictors were built in modern industrialised societies and their relation to what was actually adaptive then is unknown. Such predictors already transfer poorly across ancestries; here the gap is ten thousand years. The work covers West Eurasia only, and "selected" never means "better" — the tuberculosis variant that rose and fell says so.</p>
+</div>
+<div class="bigcat">
+<h3>🎒 场景 · BigCat</h3>
+<ul>
+<li><b>① 健康与精力</b>：每换一个作息或者一个补剂，判断有没有用全靠「换完那几天感觉怎么样」——而那几天还赶了个交付、睡晚了两次、降了温。跑的是「以前是从终局往回猜，现在是沿着时间轴看着它走」那节的机制：一次前后对比里效应和背景波动混在一起，分开它们靠的不是感觉更仔细，是同一个指标的连续记录。可改的：动手之前先空记两周基线，指标定成一个数得出来的量（醒来第一次量的静息心率，或固定时间给清醒程度打一到五分）。该停的动作：拿那几天的感觉下结论。</li>
+<li><b>② 育儿与教育</b>：每学期换一次评价口径——这学期看阅读量，下学期看竞赛名次——名次跟着翻一次，然后你把几次名次连成一条「进步还是退步」的线。跑的是「农业不是演化的终点，是换上来的一把新筛子」那节的机制：一个性状是升还是降取决于当时在筛什么，所以换口径前后的数不可比。可改的：记下「这回的名次按哪两三项算的」，换了口径也把旧那项继续记着。该停的动作：把不同口径下的排名连成曲线。</li>
+</ul>
+</div>
+<div class="crossx">
+<h3>🌀 越界 · 跨学科的联想</h3>
+<ul>
+<li><b>工程与系统设计 · 一套跑了五年的配置，没人说得清哪一条当初是为了解决什么才加的</b>：你手上只有现在这份文件，于是讨论「这条能不能删」，最后总落在「万一出事呢」。跑的是「以前是从终局往回猜，现在是沿着时间轴看着它走」那节的机制：只看终态分不开几种来源——人员更替带进来的习惯、框架升级顺手改的、真在事故里扛住过的，在这份文件里长得一模一样。由此推出一个原本看不出的结论：<b>一条配置能不能删，不取决于它现在看起来有没有用，取决于档案里有没有「它被加进来前后某个指标真的变了」这段序列；没有那段序列，删和不删都只是赌，赌的不是技术，是一段已经丢掉的记忆。</b><b>但这里不成立</b>：古 DNA 那边能说出「百分之二归选择」，是因为「没有选择时比例该漂多少」有个算得出来的基线，由群体大小决定。配置这边没有「随手乱改的期望幅度」，你永远算不出多少比例的改动是有原因的。能搬的是「要序列」，搬不走那个比例——频率要大量个体才定义得出来，而你的系统只有一份。</li>
+<li><b>历史与军事 · 一个王朝为什么崩，长期只能靠史书里的解释，而史书是活下来的那方写的</b>：后来树轮宽度、冰芯分层、湖底沉积进了场，给出一条跟当事人叙述完全无关的连续年度序列，于是某些老解释被改写——干旱年份排出来之后，有些「因为失德」的归因对不上时间。跑的是同一节的机制：归因只能建立在先后上，而先后要连续测量才看得出来；只有终态，同时发生和先后发生是一回事。由此推出一个原本看不出的结论：<b>一个历史解释有多可检验，不取决于史料多丰富，取决于有没有一条独立于当事人说法的连续序列；没有这条序列，再多的史料也只是同一个终局的更多细节。</b><b>但这里不成立</b>：古 DNA 能把选择的份额量成一个数，靠的是有零模型；气候序列和王朝更替之间没有这种模型，算不出「多少比例的崩溃该记在干旱头上」。所以树轮能做的是排除——某年根本不旱，那条解释就作废；定量归因做不到。</li>
+</ul>
+</div>
+<div class="thinking">
+<h3>深入思考</h3>
+<details><summary>为什么同一个变异会先被推上去又被推下来？</summary>
+<div>因为选择不是给变异本身打分，是给「这个变异在当下环境里的后果」打分。结核流行程度、人口密度、牲畜多少，几千年里自己在变。环境一翻，加分项就成了扣分项。所以「这个基因是好还是坏」基本没有答案，只能问「在什么条件下」。</div>
+</details>
+<details><summary>既然能看见选择，是不是能查出某个性状当年为什么被选？</summary>
+<div>能查的是「那个变异当年涨没涨、什么时候涨的」，这已经是实打实的进步。「为什么涨」还要别的证据：考古的、古病原体的、饮食的。一个变异同时影响好几件事，旁边还带着搭便车的邻居，所以从「它涨了」到「它因为某个性状而涨」中间永远差一步。</div>
+</details>
+<details><summary>这些发现对人群差异的议题意味着什么？</summary>
+<div>记住三条边界：数据只来自西欧亚，预测器只在现代工业化社会里建过，「被选中」和「更好」没有关系。抹掉任何一条，剩下的就是把一份局部的、带着特定测量条件的数据讲成全人类的排序——这正是一百多年来这个领域出错最多的方式。这类研究给出的从来不是等级，是某个变异在某个人群某段时间里的轨迹。</div>
+</details>
+</div>
+<div class="refs">
+<h3>延伸阅读（均为英文）</h3>
+<ul>
+<li><a href="https://www.nature.com/articles/s41586-026-10358-1" target="_blank" rel="noopener">Akbari 等 2026《自然》：西欧亚的普遍定向选择</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/41986721/" target="_blank" rel="noopener">同一篇的文献数据库条目</a> · <a href="https://www.biorxiv.org/content/10.1101/2024.09.14.613021v1" target="_blank" rel="noopener">2024 年预印本（含方法细节）</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ancient_DNA" target="_blank" rel="noopener">古 DNA 词条</a> · <a href="https://reich.hms.harvard.edu/datasets" target="_blank" rel="noopener">Reich 实验室公开数据集</a> · <a href="https://en.wikipedia.org/wiki/Genetic_drift" target="_blank" rel="noopener">随机漂变词条</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Coeliac_disease" target="_blank" rel="noopener">乳糜泻词条</a> · <a href="https://en.wikipedia.org/wiki/Human_leukocyte_antigen" target="_blank" rel="noopener">人类白细胞抗原区词条</a> · <a href="https://en.wikipedia.org/wiki/TYK2" target="_blank" rel="noopener">TYK2 词条</a></li>
+<li><a href="https://en.wikipedia.org/wiki/CCR5" target="_blank" rel="noopener">CCR5 词条</a> · <a href="https://en.wikipedia.org/wiki/CCR5-%CE%9432_polymorphism" target="_blank" rel="noopener">CCR5 缺失型词条</a> · <a href="https://en.wikipedia.org/wiki/Genetic_hitchhiking" target="_blank" rel="noopener">搭便车效应词条</a> · <a href="https://en.wikipedia.org/wiki/Pleiotropy" target="_blank" rel="noopener">一因多效词条</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Polygenic_score" target="_blank" rel="noopener">多变异累加评分词条（含跨人群失准问题）</a> · <a href="https://www.nature.com/articles/s41588-019-0379-x" target="_blank" rel="noopener">Martin 等 2019：这类评分为什么换人群就不准</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dendrochronology" target="_blank" rel="noopener">树轮年代学词条</a> · <a href="https://en.wikipedia.org/wiki/Lactase_persistence" target="_blank" rel="noopener">乳糖耐受词条</a></li>
+</ul>
+</div>
+<footer>BigCat Learning Hub · Evolutionary Biology</footer>
+</div>
+<script src="https://hub.cissychen.com/comments.js" defer></script>
+<script src="https://hub.cissychen.com/search.js" defer></script>
+<script src="https://hub.cissychen.com/index-button.js" defer></script>
+<script src="https://hub.cissychen.com/i18n-tts.js" defer></script>
+</body></html>
