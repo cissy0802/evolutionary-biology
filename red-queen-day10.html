@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -159,6 +165,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>历史与军事 · 无畏舰竞赛里谁都没占到便宜</b>：1906 年英国下水了一艘叫无畏号的主力舰，让全世界现役的主力舰一夜之间显得过时——包括英国自己那些。德国跟着造，英国再加码，十来年里两国把国库大把砸进船壳；等到开战，双方的相对强弱跟竞赛开始前差不多。跑的是「你变好了，可对手也变好了，于是位置没动」那节的机制：有用的是相对量，绝对量的提升被对方同步的提升吃掉，代价却是绝对的、当场就要付。由此能推出一个原本看不出的结论：<b>这类竞赛停不下来跟双方理不理性无关，也跟谁更好战无关——只要「落后一步」的损失大于「领先一步」的收益，单方面停手就是所有选项里最差的一个，哪怕双方都清楚整件事在净亏。</b>所以停下来靠的不是谁想通了，是一个双方都盯着对方遵守的外部约束：1922 年华盛顿海军条约给几个海军大国的主力舰吨位按比例封了顶，那一轮竞赛就停了十来年。<b>但这里不成立</b>：能坐下来签字这件事，生物那边没有对应物——变异是一个个体一个个体冒出来的，任何一只跑得更快的兔子照样留下更多后代，狐狸和兔子既没有可以谈判的单位，「全体减速」也没有执行机制。</li>
 <li><b>工程与系统设计 · 规则上线那天最灵，之后一路掉</b>：垃圾邮件过滤、支付风控、反爬虫都是同一个节奏——一条新规则上线，头几天拦得很干净，几周后拦截率掉回去，得再改一版。跑的是「石头不会回应你，活的对手会」那节的机制：对面会针对你的具体做法调整，所以一条规则的有效性不是它自己的属性，是它相对于「对方摸清了多少」的一个量。由此能推出一个原本看不出的结论：<b>同一套防御被越多家采用，掉得越快</b>——摸清它的回报随着「能用这一招打开的目标数」上升，普及度本身就是衰减速度的乘数。这跟「最常见的那款锁最先被配上钥匙」是同一笔账，所以全行业统一到一个公认最佳方案上，在安全这件事上不是收敛到最优，是把整个行业变成同一个基因型。<b>但这里不成立</b>：生物那边的宿主没法互相通气，抗性组合只能靠一代代重组慢慢洗牌；防御方却可以共享情报，一家被打穿，别家几小时内就更新了自己。这让人类这边能既统一又不塌，代价是共享本身成了新的入口。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>流感疫苗每年要重打，是因为人群免疫力越强，留下来传播的越是没人认得的新版本病毒。</li>
+<li>1973 年 Van Valen 发现类群的灭绝概率跟存在多久基本无关，但化石记录残缺，这条定律至今有争议。</li>
+<li>红皇后假说的核心直觉是适合度是相对的：你改进了，活的对手也跟着变，位置就没动。</li>
+<li>宿主和寄生方的较量更像锁和钥匙，没有万能钥匙，只有配得上当下那把锁的。</li>
+<li>锁和钥匙自带负反馈：最常见的宿主类型最先被寄生方追上，罕见类型暂时安全。</li>
+<li>比利时池塘的沉积层实验中，每一层的寄生方感染同一年份水蚤的成功率最高。</li>
+<li>无性繁殖的谱系每代份额翻倍，这就是 Maynard Smith 所说的雄性两倍代价。</li>
+<li>无性谱系年年是同一把锁、最易被配上，有性繁殖才没被挤掉；但性并非为对抗寄生虫而演化。</li>
+<li>新西兰淡水螺的雄性比例跟吸虫感染率对得上，线虫实验中只有面对会演化的细菌时异交才被维持。</li>
+<li>同一套安全防御被越多机构采用，摸清它的回报越高，失效得也就越快。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="b68515953f1866b5">深入思考</h3>

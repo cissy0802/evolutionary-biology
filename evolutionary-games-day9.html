@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -163,6 +169,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>组织与制度 · 重组之后那半年，会开成了文档比赛</b>：一次重组之后、谁说了算还没落定的那段时间，往往冒出大量消耗性的展示——三十页的方案文档、抢在别人前面发言、给同一件事造新名词；真正撕破脸的正面冲突反而很少见。跑的是「最划算的打法，取决于别人在打什么」那节的机制：一次真冲突的代价越高（在同一家公司里翻脸，代价确实很高），越多对峙就停在虚张声势那一步，而不是升级。展示不是「本该真打却没打」的替代品，它就是代价被抬高之后剩下的那条路。由此能推出一个原本看不出的结论：<b>文档变厚、会变长，量不由参与者的性格定，由「真冲突的代价 × 还没有裁判」定</b>——这也顺带预言了它怎么消失：一旦出现一个大家都认的决策人，等于有了不用打就能分胜负的标记，展示会自己缩回去，不需要谁变得谦虚。<b>但这里不成立</b>：鹿的吼声之所以能当胜负判据，是因为它难伪造，受胸腔和体格限制，装不出来。组织里的展示——文档厚度、发言时长——跟真实能力挂钩很弱，谁都能靠加班堆出来，于是更容易从「便宜的判据」退化成纯噪音，动物那套「看一眼展示就省下一场真打」的省事结果，这里常常拿不到。</li>
 <li><b>育儿与教育 · 全班都在补同一门课</b>：一开始少数人课外补习，排名确实往上走；等到全班都补，排名回到原样，钱和时间照付；谁单方面停下来，排名立刻掉。跑的是「一个打法能不能活下去，看它挡不挡得住少数派」那节的两件事：收益取决于多少人在做同一件事，而且守得住的那个点不是大家平均最好的那个点——全班都不补在集体上更省，但它守不住，任何一个人先补都占便宜。由此推出的结论是：<b>这个局面既不是谁更焦虑造成的，也劝不动；只要记分规则是相对排名（名额固定、按位次分配），停下来的那个点就必然带着这份浪费。</b>能改的只有记分规则本身，或者补习本身的代价，改不动参与者的心态。这说的是会发生什么，不是谁应该怎么做。<b>但这里不成立</b>：生物里的比例靠一代代繁殖差异慢慢挪，动辄几十上百代；人是看着别人在做什么当场模仿的，一个学期就能全班切换，也能被一纸规定一次性搬走。所以人类这边很少稳定在中间比例，更常见的是整群同步跳到一头，然后被外部规则整个挪到另一头。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>动物对峙多停在吼叫和比体格，「不然物种会打光」的解释是错的，选择只记谁留下的后代多。</li>
+<li>1973 年 Maynard Smith 和 Price 让「抢」与「让」等打法在电脑里两两对局，研究动物冲突。</li>
+<li>全是「让」时混进的「抢」次次赢；「抢」多了互相真打受伤，比例于是停在中间某处。</li>
+<li>频率依赖选择：一个做法带来多少后代，随群体里有多少个体在用它而变，不是固定的数。</li>
+<li>真打一次的代价越高，群体里能维持的「抢」越少，但这条预言在物种间很难干净检验。</li>
+<li>演化稳定策略指大家都用时少数新做法占不到便宜；稳定的意思是挤不进新的，不是对大家好。</li>
+<li>Sinervo 和 Lively 发现侧斑蜥蜴橙喉、蓝喉、黄喉三种雄性石头剪子布相克，比例约六年转一圈。</li>
+<li>坦噶尼喀湖吃鳞鱼左右口的比例围着一半摆动，频率依赖站得住，左右是否两个遗传类型仍有争议。</li>
+<li>Fisher 指出每个后代都有一父一母，哪个性别少哪个就吃香，所以性别比被推回一半一半。</li>
+<li>寄生蜂的儿子只跟姐妹交配时，母蜂只生约一成儿子，同一寄主上的母蜂越多，儿子比例越靠近一半。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="980eb906f1720683">深入思考</h3>

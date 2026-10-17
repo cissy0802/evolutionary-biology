@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -171,6 +177,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 第一个编译器不可能是编译器写出来的</b>：编译器是把人写的代码翻译成机器能跑的指令的那个程序。麻烦在于，C 语言的编译器本身通常也是用 C 语言写的——那第一个是谁翻译的？真实的做法是先用一种更贴近机器、写起来极其笨拙的语言手工搓一个又慢又丑、只支持一小部分语法的版本，用它翻译出稍好的，再用那个翻译出更好的，几轮之后最初那版就废弃了。跑的是「让一个分子同时当说明书和工人，圈就断了」那节的机制：循环依赖不是靠同时凑齐两端解决的，是靠一个两头都很烂、但能自己撑住的中间版本从内部把圈接上。由此能推出一个原本看不出的结论：<b>在自举系统里，最早那一版必然被淘汰——不是因为它糟，是因为它一生出更好的替代品就失去了继续存在的理由；所以「找不到中间形态」在这类系统里不构成反驳，是预期之内的。</b><b>但这里不成立</b>：编译器那边有人存源码写文档，链条断了还能重建；地球这边什么也没留下，后来的细胞还把海里的现成材料吃干净了。所以生物这边只能靠现存生命身上那些说不通的怪癖倒推，比如核糖体核心为什么是 RNA。</li>
 <li><b>西方哲学与科学哲学 · 「第一个活的东西」这个问法本身有毛病</b>：哲学里有个老问题：一粒沙不叫沙堆，加一粒还不是，可几万粒明明是——到底第几粒开始算？找不到那一粒，不是你数得不够细，是「沙堆」这个词本来就不带边界。本期摆出来的东西也是连着的：能自持的化学循环、会复制的分子、被小泡围起来的一小团，没有哪一格写着「从这里开始算活的」。由此能推出一个原本看不出的结论：<b>「生命起源于哪一刻」问不出答案，不是证据不够，是这个问法预设了一个不存在的时刻；它跟「什么时候出现了第一批能留下地质痕迹的细胞」是两个完全不同的问题，后者有答案而且正在被一层层往前推，前者没有。</b><b>但这里不成立</b>：沙堆纯粹是语言问题，多一粒少一粒在世界里什么也没变；这边不是——一个只会被动跟着环境反应的化学循环，和一个能把变异传下去、因此能被选择改造的东西之间，隔着一个跟用词无关的真实分水岭（「自然选择的逻辑」那期讲的三个条件在哪一刻凑齐）。边界模糊，不等于两端一样。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>活细胞里存在死结：说明书存在 DNA 里，读它复制它要靠蛋白质，而蛋白质的图纸又只写在 DNA 里。</li>
+<li>RNA 既能用序列存信息，又能折成形状去催化反应，一个分子兼任两角，循环依赖就变成自我维持。</li>
+<li>1982 年 Cech 发现能自我剪接的 RNA，2000 年核糖体结构显示连接氨基酸的核心位置全是 RNA。</li>
+<li>RNA 世界假说还敞着两个坑：零件如何在无生命环境中合成，以及至今没有能完整复制自己的核酶。</li>
+<li>代谢先行派认为最先转起来的是一组互相喂料的化学反应，不需要说明书，靠外部持续供料自行闭合。</li>
+<li>2000 年发现的失落之城碱性热液区布满微孔，孔里碱性、孔外偏酸，孔壁两侧天然存在质子梯度。</li>
+<li>今天所有细胞都靠膜两侧的质子落差发电，Russell 和 Martin 主张细胞最初是蹭用了岩石里现成的梯度。</li>
+<li>没有可遗传的变异就没有选择，这是代谢先行最硬的坎，如今两派争的是交接点而非谁全对。</li>
+<li>1953 年米勒实验放电造出氨基酸，但这类实验只能证明一条路走得通，不能证明当初走的就是它。</li>
+<li>自举系统的最早一版一旦生出更好的替代品就会被淘汰，所以找不到中间形态在这类系统里是预期之内的。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="3abc7e376a13c770">深入思考</h3>

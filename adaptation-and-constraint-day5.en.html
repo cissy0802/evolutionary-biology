@@ -57,6 +57,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -178,6 +184,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Parenting and education · "Why is this child always like this"</b>: some trait recurs — needing several days to settle into a new place, ducking behind an adult when strangers appear — and adults will almost always go looking for what it is <em>for</em>. Insecurity? Inherited from whom? Once a plausible account is found, the matter feels closed. That is exactly the habit named in <em>Calling a trait an adaptation runs up a debt you have to pay</em>: an explanation that only has to hang together, never to be tested, can always be found. And <em>Not everything was picked out</em> offers the other possibility — the trait may not be a separate thing at all, but the edge left over by something else. That yields a conclusion you would not otherwise reach: <b>a trait being stubborn does not mean a deep cause is sitting behind it waiting to be found; it may mean the trait shares parts with something else and cannot be pulled out alone.</b> Telling those apart depends not on how smoothly you can explain it, but on whether you can say what you would see if you were wrong. <b>But here it breaks down</b>: a child is not a species. Most of a child's behaviour is learned, and shifts over days and weeks, not tens of generations of inherited constraint. In biology, constraint is a measurable quantity — which intermediate states cannot live. Carried into education it usually means only "we have not tried another route yet", and calling that the former turns "hasn't shifted yet" into "born that way".</li>
 <li><b>Engineering and systems design · the migration nobody can decide on</b>: two options on the table, the new one clearly better, six months of discussion and no migration, with the argument always about how much better the new one is. The constraint in <em>What can change today was fixed hundreds of millions of years ago</em> is not about the distance between endpoints; it is whether there exists a path whose every step is still alive. The nerve cannot be straightened because the cut-and-rejoin step is not survivable, not because straight would be worse. The conclusion runs at right angles to what the meeting keeps arguing about: <b>whether you can migrate is decided by drawing the intermediate states, not by comparing the endpoints.</b> With no path where each step can ship, the better design will not happen; with such a path, the weaker design wins. So "should we rewrite" becomes "after step one ships alone, does the system still run?" <b>But here it breaks down</b>: software can take downtime, run old and new side by side, shift traffic a percent at a time — you can build an intermediate state no organism can, one that dies briefly and then comes back. Engineering gaps are crossable, at a price in money and downtime; the biological ones are absolute. Incremental change is a choice in software and the only available fate in biology.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Set a round dome on a square and four curved triangles are left at the corners; the evangelists in St Mark's were painted in afterwards.</li>
+<li>Gould and Lewontin argued in 1979 that a trait existing and looking apt is no proof that natural selection picked it out.</li>
+<li>Blood is red because iron binding oxygen absorbs some wavelengths; the colour itself is a by-product along for the ride.</li>
+<li>The human chin may not have been selected on its own but be what juts out after the face and jaw shrank unevenly, which is still debated.</li>
+<li>Selection judges whole organisms on survival and reproduction, so one change often drags others along, and harmless side effects get passed on.</li>
+<li>Assuming a trait is useful, reasoning back to a story and swapping stories when one fails always wins, so it never risks being wrong.</li>
+<li>Endler's guppy ponds wrote the prediction first and kept controls: where a cichlid hunted adults, males ended up with fewer, duller spots.</li>
+<li>The critique did not kill adaptationism; it demoted "it looks well suited" from a conclusion to a hypothesis that still needs evidence.</li>
+<li>The recurrent laryngeal nerve loops under a great vessel by the heart, stretched to metres in a giraffe, because the straightening step cannot survive.</li>
+<li>The vertebrate retina faces backwards with a blind spot while the octopus eye faces the light; evolution tinkers, each version built from the last.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

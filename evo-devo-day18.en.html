@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -186,6 +192,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · two unrelated features calling the same old module</b>: in some back office, invoice export and message push look like they have nothing to do with each other, yet you change invoice export and push breaks — both call the same old module. This runs the mechanism from "a fly and you are using the same set of switches": the further upstream something sits and the more places reuse it, the more expensive it is to change the thing itself, so every change that can be shipped safely migrates toward places that take effect at exactly one call site. Which yields a conclusion you would not otherwise reach: <b>where a system can and cannot be touched has little to do with how well that code is written. Filthy code used in one place is changeable; immaculate code used in twenty places is untouchable. What you should be counting when you assess the risk of a change is call sites, not code quality.</b> <b>But it fails here</b>: call sites in software are explicit, you can find them all at once, and you can swap the underlying module wholesale and fix every caller together. Biology has no such list — how many places a gene is used can only be measured one place at a time — so "this change affects only one spot" is a statistic gathered afterwards, not a guarantee obtained in advance.</li>
 <li><b>History and warfare · why an old city's main road takes that inexplicable bend</b>: plenty of old cities have a main road that bends for no stated reason, and when you trace it, there used to be a wall there, or a river, or a burial ground. This runs the tinkerer's constraint from "evolution rewires a switch, not the part itself": rebuilding can only proceed section by section while the city keeps running, and there is no day on which you can shut it down and redraw it, so the lines laid down early become the things every later change routes around. Which yields a conclusion you would not otherwise reach: <b>the hardest thing to change in an old city is not the oldest building, it is whatever brings the city to a halt while you touch it — rigidity is set by load-bearing, not by age. A fifty-year-old station can be less movable than a stretch of eight-hundred-year-old wall.</b> <b>But it fails here</b>: cities do occasionally get a bulldozer. Nineteenth-century Paris was cut open and redrawn from above, and a fire or a war can reset the constraints outright. Evolution has no such external power — nobody stands outside a species and presses restart, and every intermediate step has to be a living embryo.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>A fertilised egg contains no shapes, only a set of instructions executed in order; the genome is not a blueprint of the body.</li>
+<li>Hox genes do not build legs or wings themselves; they assign an identity to each stretch of the body, which then runs its own building program.</li>
+<li>When a single Hox gene breaks, the result is not a missing part but a whole segment taking on another identity, such as a fly growing a leg from its head.</li>
+<li>The order of Hox genes along the chromosome matches the order of the body regions they govern in flies, mice and humans alike, though it is not an iron law.</li>
+<li>Nüsslein-Volhard and Wieschaus compiled the list of developmental instructions by mass-producing random mutations and working backwards from broken embryos.</li>
+<li>Mouse Pax6 placed in a fruit fly produces a fly's compound eye, showing the gene is a switch for the eye program, not a blueprint of an eye.</li>
+<li>Deep homology means organs built independently, like insect and vertebrate eyes, still draw on the same ancient switches and parts from a common ancestor.</li>
+<li>Toolkit genes sit at the top of the developmental program, so changing their proteins disrupts every downstream use and is usually lethal, keeping them stable for hundreds of millions of years.</li>
+<li>The giraffe's laryngeal nerve, looping down into the chest and back up, shows evolution as a tinkerer that can only modify a living embryo, never start over.</li>
+<li>Stickleback populations in many separate North American lakes lost their pelvic spines by deleting the same pelvis-only switch, leaving the gene itself intact.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going Deeper</h3>

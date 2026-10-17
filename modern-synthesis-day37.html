@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -181,6 +187,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>西方哲学与科学哲学 · 一个学派把某类问题判成「不值得问」，几乎从来不是靠反驳完成的</b>：科学哲学家 Lakatos 说一套研究纲领有个「硬核」——最里面那几条假设不拿去受检验，被检验的永远是外面那圈辅助假设。现代综合对发育做的事更彻底：它把发育划到了「不必打开的输入」。跑的是「一个框架最强的地方，往往是它让某些问题问不出来」那节的机制——把一整块过程当黑盒，是换来可计算性付的价。由此推出一个原本看不出的结论：<b>一场争论如果双方同意全部的经验事实，那它争的必定是「什么算一个原因」；这种争论不可能靠再做一个实验判决，所以听到「再等等数据」就该知道这是在回避——数据不回答归类问题。</b><b>但这里不成立</b>：库恩那套「范式互相听不懂、换代靠改宗」在这儿过头了：两边用同一批数据、同一套机制，还在同一本刊物上隔着一页写文章。这不是革命，是关于记账方式的争论。</li>
 <li><b>工程与系统设计 · 一段服务先靠运行时的临时手段扛过负载，很久以后那个手段才被写进架构</b>：某个接口撑不住，先加一层缓存（把算过的结果存起来，下次直接拿）、多开几台机器扛过去——都不动主体结构，只临时改行为。两年后这层东西成了默认配置，再后来进了新服务模板。跑的是「也许先变的是身体，基因只是后来才追上来」那节的顺序：先出现的是环境触发的反应，固定是后面的事，而固定的程度取决于这个反应被触发得多频繁。由此推出一个原本看不出的结论：<b>你现在的架构不是一份设计决策清单，是一份「哪些临时手段被触发得最多」的记录；要预测明年哪一块会变成硬结构，别看路线图，看告警日志里哪个动作重复得最勤。</b><b>但这里不成立</b>：生物那边没人来做「写进架构」这一步——固定下来要求群体里本来就存在关于触发门槛的可遗传差异，没有它，可塑性可以永远只是可塑性。工程这边有人拍板，这一步几乎总会发生；对应地，工程里稀缺的不是固定，是把已经固定的东西重新解开。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>达尔文的自然选择缺一块遗传机制，1867 年工程师 Jenkin 指出若后代是父母的平均，差异几代就会被抹平。</li>
+<li>1900 年孟德尔被重新发现，颗粒状遗传不混合，却引出数豌豆派和量身高派之间近二十年的争吵。</li>
+<li>Fisher 1918 年用数学证明，许多各出一小份力的遗传颗粒加起来，正好是连成一片的钟形曲线。</li>
+<li>现代综合的核心：演化是变异比例的变化，变异方向与需要无关，造出适应的定向力量只有选择。</li>
+<li>现代综合不打开「基因怎么长成身体」这个盒子，像算城市人口不必懂盖房子，这正是它算得准的来源。</li>
+<li>变异不是均匀撒下的噪声：古老的共用开关基因决定了哪些形态够得着、哪些一改就一大片跟着改。</li>
+<li>扩展演化综合主张把发育偏向、表型可塑性、生态位建造和基因以外的继承，从「输入」搬进「原因」。</li>
+<li>2014 年《自然》的同页对垒里，双方都承认那四样现象是真的，争的是它们算选择的材料还是方向的来源。</li>
+<li>可塑性优先说：环境先变，一大批个体同时做出同一个新样子，遗传变化随后才把它固定。</li>
+<li>加州熔岩上的侧斑鬣蜥先能按背景调深浅，后来熔岩群才出现独有的黑色素基因变异。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="020122ce44b7db09">深入思考</h3>

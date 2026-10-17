@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -161,6 +167,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · everyone knows that field was defined wrong, and nobody has touched it in ten years</b>: a field in an internal data model that everyone agrees was a mistake, still sitting there a decade on — while code written even earlier has been rewritten several times over. What runs here is the hourglass from "While the seats are empty, a rough new layout survives too": the hardest thing to change is not the earliest layer, it is the layer the largest number of downstream paths depend on at once — in animal embryos the most conserved stage is the middle, not the beginning. Which yields a conclusion you would not otherwise get: <b>to estimate the real difficulty of a refactor, do not look at how ugly that code is or how long it has been there; count how many mutually unrelated paths depend on it at once. It also explains why "tear it all down and rewrite" sometimes goes more smoothly than "change that middle layer" — a rewrite goes around the waist, while the other has to go through it.</b> <b>Where it fails</b>: in the embryo, unchangeable means lethal — move the middle and the individual dies on the spot, there is no transitional state. In software, changing that layer costs you running two of them through a migration; expensive, but payable in instalments. So "the layer with the most dependents cannot be changed" is not a law of physics here, it is a budget question.</li>
 <li><b>Western philosophy and philosophy of science · when a curve suddenly bends, don't rush to explain the world</b>: the density of events in some record shoots up over one interval; one camp says something really happened then, the other says the way things were recorded changed. That argument has the same shape everywhere. What runs here is the mechanism from "Half of the 'suddenly' is the record switching its light on": when the probability of being recorded is itself changing over time, the density curve you are looking at has a sampling curve mixed into it, and two sides arguing over that same curve cannot settle it. Which yields a conclusion you would not otherwise get: <b>separating the two curves is not a matter of arguing harder, it is a matter of finding a second, independent channel — a line of evidence whose chance of being recorded did not change with the thing under dispute. For the Cambrian that channel is trace fossils: leaving a burrow requires no hardening of the body, so their diversification is unaffected by shells becoming common.</b> <b>Where it fails</b>: palaeontology can find such a channel because the strata are still lying there waiting to be dug. Many historical and social questions have no second channel to find — the written records that survive are often themselves a product of the very change in recording practice at issue. There, admitting honestly that the two cannot be separated beats forcing out a ratio.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Nearly every basic animal body plan alive today was settled between about 541 and 521 million years ago, over ten to twenty million years.</li>
+<li>Part of the Cambrian's suddenness is the fossil record switching on: shells, spines and plates became common, so more animals could fossilize.</li>
+<li>Trace fossils record behaviour rather than hard parts, and their shift from surface trails to branching burrows shows the change was real.</li>
+<li>Cambrian burrowing broke up bacterial mats and let oxygen into the sediment, so digging was both a result and the cause of the next round.</li>
+<li>Molecular clocks put the split of the animal family tree near 700 million years ago; what exploded later was size, armour, eyes and predation.</li>
+<li>Rising oxygen looks more like a background condition that raised the ceiling than a trigger, and its role is still argued over.</li>
+<li>Trilobites had some of the earliest high-resolution eyes, with calcite lenses, and once animals could see, hiding, armour and predation escalated together.</li>
+<li>The regulatory genes that segment animal bodies predate the Cambrian: the toolkit was old, and what changed was the wiring and the opportunity.</li>
+<li>No new body plan has appeared since, partly because the seats filled up and partly because the busy middle of the developmental hourglass resists change.</li>
+<li>Hallucigenia was first reconstructed upside down and back to front, then shown to be a velvet-worm relative, which helped trim Gould's lottery claim.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

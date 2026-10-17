@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -178,6 +184,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Western philosophy and philosophy of science · when a school rules a class of question "not worth asking", it almost never gets there by refuting it</b>: the philosopher of science Lakatos described a research programme as having a "hard core" — the innermost assumptions are never put up for testing, and what gets tested is always the belt of auxiliary hypotheses outside them. The modern synthesis did something more thorough to development: it filed development under "input you need not open". This runs the mechanism from "a framework is often strongest exactly where it makes certain questions unaskable" — treating a whole process as a black box is the price paid for calculability. From which follows something you would not otherwise see: <b>if both sides of a dispute accept all the empirical facts, then what they are arguing about must be what counts as a cause; a dispute like that cannot be settled by one more experiment, so "let's wait for more data" is an evasion — data does not answer questions about classification.</b><b>Where it fails</b>: Kuhn's picture of paradigms that cannot hear each other and changeovers that require conversion is plainly too strong here. Both sides use the same data and the same mechanisms, and they publish a page apart in the same journal. This is not a revolution; it is an argument about bookkeeping.</li>
 <li><b>Engineering and systems design · a service first survives a load with a runtime workaround, and only much later does that workaround get written into the architecture</b>: some endpoint cannot cope, so you put a cache in front of it (store the results you have already computed and hand them back next time), or add machines — none of which touches the main structure; they just change the behaviour temporarily. Two years later that layer is the default configuration, and later still it is in the template for new services. This runs the ordering from "maybe the body changes first and the genes only catch up later": the environmentally triggered response comes first, fixing it comes afterwards, and how thoroughly it gets fixed depends on how often the response is triggered. From which follows something you would not otherwise see: <b>your current architecture is not a list of design decisions, it is a record of which temporary measures fired most often; so to predict which part becomes hard structure next year, do not read the roadmap — read which action repeats most in the alerting logs.</b><b>Where it fails</b>: on the biology side nobody performs the "write it into the architecture" step. Fixing requires that heritable differences in the triggering threshold already exist in the population; without them, plasticity can stay plasticity forever. In engineering somebody decides, so this step nearly always happens — and correspondingly, what is scarce in engineering is not fixing things but prising apart what is already fixed.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Darwin's theory lacked a mechanism of inheritance, and in 1867 Fleeming Jenkin argued that blending would erase variation within a few generations.</li>
+<li>The 1900 rediscovery of Mendel's particulate inheritance set off a near twenty-year quarrel between the pea-counters and the population measurers.</li>
+<li>Fisher showed mathematically in 1918 that many particulate factors of small effect add up to exactly the smooth bell curve biometricians measured.</li>
+<li>The Modern Synthesis boils down to this: evolution is changing variant frequencies, variation arises blind to need, and only selection builds adaptation.</li>
+<li>The Modern Synthesis deliberately leaves the gene-to-body box closed, like projecting city population without knowing how houses are built, and that is its strength.</li>
+<li>Variation is not uniform noise: ancient shared switch genes decide which forms are reachable and which changes drag many traits along together.</li>
+<li>The extended evolutionary synthesis wants developmental bias, plasticity, niche construction and non-genetic inheritance promoted from inputs to causes.</li>
+<li>In the 2014 Nature face-off both camps agreed those four phenomena are real; the fight is over whether they are raw material or a source of direction.</li>
+<li>Plasticity-first runs the order backwards: the environment shifts, a whole cohort shows the same new form, selection tunes it, and genes catch up later.</li>
+<li>Side-blotched lizards could already darken on cue before the California lava flow formed, and only later gained melanin variants unique to the lava population.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

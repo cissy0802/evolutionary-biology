@@ -57,6 +57,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -165,6 +171,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · the first compiler cannot have been written by a compiler</b>: a compiler is the program that translates code people write into instructions a machine can run. The awkward part is that a C compiler is itself usually written in C — so who translated the first one? What actually happens is that someone hand-builds a slow, ugly version supporting a fraction of the language in a more machine-facing and excruciating language, uses it to translate a slightly better one, uses that to translate a better one still, and after a few rounds the original is abandoned. This runs the mechanism from "let one molecule be both the instructions and the worker, and the loop breaks": circular dependency is not resolved by assembling both ends at once, but by an intermediate version that is bad at both jobs and yet self-supporting, closing the loop from inside. From which follows a conclusion you would not otherwise reach: <b>in a bootstrapping system the earliest version is necessarily discarded — not because it was poor, but because it loses its reason to exist the moment it produces a better replacement; so "no intermediate form has been found" is not a rebuttal in such systems, it is what you should expect.</b> <b>But this does not carry over</b>: on the compiler side people keep the source and write documentation, so a broken chain can be rebuilt; on Earth nothing was kept, and later cells ate the ready-made material in the ocean clean. So biology can only reason backwards from the quirks in living things that otherwise make no sense — such as why the ribosome's core is RNA.</li>
 <li><b>Western philosophy and philosophy of science · "the first living thing" is a faulty question</b>: philosophy has an old problem: one grain is not a heap, adding one more still isn't, and yet tens of thousands plainly are — so which grain starts the heap? You cannot find it, not because you counted too coarsely, but because "heap" carries no boundary to begin with. What this issue lays out is likewise continuous: a self-sustaining chemical cycle, a molecule that copies, a bit of it enclosed in a bubble — no step is labelled "counts as alive from here". From which follows a conclusion you would not otherwise reach: <b>"at what moment did life originate" yields no answer not for want of evidence but because the question presupposes a moment that does not exist; it is a completely different question from "when did the first cells capable of leaving a geological trace appear", which does have an answer and is being pushed back layer by layer.</b> <b>But this does not carry over</b>: a heap is a purely verbal problem, and one grain more or less changes nothing in the world. Here it is not — between a chemical cycle that merely responds to its surroundings and something that passes variation on and can therefore be reshaped by selection lies a real watershed that has nothing to do with wording (the moment the three conditions from the issue on the logic of natural selection are all met). A blurred boundary does not make the two ends the same.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Every living cell is caught in a loop: DNA holds the instructions, but reading and copying them takes proteins that are themselves built from those instructions.</li>
+<li>RNA can both store information in its sequence and fold into a shape that speeds up reactions, so one molecule playing both roles turns circular dependency into self-support.</li>
+<li>Cech's self-splicing RNA in 1982 and the 2000 ribosome structure, whose amino-acid-joining site is ringed entirely by RNA, turned the RNA world from a guess into evidence.</li>
+<li>The RNA world still has two open gaps: how its building blocks formed without life, and the fact that no ribozyme yet copies itself in full.</li>
+<li>The metabolism-first camp holds that the first thing to turn over was a set of reactions feeding one another, needing no instructions, only a steady outside supply.</li>
+<li>The alkaline Lost City field found in 2000 is riddled with tiny pores whose walls separate alkaline vent fluid from acidic seawater, a free natural proton gradient.</li>
+<li>All cells today make energy from a proton gradient across a membrane; Russell and Martin argue cells first borrowed a ready-made gradient in the rock.</li>
+<li>Without heritable variation there is no selection, which is metabolism-first's hardest objection, and the two camps now argue over the handover rather than who is right.</li>
+<li>Miller's 1953 spark experiment made amino acids, but such experiments show only that a route is possible, never that it was the one taken.</li>
+<li>In any bootstrapping system the earliest version is discarded once it produces something better, so missing intermediate forms are expected rather than a rebuttal.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -176,6 +182,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>历史与军事 · 分封制自带一个倒计时</b>：汉初大封同姓诸侯王，本意是让血亲替中央守住地方；几十年后爆发七国之乱，带头造反的正是这些同姓王。汉武帝改用推恩令：诸侯王的封地要分给所有儿子，而不是整块传给嫡长子——不用打，几代下来大国自己碎成一堆小侯国。跑的是「一只不生孩子的工蜂，后代不是零」那节的记账：合作的倾向跟着亲缘系数走，而旁系之间这个系数每隔一代对折一次；开国时是兄弟叔侄，到七国之乱已经隔了好几道。由此能推出一个原本看不出的结论：<b>「靠血亲维系」的失效不是某一代出了野心家，它从签下去那天起就在按固定节奏往下掉——粘性按代数指数衰减，封地和兵力却不跟着衰减。</b>推恩令高明在它没去逆这条曲线，而是顺着已经在跌的方向推了一把。<b>但这里不成立</b>：诸侯反不反，主要由封地、兵力和朝廷压力决定，不由亲缘系数决定；而且人类的「亲」可以人造——联姻、收养、结拜都能把政治上的亲疏重新接一遍，生物那边的亲缘系数不能协商。所以血缘递减最多给出一个漂移方向，给不出具体哪一年会反。</li>
 <li><b>东方思想 · 「怨亲平等」难在哪一段</b>：佛教的慈心修习有个固定次第——先对自己，再对亲近的人，再对无关的人，最后对讨厌的人，终点是四类人一视同仁。它针对的正是「一只不生孩子的工蜂，后代不是零」那节里的曲线：帮忙的倾向随亲缘系数下降，而这个系数从至亲往外是断崖式掉的（一半 → 四分之一 → 八分之一），不是缓坡。所以这套训练不是在原有倾向上加码，是逆着一个内建的坡走。由此推出：<b>「把关怀推得更远」的难度并不均匀，最费力的一步不在最远处，而在坡最陡的那一段——「自家人 / 非自家人」那道分界；跨过去之后，从「不认识的人」再推到「讨厌的人」，坡已经很平了。</b><b>但这里不成立</b>：亲缘系数是关于遗传拷贝的统计量，不是关于心理感受的。人实际用来判断亲疏的，是「起作用的不是血缘本身」那节说的那类线索——一起长大、天天照面——长尾山雀被换了窝，就把养父母的叫声当成了亲人的标记。所以修行能改的是这些线索怎么被读，改不了那条不等式。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>工蜂不育不能用「为了蜂群的利益」解释，按群体算好处，偷偷自己产卵的变异反而会铺开。</li>
+<li>亲缘系数是对方身上有同一份遗传拷贝的概率：亲兄弟和亲子都是一半，侄子外甥四分之一，表亲八分之一。</li>
+<li>Hamilton 1964 年的 r × b &gt; c：亲缘系数乘对方多出的后代，大于自己少掉的后代，帮忙就会扩散。</li>
+<li>内含适应度是把自己直接生的后代和通过帮亲戚间接传下去的拷贝合在一起记的总账。</li>
+<li>Sherman 1977 年对加州地松鼠的观察显示，冒险发出报警叫声的主要是附近住着母亲、姐妹或女儿的雌性。</li>
+<li>动物查不了族谱，后代不远走就近安家时，「隔壁那只」自动更可能是亲戚，不需要任何识别能力。</li>
+<li>长尾山雀靠窝里学来的 churr 叫声认亲，被换窝孵大的雏鸟叫声像养父母而不像亲生父母，所以这条线索能被骗。</li>
+<li>红火蚁带 b 型的工蚁会处死不带 b 型的蚁后，这种绿胡子说明要紧的是共享拷贝，血缘只是常见来源。</li>
+<li>「蜂后单配让姐妹亲缘系数达到四分之三」的解释，被白蚁也有不育工蚁、许多蜂后多次交配削掉大半。</li>
+<li>2008 年对 267 种真社会性蜂、蚁、胡蜂的比较发现，八次独立起源的祖先都是单配，但这仍是相关性证据，争论未平息。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="e881263df43834e1">深入思考</h3>

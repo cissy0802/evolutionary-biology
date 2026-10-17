@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body>
 <div class="container">
 <header>
@@ -174,6 +180,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Parenting and education · stuck for a long time in one subject, getting steadily better at being stuck in the same place</b>: someone drills one class of problem for a long time and the accuracy does not move. The usual explanations are insufficient effort or no aptitude. But nearly all the feedback they hold is of one kind: how far the answer still is from correct. The mechanism running here is the maze one from the section on who writes the score: scoring by distance to the goal pins the whole population in the dead end nearest the goal, because getting through requires several steps that drive the score down first. From which follows a conclusion you would not otherwise see: <b>how long the plateau lasts depends on whether the feedback signal permits getting temporarily worse; the denser the feedback and the more exclusively it reports distance-to-answer, the more stable the plateau — "drill more" does not change it, and what changes it is a stretch of time in which the evaluation is not scored by distance to the answer.</b><b>Where this breaks down</b>: the search in that maze does not know where the exit is and can only bump into it, while the student and the teacher both know what the correct answer looks like. So people have a shortcut the search does not — being told directly that this route is a dead end and to walk back first. Evolution has no such shortcut, and that is exactly why it burns through so many generations.</li>
 <li><b>Literature and art · Borges's library holds every possible book and cannot give you one useful one</b>: the collection in "The Library of Babel" is exhaustive. Every permutation of every letter is on the shelves, so every book you want is in there, along with every version of it containing a typo — and the people in the library spend their lives without finding one coherent sentence. The mechanism is the one from the section on what the sieve hands you owing no explanation: the space of possible forms is so large that enumerating it is meaningless, and what produces anything is never "being able to enter the space" but "having a path of small steps in which every step still stands up". From which follows a conclusion you would not otherwise see: <b>the difficulty of a work, or of a species, is not how hard the final form is to think of but that every intermediate draft has to stand on its own; the real constraint is how many viable intermediates exist, not how far away the endpoint is.</b><b>Where this breaks down</b>: a writer can delete a whole chapter and go back to the state of three drafts ago. Evolution has no such move, because the previous generation is no longer there — literature's most-used manoeuvre, tearing it up and starting again, has no counterpart in a living body, which is exactly why bodies are full of structures that take the long way round, the blind spot among them.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>The antenna on NASA's Space Technology 5 mission was found by random reshaping plus selection on performance, and it beat the hand-built design.</li>
+<li>Evolution needs only something that varies, variation that is inherited, and a rule for who stays; it runs on bits as well as on carbon.</li>
+<li>Adrian Thompson's evolved circuit exploited physical quirks of one particular chip and stopped working reliably on another chip of the same type.</li>
+<li>Selection scores outcomes, not reasons: the blind spot in the human eye is a path-dependent wiring that independently evolved octopus eyes lack.</li>
+<li>Karl Sims's virtual creatures exploited a time-step flaw in the simulator, and the cheapest way to jump high turned out to be growing tall and falling over.</li>
+<li>In artificial evolution a person writes the score; in nature fitness is only the after-the-fact record of descendants, and it shifts with frequency dependence and arms races.</li>
+<li>In the Lehman and Stanley maze, scoring by distance to the exit solved it 0 times in 40, while rewarding novelty alone solved it 39 times.</li>
+<li>Tom Ray's Tierra spontaneously produced parasites and hyper-parasites, yet artificial worlds eventually stall while the biosphere has kept going for four billion years.</li>
+<li>Gradient descent computes which way is uphill and evolution can only compare heights; evolution strategies trade extra total compute for wall-clock speed.</li>
+<li>Calling evolution an optimisation algorithm maps the copy onto the original: nature has no objective function and no checkpoint to roll back to.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>DIGGING DEEPER</h3>

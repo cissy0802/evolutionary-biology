@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 
@@ -151,6 +157,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 </ul>
 </div>
 
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Natural selection needs only three things at once: variation, heritability, and an effect of that variation on offspring numbers.</li>
+<li>Nothing in those three conditions mentions biology, so cells, words in a language and internet jokes can all run the same logic.</li>
+<li>The black form of the peppered moth traces to a jumping piece of DNA that landed in a cell-division timing gene around 1819.</li>
+<li>Once the soot cleared, black peppered moths ran about a tenth higher daily risk of being eaten, enough to explain their rapid decline in Britain.</li>
+<li>The "fittest" are not the strongest but those leaving the most offspring on average in a particular environment.</li>
+<li>Because offspring numbers multiply year on year in a fluctuating world, selection rewards never hitting zero over a high average.</li>
+<li>In the 1977 Daphne Major drought studied by the Grants, no finch's beak got thicker; only the share of thick-beaked birds rose.</li>
+<li>A working eye cannot appear in one draw, but evolution saves each small gain, and a pessimistic 1994 model needed only about 360,000 generations.</li>
+<li>Lenski's E. coli lines were still improving after 50,000 generations, and the ability to eat citrate required specific earlier mutations first.</li>
+<li>Evolution climbs the highest point reachable from here, and the Kelly criterion shows why a multiplicative world rewards avoiding the year that goes to zero.</li>
+</ol>
+</div>
 <div class="thinking">
 <h3>One layer deeper</h3>
 <details><summary>If "adapted" only means anything relative to an environment, what would it take to falsify "this trait is an adaptation"?</summary>

@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <body>
 <div class="container">
@@ -182,6 +188,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>经济·投资·商业 · 一个标准赢下整个市场之后，没人能说清它当初到底凭什么赢</b>：打字机那套字母排布、家用录像带两种格式的那场仗，胜出的一方都不是公认技术最好的。经济学家 Brian Arthur 把这类过程算成「报酬递增」：用的人越多，它对下一个人越好用——周边配件、会用的人、教材全围着它长，于是早期一点点领先会被自己放大。跑的是「有人真的把同一个起点倒回去重跑了很多遍」那节的铺路机制加上一条频率依赖：一个选项值多少，取决于已经有多少人选了它，所以后面还能走哪条路，由前面已经发生的事关掉。由此推出一个原本看不出的结论：<b>要判断一个已经领先的标准还能不能被挑战，该看的不是产品好坏差多少，是放大回路有没有跑起来（互补品、迁移成本、会用它的人数）——回路没启动，差距再大也可能翻盘；回路一旦跑起来，好得多也不够。</b><b>但这里不成立</b>：柠檬酸那条线的厉害之处是真能回档重跑，商业史没有冷冻存档，「要是当年……」永远停在推测。把锁定讲成已经证明的因果，就是把一段不能重放的单次历史当成了实验。</li>
 <li><b>组织与制度 · 同一天成立、同样配置的两个组，一年后做事的方式完全不同</b>：一次扩张里一口气建了几个同起点的组——一样的目标、相近的人数、同一套工具。一年后它们的流程、评审方式、甚至说话方式都不一样了，而且各自都讲得出一套理由。跑的是「可预测到什么程度，取决于你问哪一层、问多久」那节的机制：把偶然和可重复分开，只能靠平行的重复系——在一个组里反复出现说明不了什么，在几个互不相干的组里各自出现才说明有力量在推。由此推出一个原本看不出的结论：<b>「最佳实践」的证据强度不取决于那个团队多成功，取决于有多少条独立的线各自走到了同一处；只在一条线上出现过的做法，再成功也只是一段历史，不是一个结论。</b><b>但这里不成立</b>：组与组之间会互相看、互相抄，头上还是同一个考核口径——这就不是独立的重复系了，相当于十二个瓶子之间偷偷互倒了几滴。那十二瓶严格不交换，所以撞上同一个基因才算数；公司里「独立地走到同一处」几乎无法确认，于是这条只能用来给单次成功降权，不能用来证明哪个做法是对的。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>Gould 在《奇妙的生命》里主张：把生命的磁带倒回五亿年前重放，出来的世界多半没有人类。</li>
+<li>历史偶然性不等于随机：每一步都有原因，但能走到哪里取决于前面哪些支系碰巧活了下来。</li>
+<li>伯吉斯页岩里不少「查无此类的怪物」后来被归入现存大类的早期旁支，偶然性论证失去了一根支柱。</li>
+<li>Lenski 的大肠杆菌实验把一瓶菌分成十二瓶独立演化，每五百代冻存一管，让演化第一次可以回档重跑。</li>
+<li>十二条线互不交换，却全都长得更快、细胞变大，还反复撞上同一批基因，说明有稳定的选择力量在推。</li>
+<li>约三万一千代时只有一条线学会吃柠檬酸；Blount 解冻早期存档重跑，一个也长不出，从晚期存档重跑却反复出现。</li>
+<li>关键创新常要先攒下几个本身没有好处的变化来「铺路」，所以可重复性取决于你把磁带倒回到哪一年。</li>
+<li>加勒比四个大岛上的安乐蜥各自独立辐射，却长出同一套生活角色，因为同类环境里可行的活法只有几种。</li>
+<li>「一样」要看问哪一层：身体形态趋同得很漂亮，基因层面常各走各的，细菌里也是同基因多、同突变少。</li>
+<li>达尔文雀的喙深在大旱后一代内可预测地变深、条件反转后又变回去，演化可预测并不等于朝某个方向进步。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="2ce3b1f80d9b0810">深入思考</h3>

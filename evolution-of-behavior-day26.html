@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body>
 <div class="container">
 <header>
@@ -171,6 +177,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 一个接口慢下来，复盘会上三个人吵起来，而三个人说的都对</b>：一个说是缓存没命中；一个说是当初赶上线把两张表合并了；第三个说这个接口本来就是给后台批量跑的，不该有人在页面上调它。跑的是「『它为什么这么做』这一句话，其实是四个互不替代的问题」那节的机制——他们分别站在「此刻怎么运作」「怎么变成现在这样」「本来在系统里干什么」三格里。由此能推出一个原本看不出的结论：<b>一场技术争论拖得特别久，通常不是证据不够，而是没人指出大家在答不同格的问题。所以散会前该做的不是继续摆证据，而是把三格分别写成三行各填一句——三行都填得满且互不矛盾，那就没有分歧只有分工；只有当同一行里蹲着两个互斥的答案时，才值得继续查。</b><b>但这里不成立</b>：生物那边的「它起什么作用」有一把外部尺子——带着它的个体有没有留下更多后代，能拿数据打；软件里「它本来是干什么的」没有这种尺子，谁都能事后补一个用途出来。这正是生物学里挨批最多的那种事后编故事。所以那一行必须拿当初的文档或提交记录去填，填不出来就空着，别现编。</li>
 <li><b>经济·投资·商业 · 「这家公司起来，是创始人的本事还是赶上了时候」</b>：这个问法和「这是本能还是学来的」是同一个毛病——它假设两个因素各占几成，可以做加法。实际跑的是「『这是本能还是学来的』——这个问题问不出东西」那节的机制：那个人的判断力本身就是在那几年的反馈里长出来的，反馈换一套，长出来的判断力就是另一套，两边根本拆不开算。由此能推出一个原本看不出的结论：<b>想复制一次成功，该复制的不是那个人的做法，而是当初给出反馈的那套条件——所以一个打法能不能移植，要看接收端有没有同一类反馈信号（多久能知道一次对错、信号由谁给、错了以后还能不能改），而不是看执行的人像不像。</b><b>但这里不成立</b>：生物那边的「自带」部分有个硬边界，就是受精卵里带着的那份序列，实验上还能靠隔离饲养把它和环境输入切开看；公司这边没有任何一刀能把「人」和「时候」切开。所以这条类比只到「别做加法」为止——再往下追问「哪一部分是模板」，在这里问不出答案。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>「动物为什么这么做」其实一次问了四件事：此刻的机制、个体发育、后代多少、祖先何时出现。</li>
+<li>演化的账不记「为了求偶才唱」，只记带着某种唱法的个体留下的后代是多还是少。</li>
+<li>廷贝亨在1963年把四问写成清单，它的用处是逼人先说清自己答的是哪一格。</li>
+<li>从没听过同类的白冠麻雀长大照样会唱，虽然含糊简陋，说明它自带一张粗草图。</li>
+<li>白冠麻雀约在出生后第10到50天学歌，而且基本只收同类的歌，像带着一把筛子。</li>
+<li>听过老师的歌、开口前被弄聋的小鸟唱不出来，鸣禽要靠听自己的声音来调校。</li>
+<li>换成活的老师，麻雀过了第50天还能学会，学歌窗口更像一条成本曲线而不是焊死的门。</li>
+<li>1966年的老鼠实验里，味道只跟恶心连得上，光和声只跟电击连得上，学习本身是偏食的。</li>
+<li>灰雁的印刻和味觉厌恶都说明，被留下来的不是具体动作，而是何时、对什么、多容易学的偏向。</li>
+<li>技术争论久拖不决，常常不是证据不够，而是各方在答廷贝亨四问里不同格的问题。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="0b74fc304b2ca0c1">深入思考</h3>

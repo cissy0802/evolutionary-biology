@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -175,6 +181,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Parenting and education · You catch the same infraction again and again, the number of catches really does drop, and you have no idea whether it happened less or was hidden better</b>: checking the phone, checking the homework — the first round always turns something up, and it gets cleaner from there. What is running is the mechanism from "the drug does not create resistance; it only clears away the susceptible": the pressure a check applies lands on the observable trait of getting caught, not directly on the behaviour, and what it removes is the clumsily concealed version. From which follows a conclusion you would not otherwise see: <b>a falling count of catches can come from less happening or from better hiding, and those two move the same direction in the same data, so "we're catching fewer" can never on its own serve as evidence of effect. To tell them apart you need a separate channel that this round of checking does not touch — the kind of consequence that only surfaces later and cannot be hidden. The tighter the checking, the less information that number carries.</b> <b>But here it breaks down</b>: on the bacterial side the variation is random and pre-existing, so it can only be sifted generation by generation; a child learns directionally within a single lifetime and can understand the reason behind a rule. That brings a consequence bacteria have no equivalent of — once the pressure lifts, "resistance" on the human side can genuinely disappear quickly, without waiting for anyone to be outcompeted.</li>
 <li><b>Engineering and systems design · A layer added to work around some limit, the limit lifted long ago, and the layer can never be removed</b>: an interface was slow, so you put a cache in front of it; two years later the interface has been rewritten, the cache is still there, and nobody dares touch it. What is running is the mechanism from "take the pressure away and things do not have to go back": it had a cost at the outset (one more thing to maintain, stale data, harder debugging), and once the pressure lifted that cost should have retired it — except that over those two years the surrounding code was changed piece by piece to accommodate it, so the cost got absorbed by other changes. It no longer loses anything, so nothing selects against it. From which follows a conclusion you would not otherwise see: <b>to judge whether a temporary fix can still be pulled out, do not look at why it was added — look at whether anyone still pays its cost. If people still complain that it is slow or that the data is stale, the cost is still live and it can still go. Once the complaints stop, that usually does not mean the problem was solved; it means compensation is complete and the thing has grown into the structure. "Nobody mentions it any more" is the signal of irreversibility, not of improvement.</b></li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>The Lederbergs' 1952 replica-plating experiment showed that resistant colonies exist before any exposure to the drug; the drug just removes the susceptible ones.</li>
+<li>Bacteria never learn to resist: mutations arise at random, and selection simply lets the carriers take over the whole population.</li>
+<li>A 2016 experiment on a two-metre plate filmed resistance evolving: the bacterial front stalls at each concentration boundary until a mutant breaks through at one point and fans out.</li>
+<li>Bacteria can pass small circular DNA carrying resistance genes sideways, even across species, so a harmless microbe's trick can reach a pathogen.</li>
+<li>Killing everything selects nothing and killing nothing selects nothing; killing most and leaving a few is the strongest selection pressure of all.</li>
+<li>Palmer amaranth beat glyphosate by copying the target protein's gene from five to over 160 times, giving the herbicide more targets than it can hit.</li>
+<li>Rotating or combining drugs works because one individual must carry two unrelated mutations at once, and two small probabilities multiply into a tiny one.</li>
+<li>A 2022 study of white clover in 160 cities found cyanide-producing plants rarer toward city centres, in the same direction across continents and climates.</li>
+<li>The dark peppered moth rose with industrial soot and fell after cleaner air; a 2012 study measured its daily bird-predation disadvantage at about ten per cent.</li>
+<li>If a compensating mutation erases resistance's cost, withdrawing the drug no longer reverses it; whether a cost can be absorbed internally decides reversibility.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going Deeper</h3>

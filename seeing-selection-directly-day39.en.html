@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -136,6 +142,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · a five-year-old configuration, and nobody can say which line was added to solve what</b>: all you hold is the file as it stands now, so the discussion of "can we delete this" always lands on "what if something breaks". The mechanism is the one from "we used to guess backwards from the finish; now we watch it walk along the time axis": a terminal state cannot separate the sources — a habit someone brought in when the team turned over, something changed in passing during a framework upgrade, and something that genuinely held during an incident all look identical in that file. Which yields a conclusion you could not otherwise see: <b>whether a config line can be deleted does not depend on whether it looks useful now, but on whether the archive holds the sequence showing that some measure actually moved around the time it was added; without that sequence, deleting and keeping are both bets, and what you are betting on is not the technology but a memory that is already gone.</b><b>But it does not hold here</b>: ancient DNA can say "2% goes to selection" because there is a computable baseline for how much a frequency should drift with no selection at all, set by population size. Configuration has no "expected magnitude of casual edits", so you can never compute what share of changes had a reason. What transfers is "get the sequence"; what does not is the fraction — frequency needs many individuals to even be defined, and your system exists in one copy.</li>
 <li><b>History and military affairs · why a dynasty collapsed was long answerable only from chronicles, and chronicles are written by whoever survived</b>: then tree-ring widths, ice-core layers and lake sediments arrived, offering an annual sequence with no connection to any participant's account — and some old explanations were rewritten, because once the drought years are laid out, attributions of the "they lost virtue" sort do not line up in time. Same mechanism: attribution can only be built on what came before what, and that takes continuous measurement to see; with only a terminal state, simultaneous and sequential are the same thing. Which yields a conclusion you could not otherwise see: <b>how testable a historical explanation is depends not on how rich the sources are but on whether there exists a continuous sequence independent of the participants' accounts; without it, more sources are only more detail about the same endpoint.</b><b>But it does not hold here</b>: ancient DNA can put a number on selection's share because it has a null model. Between a climate sequence and a dynastic collapse there is no such model, so no one can compute "what fraction of collapses goes to drought". What tree rings can do is rule out — that year was not dry, so that explanation is void; quantitative attribution they cannot do.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Selection is by definition a directional change in a variant's frequency over time, so lining ancient genomes up by date lets you watch it directly.</li>
+<li>Allele frequencies shift for at least four reasons — selection, migration, admixture and drift — and in West Eurasia over the last ten millennia all four ran at once.</li>
+<li>Akbari, Reich and colleagues modelled out migration and admixture across more than 15,800 ancient West Eurasian genomes and found only about 2% of frequency change attributable to directional selection.</li>
+<li>Inside that 2% sit 479 alleles with evidence strong enough to name individually, against the dozen or two that inference from modern genomes had firmly established.</li>
+<li>Selection intensified rather than weakened after farming arrived: agriculture, settlement and dense populations swapped in a new sieve instead of switching the old one off.</li>
+<li>A coeliac-risk variant at HLA-DQB1 climbed from near zero to about 20% in four thousand years, and blood type B rose from near zero to about 8% over six thousand.</li>
+<li>A tuberculosis-risk variant at TYK2 rose from about 2% to 9% and then fell back to roughly 3%, so having been favoured once is no promise of staying favoured.</li>
+<li>The CCR5 deletion that blocks HIV was pushed up by selection, but HIV is a twentieth-century disease, so whatever favoured the deletion back then was something else.</li>
+<li>Pleiotropy and hitchhiking mean what a variant correlates with today often differs from why it was selected, and ancient DNA time series finally make such stories testable.</li>
+<li>The study covers West Eurasia only, its trait predictors were built in modern industrialised societies, and "selected" never means "better".</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

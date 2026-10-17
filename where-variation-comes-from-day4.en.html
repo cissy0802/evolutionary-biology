@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -192,6 +198,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>History and textual scholarship · The family tree of manuscripts</b>: ancient texts survived by being copied out by hand, generation after generation, and a copyist’s error gets faithfully reproduced by the next one. Textual scholars build family trees of surviving manuscripts precisely from these <em>shared errors</em>: two copies wrong in the same place usually descend from the same ancestor. Two mechanisms from this topic are running together here — a slip has nothing to do with whether the content is right (the randomness in the section on variation coming first), while which branch survives to today often turns on which monastery escaped burning (drift). Which yields a conclusion you would not otherwise see: <b>a variant reading being widespread is no evidence that it is closer to the original — circulation measures the survival history of copies, not the quality of the text.</b> There is an old maxim in the discipline that says just this: manuscripts are to be weighed, not counted. <b>Where it breaks down</b>: a scribe understands the content, will actively "fix" passages that read wrong, and will correct against a second manuscript — which amounts to sideways flow between texts, with a definite direction, toward what reads smoothly. DNA replication has no proofreader that understands the content, so variation on the manuscript side is not purely random and the family tree is often not a clean tree at all.</li>
 <li><b>Organisations and institutions · What hiring actually brings in</b>: a team that takes nobody new for a few years starts producing proposals that look increasingly alike. Its members did not get duller; the set of combinable material closed. The section on shuffling beating printing gives two mechanisms: the number of combinations recombination can produce vastly exceeds the rate at which new variants appear, and in a lineage without recombination two good things sitting in two different people can never be joined. The conclusion runs against intuition: <b>the value of a hire should be counted by how much material they bring that was not previously in the combinable pool, not by their individual ability.</b> A senior person whose background overlaps heavily with the existing members contributes close to nothing to the combinable space, even if they are individually stronger. It also explains in passing why internal rotation is often better value than hiring — rotation is recombination, not import. <b>Where it breaks down</b>: in biology recombination happens automatically every generation and needs nobody’s consent, whereas every reshuffle in an organisation costs rebuilt trust and redivided authority. So the biological recombination rate is an equilibrium value tuned over the long run, while an organisation’s usually sits far below it, stuck on the fact that nobody has the authority to disturb the current division of labour — an authority problem, not a comprehension one.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Selection can only choose among differences that already exist; a perfectly uniform population gives even the harshest filter nothing to work with.</li>
+<li>An Icelandic study found each child carries about sixty new mutations neither parent had, mostly from the father and more with his age.</li>
+<li>Sperm are produced by continual cell division, each one recopying the genome, which is why fathers contribute most new mutations.</li>
+<li>Calling mutation random means only that the chance a variant appears is unrelated to whether it helps, not that every site errs equally.</li>
+<li>In 1943 Luria and Delbrück used the variance between plates, not the average, to show resistant bacteria existed before the virus arrived.</li>
+<li>Antibiotics do not create resistant bacteria; they pick out the few already present and clear away their competitors.</li>
+<li>Mutation adds new material slowly, while recombination reshuffles existing variants quickly and lets good mutations from different individuals end up together.</li>
+<li>In 1981 an immigrant finch landed on Daphne Major, and within three generations its Big Bird descendants were breeding only among themselves.</li>
+<li>Genetic drift is the sampling noise of each generation, louder in small populations, so a spreading variant is no proof that it helps.</li>
+<li>Cheetahs and northern elephant seals show that sampling losses are hard to undo: numbers can recover while genetic variation does not.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going Deeper</h3>

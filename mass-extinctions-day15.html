@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -185,6 +191,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>组织与制度 · 一个行业塌下去那两年，留下来的那批人</b>：某个行业整体收缩的一两年过去之后，还在场的人会被讲成「最能干的」，做法被总结成经验传下去。跑的是「那一刻管用的本事，跟平时管用的不是同一套」那节的机制：筛子换了一把，平时预测存活的属性（做得深、做得专、绑着一个大客户）在那一刻不再预测，取而代之的是平时不怎么被奖励的那些（摊得开、现金厚、路子杂）。由此能推出一个原本看不出的结论：<b>从一次塌方的幸存者身上总结出来的「成功要素」，描述的是那把筛子的形状，不是平时的本事；要分清哪一条真是本事，得看它在没塌方的年份还预测不预测得动。</b><b>但这里不成立</b>：贝类改不了自己那个属的分布范围，人和公司却能在事前调整——多开一条线、多留半年现金。所以这边能归给运气的份额比化石那边小，把整件事说成运气是往另一个方向错。</li>
 <li><b>工程与系统设计 · 复盘会上那个「说得通」的根因</b>：线上出了一次故障，复盘会上有人给出一个解释，在场的人都觉得说得通，于是写进报告结案；两周后同样的故障又来一次。跑的是「一个说法怎么从『说得通』变成『基本定案』」那节的机制：铱异常刚提出来时也只是说得通，它变硬是因为当场把自己架上了火——预言了几样当时还没人见过的东西（被压出纹路的石英、落回地面的玻璃小球、一个直径上百公里的坑），后来一条条被挖了出来。由此能推出一个原本看不出的结论：<b>复盘该问的不是「这个解释能不能说通已经发生的事」，而是「如果它成立，我们在还没查的那份日志上应该看到什么」——先写下来，再去查；一个不预言任何未查证据的根因，和没有根因在信息上一样。</b><b>但这里不成立</b>：撞击那个说法等得起，地层在原地躺了六千多万年，1991 年去挖也还在；线上系统的证据几天就轮转掉。所以「先预言再去挖」在这里有个时间窗，窗过了，诚实的说法是「这次查不出来」，而不是把那个说得通的解释写进报告。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>化石记录里的灭绝率是数出来的比例：最后一次出现落在某段时间里的类群数，除以那段时间在场的总数。</li>
+<li>「五次大灭绝」出自 1982 年对海洋化石的统一统计，当时泥盆纪那次在统计上其实并不显著。</li>
+<li>按现在的数据重查，五次大灭绝只是早奥陶纪以来最大的五次，与背景灭绝之间没有自然界线。</li>
+<li>二叠纪末常被引成 96% 的海洋物种消失，扣掉背景灭绝、拆开两次事件后约为 81%。</li>
+<li>化石稀疏让最后一块化石总比最后一个个体早，突然的灭绝会被抹成缓坡。</li>
+<li>1980 年意大利古比奥白垩纪末界线黏土里的铱异常，引出了小行星撞击导致灭绝的说法。</li>
+<li>撞击说预言了全球同层铱异常、冲击石英与玻璃小球、一个同年代大坑，1991 年在尤卡坦找到了坑。</li>
+<li>一个说法变硬，不是因为它把已知的事解释得更顺，而是它事先说出了自己错了会在哪里被抓到。</li>
+<li>白垩纪末贝类研究显示，平时预测存活的幼体扩散和物种分布在大灭绝那一刻失灵，只剩整个属的分布范围管用。</li>
+<li>撞击后全球森林崩塌，树栖鸟类支系全部绝迹，今天的鸟都来自地面生活的祖先。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="1fbe16b1f6a89f39">深入思考</h3>

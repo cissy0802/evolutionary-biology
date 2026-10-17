@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -228,6 +234,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · cooperation among strangers turns out to be the sturdy kind</b>: on a public open-source project, hundreds of people who have never met and are not paid for it submit changes, and maintainers spend real time writing detailed notes on a stranger's submission. Intuitively this should be the hardest place to sustain cooperation: no contract, no boss, most participants never meeting again. What runs here is the mechanism from "you have never helped me, but someone saw you help another", and its two requirements happen to be met to an extreme by the tooling: every submission and every comment is attached permanently to a person (the act is seen), and the next person who deals with you can open your entire history (the information travels). That yields a conclusion you would not otherwise reach: <b>collaboration quality turns mostly not on how good the community culture is, but on two switches — whether the record accrues to an individual, and whether the next party can read it at zero cost.</b> Move the same people into an internal system where records are private, review is anonymous and credit lands on a team, and the detailed notes disappear; the channel has simply been cut. <b>Where this breaks down</b>: reputation in biology rides on individual memory and limited observation, so it distorts and decays, whereas a version-control record is a verifiable ledger anyone can replay. That makes the human version far steadier, and adds a failure the natural case does not have — a record that is exact and permanent starts getting gamed as a performance metric, and <b>a gamed score no longer indicates the behaviour.</b></li>
 <li><b>Economics and business · the restaurant by the station stays bad for decades</b>: the places outside a railway station or a tourist entrance are expensive and poor, and stay that way through changes of owner; the same person opening a shop in a residential block behaves completely differently. By the conditions in "as long as you will meet again": the cost of cheating once has to land on a future encounter, and here the chance of meeting again is near zero — the tourist eats and leaves. The conclusion is far more useful than "people in that trade have poor character": <b>to predict whether a place is good, whether its customers repeat tells you more than its fittings or its promises</b>; and the remedy changes accordingly — instead of trying to change people, hitch the one-off transaction to something that does repeat. That is what a chain brand does: one branch cheats a customer and every branch pays for it. <b>Where this breaks down</b>: in biology the chance of meeting again is fixed by lifespan, group size and range, and no individual can alter it, while people can manufacture repetition — deposits, contracts, guarantees, brands all bolt a one-off onto something long-lived. So "one-off" among humans is rarely truly one-off; usually nobody has bothered to build that bridge.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>The prisoner's dilemma has one shape: whatever the other does, giving less leaves you more, so both slide into an outcome worse for each.</li>
+<li>Trivers set out the conditions for reciprocity in 1971: a high enough chance of meeting again, recognising who is who, and remembering what they did last time.</li>
+<li>In Axelrod's two tournaments tit for tat took the top total score both times without ever outscoring a single opponent head to head.</li>
+<li>Tit for tat cannot absorb a mistake: one slip locks two players into alternating retaliation, and in simulations with errors more forgiving rules win.</li>
+<li>Among vampire bats, past sharing predicts who feeds whom better than kinship does, and it is usually the well-fed bat that offers the meal.</li>
+<li>Help can be repaid through a third party: when direct exchange is blocked but past giving is public, people who gave receive more from others.</li>
+<li>Cleaner wrasse bite client mucus less often when other fish are watching, and waiting clients prefer cleaners they have just seen working honestly.</li>
+<li>Reputation is an information channel rather than a moral fact: behaviour has to be seen, and the record has to reach your next partner.</li>
+<li>Letting players pay to fine free riders keeps public-goods contributions up, but punishment is itself a public good, creating second-order free riding.</li>
+<li>Across sixteen locations, some places saw high contributors punished instead, so punishment sustains cooperation only where people agree on what deserves it.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>GOING DEEPER</h3>

@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -158,6 +164,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>组织与制度 · 收购完成三年了，那边还在用自己那套报销系统</b>：架构图上早就并成一家，可被收的那边总有几样东西下不掉——自己的报销、自己的排班、自己的值班表，年年说要统一，年年统一不了。跑的是「并进来之后，被吞的那位交出了几乎整本说明书」那节的机制：绝大多数功能会往中心搬（细胞里是往细胞核搬，而且这个速率高到能在烟草上直接量出来），<b>留在本地的是那些延迟不起的——信息跑一趟中心再回来就来不及的决定。</b>由此能推出一个原本看不出的结论：<b>判断一次合并完成到什么程度，看架构图没用，要看的是「还有哪些决定必须当场做完」这份清单；它不会因为你宣布下线而变短，因为它是由响应时间定的。硬把这类决定收上去，系统不是变整齐，是变慢，而且会在压力最大的时候先断。</b><b>但这里不成立</b>：细胞那边留下的那几十个基因是被筛出来的——搬过去的那份如果不好用，那一支就留不下后代，所以「它还留在原地」是条真信息。公司里没有这个筛子，本地系统留着常常只是没人推动，所以「它还留着」本身什么也不说明。要用这条，你得自己造那个筛：把某个本地环节停两周，看真正断掉的是哪几件。</li>
 <li><b>东方思想 · 「无我」常被读成「你不存在」，那是读窄了</b>：佛学讲无我，听上去像在否认你的存在。但本期给了它一个很具体的对照：你身上有一整套零件带着来历完全不同的另一份说明书，而「你是一个单位」这件事是被几样具体装置维持住的——线粒体只能由已有的分裂而来、只从母亲那边传下去、大部分说明书被搬进了中央。跑的是「它不是你长出来的零件，是被吞进去、没被消化掉的那位」那节的机制。由此能推出一个原本看不出的结论：<b>「个体」不是演化的起点，是一次合并之后才被固定下来的边界，它有确定的年代、有维持它的装置，也因此可以失效——你体内某个细胞系一旦挣脱这套约束，就会在你身体里被独立地选择，那不是比喻，那是肿瘤发生的机制之一。</b><b>但这里不成立</b>：佛学的无我说的是经验主体，靠内观得到，跟世代之间传不传得下去无关；而且它讲的是当下每一刻的和合聚散，本期讲的却是一次不可逆的历史事件——那位交出说明书之后再也回不去了。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>线粒体有两层膜、自带环状 DNA、核糖体接近细菌款，而且只能由已有的线粒体分裂而来。</li>
+<li>线粒体两层膜里，内层是被吞细菌自己的皮，外层是吞它的那个细胞包裹时留下的。</li>
+<li>基因测序把线粒体稳稳放进 α-变形菌，把叶绿体放进蓝细菌，它们在细菌族谱上各有确定位置。</li>
+<li>内共生不是谁为了能量去吞谁：吞而不消化发生过无数次，只有极少数留下了更多后代。</li>
+<li>线粒体几乎全部来自母亲，这能压住两套来历不同的线粒体混在一起时的内部冲突。</li>
+<li>1967 年 Lynn Margulis 系统提出内共生学说，据记述稿子见刊前被十几家期刊退过。</li>
+<li>内共生之争靠 DNA 测序这种能把两种解释分开的新测量收尾，而不是靠更漂亮的论证。</li>
+<li>Margulis 关于鞭毛也来自细菌的第三条主张至今没有得到支持，同一篇文章可以部分对、部分错。</li>
+<li>复杂细胞的宿主很可能是古菌，2020 年日本团队花十几年才培养出一株翻倍要两周的近亲古菌。</li>
+<li>人类线粒体只剩 37 个基因，其余大多丢失或搬进细胞核，烟草实验测出搬家至今仍在发生。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="026d8d07dcea6474">深入思考</h3>

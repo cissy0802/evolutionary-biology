@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -140,6 +146,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 一套跑了五年的配置，没人说得清哪一条当初是为了解决什么才加的</b>：你手上只有现在这份文件，于是讨论「这条能不能删」，最后总落在「万一出事呢」。跑的是「以前是从终局往回猜，现在是沿着时间轴看着它走」那节的机制：只看终态分不开几种来源——人员更替带进来的习惯、框架升级顺手改的、真在事故里扛住过的，在这份文件里长得一模一样。由此推出一个原本看不出的结论：<b>一条配置能不能删，不取决于它现在看起来有没有用，取决于档案里有没有「它被加进来前后某个指标真的变了」这段序列；没有那段序列，删和不删都只是赌，赌的不是技术，是一段已经丢掉的记忆。</b><b>但这里不成立</b>：古 DNA 那边能说出「百分之二归选择」，是因为「没有选择时比例该漂多少」有个算得出来的基线，由群体大小决定。配置这边没有「随手乱改的期望幅度」，你永远算不出多少比例的改动是有原因的。能搬的是「要序列」，搬不走那个比例——频率要大量个体才定义得出来，而你的系统只有一份。</li>
 <li><b>历史与军事 · 一个王朝为什么崩，长期只能靠史书里的解释，而史书是活下来的那方写的</b>：后来树轮宽度、冰芯分层、湖底沉积进了场，给出一条跟当事人叙述完全无关的连续年度序列，于是某些老解释被改写——干旱年份排出来之后，有些「因为失德」的归因对不上时间。跑的是同一节的机制：归因只能建立在先后上，而先后要连续测量才看得出来；只有终态，同时发生和先后发生是一回事。由此推出一个原本看不出的结论：<b>一个历史解释有多可检验，不取决于史料多丰富，取决于有没有一条独立于当事人说法的连续序列；没有这条序列，再多的史料也只是同一个终局的更多细节。</b><b>但这里不成立</b>：古 DNA 能把选择的份额量成一个数，靠的是有零模型；气候序列和王朝更替之间没有这种模型，算不出「多少比例的崩溃该记在干旱头上」。所以树轮能做的是排除——某年根本不旱，那条解释就作废；定量归因做不到。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>自然选择的定义就是变异在人群里的比例随时间定向变化，把不同年代的古基因组按年代排队就能直接看见它。</li>
+<li>变异比例变化至少有四种来源：选择、迁徙、混合和随机漂变，而西欧亚这一万年里四者同时在发生。</li>
+<li>Akbari 和 Reich 团队扣掉迁徙与混合后发现，古代西欧亚人的比例变化只有约百分之二归得给定向选择。</li>
+<li>这百分之二里有 479 个变异证据强到能单独点名，而此前靠现代基因组反推公认的例子只有十几二十个。</li>
+<li>选择在农业出现之后变强而不是变弱：农业、定居和密集人口是换上来的新筛子，不是筛子的关闭开关。</li>
+<li>HLA-DQB1 上的乳糜泻风险变异四千年里从几乎为零涨到约两成，B 型血六千年里从几乎为零涨到约百分之八。</li>
+<li>TYK2 上的结核风险变异先从百分之二涨到百分之九，再掉回百分之三左右，说明被选上过不保证继续被选。</li>
+<li>CCR5 缺失型能挡艾滋病毒且曾被选择推高，但当年推它的不可能是二十世纪才有的艾滋病。</li>
+<li>一因多效和搭便车让「变异今天跟什么相关」与「当年为什么被选中」经常对不上。</li>
+<li>这项研究只覆盖西欧亚人群，预测分数建在现代工业化社会里，而且「被选中」从来不等于「更好」。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="3c32b5eb0c05cb2c">深入思考</h3>

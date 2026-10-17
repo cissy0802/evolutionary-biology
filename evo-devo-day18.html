@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -191,6 +197,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 两个毫不相干的功能，底下调的是同一个老模块</b>：一个后台里，发票导出和消息推送看着毫无关系，可你改发票导出，推送挂了——两边调的是同一个老模块。跑的是「苍蝇和你用的是同一批开关」那节的机制：越靠上游、被复用得越多的东西，动它本身的代价越高，于是能安全落地的改动全都往「只在一个调用点生效」的地方跑。由此能推出一个原本看不出的结论：<b>一个系统哪儿能动、哪儿不能动，跟那段代码写得好不好关系不大——写得再脏、只有一处在用，就是能改的；写得再干净、二十处在用，就是动不得的。评估改动风险该数的是调用点，不是代码质量。</b><b>但这里不成立</b>：软件的调用点是显式的，能一次性搜出来，还能把底层模块整个换掉再一起修好；生物这边没有这张清单，一个基因到底在多少地方被用到只能一处处测出来——「这个改动只影响一处」在生物里是事后统计，不是事前保证。</li>
 <li><b>历史与军事 · 老城的主干道为什么在那儿莫名拐个弯</b>：不少老城的主干道会在某处拐一个说不出理由的弯，顺着查下去，那里以前是道城墙、一条河或一片墓地。跑的是「演化改的是开关上的一根线」那节的修补匠约束：改造只能在城市继续运转的前提下一段段做，没有哪天能把它整个关掉重画，于是早期定下的那几条线成了后来所有改动绕着走的东西。由此能推出一个原本看不出的结论：<b>老城里最难改的不是最古老的建筑，而是那些「动它的时候整座城会停摆」的东西——刚性由承重决定，不由年代决定；一座五十年的车站可能比一段八百年的墙更动不得。</b><b>但这里不成立</b>：城市偶尔真有推土机。十九世纪的巴黎被自上而下地切开重画过，一场大火或一次战争也能把约束清零。演化没有这种外部权力——没有谁站在物种外面按下重来，中间每一步都得是个活着的胚胎。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>受精卵里没有形状，只有一套按时间顺序执行的指令，基因组不是一张身体图纸。</li>
+<li>Hox 基因不亲手造腿或翅膀，只给身体的每一段指派身份，由那一段自己调出整套造器官的程序。</li>
+<li>Hox 基因坏掉一个，出来的不是残件，而是整段身体换了身份，比如苍蝇头上长出一条完整的腿。</li>
+<li>Hox 基因在染色体上的排列顺序与它们负责的身体部位顺序一一对应，苍蝇、小鼠和人都如此，但这不是铁律。</li>
+<li>Nüsslein-Volhard 和 Wieschaus 靠大批量随机制造突变、逐只看胚胎，从坏掉的样子反推出发育指令清单。</li>
+<li>小鼠的 Pax6 基因放进果蝇，长出的是苍蝇的复眼：它是启动造眼程序的开关，不是眼睛的图纸。</li>
+<li>深同源指结构各自独立演化的器官，底下调用的却是共同祖先留下的同一套古老开关和零件。</li>
+<li>发育工具箱基因坐在程序最上游，改动其蛋白会牵连所有下游用途，通常让胚胎活不下来，所以几亿年保持不变。</li>
+<li>长颈鹿的喉返神经绕道胸腔再回到喉咙，说明演化像修补匠，只能在一个活着的胚胎上逐代修改，不能推倒重来。</li>
+<li>北美多个湖里的三刺鱼各自删掉了同一段只在骨盆生效的调控开关而丢掉腹刺，基因本身完好无损。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="45c0c93c303c702b">深入思考</h3>

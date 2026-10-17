@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body></head><body>
 </head><body>
 <div class="container">
@@ -166,6 +172,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 一批设备的支持期到了之后，它们身上再出的问题不再进任何人的待办列表</b>：厂商不修了，用的人也懒得报了——问题照样在发生，只是没有回路把它带回设计那边。跑的是「一个四十岁才发作的坏变异，选择几乎抓不住它」那节的机制：一个缺陷会不会被清掉，不取决于它有多严重，取决于它显形的那一刻，反馈回路还在不在。由此能推出一个原本看不出的结论：<b>想知道一个系统会从哪个时间点开始烂，别看设计文档，看它的反馈回路能活多久——保修期、值班表、负责人的在岗年限，哪个先到期，腐烂就从那儿起头，而且是各类缺陷一起起头，不是最严重的先来。</b>这也解释了为什么「加强质量意识」推不动它：使不上力的不是意识，是回路断了。<b>但这里不成立</b>：演化那边的阴影没法直接延长，没有谁能决定野外有多少个体被狼吃掉；而支持期、值班表、在岗年限都是写出来的，改一行字就能把阴影往后推。所以工程上真正的问题不是「怎么让人更负责」，是「谁在续那条回路，续多久」。</li>
 <li><b>西方哲学与科学哲学 · 同一个「为什么」底下压着两个互不替代的问题</b>：「人为什么会老」在很长时间里被默认成生理学问题——哪个零件先坏、什么在细胞里累积。1952 年 Medawar 换掉的不是答案，是问题本身：坏处存在不稀奇，稀奇的是它们为什么没被清掉。跑的是本期整页的机制——一个性状留没留下来，是群体层面几十代的统计结果，跟它在你身体里怎么运转是两笔账。由此能推出一个原本看不出的结论：<b>一场吵了几十年、两边各自拿得出证据又谁也说服不了谁的争论，第一件该查的不是谁的数据更硬，是两边的「为什么」是不是同一个；如果是两笔账，两边全对也不矛盾，继续比数据只会更僵。</b>分子生物学家找到一条能让线虫活两倍的通路，和演化生物学家说衰老源于选择在晚年使不上力，从来就不冲突：一个说机器怎么坏的，一个说坏掉为什么留得住。<b>但这里不成立</b>：这一刀在演化生物学里切得干净，是因为两笔账各有明确的检验办法（行为的演化那期的廷贝亨四问就是把它拆成了四条分别可查的问题）。多数领域没有这种判据，硬套往往变成给双方各发一顶帽子、谁也不必再举证——那不是把问题分开，是把问题取消了。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>衰老不能简单解释为身体被用坏：同样代谢快的小蝙蝠能活四十一年，家鼠三年就老了。</li>
+<li>亨廷顿病的致病变异一直留在人群里，因为多数人发病时孩子早已生完。</li>
+<li>野外动物多死于被吃、饥饿和疾病，越晚发作的缺陷越少被自然选择筛掉，Medawar 称之为选择的阴影。</li>
+<li>「老的不死、年轻的没地方活」站不住：早死腾地方的变异会让携带者后代更少，先被淘汰。</li>
+<li>突变积累：晚发作的坏变异清不动，代代沉淀，衰老不需要任何专门的「衰老基因」。</li>
+<li>Rose 只用晚年产卵的果蝇留种，几十代后寿命延长三到五成，说明寿命可被选择改变。</li>
+<li>拮抗多效性：年轻时加分、老了扣分的变异照样扩散，因为早年那笔账分量重得多，Williams 1957 年提出。</li>
+<li>线虫 daf-2 突变体寿命翻倍，却在与野生型的混养竞争中被挤出去，长寿在别处付了代价。</li>
+<li>一次性体细胞理论：修理与繁殖抢同一份资源，越容易被吃掉的物种越不值得把身体修好。</li>
+<li>Austad 发现没有大型天敌数千年的岛上负鼠比大陆同类长寿两成半到五成，衰老也更慢。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>深入思考</h3>

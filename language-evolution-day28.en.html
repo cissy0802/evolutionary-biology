@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body>
 <div class="container">
 <header>
@@ -168,6 +174,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and system design · an internal data format that was a flat row of key-value pairs until some release allowed a field to contain another thing of the same shape</b>: after that change what it can express goes from "finitely many" to "no ceiling", with not one extra field added. This runs the mechanism from "Animals that know a thousand words exist; animals that join two of them do not": what opens up expressive power is not more units, it is permission to slot one whole thing into another whole thing. From which follows something you could not otherwise see: <b>to judge how long a format, a template or a form can last, counting its fields is useless — without that opening, every new requirement needs a new field, so the field count climbs while what can be expressed hits a ceiling; with it, the field count can stay small and the ceiling is off. Look for that one property, not for length.</b><b>But it does not hold here</b>: the opening in a format was written into a spec by someone in one release, with a record of when and by whom; language has no "release", and nobody can say in which generation it appeared or whether it appeared at once, because bone does not record grammar. Protocol history can be told down to "who added it, which year"; the origin of language never will be.</li>
 <li><b>Organisations and institutions · one person goes on holiday, three apparently unrelated things break at once, so he is designated "the owner of that area" and from then on everything gets piled on him</b>: this runs the mechanism from "The gene called 'the language gene' for twenty years": which failure is most conspicuous when you knock out a node does not mean the node only governs that thing — it may just be a junction shared by many unrelated paths. From which follows something you could not otherwise see: <b>to judge whether he is really the bottleneck, do not count how many incidents happen while he is away; look at whether those incidents have anything to do with each other. Related, and he really is the core of that area; unrelated, and the real problem is many paths crowding through one person — in which case giving him a deputy solves nothing and the sharing has to be broken up.</b><b>But it does not hold here</b>: on the gene side you can actually knock it out and look, as many times as you like; in an organisation you cannot make a person vanish to check, so you wait for holidays and departures that happen anyway — and those moments are not remotely random. People tend not to take leave in the busiest season, so "nothing broke while he was away" may only mean he picked a quiet week.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Chaser the border collie learned the names of 1,022 toys over three years and understood that each name pointed at the object itself.</li>
+<li>The bonobo Kanzi was reported to understand novel sentences, but with one subject and no replication elsewhere the claim is still disputed.</li>
+<li>Other animals can learn many words; what is uniquely human is combining them by rule, so finitely many words yield endless sentences.</li>
+<li>Vocal learning arose independently in songbirds, parrots, whales, bats and elephants, yet chimpanzees, our closest relatives, barely have it.</li>
+<li>Wild chimpanzees use more than thirty gestures aimed at specific individuals and repeated if unseen, far more flexible than their state-bound calls.</li>
+<li>People blind from birth gesture while talking even with a blind listener, suggesting gesture and speech come from the same machinery.</li>
+<li>Whether hands or melody came first cannot be settled, because soft tissue, gesture and grammar never fossilise; only bone, tools and genomes survive.</li>
+<li>FOXP2 is a transcription factor switching hundreds of other genes on and off, shared by mice, birds and fish, not a human 'language gene'.</li>
+<li>The 2002 signal of recent strong selection on FOXP2 vanished in a larger, more diverse 2018 reanalysis and looks like an out-of-Africa artefact.</li>
+<li>The most conspicuous failure when a node breaks is not the only thing it governs, so ask whether the things that fail together are related.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

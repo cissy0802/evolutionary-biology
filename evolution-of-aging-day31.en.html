@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body></head><body>
 </head><body>
 <div class="container">
@@ -162,6 +168,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · once a batch of devices passes its support date, the faults they throw stop appearing on anyone's list</b>: the vendor no longer fixes them, users stop bothering to report them — the faults keep happening, there is simply no loop carrying them back to design. This runs the mechanism from "a bad variant that fires at forty is something selection can barely grab": whether a defect gets cleared depends not on how severe it is, but on whether the feedback loop still exists at the moment it surfaces. From which follows a conclusion you wouldn't otherwise see: <b>to know when a system will start to rot, don't read the design docs — look at how long its feedback loops live. Warranty period, on-call rota, how long the owner stays in the role: whichever expires first is where the rot starts, and all classes of defect start together, not worst-first.</b> It also explains why "raise quality awareness" never moves this: what has failed isn't awareness, it's the loop. <b>But here it breaks down</b>: in evolution the shadow cannot be lengthened directly — nobody decides how many individuals the wolves take — whereas support windows, rotas and tenures are all written down, and one edited line pushes the shadow back. So the real engineering question was never "how do we make people more responsible," it's "who is renewing that loop, and for how long."</li>
 <li><b>Philosophy and philosophy of science · one word "why" with two non-substitutable questions under it</b>: "why do humans age" was long treated as a physiological question — which part fails first, what accumulates inside cells. What Medawar swapped in 1952 was not the answer but the question: that the damage exists is unremarkable; what's remarkable is that it was never cleared. This runs the mechanism of the whole page — whether a trait persists is a statistical outcome across dozens of generations at the population level, a separate ledger from how it operates inside your body. From which follows a conclusion you wouldn't otherwise see: <b>in an argument that has run for decades with evidence on both sides and no convergence, the first thing to check isn't whose data is stronger but whether both sides mean the same "why"; if they are two ledgers, both can be entirely right without contradiction, and comparing data harder will only deepen the deadlock.</b> A molecular biologist finding a pathway that doubles a worm's lifespan and an evolutionary biologist saying aging stems from selection's weakness in late life were never in conflict: one describes how the machine breaks, the other why breaking persists. <b>But here it breaks down</b>: that cut is clean in evolutionary biology because each ledger has its own explicit test (Tinbergen's four questions, from the evolution of behaviour, split it into four separately checkable ones). Most fields have no such criterion, and forcing the move tends to hand each side a hat and excuse both from ever producing evidence — that isn't separating the question, it's cancelling it.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Aging is not simple wear and tear: a tiny bat with a fast metabolism lives 41 years, a house mouse ages in three.</li>
+<li>The Huntington's disease variant persists because most carriers develop symptoms only after they have already had children.</li>
+<li>Wild animals mostly die from predators, hunger and disease, so late-acting defects escape selection: Medawar's selection shadow.</li>
+<li>"Old individuals die to make room for the young" fails: a variant that kills its carrier early leaves fewer descendants and vanishes first.</li>
+<li>Under mutation accumulation, late-acting harmful variants pile up over generations, so aging needs no dedicated aging gene.</li>
+<li>Breeding fruit flies only from late layers for dozens of generations stretched lifespan by 30–50% in Rose's experiments.</li>
+<li>Antagonistic pleiotropy, named by Williams in 1957: a variant that helps when young and harms when old still spreads, because early effects count more.</li>
+<li>Worms with an altered daf-2 gene live twice as long, yet lose out to normal worms when the two are raised together.</li>
+<li>The disposable soma idea: repair competes with reproduction, so species likely to be eaten young gain little from a durable body.</li>
+<li>Austad found island opossums, free of large predators for millennia, lived 25–50% longer than mainland ones and aged more slowly.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>GOING DEEPER</h3>

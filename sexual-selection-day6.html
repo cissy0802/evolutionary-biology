@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -173,6 +179,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>组织与制度 · 审批表一年比一年厚</b>：两个部门共用一张表，风控加了一栏，业务加了一条绕过去的说明，风控再加一栏堵它。一年下来表格厚了一倍，真正被拦下来的比例跟一年前差不多。这不是谁不专业，跑的是「同一场交配，两边的最优解不一样」那节的机制：双方的得失算法本来就不一致，而所有动作都作用在同一个界面上，于是每一轮改进都被对面的下一轮抵掉，成本却实打实累加。由此能推出一个原本看不出的结论：<b>流程的厚度不度量风险水平，它度量的是这个界面上已经拉锯了多少轮。</b>所以「精简流程」靠删条款没用——删掉的会以别的形式长回来；要停下来只能改成本的落点：把一张表拆成互不相干的两张，或者让同一个人同时背两边的指标。<b>但这里不成立</b>：果蝇没有共同的上级，也不能坐下来谈；两个部门头上有同一个老板，得失算法可以被一次性重写。生物那边的拉锯只能靠一方灭绝或代价见顶才停，组织里随时能被上一层叫停——反过来说，它还在继续，通常说明上一层没在裁，而不是下面两方太犟。</li>
 <li><b>文学艺术 · 一个类型越写越极端</b>：某一类小说或短视频，几年下来同一个套路只往一个方向走：爽点更快、冲突更狠、反转更早，回头看几年前的作品会觉得「太淡了」。按「装饰为什么会贵到离谱」那节里的失控回路：只要评判的尺子本身是被已经流行的作品塑造的，而下一批作品又照着这把尺子做，偏好和特征就绑在一起同向漂移——不需要任何人变蠢，也不需要有谁在背后策划。由此推出的结论是：<b>一个类型走向极端，不能当作读者品味变差的证据；同样的漂移，在一群品味完全没变的人身上照样会发生。</b>变的是尺子，不是人。<b>但这里不成立</b>：孔雀那边，偏好和装饰搭在同一批后代的遗传里，方向一旦起来只能靠死亡的代价按住；读者和作者之间没有这层绑定，尺子可以被外面的东西一夜换掉——换个平台、进来一批新读者，漂移就断了。所以文艺里的失控可逆，生物那边不可逆。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>演化衡量成败看的是留下多少能繁殖的后代而不是寿命，少活几年却多留后代的变异照样扩散。</li>
+<li>1982 年 Andersson 给长尾寡妇鸟剪短或接长尾羽，接长组领地里的窝约为对照的两倍，剪短组约一半。</li>
+<li>改过尾巴的长尾寡妇鸟守地盘的本事没变，变的只是雌鸟落在谁的地盘上。</li>
+<li>投入多的一方选错就赔掉整个繁殖季所以挑剔，投入少的一方缺的是机会所以竞争。</li>
+<li>挑剔与竞争跟着投入走而不跟着性别走：海马由雄性育儿，彩鹬和瓣蹼鹬的雌鸟更艳、更爱争地盘。</li>
+<li>Bateman 1948 年的果蝇奠基实验在 2012 年重做时被查出计数偏差，「雄的花心、雌的挑剔」并非普适定律。</li>
+<li>失控机制的要害是偏好本身也能遗传，偏好和装饰绑在同一批后代里同向加速，不需要装饰对生存有用。</li>
+<li>代价信号可信不是因为贵，而是因为同样的装饰对质量差的个体更贵。</li>
+<li>孔雀的证据至今互相打架，多数人认为失控和代价信号两条机制常常同时在跑。</li>
+<li>雄果蝇的精液蛋白帮它赢得精子竞争却缩短雌蝇寿命，两性由此轮番加码，成本双方都付。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="b4c94adf92cf7e68">深入思考</h3>

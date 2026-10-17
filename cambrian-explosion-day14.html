@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -165,6 +171,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 明知道当初定错了，那个字段十年没人敢动</b>：一个内部数据模型里的字段，所有人都同意设计得不对，十年过去照样在那儿；反倒是比它更早写的一批代码，早已被重写过好几轮。跑的是「位置空着的时候，粗糙的新样式也活得下来」那节里的沙漏：最难改的不是最早那一层，是被最多下游同时依赖的那一层——动物胚胎里最保守的是中段，不是开头。由此能推出一个原本看不出的结论：<b>估一次重构的真实难度，别看那段代码有多丑、写了多久，去数它被多少条互不相干的路径同时依赖；这也解释了为什么「整个推倒重写」有时反而比「改中间那一层」顺利——推倒重写是绕开腰，改中间是穿过腰。</b><b>但这里不成立</b>：胚胎那边改不动是致死的，中段一动个体当场活不下来，过渡态根本不存在。软件里改那一层的代价是迁移期同时养两套，贵，但可以分期付。所以「依赖最多的那层不可改」在这里不是物理定律，是预算问题。</li>
 <li><b>西方哲学与科学哲学 · 一条曲线突然拐弯，先别急着解释世界</b>：某份记录里某段时间的事件密度突然暴涨，一派人说那段时间真出了事，另一派说那是记录方式变了。这个争论形式到处都是。跑的是「『突然』有一半，是记录在那一刻开了灯」那节的机制：当「被记下来的概率」本身随时间在变，你看到的密度曲线里就掺着一条采样曲线，两边对着同一条曲线争，谁也赢不了。由此能推出一个原本看不出的结论：<b>要把两条曲线分开，靠的不是更用力地论证，是去找第二条独立通道——一条记录概率不随那次变化而变的证据线。寒武纪这边就是遗迹化石：留下一个洞不需要身体变硬，所以洞的多样化不受「硬壳变多」这件事影响。</b><b>但这里不成立</b>：古生物学找得到这样一条通道，是因为地层还躺在那儿等人去挖。很多历史与社会问题没有第二条通道可找——留下来的文字记录本身，往往就是那次口径变化的产物。这种时候老实承认「分不开」，比强行给出一个比例诚实。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>今天几乎所有动物的基本身体样式，都在约五亿四千万到五亿两千万年前定下。</li>
+<li>寒武纪的「突然」部分来自记录：硬壳和刺那时大量出现，能留成化石的生物才变多。</li>
+<li>遗迹化石记的是行为而不挑硬壳，从贴着海底的拖痕变成往下钻的分叉探洞，说明变化是真的。</li>
+<li>动物往下钻洞打破了细菌席、让氧气渗进沉积物，这场寒武纪底质革命让钻洞既是结果又是下一轮原因。</li>
+<li>分子钟显示动物的家谱早在七亿年前后就已分开，寒武纪爆发的是变大、变硬、长眼睛和互相吃。</li>
+<li>氧气升高更像抬高门槛的背景条件，而不是一按就响的扳机，至今仍有争议。</li>
+<li>三叶虫的方解石眼睛是最早的高分辨率眼睛之一，看得清之后，防御和捕食开始互相加码。</li>
+<li>控制身体分节的调控基因在寒武纪之前就已存在：工具箱是旧的，变的是接线方式和外头的机会。</li>
+<li>寒武纪之后再没出现新的基本样式，一因位置已被占满，二因发育沙漏的中段最难改动。</li>
+<li>怪诞虫曾被复原得上下颠倒、首尾相反，后来被证实是有爪动物的亲戚，Gould 的抽签式淘汰说随之被修正。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="31f94f4cb367b39a">深入思考</h3>

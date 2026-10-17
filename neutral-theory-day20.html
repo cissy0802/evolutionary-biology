@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -155,6 +161,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>西方哲学与科学哲学 · 「没发现差别」这句话值多少钱，取决于你拿什么当默认</b>：一项研究报出「没有发现效应」，读的人立刻分成两派——一派说那就是没有，一派说是样本不够。两边其实在争默认状态该是什么样。跑的是「现在吵的不是有没有选择」那节的机制：中性理论真正的贡献不是一个结论，是一条能算出来的零模型——完全没有选择时，差异会以多快的速度出现、分布成什么形状，都能先算出来再跟真实数据对。由此能推出一个原本看不出的结论：<b>一个领域能不能判断「这儿有没有原因」，不取决于数据量，取决于它有没有一条算得出来的「什么都不发生会长什么样」。没有这条基线，「一定有原因」和「没有原因」两句都不可证伪，争几十年也不会收敛——分子演化能在六十年里把争论推进到「百分之多少」的层面，靠的不是测序变便宜，是先有了那条基线。</b><b>但这里不成立</b>：演化的零模型算得出来，是因为它的随机机制只有一条、速度还能独立测量。大多数社会科学里的「基线」是从历史数据里拟合出来的，而那批数据本来就含着你想检验的那些原因——等于让嫌疑人自己做的账本来查账。</li>
 <li><b>组织与制度 · 一家二十人的公司，做事方式几乎必然被最早那一两个人定死</b>：小公司里的规矩——周会怎么开、代码要不要互审、文档写到什么程度——追溯起来源头常常只是早期某个人的习惯；同样规模的另一家长出了完全不同的一套，两边都活得好好的。跑的是「没人挑的东西照样会定下来」那节的机制：漂变的强度跟群体大小成反比。人少的时候，一个做法能不能留下来，由几次随机抽样（谁先进来、谁那周正好在场）决定的成分远大于它本身的优劣。由此能推出一个原本看不出的结论：<b>从一家二十人公司的成功里抽方法论，抽到的多半是当年那几次抽样的结果，换个地方复现不了；反过来，同一条规矩能在几千人的组织里活下来，才说明它扛住了某种筛选。这也解释了一个常见的困惑——小公司的「文化」为什么看起来那么强、那么难改：不是因为它被验证过，恰恰是因为它从来没有被测试过。</b><b>但这里不成立</b>：组织有一条细胞没有的通道——它可以直接把外面的成品整套搬进来用，不必等它自己长出来。所以小组织的随机性比群体遗传学预测的更容易被外力一次性打断。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>遗传密码有 64 种组合却只编 20 种氨基酸，换掉同义编码的第三个字母，蛋白质分毫不差，选择也就看不见。</li>
+<li>对比亲缘物种的同一基因，不改氨基酸的位置差异多于改氨基酸的位置，报废的假基因积累差异最快。</li>
+<li>遗传漂变就像村里的姓氏随机消失：每代抽样偏差让改动比例乱晃，群体越小越快撞到 0 或 100%。</li>
+<li>木村资生 1968 年指出，中性改动被固定的速度等于中性突变出现的速度，与群体大小无关。</li>
+<li>分子钟把物种间的分子差异当作量分家时间的尺子，但各谱系快慢不一，实用时必须拿化石校准。</li>
+<li>太田朋子的近中性理论指出，轻微有害的改动在小群体里会被漂变推上去，在大群体里则会被清掉。</li>
+<li>成年人消化牛奶的变异几千年里由罕见变常见，周围整段 DNA 的多样性被压平，这是快速选择的指纹。</li>
+<li>被固定的氨基酸改动里多大比例由选择推动仍在争：果蝇估计接近一半，人和猿低得多，有的接近零。</li>
+<li>中性理论不否认适应来自选择，它今天是零模型：先算出完全没有选择时数据的样子，偏离处才是选择的证据。</li>
+<li>一个领域能否判断「这儿有没有原因」，不取决于数据量，而取决于有没有一条算得出来的基线。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="f477cdf2baedc01e">深入思考</h3>

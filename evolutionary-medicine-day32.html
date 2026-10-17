@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -170,6 +176,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>历史与军事 · 伦敦大轰炸期间，警报拉响的次数远多于真的落弹，最后很多人干脆不下防空洞了</b>：1944 年为应对飞弹开放的五座深层防空洞，四万个床位，实际使用长期不到一万。跑的是「报警器一年响一百次，九十九次没有火」那节的机制：警报阈值按两类错误的代价比定，不按准确率定，所以假警报必然占绝大多数。由此能推出一个原本看不出的结论：<b>拿误报率去评价一个警报系统是问错了问题——它本来就该在绝大多数时候是错的。真正的失效是接收方已经被训练成不响应；那一刻代价比被改写了（漏报的代价还在，误报的代价却从『烦五分钟』变成了『整条通道作废』），这时候阈值才真该往回调。</b><b>但这里不成立</b>：身体里的防御没有「听腻了」这回事，你的呕吐反射不会因为触发过太多次就被你自己忽略。接收方会疲劳是人造系统独有的变量——所以「宁可多报」在生物学里成立，照搬进组织却会把整套警报搞垮。</li>
 <li><b>经济·投资·商业 · 一套在特定年代形成的定价与囤货习惯，需求结构一变，同样的动作开始稳定地制造亏损</b>：动作没变，做的人也没变笨，账却反过来了。跑的是「基因没变，你住的地方变了」那节的机制：一条规则是在某个环境的统计特征下被筛出来的，参数一变，同一条规则就开始输出坏结果——规则本身没有变坏。由此能推出一个原本看不出的结论：<b>判断一条还在赚钱的老规矩什么时候会翻脸，看它现在的盈亏是没用的（环境变了它还会靠惯性赚一阵），只能指名道姓说出当初让它成立的那个环境参数，然后盯住那个参数本身。</b>这也正是分辨「真错配」和「事后编故事」的判据——说不出参数的就是在编故事。<b>但这里不成立</b>：身体换不掉眼球的生长规则，所以错配在生物学里只能绕开（多去户外，而不是改造眼球）；公司可以直接把规矩换掉。于是一条老规矩迟迟不改，多半就不是错配，而是另一个问题：谁的位置绑在这条旧规矩上。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>发烧不是身体被动烧坏，而是免疫信号把下丘脑的体温设定值调高，身体再主动发抖加热去追。</li>
+<li>1975 年 Kluger 的沙漠鬣蜥实验显示，感染后被关在偏凉环境、无法升温的蜥蜴死亡率明显更高。</li>
+<li>痢疾患者用止泻药按住腹泻后，发热持续更久，细菌排干净的时间也更长。</li>
+<li>防御有用不等于压掉它有害：2015 年七百人的重症监护试验里，退烧药没改变死亡率。</li>
+<li>Nesse 的烟雾报警器原理：漏报的代价远大于误报，所以呕吐、发烧这类防御的阈值被筛得偏松。</li>
+<li>一生中大多数发烧、恶心和疼痛确实是白受的，这正是一个校准得当的防御系统该有的样子。</li>
+<li>东亚近视率几十年里升到八九成，原因是眼球按看到的东西校准长度，室内近距离用眼让它长过了头。</li>
+<li>2015 年广州随机试验中，每天多四十分钟户外课让三年近视发生率从 39.5% 降到 30.4%。</li>
+<li>错配病最容易被编成事后故事，判据是能否说出哪个环境参数变了，并把它改回去验证。</li>
+<li>演化医学解释的是这台机器为什么容易这样坏，而不是该不该修，从「是这样」滑到「该这样」是最常见的误读。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="aaab94e6e60ba546">深入思考</h3>

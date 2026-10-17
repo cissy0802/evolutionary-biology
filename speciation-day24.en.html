@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -153,6 +159,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Organisations and institutions · A team is spun out for two years, and when the two sides finally work on something together they cannot even agree what "shipped" means</b>: on the day of the split both sides ran the same process. Then the left side changed its release process for its own situation and the right side changed its acceptance criteria for its own, and each ran smoothly at home. What is running is the mechanism from "Sterility needs nobody wanting isolation, only each side changing its own stuff": incompatibility comes not from either side doing something wrong, but from two changes that never shared a process meeting for the first time. From which follows a conclusion you would not otherwise see: <b>the cost of merging does not depend on which side did worse work, but on how many independent changes each made after the split — and it climbs faster than that count, because what breaks is a pairing of "a change on the left times a change on the right", and pairings multiply. So "let each run alone for six months and integrate afterwards" does not accumulate cost linearly with time.</b> <b>Where it does not hold</b>: in biology the incompatibility is written into genes, is not negotiable, and reappears every generation; in an organisation both sides can sit down and realign the definitions once, and the isolation resets to zero. So what actually maintains the boundary is not the incompatibility but the fact that nobody wants to pay for that realignment — the boundary is revocable, and that is unlike the crows.</li>
 <li><b>Engineering and systems design · An internal library is forked for two years; most files still take each other's patches, and the ones that will not merge are always the same three or four</b>: a fork is a copy taken away and changed separately. Two years on the diff runs to tens of thousands of lines, yet moving a patch from one side to the other is clean nearly every time, and only a few files conflict on every attempt. What is running is the mechanism from "The boundary is not across the whole genome, it holds in only a few places": divergence grows at a few points rather than across the whole, while everything else keeps exchanging freely. From which follows a conclusion you would not otherwise see: <b>"can these two versions still be merged" is the wrong question. The question is which files are the islands — merge cost is almost entirely concentrated there and has little to do with total diff size, so estimating merge effort by counting lines will be wrong in a systematic direction.</b> <b>Where it does not hold</b>: those crow stretches hold the line stably because a continuous filter clears out the foreign version every generation, so the number of islands does not grow. Code has no such filter; differences between two forks simply accumulate and the islands multiply. The structure degrades — it is not a steady state.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>The rule "they interbreed and the offspring are fertile, so they are one species" breaks down for fossils, for bacteria, and for grizzlies and polar bears that hybridise anyway.</li>
+<li>The same birds come to roughly 10,000 species counted by interbreeding, and close to 18,000 counted as distinct lineages in form and DNA.</li>
+<li>Every species concept traces a lineage evolving separately; they differ only in which clue settles the verdict, and a long grey zone lies between.</li>
+<li>Gene flow, hybrid survival and courtship recognition in the grey zone are all measurable; the vagueness is in the word "species", not in nature.</li>
+<li>Hybrid sterility is a by-product: each side swaps in new part versions that work at home and jam the first time they meet in a hybrid.</li>
+<li>Incompatibilities come from pairings of new changes on each side, which multiply faster than the differences, so reproductive isolation snowballs.</li>
+<li>When hybrids do badly, choosiness pays in the contact zone, which is why overlapping fruit-fly species pairs show stronger pre-mating isolation.</li>
+<li>Some North American hawthorn flies moved to apples that ripen weeks earlier, and the two groups now barely meet in the same orchard.</li>
+<li>Carrion and hooded crows differ at only 82 fixed sites genome-wide, 81 of them packed into one short stretch of chromosome 18.</li>
+<li>Divergence grows at a few genomic islands rather than across the whole; likewise, merging a two-year fork is costly mainly in a handful of conflicting files.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

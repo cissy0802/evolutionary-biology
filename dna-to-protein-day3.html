@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -224,6 +230,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 冻结的接口</b>：遗传密码那张表几十亿年没大改过，不是因为它最优，而是所有蛋白都建在它上面，改一个字母会同时毁掉全部——Crick 管这叫冻结的偶然。软件里天天发生同一件事：早期随手定下的字段格式、编码方式、接口约定，越往后越动不了。由此推出一个原本看不出的结论：<b>一个技术选择能活多久，跟它当初做得多好几乎不相关，取决于后来有多少东西压在了它上面</b>——所以"以后可以重构"这句话的含金量不看代码质量，看你在这个接口上又叠了几层。<b>但这里不成立</b>：软件可以加转换层、双写、分批迁移，把依赖慢慢挪走；细胞不能——翻译每一秒都在每个细胞里发生，没有停机窗口，也没有"旧密码兼容模式"。生物那边的冻结是硬的，工程这边喊改不动，多半是不想付迁移的钱。</li>
 <li><b>科学哲学 · 口号版比原文更有影响力</b>：中心法则的原命题只禁一件事——信息进了蛋白就出不来；流传开的口号版禁的是任何回流。逆转录一发现，口号版当场塌了，原命题连碰都没碰到，可"中心法则被推翻了"至今还在传。「不能倒回去，不是不能绕路」那节的机制在这里同样成立：<b>口号版之所以流行，正因为它更强、更好记——而更强的命题，可被反例打中的面也更大。</b>由此推出一个能直接用的动作：听到"某某理论被推翻了"，第一步不是找反例，是核对被推翻的到底是原命题还是口号版，两者被同一份证据打中的概率完全不同。<b>但这里不成立</b>：不是每次"被推翻"都是这种误伤，"一个基因对应一种蛋白"就是原话本身被推翻的。所以这只是一个必须先做的核对动作，不是免死金牌。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>DNA 不是按比例缩小的蓝图，而是一条由 A、T、C、G 四种字母串成的长链，上面找不到哪一处是眼睛。</li>
+<li>细胞把 DNA 三个字母一组地读，每组对应一种氨基酸，氨基酸链折成有形状的蛋白，干活的是蛋白。</li>
+<li>细胞先把 DNA 抄成用完就烂的 RNA 副本再拿去用，抄几份、副本活多久都能调产量而原件不动。</li>
+<li>1961 年 Nirenberg 和 Matthaei 用单一字母的人工 RNA 读出了密码表第一行。</li>
+<li>遗传密码表在细菌、酵母、玉米和人身上几乎一样，所以大肠杆菌能照着人的基因造出人胰岛素。</li>
+<li>遗传密码表抗错能力远胜随机假表，但 Crick「冻结的偶然」的解释也没被排除。</li>
+<li>同一个身体里的细胞装着同一份 DNA，细胞类型的差别来自基因旁边那些调节抄写速度的开关序列。</li>
+<li>湖里的三刺鱼丢掉腹刺，是反复删掉了 Pitx1 旁只管骨盆的开关，基因本身一字未改。</li>
+<li>中心法则原话只说信息进了蛋白就出不来，逆转录等绕路推翻的只是单行道口号版。</li>
+<li>听到某理论被推翻时，先核对被推翻的是原命题还是更强、更好记的口号版，再去找反例。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="a07ab4ed32e49fc1">深入思考</h3>

@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body></head><body>
 <div class="container">
 <header>
@@ -166,6 +172,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · the compatibility branch in the code nobody dares delete</b>: the comment says only "kept for old clients", the old clients are long gone, and whoever proposes removing it owns the fallout, so it stays another year. The mechanism running here is the one in "practices get sifted too, and the sifting needs nobody to understand them": whether a practice can use "it is still here" as evidence that it works depends on whether the cost of its failures lands back on the people keeping it, visibly and at the time. Manioc processing passes that test — skip a step and you poison yourself, over and over. Which yields a conclusion you would not otherwise see: <b>to judge an old rule nobody can explain, do not look at how old it is or how many people follow it; look at who gets hurt when it fails and how long afterwards. Where the cost lands on another team, or three years later, "it has always been there" is no evidence at all and you have to test it separately.</b><b>But it does not hold here</b>: in the manioc case no generation could stop and run a controlled trial, so selection was the only source of information. Deleting a branch of code is a half-day experiment for one person. So that branch surviving is not "tradition is smarter than you", it is only that nobody tried — two situations that look identical and call for opposite handling.</li>
 <li><b>Organizations and institutions · an approval step added in a hurry to ship one release becomes, three years on, a default assumption in every new project's schedule</b>: the mechanism is the one in "the clearing you cut got written into your blood thousands of years later" — what you built to cope with the environment of the moment becomes the environment every later practice has to fit, so what gets sifted out is not the weak proposals but every proposal incompatible with it. Which yields a conclusion you would not otherwise see: <b>to guess what a team will be capable of in three years, look less at its current people and goals and more at what irreversible things it added to its process in the last three — most options are sifted out by the environment with nobody discussing them, not voted down in a review meeting.</b><b>But it does not hold here</b>: in the forest-clearing chain, the generation that changed the environment is not the one sifted by it, the change takes many generations to enter the population, and no individual can opt out. In a company it is the same people seeing the consequences within months, and it can be reversed at any time. So that approval step surviving is not lock-in; it is that if reversing it goes wrong somebody carries the blame. That is a question of how costs are distributed — do not let evolution take the excuse.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Every mammal turns lactase down after weaning; adults who digest milk without trouble are the exception, not the norm.</li>
+<li>Lactase persistence comes from a small variant in a nearby switch sequence, and it arose independently in Europe, East Africa and Arabia.</li>
+<li>Europeans milked animals for at least 9,000 years before lactase persistence became common: the practice moved first, the body followed.</li>
+<li>A 2022 synthesis argues milk's nutrition alone cannot explain such strong selection; famine and pathogen pressure have to be added.</li>
+<li>Clearing West African forest for yams left pools that bred malaria mosquitoes, and the sickle-cell variant rose once malaria stayed: niche construction.</li>
+<li>The sickle-cell variant is not good for the population: two carriers have, on average, one child in four with a severe disease.</li>
+<li>Amazonian bitter manioc processing strips out cyanide though nobody can explain why; where the steps were cut short, konzo paralysis appeared.</li>
+<li>Fijian pregnancy and breastfeeding taboos target exactly the reef fish most likely to carry ciguatera, and are learned from elders, not tested alone.</li>
+<li>Surviving traditions hold knowledge nobody can articulate, but harmful ones can last just as long, so a practice being old proves nothing.</li>
+<li>Culture spreads fast and changes with intent while genes chase behind, so mismatch between modern life and the body is the norm, not a glitch.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going deeper</h3>

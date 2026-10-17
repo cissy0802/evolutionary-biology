@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body>
 <div class="container">
 <header>
@@ -172,6 +178,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 一份内部数据格式，本来是一排平铺的键值对，某一版之后允许一个字段里再装一个同样结构的东西</b>：改完之后它能表达的东西从「有限多」变成「没有上限」，字段却一个没多。跑的是「会一千个词的动物有，把两个词拼起来的动物没有」那节的机制：撑开表达力的不是单位变多，是允许把一个整体塞进另一个整体的槽里。由此能推出一个原本看不出的结论：<b>判断一份格式、一套模板、一张表单还能撑多久，数字段完全没用——没有这个口子的，每来一个新需求就得加一个新字段，字段数一直涨而能表达的东西封顶；有这个口子的，字段很少上限也是开的。要估寿命就找这一条。</b><b>但这里不成立</b>：格式里的这个口子是有人在某一版里一次性写进规范的，哪天加的、谁加的都有记录；语言这边没有「某一版」，没人能指出它在哪一代出现、是不是一次出现的，因为骨头不记录语法。所以协议史能讲到「谁哪年加的」这个精度，语言起源永远讲不到。</li>
 <li><b>组织与制度 · 某个人一休假，三件看上去不相干的事同时出问题，于是他被认定成「那块的负责人」，往后事都往他身上堆</b>：跑的是「那个被叫了二十年『语言基因』的基因」那节的机制：敲掉一个节点时哪件事最显眼，不等于它只管那件事——它可能只是被很多条互不相干的路共用的中转。由此能推出一个原本看不出的结论：<b>要判断他是不是真瓶颈，别数他不在时出了几次事，看那几件事彼此有没有关系。彼此有关，他确实是核心；彼此无关，说明问题是很多条路挤在同一个人身上——那么配个副手不解决任何事，得把共用拆开。</b><b>但这里不成立</b>：基因那边可以真把它敲掉再看，想敲几次敲几次；组织里你不能为了确认而让一个人消失，只能等自然发生的休假和离职，而这些时点一点不随机——人往往在最忙的季节不休假，于是「他不在时没出事」可能只是因为他挑了没事的时候走。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>边境牧羊犬 Chaser 经三年训练认得一千零二十二件玩具的名字，并且知道名字指的是东西本身。</li>
+<li>倭黑猩猩 Kanzi 据报告能听懂没听过的句子，但只有一个样本、别处没能重复，至今仍有争议。</li>
+<li>词这东西别的动物也能学很多，人类真正独有的是按规矩把词拼起来，词有限而句子无限。</li>
+<li>学着改自己的发声在鸣禽、鹦鹉、鲸、蝙蝠、大象身上各自独立出现，跟人最近的黑猩猩却几乎没有。</li>
+<li>野生黑猩猩有三十多种手势，冲着特定对象发出、没被看见会再打，比跟情绪绑死的叫声灵活得多。</li>
+<li>天生失明的人从没见过手势照样打，对着盲人听众也打，说明手势和说话出自同一套机制。</li>
+<li>「先有手还是先有调子」判不出来，因为软组织、手势和语法都不变成化石，只有骨头、石器和基因组能挖到。</li>
+<li>FOXP2 是一个管着几百个下游基因开关的转录因子，老鼠、鸟、鱼都有，并不是人类专属的「语言基因」。</li>
+<li>2002 年报告的 FOXP2 近期强选择信号，在 2018 年用更大更多样的基因组重做后消失，更像走出非洲造成的假象。</li>
+<li>一个节点坏掉时哪件事最显眼，不等于它只管那件事；越界据此看一人休假时出的几件事是否相关。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="f4e513781f03dea9">深入思考</h3>

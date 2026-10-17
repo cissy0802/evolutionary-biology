@@ -56,6 +56,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -218,6 +224,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · the frozen interface</b>: the genetic code table has gone billions of years without major revision, not because it is optimal but because every protein is built on top of it, so changing one letter would wreck all of them — Crick called this a frozen accident. Software lives the same story daily: a field format, an encoding, an interface convention settled casually and early becomes less movable the longer it stands. Which yields a conclusion you would not otherwise see: <b>how long a technical choice survives has almost nothing to do with how good it was, and everything to do with how much later got stacked on it</b> — so "we can refactor later" is priced not by code quality but by how many layers you have since piled onto that interface. <b>Where it breaks down</b>: software can add a translation layer, dual-write, migrate in batches, and walk the dependencies off; a cell cannot — translation happens every second in every cell, with no maintenance window and no legacy-code compatibility mode. Biology's freeze is hard. When engineers say something cannot be changed, they usually mean they would rather not pay for the migration.</li>
 <li><b>Philosophy of science · the slogan outlives the original</b>: the central dogma's actual claim forbids one thing, that information leaves a protein; the slogan version forbids any backflow at all. Reverse transcription flattened the slogan and never touched the original, yet "the central dogma was overturned" circulates to this day. The mechanism in "you cannot go back, not that you cannot go around" applies here too: <b>the slogan spreads precisely because it is stronger and more memorable — and a stronger claim presents a wider surface for counterexamples to hit.</b> Which gives you an action you can use immediately: when you hear that some theory has been overturned, the first step is not to hunt for counterexamples but to check whether what fell was the original claim or its slogan, because the odds of the same evidence hitting each are entirely different. <b>Where it breaks down</b>: not every "overturned" is that kind of friendly fire — "one gene, one protein" was the actual claim being overturned, not a slogan. So this is a check you must run first, not a blanket immunity.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>DNA is not a scaled-down blueprint but a long chain of four letters, A, T, C and G, with no spot you could point to and call an eye.</li>
+<li>Cells read DNA three letters at a time, each triplet naming one amino acid; the chain folds into a protein, and proteins do the work.</li>
+<li>Cells first copy DNA into short-lived RNA working copies, so output can be tuned by how many copies are made and how long they last.</li>
+<li>In 1961 Nirenberg and Matthaei read the first line of the genetic code by feeding a single-letter synthetic RNA into a cell-free extract.</li>
+<li>The genetic code is nearly identical in bacteria, yeast, maize and humans, which is why E. coli can build human insulin from a human gene.</li>
+<li>The real code buffers copying errors better than almost all of a million random alternatives, yet Crick's frozen-accident explanation remains on the table.</li>
+<li>Every cell in a body carries the same DNA; cell types differ because of nearby switch sequences that turn the copying of genes up or down.</li>
+<li>Lake sticklebacks lost their pelvic spines by repeatedly deleting a pelvis-only switch next to Pitx1, while the Pitx1 gene itself stayed untouched.</li>
+<li>Crick's 1958 central dogma only says sequence information cannot leave a protein; reverse transcription, RNA catalysis and splicing toppled only the one-way slogan.</li>
+<li>When you hear a theory has been overturned, first check whether the original claim fell or only its stronger, catchier slogan version.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going Deeper</h3>

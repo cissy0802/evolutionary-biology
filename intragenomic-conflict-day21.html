@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -169,6 +175,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 一个跑了五年没出过事的系统，里面有两个方向相反的机制在天天互相抵消</b>：一个服务同时装着自动扩容和一条写死的硬性上限，两边是不同时期、不同人为相反的担心加进去的；平时谁也没觉得不对，直到上限那条被人「顺手清理」掉，扩容立刻失控。跑的是「有些基因你只用父亲那一份」那节的机制：当两个利益不完全重合的来源在同一个量上各自使力，长出来的不是折中值，是<b>一对越调越大、互相抵消的对抗装置</b>——拆掉任何一边，暴露的不是对方的原始状态，是对方被对抗推到的极端值。由此能推出一个原本看不出的结论：<b>一个系统里最危险的地方，恰恰是那些长年看起来最平稳的参数。平稳有两种：没有力作用在上面，或者两股大力正好抵消，从外面看一模一样。判断脆弱点不能看波动大小，要去数有几个地方在往这个量上使劲。</b><b>但这里不成立</b>：工程系统里那两个机制是能被读出来的，翻提交记录就知道谁为什么加的，还能把两边一起拆了重写。基因组没有提交记录，也没有「一起拆」这个选项——每一步都得是个活得下去的胚胎，对抗只能越叠越厚，不能清账。</li>
 <li><b>经济·投资·商业 · 一只基金报出来的「跑赢多少」，基准是它自己挑的</b>：主动管理的基金通常自选一个对照指数来汇报业绩，同一批持仓换个基准，跑赢能变成跑输；而资金流入盯的正是这个数字。跑的是「一半对一半是被维护出来的规矩」那节的减数分裂驱动：一个成分只要能伸手到<b>决定自己被传下去的那条通道</b>上，就能扩张，哪怕同时拉低整体产出——它动的不是收益本身，是决定钱往哪儿流的那个计分口径。由此能推出一个原本看不出的结论：<b>判断一个机构会不会被内部套利慢慢掏空，该看的不是激励条款设计得多精细，而是谁握着计分的通道。条款再对齐，只要口径由被考核方自己选定，偏置就会稳定存在并逐年加深；把口径外部化——基准事前登记、取数换人做——比调奖金比例有效得多。基因组给的是同一个答案：公平不靠自觉，靠重组每代把作弊者和帮凶强行拆散。</b><b>但这里不成立</b>：基金有一样基因组没有的东西——持有人可以随时赎回走人。染色体退不出基因组，只剩内部压制一条路；有退出通道的系统，作弊的上限天然低得多。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>人类基因组大约一半是转座子留下的序列，这类序列唯一的共同点是能让自己的拷贝数变多。</li>
+<li>人类 Alu 家族有一百多万份拷贝，占 DNA 一成以上；玉米基因组约八成五是转座子类序列。</li>
+<li>转座子不需要对携带它的个体有任何好处，只要复制自己的速度快过被清除的速度就能留下来。</li>
+<li>转座子插进正在工作的基因会让它失效，好在绝大多数拷贝早已报废、跳不动了。</li>
+<li>家鼠的 t 单倍型让整批精子中毒、只有带它的一半有解药，于是被传给九成以上的后代。</li>
+<li>减数分裂驱动即使拖着致命缺陷、拉低鼠群产出也能扩散，因为选择不结算群体总账。</li>
+<li>父母各一半的传递比例是被维护出来的规矩，该问的是绝大多数位置为什么不作弊。</li>
+<li>基因组印记让细胞认得出拷贝来自父方还是母方，人类 15 号染色体同一段缺失因来源不同导致两种病。</li>
+<li>Haig 认为父源拷贝少承担母体被消耗的代价，所以促生长的印记基因偏父源表达、压生长的偏母源表达。</li>
+<li>系统里长年最平稳的参数可能是两股大力正好抵消，找脆弱点要数有几处在往这个量上使劲。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="de0e98dac5c4abc3">深入思考</h3>

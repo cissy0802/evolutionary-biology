@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body></head><body>
 <div class="container">
 <header>
@@ -171,6 +177,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 代码里那段谁也不敢删的兼容分支</b>：注释只剩一句「为了兼容旧客户端」，旧客户端早就没了，可谁提删谁担责任，于是它一年年留着。跑的是「做法自己也在被筛，筛的时候不需要谁懂」那节的机制——一个做法能不能拿「它还在」当有用的证据，取决于它出错的代价是不是落回到留着它的人身上、而且当场看得见。木薯那套工序过得了这一关：漏一步的人自己中毒，重复了无数次。由此能推出一个原本看不出的结论：<b>判断一条没人说得清的老规矩该不该留，别看它多老、多少人在用，看它出问题时谁疼、多久之后才疼；代价落在别的团队、落在三年以后的，「它一直在」不提供任何证据，得另外去测。</b><b>但这里不成立</b>：木薯那边没人停得下来做一次对照实验，筛选是唯一的信息来源；一段代码的删除实验一个人半天就做完。所以那段分支还在，算不上「传统比你聪明」，只能算没人试过——两件事外表一样，处理方式正相反。</li>
 <li><b>组织与制度 · 为了赶一次上线临时加的一道审批，三年后成了所有新项目排期时的默认前提</b>：跑的是「你砍出来的那片地，几千年后写进了血里」那节的机制——你为应付当时环境造出来的东西，变成了后来一切新做法必须适配的环境本身，于是被筛掉的不是差方案，是所有不兼容它的方案。由此能推出一个原本看不出的结论：<b>要猜一个团队三年后做得成什么，与其看它现在的人和目标，不如看它过去三年往流程里加了哪些撤不回去的东西——大部分选项是在没人讨论的情况下被环境筛掉的，不是在评审会上被否掉的。</b><b>但这里不成立</b>：砍林种薯那条链上，改环境的那代人不会被自己改的环境筛掉，要很多代才写进群体，也没人退得出去；公司里是同一批人几个月就看见后果，随时撤得掉。所以那道审批还在不是被锁死，是撤回之后万一出事得有人担——那是代价怎么分的问题，别拿演化开脱。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>哺乳动物断奶后都会调低乳糖酶，成年人喝奶不闹肚子是例外，不是常态。</li>
+<li>乳糖酶持续性靠开关序列里的一处小变异，在欧洲、东非和阿拉伯半岛各自独立出现过。</li>
+<li>欧洲人挤奶至少九千年，乳糖酶持续性却晚了好几千年才变常见：先动的是做法，不是身体。</li>
+<li>2022 年的汇总研究认为，光靠喝奶的营养撑不起这么强的选择，还要加上饥荒和病原压力。</li>
+<li>西非砍林种山药留下水坑、养出传疟蚊子，疟疾常驻后镰刀形变异随之上升，这叫生态位建构。</li>
+<li>镰刀形变异并不对种群有好处：两个携带者的孩子平均每四个里就有一个得重病。</li>
+<li>亚马逊苦木薯的繁琐工序没人说得清原理却能去掉氰化物，简化工序的地方出现了 konzo 瘫痪。</li>
+<li>斐济孕期和哺乳期的饮食禁忌恰好避开最易带雪卡毒素的礁鱼，是向长辈学来而非自己试出来的。</li>
+<li>留下来的传统里藏着没人说得清的知识，但有害的传统同样能久传，一个做法老本身不是证据。</li>
+<li>文化传得快、变异常带方向，基因永远在后面追，现代环境与身体的错配是这个速度差的常态。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>深入思考</h3>

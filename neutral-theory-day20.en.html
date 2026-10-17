@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -150,6 +156,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Western philosophy and philosophy of science · what "we found no difference" is worth depends on what you take as the default</b>: a study reports no effect and readers split in two at once — one side says that means there is none, the other says the sample was too small. What they are really arguing about is what the default state should be. This runs the mechanism from "the argument now is not is there selection": neutral theory's real contribution is not a conclusion but a computable null model — with no selection at all, how fast differences appear and what shape they fall into can be worked out in advance and then set against real data. From that follows a conclusion you would not otherwise see: <b>whether a field can judge "is there a cause here" does not depend on how much data it has, but on whether it has a computable account of what nothing-happening looks like. Without that baseline, both "there must be a cause" and "there is no cause" are unfalsifiable, and decades of argument will not converge — molecular evolution got its argument down to "what percentage" within sixty years not because sequencing got cheap, but because the baseline came first.</b> <b>Where it does not hold</b>: evolution's null model is computable because its random mechanism is a single one whose rate can be measured independently. Most "baselines" in the social sciences are fitted from historical data that already contains the very causes you wanted to test — which is auditing the books the suspect kept.</li>
 <li><b>Organisations and institutions · in a twenty-person company, the way things are done is all but certain to be fixed by the first one or two people</b>: trace the rules of a small company — how the weekly meeting runs, whether code gets reviewed, how much documentation counts as enough — and the source is often just somebody's early habit; another company of the same size grew a completely different set, and both are doing fine. This runs the mechanism from "things nobody picks get settled anyway": the strength of drift is inversely proportional to population size. With few people, whether a practice survives is determined far more by a handful of random draws (who arrived first, who happened to be in the room that week) than by how good the practice is. From that follows a conclusion you would not otherwise see: <b>extract a methodology from a twenty-person company's success and what you mostly extract is the outcome of those few draws, which will not reproduce elsewhere; conversely, a rule that survives in an organisation of thousands has actually withstood some filtering. It also explains a familiar puzzle — why a small company's "culture" looks so strong and so hard to change: not because it was validated, but precisely because it was never tested.</b> <b>Where it does not hold</b>: organisations have a channel cells do not — they can import a finished product wholesale from outside and use it, without waiting for it to grow in-house. So the randomness of a small organisation is far easier to interrupt in one stroke by an outside force than population genetics would predict.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>The genetic code has 64 triplets for only 20 amino acids, so swapping a synonymous third letter leaves the protein unchanged and invisible to selection.</li>
+<li>Across related species, sites where the amino acid stays the same differ more than sites where it changes, and pseudogenes diverge fastest of all.</li>
+<li>Genetic drift works like surnames dying out in a village: sampling error makes a variant's share wander until it hits 0 or 100%, faster in small groups.</li>
+<li>Motoo Kimura showed in 1968 that neutral changes become fixed at exactly the rate neutral mutations arise, regardless of population size.</li>
+<li>The molecular clock uses molecular differences between species as a ruler for time, but lineages tick at different speeds, so fossils must calibrate it.</li>
+<li>Tomoko Ohta's nearly neutral theory holds that slightly harmful changes can drift to fixation in small populations but get purged in large ones.</li>
+<li>The variant that lets adults digest milk rose from rare to common in a few thousand years, flattening diversity across a long stretch of DNA: a signature of fast selection.</li>
+<li>How much protein change selection drives is still disputed: estimates near half for fruit flies, far lower for humans and apes, some close to zero.</li>
+<li>Neutral theory never denied that adaptation comes from selection; today it serves as the null model, and departures from it are the evidence for selection.</li>
+<li>Whether a field can tell if something has a cause depends less on how much data it has than on having a calculable baseline for what happens when nothing does.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going Deeper</h3>

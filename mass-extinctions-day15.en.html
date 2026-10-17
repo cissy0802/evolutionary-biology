@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -180,6 +186,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Organisations and institutions · the people still standing after an industry caves in</b>: once the year or two of an industry-wide contraction is over, whoever is still around gets described as "the most capable", and their methods get written up and passed on. The mechanism running here is the one from "What works at that moment is not what works in ordinary times": the sieve was swapped, and the traits that predicted survival in ordinary times (deep specialism, one large anchor client) stop predicting, replaced by traits that are barely rewarded in ordinary times (spread out, cash-heavy, several unrelated lines). Which yields a conclusion you would not otherwise see: <b>the "success factors" distilled from the survivors of a collapse describe the shape of that sieve, not ordinary competence; to tell which of them is genuine competence, check whether it still predicts anything in years when nothing caved in.</b> <b>Where it doesn't hold</b>: a clam cannot change the geographic range of its genus, whereas people and companies can adjust in advance — open another line, hold six more months of cash. So the share attributable to luck is smaller here than in the fossil case, and calling the whole thing luck is an error in the other direction.</li>
 <li><b>Engineering and systems design · the "plausible" root cause at the post-mortem</b>: an outage happens, someone at the post-mortem offers an explanation, everyone in the room finds it plausible, it goes into the report and the case is closed; two weeks later the same outage returns. The mechanism is the one from "How a claim goes from 'plausible' to 'basically settled'": the iridium anomaly was also merely plausible when first proposed, and what hardened it was that it put itself on the line on the spot — predicting things nobody had yet seen (shock-patterned quartz, glass spherules fallen back to the ground, a crater over a hundred kilometres across), which were then dug up one at a time. Which yields a conclusion you would not otherwise see: <b>the question at a post-mortem is not "does this explanation account for what already happened", but "if it holds, what should we see in the log we haven't opened yet" — write it down first, then go look; a root cause that predicts no unexamined evidence is, informationally, the same as no root cause.</b> <b>Where it doesn't hold</b>: the impact claim could afford to wait, the strata having lain there for sixty-six million years and still being there to dig in 1991; evidence in a running system rotates away within days. So "predict first, then dig" has a time window here, and once it closes the honest answer is "we can't determine it this time", rather than putting the plausible explanation into the report.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>An extinction rate in the fossil record is a counted proportion: groups whose last appearance falls in an interval, divided by all groups present.</li>
+<li>The "Big Five" came from a 1982 tally of marine fossils, and even then the Devonian event did not reach statistical significance.</li>
+<li>Rechecked on current data, the Big Five are simply the five largest since the early Ordovician, with no natural line separating them from background extinction.</li>
+<li>The end-Permian is often quoted at 96% of marine species lost; split the two events and subtract background, and about 81% remains, still the worst.</li>
+<li>Because fossils are sparse, a species' last fossil predates its last individual, more so for rare species, so a sudden extinction gets smeared into a ramp.</li>
+<li>In 1980 an iridium spike in the end-Cretaceous boundary clay at Gubbio, Italy, led to the hypothesis that an asteroid impact caused the extinction.</li>
+<li>The impact hypothesis predicted worldwide iridium, shocked quartz and glass spherules, and a crater of the right age; a 180 km crater turned up under Yucatán in 1991.</li>
+<li>A claim hardens not by explaining known facts more smoothly but by saying in advance where it could be caught if it were wrong.</li>
+<li>In end-Cretaceous molluscs, larval dispersal and species range predicted survival in ordinary times but failed at the event; only a genus's total geographic spread still counted.</li>
+<li>After the impact the world's forests collapsed and every tree-dwelling bird lineage vanished; today's birds descend from ground dwellers, so a survivor list is not an excellence list.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Questions worth sitting with</h3>

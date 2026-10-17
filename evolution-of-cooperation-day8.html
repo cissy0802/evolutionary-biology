@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -232,6 +238,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>工程与系统设计 · 陌生人之间的协作反而更稳</b>：一个公开的开源项目，几百个互不相识、不拿这份工资的人往里提交修改，维护者还会花大量时间给陌生人的提交写详细意见。按直觉这该是最难维持合作的地方——没有合同、没有上级、多数人一辈子不会再见。跑的是「你没帮过我，但有人看见你帮过别人」那节的机制，而且它的两个前提被工具意外地做到了极致：每一次提交、每一条意见都永久挂在个人名下（行为被看见），下一个跟你打交道的人点开就能看完你的全部历史（信息传得到）。由此推出一个原本看不出的结论：<b>协作质量主要不取决于社区文化好不好，取决于「记录能不能累积到个人、下一个交互方能不能零成本读到」这两个开关。</b>同一批人换到一个记录不公开、评审匿名、贡献只算到团队头上的内部系统里，详细意见会消失——通道被切断了而已。<b>但这里不成立</b>：生物那边的名声靠个体记忆和有限观察，会失真会衰减；版本记录系统是可验证的账本，谁都能重放。这让人类这套稳得多，也带来自然界没有的毛病——记录既精确又永久，就会被当成考核指标来刷，而<b>被刷的分数不再指示行为本身</b>。</li>
 <li><b>经济与商业 · 车站边上的餐馆几十年不变</b>：火车站门口、景区入口的馆子，贵、难吃，换了老板还是那样；同一个人回小区开店，做法完全不同。按「只要还会再见面」那节的条件：坑一次的代价要落在将来的相遇上，而这里再次相遇的概率接近零，游客吃完就走。由此推出的结论比「从业者素质低」有用得多：<b>预测一家店好不好，看它的客源是不是重复的，比看装修和承诺准</b>；补救的方向也跟着变——不用去改人，去把一次性的交易挂到一个会重复的载体上。连锁品牌就是干这个的：一家店坑了客人，赔的是所有分店的招牌。<b>但这里不成立</b>：生物那边的相遇概率由寿命、群体大小、活动范围定死，个体改不了；人可以人为制造重复——押金、合同、担保、品牌，都是把一次性强行接到一个长期的东西上。所以人类这边的「一次性」很少是真的一次性，多半只是没人去搭那座桥。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>囚徒困境里不管对方怎么做，自己少付出总更划算，于是双方一起滑向都更差的结局。</li>
+<li>Trivers 1971 年写清互惠的条件：再次相遇概率够高、认得出是谁、记得住对方上次怎么做。</li>
+<li>Axelrod 的两轮策略比赛里，以牙还牙都拿了总分第一，却一场单挑都没赢过。</li>
+<li>以牙还牙经不起失误，一次手滑就引发轮流报复；允许出错的模拟里，更宽容的规则胜出。</li>
+<li>吸血蝙蝠里，过去互喂过多少比亲缘更能预测谁会喂谁，且多是吃饱的一方主动喂。</li>
+<li>回报可以经第三方绕回来：堵死直接来回、公开给予记录后，给过别人的人更容易收到给予。</li>
+<li>清洁鱼在有鱼旁观时更少偷咬客户黏液，排队的鱼也更愿意找刚才老实干活的那条。</li>
+<li>名声是一条信息通道而不是道德，前提是行为被看见、且记录能传到下一个交往对象。</li>
+<li>允许花钱惩罚能让公共池投入稳住，但惩罚本身是新的公共品，由此产生二阶搭便车。</li>
+<li>十六地实验里有些地方被罚的反而是投得多的人，惩罚要管用，得先对该罚什么有共识。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="62e7d9ee06b945e5">深入思考</h3>

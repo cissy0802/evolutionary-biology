@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -183,6 +189,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>育儿与教育 · "这孩子为什么老是这样"</b>：孩子身上某个反复出现的特点——换新环境要缓好几天、见生人先躲到大人后面——大人几乎一定会去找它"是为了什么"：缺安全感？随了谁？找到一个说得通的说法，事情就算办完了。这正是「说一个特征是适应，等于欠下一笔要还的债」那节点名的写法：不做检验、只要顺就收工的解释，永远找得到一个。而「不是每样东西都是被挑出来的」那节给了另一种可能——这个特点也许根本不是一个单独的东西，是别的什么必然带出来的边角。由此推出一个原本看不出的结论：<b>一个特点顽固，不说明它背后藏着一个等着被找出来的深层原因；也可能说明它跟别的东西共用同一套零件，单独拆拆不动。</b>分辨这两种靠的不是解释得多顺，是有没有一句"如果我想错了，我会看到什么"。<b>但这里不成立</b>：孩子跟一个物种不是一回事——他的行为大半是学来的，变化以天和周计，不是几十代的遗传约束。约束在生物学里是个能测的量（哪些中间态活不了），搬到教育上通常只是"我们还没试过别的路"；把后者说成前者，等于把"暂时改不动"讲成了"天生如此"。</li>
 <li><b>工程与系统设计 · 迁移方案半年定不下来</b>：两个方案摆在桌上，新的明显更好，讨论了半年还是没迁，争的一直是"新的到底好多少"。「今天能改什么，是几亿年前定下的」那节里的约束不是"终点差多少"，是"中间有没有一条每一步都还活着的路"——神经改不直，不是因为直的不好，是因为断开那一步活不了。由此推出的结论跟会上争的东西正交：<b>能不能迁，该先画中间态，不是先比终点。</b>没有一条每一步都能上线的路，新方案再好也不会发生；有这条路，差一点的方案反而会赢。所以"要不要重写"该换成"第一步单独上线之后，系统还转不转"。<b>但这里不成立</b>：软件能停机、能新旧双跑、能把流量一点点切过去——你可以造出一个生物造不出来的中间态：暂时死一下，然后活过来。所以工程里的坎是能翻的，代价是钱和停机时间；生物那边的坎是绝对的。也就是说"只能小步改"在软件里是一种选择，在生物那边是唯一的命运。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>圆顶扣在方框上，四角必然剩下四块三角面；圣马可教堂的福音书作者画像是后来填进去的。</li>
+<li>Gould 和 Lewontin 在 1979 年指出：一个特征存在且看着合适，不能证明它是被自然选择挑出来的。</li>
+<li>血是红的，是因为运氧分子里的铁与氧结合时吸掉部分光，红色本身只是搭车来的副产品。</li>
+<li>人类的下巴可能不是被单独选出来的，而是脸和牙床不均匀缩小后剩下的凸起，至今仍有争论。</li>
+<li>选择评判的是整个个体能否存活和繁殖，一个改动常连带好几处，不拖后腿的副产品就一路传下去。</li>
+<li>先默认特征有用、再倒推故事、被驳就换一个，这种解释永远赢，所以从不承担被推翻的风险。</li>
+<li>Endler 的孔雀鱼池子实验先写下预测、设好对照：有吃成年鱼的丽鱼的池子里，雄鱼斑点会变少变淡。</li>
+<li>这场批评没有打死适应主义，只是把「它看着很合适」从结论降级成了还需证据的假设。</li>
+<li>喉返神经绕过心脏旁的大血管再折回喉咙，在长颈鹿身上被拉成几米，因为改直的中间态活不下来。</li>
+<li>脊椎动物视网膜反着装、留有盲点，章鱼眼睛正着装；演化像修补匠，每一版只能从上一版接着改。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="fed9859f282a64b2">深入思考</h3>

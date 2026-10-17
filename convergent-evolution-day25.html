@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body>
 <div class="container">
 <header>
@@ -146,6 +152,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>西方哲学与科学哲学 · 同一个发现常常在几个月里被互不相识的几个人各自做出来</b>：微积分被牛顿和莱布尼茨各做了一遍，自然选择被达尔文和华莱士各写了一遍；1922 年有人把这类「重复发现」列过一百多组。跑的是「不是演化偏爱某个形状，是能用的形状本来就没几个」那节的机制：前置条件（数学工具、数据、仪器精度）一旦到位，剩下的可行解就那么几个，谁走到那个位置都会撞上同一个。由此能推出一个原本看不出的结论：<b>一个领域里独立重复发现的密度，量的是约束有多紧，不是天才有多密；反过来用更有意思——如果你的想法在别处一个人都没独立碰到过，多半不是你更聪明，而是前置条件还没齐，这时抢时间没有意义，该补的是那个没到位的条件。</b><b>但这里不成立</b>：生物那边的趋同是真的互不知情，两条线之间没有任何信息流；科学界里人读同一批论文、开同一个会，「同时」里掺着大量传播。所以这个读数得先把信息流减掉——减不掉的时候它就是废的。</li>
 <li><b>育儿与教育 · 一群从没有共同语言的聋童被放在一起，会在几年内自己长出一门带语法的手语</b>：1980 年代的尼加拉瓜有完整记录，一茬茬孩子接手之后语法还越来越细。而各地互不相干的聋人社群造出来的手语，在一些结构上反复撞到一起。跑的是「『眼睛这种东西怎么可能碰出来』——它被碰出来过至少四十次」那节的机制：每一步都得当场划算——只搭了一半的语法要是当下没法让对方听懂，就根本传不到下一茬。能一点一点兑现的方案才留得下来，于是不同社群被同一把筛子筛向相似的结构。由此能推出一个原本看不出的结论：<b>一个复杂东西反复独立冒出来，不能当成「它写在基因里」的证据，只说明通往它的坡足够缓、中间没有一级台阶是白付的。所以「天生的还是学来的」这个二分在这里问不出东西，该问的是这条路上哪几步当场就能兑现。</b><b>但这里不成立</b>：演化那边的筛子每代都要重交一次繁殖的账，一个方案留不留得下，看的是带着它的个体有没有后代；孩子造语言这边不经过遗传，一个用法只要被同伴接住就活了，还能横向借走。坡的形状像，记账方式完全不同——别把两边的速度换算到一起。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>每一步都得当场划算：从平的感光斑到凹坑、小孔再到晶状体，眼睛每多走一步就多看见一点。</li>
+<li>1994 年的模型算出，每代只改百分之一形状，从感光斑到鱼眼约需三十六万代，时间绰绰有余。</li>
+<li>眼睛在动物界至少独立起源过四十次，被反复重新发明的是光学方案，感光分子和总开关基因只出现过一次。</li>
+<li>人的视网膜接线铺在感光细胞前面，留下盲点；章鱼各造各的相机眼没有这个毛病。</li>
+<li>水的密度约是空气的八百倍，阻力把快速游泳者的可用体形压成纺锤形，演化里没有「为了」，只有收费。</li>
+<li>海豚尾巴上下摆、鲨鱼尾巴左右摆，祖先留下的零件给趋同的轮廓按上了历史的指纹。</li>
+<li>南极鱼的抗冻糖蛋白从消化酶基因改来，北极鳕鱼的出身毫不相干，两者却几乎一样。</li>
+<li>袋狼和狼头骨几乎相同，但蛋白编码基因里少有趋同信号，趋同主要藏在调控区。</li>
+<li>加勒比四个大岛的安乐蜥各自分化出同一套生态角色，三刺鱼丢腹刺也反复断在同一段易坏的开关上。</li>
+<li>大肠杆菌长期实验十二瓶里只有一瓶学会用柠檬酸，而且只能从较晚的历史点重播，说明创新依赖前置变化。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="1b9dc45f505f218d">深入思考</h3>

@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -145,6 +151,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>投资 · 凯利公式</b>：这条下注法则算出的最优下注额，总是远小于"期望收益最高"那个数，第一次看会觉得保守得没道理。它跑的是「适者生存这四个字骗了很多人」那节的机制——<b>结果是一年年乘起来的，中间出现一个零就全部清空</b>。于是推出一个反直觉的结论：乘性世界里"平均每年赚多少"这个指标近乎没有意义，该盯的是"最坏那年会不会归零"。种子分好几年才发芽是同一个解——不是保守，是这个结构下的最优。<b>但这里不成立</b>：凯利要求你知道赔率和胜率，植物没有这个信息，它的分批是被筛出来的不是算出来的。能借走的是那条约束，不是那个公式。</li>
 <li><b>组织 · 技术债</b>：公司里最难受的往往不是当初那个方案有多烂，而是它明明还跑得动、却把后面的路都堵死了。跑的是「眼睛不是碰运气碰出来的」那节的机制——<b>存档在保住成果的同时锁住了历史包袱</b>，早期被留下的方案会关掉后期的大量选项。由此推出一个和直觉相反的结论：<b>重构的难度不取决于代码有多糟，取决于当初那个选择关掉了多少条路</b>。<b>但这里不成立</b>：公司可以推倒重来，付钱、停机、迁移，代价再大也是有限的；生物没有这个选项——中间任何一个过渡形态活不下来，那条路就永久封死。组织里的锁死是<strong>成本</strong>问题，演化里的是<strong>可达性</strong>问题。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>自然选择只需三个条件同时成立：个体之间有差异、差异能遗传、差异影响留下的后代数。</li>
+<li>这三个条件不提“生物”二字，所以选择不挑材料，细胞、词语和网络段子都能跑这套逻辑。</li>
+<li>桦尺蠖的工业黑化来自一段跳跃 DNA，它约在 1819 年插入一个管细胞分裂时机的基因。</li>
+<li>煤烟消退后，黑色桦尺蠖每天被鸟吃掉的概率比浅色蛾高约一成，足以解释它在英国的迅速消失。</li>
+<li>“适者生存”里的“适”不是强壮，而是在当下环境里平均能留下几个后代。</li>
+<li>环境波动时，后代数逐年相乘，一个零就清空一切，所以选择奖励的是“从不归零”，而非平均产出高。</li>
+<li>Grant 夫妇记录的 1977 年大旱里，没有一只地雀的喙变厚，变的只是厚喙个体所占的比例。</li>
+<li>一次抽中能用的眼睛几乎不可能，但演化会把每次小改进存档、接着改，1994 年的悲观估算只需约三十六万代。</li>
+<li>Lenski 的大肠杆菌实验跑过五万代仍在变好，吃柠檬酸的本事要先攒下特定早期突变才会出现。</li>
+<li>演化爬的是从当前出发能到的最高点；凯利公式与种子分批发芽说明，乘性世界里该盯的是最坏那年会不会归零。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="c2c35ce6c26fbdfd">深入思考</h3>

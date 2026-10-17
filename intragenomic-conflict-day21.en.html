@@ -58,6 +58,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -164,6 +170,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>Engineering and systems design · a system that has run five years without incident, with two opposing mechanisms cancelling each other daily</b>: one service carries both autoscaling and a hard-coded ceiling, added at different times by different people worried about opposite things; nobody notices anything wrong until the ceiling gets "tidied away" and scaling immediately runs off. This runs the mechanism from "some of your genes run on the father's copy alone": when two sources whose interests only partly overlap both push on the same quantity, what grows is not a compromise value but <b>a pair of opposed devices, each turned up further, cancelling out</b> — so removing either side exposes not the other's natural state but the extreme it was pushed to. From that follows a conclusion you would not otherwise see: <b>the most dangerous places in a system are exactly the parameters that have looked steadiest for years. Steadiness comes in two kinds — no force acting on it, or two large forces exactly cancelling — and from outside they are identical. To find the fragile points, do not measure variance; count how many things are pushing on that quantity.</b> <b>Where it does not hold</b>: in an engineered system those two mechanisms can be read back — the commit history says who added what and why, and you can pull both out and rewrite them together. A genome has no commit history and no "pull both out" option: every intermediate step has to be a viable embryo, so the opposition can only pile up thicker, never be settled.</li>
 <li><b>Economics, investing and business · a fund's "we beat the benchmark" figure, with the benchmark of its own choosing</b>: actively managed funds usually pick their own comparison index to report against, and the same holdings can go from beating it to trailing it with a different choice; inflows watch exactly that number. This runs the meiotic drive from "fifty-fifty is a rule that has to be maintained": a component that can reach <b>the channel deciding whether it gets passed on</b> can expand even while lowering total output — what it moves is not the returns but the scoring convention that decides where money flows. From that follows a conclusion you would not otherwise see: <b>to judge whether an institution will be quietly hollowed out by internal arbitrage, do not look at how finely the incentive terms are drafted; look at who holds the scoring channel. However well aligned the terms, if the measure is chosen by the party being measured the bias will be stable and will deepen year by year — externalising the measure (benchmarks registered in advance, the numbers pulled by someone else) beats adjusting bonus percentages. The genome gives the same answer: fairness does not rest on good intentions, it rests on recombination prising cheats apart from their accomplices every generation.</b> <b>Where it does not hold</b>: a fund has something a genome does not — holders can redeem and walk away at any time. A chromosome cannot exit its genome, so internal suppression is the only road left; where there is an exit, the ceiling on cheating is naturally far lower.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>About half of the human genome is left over from transposable elements, sequences whose only shared trait is that they raise their own copy number.</li>
+<li>The human Alu family runs to over a million copies and more than a tenth of our DNA; about 85% of the maize genome is transposable-element sequence.</li>
+<li>A transposable element needs no benefit to its carrier at all; it persists as long as it copies itself faster than it is cleared out.</li>
+<li>A transposable element landing inside a working gene can wreck it and cause disease, but most copies are long dead and can no longer move.</li>
+<li>The t-haplotype in house mice poisons a male's whole batch of sperm while only the sperm carrying it hold the antidote, so it reaches over 90% of offspring.</li>
+<li>Meiotic drive can spread even while dragging lethal defects and lowering the population's output, because selection does not settle the group's books.</li>
+<li>Fifty-fifty transmission from each parent is a rule that has to be maintained, so the real question is why almost no position in the genome cheats.</li>
+<li>Genomic imprinting lets cells tell a paternal copy from a maternal one: losing the same stretch of human chromosome 15 causes two different conditions depending on the source.</li>
+<li>In Haig's account the paternal copy bears less of the cost of depleting the mother, so growth-promoting imprinted genes tend to be expressed from the father's copy and restraining ones from the mother's.</li>
+<li>In any system the parameters that look steadiest for years may be two large forces cancelling, so find fragile points by counting what pushes on a quantity.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>Going Deeper</h3>

@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -180,6 +186,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>育儿与教育 · 同一种违规反复抓，抓到的次数真的少了，可你并不知道是少发生了还是更会藏了</b>：查手机、查作业，第一轮总有收获，往后越来越干净。跑的是「药不制造耐药，它只是把不耐药的那些清走」那节的机制：检查施加的压力作用在「会不会被发现」这个可观察的性状上，不直接作用在行为本身；被筛掉的是藏得笨的那些做法。由此能推出一个原本看不出的结论：<b>检出次数下降，既可能来自真的少了，也可能来自更会藏了，这两件事在同一份数据里方向完全一样，所以「抓到的少了」单独永远不能当成效果的证据。要分辨只能另找一个不受这轮检查影响的口径——比如那种事后才会暴露、藏不住的后果。检查越密，手里那个数字的信息量越低。</b><b>但这里不成立</b>：细菌那边的变异是随机出现、事先就在的，只能靠一代代筛；孩子是在一代之内定向学的，而且他听得懂规则背后的理由。这带来一个细菌那边完全没有的后果——压力一撤，人这边的「抗性」可以很快就真的消失，不需要等谁被淘汰。</li>
 <li><b>工程与系统设计 · 为绕开某个限制临时加的一层东西，限制早就撤销了，那层东西却再也拿不掉</b>：当初某个接口慢，你加了一层缓存；两年后接口早就重写过了，缓存还在，谁也不敢动。跑的是「把压力撤掉，不保证回到原来那样」那节的机制：它当初有代价（多一处要维护、数据会过期、出问题难排查），压力撤掉之后本该因为这点代价被淘汰；可这两年里周边的东西一件件改成了迁就它的样子，那点代价被别的改动吃掉了——它不再吃亏，也就不再有被淘汰的理由。由此能推出一个原本看不出的结论：<b>判断一个临时方案还撤不撤得掉，别看它当初为什么加，看它的代价还有没有人承担。还有人抱怨它慢、抱怨数据不准，说明代价还在，还能撤；一旦没人抱怨了，多半不是问题解决了，而是补偿已经完成、它已经长进结构里了。「没人再提」是不可逆的信号，不是好转的信号。</b></li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>Lederberg 夫妇 1952 年的影印平板实验表明，耐药菌在接触药之前就已存在。</li>
+<li>细菌并没有「学会」抵抗：变异随机出现，选择只是让本来就带变异的那部分占满全部。</li>
+<li>两米长培养皿实验显示，细菌在每道药物浓度边界前停住，等某一点冒出变异再扇形铺开。</li>
+<li>细菌之间能横着传递载有耐药基因的环状 DNA，无害细菌碰出的耐药本事可能被递给致病菌。</li>
+<li>全杀光和完全不用药都没有筛选，只有「杀掉大部分、剩下一小撮」才是最强的选择压。</li>
+<li>长芒苋对草甘膦的抗性来自把靶蛋白基因复制成几倍到一百多倍，靶子多到药打不完。</li>
+<li>轮换和混用药物有效，是因为同一个体同时带上两种无关变异的概率是两个小概率相乘。</li>
+<li>覆盖 160 座城市的研究发现，越靠市中心，会产氰化物的白三叶草比例越低，各大洲一致。</li>
+<li>桦尺蛾的黑色型随工业煤烟上升、随空气清洁回落，2012 年的实验测出它每天被鸟吃掉的概率高约一成。</li>
+<li>耐药的代价若被补偿性变异抹掉，撤药也不会回落；代价能否在内部被抹掉，决定这类变化可不可逆。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="f75f35cbdce9d644">深入思考</h3>

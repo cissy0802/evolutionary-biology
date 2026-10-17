@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -158,6 +164,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>组织与制度 · 一个团队拆出去独立两年，再合起来做一件事时，两边连「上线了」指的是什么都对不上</b>：拆分那天两边的流程是同一套。之后左边为了自己的场景改了发布流程，右边为了自己的场景改了验收标准，各自内部都跑得很顺。跑的是「不育不需要谁想隔离，只要两边各改各的」那节的机制：不相容不来自任何一方做错，而来自两个从没在同一个流程里共处过的改动第一次相遇。由此能推出一个原本看不出的结论：<b>合并的代价不取决于哪边做得烂，而取决于分开之后各自独立改动的次数，而且它涨得比改动次数还快——因为出事的是「左边的改动 × 右边的改动」这种配对，配对数是乘出来的。所以「先各自跑半年再整合」这个安排，成本不是随时间线性累积的。</b><b>但这里不成立</b>：生物那边的不相容写在基因里，不能商量，每一代都重新出现；组织这边两边可以坐下来重新对齐一次定义，隔离就清零了。所以真正维持边界的不是不相容本身，而是没人愿意付那次重新对齐的账——边界是可撤的，这一点和乌鸦不一样。</li>
 <li><b>工程与系统设计 · 一个内部库被 fork 出去两年，大部分文件还能互相打补丁，合不动的永远是那三四个</b>：fork 就是复制一份出去自己改。两年下来 diff 有上万行，但把补丁从一边搬到另一边，绝大多数时候是干净的，只有少数几个文件每次都冲突。跑的是「边界不在整个基因组上，只挡在几个地方」那节的机制：分化长在几个点上而不是整体上，其余部分一直在自由交换。由此能推出一个原本看不出的结论：<b>「这两个版本还能不能合」是个问错的问题。该问的是哪几个文件是岛——合并成本几乎全压在那几处，和总 diff 行数基本无关；估合并工作量时数行数会系统性地估歪。</b><b>但这里不成立</b>：乌鸦那几段之所以稳定挡得住，是因为每一代都有个持续的筛选把外来版本清掉，岛的数目不涨。代码这边没有这样的筛选，两个 fork 的差异只会一直堆着，岛会越来越多——所以这个结构是会恶化的，不是一个稳态。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>「能互相交配且后代可育就算一种」这把尺子，对化石、细菌和照样杂交的灰熊与北极熊都会失灵。</li>
+<li>同一批鸟，按能否交配数约一万种，按形态和 DNA 上的独立分支数则接近一万八千种。</li>
+<li>各种物种概念描的都是一条独立往下走的世系，分歧只在拿哪条线索当判据，中间隔着很长的灰区。</li>
+<li>灰区里的基因流、杂交后代存活和求偶识别都能测量，含糊的是「种」这个词，不是自然界。</li>
+<li>杂交不育是副产品：两边各自换了零件版本，新版本在杂交后代里第一次碰面才卡住。</li>
+<li>出事的是两边新改动的配对，配对数涨得比差异快，所以生殖隔离会像滚雪球一样越积越快。</li>
+<li>杂交后代越差，接触地带的求偶偏好就被筛得越严，分布重叠的果蝇物种对交配前隔离更强。</li>
+<li>北美山楂蝇一部分转到早熟几周的苹果上，同一片果园里两拨蝇就基本不再照面了。</li>
+<li>黑乌鸦和灰乌鸦全基因组只有 82 处固定差异，其中 81 处挤在 18 号染色体一小段上，其余部分几乎互通。</li>
+<li>分化长在基因组几个点上而不在整体上；类似地，fork 两年的代码库合并成本几乎全压在少数几个冲突文件上。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="29b82b765513f234">深入思考</h3>

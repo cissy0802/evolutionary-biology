@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -142,6 +148,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>文学艺术 · 一部古书传到今天只剩几十种抄本，校勘学家靠抄错的地方给它们排家谱</b>：古籍多半没有原稿，只有后人一代代手抄的本子。十九世纪以来的做法是：不看谁抄得对，看谁错得一样——两个本子共有一处别处都没有的讹误，最省事的解释是它们抄自同一个中间本。跑的是「你能出生，靠的是一段病毒留下的基因」那节的机制：随机的、位置特定的意外能当世系标记，靠的是两条线独立错到同一个位置的概率小到可以不算；共享的不是「像」，是同一个坐标上的同一个意外。由此能推出一个原本看不出的结论：<b>一份文本、一个基因组的来路，主要不藏在它正确或有用的部分里，而藏在坏掉的、没人用的部分里——被压住不表达的病毒残骸和抄错的字一样，正因为不起作用、没人去修，才把历史原样保存着；功能要紧的那些段落反而会被独立地修好，长得像却毫无亲缘含义。</b><b>但这里不成立</b>：抄手会拿两个本子对校，把甲本的读法抄进乙本，校勘学管这叫「污染」——一旦发生，树就不再是树，共有的错误也不再指向共同来源。那正是细菌那一侧的处境。</li>
 <li><b>育儿与教育 · 一个学期之内，班上孩子集体开始用某个说法，家里谁都没教过</b>：跑的是「基因不只往下传，也会横着跳过物种的墙」那节的机制：传递不必经过繁殖，只要能进入一个新载体并在那里被复制就算扩散；纵向那条通道存在，但横向那条通常快上几个量级。由此能推出一个原本看不出的结论：<b>要追一个习惯是哪来的，往上问家谱基本无效，该问的是这一两个月他和谁共处同一个接触网；而且横向进来的东西一旦编进日常，就再分不出哪些是「自家的」——像甘薯身上那段农杆菌 DNA 被一起种了几千年，问「这是我们家的规矩还是外面学来的」往往已经没有答案。</b><b>但这里不成立</b>：DNA 复制保真度极高，一处插入能原样待几千万年，「共有的错误」才当得了证据；说法在人嘴里传，每传一次就走样，几周就被冲刷干净。所以这条解释得了扩散，却不能反过来推来源。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>病毒不代谢、不产能、没有核糖体，进入细胞后只做一件事：让宿主的车间照它的说明书开工。</li>
+<li>病毒丢掉自造工具的能力不是代价而是默认结局：说明书越短，复制越快、放出的拷贝越多。</li>
+<li>病毒起源有逃逸、退化、早于细胞三种假说，不同病毒很可能各走各的路，并非单一类群。</li>
+<li>2003 年发现的巨病毒基因组超过一百万碱基对，还带着造蛋白的零件，却唯独没有核糖体。</li>
+<li>逆转录病毒把自己写进宿主 DNA，插进生殖细胞系就会代代相传，人类 DNA 约 8% 是这种残骸。</li>
+<li>哺乳动物胎盘里让细胞融成一片的蛋白来自逆转录病毒外壳基因，敲掉它的小鼠胚胎在孕中期死亡。</li>
+<li>灵长类、小鼠、兔、食肉类各自捕获了不同来源的病毒基因用于胎盘，不是一次幸运。</li>
+<li>同一段病毒残骸出现在人和黑猩猩基因组的同一位置，几乎只能说明插入时两者还是同一群祖先。</li>
+<li>耐药基因能经细菌间接合、噬菌体错装、捡拾游离 DNA 横向转移，细菌层面的生命之树更像一张网。</li>
+<li>横向转移最易被污染伪造：2001 年称两百多个人类基因来自细菌，很快被改判为基因丢失。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="7eef4598f623bf04">深入思考</h3>

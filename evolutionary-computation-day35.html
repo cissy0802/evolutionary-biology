@@ -60,6 +60,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style><body>
 <div class="container">
 <header>
@@ -177,6 +183,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>育儿与教育 · 一门科目上长期卡住，越练越熟练地卡在同一个地方</b>：有人在某一类题上练了很久，正确率不动，常见解释是不够努力或没天赋。可他手上的反馈几乎只有一种：「离正确答案还差多少」。跑的是「分数是谁定的，决定了这台机器能走多远」那节里迷宫的那条机制：按离目标的距离给分，会把整群搜索按在离目标最近的那条死路上，因为要走通必须先有几步把分数弄低。由此能推出一个原本看不出的结论：<b>停滞能持续多久，取决于反馈允不允许暂时变差；反馈越密、越只报离答案的远近，停滞就越稳定——「练得更多」不改变它，改变它的是有一段时间的评价不按离答案的远近算。</b><b>但这里不成立</b>：迷宫里那个搜索不知道出口在哪，只能撞；学生和老师都知道正确答案长什么样，所以人这边有一条搜索没有的近路——可以直接被告知「这条走不通，先往回」。演化没有这条近路，这正是它要烧掉那么多代的原因。</li>
 <li><b>文学艺术 · 博尔赫斯那座图书馆装着所有可能的书，却一本有用的都给不出</b>：《巴别图书馆》里那座馆藏是穷尽的：所有字母的所有排列都在架上，你要的每一本都在里面，连它的每一版错字本也在。而馆里的人一辈子翻不到一句通顺的话。跑的是「筛出来的东西不欠你一个解释」那节的机制：可能形态的空间大到穷举毫无意义，能产出东西的从来不是「进得去这个空间」，而是「有一条每一步都还站得住的小步路径」。由此能推出一个原本看不出的结论：<b>一部作品或一个物种的难处不在最终形态有多难想到，而在中间每一稿都必须自己立得住；真正的约束是可行的中间态有多少，不是终点有多远。</b><b>但这里不成立</b>：写字的人可以整章删掉、回到三稿之前。演化没有这个动作，上一代已经不在了——文学里最常用的「推翻重来」在生物身上找不到对应物，这正好解释了为什么生物体里留着那么多绕远路的结构，比如那个盲点。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>空间技术 5 号任务的天线由计算机随机改形、按性能筛选得来，实测胜过人工设计。</li>
+<li>演化算法只需三样东西：可变的对象、能传下去的改动、决定谁留下的判据，介质从碳换成比特照样转。</li>
+<li>Thompson 在芯片上演化出的电路利用了那块硅片自身的物理性质，换到同型号芯片上就不可靠了。</li>
+<li>筛选只认分数不认理由，人眼的盲点就是路径依赖留下的接法，章鱼眼独立演化就没有这个洞。</li>
+<li>Karl Sims 的虚拟生物会钻模拟器时间步的漏洞刷分，跳高任务的最省解是长高然后倒下。</li>
+<li>人造演化的分数由人写，自然界的适应度只是谁留下更多后代的事后记录，而且会变动。</li>
+<li>迷宫实验里按离出口的距离给分 40 次零次走通，只奖励新走法则通了 39 次。</li>
+<li>Tierra 里自发出现了寄生者，但人造演化系统跑久都会停，生物圈四十亿年没停过。</li>
+<li>梯度下降能算出上坡方向，演化只能比高低；演化策略靠大规模并行省下的是墙上时间而不是总算力。</li>
+<li>把演化叫作优化算法是拿摹本套原作：自然界没有目标函数，演化也没有存档，死了就无法回滚。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="52378efdfe22fe8e">深入思考</h3>

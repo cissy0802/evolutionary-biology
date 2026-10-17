@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -195,6 +201,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>历史与文献学 · 古书的抄本家谱</b>：古代典籍靠一代代手抄流传，抄错的地方会被下一个抄手照抄下去。校勘学家正是靠这些<em>共同的错误</em>给现存抄本排家谱：两个本子错在同一处，多半来自同一个祖本。这里跑的是本期两条机制的合体——抄错跟内容对不对无关（「变异先出现，然后才轮到筛选」那节的随机性），而哪一支流传到今天，常取决于哪座修道院没被烧掉（漂变）。由此推出一个看不出的结论：<b>一个异文流传得广，不能当作它更接近原文的证据——流传量测的是抄本的存活史，不是文本的质量。</b>校勘学有句老话正是这个意思：抄本要称重，不要点数。<b>但这里不成立</b>：抄手看得懂内容，会主动把看着不通的地方"改回来"，也会照另一个本子改——这等于文本之间存在横向流动，方向还明确朝着"读起来通顺"。DNA 复制没有这么个读得懂内容的校对员，所以文献那边的变异不是纯随机的，家谱也常常不是一棵干净的树。</li>
 <li><b>组织与制度 · 招人带来的到底是什么</b>：一个团队几年不进人，方案会越来越像；不是成员变笨了，是可组合的素材集合封闭了。「洗牌比印新牌快」那节给了两条机制：重组能产生的组合数远超新变异冒出来的速度；而不重组的谱系里，两个好东西分别长在两个人身上，永远合不到一起。由此推出的结论跟直觉不太一样：<b>招一个人带来的收益，该按他带进多少此前不在这个组合池里的素材算，不按他个人能力算。</b>一个经历跟现有成员高度重叠的资深的人，对可组合空间的贡献接近零，哪怕他本人更强。这也顺带解释了内部轮岗为什么常常比招聘划算——它做的是重组，不是引入。<b>但这里不成立</b>：生物那边重组每一代自动发生，不需要谁同意；组织里每次重新组合都要重建信任、重分权责。所以生物的重组率是长期调出来的均衡值，组织的通常远低于那个值，卡在"没人有权限打乱现有分工"上——这是权限问题，不是认知问题。</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 十条要点</h3>
+<ol class="takeaways">
+<li>选择只能在已有的差异里挑，全群一模一样时，再狠的筛选也筛不出任何变化。</li>
+<li>冰岛研究显示每个孩子平均带 60 多处父母都没有的新突变，大多来自父亲，且随父亲年龄增长。</li>
+<li>精子靠不停分裂制造，每分裂一次就要重抄一遍基因组，所以父亲贡献的新突变更多。</li>
+<li>突变是随机的，只指一个变异出现的概率与它对携带者有没有好处无关，而非各处出错率相同。</li>
+<li>Luria 和 Delbrück 在 1943 年靠培养皿之间的波动而非平均数，证明抗性细菌在接触病毒前就已存在。</li>
+<li>抗生素不制造耐药菌，只是把原本就在的少数耐药个体挑出来，并清空它们的竞争对手。</li>
+<li>突变往池子里加新东西很慢，重组把已有变异重新配对很快，还能把分散在不同个体上的好变异合到一起。</li>
+<li>1981 年一只外来雀鸟落在 Daphne Major 岛，三代之内它的后代“大鸟”就只在自己内部配对。</li>
+<li>遗传漂变是每代抽样自带的噪声，群体越小噪声越大，所以变异铺开不能倒推它有用。</li>
+<li>猎豹和北象海豹说明抽样造成的损失难以弥补：数量能回来，遗传变异回不来。</li>
+</ol>
 </div>
 <div class="thinking">
 <h3 data-tts="0cb2004a481149a6">深入思考</h3>

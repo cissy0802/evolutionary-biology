@@ -59,6 +59,12 @@ header .pitch{margin-top:20px;font-size:0.97rem;color:#d2a24c;font-style:italic}
 .bigcat b{color:#7be0ab;font-weight:600}
 footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;border-top:1px solid #24382c;margin-top:40px}
 @media(max-width:600px){header h1{font-size:1.55rem}.section{padding:22px 18px}.container{padding:16px 14px 40px}}
+.tk{margin:40px 0}
+.tk h3{color:#52c98a;font-size:0.88rem;letter-spacing:2px;margin-bottom:12px;font-family:"SF Mono",Menlo,monospace}
+.takeaways{counter-reset:tk;list-style:none;margin:0;padding:0;border:1px solid rgba(82,201,138,0.3);border-radius:12px;background:rgba(82,201,138,0.04)}
+.takeaways li{counter-increment:tk;position:relative;margin:0;padding:11px 18px 11px 52px;border-top:1px solid rgba(82,201,138,0.12);font-size:0.93rem;line-height:1.75;color:#d8e4da}
+.takeaways li:first-child{border-top:none}
+.takeaways li::before{content:counter(tk,decimal-leading-zero);position:absolute;left:18px;top:12px;font-family:"SF Mono",Menlo,monospace;font-size:0.78rem;color:#52c98a}
 </style></head><body>
 <div class="container">
 <header>
@@ -155,6 +161,21 @@ footer{text-align:center;padding:42px 0 12px;font-size:0.82rem;color:#8aa192;bor
 <li><b>History and the military · nobody came out ahead in the dreadnought race</b>: in 1906 Britain launched a battleship called Dreadnought whose firepower and speed made every capital ship afloat look obsolete overnight — including Britain's own. Germany built in reply, Britain raised again, and for a decade both treasuries went into hulls; by the time war came, the two navies stood in roughly the same relation to each other as before the race began. The mechanism is the one from "you got better, but so did your opponent, so nothing moved": what counts is the relative quantity, absolute gains get eaten by the other side's matching gains, and the cost is absolute and payable on the spot. That yields a conclusion you would not otherwise see: <b>a race like this cannot be stopped by either party being reasonable, and has nothing to do with who is more warlike — as long as the loss from falling a step behind exceeds the gain from being a step ahead, stopping unilaterally is the worst available option, even when both sides can see the whole thing is net negative.</b> So what stops it is not somebody working it out, but an external constraint each side watches the other keep: the 1922 Washington Naval Treaty capped capital-ship tonnage for the major naval powers in fixed proportions, and that round of the race stopped for a decade. <b>Where it breaks down</b>: there is no biological counterpart to sitting down and signing. Variation appears one individual at a time, and any single rabbit that runs faster still leaves more offspring, so foxes and rabbits have neither a unit that could negotiate nor any way to enforce "everyone slow down".</li>
 <li><b>Engineering and systems design · a rule works best the day it ships and declines from there</b>: spam filters, payment fraud rules, bot blocking — all the same rhythm. A new rule goes live, catches almost everything for a few days, and weeks later the catch rate has fallen back and needs another version. The mechanism is the one from "a rock will not answer you back; a living opponent will": the other side adjusts to your specific move, so a rule's effectiveness is not a property of the rule, it is a quantity relative to how much the other side has worked out. That yields a conclusion you would not otherwise see: <b>the more organisations adopt the same defence, the faster it decays</b> — the payoff for working it out scales with how many targets that one move opens, so ubiquity is itself a multiplier on the decay rate. This is the same accounting as "the commonest lock is the first to get a key cut for it", which means an industry converging on one agreed best practice is not, in security, converging on the optimum; it is turning the whole industry into a single genotype. <b>Where it breaks down</b>: hosts cannot compare notes, so their resistance combinations can only be reshuffled by recombination over generations, whereas defenders share intelligence — one organisation gets breached and the rest have the signature within hours. That channel lets the human side be uniform without collapsing, at the cost of the sharing itself becoming a new way in.</li>
 </ul>
+</div>
+<div class="tk">
+<h3>📝 Ten takeaways</h3>
+<ol class="takeaways">
+<li>Flu vaccines need redoing every year because the stronger a population's immunity, the more the virus that keeps spreading is a version nobody recognises.</li>
+<li>In 1973 Van Valen found extinction risk looked unrelated to how long a taxon had survived, though the patchy fossil record keeps that law contested.</li>
+<li>The Red Queen intuition is that fitness is relative: when you improve, living opponents respond, and your position stays put.</li>
+<li>Hosts and parasites usually fight like locks and keys rather than spears and shields: no master key, only keys that fit the current lock.</li>
+<li>Lock-and-key matching builds in negative feedback: the commonest host genotype gets targeted first, while rare genotypes stay safe for a while.</li>
+<li>In revived Daphnia and parasites from a Belgian pond's sediment layers, parasites infected hosts from their own year best.</li>
+<li>An asexual lineage doubles its share each generation, which is Maynard Smith's twofold cost of males.</li>
+<li>An asexual lineage presents the same lock year after year and pays for it, which keeps sex from being outcompeted; sex did not arise to fight parasites.</li>
+<li>Male frequency in New Zealand snails tracks trematode infection, and nematodes keep outcrossing only against a bacterium that can evolve.</li>
+<li>The more organisations adopt the same security defence, the bigger the payoff for cracking it, and the faster it decays.</li>
+</ol>
 </div>
 <div class="thinking">
 <h3>GOING DEEPER</h3>
